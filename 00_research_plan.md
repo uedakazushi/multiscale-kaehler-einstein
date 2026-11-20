@@ -10,8 +10,8 @@
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
 - `papers/series-overview.tex`：総説9頁。Part IV–Vの正本は[退化研究](https://github.com/uedakazushi/kaehler-einstein-degeneration)。
 
-## 解析的入力の確認と smooth-divisor の一階共鳴
-Rochon–Zhangの Theorem 5.1 はSNC対のresidual-uniform fc漸近を扱い、Theorem 7.4のfull polyhomogeneous expansionはsmooth divisorを仮定する。前者から本稿のmetric-IRFAに移る際の外部入力の仮定は主稿の prop:RZ と rem:RZ-primary-scope に対応づけた。さらにTheorem 7.6をsmooth degree-e hypersurface D_e⊂P^n (n≥2, e>n+1)に適用すると、規格化したKEポテンシャルのx log x係数は2(n-1)e/[3(e-n-1)]で非零となる。証明は主稿 prop:RZ-smooth-hypersurface-coefficient。この係数はt=-log xの下でt e^{-t}型の可積分な誤差を生み、指数1のlog-freeな漸近を一般に仮定してはいけない。これは一次資料にある定理の具体的特殊化であり、新規な解析的定理やglobal metric-IRFAの独立証明ではない。五直線のface massはintersection数とGauss–Bonnetから数値検算した。
+## 解析的入力とsmooth-divisorの精密誤差
+Rochon–Zhang Theorem 5.1はSNC strataの共通指数\(\nu>0\)のfc漸近を与え、Theorem 7.4・7.6のpolyhomogeneous展開と\(x\log x\)の係数はsmooth divisorに限る。Smooth degree-\(e\) hypersurface\(D_e\subset\mathbf P^n\)（\(e>n+1\)、\(n\ge2\)）では\(\widetilde b_e=2(n-1)e/[3(e-n-1)]\)と計算できる。さらにnormal-circle connectionを含むcompatible modelへのtensor誤差は\(C(1+t)e^{-t}\)で、tail積分は\(C(T+2)e^{-T}\)（`cor:RZ-smooth-sharp-IRFA`）。これは一次資料から得られるsmooth boundaryの可積分評価であり、一般SNCの全大域path liftingやactual conifold gluingの証明ではない。五直線のface mass係数はintersectionとGauss–Bonnetから数値検算済み。
 
 ## 次の課題
 1. (H_loc)のwhole-end localizationとparent/refined compatibility、(H_anc)のanchors・portal transport・radial densityをactual metricで確立する。
