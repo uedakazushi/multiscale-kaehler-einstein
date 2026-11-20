@@ -2,7 +2,7 @@
 
 2026-11-20。Libraryの `Multiscale_KE_Geometry_I-V_ja_v1_source_and_pdfs.zip`（2026-08-31）を取得した。これは旧配置補空間三部作と旧退化二部作を再監査・統合した五篇連作である。元資料のREADME・数学的監査と本文の仮定を照合し、短い再構成稿を全文のTeXへ置換した。旧稿への誤り訂正・条件付き化を引き継ぐ。元Libraryファイルは削除していない。
 
-ソースの対応、バイト数、SHA-256は `source-manifest.json`。五篇統合稿のTeX本文は元ファイルからバイト単位で保持し、ファイル名のみ変更した。追加で取得したpost-trilogy v2.2は研究素材としてresearch-directions.texへ保持し、現行の追加仮定の注意書きを冒頭に加えた。Part I–IIIと総説の正本はmultiscale-kaehler-einstein、Part IV–Vと五つの補助スクリプトの正本はkaehler-einstein-degeneration。元の統合PDFと旧版ZIPはGitへ重複保存しない。新しい定理の証明や文献の再監査を今回実施したことを意味しない。
+ソースの対応、バイト数、SHA-256は `source-manifest.json`。五篇統合稿のTeX本文は移行時点で元ファイルとのバイト単位一致を確認した。その後の数学的な監査追記により現行ファイルは元バイト列と異なるため、`source-manifest.json` の `source_sha256` を元資料のハッシュ、`sha256` を現行ソースのハッシュとして区別する。追加で取得したpost-trilogy v2.2は研究素材としてresearch-directions.texへ保持し、現行の追加仮定の注意書きを冒頭に加えた。Part I–IIIと総説の正本はmultiscale-kaehler-einstein、Part IV–Vと五つの補助スクリプトの正本はkaehler-einstein-degeneration。元の統合PDFと旧版ZIPはGitへ重複保存しない。新しい定理の証明や文献の再監査を今回実施したことを意味しない。
 
 ## 組版
 
@@ -16,4 +16,4 @@
 
 ## 回収済み旧資料の再確認
 
-五篇統合版の第I–III篇と総説、およびpost-trilogy v2.2から移した研究ノートの計5ファイルについて、現行ファイルのSHA-256を移行時の一覧と照合し、全件一致を確認した。v2.2のJacobi/scattering・一般matroidの素材は `papers/research-directions.tex` に収録済み。統合前の各版との証明単位の照合は残る。
+五篇統合版の第I–III篇と総説、およびpost-trilogy v2.2から移した研究ノートの計5ファイルについて、取り込み直後のファイルSHA-256を移行時の一覧と照合して一致を確認した。後の数学的追記が入った原稿は、現行SHA-256と元資料のハッシュを別に管理する。v2.2のJacobi/scattering・一般matroidの素材は `papers/research-directions.tex` に収録済み。統合前の各版との証明単位の照合は残る。
