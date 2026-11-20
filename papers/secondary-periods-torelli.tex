@@ -1,0 +1,71 @@
+% LuaLaTeX, project settings in ../.latexmkrc
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{booktabs}
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{conjecture}[theorem]{予想}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\cC}{\mathcal C}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Sk}{Sk}
+\title{Multiscale Kähler--Einstein Geometry II\\Secondary Periods and Residual Torelli}
+\author{}
+\date{2026年11月20日 / GitHub移行用再構成草稿 v0.1}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+配置補空間のfirst asymptotic coneが忘れるrealization moduliを、
+境界strataに現れる残差双曲曲線のperiodとWeil--Petersson metricから回収する。
+元Library Part II v1.0 の全証明はこの再構成版にまだ移されていない。
+\end{abstract}
+\section{五直線配置の残差周期}
+一般位置五直線配置$\{L_1,\ldots,L_5\}\subset\PP^2$の
+$L_i^\circ=L_i\setminus\bigcup_{j\neq i}L_j$は四点除去球面となる。
+各残差曲線のmoduliは$M_{0,4}$で記述される。
+第一漸近錐のlinkは一律にall-right $K_5$であるが、
+残差曲線の双曲計量は各四点のcross-ratioを記憶する。
+\begin{proposition}
+$\lambda,\mu\in\CC\setminus\{0,1\}$で$\lambda\neq\mu$とし、
+$r_1,r_3$を$r_3=\lambda$, $r_1=\lambda/\mu$として定めるなら
+\[
+ \lambda=r_3,\qquad\mu=r_3/r_1.
+\]
+従ってこの二つの記録は座標が零でないopen locus上で
+$(\lambda,\mu)$を一意に復元する。
+\end{proposition}
+\begin{proof}
+定義式の代入により直ちに従う。
+\end{proof}
+\begin{remark}
+実際のperiod mapがこれらの正規化を幾何学的にcanonicalに与えるか、
+また境界での連続性と有限性を保つかは、元のPart IIの証明監査が必要である。
+\end{remark}
+\section{WP completionと研究課題}
+五つのforgetful mapsから得るperiod imageにproduct Weil--Petersson metricを
+引き戻し、completionを記述するのが元原稿の中心である。
+局所plumbing漸近、period mapの微分のrank、境界での分枝分離を明示する必要がある。
+一般$(n,m)$の場合にはrank-two minorsとmatroid combinatoricsによる判定へ発展させる。
+\begin{conjecture}
+一般のresidual period imageのnormalization上で異なる分枝が、
+WP inner metric completionによって区別される条件を
+matroid dataから特徴付けられる。
+\end{conjecture}
+元論文ではsecondary TorelliとWP completionを定理として述べ証明を収録していたが、
+この再構成草稿は当該証明の完全な代替ではない。
+
+\end{document}
