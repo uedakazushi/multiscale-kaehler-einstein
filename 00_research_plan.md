@@ -1,26 +1,23 @@
-# 現行研究方針：配置補空間の多重スケール Kähler–Einstein 幾何
-2026-11-20 / v1.0
+# 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
+更新：2026-11-20 / v1.1
 
 ## 研究固有の目標
-滑らかな ample SNC pair の完備負KE計量の無限遠を、第一漸近錐・metric-measure face data・残差曲線のperiod・singular contractionのcanonical metric cellから記述する。最優先は**actual singular arrangement metricに対する大域的pGH収束の証明**である。局所定理とwall-compatible family-uniform liftingを区別する。
+滑らかな ample SNC pair の負KE計量の無限遠を、第一漸近錐・facewise測度・residual periods・singular conifold cellsの階層として記述する。最優先の核心は、**actual singular arrangement metricの大域pGH収束に必要なwall-compatible lifting**である。
 
-## 現時点の主要入力と主張の状態
-- Part I：2026-08-21日本語草稿 v1.0（旧Library名 `Multiscale_KE_Arrangements_I_ja_v10.tex`）。ample SNC pairのbounded-additive cone、face masses、tail/LDPを原稿中で主張し証明を記載。Rochon–Zhangのrecursive asymptoticsから必要な一様評価を本当に導けるか、独立の一次資料照合・証明監査は未了。
-- Part II：2026-08-21 v1.0（`Multiscale_KE_Arrangements_II_ja_v10_submission.tex`）。secondary periods、Torelli、residual WP completion。原稿中に証明あり。一次文献と全仮定を新たに検証した状態ではない。
-- Part III：2026-08-21 v1.2（`Multiscale_KE_Arrangements_III_ja_v12_submission.tex`）。explicit conifold models、fixed arrangement / fixed nodeのqualitative local localization、canonical \(8\pi/3\) cell、single-node residual Torelliを原稿中で定理として扱う。**global pGHは条件付き定理と予想であり、無条件定理ではない。** 前稿での過大な主張を引き継がない。
-- 外部文献の未検証部分：Tian–Yau/Yau completeness、Datar–Fu–Song pair-end volume argument、Rochon–Zhang uniformity、Dumas–Wolfからの全階Hessian bootstrap、localized Chern–Lu cutoff。独立の証明監査を要する。
+## 原資料と主張の状態
+- Part I：2026-08-21 v1.0、Library `Multiscale_KE_Arrangements_I_ja_v10.tex`。bounded-additive cone theorem、face masses、tails/LDPの証明が草稿に記載される。Rochon–Zhangのuniform recursive asymptoticsからの帰結は今回独立に監査していない。
+- Part II：同日v1.0、`Multiscale_KE_Arrangements_II_ja_v10_submission.tex`。secondary TorelliとWP completionの証明が原稿に記載されるが、文献と仮定の独立監査は未了。
+- Part III：同日v1.2、`Multiscale_KE_Arrangements_III_ja_v12_submission.tex`。explicit conifold models、fixed nodeでのqualitative localization、canonical transverse angle \(8\pi/3\)、residual Torelliを原稿中で証明したと記録する。**Global pGHは条件付き定理・予想で、無条件定理ではない。**
+- 移行時点で元の長いTeX本文と計算ZIPのGitHub移植は未完了。GitHubにある各 `papers/*.tex` は原稿の完全な代替ではなく、数学的再構成草稿である。
 
-## 最優先課題
-1. Part IIIの全wall layersに対しtracked template liftsとkernel connectorsを (o(R)) で一様制御するか、反例/仮定不足を同定する。
-2. Part Iのmetric-IRFAへの外部入力を一次資料の正確な定理・重み・uniformityと照合し、粗等長性の帰納法を厳密監査する。
-3. 研究ノートに残るgeneral matroid/secondary WP/singular face massの問題を重要度順に選択する。独立した公表価値を優先する。
+## 次の課題と着手方法
+1. Part III全wall layersのtemplate liftsとkernel connectorsを一様 \(o(R)\) で制御するか、仮定不足を同定する。
+2. Part Iのmetric-IRFAをRochon–Zhangの一次資料の仮定へ還元し、exact-fibre liftingを独立監査する。
+3. Part IIのsecondary periods・WP completionの全証明を復元し、一般matroidのresidual period mapへ拡張する。
+4. 外部入力：Tian–Yau/Yau completeness、Datar–Fu–Song pair-end volume、Rochon–Zhang uniformity、Dumas–Wolf bootstrap等を精査する。
 
-## 論文・ノートと依存
-- `papers/multiscale-kaehler-einstein.tex`：Part I、主原稿。
-- `papers/secondary-periods-torelli.tex`：Part II、独立論文。
-- `papers/conifold-localization.tex`：Part III、独立論文。
-- `research/notes.md`：原稿外の現行課題と障害。証明は論文を参照。
-- 退化族への応用は [kaehler-einstein-degeneration](https://github.com/uedakazushi/kaehler-einstein-degeneration) の正本で管理する。両研究の定理を自動的に同一視しない。
+## 正本と論文
+主原稿 `papers/multiscale-kaehler-einstein.tex`（Part I）。独立論文 `papers/secondary-periods-torelli.tex`（Part II）、`papers/conifold-localization.tex`（Part III）。ノートは `research/notes.md`。退化族の一様解析の正本は [kaehler-einstein-degeneration](https://github.com/uedakazushi/kaehler-einstein-degeneration)。
 
-## 共通研究原則・保存許可（研究固有の方針ではない）
-数学的重要性・新規性・理解の深化・応用可能性・正確性・実現可能性を総合し方針を更新する。証明済み・追加仮定付き・未完成・予想・計算観察を区別し、既知結果と本研究を分け、重要な文献は一次資料で検証する。日本語LuaLaTeXで本文と十分な証明を保持し、ノートは現行の有効知識だけに整理する。計算・証明書・再現入力を残し、過去版や作業ログは正本にしない。研究の区切りには承諾を求めず通常コミットで `main` にpushし、15〜30分を目安に区切って保存する。force pushとActionsの追加/起動をせず並行変更を守る。既存Library資料を削除せず、GitHub管理後の定常的なLibrary二重保存は行わない。対象repoを先に保存してからresearch-hubを更新し、双方の反映状況を別々に確認する。検証・組版・保存の実施状態は混同しない。
+## 共通研究原則と保存許可（研究固有方針から独立）
+数学的重要性・新規性・理解の深化・応用可能性・正確性・実現可能性を総合して方針を更新する。証明済み・仮定付き・未完成・予想・計算観察を区別し、既知結果と新規貢献、草稿中の証明と今回の監査を分ける。重要な文献は一次資料を照合する。論文は原則日本語LuaLaTeXで、価値ある証明を軽量化のため削らない。ノートは現行知識に整理し、必要な再現コード・入力・証明書を残す。研究の区切りで承諾を求めず通常コミットにより `main` へpushし、長時間では15–30分で保存する。force push・GitHub Actions追加/起動をせず、他者の変更と公開範囲を保持する。Library旧資料を削除せずGitHub移行後の定常二重保存はしない。対象repoを先に保存してからresearch-hubを更新し、数学検証・組版・保存・hub更新は別々に確認する。
