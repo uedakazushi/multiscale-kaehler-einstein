@@ -10,6 +10,9 @@
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
 - `papers/series-overview.tex`：総説9頁。Part IV–Vの正本は[退化研究](https://github.com/uedakazushi/kaehler-einstein-degeneration)。
 
+## 今回の一次資料照合と独立検算
+Part Iで使うRochon–Zhang Theorem 5.1のSNC・共通重み付きfc漸近を一次資料で照合した。一方 Theorem 7.4のfull polyhomogeneous expansionはsmooth divisorの場合であり、SNC一般への無条件な拡張として用いない。主稿の \`rem:RZ-primary-scope\` と \`research/notes.md\` を参照。五直線のface mass数値係数もintersectionとGauss–Bonnetから再計算した。大域距離定理とLDP全証明の独立監査ではない。
+
 ## 次の課題
 1. (H_loc)のwhole-end localizationとparent/refined compatibility、(H_anc)のanchors・portal transport・radial densityをactual metricで確立する。
 2. Part IIのcontrolled parallel push-offを証明するか、適用範囲を限定する。
