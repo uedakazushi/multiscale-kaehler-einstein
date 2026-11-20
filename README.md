@@ -10,7 +10,7 @@
 | [総説](papers/series-overview.tex) | 9 | 五篇の関係と仮定 |
 | [研究素材](papers/research-directions.tex) | 10 | Jacobi/scattering・一般matroid等。現行仮定の注意を付記 |
 
-**現在の独立検証：** [Part I](papers/multiscale-kaehler-einstein.tex) にRochon–ZhangのSNC漸近定理とsmooth-divisor限定のpolyhomogeneous定理を区別して記載。smooth degree-e hypersurfaceの場合のx log x係数 2(n−1)e/[3(e−n−1)] を既知定理から計算し、その非零性と可積分な減衰を整理した。[研究ノート](research/notes.md)に適用範囲を記録。大域距離定理とactual conifold localizationの独立再証明ではない。
+**現行の数学的到達点：** [Part I](papers/multiscale-kaehler-einstein.tex)でRochon–ZhangのSNC定理5.1とsmooth divisorに限る定理7.4・7.6の入力を区別。滑らかな次数 $e>n+1$ の超曲面の $x\log x$ 係数 $2(n-1)e/[3(e-n-1)]$ を特殊化し、smooth boundary一面でのテンソル誤差 $O((1+t)e^{-t})$ とその可積分tailを記載した。一般SNCの大域距離定理やactual conifold localizationを今回独立に再証明したわけではない。
 
 最初に[研究方針](00_research_plan.md)、次に[研究ノート](research/notes.md)を読む。[移行・検証範囲](research/migration.md)と[ソース対応](research/source-manifest.json)を確認する。短い再構成稿は全文へ置換済み。旧稿独自資産の網羅的照合は残る。
 
