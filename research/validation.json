@@ -44,5 +44,11 @@
     "result": "Reviewed rendered contact sheets; no visible clipping or overlap in sampled pages.",
     "full_page_review": false
   },
-  "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested."
+  "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
+  "current_math_audit_2026_11_20": {
+    "mathematical_check": "Rochon–Zhang Theorem 5.1 (SNC face decay) versus Theorem 7.4 (smooth-divisor full polyhomogeneity) checked against primary source; five-line intersection and Gauss–Bonnet normalization recomputed.",
+    "changes": "Added a primary-scope remark to Part I and clarified current research plan and notes. No independent check of the full IRFA-to-global-distance proof.",
+    "finite_test": "Algebraic five-line masses verified by hand, not by new software.",
+    "latest_full_lualatex_build": "Not rerun after these edits. Earlier Work-recorded successful builds remain historical evidence."
+  }
 }
