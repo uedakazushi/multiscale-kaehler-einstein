@@ -6,8 +6,10 @@
     {
       "source": "01_spatial_infinity_ja.tex",
       "destination": "papers/multiscale-kaehler-einstein.tex",
-      "sha256": "136a47f707e0c07c64cec211358b5393e3a11b8c29b0a076a30d49f8f2a1ed4b",
-      "bytes": 105994
+      "sha256": "9c0fcc47fd333c3dd3f817e54fac58d2a799118c2a3c27e4e4d84094c44cd316",
+      "bytes": 106888,
+      "source_sha256": "136a47f707e0c07c64cec211358b5393e3a11b8c29b0a076a30d49f8f2a1ed4b",
+      "current_blob_sha": "3bb8eba6458736b83801ba6b3fd0de258f033b1d"
     },
     {
       "source": "02_secondary_periods_ja.tex",
@@ -38,5 +40,6 @@
       "sha256": "06ec2ebf439db03378fc8be9a029c5eaabbcf975c6d8e44fd73c48c3f5435425",
       "changes": "Added explicit status preface; original mathematical body retained."
     }
-  ]
+  ],
+  "audit_update_2026_11_20": "Current sha256/bytes and Git blob reflect mathematical additions or repository entrypoint fixes; source_sha256 preserves original Library-bundle provenance. This update does not imply complete independent proof verification."
 }
