@@ -1,0 +1,92 @@
+% LuaLaTeX, project settings in ../.latexmkrc
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{booktabs}
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{conjecture}[theorem]{予想}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\cC}{\mathcal C}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Sk}{Sk}
+\title{Multiscale Kähler--Einstein Geometry III\\Conifold Localization and Global Wall Problem}
+\author{}
+\date{2026年11月20日 / GitHub移行用再構成草稿 v0.1}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Singular log-canonical contractionから現れるconifold pairの局所化、
+canonical metrized cell、残差Torelliとglobal pGH問題を区別する。
+元Library Part III v1.2（37頁）にはlocalizationの証明があるとされるが、
+その外部入力を今回独立には監査していない。global pGHは未証明である。
+\end{abstract}
+\section{Conifold pairと局所model}
+標準3次元conifoldのaffine方程式は
+\[
+ C=\{(x,y,z,w)\in\CC^4:xy=zw\}
+\]
+である。境界にtoric divisorを入れたpairが局所modelになる。
+\begin{proposition}
+$C$の原点以外のZariski tangent空間は複素次元3で、
+原点はordinary double pointである。
+\end{proposition}
+\begin{proof}
+$f=xy-zw$のgradientは$(y,x,-w,-z)$である。
+これは原点だけで零となる。$f$は非退化二次形式であり、
+原点はordinary double pointである。
+\end{proof}
+元論文のexplicit modelsの記録では$M_6$はdegree 5で3 ODP、
+$M_7$はdegree 17で2 ODPをもち、
+boundary pair germは標準toric conifold pairに同型である。
+二つのsmall-resolution presentationによるzero-length quotientは同じと記される。
+\section{Canonical cellと局所KE比較}
+元論文では中央chamberに$da^2+db^2+dc^2$というmetricを与え、
+singular transverse cell angleを$8\pi/3$として計算する。
+fixed arrangement・fixed nodeでのqualitative local KE localizationは、
+Tian--Yau/Yauの存在・完備性、pair-end volume comparison、
+localized Chern--Luなどに依存する。ここで引用定理の仮定は未監査である。
+\section{Global wall problem}
+\begin{theorem}[条件付き主張の形式]
+central, lateral, ordinary/tie sectorsを横断し、
+すべてのmodel pathsのtemplate liftsとkernel connectorsが
+uniform $o(R)$ additive errorで追跡でき、
+sector overlapがcompatibleだと仮定する。
+このとき、対応するfinite proper model coneへの距離$R^{-1}$の
+pointed GH収束は、このpath-liftingの上下評価から帰結する。
+\end{theorem}
+\begin{proof}
+model cone上の有限長経路をsectorごとに分割し、仮定のliftによる
+距離上界を得る。縮小後の加法誤差は$o(R)/R=o(1)$である。
+depth mapが与える逆向きの非伸長/近似下界と、net性を合わせて
+pointed GH近似が得られる。ただし記載した全仮定のactual KEでの構成は
+この証明には含まれない。
+\end{proof}
+\begin{conjecture}[actual metricのglobal pGH]
+上のwall-compatible tracked liftingは、対象のactual
+arrangement complementのKE metricに対し成立する。
+\end{conjecture}
+\begin{remark}
+元Part III v1.1にあったglobal pGHの無条件主張はv1.2で撤回されている。
+局所定理・条件付き定理・予想を混同しない。
+\end{remark}
+\section{残差Torelli}
+元原稿では$M_{0,5}$の五つのforgetful mapsを用い、
+一つのnodeから$(\lambda,\mu)$を復元する式
+$\lambda=r_3,\ \mu=r_3/r_1$とresidual WP completionを扱う。
+この再構成稿に独立の完成証明はまだ移っていない。
+
+\end{document}
