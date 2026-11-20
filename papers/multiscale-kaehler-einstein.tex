@@ -1711,6 +1711,48 @@ smooth divisor における $x\log x$ の精密係数は矛盾しない．
 $\nu=1$ のlog-free boundを全SNC pairで主張することはできない．
 \end{remark}
 
+\begin{corollary}[Smooth hypersurface cuspの可積分な一階tensor誤差]
+\label{cor:RZ-smooth-sharp-IRFA}
+\cref{prop:RZ-smooth-hypersurface-coefficient}の仮定と
+Rochon--Zhang \cite[Theorem~7.6]{RochonZhang} のvolume-form規格化を取る．
+\cref{prop:RZ}で用いた一面のcompatible normal-circle connection model
+$g^\times_{D_e}$ に対して，十分深い$t=-\log x$上で
+\[
+ \bigl|g_{\mathrm{KE}}-g^\times_{D_e}\bigr|_{g^\times_{D_e}}
+ \le C(1+t)e^{-t}.
+\]
+従ってこのmodelに対するtensor比較誤差のtailは
+\[
+ \int_T^\infty C(1+t)e^{-t}\,\dd t
+ =C(T+2)e^{-T}.
+\]
+特にsmooth divisorの場合のmetric-IRFAには
+任意の指数$\nu<1$による粗い$Ce^{-\nu t}$評価より
+明示的な可積分modulusを選べる．
+\end{corollary}
+\begin{proof}
+Theorem~7.6の記述
+$u-\widetilde b_e x\log x\in xC^\infty_{\mathrm{fc}}$
+により，fc-frameで二階微分しても
+\[
+ |\sqrt{-1}\partial\bar\partial u|_{\mathrm{fc}}
+ \le Cx(1+|\log x|)
+\]
+となる．\cref{prop:RZ}で使うRochon--Zhangのstandard spatial modelでは，
+背景metricと一面のnormal-circle/residual product modelとの差は
+fc-frameで$O(x)$である．したがって
+$\omega_{\mathrm{KE}}=\omega+\sqrt{-1}\partial\bar\partial u$について
+必要なtensor誤差を得る．$x=e^{-t}$を代入して積分すればよい．
+\end{proof}
+\begin{remark}
+$g^\times_{D_e}$はnormal bundleのconnectionを含む
+compatible \emph{twisted} modelであり，非自明なnormal circle bundleを
+大域的な直積と同一視するわけではない．
+本系はsmooth boundary一面での誤差の可積分性であり，
+一般SNCの同時corner estimatesやdegenerating familyの
+$(\mathrm{PBE})_d$を証明するものではない．
+\end{remark}
+
 \begin{corollary}[SNC K\"ahler--Einstein cone]
 \label{cor:SNC}
 \cref{thm:intro-metric,thm:intro-measure,thm:intro-tail} は全て成立する。
