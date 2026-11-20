@@ -31,3 +31,14 @@ Rochon–Zhang, *Asymptotics of complete Kähler metrics of finite volume on qua
 
 ## 入力の監査
 Part Iのrecursive uniformity（Rochon–Zhang）とPart IIIのTian–Yau/Yau、Datar–Fu–Song、Dumas–Wolf等は一次資料と適用条件の比較が必要。post-trilogy v2.2の本文をpapers/research-directions.texへ保持した。最新版ではactual localization自体も(H_loc)へ分離されており、旧稿の証明済みという状態を維持しない。
+## Smooth-divisor の x log x 共鳴と有効な減衰指数
+Rochon--Zhang の Theorem 7.6 を、smooth degree e>n+1 hypersurface D_e⊂P^n (n≥2) に直接特殊化すると、同論文 Theorem 7.4 の背景計量・体積形の規格化で KE ポテンシャルの x log x 係数は
+\[
+\widetilde b_e
+=-\frac{2(n-1)}3
+\frac{c_1(TD_e)^{n-2}\cdot c_1(N_{D_e/\mathbf P^n})}
+     {c_1(TD_e)^{n-1}}
+=\frac{2(n-1)e}{3(e-n-1)}.
+\]
+n=2では2e/[3(e-3)]で、原論文 Example 7.7 と一致する。t=-log x なら x log x=-t e^{-t} であり、O(e^{-\nu t}) は任意 \nu<1 で成立するが、O(e^{-t}) とは一般にいえない。一般のmetric-IRFAにlog-free指数1を入力しない。t e^{-t}自身は可積分で \(\int_T^\infty t e^{-t}\,dt=(T+1)e^{-T}\)。大域粗等長性の全証明に代わらない。数式の証明は主原稿 papers/multiscale-kaehler-einstein.tex の prop:RZ-smooth-hypersurface-coefficient。一次資料：Rochon--Zhang, Adv. Math. 231 (2012), 2892–2952, Theorems 5.1, 7.4, 7.6, Example 7.7, DOI 10.1016/j.aim.2012.08.005。smooth divisorとSNCを混同しない。
+
