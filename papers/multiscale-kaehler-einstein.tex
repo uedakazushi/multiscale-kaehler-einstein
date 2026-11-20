@@ -1664,6 +1664,53 @@ Theorem~5.1 の fc derivatives と §2 の model formulae に還元され，
 追加論証である．この区別は一次資料の仮定を直接照合して確認した．
 \end{remark}
 
+\begin{proposition}[Smooth hypersurface の logarithmic resonance の明示係数]
+\label{prop:RZ-smooth-hypersurface-coefficient}
+$n\ge2$，$e>n+1$ とし，
+$D_e\subset\PP^n$ を smooth degree-$e$ hypersurface とする．
+Rochon--Zhang の \cite[Theorems~7.4 and~7.6]{RochonZhang} の
+smooth-divisor 用の背景形と volume-form normalizationを選ぶ．
+$D_e$ 近傍の境界 defining function を $x$ とすると，
+同論文の potential $u$ の $x\log x$ 項の係数は
+\[
+ \boxed{\widetilde b_e
+ =\frac{2(n-1)e}{3(e-n-1)}>0.}
+\]
+特に $n=2$ では $\widetilde b_e=2e/[3(e-3)]$ となり，
+同論文 Example~7.7 に一致する．
+この項は $t=-\log x$ の深さでは $-\,\widetilde b_e\,t e^{-t}$
+であり，任意の $0<\nu<1$ に対して $O(e^{-\nu t})$ だが，
+一般には $O(e^{-t})$ ではない．
+\end{proposition}
+\begin{proof}
+Adjunctionより
+\[
+ c_1(TD_e)=(n+1-e)H|_{D_e},\qquad
+ c_1(N_{D_e/\PP^n})=eH|_{D_e}.
+\]
+同論文 Theorem~7.6 の coefficient formula
+\[
+ \widetilde b_e
+ =-\frac{2(n-1)}3
+ \frac{\int_{D_e}c_1(TD_e)^{n-2}c_1(N_{D_e/\PP^n})}
+      {\int_{D_e}c_1(TD_e)^{n-1}}
+\]
+に代入し，分子・分母の共通因子
+$\int_{D_e}H^{n-1}=e$ を消去すると
+$-\frac{2(n-1)}3\,e/(n+1-e)$ を得る．
+$x=e^{-t}$ と書き換えれば最後の減衰評価も従う．
+\end{proof}
+
+\begin{remark}[SNC inputの指数の解釈]
+この命題は \emph{smooth divisor} に限った既存定理の具体的な特殊化であり，
+新しい解析的展開の証明ではない．
+特に一般 SNC divisor に対する
+\cref{prop:RZ} の $x^\nu C^\infty_{\mathrm{fc}}$ 評価と，
+smooth divisor における $x\log x$ の精密係数は矛盾しない．
+一方，Rochon--Zhang の定理だけを理由に
+$\nu=1$ のlog-free boundを全SNC pairで主張することはできない．
+\end{remark}
+
 \begin{corollary}[SNC K\"ahler--Einstein cone]
 \label{cor:SNC}
 \cref{thm:intro-metric,thm:intro-measure,thm:intro-tail} は全て成立する。
