@@ -10,8 +10,8 @@
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
 - `papers/series-overview.tex`：総説9頁。Part IV–Vの正本は[退化研究](https://github.com/uedakazushi/kaehler-einstein-degeneration)。
 
-## 今回の一次資料照合と独立検算
-Part Iで使うRochon–Zhang Theorem 5.1のSNC・共通重み付きfc漸近を一次資料で照合した。一方 Theorem 7.4のfull polyhomogeneous expansionはsmooth divisorの場合であり、SNC一般への無条件な拡張として用いない。主稿の `rem:RZ-primary-scope` と `research/notes.md` を参照。五直線のface mass数値係数もintersectionとGauss–Bonnetから再計算した。大域距離定理とLDP全証明の独立監査ではない。
+## 解析的入力の確認と smooth-divisor の一階共鳴
+Rochon–Zhangの Theorem 5.1 はSNC対のresidual-uniform fc漸近を扱い、Theorem 7.4のfull polyhomogeneous expansionはsmooth divisorを仮定する。前者から本稿のmetric-IRFAに移る際の外部入力の仮定は主稿の prop:RZ と rem:RZ-primary-scope に対応づけた。さらにTheorem 7.6をsmooth degree-e hypersurface D_e⊂P^n (n≥2, e>n+1)に適用すると、規格化したKEポテンシャルのx log x係数は2(n-1)e/[3(e-n-1)]で非零となる。証明は主稿 prop:RZ-smooth-hypersurface-coefficient。この係数はt=-log xの下でt e^{-t}型の可積分な誤差を生み、指数1のlog-freeな漸近を一般に仮定してはいけない。これは一次資料にある定理の具体的特殊化であり、新規な解析的定理やglobal metric-IRFAの独立証明ではない。五直線のface massはintersection数とGauss–Bonnetから数値検算した。
 
 ## 次の課題
 1. (H_loc)のwhole-end localizationとparent/refined compatibility、(H_anc)のanchors・portal transport・radial densityをactual metricで確立する。
