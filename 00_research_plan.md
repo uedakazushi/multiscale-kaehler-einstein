@@ -7,7 +7,7 @@
 ## 現時点の主要入力と主張の状態
 - Part I：2026-08-21日本語草稿 v1.0（旧Library名 `Multiscale_KE_Arrangements_I_ja_v10.tex`）。ample SNC pairのbounded-additive cone、face masses、tail/LDPを原稿中で主張し証明を記載。Rochon–Zhangのrecursive asymptoticsから必要な一様評価を本当に導けるか、独立の一次資料照合・証明監査は未了。
 - Part II：2026-08-21 v1.0（`Multiscale_KE_Arrangements_II_ja_v10_submission.tex`）。secondary periods、Torelli、residual WP completion。原稿中に証明あり。一次文献と全仮定を新たに検証した状態ではない。
-- Part III：2026-08-21 v1.2（`Multiscale_KE_Arrangements_III_ja_v12_submission.tex`）。explicit conifold models、fixed arrangement / fixed nodeのqualitative local localization、canonical (8\pi/3) cell、single-node residual Torelliを原稿中で定理として扱う。**global pGHは条件付き定理と予想であり、無条件定理ではない。** 前稿での過大な主張を引き継がない。
+- Part III：2026-08-21 v1.2（`Multiscale_KE_Arrangements_III_ja_v12_submission.tex`）。explicit conifold models、fixed arrangement / fixed nodeのqualitative local localization、canonical \(8\pi/3\) cell、single-node residual Torelliを原稿中で定理として扱う。**global pGHは条件付き定理と予想であり、無条件定理ではない。** 前稿での過大な主張を引き継がない。
 - 外部文献の未検証部分：Tian–Yau/Yau completeness、Datar–Fu–Song pair-end volume argument、Rochon–Zhang uniformity、Dumas–Wolfからの全階Hessian bootstrap、localized Chern–Lu cutoff。独立の証明監査を要する。
 
 ## 最優先課題
