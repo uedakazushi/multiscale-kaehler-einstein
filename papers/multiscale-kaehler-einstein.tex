@@ -1,0 +1,111 @@
+% LuaLaTeX, project settings in ../.latexmkrc
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage[margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{booktabs}
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{conjecture}[theorem]{予想}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\cC}{\mathcal C}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\Sk}{Sk}
+\title{Multiscale Kähler--Einstein Geometry I\\Asymptotic Cones and Metrized Dual Complexes}
+\author{}
+\date{2026年11月20日 / GitHub移行用再構成草稿 v0.1}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+滑らかなample SNC pairの負Kähler--Einstein cuspを第一の距離錐、facewise測度、残差周期の階層として捉える。
+本稿は原Library草稿 Part I v1.0 に基づく移行時の再構成であり、元の全証明を転記した版ではない。
+以下、無条件の組合せ計算と、解析的入力の監査を要する主張とを明示的に分ける。
+\end{abstract}
+\section{設定と二種類の極限}
+$(Y,D)$を滑らかな射影$n$次元多様体とSNC因子の組とし、$U=Y\setminus D$、
+$L=K_Y+D$をampleとする。
+$\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$と規格化したcomplete負KE計量を考える。
+局所座標$D=\{z_1\cdots z_k=0\}$に対し
+$t_i=\log(-\log|z_i|)$とおく。Poincaré正規方向は、定数の規格化を除いて
+\[
+ dt_i^2+e^{-2t_i}d\theta_i^2
+\]
+である。したがって距離を$R^{-1}$倍した一階極限の候補は$D$の
+dual complexの各面をstandard Euclidean orthantに置き換えて貼ったmetric coneである。
+\begin{definition}
+$D$のconnected strataをlabelとしてもつ有限面複体の、各$k$-fold intersectionに
+$\RR_{\ge0}^k$を対応させるorthant complexを$\cC_D$と書く。
+各cellにはEuclidean metricを入れ、path length metricで貼り合わせる。
+\end{definition}
+\section{一般位置配置の厳密な組合せ}
+\begin{proposition}
+$H_1,\ldots,H_m\subset\PP^n$を一般位置にある超平面とし、
+$m\ge n+2$, $D=\sum_iH_i$とおく。このとき
+\[
+ K_{\PP^n}+D=(m-n-1)H,\qquad
+ \cC_D=\{u\in\RR_{\ge0}^m:\#\supp(u)\le n\}
+\]
+がcellごとの標準Euclidean metricの貼合せとして成立する。
+Spherical linkは$\Sk_{n-1}(\Delta^{m-1})$のall-right spherical realizationである。
+\end{proposition}
+\begin{proof}
+標準公式$K_{\PP^n}=-(n+1)H$により第一式を得る。
+一般位置で$k$本の超平面の交叉は$k\le n$のとき
+$\PP^{n-k}$で、$k=n+1$では空である。
+従って許されるstratum labelsは$n$元以下の部分集合ちょうど全体である。
+各labelに付したorthantを共通coordinate faceに沿って貼ると所望の錐となる。
+単位球との交わりは全ての座標が直交するspherical simplexの貼合せである。
+\end{proof}
+\begin{corollary}
+このlinkのreduced homologyは次数$n-1$に集中し、
+\[
+ \widetilde H_{n-1}(\Sk_{n-1}\Delta^{m-1};\mathbb Z)
+ \cong\mathbb Z^{\binom{m-1}{n}}.
+\]
+\end{corollary}
+\begin{proof}
+$k$-skeleton of a simplexのchain complexにおいて、上位の完全単体の
+境界exactnessを用いる。Euler特性と$\widetilde H_j=0$ ($j<n-1$)
+からrankは$\binom{m-1}{n}$となる。
+\end{proof}
+\section{計量主張の現在の証明状態}
+元のPart Iには、$g_{\mathrm{KE}}$から$\cC_D$へのproper $1$-Lipschitz map
+$S$と定数$K$で
+\[
+ d_{\cC_D}(Sx,Sy)\le d_{\mathrm{KE}}(x,y)
+ \le d_{\cC_D}(Sx,Sy)+K
+\]
+を与えるという主定理、およびface masses
+\[
+ \mathfrak m_F=\frac{(2\pi)^n}{(n-k)!}
+          \bigl((K_Y+D)^{n-k}\cdot F\bigr)
+\]
+の式、large deviations、Busemann tailsの証明が記載される。
+現在のGitHub再構成本文には、これらを無条件の新たに検証済みの定理としては採用しない。
+必要な外部入力はrecursive tensor estimatesとresidual-uniform integrable decay
+（Rochon--Zhang）、およびexact-terminal-fibre path liftingである。
+\begin{conjecture}[原草稿の主定理の監査課題]
+上のbounded-additive評価は、引用する解析的仮定を正確に確定した後に
+十分なglobal liftingのもとで成り立つ。
+\end{conjecture}
+\section{研究としての次段階}
+第一錐は配置のrealizationを見ない。
+一方、残差曲線$H_i^\circ\simeq\PP^1\setminus\{\text{4点}\}$
+の双曲計量はcross-ratioを記憶し、Part IIのsecondary periodsの入力となる。
+Singular log-canonical contractionでは、Part IIIに記録された
+conifold cellとglobal wall-compatible liftingが核心となる。
+元原稿の全証明と文献を復元して精査することが、移行本文の完成条件である。
+
+\end{document}
