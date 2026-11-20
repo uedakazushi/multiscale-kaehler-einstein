@@ -10,7 +10,7 @@
 | [総説](papers/series-overview.tex) | 9 | 五篇の関係と仮定 |
 | [研究素材](papers/research-directions.tex) | 10 | Jacobi/scattering・一般matroid等。現行仮定の注意を付記 |
 
-**今回の数学的点検：** Part IについてRochon–Zhang Theorem 5.1 のSNC・共通の残差漸近と、Theorem 7.4 のsmooth-divisor限定のpolyhomogeneous展開を一次資料で区別した。検証内容は [研究ノート](research/notes.md) と [主原稿](papers/multiscale-kaehler-einstein.tex) の補足に統合。Global metric IRFA、bounded-additive theoremの全証明はこの点検だけでは保証されない。
+**現在の独立検証：** [Part I](papers/multiscale-kaehler-einstein.tex) にRochon–ZhangのSNC漸近定理とsmooth-divisor限定のpolyhomogeneous定理を区別して記載。smooth degree-e hypersurfaceの場合のx log x係数 2(n−1)e/[3(e−n−1)] を既知定理から計算し、その非零性と可積分な減衰を整理した。[研究ノート](research/notes.md)に適用範囲を記録。大域距離定理とactual conifold localizationの独立再証明ではない。
 
 最初に[研究方針](00_research_plan.md)、次に[研究ノート](research/notes.md)を読む。[移行・検証範囲](research/migration.md)と[ソース対応](research/source-manifest.json)を確認する。短い再構成稿は全文へ置換済み。旧稿独自資産の網羅的照合は残る。
 
