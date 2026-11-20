@@ -46,9 +46,10 @@
   },
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
   "current_math_audit_2026_11_20": {
-    "mathematical_check": "Rochon–Zhang Theorem 5.1 (SNC face decay) versus Theorem 7.4 (smooth-divisor full polyhomogeneity) checked against primary source; five-line intersection and Gauss–Bonnet normalization recomputed.",
-    "changes": "Added a primary-scope remark to Part I and clarified current research plan and notes. No independent check of the full IRFA-to-global-distance proof.",
-    "finite_test": "Algebraic five-line masses verified by hand, not by new software.",
-    "latest_full_lualatex_build": "Not rerun after these edits. Earlier Work-recorded successful builds remain historical evidence."
+    "mathematical_results": "Primary-source specialization of Rochon–Zhang Theorem 7.6: for smooth D_e⊂P^n, n≥2, e>n+1, x log x coefficient is 2(n-1)e/[3(e-n-1)] in the specified normalisation. Source manuscript proposition prop:RZ-smooth-hypersurface-coefficient; no proof of full metric-IRFA or higher global gluing.",
+    "external_primary_source": "Frédéric Rochon and Zhou Zhang, Adv. Math. 231 (2012), 2892–2952; Theorems 5.1, 7.4, 7.6 and Example 7.7.",
+    "independent_computation": "Symbolic intersection-number substitution and example n=2: 2e/[3(e-3)].",
+    "full_lualatex_after_edits": "not run; previously recorded builds predate the latest manuscript edits",
+    "source_hashes": "research/source-manifest.json now distinguishes source_sha256 and current sha256"
   }
 }
