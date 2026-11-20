@@ -1,0 +1,429 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage[margin=26mm,headheight=16pt]{geometry}
+\usepackage[haranoaji]{luatexja-preset}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm,booktabs,tabularx,longtable}
+\usepackage{enumitem,xcolor,fancyhdr}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\allowdisplaybreaks
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.18em}
+\setlength{\emergencystretch}{3em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=.25em,topsep=.45em}
+\setlist[enumerate]{leftmargin=2.6em,itemsep=.25em,topsep=.45em}
+\numberwithin{equation}{section}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{conjecture}[theorem]{予想}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{hypothesis}[theorem]{仮定}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\renewcommand{\proofname}{証明}
+
+\crefname{theorem}{定理}{定理}
+\crefname{proposition}{命題}{命題}
+\crefname{corollary}{系}{系}
+\crefname{conjecture}{予想}{予想}
+\crefname{definition}{定義}{定義}
+\crefname{hypothesis}{仮定}{仮定}
+\crefname{remark}{注意}{注意}
+
+\newcommand{\PP}{\mathbf P}
+\newcommand{\RR}{\mathbf R}
+\newcommand{\CC}{\mathbf C}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Vol}{\operatorname{Vol}}
+\newcommand{\GH}{\mathrm{GH}}
+\newcommand{\sk}{\operatorname{sk}}
+\newcommand{\Lt}{L_t}
+\newcommand{\Rt}{R_t}
+
+\definecolor{safe}{RGB}{16,105,64}
+\definecolor{conditional}{RGB}{161,92,0}
+\definecolor{future}{RGB}{145,35,42}
+\newcommand{\Safe}{\textcolor{safe}{\textbf{無条件}}}
+\newcommand{\Conditional}{\textcolor{conditional}{\textbf{明示仮定下}}}
+\newcommand{\Future}{\textcolor{future}{\textbf{予想・研究課題}}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I--V}
+\fancyhead[R]{\small 連作総説・定理状態表}
+\fancyfoot[C]{\thepage}
+
+\hypersetup{
+ pdftitle={Multiscale Kähler--Einstein Geometry I--V: Series Overview and Theorem-Status Audit},
+ pdfauthor={Kazushi Ueda},
+ pdfsubject={Five-paper reconstruction, degree generalization, and higher-dimensional outlook}
+}
+
+\title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
+\Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
+\author{植田一石\\[-1mm]\small Kazushi Ueda}
+\date{五部作統合・再監査稿 v1.0（2026年8月31日）}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本稿は，超平面配置補空間を扱う旧三部作と，五平面へ退化する五次曲面を扱う旧二部作を，論理依存を明示した五篇連作として再構成するための共通総説である．第一対数尺度における距離錐，translation limits と secondary periods，conifold 型特異端の抽象貼合せ，超平面和へ退化する標準曲面の局所模型，および有限立方体複体への大域 Gromov--Hausdorff 極限を，一つの raw-depth／residual-geometry 原理の下に配置する．再監査で判明した未閉鎖の解析段階は定理本文から隠さず，controlled push-off，localization--anchor，および Product-Box Exhaustion という独立した仮定に切り分けた．
+
+曲面については五次に限定せず，\(\PP^3\) 内の任意の固定次数 \(d\ge5\) に対する候補複体
+\[
+ \cC_d=\{w\in[0,1]^d:\max_iw_i=1,
+                 |\supp w|\le3\}
+\]
+と，その局所代数・残差曲線・正規化を与える．鋭い co-Gram 極限は Product-Box Exhaustion 仮定の下で，大域 GH 極限はそれに粗い raw-depth package を加えた仮定の下で定理化する．高次元 \(\PP^N\) については，随伴公式，純粋 normal-crossing 模型，および候補 \(\cC_{d,N}\) までは確定的に記述するが，mixed source--higher-stratum 模型が不可避であるため，GH 収束は予想として明確に分離する．
+\end{abstract}
+
+\begin{center}
+\begin{minipage}{0.93\textwidth}\small
+\textbf{Abstract.}
+This note is the common guide to a five-paper reconstruction of two earlier projects: a trilogy on negatively curved K\"ahler--Einstein metrics on hyperplane-arrangement complements and a diptych on canonical surfaces degenerating to a union of hyperplanes.  It records the logical interfaces, distinguishes unconditional results from results requiring explicit analytic hypotheses, extends the surface-level algebraic and local package from quintics to every fixed degree \(d\ge5\) in \(\mathbb P^3\), and isolates the genuinely new mixed local models obstructing a formal higher-dimensional extension.
+\end{minipage}
+\end{center}
+
+\tableofcontents
+
+\section{再構成の原則}
+
+五篇は同じ現象の異なる解像度を扱う．境界成分へ近づく logarithmic depths は巨視的距離を与え，その一部を固定して残りを観察すると residual K\"ahler--Einstein geometry が現れる．さらに局所モデルを有限個の cells と gates に圧縮すると，metric gluing の問題は scalar calibration と horizontal recovery の問題へ移る．この連作では，この三段階を次の順に分離する．
+
+\begin{enumerate}[label=\textup{(P\arabic*)}]
+\item \emph{代数・組合せ入力}：strata，dual／cubical complexes，period maps，source divisors．
+\item \emph{局所解析入力}：complete KE end，translation limit，co-Gram，localization．
+\item \emph{大域距離入力}：anchor，no-shortcut calibration，gallery lifting，diameter．
+\end{enumerate}
+
+この分離により，局所解析の一段階が未完成でも，代数定理や有限複体の計量定理まで条件付きに見せる必要がない．逆に，局所近似から大域 GH 収束へ進む箇所では，必要な仮定を明記せずに「局所収束だから従う」とはしない．
+
+\section{共通記号と正規化}
+
+周囲射影空間の複素次元を \(N\)，超平面数または hypersurface の次数を \(d\) とする．したがって
+\[
+ X_t\subset\PP^N,qquad \dim_{\CC}X_t=N-1.
+\]
+配置補空間を論じる篇で従来使われた \((n,m)\) は，本総説の \((N,d)\) に対応する．滑らかな標準多様体上の KE form は
+\[
+ \Ric(\omega_t)=-\omega_t
+\]
+で規格化する．退化 parameter \(t\) に対して
+\[
+ \Lt=-\log|t|^2,qquad \Rt=\log\Lt
+\]
+を第一対数尺度とする．\(\omega_t\) に対応する実 Riemannian metric を \(g_t\) と書けば，距離の scale は \(\Rt\)，計量 tensor の rescaling は \(\Rt^{-2}g_t\) である．
+
+\begin{definition}[候補 cubical complex]
+\label{def:candidate-complex}
+\(d\ge N+2\) に対して
+\begin{equation}
+ \cC_{d,N}:=
+ \{w\in[0,1]^d:\max_iw_i=1, |\supp w|\le N\}
+\label{eq:CdN}
+\end{equation}
+と置き，各 maximal \((N-1)\)-cube に unit Euclidean metric を入れて得る内在的長さ計量を \(d_\square\) と書く．\(N=3\) では \(\cC_{d,3}=\cC_d\) と略記する．
+\end{definition}
+
+最大座標で割る写像と座標和で割る写像を合成すれば
+\begin{equation}
+ \cC_{d,N}\cong \sk_{N-1}\Delta^{d-1}.
+\label{eq:skeleton-homeomorphism}
+\end{equation}
+従って \(d>N\) なら
+\begin{equation}
+ \cC_{d,N}\simeq
+ \bigvee^{\binom{d-1}{N}}S^{N-1}.
+\label{eq:wedge-type}
+\end{equation}
+これは位相同型または homotopy type の主張であり，cubical intrinsic metric を simplicial metric と同一視する主張ではない．
+
+\section{五篇の役割と論理 interface}
+
+\begin{longtable}{@{}p{0.075\textwidth}p{0.29\textwidth}p{0.31\textwidth}p{0.235\textwidth}@{}}
+\toprule
+篇 & 主対象 & 中核出力 & 定理状態 \\
+\midrule
+\endfirsthead
+\toprule
+篇 & 主対象 & 中核出力 & 定理状態 \\
+\midrule
+\endhead
+I & log-smooth arrangement complements & 距離錐，facewise translation limits，測度・tail 漸近 & 距離・測度定理は本文の幾何仮定下で \Safe．一様 Mellin 版は weighted uniform integrability を明記 \\
+II & secondary curve periods & oriented／generic unoriented Torelli，period closure，secondary WP geometry & 代数部分と minimal-excess completion は \Safe．一般 completion は controlled push-off 仮定下で \Conditional \\
+III & singular／conifold ends & canonical local model，抽象 calibrated gluing，residual Torelli & 代数模型と抽象 gluing は \Safe．actual localization／global pGH は localization--anchor 仮定下で \Conditional \\
+IV & hyperplane degenerations of surfaces & source 模型，complete windows，degree-\(d\) residual package，co-Gram & 代数・粗い局所 package は \Safe．sharp co-Gram は \(\mathrm{PBE}_d\) 下で \Conditional \\
+V & finite cubical metric limits & pruning--transport theorem，\(\cC_d\) 極限，\(\diam\cC_5=\sqrt{13}\) & 抽象 metric theorem と有限計算は \Safe．actual GH 応用は Part IV の解析入力下で \Conditional \\
+\bottomrule
+\end{longtable}
+
+実質的依存は次の通りである．Part II の Torelli core は Part I と独立であり，Part I はその periods を KE translation limits として解釈する時だけ必要になる．Part III の抽象 gluing は Part I の log-smooth ends を local pieces として受け取れるが，actual metrics への適用には別途 localization と anchor が必要である．Part IV の central component
+\[
+ H_i^\circ=H_i\setminus\bigcup_{j\ne i}H_j
+ \cong\PP^2\setminus\{d-1\text{ 本の直線}\}
+\]
+は Part I の配置補空間そのものである．Part V は Part IV が供給する raw map と co-Gram modulus を，有限複体上の大域距離へ変換する．
+
+\begin{remark}[五次の場合に Part II が直接入力でない理由]
+\(N=3,d=5=N+2\) の一般位置五平面配置は projective equivalence の下で rigid であり，各二重線の residual curve は \(M_{0,3}\) 型である．従って Part II の非自明な secondary moduli は五次極限の証明には不要である．一方 \(d\ge6=N+3\) では residual punctured spheres が moduli を持つため，Part II は一般次数 family の scale-one geometry を組織化する．この moduli は第一対数尺度の leading cubical metric \(\cC_d\) 自体を変更しない．
+\end{remark}
+
+\section{\texorpdfstring{\(\PP^3\)}{P3} における固定次数の一般化}
+
+\subsection{幾何設定}
+
+整数 \(d\ge5\) を固定する．一般位置の平面
+\[
+ H_i=\{L_i=0\}\subset\PP^3,qquad 1\le i\le d,
+\]
+と \(F_d\in H^0(\PP^3,\mathcal O(d))\) に対して
+\begin{equation}
+ X_t=\left\{\prod_{i=1}^dL_i+tF_d=0\right\}\subset\PP^3
+\label{eq:degree-d-family}
+\end{equation}
+を考える．以下を一般性条件とする．
+
+\begin{enumerate}[label=\textup{(G\(_d\)\arabic*)}]
+\item \(0<|t|\ll1\) で \(X_t\) は滑らかである．
+\item 各 double line \(D_{ij}=H_i\cap H_j\cong\PP^1\) 上で \(F_d|_{D_{ij}}\) は \(d\) 個の相異なる単純零点を持つ．
+\item 各 triple point \(q_{ijk}=H_i\cap H_j\cap H_k\) で \(F_d(q_{ijk})\ne0\) である．
+\end{enumerate}
+
+一点を通る平面は高々三枚なので raw support は高々三であり，候補は
+\begin{equation}
+ \cC_d=\{w\in[0,1]^d:\max_iw_i=1, |\supp w|\le3\}.
+\label{eq:Cd}
+\end{equation}
+その maximal squares は
+\[
+ Q_{i;jk}=e_i+[0,1]e_j+[0,1]e_k,qquad
+ i,j,k\text{ mutually distinct},quad j<k,
+\]
+であり，枚数は \(d\binom{d-1}{2}\) である．また
+\begin{equation}
+ \cC_d\cong\sk_2\Delta^{d-1},qquad
+ \cC_d\simeq\bigvee^{\binom{d-1}{3}}S^2.
+\label{eq:Cd-topology}
+\end{equation}
+
+\subsection{次数によらず保たれる局所代数}
+
+各 \(D_{ij}\) 上の source は \(d\) 個であり，総数は
+\[
+ d\binom d2.
+\]
+source の局所方程式は次数によらず
+\[
+ xy=tz
+\]
+である．一方，三重点を除いた residual curve は
+\[
+ \Sigma_{ij}=\PP^1\setminus\{q_{ijk}:k\ne i,j\},
+\]
+すなわち \((d-2)\)-punctured sphere である．\(d\ge5\) なら双曲的であり，その universal cover は \(\mathbb D\) である．
+
+相対 section
+\begin{equation}
+ \zeta_{ij}=-\frac{F_d}{\prod_{k\ne i,j}L_k}\Big|_{D_{ij}}
+\label{eq:zetaij}
+\end{equation}
+は
+\[
+ \mathcal O(d)\otimes\mathcal O(-(d-2))\cong\mathcal O(2)
+\]
+の meromorphic section で，
+\begin{equation}
+ \operatorname{div}(\zeta_{ij})
+ =\sum_{a=1}^d p_{ij,a}-\sum_{k\ne i,j}q_{ijk}.
+\label{eq:zeta-divisor}
+\end{equation}
+この degree \(2\) の不変性が source window を全固定次数へ運ぶ．normal line は \(\mathcal O_{\PP^1}(1)\) であり，tame frame の cusp orders \(a_k\) は \(\sum a_k=1\) を満たす．観察する terminal cusp \(k\) と異なる cusp \(\ell\) を選び，divisor \(q_{ij\ell}\) を持つ frame を用いれば \(a_k=0,a_\ell=1\) とでき，fast-cusp shear を回避できる．
+
+\subsection{解析 interface と条件付き主定理}
+
+固定 Hermitian norms と \(A_0\gg1\) に対し
+\begin{equation}
+ q_{i,t}=\Rt^{-1}\log\!\left(A_0-log(\|L_i\|^2+|t|)\right)
+\label{eq:raw-depth}
+\end{equation}
+と置く．
+
+\begin{hypothesis}[Product-Box Exhaustion \(\mathrm{PBE}_d\)]
+\label{hyp:PBE}
+Part IV で列挙する全 terminal types について，次が同一の labelled atlas と gauge family 上で成り立つと仮定する．
+\begin{enumerate}[label=\textup{(PBE\arabic*)}]
+\item source-arm transitions を含む quantitative product trivialization と，coframe 変換および逆変換の chart-chain independent \(C^k\) bounds；
+\item raw separation のみから従う protected rectangular inclusion；
+\item protected interiors における local model，global product model，actual KE metric の一様二側比較と，margin 発散時の全階収束；
+\item compatible nested exhaustion，actual／model の双方に関する boundary escape，および complete \(\mathbb D^2\) limit の整合性．
+\end{enumerate}
+\end{hypothesis}
+
+\noindent
+以下で \(\mathrm{(CP)}_d\) は，raw image の \(O(\Rt^{-1})\)-density，\(\cC_d\) に関する粗い二側距離比較，source-core localization，および有限 connector library をまとめた Part IV--V の coarse package を表す．五次では Part IV の無条件定理であり，一般固定次数への適用では独立の入力として明記する．
+
+\begin{theorem}[固定次数の co-Gram と cubical GH 極限]
+\label{thm:degree-d-conditional}
+\eqref{eq:degree-d-family} が \textup{(G\(_d\)1)--(G\(_d\)3)} を満たし，\cref{hyp:PBE} を仮定する．\(\Ric(\omega_t)=-\omega_t\) とし，\(g_t\) を対応する実計量とする．非空 \(I\subset\{1,\dots,d\}\), \(|I|\le2\) に対し
+\[
+ \mathcal R_t(I;A)=
+ \{x:A/\Rt\le q_{i,t}(x)\le1-A/\Rt\ (i\in I)\}
+\]
+および
+\[
+ \mathfrak m_{d,t}(A)=
+ \max_{1\le|I|\le2}\sup_{x\in\mathcal R_t(I;A)}
+ \left\|
+ \Rt^2\bigl(\langle dq_{i,t},dq_{j,t}\rangle_{g_t^{-1}}\bigr)_{i,j\in I}
+ -I_I\right\|_{\mathrm{op}}
+\]
+を定める．空集合上の上限は \(0\) とする．このとき
+\begin{equation}
+ \lim_{A\to\infty}\limsup_{t\to0}\mathfrak m_{d,t}(A)=0.
+\label{eq:degree-d-cogram}
+\end{equation}
+さらに \(\mathrm{(CP)}_d\) を仮定すれば，Part V の抽象 pruning--transport 仮定を満たす raw maps \(\Phi_t\colon X_t\to\cC_d\) が存在し，
+\begin{equation}
+ (X_t,\Rt^{-2}g_t)\xrightarrow{\GH}(\cC_d,d_\square)
+\label{eq:degree-d-GH}
+\end{equation}
+が成り立つ．定数は固定した \(d\)，配置，および \(F_d\) に依存してよく，\(d\to\infty\) に一様とは主張しない．
+\end{theorem}
+
+\begin{remark}[定理の条件性]
+\cref{thm:degree-d-conditional} の有限複体側の no-shortcut と horizontal recovery は Part V で無条件に証明される．仮定 \(\mathrm{PBE}_d\) が担うのは，actual KE metrics に対する全 moving windows の co-Gram 同定であり，\(\mathrm{(CP)}_d\) は粗い大域 realization と connectors を担う．これらを検証するまでは，\eqref{eq:degree-d-cogram} と \eqref{eq:degree-d-GH} を無条件定理とは呼ばない．
+\end{remark}
+
+\subsection{随伴公式と metric normalization}
+
+随伴公式より
+\begin{equation}
+ K_{X_t}\cong\mathcal O_{X_t}(d-4),qquad
+ K_{X_t}^2=d(d-4)^2.
+\label{eq:surface-adjunction}
+\end{equation}
+\(\Ric(\omega_t)=-\omega_t\) なら
+\begin{equation}
+ [\omega_t]=2\pi(d-4)H,qquad
+ \Vol(X_t,g_t)=2\pi^2d(d-4)^2.
+\label{eq:surface-volume}
+\end{equation}
+この正規化では residual curve の Gaussian curvature は常に \(-1\) であり，\eqref{eq:degree-d-cogram} の係数は \(1\) のままである．primitive class に合わせて \(\bar\omega_t=\omega_t/(d-4)\) とすると，距離は \(1/\sqrt{d-4}\) 倍，極限計量 tensor は \(d_\square/(d-4)\)，co-Gram limit は \((d-4)I\) となる．
+
+\begin{corollary}[五次の有限計量結論]
+\(d=5\) では Part V の有限 gallery 分類と PL calibration により
+\begin{equation}
+ \diam(\cC_5,d_\square)=\sqrt{13}.
+\label{eq:C5-diameter}
+\end{equation}
+従って \(\mathrm{PBE}_5\) の下で
+\[
+ \frac{\diam(X_t,g_t)}{\Rt}\longrightarrow\sqrt{13}.
+\]
+\end{corollary}
+
+\section{高次元で確定する部分と新しい障害}
+
+\(X_t\subset\PP^N\) を degree \(d\ge N+2\) の hypersurface とする．随伴公式と KE normalization から
+\begin{align}
+ K_{X_t}&\cong\mathcal O_{X_t}(d-N-1),\label{eq:high-adjunction}\\
+ K_{X_t}^{N-1}&=d(d-N-1)^{N-1},\label{eq:high-canonical-volume}\\
+ \Vol(X_t,g_t)&=
+ \frac{(2\pi)^{N-1}}{(N-1)!}
+ d(d-N-1)^{N-1}.
+\label{eq:high-volume}
+\end{align}
+一般位置平面配置の純粋 normal-crossing chart \(z_1\cdots z_r=t\), \(r\le N\), と raw support bound は形式的に一般化し，候補は \eqref{eq:CdN} になる．capped determinant で必要な logarithmic prefactor は局所 radial determinant の次数から依然 \(\Lt^2\) であり，ambient dimension の冪 \(\Lt^{N-1}\) へ置換してはならない．
+
+しかし \(N\ge4\) では，double stratum
+\[
+ D_{ij}\cong\PP^{N-2}
+\]
+上の source locus \(\{F_d|_{D_{ij}}=0\}\) は次元 \(N-3\) を持ち，triple stratum \(D_{ijk}\cong\PP^{N-3}\) と交わる．\(N=4\) でも交点は一般に \(d\) 個存在する．従って曲面で用いた source--triple separation は不可能であり，
+\[
+ x_ix_jx_k=tz,qquad
+ \text{より一般に }x_1\cdots x_r=tz
+\]
+という mixed source--higher-stratum cores を解析しなければならない．さらに one-active neck の residual factor は
+\[
+ \PP^{N-2}\setminus\{d-2\text{ hyperplanes}\}
+\]
+となり，Part I の高次元 arrangement geometry が局所模型の一因子として再帰的に現れる．
+
+\begin{conjecture}[高次元 cubical limit]
+適切な mixed-source complete-window theorem，高次元 residual co-Gram theorem，および大域 Product-Box Exhaustion が成立するならば，固定 \(N\ge4\), \(d\ge N+2\) に対して
+\[
+ (X_t,\Rt^{-2}g_t)\xrightarrow{\GH}(\cC_{d,N},d_\square)
+\]
+が成り立つ．
+\end{conjecture}
+
+この予想は \(N=3\) の証明を添字だけ変えて得られるものではない．必要な新規事項は，mixed core の complete model，正次元 source locus に沿う一様性，higher-rank co-Gram，および residual arrangement factor と normal factors の compatible exhaustion である．
+
+\section{再監査で行った主要修正}
+
+\begin{enumerate}[label=\textup{(A\arabic*)}]
+\item Part I の Mellin recursion では，normal torus をすでに積分した face measure に \((2\pi)^{|I|}\) を再度掛けない．一様極限には face-weighted exponential terms の uniform integrability を仮定として明記する．
+\item Part II の一般 secondary WP completion は，SNC exceptional fibres 内の paths を補集合へ一様に押し出す controlled push-off が必要である．代数的 finite map と branch separation はこの仮定から分離する．Schaffler--Tevelev の直接入力は Corollary~3.5 であり，\(d=N+2\) は一点の場合として別処理する．
+\item Part III の actual global pGH は，global product reference metrics と parent--refined compatibility を含む localization 仮定，および全 actual points の記録可能性を保証する anchor 仮定の下に置く．canonical local model と抽象 metric gluing theorem は無条件のまま保持する．
+\item Part IV の cusp-adapted order-zero gauge は fast-cusp shear を代数的に除くが，それだけで global product boxes の exhaustion は従わない．必要な四段階を \(\mathrm{PBE}_d\) として独立させる．
+\item Part V の abstract pruning--transport theorem と \(\cC_5\) の直径計算は局所 KE 解析から独立である．actual surfaces への適用だけを Part IV の入力に条件付ける．
+\end{enumerate}
+
+\section{読み方と今後の証明課題}
+
+第一読では I の raw-depth cone，IV の degree-\(d\) source/residual package，V の abstract pruning theorem の順に読むと，連作の metric spine が見える．moduli と scale-one residual data に関心があれば II を，singular central components と graph-like gluing に関心があれば III を挿入する．
+
+次の優先課題は，結論を増やすことではなく，三つの明示仮定を独立補題として閉じることである．
+\begin{enumerate}
+\item Part IV の \(\mathrm{PBE}_d\) 四補題を，actual/global/local metrics の循環参照なしに証明する．
+\item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
+\item Part III の localization と anchor を，global normal-bundle models と chart-compatible quantitative estimatesから構成する．
+\end{enumerate}
+これらが閉じれば，五篇の条件付き analytic applications はそのまま無条件定理へ昇格できる．高次元化はその後に mixed source models を新たに構成する別段階である．
+
+\begin{thebibliography}{99}
+\footnotesize
+
+\bibitem{RZ}
+F.~Rochon and Z.~Zhang,
+\newblock Asymptotics of complete K\"ahler metrics of finite volume on quasiprojective manifolds,
+\newblock \emph{Adv. Math.} \textbf{231} (2012), 2892--2952.
+
+\bibitem{Mandel}
+H.~Mandel,
+\newblock Degenerations of negative K\"ahler--Einstein surfaces,
+\newblock \emph{J. London Math. Soc.} \textbf{109} (2024), e12818.
+
+\bibitem{FHJ}
+X.~Fu, H.-J.~Hein and X.~Jiang,
+\newblock A continuous cusp closing process for negative K\"ahler--Einstein metrics,
+\newblock \emph{Geom. Funct. Anal.} \textbf{35} (2025), 542--632.
+
+\bibitem{HKT}
+P.~Hacking, S.~Keel and J.~Tevelev,
+\newblock Compactification of the moduli space of hyperplane arrangements,
+\newblock \emph{J. Algebraic Geom.} \textbf{15} (2006), 657--680.
+
+\bibitem{ST}
+L.~Schaffler and J.~Tevelev,
+\newblock Compactifications of moduli of points and lines in the projective plane,
+\newblock \emph{Int. Math. Res. Not. IMRN} (2022), no.~21, 17000--17078.
+
+\bibitem{BBI}
+D.~Burago, Y.~Burago and S.~Ivanov,
+\newblock \emph{A Course in Metric Geometry},
+\newblock Graduate Studies in Mathematics 33, AMS, 2001.
+
+\end{thebibliography}
+
+\end{document}

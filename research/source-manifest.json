@@ -1,0 +1,42 @@
+{
+  "bundle": "Multiscale_KE_Geometry_I-V_ja_v1_source_and_pdfs.zip",
+  "library_url": "https://chatgpt.com/space/file/libfile_6f1952b368608191ae2f93dda8b76f0d",
+  "bundle_sha256": "506bfcc1342bebf18d29f5e8d440e499a3123347db9c09ef19453dcbced3e0b0",
+  "files": [
+    {
+      "source": "01_spatial_infinity_ja.tex",
+      "destination": "papers/multiscale-kaehler-einstein.tex",
+      "sha256": "136a47f707e0c07c64cec211358b5393e3a11b8c29b0a076a30d49f8f2a1ed4b",
+      "bytes": 105994
+    },
+    {
+      "source": "02_secondary_periods_ja.tex",
+      "destination": "papers/secondary-periods-torelli.tex",
+      "sha256": "e1b5cc2095ea9694337ed8b67251dfcf2565420b949387215bee88db8db15b87",
+      "bytes": 82693
+    },
+    {
+      "source": "03_conifold_gluing_ja.tex",
+      "destination": "papers/conifold-localization.tex",
+      "sha256": "a24c21825e2afea01f4c47e7be54171b11c11c8276a400cab0d6724b9ac00383",
+      "bytes": 160339
+    },
+    {
+      "source": "SERIES_OVERVIEW_ja.tex",
+      "destination": "papers/series-overview.tex",
+      "sha256": "b198dcfcdde6f03f93062dd66a449b231fafe0229894312f5cb21d066d44b00b",
+      "bytes": 23145
+    }
+  ],
+  "additional_sources": [
+    {
+      "bundle": "Multiscale_KE_Arrangements_post_trilogy_research_note_ja_v22_source_bundle.zip",
+      "library_url": "https://chatgpt.com/space/file/libfile_e7ee5ab6171c8191a4bd408c835e6eff",
+      "source": "Multiscale_KE_Arrangements_post_trilogy_research_note_ja_v22.tex",
+      "destination": "papers/research-directions.tex",
+      "source_sha256": "d13b41f70906c27baea9cf2b21bfb38d63e8e52f173300504d2d17bbbc940454",
+      "sha256": "06ec2ebf439db03378fc8be9a029c5eaabbcf975c6d8e44fd73c48c3f5435425",
+      "changes": "Added explicit status preface; original mathematical body retained."
+    }
+  ]
+}

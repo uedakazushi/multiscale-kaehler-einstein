@@ -22,7 +22,7 @@
   "latex-workshop.latex.build.enableMagicComments": true,
   "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
   "latex-workshop.latex.autoBuild.run": "onSave",
-  "latex-workshop.latex.search.rootFiles.include": ["papers/**/*.tex"],
+  "latex-workshop.latex.search.rootFiles.include": ["papers/*.tex"],
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.synctex.afterBuild.enabled": true,
   "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",

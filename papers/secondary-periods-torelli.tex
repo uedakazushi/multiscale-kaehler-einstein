@@ -1,71 +1,1414 @@
-% LuaLaTeX, project settings in ../.latexmkrc
-\documentclass[a4paper,11pt]{ltjsarticle}
-\usepackage[margin=27mm]{geometry}
+\documentclass[11pt,a4paper]{ltjsarticle}
+
+\usepackage[margin=27mm,headheight=15pt]{geometry}
 \usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
-\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
-\usepackage{booktabs}
-\theoremstyle{plain}
-\newtheorem{theorem}{定理}[section]
-\newtheorem{proposition}[theorem]{命題}
-\newtheorem{lemma}[theorem]{補題}
-\newtheorem{corollary}[theorem]{系}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{定義}
-\newtheorem{conjecture}[theorem]{予想}
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{注意}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{booktabs,longtable,array,tabularx}
+\usepackage{float}
+\usepackage{needspace}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.pathreplacing}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{aliascnt}
+\usepackage{xcolor}
+
+\definecolor{deepblue}{RGB}{25,65,105}
+\definecolor{darkgreen}{RGB}{30,100,60}
+\hypersetup{
+ colorlinks=true,
+ linkcolor=deepblue,
+ citecolor=darkgreen,
+ urlcolor=deepblue,
+ pdftitle={Multiscale Kahler--Einstein Geometry: Five-Paper Series II -- Secondary Periods, Torelli Theory, and Weil--Petersson Geometry},
+ pdfauthor={Kazushi Ueda},
+ pdfsubject={Japanese five-paper-series manuscript on secondary Kahler--Einstein periods, Torelli theory, curve-period compactifications, and conditional Weil--Petersson completion}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry・五部作 II}
+\fancyhead[R]{\small 日本語ゼロベース再構成稿 v2.0}
+\fancyfoot[C]{\thepage}
+
+\setlength{\parindent}{1em}
+\setlength{\parskip}{0.20em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.18em,topsep=0.25em}
+\setlist[enumerate]{leftmargin=2.4em,itemsep=0.18em,topsep=0.25em}
+\allowdisplaybreaks
+\emergencystretch=3em
+
 \newcommand{\PP}{\mathbb P}
 \newcommand{\RR}{\mathbb R}
 \newcommand{\CC}{\mathbb C}
-\newcommand{\cC}{\mathcal C}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\Ric}{Ric}
-\DeclareMathOperator{\Sk}{Sk}
-\title{Multiscale Kähler--Einstein Geometry II\\Secondary Periods and Residual Torelli}
-\author{}
-\date{2026年11月20日 / GitHub移行用再構成草稿 v0.1}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\Norm}{\operatorname{Norm}}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\ov}{\overline}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\cY}{\mathcal Y}
+\newcommand{\Mord}{\mathfrak M^{\mathrm{ord}}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{命題}
+\aliascntresetthe{proposition}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{補題}
+\aliascntresetthe{lemma}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{系}
+\aliascntresetthe{corollary}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{定義}
+\aliascntresetthe{definition}
+\newaliascnt{example}{theorem}
+\newtheorem{example}[example]{例}
+\aliascntresetthe{example}
+\theoremstyle{remark}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{注意}
+\aliascntresetthe{remark}
+
+\crefname{theorem}{定理}{定理}
+\crefname{proposition}{命題}{命題}
+\crefname{lemma}{補題}{補題}
+\crefname{corollary}{系}{系}
+\crefname{definition}{定義}{定義}
+\crefname{example}{例}{例}
+\crefname{remark}{注意}{注意}
+\crefname{figure}{図}{図}
+\crefname{table}{表}{表}
+
+\title{\bfseries Multiscale K\"ahler--Einstein Geometry\\
+Five-Paper Series II\\[2mm]
+\large Secondary Periods, Torelli Theory,\\
+and Weil--Petersson Geometry}
+\author{植田一石}
+\date{日本語ゼロベース再構成稿 v2.0（2026年8月31日）}
+
 \begin{document}
 \maketitle
 
 \begin{abstract}
-配置補空間のfirst asymptotic coneが忘れるrealization moduliを、
-境界strataに現れる残差双曲曲線のperiodとWeil--Petersson metricから回収する。
-元Library Part II v1.0 の全証明はこの再構成版にまだ移されていない。
-\end{abstract}
-\section{五直線配置の残差周期}
-一般位置五直線配置$\{L_1,\ldots,L_5\}\subset\PP^2$の
-$L_i^\circ=L_i\setminus\bigcup_{j\neq i}L_j$は四点除去球面となる。
-各残差曲線のmoduliは$M_{0,4}$で記述される。
-第一漸近錐のlinkは一律にall-right $K_5$であるが、
-残差曲線の双曲計量は各四点のcross-ratioを記憶する。
-\begin{proposition}
-$\lambda,\mu\in\CC\setminus\{0,1\}$で$\lambda\neq\mu$とし、
-$r_1,r_3$を$r_3=\lambda$, $r_1=\lambda/\mu$として定めるなら
-\[
- \lambda=r_3,\qquad\mu=r_3/r_1.
-\]
-従ってこの二つの記録は座標が零でないopen locus上で
-$(\lambda,\mu)$を一意に復元する。
-\end{proposition}
-\begin{proof}
-定義式の代入により直ちに従う。
-\end{proof}
-\begin{remark}
-実際のperiod mapがこれらの正規化を幾何学的にcanonicalに与えるか、
-また境界での連続性と有限性を保つかは、元のPart IIの証明監査が必要である。
-\end{remark}
-\section{WP completionと研究課題}
-五つのforgetful mapsから得るperiod imageにproduct Weil--Petersson metricを
-引き戻し、completionを記述するのが元原稿の中心である。
-局所plumbing漸近、period mapの微分のrank、境界での分枝分離を明示する必要がある。
-一般$(n,m)$の場合にはrank-two minorsとmatroid combinatoricsによる判定へ発展させる。
-\begin{conjecture}
-一般のresidual period imageのnormalization上で異なる分枝が、
-WP inner metric completionによって区別される条件を
-matroid dataから特徴付けられる。
-\end{conjecture}
-元論文ではsecondary TorelliとWP completionを定理として述べ証明を収録していたが、
-この再構成草稿は当該証明の完全な代替ではない。
+本稿は、超平面配置補空間の multiscale K\"ahler--Einstein 幾何を扱う連作の第二部として、第一 blow-down が失う realization moduli を scale-one 無限遠極限から回収する。
+$\cA=(H_1,\ldots,H_m)$ を $\PP^n$ 上のラベル付き一般位置超平面配置、$m\ge n+2$ とする。
+Part I の facewise translation theorem により、$|I|=n-1$ の curve stratum
+$C_I=\bigcap_{i\in I}H_i\simeq\PP^1$ に沿う unrescaled moving-basepoint limit の非 Euclid 因子は、component-labelled collar と deeper-face labelsを伴う標識付き収束の意味で、$[m]\setminus I$ で fully marked された complete finite-area curvature-$-1$ surface $(C_I^\circ,g_I)$ である。本稿はその marked moduli pointを secondary K\"ahler--Einstein period とみなす。裸の pointed metric spaceだけから labelsが復元されるとは主張しない。
 
+任意の $n$ 元集合 $B\subset[m]$ が定める $n$ 本の oriented curve periods は、配置 moduli から $(M_{0,m-n+1})^n$ の determinant-open subsetへの明示的同型を与える。従って $n$ 個の oriented fully marked periods から配置を復元でき、$m\ge n+3$ では、isolated curve factors を個別に用いる generic reconstructionという意味で $n$ は次元論的に最小である。全 curve periods を用いると、factor labels と全 cusp-end labelsを保ち K\"ahler orientationだけを忘れた Riemannian dataからも、有限個の真の閉実解析部分集合の合併の外で、配置を projective equivalence と全体複素共役まで復元できる。証明は五直線配置の cross-ratio compatibility と Johnson graph の連結性による。
+
+Full curve-period mapは locally closed embeddingであり、各 factor の Weil--Petersson formの和は配置 moduli 上の $S_m$-不変 K\"ahler formを定める。さらに Schaffler--Tevelev の Corollary~3.5 における一般 rank の cross-ratio map の有限双有理性と、stable rational curves の全四点 cross-ratio embeddingを組み合わせ、full curve-period closure の normalization が Kapranov の Chow quotient compactification の normalizationと一致することを確認する。$m=n+2$ は配置 moduliもperiod closureも一点であり、別に直接処理する。この compactification statementは既知の rank-two cross-ratio theoryの grouped-period languageによる帰結である。
+
+有限 period mapの同じ target point上にある異なる sheetsは、product Weil--Petersson ballから一度出る必要があることにより、pullback length distanceで無条件に正の距離を保つ。一方、各 normalization pointの一枝全体が一つの completion pointへ収縮するためには、log resolutionの exceptional fibreに沿う pathsを一様に制御して境界補集合へ押し出す controlled parallel push-off が必要である。本稿はこの性質を明示的な仮定として切り出し、その仮定の下で
+\[
+ \widehat{(\Mord_{n,m},d_{\mathrm{sec}})}
+ \simeq \Norm(Z_{n,m}^{\mathrm{curv}})
+ \simeq \ov{\mathbf X}(n+1,m)^\nu
+\]
+を得る。さらに任意の $N\ge4$ について、全四点忘却写像から作る $g_{\mathrm{cr}}$ の completion が stratum-preserving に $\ov M_{0,N}$ であること、および $\rho_e=(-\log|t_e|)^{-1/2}<\varepsilon$ と stratum coordinates の $\varepsilon$-近傍で定める plumbing neighborhood の内在直径が $O(\varepsilon)$ であることを無条件に示す。Minimal-excess case $m=n+3$ では Gale dualityによりこの明示的定理を適用できるため、$\ov M_{0,n+3}$ への secondary completionは controlled push-off 仮定なしで成立する。
+\end{abstract}
+
+\medskip
+\noindent\textbf{定理の状態.}
+Oriented／unoriented Torelli、period embedding、period closureのnormalization、finite sheetsの距離分離、全四点metricの完備化、およびminimal-excess completionは無条件である。一般 $m>n+3$ のsecondary WP completionのみ、\Cref{hyp:controlled-pushoff} のcontrolled parallel push-off仮定の下での条件付き定理である。
+
+\medskip
+\noindent\textbf{Keywords.}
+K\"ahler--Einstein metric; hyperplane arrangement; Torelli theorem; cross ratio; $M_{0,n}$; Weil--Petersson metric; Deligne--Mumford compactification; metric completion.
+
+\tableofcontents
+
+\section{はじめに}
+\label{sec:introduction}
+
+\subsection{第一尺度の剛性と第二尺度の周期}
+一般位置超平面配置
+\[
+ \cA=(H_1,\ldots,H_m),\qquad
+ U_{\cA}=\PP^n\setminus\bigcup_{i=1}^mH_i
+\]
+を考える。$m\ge n+2$ なら
+$K_{\PP^n}+\sum_iH_i\simeq\mathcal O_{\PP^n}(m-n-1)$ は ample である。Kobayashi--Tian--Yau の log-smooth negative K\"ahler--Einstein theorem~\cite{Kobayashi,TianYau} により、$U_{\cA}$ は
+$\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ と規格化された一意な完備有限体積 K\"ahler--Einstein metric を持つ。
+Part I~\cite{UedaI} では、その第一 blow-down が
+\begin{equation}
+\label{eq:intro-firstcone}
+ C_{n,m}=\{u\in\RR_{\ge0}^m:\#\supp(u)\le n\}
+\end{equation}
+であり、link は $\operatorname{sk}_{n-1}\Delta^{m-1}$ の all-right spherical realizationであることを示した。
+この cone は $(n,m)$ だけに依存するが、ラベル付き一般位置配置の moduli の複素次元は
+\begin{equation}
+\label{eq:intro-dim}
+ \dim_{\CC}\Mord_{n,m}=n(m-n-2)
+\end{equation}
+である。従って第一尺度は、一般には全ての連続 moduli を忘れる。
+
+失われた情報は scale one に残る。
+$|I|=n-1$ とし
+\[
+ C_I:=\bigcap_{i\in I}H_i\simeq\PP^1,
+ \qquad
+ C_I^\circ=C_I\setminus\bigcup_{j\notin I}(C_I\cap H_j)
+\]
+と置く。Part I の translation-limit theorem によれば、$I$-face に沿って基点を無限遠へ送り、計量を縮小しなければ、pointed limit は
+\begin{equation}
+\label{eq:intro-translation}
+ \RR^{n-1}\times(C_I^\circ,g_I)
+\end{equation}
+となる。ここで $g_I$ は $m-n+1$ 個の labeled cusps を持つ punctured sphere の complete curvature-$-1$ metric である。
+その marked isometry class は $M_{0,[m]\setminus I}$ の一点を決定する。
+
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[node distance=17mm and 21mm,every node/.style={font=\small,align=center}]
+ \node[draw,rounded corners,minimum width=35mm,minimum height=12mm,fill=deepblue!8] (ke) {$(U_{\cA},g_{\mathrm{KE}})$};
+ \node[draw,rounded corners,right=of ke,minimum width=36mm,minimum height=12mm,fill=deepblue!8] (cone) {第一 blow-down\\$C_{n,m}$};
+ \node[draw,rounded corners,below=of ke,minimum width=42mm,minimum height=12mm,fill=darkgreen!8] (curves) {scale-one limits\\$\{(C_I^\circ,g_I)\}$};
+ \node[draw,rounded corners,right=of curves,minimum width=42mm,minimum height=12mm,fill=darkgreen!8] (moduli) {realization moduli\\Torelli / WP geometry};
+ \draw[-{Latex[length=2mm]},thick] (ke)--node[above] {$R^{-1}$} (cone);
+ \draw[-{Latex[length=2mm]},thick] (ke)--node[left] {face translation} (curves);
+ \draw[-{Latex[length=2mm]},thick] (curves)--node[above] {period map} (moduli);
+ \node[below=5mm of cone,text width=39mm] {incidenceのみを保持};
+ \node[below=5mm of moduli,text width=43mm] {連続moduliを回収};
+\end{tikzpicture}
+\caption{Part I の第一尺度と、本稿の secondary periods の役割分担。}
+\label{fig:scales}
+\end{figure}
+
+本稿は、\eqref{eq:intro-translation} の hyperbolic factors を配置の \emph{secondary K\"ahler--Einstein periods} と呼び、次の二つの問いを扱う。
+\begin{enumerate}
+ \item これらの periods から元の配置をどこまで復元できるか。
+ \item 全 curve periods が定める自然な Weil--Petersson 型計量の完備化は何か。
+\end{enumerate}
+
+\subsection{主結果A：最小 oriented Torelli}
+ラベル付き一般位置配置の moduli を
+\[
+ \Mord_{n,m}
+ :=\bigl(((\PP^n)^\vee)^m\bigr)^{\mathrm{gp}}/\operatorname{PGL}_{n+1}
+\]
+と書く。$n$ 元集合 $B\subset[m]$ を固定する。各 $a\in B$ に対して
+\[
+ I_a=B\setminus\{a\},\qquad C_a=C_{I_a}
+\]
+と置くと、$C_a$ は共通点 $P_B=\bigcap_{b\in B}H_b$ を通る $n$ 本の projective lines の一つである。
+
+\begin{theorem}[最小 secondary Torelli]
+\label{thm:intro-star}
+$n\ge2$、$m\ge n+2$ とする。任意の $n$ 元集合 $B\subset[m]$ に対し、対応する $n$ 個の oriented fully marked secondary periods は正則写像
+\[
+ \Theta_B:\Mord_{n,m}\longrightarrow
+ \prod_{a\in B}M_{0,\{a\}\cup([m]\setminus B)}
+ \simeq(M_{0,m-n+1})^n
+\]
+を定める。$\Theta_B$ は、右辺の明示的な determinant-open subset $\cU_B$ への同型である。
+従ってこの $n$ 個の periods は配置を projective equivalence まで一意に決定する。
+$m\ge n+3$ のとき、isolated curve factors のみを使う generic reconstruction に必要な因子数は少なくとも $n$ である。
+\end{theorem}
+
+五直線の場合、この定理は二つの four-punctured curves の cross ratios から二つの配置 parameters を復元する初等的な計算になる。一般次元では、$n$ 本の marked lines を共通点で star 状に配置し、同じ外部 label を持つ $n$ 点の span を超平面として復元する。
+
+\subsection{主結果B：向きを忘れた Riemannian Torelli}
+Oriented hyperbolic metric は complex structure を決めるが、orientation を忘れると各 curve factor は独立に複素共役され得る。最小 $n$ factors だけでは、この ambiguity は一般に global conjugation まで同期しない。全 curve factors を使うと状況が変わる。
+
+\begin{theorem}[generic fully marked unoriented Torelli]
+\label{thm:intro-unoriented}
+$n\ge2$、$m\ge n+3$ とする。$\Mord_{n,m}$ には、有限個の真の閉実解析部分集合の $S_m$-不変な合併 $\mathfrak E_{n,m}$ が存在し、$\cA\notin\mathfrak E_{n,m}$ なら次が成り立つ。
+全ての $|I|=n-1$ に対する fully marked hyperbolic curves $(C_I^\circ,g_I)$ を、factor label $I$ と全 cusp-end labels を保つ Riemannian isometry classとして与え、K\"ahler orientation だけを忘れる。この data は $\cA$ を projective equivalence と全体複素共役まで一意に決定する。
+\end{theorem}
+
+局所模型は五直線配置である。五つの vertex cross ratios は二つの multiplicative compatibility relations を満たし、全 periods が非実であるとき、各 factor で独立に選んだ conjugation signs は全て一致しなければならない。一般次元では任意の $(n-2)$ 重交叉上の $\PP^2$ へ五超平面を制限し、この coherence を適用する。最後に $(n-1)$-部分集合の Johnson graph の連結性が全 signs を同期させる。
+
+この Torelli theorem は logarithmic bundle から配置を復元する Dolgachev--Kapranov 型 Torelli theory~\cite{DK,DolgachevLog,FMV} とは性格が異なる。本稿の入力は canonical metric の無限遠に現れる fully marked Riemannian surfaces であり、orientation-free data が本質的に区別できない全体複素共役を結論に残す。
+
+\subsection{主結果C：full period embedding と secondary Weil--Petersson form}
+全 curve periods を集めると
+\begin{equation}
+\label{eq:intro-fullperiod}
+ \cP_{\mathrm{curv}}:\Mord_{n,m}\longrightarrow
+ \prod_{|I|=n-1}M_{0,[m]\setminus I}
+\end{equation}
+を得る。
+
+\begin{theorem}[full curve-period embedding と secondary metric]
+\label{thm:intro-period}
+写像 $\cP_{\mathrm{curv}}$ は locally closed embedding である。各 factor に Weil--Petersson form $\omega_{\mathrm{WP},I}$ を入れると
+\[
+ \omega_{\mathrm{sec}}=
+ \sum_{|I|=n-1}r_I^*\omega_{\mathrm{WP},I}
+\]
+は $\Mord_{n,m}$ 上の $S_m$-不変 K\"ahler formである。
+\end{theorem}
+
+代数的 compactificationについては、Schaffler--Tevelev~\cite[Corollary~3.5]{ST} の一般 rank における rank-two cross-ratio map の有限双有理性を正面から用いる。$r=n+1$ とし、Kapranov の Chow quotient compactificationを $\ov{\mathbf X}(r,m)$ と書く。$m\ge n+3$ では、各 curve periodを全四点 forgetful mapsへ分解すると Schaffler--Tevelev の rank-two cross-ratiosと一致するため、full curve-period mapは $\ov{\mathbf X}(r,m)$ から period closureへ有限双有理に延長する。$m=n+2$ では全ての空間が一点であり、この結論を直接得る。
+
+\begin{theorem}[full period closure の normalization]
+\label{thm:intro-compactification}
+$n\ge2$、$m\ge n+2$ とする。
+$Z_{n,m}^{\mathrm{curv}}$ を full curve-period image の reduced Zariski closure とする。このとき
+\[
+ \Norm(Z_{n,m}^{\mathrm{curv}})
+ \simeq \ov{\mathbf X}(n+1,m)^{\nu},
+\]
+すなわち full period closure の normalization は normalized Chow quotient と一致する。
+\end{theorem}
+この theorem の有限双有理性は既知の rank-two cross-ratio theoryからの帰結であり、本稿の新しい metric内容とは区別する。新規な点は、これら grouped curve periods が K\"ahler--Einstein translation limitsから canonical に現れること、Torelli 理論、および以下の inner-metric completionにある。
+
+\subsection{主結果D：無条件 branch separation と条件付き一般 completion}
+各 $|I|=n-1$ の factor に Weil--Petersson form $\omega_{\mathrm{WP},I}$ を入れ
+\begin{equation}
+\label{eq:intro-secmetric}
+ \omega_{\mathrm{sec}}=
+ \sum_{|I|=n-1}r_I^*\omega_{\mathrm{WP},I}
+\end{equation}
+と置き、その length distanceを $d_{\mathrm{sec}}$ と書く。これは $\Mord_{n,m}$ 上の $S_m$-不変 K\"ahler metricである。
+
+\begin{theorem}[period branches の無条件距離分離]
+\label{thm:intro-branch-separation}
+$n\ge2$、$m\ge n+3$ とする。$x\ne x'$ が
+$\Norm(Z_{n,m}^{\mathrm{curv}})$ の二点で、period closure上の同一点へ写るとする。このとき $x,x'$ へ収束する任意の配置列 $\cA_j,\cA'_j$ に対し
+\[
+ \liminf_{j\to\infty}d_{\mathrm{sec}}(\cA_j,\cA'_j)>0.
+\]
+この主張は controlled push-off 仮定を必要としない。
+\end{theorem}
+
+\begin{theorem}[controlled push-off 仮定下の一般 secondary completion]
+\label{thm:intro-general-completion}
+$n\ge2$、$m\ge n+3$ とし、normalized extended period mapが
+\Cref{hyp:controlled-pushoff} を満たすと仮定する。このとき
+\begin{equation}
+\label{eq:intro-general-completion}
+ \widehat{(\Mord_{n,m},d_{\mathrm{sec}})}
+ \simeq
+ \Norm(Z_{n,m}^{\mathrm{curv}})
+ \simeq
+ \ov{\mathbf X}(n+1,m)^\nu
+\end{equation}
+という canonical homeomorphism がある。第一の同一視の下で completionから period productへの写像は normalized extended period mapそのものである。
+\end{theorem}
+
+二つの機構は論理的に異なる。異なる branchesの分離は、有限写像の局所 sheetsから一度外へ出る任意の pathが product Weil--Petersson ballを横切らなければならないという distance barrierから無条件に従う。一枝内の局所小直径性には、log resolution上の plumbing monomial estimateに加え、exceptional fibreに沿う pathsの一様 controlled push-off が必要である。本稿では後者を仮定として明示し、未証明の一般 push-off を結論へ混入させない。
+
+\subsection{主結果E：全四点 metric の定量的局所模型}
+任意の $N\ge4$ と四元部分集合 $S\subset[N]$ に対し、忘却写像を $f_S:M_{0,N}\to M_{0,S}\simeq M_{0,4}$ とする。
+\[
+ g_{\mathrm{cr}}:=\sum_{|S|=4}f_S^*g_{\mathrm{WP},4},
+ \qquad
+ \omega_{\mathrm{cr}}:=\sum_{|S|=4}f_S^*\omega_{\mathrm{WP},4}
+\]
+の length distanceを $d_{\mathrm{cr}}$ と書く。
+
+\begin{theorem}[cross-ratio Weil--Petersson completion]
+\label{thm:intro-wp}
+$(M_{0,N},d_{\mathrm{cr}})$ の metric completion は、identity on $M_{0,N}$ を延長する canonical stratum-preserving homeomorphism により $\ov M_{0,N}$ と同一視される。さらに各 boundary pointで、$0<\rho_e<\varepsilon$ と stratum coordinates の $\varepsilon$-近傍により定める plumbing neighborhoodの内在直径は $O(\varepsilon)$ である。
+\end{theorem}
+
+Minimal-excess case $m=n+3$ では Gale duality により $\Mord_{n,n+3}\simeq M_{0,n+3}$ であり、$\omega_{\mathrm{sec}}=\omega_{\mathrm{cr}}$ である。従って \Cref{thm:intro-wp} から、controlled push-off 仮定なしに $\ov M_{0,n+3}$ の secondary completion theoremを得る。
+
+\subsection{論文の構成と独立性}
+\Cref{sec:setup} で moduli と metric periods を定義する。
+\Cref{sec:oriented} で五直線計算、star chart、full period embeddingを証明する。
+\Cref{sec:unoriented} で orientation coherence と generic Riemannian Torelliを扱う。
+\Cref{sec:compactification} で period closureと既知の compactificationsの関係を整理し、\Cref{sec:wp} で finite period branchesの無条件分離、controlled push-off仮定下の normalization--completion principle、および全四点 metric の定量的 plumbing theoremを扱う。
+本稿は Part I の translation-limit theoremを geometric interpretationの入力として用いるが、そこで labels が canonical なのは component-labelled collarsを伴う標識付き収束の意味である。Star charts、Torelli、compactification、WP geometryの代数的・双曲幾何的証明は Part I に依存しない。
+Part III の singular log-canonical geometryは本稿では扱わない。
+
+五部作全体で ambient projective dimensionを $N$、超曲面の次数または中心超平面数を $d$ と書く場合、本稿の記号との対応は $N=n$, $d=m$ である。負曲率 K\"ahler--Einstein complementが存在する範囲は $d\ge N+2$ である。端点 $d=N+2$ では一般位置 $d$ 超平面配置は projective equivalenceまで一意で、curve periodsは全て $M_{0,3}$ の一点である。従って非自明な realization moduli と secondary WP geometryが現れるのは $d\ge N+3$ である。この区別により、五平面へ退化する五次曲面の場合 $(N,d)=(3,5)$ には中心配置由来の連続 secondary moduliがなく、退化二部作との関係は定理上の直接依存ではなく multiscale 局所模型という概念的関係であることも明確になる。
+
+Ambient dimension $n=1$ は別の自明な基底場合として無理なく含められる。実際、$m\ge3$ に対して $\Mord_{1,m}=M_{0,m}$ であり、唯一の curve period $r_\varnothing$ は identityである。従って oriented Torelli は自明、unoriented fully marked metricは例外集合なしで複素共役まで配置を決め、$\ov{\mathbf X}(2,m)=\ov M_{0,m}$ は通常の Weil--Petersson completionである。本稿の $n\ge2$ という仮定は、五直線 slicesによる高次元の符号同期を一つの統一した証明として扱うためであり、$n=1$ に本質的障害があるためではない。
+
+\section{配置 moduli と secondary periods}
+\label{sec:setup}
+
+\subsection{ラベル付き一般位置配置}
+$n\ge2$、$m\ge n+2$ とする。ラベル付き一般位置 $m$ 超平面配置の moduli を
+\begin{equation}
+\label{eq:moduli}
+ \Mord_{n,m}
+ =\bigl(((\PP^n)^\vee)^m\bigr)^{\mathrm{gp}}/\operatorname{PGL}_{n+1}
+\end{equation}
+と書く。最初の $n+2$ 超平面は projective frame を定めるため stabilizer は自明であり、$\Mord_{n,m}$ は smooth irreducible quasi-projective varietyである。次元は \eqref{eq:intro-dim} である。
+
+$M_{0,J}$ は finite label set $J$ で完全に標識された smooth rational curves、$\ov M_{0,J}$ はその Deligne--Mumford compactificationを表す。Genus zero の fully labeled stable curve は非自明な automorphism を持たないため、本稿の範囲では stack と coarse space の差は生じない。
+
+\begin{definition}[fully marked hyperbolic curve]
+Fully marked hyperbolic curveとは、完備有限面積曲率 $-1$ metricを持つ punctured sphereと、その cusp endsから指定された label setへの全単射の組である。Isometryは cusp labelsを保つものとする。K\"ahler orientationは追加データであり、本稿の unoriented theoremでは orientationだけを忘れ、factor labelsと cusp labelsは保持する。
+\end{definition}
+
+複素共役配置 $\ov\cA$ は、標準実構造を持つ $\PP^n$ において defining covectorsを共役して得る。Restriction mapsと forgetful mapsは $\ZZ$ 上定義されるため複素共役と可換する。
+
+\subsection{Part I から用いる facewise translation theorem}
+本稿が Part I から用いる metric inputを、現在の一般位置配置に特殊化して再掲する。
+
+\begin{proposition}[Part I の facewise translation input]
+\label{prop:partI-translation}
+$|I|=n-1$ とし、$v=(v_i)_{i\in I}\in\RR_{>0}^{I}$ を固定する。$I$-face collarにおける logarithmic depthsを $t_i$、residual projectionを $\pi_I$ とする。Basepoints $x_R\in U_{\cA}$ が
+\[
+ t_i(x_R)=Rv_i+s_{R,i},\qquad
+ s_R\longrightarrow s_\infty\in\RR^I,
+ \qquad
+ \pi_I(x_R)\longrightarrow y\in C_I^\circ
+\]
+を満たすとする。このとき normal torus directionsは collapseし、
+\[
+ (U_{\cA},g_{\mathrm{KE}},x_R)
+ \xrightarrow[R\to\infty]{\mathrm{pGH}}
+ \left(
+ \RR^{n-1}\times C_I^\circ,
+ \sum_{i\in I}\dd s_i^2+g_I,
+ (s_\infty,y)
+ \right).
+\]
+ここで $g_I$ は
+\[
+ C_I^\circ=C_I\setminus\{p_{I,j}:j\notin I\}
+\]
+上の一意な complete finite-area curvature-$-1$ metricである。Face label $I$ は active boundary componentsから、各 cusp label $j\notin I$ は deeper face $I\cup\{j\}$ から、component-labelled collar dataに相対的に定まる。従って基点列の Euclidean offset $s_\infty$ や residual basepoint $y$ を変えても、fully marked hyperbolic factor $(C_I^\circ,g_I)$ の isometry classは変わらない。ただしこの marking は標識付き収束の付加構造であり、対称性を持ち得る裸の pointed metric limitだけから labelsが内在的に復元されるという主張ではない。
+\end{proposition}
+
+\begin{proof}
+これは Part I~\cite[Theorem~6.6]{UedaI} を $F=C_I$ に適用したものである。一般位置配置では全 normal coefficients は $1$、residual log pairは
+$(C_I,\sum_{j\notin I}p_{I,j})$ であり、その canonical K\"ahler--Einstein metricは曲率 $-1$ の uniformizing metricである。Part I の component-labelled collar constructionを収束データの一部として保持することにより、face labelsと cusp labelsも極限へ運ばれる。
+\end{proof}
+
+\subsection{curve strata と metric translation limits}
+$|I|=n-1$ に対し
+\[
+ C_I=\bigcap_{i\in I}H_i,\qquad
+ p_{I,j}=C_I\cap H_j\quad(j\notin I)
+\]
+と置く。一般位置性により $C_I\simeq\PP^1$ で、$p_{I,j}$ は互いに異なる。従って restriction map
+\begin{equation}
+\label{eq:periodfactor}
+ r_I:\Mord_{n,m}\longrightarrow M_{0,[m]\setminus I},
+ \qquad
+ r_I(\cA)=(C_I;(p_{I,j})_{j\notin I})
+\end{equation}
+が定まる。
+
+\Cref{prop:partI-translation} により、$C_I^\circ$ に沿う scale-one pointed limitは \eqref{eq:intro-translation} であり、factor label $I$ と全 cusp labelsを canonical に伴う。曲率 $-1$ uniformizationの一意性により、oriented fully marked metric factor $(C_I^\circ,g_I)$ はちょうど $r_I(\cA)$ を決定する。
+
+\begin{definition}[secondary K\"ahler--Einstein period]
+$|I|=n-1$ に対する marked hyperbolic curve $r_I(\cA)$、または同値に scale-one limitの非 Euclid factor $(C_I^\circ,g_I)$ を、$I$-th secondary K\"ahler--Einstein period と呼ぶ。
+\end{definition}
+
+全 factorsの積を
+\begin{equation}
+\label{eq:fullperiod}
+ \cP_{\mathrm{curv}}
+ :=\prod_{|I|=n-1}r_I:
+ \Mord_{n,m}\longrightarrow
+ \prod_{|I|=n-1}M_{0,[m]\setminus I}
+\end{equation}
+と書く。
+
+\section{Oriented secondary Torelli}
+\label{sec:oriented}
+
+\subsection{五直線配置}
+ラベル付き一般位置五直線を projective transformation により
+\begin{align*}
+ L_1&=\{x=0\},&L_2&=\{y=0\},&L_3&=\{z=0\},\\
+ L_4&=\{x+y+z=0\},&
+ L_5&=\{x+\lambda y+\mu z=0\}
+\end{align*}
+と正規化する。一般位置条件は
+\begin{equation}
+\label{eq:fivegeneric}
+ \lambda\mu(1-\lambda)(1-\mu)(\lambda-\mu)\ne0.
+\end{equation}
+Cross ratioの規約を $\operatorname{cr}(0,\infty;c,d)=c/d$ とする。
+
+\begin{proposition}[五つの vertex periods]
+\label{prop:fiveperiods}
+$i$ を除く labelsを昇順に $j_1<j_2<j_3<j_4$ とし
+\[
+ a_i=\operatorname{cr}(p_{ij_1},p_{ij_2};p_{ij_3},p_{ij_4})
+\]
+と置く。このとき
+\begin{equation}
+\label{eq:fiveperiods}
+ a_1=\frac{\lambda}{\mu},\quad
+ a_2=\frac1\mu,\quad
+ a_3=\frac1\lambda,\quad
+ a_4=\frac{1-\mu}{\lambda-\mu},\quad
+ a_5=\frac{\lambda(1-\mu)}{\lambda-\mu}.
+\end{equation}
+像は open torus内で
+\begin{equation}
+\label{eq:five-relations}
+ a_1a_3=a_2,
+ \qquad a_4=a_3a_5,
+ \qquad a_5(a_2-a_3)=a_2-1
+\end{equation}
+を満たす。特に
+\begin{equation}
+\label{eq:five-reconstruct}
+ \mu=a_2^{-1},\qquad \lambda=a_1a_2^{-1}
+\end{equation}
+であり、$L_1,L_2$ の oriented marked periodsだけで配置を復元できる。
+\end{proposition}
+
+\begin{proof}
+$L_1$ 上で $y/z$ を座標に取ると、$L_2,L_3,L_4,L_5$ との交点は
+$0,\infty,-1,-\mu/\lambda$ であるから $a_1=\lambda/\mu$。
+$L_2$ 上では交点は $0,\infty,-1,-\mu$ なので $a_2=1/\mu$。
+同様に $L_3,L_4,L_5$ 上で座標 $x/y$ を用いれば残りの式を得る。直接代入で \eqref{eq:five-relations} が従い、\eqref{eq:five-reconstruct} が逆写像を与える。
+\end{proof}
+
+\begin{corollary}[五直線の secondary Torelli]
+$L_1,L_2$ に沿う二つの scale-one limitsに cusp labels と K\"ahler orientationを付けたデータは、元のラベル付き五直線配置を projective equivalenceまで一意に決定する。
+\end{corollary}
+
+\subsection{一般次元の star chart}
+$n$ 元集合 $B\subset[m]$ を固定し、$J=[m]\setminus B$ とする。記号を簡単にするため $B=\{1,\ldots,n\}$ と書く。各 $a\in B$ に対し
+\begin{equation}
+\label{eq:starcurves}
+ C_a=\bigcap_{\substack{b\in B\\b\ne a}}H_b\simeq\PP^1,
+ \qquad
+ P_B=\bigcap_{b\in B}H_b\in C_a
+\end{equation}
+と置く。$C_a$ 上の marked points は
+\[
+ p_{a,a}=P_B,
+ \qquad p_{a,j}=C_a\cap H_j\quad(j\in J).
+\]
+従って
+\begin{equation}
+\label{eq:ThetaB}
+ \Theta_B:\Mord_{n,m}\longrightarrow
+ \prod_{a\in B}M_{0,\{a\}\cup J}
+\end{equation}
+が定まる。
+
+\begin{theorem}[star cross-ratio chart]
+\label{thm:star-chart}
+写像 $\Theta_B$ は、右辺のある Zariski open subset $\cU_B$ への同型である。
+$\cU_B$ は、$n$ 本の marked projective linesを共通の distinguished pointで star 状に貼り、同じ label $j\in J$ を持つ $n$ 点の spanを $H_j$ としたとき、得られる $m$ 超平面が一般位置になるという条件で特徴づけられる。
+\end{theorem}
+
+\begin{proof}
+配置から marked curvesを取る操作は projective transformationsと可換であり、$\Theta_B$ は正則である。
+逆構成を与える。$n$ 本の abstract marked linesを、$\PP^n=\PP(V)$ の一点 $P=[e_0]$ を通る lines
+$C_a=\PP\langle e_0,e_a\rangle$ として配置する。この ordered star の projective equivalence classは一意である。
+$a\in B$ に対し
+\[
+ H_a=\left\langle C_b\mid b\in B\setminus\{a\}\right\rangle
+\]
+と置く。$j\in J$ に対し
+\begin{equation}
+\label{eq:span-Hj}
+ H_j=\langle p_{1,j},\ldots,p_{n,j}\rangle
+\end{equation}
+と置く。一般位置になる範囲では、これらは一意な hyperplanesである。
+
+より明示的に、異なる $\alpha,\beta\in J$ を選び、各 $C_a$ 上で
+\[
+ p_{a,a}=0,
+ \qquad p_{a,\alpha}=\infty,
+ \qquad p_{a,\beta}=1,
+ \qquad p_{a,j}=z_{a,j}
+\]
+と正規化する。$e_0^*,\ldots,e_n^*$ を双対基底とすると、復元される defining covectors は
+\begin{align}
+ h_a&=e_a^* &&(a\in B),\label{eq:star-ha}\\
+ h_\alpha&=e_0^*,\qquad
+ h_\beta=e_0^*-\sum_{a=1}^ne_a^*,\label{eq:star-hab}\\
+ h_j&=e_0^*-\sum_{a=1}^nz_{a,j}^{-1}e_a^*
+ &&(j\in J\setminus\{\alpha,\beta\}).\label{eq:star-hj}
+\end{align}
+これらを列に持つ $(n+1)\times m$ matrixの全 maximal minorsが非零である条件が $\cU_B$ を定める。従って $\cU_B$ は Zariski openであり、逆構成も正則である。
+\end{proof}
+
+\begin{corollary}[curve-level Torelli と最小性]
+\label{cor:minimal-torelli}
+$B$ に属する $n$ 個の oriented fully marked secondary periodsは配置を一意に復元する。
+$m\ge n+3$ のとき、この種の isolated curve factorsを $k<n$ 個だけ用いる代数的写像は generically injectiveになれない。
+\end{corollary}
+
+\begin{proof}
+前半は \Cref{thm:star-chart}。後半について $q=m-n-2>0$ と置く。一つの factor $M_{0,m-n+1}$ の次元は $q$、配置 moduli の次元は $nq$ なので、$k<n$ 個の factorsへの写像の像の次元は高々 $kq<nq$ である。
+\end{proof}
+
+\subsection{Full period embedding}
+\begin{theorem}[full curve-period embedding]
+\label{thm:period-embedding}
+写像 \eqref{eq:fullperiod} は locally closed embeddingである。任意の $B$ に対し、$I_a=B\setminus\{a\}$ に対応する $n$ factorsへの射影は $\Theta_B$ であり、full period imageは $\cU_B$ 上で残りの restriction mapsの graphとして記述される。
+\end{theorem}
+
+\begin{proof}
+選んだ $n$ factorsへの射影と $\cP_{\mathrm{curv}}$ の合成は $\Theta_B$ であり、これは $\cU_B$ への同型である。従って full mapは単射かつ immersionで、その像は $\cU_B$ から残りの separated moduli spacesへの正則写像の graphである。
+\end{proof}
+
+\section{Orientation-free Riemannian Torelli}
+\label{sec:unoriented}
+
+\subsection{Marked metric と複素共役}
+\begin{lemma}[marked metricの二つの orientation]
+\label{lem:metric-conjugation}
+$J$ を有限集合、$|J|\ge4$ とし、$x,x'\in M_{0,J}$ とする。対応する fully marked finite-area hyperbolic curvesの間に label-preserving isometryがあれば
+\[
+ x'=x\qquad\text{または}\qquad x'=\ov x.
+\]
+前者は orientation-preserving、後者は orientation-reversing isometryに対応する。ある四元部分集合への forgetful periodが非実なら、二つの可能性は排他的であり、isometryの orientation signは一意である。
+\end{lemma}
+
+\begin{proof}
+曲率 $-1$ の oriented surfaceの isometryは orientationを保てば conformal、反転すれば anti-conformalである。Uniformizationと cusp labelsにより結論を得る。Ordered $M_{0,4}\simeq\PP^1\setminus\{0,1,\infty\}$ の複素共役固定点は real locusである。
+\end{proof}
+
+\subsection{五直線の orientation coherence}
+\begin{lemma}[積関係による共役符号の同期]
+\label{lem:product-coherence}
+$u,v,w\in\CC\setminus\RR$ が $uv=w$ を満たすとする。
+$x_u\in\{u,\ov u\}$、$x_v\in\{v,\ov v\}$、$x_w\in\{w,\ov w\}$ が $x_ux_v=x_w$ を満たすなら、三つの共役選択は全て同じである。
+\end{lemma}
+
+\begin{proof}
+二つの入力の選択が同じで出力だけが異なれば $w=\ov w$ となる。
+入力の選択が異なる場合、例えば $\ov u\,v=w$ なら $u=\ov u$、また $\ov u\,v=\ov w=\ov u\,\ov v$ なら $v=\ov v$ が従う。他の混合選択も同様であり、いずれも仮定に反する。
+\end{proof}
+
+\begin{lemma}[五直線 coherence]
+\label{lem:five-coherence}
+\Cref{prop:fiveperiods} の $a_1,\ldots,a_5$ が全て非実とする。各 $i$ について $x_i=a_i$ または $\ov a_i$ を選ぶ。$(x_1,\ldots,x_5)$ が別の五直線配置の period tupleであれば、全ての選択は同時に非共役、または同時に共役である。
+\end{lemma}
+
+\begin{proof}
+Period relations $x_1x_3=x_2$ と $x_3x_5=x_4$ を用いる。
+\Cref{lem:product-coherence} を最初の式へ適用すると $1,2,3$ の signsが一致し、第二式へ適用すると $3,4,5$ の signsが一致する。
+\end{proof}
+
+\begin{corollary}[五直線の full unoriented Torelli]
+五つの vertex periodsが全て非実である五直線配置は、五つの fully marked hyperbolic metricsを orientationなしで与えると、projective equivalenceと全体複素共役まで一意に決まる。
+\end{corollary}
+
+\subsection{五直線 slices と exceptional locus}
+$K\subset[m]$、$|K|=n-2$ とし、$[m]\setminus K$ の相異なる labelsの ordered five-tupleを
+$\mathbf s=(s_1,\ldots,s_5)$ とする。Plane
+\[
+ \PP^2_K=\bigcap_{k\in K}H_k
+\]
+上に ordered five-line arrangement $(H_{s_i}\cap\PP^2_K)_{i=1}^5$ が得られる。Vertex $s_i$ の curve factorから他の markingsを忘れ、\Cref{prop:fiveperiods} と同じ順序を取って
+\[
+ q_{K,\mathbf s,i}:\Mord_{n,m}\longrightarrow M_{0,4}
+\]
+を定める。
+
+\begin{lemma}[restriction dominance]
+\label{lem:restriction-dominance}
+固定した $(K,\mathbf s)$ に対する restriction map
+\[
+ \operatorname{res}_{K,\mathbf s}:\Mord_{n,m}\longrightarrow\Mord_{2,5}
+\]
+は dominantである。さらに $\Mord_{2,5}$ 上の各 vertex cross-ratio $a_i$ は非定数であるから、$q_{K,\mathbf s,i}=a_i\circ\operatorname{res}_{K,\mathbf s}$ も非定数である。
+\end{lemma}
+
+\begin{proof}
+$V^*=W^*\oplus N^*$、$\dim W^*=3$、$\dim N^*=n-2$ とし、$\PP^2_K=\PP(W)$ とする。
+$K=\{k_1,\ldots,k_{n-2}\}$ に対応する hyperplanesを $N^*$ の基底 $y_1,\ldots,y_{n-2}$ で定める。
+与えられた一般位置五直線の equationsを $\ell_1,\ldots,\ell_5\in W^*$ とし、$H_{s_i}$ の equationsを
+\[
+ h_i=\ell_i+c_i,\qquad c_i\in N^*
+\]
+と取る。
+
+$K_0\subset K$、$S_0\subset\mathbf s$、$|K_0|+|S_0|=n+1$ を固定する。
+$|K_0|\le n-2$ なので $|S_0|\ge3$ であり、$d=|S_0|-3=n-2-|K_0|$ と置く。
+$S_0$ から三 labelsを選び、その $\ell$-formsを $W^*$ の基底とする。
+残る $d$ labelsへ $K\setminus K_0$ に対応する $d$ 個の basis vectors $y_j$ を一対一に割り当て、対応する $c_i$ をその $y_j$、選んだ三つの $c_i$ を零とする。
+残る $d$ 個の $h_i$ から $W^*$ 成分を基底三行の線形結合として引けば、当該 $(n+1)\times(n+1)$ determinantは $\det(\ell_{i_1},\ell_{i_2},\ell_{i_3})$ に符号を除いて等しく、非零である。
+従って各 maximal determinantは $c_i$ の多項式として恒等的に零ではない。
+有限個のこれらの多項式の同時非消滅 locusは非空 Zariski openである。
+
+残る labelsがある場合は、既に選んだ hyperplanesの任意の $n$ 本の spanの有限和を避けて defining covectorを一つずつ選ぶ。
+これにより与えた五直線配置を保ったまま一般位置 $m$ 超平面配置へ延長でき、$\operatorname{res}_{K,\mathbf s}$ は dominantである。最後に \Cref{prop:fiveperiods} の明示式から、$\Mord_{2,5}$ 上の各 vertex cross-ratio $a_i$ は例えば $\lambda,\mu$ を動かすと変化する非定数正則函数である。従って $q_{K,\mathbf s,i}=a_i\circ\operatorname{res}_{K,\mathbf s}$ も非定数である。
+\end{proof}
+
+$M_{0,4}^{\RR}$ を複素共役の固定点集合とし
+\begin{equation}
+\label{eq:exceptional}
+ \mathfrak E_{n,m}
+ =\bigcup_{K,\mathbf s,i}q_{K,\mathbf s,i}^{-1}(M_{0,4}^{\RR})
+\end{equation}
+と置く。和は有限個の ordered data全てにわたる。
+
+\begin{lemma}[exceptional locus]
+\label{lem:exceptional}
+ $\mathfrak E_{n,m}$ は有限個の真の閉実解析部分集合の $S_m$-不変な合併であり、特に真の閉集合である。
+\end{lemma}
+
+\begin{proof}
+各 preimageは closed real-analytic subsetである。\Cref{lem:restriction-dominance} により $q_{K,\mathbf s,i}$ は非定数正則写像なので、open mapping theoremからその preimageは内部を持たない。$\Mord_{n,m}$ は irreducible smooth quasi-projective varietyであり解析位相で Baire spaceであるから、有限個の nowhere-dense closed real-analytic subsetsの合併は全体を覆わない。$S_m$-不変性は定義から従う。
+\end{proof}
+
+\subsection{Generic unoriented Torelli}
+\begin{theorem}[generic fully marked unoriented Torelli]
+\label{thm:unoriented}
+$n\ge2$、$m\ge n+3$ とし、$\cA\in\Mord_{n,m}\setminus\mathfrak E_{n,m}$ とする。$\cA'$ が全ての $|I|=n-1$ に対して、factor label $I$ と全 cusp-end labelsを保つ fully marked hyperbolic Riemannian isometry classを $\cA$ と共有し、K\"ahler orientationだけを忘れているとする。このとき $\cA'$ は $\cA$ または $\ov\cA$ と projectively equivalentである。
+\end{theorem}
+
+\begin{proof}
+\Cref{lem:metric-conjugation} により各 factor $I$ に sign $\epsilon_I\in\{0,1\}$ があり
+\[
+ r_I(\cA')=
+ \begin{cases}
+  r_I(\cA),&\epsilon_I=0,\\
+  \ov{r_I(\cA)},&\epsilon_I=1.
+ \end{cases}
+\]
+$\cA\notin\mathfrak E_{n,m}$ なので、五直線 slicesに現れる全 four-point periodsは非実であり、signは一意である。
+
+隣接する $(n-1)$-subsets $I=K\cup\{a\}$ と $I'=K\cup\{b\}$ を取る。$m-n+2\ge5$ なので、$a,b$ を含む ordered five-tuple $\mathbf s\subset[m]\setminus K$ を選べる。$\PP^2_K$ 上の五直線配置へ \Cref{lem:five-coherence} を適用すると $\epsilon_I=\epsilon_{I'}$ である。Johnson graph $J(m,n-1)$ は連結なので全 $\epsilon_I$ は一つの値 $\epsilon$ に等しい。
+
+$\epsilon=0$ なら \Cref{thm:period-embedding} から $\cA'=\cA$。$\epsilon=1$ なら restriction mapsが $\ZZ$ 上定義されることから
+$\cP_{\mathrm{curv}}(\cA')=\cP_{\mathrm{curv}}(\ov\cA)$ であり、再び embeddingから $\cA'=\ov\cA$ である。
+\end{proof}
+
+\begin{remark}
+Exceptional locus \eqref{eq:exceptional} は証明を明快にするため意図的に大きく取っている。本定理は fully marked theoremであり、factor labelsまたは cusp labelsを忘れた Torelliを主張しない。
+\end{remark}
+
+\section{Period closures と Chow quotient compactification}
+\label{sec:compactification}
+
+この節では、査読で指摘された Schaffler--Tevelev~\cite{ST} の一般 rank theoremを正確に取り込み、full curve-period closureの代数的 normalizationを既知の rank-two cross-ratio theoryから同定する。ここで得る有限双有理性は本稿独自の主張ではなく、Schaffler--Tevelevの theoremを grouped curve periodsの言葉へまとめ直した帰結である。
+
+$r=n+1$ と置く。Gelfand--MacPherson correspondenceにより、$\Mord_{n,m}$ は Grassmannianのmain stratumの torus quotient $\mathbf X(r,m)$ と同一視できる。その Kapranov Chow quotient compactificationを
+\[
+ \ov{\mathbf X}(r,m)=\Gr(r,m)//H
+\]
+と書く~\cite{Kapranov,KT,HKT}。Full period imageの Deligne--Mumford積コンパクト化における \emph{reduced Zariski closure} を
+\begin{equation}
+\label{eq:Zcurv}
+ Z_{n,m}^{\mathrm{curv}}
+ :=\overline{\cP_{\mathrm{curv}}(\Mord_{n,m})}^{\,\mathrm{red}}
+ \subset\prod_{|I|=n-1}\ov M_{0,[m]\setminus I}
+\end{equation}
+と置く。
+
+各有限 label set $J$ に対し、全四点 forgetful mapsの積を
+\[
+ \ov F_J:\ov M_{0,J}\longrightarrow
+ \prod_{\substack{S\subset J\\|S|=4}}\ov M_{0,S}
+\]
+とする。Stable labeled treesのcross-ratio description~\cite{GHP} によりこれは closed immersionである。従って
+\[
+ \iota:=\prod_{|I|=r-2}\ov F_{[m]\setminus I}
+\]
+も closed immersionである。
+
+Schaffler--Tevelev~\cite[Corollary~3.5]{ST} は、$r\ge2$、$m\ge r+2$ に対し、Kapranov Chow quotient $\ov{\mathbf X}(r,m)$ から全 rank-two $\Delta(2,4)$ face cross-ratiosへの写像が像へ有限双有理であることを証明している。同論文 Theorem~1.2 は Lafforgue variety上のより一般の face mapを扱うが、本稿が直接用いる入力は Corollary~3.5 である。$r\ge3$ の場合、各 cross-ratioは $r-2$ 個の超平面の交叉直線上で残る四超平面が切る四点の cross-ratioであり、本稿の curve periodの全四点 forgetful projectionに一致する。
+
+\begin{theorem}[grouped curve periods と normalized Chow quotient]
+\label{thm:period-compactification}
+$n\ge2$、$m\ge n+2$ とする。
+Full curve-period mapは一意な projective morphism
+\begin{equation}
+\label{eq:extended-period}
+ \ov{\cP}_{\mathrm{curv}}:
+ \ov{\mathbf X}(n+1,m)
+ \longrightarrow
+ \prod_{|I|=n-1}\ov M_{0,[m]\setminus I}
+\end{equation}
+へ延長する。その reduced imageは $Z_{n,m}^{\mathrm{curv}}$ であり、$\ov{\cP}_{\mathrm{curv}}$ は像へ有限双有理である。従って
+\begin{equation}
+\label{eq:normalization-chow}
+ \Norm(Z_{n,m}^{\mathrm{curv}})
+ \simeq
+ \ov{\mathbf X}(n+1,m)^{\nu}.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+$m=n+2$ では、$n+2$ 個の一般位置超平面は projective frameをなし、$\Mord_{n,n+2}$、$\ov{\mathbf X}(n+1,n+2)$、および全 period factors $M_{0,3}$ は全て一点である。従って主張は自明である。以下 $m\ge n+3$ とし、Schaffler--Tevelev~\cite[Corollary~3.5]{ST} を適用する。
+
+Schaffler--Tevelevの全 rank-two cross-ratio mapを
+\[
+ \Phi_4:\ov{\mathbf X}(r,m)\longrightarrow
+ \prod_{\substack{|I|=r-2\\S\subset[m]\setminus I,\ |S|=4}}
+ \ov M_{0,S}
+\]
+と書く。Ordered cross-ratio conventionsの違いは各 $M_{0,4}\simeq\PP^1\setminus\{0,1,\infty\}$ の anharmonic automorphismで調整し、以下では本稿のlabel conventionに固定する。
+Open arrangement locus上では、定義から
+\begin{equation}
+\label{eq:Phi4factor-open}
+ \Phi_4=\iota\circ\cP_{\mathrm{curv}}.
+\end{equation}
+$\iota$ の像は projective product内で閉じており、open arrangement locusは $\ov{\mathbf X}(r,m)$ に稠密である。従って $\Phi_4(\ov{\mathbf X}(r,m))$ は集合論的に $\iota$ の像に含まれる。さらに $\ov{\mathbf X}(r,m)$ は reduced varietyであり、$\iota$ の像を定める ideal sheafの pullbackは稠密開集合上で消えるため全体で消える。従って $\Phi_4$ は scheme-theoreticallyかつ一意に closed immersion $\iota$ を経由し、\eqref{eq:extended-period} が得られる。
+
+Sourceは projectiveであるから $\ov{\cP}_{\mathrm{curv}}$ は properである。またその各 fibreは、closed immersion $\iota$ を合成した $\Phi_4$ の fibreと同じであり、Schaffler--Tevelevの有限性から有限集合である。従って $\ov{\cP}_{\mathrm{curv}}$ は proper quasi-finite、ゆえに finiteである。Open locus上では \Cref{thm:period-embedding} の embeddingと一致するから像へ双有理である。Reduced imageは定義により \eqref{eq:Zcurv} であり、有限双有理写像のnormalizationの普遍性から \eqref{eq:normalization-chow} が従う。
+\end{proof}
+
+\begin{remark}[新規性の切り分け]
+\Cref{thm:period-compactification} の有限双有理性は Schaffler--Tevelev の一般 rank theoremと、$\ov M_{0,J}$ の全四点 cross-ratio closed embeddingを組み合わせた帰結である。本稿の新しい内容は、この grouped curve-period systemが canonical K\"ahler--Einstein translation limitsから現れること、最小および orientation-free Torelli、ならびに次節の secondary Weil--Petersson inner geometryにある。
+\end{remark}
+
+\section{Cross-ratio Weil--Petersson geometry}
+\label{sec:wp}
+
+\subsection{Secondary Weil--Petersson form}
+各 factor $M_{0,[m]\setminus I}$ に標準 Weil--Petersson form $\omega_{\mathrm{WP},I}$ を入れる。
+
+\begin{proposition}[secondary Weil--Petersson metric]
+\label{prop:sec-wp}
+$m\ge n+3$ とする。
+\[
+ \omega_{\mathrm{sec}}
+ =\sum_{|I|=n-1}r_I^*\omega_{\mathrm{WP},I}
+\]
+は $\Mord_{n,m}$ 上の $S_m$-不変 K\"ahler formであり、unordered arrangement moduliの orbifold quotientへ降下する。
+\end{proposition}
+
+\begin{proof}
+任意の $B$ に対し、$I_a=B\setminus\{a\}$ に対応する部分和は、star chart $\Theta_B$ による product WP formの pullbackである。$\Theta_B$ は同次元 open embeddingなので、この部分和だけで正定値である。全和も正定値で、定義は label permutationsに不変である。
+\end{proof}
+
+本稿では WP metricの標準 normalizationを固定する。以下の completion topologyは全 metricを同じ正定数倍しても変わらない。
+
+\subsection{Finite period branchesの分離と条件付き normalization--completion}
+有限個の label sets $J_1,\ldots,J_A$ に対し
+\[
+ \cY=\prod_{\alpha=1}^A M_{0,J_\alpha},
+ \qquad
+ \ov\cY=\prod_{\alpha=1}^A\ov M_{0,J_\alpha}
+\]
+と置き、$g_\Pi$ を product Weil--Petersson metric、$d_\Pi$ をその completion distanceとする。各 factorの Weil--Petersson completionが $\ov M_{0,J_\alpha}$ であることから、$d_\Pi$ の位相は $\ov\cY$ の通常の analytic topologyと一致する~\cite{WolpertCompletion}。
+
+以下、$M$ を smooth quasi-projective variety、$X$ を $M$ を稠密開集合として含む normal projective varietyとし、
+\[
+ F:X\longrightarrow\ov\cY
+\]
+を finite morphism、$F(M)\subset\cY$、$F|_M$ を immersion と仮定する。$g_F=(F|_M)^*g_\Pi$、その length distanceを $d_F$ と書く。
+
+\begin{definition}[controlled parallel push-off hypothesis]
+\label{hyp:controlled-pushoff}
+$x\in X\setminus M$、$y=F(x)$ とする。$M$ 上で同型な log resolution
+$\pi:\widetilde X\to X$ を取り、$D=\widetilde X\setminus M$ を単純正規交叉とし、$E=\pi^{-1}(x)$ と置く。Targetの plumbing coordinatesを $q_{\alpha,\mu}$、stratum coordinatesを $w_{\alpha,\nu}$ とし、必要なら principalizationして adapted source chartsで
+\begin{equation}
+\label{eq:general-period-monomial}
+ q_{\alpha,\mu}\circ F\circ\pi
+ =u_{\alpha,\mu}\prod_i z_i^{a_{\alpha,\mu i}},
+ \qquad a_{\alpha,\mu i}\in\ZZ_{\ge0}
+\end{equation}
+と書く。ここで $u_{\alpha,\mu}$ は holomorphic unitである。
+
+有限 adapted cover上のこれらの座標について、$E$ の neighborhood basis $W_k$ が存在し、任意の $p,p'\in W_k\setminus D$ を結ぶ piecewise $C^1$ path $\gamma\subset W_k\setminus D$ を、次を満たすよう選べるとき、$(X,M,F)$ は $x$ で controlled parallel push-off property を満たすという：
+\begin{multline}
+\label{eq:controlled-pushoff-estimate}
+ \sup_{p,p'\in W_k\setminus D}\ \inf_\gamma
+ \left\{
+ \sum_{\alpha,\mu}
+ \int_\gamma
+ \frac{|\dd\log(q_{\alpha,\mu}\circ F\circ\pi)|}
+ {(-\log|q_{\alpha,\mu}\circ F\circ\pi|)^{3/2}}
+ +\sum_{\alpha,\nu}\int_\gamma
+ |\dd(w_{\alpha,\nu}\circ F\circ\pi)|
+ \right\}
+ \longrightarrow0.
+\end{multline}
+第一の和では $q_{\alpha,\mu}(y)=0$ の coordinatesについて和を取る。$F(x)$ が target interiorにある factorsは第二の和の smooth coordinatesへ含める。この性質が全 $x\in X\setminus M$ で成立するとき、単に controlled parallel push-off hypothesis が成立するという。
+\end{definition}
+
+\begin{remark}
+\eqref{eq:general-period-monomial} と WP cusp exponent $3$ から、法線 radial segmentsの寄与が
+\[
+ O\!\left(\sum_i\left|\Delta(-\log|z_i|)^{-1/2}\right|\right)
+\]
+になることは無条件に従う。\Cref{hyp:controlled-pushoff} が追加しているのは、exceptional fibreのstrataを横切る tangential push-offsについて、chart transitions、phases、接ベクトル、および任意の二端点に関する一様性を同時に制御することである。Compactnessとpath-connectednessだけからこの一様制御は従わないので、本稿では仮定として明示する。
+\end{remark}
+
+\begin{lemma}[controlled push-off から局所小直径]
+\label{lem:finite-wp-local-collapse}
+$(X,M,F)$ が $x\in X$ で \Cref{hyp:controlled-pushoff} を満たすとする。このとき任意の $\varepsilon>0$ に対し、$x$ の analytic neighborhood $U$ で
+\[
+ \diam_{d_F}(U\cap M)<\varepsilon
+\]
+を満たすものが存在する。
+\end{lemma}
+
+\begin{proof}
+$x\in M$ では $g_F$ が smooth Riemannian metricなので明らかである。$x\notin M$ とする。Weil--Petersson plumbing asymptoticsは、十分小さい target chart上で
+\begin{equation}
+\label{eq:general-wp-upper}
+ g_{\mathrm{WP},\alpha}
+ \le C_\alpha\left(
+  \sum_\mu
+  \frac{|\dd q_{\alpha,\mu}|^2}
+       {|q_{\alpha,\mu}|^2(-\log|q_{\alpha,\mu}|)^3}
+  +\sum_\nu|\dd w_{\alpha,\nu}|^2
+ \right)
+\end{equation}
+を与える~\cite{MZ,OW,WolpertCompletion}。\eqref{eq:controlled-pushoff-estimate} と有限因子間の Cauchy--Schwarz inequalityにより、$W_k\setminus D$ 内の任意の二点を結ぶ pathの $g_F$-lengthは $k\to\infty$ で一様に0へ行く。Properness of $\pi$ により $x$ の neighborhood $U_k$ を $\pi^{-1}(U_k)\subset W_k$ となるよう取れる。$\pi$ は $M$ 上で同型なので結論を得る。
+\end{proof}
+
+\begin{proposition}[有限 WP period branches の無条件分離]
+\label{prop:finite-wp-branch-separation}
+$x_1\ne x_2$ かつ $F(x_1)=F(x_2)=y$ とする。このとき定数 $\delta>0$ が存在し、
+\begin{equation}
+\label{eq:branch-separation}
+ \liminf_{\substack{p\to x_1,\ q\to x_2\\p,q\in M}}
+ d_F(p,q)\ge\delta
+\end{equation}
+となる。この命題に \Cref{hyp:controlled-pushoff} は不要である。
+\end{proposition}
+
+\begin{proof}
+有限集合 $F^{-1}(y)$ の各点を含む互いに素な relatively compact neighborhoods $U_i$ を取る。$F$ の propernessにより、$y$ の neighborhood $V$ を縮小して
+\[
+ F^{-1}(V)\subset\coprod_iU_i
+\]
+とできる。$d_\Pi$ が analytic topologyを与えるので、ある $r>0$ について $B_{d_\Pi}(y,r)\subset V$ である。$p\in U_1\cap M$ と $q\in U_2\cap M$ がそれぞれ $x_1,x_2$ に十分近ければ、その target pointsは $y$ の $r/4$-ballに入る。異なる $U_1,U_2$ を結ぶ任意の $M$-pathは $F^{-1}(V)$ から出るため、その target imageは $B_{d_\Pi}(y,r)$ の外へ出る。Pullback metricの定義から source lengthは target image lengthに等しいので、少なくとも $3r/4$ である。例えば $\delta=r/2$ と取れる。
+\end{proof}
+
+\begin{theorem}[条件付き normalization--completion principle]
+\label{thm:finite-wp-completion}
+$(X,M,F)$ が全 boundary pointsで \Cref{hyp:controlled-pushoff} を満たし、さらに $F|_M$ が embeddingであるとする。このとき $(M,d_F)$ の metric completionは、identity on $M$ を延長する canonical homeomorphismにより $X$ と同一視される。この同一視の下で completionから $\ov\cY$ への連続写像は $F$ である。
+\end{theorem}
+
+\begin{proof}
+\Cref{lem:finite-wp-local-collapse} により、$x\in X$ へ analytic topologyで収束する任意の列 $(p_j)\subset M$ は $d_F$-Cauchyで、その completion pointは列の選び方に依らない。従って連続写像
+\[
+ \jmath:X\longrightarrow\widehat M_F
+\]
+が定まる。$F(x_1)\ne F(x_2)$ なら、任意の $M$-pathの source lengthと target image lengthが等しいことから
+\begin{equation}
+\label{eq:general-product-lower}
+ d_\Pi(F(p),F(q))\le d_F(p,q)
+\end{equation}
+を得て二点は分離される。$F(x_1)=F(x_2)$ なら \Cref{prop:finite-wp-branch-separation} が分離を与える。従って $\jmath$ は単射である。$X$ は compact、$\widehat M_F$ は Hausdorffなので $\jmath(X)$ は closedであり、dense subset $M$ を含むため completion全体に等しい。よって $\jmath$ は homeomorphismである。Target mapに関する主張は $M$ 上で明らかで、連続性と稠密性から従う。
+\end{proof}
+
+\begin{remark}
+無条件に得られるのは異なる finite sheets間の正距離 barrierである。一枝内の局所collapse、従って normalization全体のcompletion同定は controlled parallel push-off仮定に依存する。この二つを混同しないことが本節の論理的要点である。
+\end{remark}
+
+\subsection{一般配置 moduli の secondary completion}
+\begin{theorem}[controlled push-off 仮定下の一般 secondary completion]
+\label{thm:general-secondary-completion}
+$n\ge2$、$m\ge n+3$ とする。$d_{\mathrm{sec}}$ を $\omega_{\mathrm{sec}}$ に対応する Riemannian length distanceとし、normalized extended period map
+\[
+ F:X_{n,m}^{\mathrm{per}}:=\Norm(Z_{n,m}^{\mathrm{curv}})
+ \longrightarrow
+ \prod_{|I|=n-1}\ov M_{0,[m]\setminus I}
+\]
+が \Cref{hyp:controlled-pushoff} を満たすと仮定する。このとき
+\begin{equation}
+\label{eq:general-secondary-completion}
+ \widehat{(\Mord_{n,m},d_{\mathrm{sec}})}
+ \cong
+ \Norm(Z_{n,m}^{\mathrm{curv}})
+ \cong
+ \ov{\mathbf X}(n+1,m)^\nu
+\end{equation}
+という canonical homeomorphismがある。Completionから
+$\prod_{|I|=n-1}\ov M_{0,[m]\setminus I}$ への写像は normalized extended period mapである。
+\end{theorem}
+
+\begin{proof}
+$X_{n,m}^{\mathrm{per}}:=\Norm(Z_{n,m}^{\mathrm{curv}})$ と置く。Period imageは $Z_{n,m}^{\mathrm{curv}}$ 内で locally closedかつ稠密なので openであり、\Cref{thm:period-embedding} により smooth、特に normalである。従って normalizationはこの open locus上で同型であり、$\Mord_{n,m}$ を $X_{n,m}^{\mathrm{per}}$ の稠密開集合と同一視できる。Normalization mapと closed embeddingの合成
+\[
+ F:X_{n,m}^{\mathrm{per}}
+ \longrightarrow Z_{n,m}^{\mathrm{curv}}
+ \hookrightarrow
+ \prod_{|I|=n-1}\ov M_{0,[m]\setminus I}
+\]
+は finiteである。この open arrangement locus上で $F$ は full curve-period embedding $\cP_{\mathrm{curv}}$ に一致し、その product WP pullbackは $g_{\mathrm{sec}}$ である。仮定により \Cref{thm:finite-wp-completion} を適用でき、第一の同一視を得る。第二の同一視は無条件な \Cref{thm:period-compactification} である。
+\end{proof}
+
+\begin{corollary}[period branchesの metric separation]
+\label{cor:period-branch-separation}
+$z\in Z_{n,m}^{\mathrm{curv}}$ とし、$x_1\ne x_2$ をその normalization fibreの二点とする。このとき $x_i$ へ収束する配置列 $\cA_j^{(i)}$ に対し
+\[
+ \liminf_{j\to\infty}
+ d_{\mathrm{sec}}\bigl(\cA_j^{(1)},\cA_j^{(2)}\bigr)>0.
+\]
+従って normalized period space上の異なる analytic branchesは、一般 completion同定のための controlled push-off仮定とは独立に、正の内在距離で分離される。
+\end{corollary}
+
+\begin{proof}
+無条件な \Cref{prop:finite-wp-branch-separation} を
+$F:X_{n,m}^{\mathrm{per}}\to Z_{n,m}^{\mathrm{curv}}$ と ambient stable-curve productの合成へ適用する。
+\end{proof}
+
+\begin{proposition}[minimal-excess identification]
+\label{prop:minimal-excess}
+$m=n+3$ とする。Gale dualityの同型
+\[
+ \Mord_{n,n+3}\simeq M_{0,n+3}
+\]
+の下で、$|I|=n-1$ の curve period $r_I$ は complement $S=[n+3]\setminus I$ に対する fully labeled forgetful map
+$f_S:M_{0,n+3}\to M_{0,S}$ に一致する。従って
+\[
+ \omega_{\mathrm{sec}}=\sum_{|S|=4}f_S^*\omega_{\mathrm{WP},4}
+ =\omega_{\mathrm{cr}}.
+\]
+また full period closure $Z_{n,n+3}^{\mathrm{curv}}$ は $\ov M_{0,n+3}$ と同型である。
+\end{proposition}
+
+\begin{proof}
+まず open Gale dualityを、star coordinatesでlabelを追跡して明示する。$B=[n]$、$[n+3]\setminus B=\{\alpha,\beta,\gamma\}$ とし、各 $C_a$ 上で
+\[
+ p_{a,a}=0,\qquad p_{a,\alpha}=\infty,\qquad
+ p_{a,\beta}=1,\qquad p_{a,\gamma}=z_a
+\]
+と規格化する。\Cref{thm:star-chart} の defining covectorsを列に持つ $(n+1)\times(n+3)$ matrixを
+\begin{equation}
+\label{eq:gale-A}
+ A=\left(
+ e_1^*,\ldots,e_n^*,
+ e_0^*,
+ e_0^*-\sum_{a=1}^ne_a^*,
+ e_0^*-\sum_{a=1}^nz_a^{-1}e_a^*
+ \right)
+\end{equation}
+とする。次の $2\times(n+3)$ matrixを取る：
+\begin{equation}
+\label{eq:gale-G}
+ G=
+ \begin{pmatrix}
+ 1&\cdots&1&-1&1&0\\
+ z_1^{-1}&\cdots&z_n^{-1}&-1&0&1
+ \end{pmatrix}.
+\end{equation}
+直接計算で $AG^{\mathsf T}=0$ であるから、$G$ は $A$ の Gale matrixである。各列を $\PP^1$ の labeled pointとみなし affine coordinate $X/Y$ を使うと
+\[
+ a\longmapsto z_a,\qquad
+ \alpha\longmapsto1,\qquad
+ \beta\longmapsto\infty,\qquad
+ \gamma\longmapsto0.
+\]
+特に四 labels $\{a,\alpha,\beta,\gamma\}$ について、M\"obius transformation
+\[
+ \phi_a(x)=\frac{x-z_a}{x-1}
+\]
+は Gale tuple $(z_a,1,\infty,0)$ を、curve period上の同じ labelsに対応する tuple $(0,\infty,1,z_a)$ へ送る。従って star periodsでは label-preserving に Gale forgetful mapと一致する。
+
+一般の $I$ についても同じ一致が成立することを complementary minorsで確認する。$J\subset[n+3]$、$|J|=n+1$ に対する maximal minorを $\Delta_J(A)$ と書く。Gale dualityの complementary-minor identityにより、ある共通の非零scalarと標準sign conventionの下で
+\[
+ \Delta_J(A)=\pm c\,\Delta_{J^c}(G).
+\]
+$I$ を $n-1$ labels、$S=\{p,q,r,s\}= [n+3]\setminus I$ とする。Line $C_I$ 上の四交点の cross-ratioは Pl\"ucker determinant表示で
+\begin{equation}
+\label{eq:curve-plucker-cr}
+ \frac{
+  \Delta_{I\cup\{p,r\}}(A)\,
+  \Delta_{I\cup\{q,s\}}(A)}{
+  \Delta_{I\cup\{p,s\}}(A)\,
+  \Delta_{I\cup\{q,r\}}(A)}
+\end{equation}
+と書ける（ordered conventionを固定する）。Complementary-minor identityを代入すると、signsは相殺し、\eqref{eq:curve-plucker-cr} は $G$ の四 labeled columns $p,q,r,s$ の通常の cross-ratioになる。従って fully labeled mapsとして $r_I=f_S$ である。
+
+以上から open moduli上で $\cP_{\mathrm{curv}}$ は全四点 forgetful map
+$F_{n+3}:M_{0,n+3}\to\prod_{|S|=4}M_{0,S}$ と一致する。\Cref{prop:crossratio-embedding} により $F_{n+3}$ は compactification上の closed immersionへ延長するので、そのopen imageのreduced closureは $\ov M_{0,n+3}$ と同型である。これが最後の主張を与える。
+\end{proof}
+
+\subsection{\texorpdfstring{全四点 metric on $M_{0,N}$}{全四点 metric on M0,N}}
+$N\ge4$ とし、各四元部分集合 $S\subset[N]$ に対する forgetful mapを
+\[
+ f_S:M_{0,N}\longrightarrow M_{0,S}\simeq M_{0,4}
+\]
+と書く。積を $F_N=\prod_{|S|=4}f_S$ とする。
+
+\begin{proposition}[全四点 cross-ratio embedding]
+\label{prop:crossratio-embedding}
+$F_N$ は compactification上の closed immersion
+\[
+ \ov F_N:\ov M_{0,N}\hookrightarrow
+ \prod_{|S|=4}\ov M_{0,S}
+\]
+へ延長する。
+\end{proposition}
+
+\begin{proof}
+Gerritzen--Herrlich--van der Put~\cite{GHP} の cross-ratio varietyは stable fully labeled rational treesを scheme-theoretically parametrizesし、全 ordered four-point cross-ratiosにより projective closed subschemeとして構成される。各四元集合ごとに一つの標準 ordered coordinateを選べば、他のordered cross-ratiosは anharmonic transformsで回収できるため、上の積写像も closed immersionである。Schaffler--Tevelev~\cite[Corollary~3.5]{ST} の一般 rank cross-ratio mapでも、この closed cross-ratio realizationが各 rank-two factorをgroup化する際に用いられる。
+\end{proof}
+
+$M_{0,4}$ 上の WP metricを $g_{\mathrm{WP},4}$ とし
+\begin{equation}
+\label{eq:gcr}
+ g_{\mathrm{cr}}
+ =\sum_{|S|=4}f_S^*g_{\mathrm{WP},4}
+ =F_N^*g_\Pi
+\end{equation}
+と置く。$g_\Pi$ は有限積の product metricである。\Cref{prop:crossratio-embedding} から $g_{\mathrm{cr}}$ は正定値である。その length distanceを $d_{\mathrm{cr}}$ と書く。
+
+\subsection{Plumbing monomials と局所距離評価}
+$z\in\ov M_{0,N}$ を stable tree $T$ に対応する点とし、nodes $e\in E(T)$ に plumbing coordinates $t_e$、stratum coordinates $w$ を取る。
+
+\begin{lemma}[忘却写像の plumbing monomial]
+\label{lem:plumbing-monomial}
+$f_S(z)$ が $\ov M_{0,4}$ の boundaryにあるとき、その boundary coordinate $q_S$ は
+\begin{equation}
+\label{eq:plumbing-monomial}
+ q_S=u_S(t,w)\prod_{e\in E(T)}t_e^{a_{S,e}},
+ \qquad a_{S,e}\in\ZZ_{\ge0},
+\end{equation}
+と書ける。$u_S$ は nowhere-vanishing holomorphic unitで、少なくとも一つの exponentは正である。Exponentsは、$S$ で張られる最小部分木を忘却後に安定化するとき、target nodeへ収縮される source edge-chainを記録する。
+\end{lemma}
+
+\begin{proof}
+一つの不安定な two-pointed rational componentを収縮する局所模型をまず確認する。三成分のchain
+\[
+ C_-\ --\ C_0\ --\ C_+
+\]
+で $C_0$ が忘却後に不安定になるとし、二つの source nodesの smoothing parametersを $t_1,t_2$ とする。Node neighborhoodsを
+\[
+ x_0y_0=t_1,\qquad x_1y_1=t_2
+\]
+と書き、$C_0$ 上では $y_0$ と $x_1$ が0と$\infty$の局所座標になるよう取る。Overlap上の coordinate changeは nowhere-zero holomorphic factorを除いて $x_1=y_0^{-1}$ である。従って中間座標を消去すると、$C_-$ と $C_+$ を直接glueする安定化後のnode parameter $q$ は
+\[
+ q=u(t,w)t_1t_2,
+\qquad u(0,w)\ne0
+\]
+となる。
+
+より長い不安定chainではこの操作を有限回反復し、target node parameterはchain上の source smoothing parametersの積に holomorphic unitを掛けたものになる。Forgetful map $f_S$ の安定化は有限個の互いに素なchain contractionの合成なので、各 target boundary coordinateについて \eqref{eq:plumbing-monomial} を得る。少なくとも一つの source nodeがtarget nodeへ寄与するため、boundary factorでは少なくとも一つの $a_{S,e}$ が正である。忘却・安定化のtoroidal combinatorics、および tropical forgetful mapとのcompatibilityについては Abramovich--Caporaso--Payne~\cite{ACP} も参照されたい。
+\end{proof}
+
+\begin{proposition}[局所 tensor estimate]
+\label{prop:local-wp-estimate}
+$L_e=-\log|t_e|$、$\rho_e=L_e^{-1/2}$、$\theta_e=\arg t_e$、$\rho_{\max}=\max_e\rho_e$ と置く。十分小さい plumbing chart上で
+\begin{equation}
+\label{eq:local-wp-estimate}
+ g_{\mathrm{cr}}
+ \le C\left(
+   \sum_e\dd\rho_e^2
+   +\rho_{\max}^6\sum_e\dd\theta_e^2
+   +|\dd w|^2
+ \right)
+\end{equation}
+が quadratic formsの意味で成り立つ。
+\end{proposition}
+
+\begin{proof}
+因子 $S$ ごとに場合分けする。まず $f_S(z)$ が $M_{0,4}$ の interiorにある場合、$f_S$ はplumbing chart上で正則に延長し、target WP metricは smoothである。従って pullback tensorの係数は $(t,w)$ でsmoothである。$t_e=e^{-\rho_e^{-2}+\sqrt{-1}\theta_e}$ から
+\[
+ |\dd t_e|
+ \le C|t_e|\bigl(\rho_e^{-3}|\dd\rho_e|+|\dd\theta_e|\bigr).
+\]
+Exponential factor $|t_e|$ は任意の $\rho_e$ の冪より速く0へ行くので、十分小さいchartではsmooth factorのradial contributionは $C\sum_e\dd\rho_e^2$、angular contributionは $C\rho_{\max}^6\sum_e\dd\theta_e^2$ で支配される。$w$-directionsは $C|\dd w|^2$ で抑えられる。
+
+次に $f_S(z)$ がboundaryにある場合を考える。$A_S=-\log|q_S|$ と置く。Wolpert--Obitsuのplumbing asymptotics~\cite{OW,WolpertCompletion} から、chartを十分縮小すれば
+\begin{equation}
+\label{eq:WP4-bound}
+ f_S^*g_{\mathrm{WP},4}
+ \le C_S\frac{|\dd\log q_S|^2}{A_S^3}
+\end{equation}
+が成り立つ。\Cref{lem:plumbing-monomial} により
+\[
+ A_S=\sum_ea_{S,e}L_e-\log|u_S|,
+ \qquad
+ \dd\log q_S=\dd\log u_S+
+ \sum_ea_{S,e}(-\dd L_e+\sqrt{-1}\dd\theta_e).
+\]
+$u_S$ はunitであり因子数も有限なので、chartを一度縮めれば
+\begin{equation}
+\label{eq:A-comparison}
+ c\sum_ea_{S,e}L_e
+ \le A_S\le
+ C\sum_ea_{S,e}L_e
+\end{equation}
+を、boundary factorすべてについて同じ型の定数で仮定できる。また
+\[
+ |\dd\log u_S|
+ \le C\left(|\dd w|+\sum_e|\dd t_e|\right).
+\]
+
+Radial termについて、$a_{S,e}>0$ なら \eqref{eq:A-comparison} と $\dd L_e=-2\rho_e^{-3}\dd\rho_e$ から
+\[
+ \frac{a_{S,e}|\dd L_e|}{A_S^{3/2}}
+ \le C|\dd\rho_e|.
+\]
+有限個のsummandsにCauchy--Schwarzを適用すると、全radial termsとそのcross termsは $C\sum_e\dd\rho_e^2$ で支配される。Angular termsについては、active $e$ の一つについて $A_S\ge cL_e$ であり、したがって $A_S^{-3}\le C\rho_{\max}^6$。よって
+\[
+ \frac{|\sum_ea_{S,e}\dd\theta_e|^2}{A_S^3}
+ \le C\rho_{\max}^6\sum_e\dd\theta_e^2.
+\]
+Unitの $w$-partは $A_S^{-3}|\dd w|^2\le C|\dd w|^2$、$t$-partは先ほどのexponential estimateにより同じ右辺で支配される。Mixed radial--angular--unit termsも
+$2|\langle u,v\rangle|\le |u|^2+|v|^2$ を有限回用いて吸収できる。
+
+以上を有限個の四元集合 $S$ について和すれば \eqref{eq:local-wp-estimate} を得る。定数は固定したplumbing chartを十分縮小した後、そのchart内で一様である。
+\end{proof}
+
+\begin{lemma}[boundary neighborhoodの内在直径]
+\label{lem:local-diameter}
+$z\in\ov M_{0,N}$ とする。Plumbing chart内で
+\[
+ 0<\rho_e<\varepsilon,
+ \qquad |w-w(z)|<\varepsilon
+\]
+により定める punctured neighborhoodを $U_\varepsilon$ とすると
+\[
+ \diam_{d_{\mathrm{cr}}}(U_\varepsilon\cap M_{0,N})
+ \le C_z\varepsilon.
+\]
+\end{lemma}
+
+\begin{proof}
+二点を $\rho_e,\theta_e,w$ を順に動かす coordinate pathで結ぶ。Angular differencesは最短方向を選べば高々 $\pi$ である。\Cref{prop:local-wp-estimate} から path lengthは
+\[
+ C\left(\sum_e|\Delta\rho_e|
+ +\varepsilon^3\sum_e|\Delta\theta_e|+|\Delta w|\right)
+ \le C_z\varepsilon
+\]
+である。
+\end{proof}
+
+\subsection{Completion theorem}
+\begin{theorem}[cross-ratio Weil--Petersson completion]
+\label{thm:wp-completion}
+$(M_{0,N},d_{\mathrm{cr}})$ の metric completionは、identity on $M_{0,N}$ を延長する canonical homeomorphismにより $\ov M_{0,N}$ と同一視される。このhomeomorphismは stratum-preserving、すなわち completion pointに対応する全四点stable limitsから復元される dual stable treeのcombinatorial stratumを保つ。
+\end{theorem}
+
+\begin{proof}
+証明を五段階に分ける。
+
+\smallskip
+\noindent\textit{Step 1: ambient product completion.}
+Product WP completion metricを $d_\Pi$ とする。任意のpiecewise smooth path $\gamma$ について
+\[
+ L_{g_{\mathrm{cr}}}(\gamma)=L_{g_\Pi}(F_N\circ\gamma),
+\]
+従って
+\begin{equation}
+\label{eq:product-lower}
+ d_\Pi(F_N(x),F_N(y))\le d_{\mathrm{cr}}(x,y).
+\end{equation}
+$d_{\mathrm{cr}}$-Cauchy sequence $(x_j)$ の imageは $\prod_{|S|=4}\ov M_{0,S}$ 内でCauchyであり、\Cref{prop:crossratio-embedding} のclosed image上の一点へ収束する。よって metric completion $\widehat M_{\mathrm{cr}}$ から $\ov M_{0,N}$ への連続写像
+\[
+ \Phi:\widehat M_{\mathrm{cr}}\longrightarrow\ov M_{0,N}
+\]
+が定まる。Interiorではidentityである。
+
+\smallskip
+\noindent\textit{Step 2: boundary pointsは有限距離にある。}
+$z\in\ov M_{0,N}$ のplumbing chartを取り、stratum coordinates $w=w(z)$ を固定し、各 $\rho_e$ を同じ速度で0へ送るradial pathを取る。\Cref{prop:local-wp-estimate} によりその長さは $C\sum_e|\Delta\rho_e|$ で有限である。従って任意のboundary point $z$ は $\widehat M_{\mathrm{cr}}$ の少なくとも一つの点から到達され、$\Phi$ は全射である。
+
+\smallskip
+\noindent\textit{Step 3: 同じboundary pointへ近づく列の一意性。}
+$z$ に近づく二列 $(x_j),(y_j)\subset M_{0,N}$ を取る。任意の $\varepsilon>0$ に対し、十分大きい $j$ では両列は \Cref{lem:local-diameter} の $U_\varepsilon$ に入るから
+\[
+ d_{\mathrm{cr}}(x_j,y_j)\le C_z\varepsilon.
+\]
+$\varepsilon\downarrow0$ とすれば、両列はcompletionで同一点を定める。従って $\Phi$ の各 fibreは一点である。
+
+\smallskip
+\noindent\textit{Step 4: 異なるboundary pointsの分離。}
+$z\ne z'$ なら closed immersion $\ov F_N$ により、ある四点factorで $f_S(z)\ne f_S(z')$ である。Product completion metricはHausdorffなので
+\[
+ d_\Pi(\ov F_N(z),\ov F_N(z'))>0.
+\]
+\eqref{eq:product-lower} から、$z,z'$ に近づく任意の二列の $d_{\mathrm{cr}}$-distanceはこの正数以下にはcollapseできない。従って Step 3の同一視以外は起こらず、$\Phi$ は全単射である。
+
+\smallskip
+\noindent\textit{Step 5: compactnessとtopology.}
+$\ov M_{0,N}$ はcompactである。各boundary point $z$ について、\Cref{lem:local-diameter} の $U_\varepsilon$ に $\rho_e=0$ のboundary facesも加えた通常のanalytic open neighborhood $\ov U_\varepsilon$ を取る。その interior part $\ov U_\varepsilon\cap M_{0,N}=U_\varepsilon$ は任意に小さい $d_{\mathrm{cr}}$-diameterを持つ。Interior pointには通常のRiemannian coordinate ballを取れる。これらが $\ov M_{0,N}$ を覆うので、compactnessから有限subcoverを取れる。Boundary neighborhoodsごとに一つのinterior representativeを選び、残るcompact interior部分には通常のRiemannian有限 $\varepsilon$-netを取れば、$(M_{0,N},d_{\mathrm{cr}})$ 全体の有限 $C\varepsilon$-netが得られる。従って $(M_{0,N},d_{\mathrm{cr}})$ はtotally boundedで、completion $\widehat M_{\mathrm{cr}}$ はcompactである。
+
+以上より $\Phi$ はcompact spaceからHausdorff space $\ov M_{0,N}$ への連続全単射なのでhomeomorphismである。構成は全四点stable limitsをそのまま保持し、Gerritzen--Herrlich--van der Putのcross-ratio reconstructionでdual treeを復元するため、stable-tree stratificationを保つ。Identity on the dense interiorを延長するhomeomorphismは一意なので、この意味でcanonicalである。
+\end{proof}
+
+\subsection{Minimal-excess case の明示化}
+\begin{corollary}[minimal-excess secondary completion]
+\label{cor:minimal-completion}
+$m=n+3$ とする。Gale dualityの同型
+\[
+ \Mord_{n,n+3}\simeq M_{0,n+3}
+\]
+の下で $\omega_{\mathrm{sec}}=\omega_{\mathrm{cr}}$、従って対応する Riemannian metrics は $g_{\mathrm{sec}}=g_{\mathrm{cr}}$ である。また
+\[
+ \Norm(Z_{n,n+3}^{\mathrm{curv}})
+ =Z_{n,n+3}^{\mathrm{curv}}
+ \simeq\ov M_{0,n+3}.
+\]
+従って controlled push-off仮定を用いずに canonical stratum-preserving homeomorphism
+\[
+ \widehat{(\Mord_{n,n+3},d_{\mathrm{sec}})}
+ \simeq\ov M_{0,n+3}
+\]
+を与える。
+\end{corollary}
+
+\begin{proof}
+$|I|=n-1$ の complement $S=[n+3]\setminus I$ は四元集合であり、curve period $r_I$ は Gale dualityの下で forgetful map $f_S$ に一致する。従って全 factorsの和は \eqref{eq:gcr} そのものである。Full period closureが $\ov M_{0,n+3}$ であることは \Cref{prop:minimal-excess} で示した。最後の主張は無条件な \Cref{thm:wp-completion} から従う。
+\end{proof}
+
+\section{結論}
+本稿は、一般位置 hyperplane arrangement complementの K\"ahler--Einstein metricが第一 blow-downで失う realization moduliを、curve strataに沿う scale-one hyperbolic factorsから回収した。
+一つの starに属する $n$ factorsは oriented Torelli dataとして次元論的に最小であり、全 curve periodsは orientation-free Riemannian Torelliと degeneration compactificationに必要な冗長性を持つ。
+Full curve-period embeddingの metric refinementとして secondary Weil--Petersson formが現れる。代数的には、Schaffler--Tevelev~\cite[Corollary~3.5]{ST} により full period closure の normalization は normalized Chow quotient と無条件に一致する。解析的には、finite mapの異なる sheetsが正の距離 barrierで分離されることを無条件に示した。一方、各一枝を一つのcompletion pointへ収縮させ、normalized Chow quotient全体を一般 $(n,m)$ のsecondary WP completionと同定する結果は、\Cref{hyp:controlled-pushoff} の下での条件付き定理である。Minimal-excess familyでは Gale dualityにより grouped periodsが全四点 forgetful mapsそのものとなり、\Cref{thm:wp-completion} から Deligne--Mumford compactification $\ov M_{0,n+3}$ への完備化を無条件に得る。
+
+Part Iの first coneと本稿の secondary periodsを合わせると、一般位置配置に対して
+\[
+ \text{leading incidence geometry}
+ \quad+\quad
+ \text{residual realization geometry}
+\]
+という二層構造が得られる。ここで residual periodsのmarkingは Part I のcomponent-labelled collarを伴う標識付き収束に由来し、裸のpGH limitに内在する追加構造とはみなさない。$d=N+2$ の中心配置はrigidであり、非自明なsecondary realization geometryは $d\ge N+3$ で初めて現れる。従って本稿と後半の超平面和への退化二部作との関係は、一般には概念的・局所模型的であり、未証明の論理的含意を主張しない。本稿の無条件定理は Part III 以降に依存しない。
+
+\appendix
+\section{Plumbing estimateの補足}
+\label{app:plumbing}
+
+\subsection{Smooth factorsの制御}
+$f_S(z)$ が $M_{0,4}$ の interiorにある場合、$f_S$ は plumbing chart上で正則に延長し、pullback metricは smoothである。$t_e=e^{-\rho_e^{-2}+\sqrt{-1}\theta_e}$ なので
+\[
+ |\dd t_e|
+ \le C|t_e|\bigl(\rho_e^{-3}|\dd\rho_e|+|\dd\theta_e|\bigr).
+\]
+十分小さい $\rho_e$ では $|t_e|\rho_e^{-3}$ と $|t_e|\rho_e^{-3}/\rho_{\max}^3$ は一様有界であり、smooth contributionは \eqref{eq:local-wp-estimate} の右辺で支配される。
+
+\subsection{Monomial factorの radial estimate}
+$A=\sum_fa_fL_f+O(1)$ とする。$a_e>0$ なら $A\ge c a_eL_e$ なので
+\[
+ \frac{a_e|\dd L_e|}{A^{3/2}}
+ \le C\frac{\rho_e^{-3}|\dd\rho_e|}{L_e^{3/2}}
+ =C|\dd\rho_e|.
+\]
+Angular termsについて $A\ge c\rho_{\max}^{-2}$ から $A^{-3}\le C\rho_{\max}^{6}$ を得る。これが \Cref{prop:local-wp-estimate} の二つの主要項である。
+
+\section{Controlled parallel push-off 仮定の解析的範囲}
+\label{app:finite-map-collapse}
+
+Log resolution上の compact fibre $E=\pi^{-1}(x)$ を有限個の adapted polydiscs $Q_1,\ldots,Q_s$ で覆う。各 $Q_\nu$ では境界 divisorを $z_1\cdots z_k=0$ とし、
+$z_i=e^{-\rho_i^{-2}+\sqrt{-1}\theta_i}$ と書く。
+
+一つの monomial $q=u\prod z_i^{a_i}$ に対し $A=-\log|q|$ と置くと
+\[
+ \frac{|\dd\log q|}{A^{3/2}}
+ \le
+ C\left(
+  \sum_{a_i>0}\frac{a_i|\dd L_i|}{A^{3/2}}
+  +\frac{|\dd\log u|+\sum_i a_i|\dd\theta_i|}{A^{3/2}}
+ \right),
+ \qquad L_i=\rho_i^{-2}.
+\]
+$a_i>0$ なら $A\ge c a_iL_i$ であるから、第一項を radial segment上で積分すると $C|\Delta\rho_i|$ 以下である。第二項は $A\to\infty$ のとき一様に0へ収束する。従って法線方向の総長は
+\[
+ L_{g_F}\le C\sum_i|\Delta\rho_i|+o(1)
+\]
+である。従って monomial normal directionsの collapseは証明済みであり、\Cref{hyp:controlled-pushoff} の未検証部分ではない。
+
+残る問題は、$E$ の divisor strataを横切る pathsを $\widetilde X\setminus D$ へ押し出す際に、次を同時かつ端点に一様に制御することである：
+\begin{enumerate}
+ \item adapted charts間の transitionとangular phasesのtotal variation；
+ \item 押し出したpathsの接ベクトルが対応する Whitney strataの接空間へ近づく速さ；
+ \item $E$ 上で定数であるsmooth target coordinatesのpathwise total variation；
+ \item $E$ 近傍の任意の二点を結ぶpath familyに関する一様性。
+\end{enumerate}
+固定した一つのpathのpointwise push-offや、$E$ のcompactness・path-connectednessだけでは、これらの一様評価は従わない。本稿はこの段階を \eqref{eq:controlled-pushoff-estimate} として仮定し、一般 finite period mapについて証明済みとは扱わない。将来 Whitney/subanalytic triangulationとSNC control dataからこの仮定を検証できれば、\Cref{thm:general-secondary-completion} は直ちに無条件化される。一方、\Cref{prop:finite-wp-branch-separation} のdistance barrierはこの問題と独立である。
+
+\section{参考文献}
+\begin{thebibliography}{99}
+\footnotesize
+
+\bibitem{UedaI}
+K. Ueda,
+\newblock Multiscale K\"ahler--Einstein geometry of hyperplane arrangement complements I:
+Asymptotic cones, metrized dual complexes, and volume asymptotics,
+\newblock Japanese final referee-response manuscript, v1.3 (2026).
+
+\bibitem{Kobayashi}
+R. Kobayashi,
+\newblock K\"ahler--Einstein metric on an open algebraic manifold,
+\newblock \emph{Osaka J. Math.} \textbf{21} (1984), 399--418.
+
+\bibitem{TianYau}
+G. Tian and S.-T. Yau,
+\newblock Existence of K\"ahler--Einstein metrics on complete K\"ahler manifolds and their applications to algebraic geometry,
+\newblock in \emph{Mathematical Aspects of String Theory}, Adv. Ser. Math. Phys. \textbf{1}, World Scientific, 1987, 574--628.
+
+\bibitem{ACP}
+D. Abramovich, L. Caporaso and S. Payne,
+\newblock The tropicalization of the moduli space of curves,
+\newblock \emph{Ann. Sci. \`Ec. Norm. Sup\'er. (4)} \textbf{48} (2015), 765--809,
+\newblock \href{https://arxiv.org/abs/1212.0373}{arXiv:1212.0373}.
+
+\bibitem{GHP}
+L. Gerritzen, F. Herrlich and M. van der Put,
+\newblock Stable $n$-pointed trees of projective lines,
+\newblock \emph{Indag. Math. (Proceedings)} \textbf{91} (1988), 131--163.
+
+\bibitem{DK}
+I. Dolgachev and M. Kapranov,
+\newblock Arrangements of hyperplanes and vector bundles on $\PP^n$,
+\newblock \emph{Duke Math. J.} \textbf{71} (1993), 633--664,
+\newblock \href{https://arxiv.org/abs/alg-geom/9210001}{arXiv:alg-geom/9210001}.
+
+\bibitem{DolgachevLog}
+I. Dolgachev,
+\newblock Logarithmic sheaves attached to arrangements of hyperplanes,
+\newblock \emph{J. Math. Kyoto Univ.} \textbf{47} (2007), 35--64,
+\newblock \href{https://arxiv.org/abs/math/0508044}{arXiv:math/0508044}.
+
+\bibitem{FMV}
+D. Faenzi, D. Matei and J. Vall\`es,
+\newblock Hyperplane arrangements of Torelli type,
+\newblock \emph{Compos. Math.} \textbf{149} (2013), 309--332,
+\newblock \href{https://arxiv.org/abs/1011.4611}{arXiv:1011.4611}.
+
+\bibitem{Kapranov}
+M. M. Kapranov,
+\newblock Chow quotients of Grassmannians. I,
+\newblock in \emph{I. M. Gel'fand Seminar}, Adv. Soviet Math. \textbf{16}, Part 2,
+Amer. Math. Soc., 1993, 29--110.
+
+\bibitem{KT}
+S. Keel and J. Tevelev,
+\newblock Geometry of Chow quotients of Grassmannians,
+\newblock \emph{Duke Math. J.} \textbf{134} (2006), 259--311,
+\newblock \href{https://arxiv.org/abs/math/0401159}{arXiv:math/0401159}.
+
+\bibitem{HKT}
+P. Hacking, S. Keel and J. Tevelev,
+\newblock Compactification of the moduli space of hyperplane arrangements,
+\newblock \emph{J. Algebraic Geom.} \textbf{15} (2006), 657--680,
+\newblock \href{https://arxiv.org/abs/math/0501227}{arXiv:math/0501227}.
+
+\bibitem{ST}
+L. Schaffler and J. Tevelev,
+\newblock Compactifications of moduli of points and lines in the projective plane,
+\newblock \emph{Int. Math. Res. Not. IMRN} 2022, no.~21, 17000--17078,
+\newblock \href{https://arxiv.org/abs/2010.03519}{arXiv:2010.03519}.
+
+\bibitem{KollarResolution}
+J. Koll\'ar,
+\newblock \emph{Lectures on Resolution of Singularities},
+\newblock Annals of Mathematics Studies \textbf{166}, Princeton University Press, 2007.
+
+\bibitem{MZ}
+R. Melrose and X. Zhu,
+\newblock Boundary behaviour of Weil--Petersson and fiber metrics for Riemann moduli spaces,
+\newblock \emph{Int. Math. Res. Not. IMRN} 2019, no.~16, 5012--5065,
+\newblock \href{https://arxiv.org/abs/1606.01158}{arXiv:1606.01158}.
+
+\bibitem{OW}
+K. Obitsu and S. A. Wolpert,
+\newblock Grafting hyperbolic metrics and Eisenstein series,
+\newblock \emph{Math. Ann.} \textbf{341} (2008), 685--706,
+\newblock \href{https://arxiv.org/abs/0704.3169}{arXiv:0704.3169}.
+
+\bibitem{WolpertCompletion}
+S. A. Wolpert,
+\newblock Geometry of the Weil--Petersson completion of Teichm\"uller space,
+\newblock in \emph{Surveys in Differential Geometry VIII}, Int. Press, 2003, 357--393,
+\newblock \href{https://arxiv.org/abs/math/0502528}{arXiv:math/0502528}.
+
+\end{thebibliography}
 \end{document}

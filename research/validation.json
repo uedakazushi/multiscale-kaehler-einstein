@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-20",
+  "engine": "LuaHBTeX 1.24.0 / TeX Live 2026",
+  "manuscripts": [
+    {
+      "source": "papers/conifold-localization.tex",
+      "pages": 57,
+      "pdf_sha256": "f4024b0c137fc22ca55655cbfd8f9d7cfbf7d66b893a450f9d3667777d3f1ef9",
+      "unresolved_or_box_warnings": [],
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+    },
+    {
+      "source": "papers/multiscale-kaehler-einstein.tex",
+      "pages": 39,
+      "pdf_sha256": "85fc1e119d1f63fa56d036a8c69f4e4d8ab3c8c8f281821fd9fdcc2c2dcf0958",
+      "unresolved_or_box_warnings": [],
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+    },
+    {
+      "source": "papers/research-directions.tex",
+      "pages": 10,
+      "pdf_sha256": "8ae53a8ed31638bc14fb26588d1bea916b5ec649a1c41a5079a32236e21dd2ac",
+      "unresolved_or_box_warnings": [],
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+    },
+    {
+      "source": "papers/secondary-periods-torelli.tex",
+      "pages": 28,
+      "pdf_sha256": "417292249842008849fca61d75a223879b99746f0edc199a78cb29d5a5a983b1",
+      "unresolved_or_box_warnings": [],
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+    },
+    {
+      "source": "papers/series-overview.tex",
+      "pages": 9,
+      "pdf_sha256": "3ab06a864ac35d0a5eb15bd2ce6fbb1ada0efabf020c029406ddab1928ceb770",
+      "unresolved_or_box_warnings": [],
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+    }
+  ],
+  "scope": "Build and representative-page visual checks; not independent mathematical validation.",
+  "visual_check": {
+    "sample": "First, middle and last pages of each manuscript (38 distinct pages across the three repositories).",
+    "result": "Reviewed rendered contact sheets; no visible clipping or overlap in sampled pages.",
+    "full_page_review": false
+  },
+  "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested."
+}

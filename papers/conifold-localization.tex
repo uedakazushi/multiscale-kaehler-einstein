@@ -1,92 +1,2639 @@
-% LuaLaTeX, project settings in ../.latexmkrc
-\documentclass[a4paper,11pt]{ltjsarticle}
-\usepackage[margin=27mm]{geometry}
-\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
-\usepackage[unicode,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue]{hyperref}
-\usepackage{booktabs}
+\RequirePackage{fix-cm}
+\documentclass[11pt,a4paper]{ltjsarticle}
+
+\usepackage[margin=26mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{enumitem}
+\usepackage{booktabs,longtable,array,tabularx}
+\usepackage{float,needspace}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref,bookmark}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{xcolor}
+\usepackage{lmodern}
+
+\definecolor{deepblue}{RGB}{25,65,105}
+\definecolor{darkgreen}{RGB}{30,100,60}
+\definecolor{darkorange}{RGB}{145,78,10}
+\definecolor{softblue}{RGB}{238,245,251}
+\definecolor{softgreen}{RGB}{239,248,241}
+\definecolor{softorange}{RGB}{252,246,235}
+
+\hypersetup{colorlinks=true,linkcolor=deepblue,citecolor=darkgreen,urlcolor=deepblue,
+ pdftitle={Multiscale Kahler--Einstein Geometry of Hyperplane Arrangement Complements III: Canonical Conifold Models, Conditional Actual pGH Gluing, Metrized Bergman Cones, and Residual Torelli Theory},
+ pdfauthor={Kazushi Ueda},
+ pdfsubject={Japanese mathematical-audit revision separating unconditional model results from conditional actual pGH gluing}}
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry III}
+\fancyhead[R]{\small 五部作第三部・数学監査改訂稿}
+\fancyfoot[C]{\thepage}
+
+\setlength{\parindent}{1em}\setlength{\parskip}{0.20em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.18em,topsep=0.25em}
+\setlist[enumerate]{leftmargin=2.5em,itemsep=0.18em,topsep=0.25em}
+\allowdisplaybreaks\emergencystretch=3em
+
+\newcommand{\PP}{\mathbb P}\newcommand{\RR}{\mathbb R}\newcommand{\CC}{\mathbb C}
+\newcommand{\ZZ}{\mathbb Z}\newcommand{\dd}{\mathrm d}\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\supp}{\operatorname{supp}}\newcommand{\Cone}{\operatorname{Cone}}
+\newcommand{\diam}{\operatorname{diam}}\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\Lk}{\operatorname{Lk}}\newcommand{\pGH}{\operatorname{pGH}}
+\newcommand{\Amp}{\operatorname{Amp}}\newcommand{\Null}{\operatorname{Null}}
+\newcommand{\dist}{\operatorname{dist}}\newcommand{\Lip}{\operatorname{Lip}}
+\newcommand{\tr}{\operatorname{tr}}\newcommand{\id}{\operatorname{id}}
+\newcommand{\cA}{\mathcal A}\newcommand{\cB}{\mathcal B}\newcommand{\cC}{\mathcal C}
+\newcommand{\cD}{\mathcal D}\newcommand{\cE}{\mathcal E}\newcommand{\cF}{\mathcal F}
+\newcommand{\cG}{\mathcal G}\newcommand{\cH}{\mathcal H}\newcommand{\cI}{\mathcal I}
+\newcommand{\cM}{\mathcal M}\newcommand{\cN}{\mathcal N}\newcommand{\cP}{\mathcal P}\newcommand{\cQ}{\mathcal Q}
+\newcommand{\cS}{\mathcal S}\newcommand{\cU}{\mathcal U}\newcommand{\cV}{\mathcal V}\newcommand{\ov}{\overline}
+\newcommand{\wt}{\widetilde}\newcommand{\eps}{\varepsilon}\newcommand{\om}{\omega}
+\newcommand{\BKE}{\mathfrak B_{\cA}^{\mathrm{KE}}}
+\newcommand{\Sigfull}{\Sigma_{\square}^{\mathrm{full}}}
+\newcommand{\Sigplus}{\Sigma_{\square}^{+}}
+\newcommand{\gsq}{g_{\square}}\newcommand{\omsq}{\omega_{\square}}
+\newcommand{\Fbox}{F_{\square}}\newcommand{\ddc}{\sqrt{-1}\,\partial\bar\partial}
+\newcommand{\Hloc}{\ensuremath{(\mathrm H_{\mathrm{loc}})}}
+\newcommand{\Hanc}{\ensuremath{(\mathrm H_{\mathrm{anc}})}}
+
 \theoremstyle{plain}
-\newtheorem{theorem}{定理}[section]
-\newtheorem{proposition}[theorem]{命題}
-\newtheorem{lemma}[theorem]{補題}
-\newtheorem{corollary}[theorem]{系}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{定義}
+\newtheorem{theorem}{定理}[section]\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}\newtheorem{corollary}[theorem]{系}
 \newtheorem{conjecture}[theorem]{予想}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}\newtheorem{hypothesis}[theorem]{仮定}
+\newtheorem{problem}[theorem]{問題}\newtheorem{example}[theorem]{例}
 \theoremstyle{remark}
-\newtheorem{remark}[theorem]{注意}
-\newcommand{\PP}{\mathbb P}
-\newcommand{\RR}{\mathbb R}
-\newcommand{\CC}{\mathbb C}
-\newcommand{\cC}{\mathcal C}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\diam}{diam}
-\DeclareMathOperator{\Ric}{Ric}
-\DeclareMathOperator{\Sk}{Sk}
-\title{Multiscale Kähler--Einstein Geometry III\\Conifold Localization and Global Wall Problem}
-\author{}
-\date{2026年11月20日 / GitHub移行用再構成草稿 v0.1}
-\begin{document}
-\maketitle
+\newtheorem{remark}[theorem]{注意}\newtheorem{warning}[theorem]{警告}
+
+\crefname{theorem}{定理}{定理}\crefname{proposition}{命題}{命題}
+\crefname{lemma}{補題}{補題}\crefname{corollary}{系}{系}
+\crefname{conjecture}{予想}{予想}\crefname{definition}{定義}{定義}
+\crefname{hypothesis}{仮定}{仮定}\crefname{problem}{問題}{問題}
+\crefname{example}{例}{例}\crefname{remark}{注意}{注意}\crefname{warning}{警告}{警告}
+\crefname{figure}{図}{図}\crefname{table}{表}{表}
+
+\newtcolorbox{statusbox}[1][]{enhanced,breakable,colback=softorange,colframe=darkorange,
+ boxrule=0.7pt,arc=1mm,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,
+ title={証明状況},fonttitle=\bfseries,#1}
+\newtcolorbox{mainbox}[1][]{enhanced,breakable,colback=softblue,colframe=deepblue,
+ boxrule=0.7pt,arc=1mm,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,
+ title={主結果},fonttitle=\bfseries,#1}
+\newtcolorbox{auditbox}[1][]{enhanced,breakable,colback=softgreen,colframe=darkgreen,
+ boxrule=0.7pt,arc=1mm,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,
+ title={証明監査},fonttitle=\bfseries,#1}
+
+\title{\bfseries Multiscale K\"ahler--Einstein Geometry of\\
+Hyperplane Arrangement Complements III\\[2mm]
+\large Canonical Conifold Models, Conditional Actual pGH Gluing,\\
+Metrized Bergman Cones, and Residual Torelli Theory}
+\author{植田一石}
+\date{五部作第三部・数学監査改訂稿（2026年8月31日）}
+
+\begin{document}\maketitle
 
 \begin{abstract}
-Singular log-canonical contractionから現れるconifold pairの局所化、
-canonical metrized cell、残差Torelliとglobal pGH問題を区別する。
-元Library Part III v1.2（37頁）にはlocalizationの証明があるとされるが、
-その外部入力を今回独立には監査していない。global pGHは未証明である。
-\end{abstract}
-\section{Conifold pairと局所model}
-標準3次元conifoldのaffine方程式は
+本稿は、超平面配置補空間の multiscale K\"ahler--Einstein 幾何を扱う五部作の第三部である。
+Rank-four arrangements $M_6$ と $M_7(\lambda,\mu)$ の log-canonical models は、それぞれ三つおよび二つの ordinary double points を持つ toric threefold であり、各 node の boundary pair germ は標準 toric conifold pair
 \[
- C=\{(x,y,z,w)\in\CC^4:xy=zw\}
+ (\{XY=ZW\},B_{\mathrm{tor}})
 \]
-である。境界にtoric divisorを入れたpairが局所modelになる。
-\begin{proposition}
-$C$の原点以外のZariski tangent空間は複素次元3で、
-原点はordinary double pointである。
-\end{proposition}
-\begin{proof}
-$f=xy-zw$のgradientは$(y,x,-w,-z)$である。
-これは原点だけで零となる。$f$は非退化二次形式であり、
-原点はordinary double pointである。
-\end{proof}
-元論文のexplicit modelsの記録では$M_6$はdegree 5で3 ODP、
-$M_7$はdegree 17で2 ODPをもち、
-boundary pair germは標準toric conifold pairに同型である。
-二つのsmall-resolution presentationによるzero-length quotientは同じと記される。
-\section{Canonical cellと局所KE比較}
-元論文では中央chamberに$da^2+db^2+dc^2$というmetricを与え、
-singular transverse cell angleを$8\pi/3$として計算する。
-fixed arrangement・fixed nodeでのqualitative local KE localizationは、
-Tian--Yau/Yauの存在・完備性、pair-end volume comparison、
-localized Chern--Luなどに依存する。ここで引用定理の仮定は未監査である。
-\section{Global wall problem}
-\begin{theorem}[条件付き主張の形式]
-central, lateral, ordinary/tie sectorsを横断し、
-すべてのmodel pathsのtemplate liftsとkernel connectorsが
-uniform $o(R)$ additive errorで追跡でき、
-sector overlapがcompatibleだと仮定する。
-このとき、対応するfinite proper model coneへの距離$R^{-1}$の
-pointed GH収束は、このpath-liftingの上下評価から帰結する。
-\end{theorem}
-\begin{proof}
-model cone上の有限長経路をsectorごとに分割し、仮定のliftによる
-距離上界を得る。縮小後の加法誤差は$o(R)/R=o(1)$である。
-depth mapが与える逆向きの非伸長/近似下界と、net性を合わせて
-pointed GH近似が得られる。ただし記載した全仮定のactual KEでの構成は
-この証明には含まれない。
-\end{proof}
-\begin{conjecture}[actual metricのglobal pGH]
-上のwall-compatible tracked liftingは、対象のactual
-arrangement complementのKE metricに対し成立する。
-\end{conjecture}
-\begin{remark}
-元Part III v1.1にあったglobal pGHの無条件主張はv1.2で撤回されている。
-局所定理・条件付き定理・予想を混同しない。
+に一致する。$M_7$ ではこの pair germ、log-canonical model、および first-order conifold cell は realization parameters に依存しない。
+
+Conifold torus end の logarithmic universal cover は正方形断面を持つ tube domain である。Canonical barrier から complete negative K\"ahler--Einstein model metric $\omega_{\square}$ を構成し、その real-depth translation completion が $\RR\times C_{8\pi/3}$ であること、四辺の spherical length が $\pi/2$、二本の intrinsic diagonal が $\arccos(-1/3)$ であることを示す。Phase collapse は actual arrangement end に現れる positive truncated region
+\[
+ E_{\square}(Y_*)=\{y_i\ge Y_*\}/(2\pi H_{\ZZ})
+\]
+に限定する。Full tube の negative radial side では phase lattice lengths が指数的に増大し得るためである。また affine immersion／moving frame の all-order asymptotics は用いず、Wang equation と interior Schauder estimates から従う Blaschke metric 自身の全階漸近だけを使う。
+
+Actual metric については、$K_Y+B$ が big, nef, and ample modulo $B$ であることから、Tian--Yau の almost-complete metric と Berman--Guenancia--Dang--Vu metricを同定し、genuine completeness と normal Poincar\'e lower barrierを得る。一方、ordinary endで書かれる局所 Poincar\'e productは一般には座標変換を越えて global exact K\"ahler--Einstein metricとして貼り合うとは限らない。このため、whole-end exact reference metrics、outer-collar comparison、および parent/refinement compatibilityを解析的入力 \Hloc として分離する。\Hloc の下では Datar--Fu--Song 型の point-centred determinant-ratio estimateと局所 Aubin--Yau estimateにより ordinary sectors と positive square endsの whole-end $C^\infty$ localizationが従う。
+
+Global pointed Gromov--Hausdorff convergenceについては、target distance functions の scalar calibration に基づく abstract gluing theoremを、単一の global selector mapではなく local skeletal maps の graph correspondenceとして無条件に証明する。Actual portal geometryに必要な finite-depth-preserving interior anchors、有限 chart-nerve connectors、prescribed-start/terminal lifts、有限 label remove/add transport、および radial densityは、独立の幾何学的入力 \Hanc として明示する。各 target transitionは
+\[
+ I_-\longrightarrow I_-\cap I_+\longrightarrow I_+
+\]
+という有限 label remove/add 手順で持ち上げる。\Hloc と \Hanc の双方を仮定すれば、portal-central modification、square model lift error、actual/model localization、unit/LSE errorを一つの式で追跡し、$M_6$ および generic $M_7(\lambda,\mu)$ に対して
+\[
+ (U_{\cA},R^{-1}d_{\omega_{\cA}},o)
+ \xrightarrow[R\to\infty]{\mathrm{pGH}}
+ (\mathfrak B_{\cA}^{\mathrm{KE}},0)
+\]
+を得る。したがって actual global pGH statementは本稿では条件付きである。これとは独立に、algebraic conifold models、canonical square metricと positive model pGH、abstract calibrated gluing theorem、および residual Torelli/Weil--Petersson resultsは無条件に保たれる。極限模型は nested-set subdivision と small-resolution presentation に依存せず、$M_7$ では $(\lambda,\mu)$ に依存しない。
+
+最後に、$M_7$ の labelled realization space を $M_{0,5}$ と同定し、一つの node に隣接する二つの residual four-punctured curves だけで $(\lambda,\mu)$ を復元する single-node residual Torelli theorem を証明する。五つの residual Weil--Petersson forms の和による metric completion は $\ov M_{0,5}$ である。
+\end{abstract}
+
+
+\begin{statusbox}
+独立数学監査により証明範囲を二層に分けた。明示的 $M_6/M_7$ models、canonical square block、positive model pGH、abstract calibrated anchored-graph theorem、および residual Torelli/WP completionは無条件の結果である。Actual ordinary/square whole-end localizationは \Hloc、finite-depth anchors・指定端点 gallery transport・radial densityは \Hanc の下での条件付き結果とする。従って actual global pGH theoremも \Hloc+\Hanc の下でのみ主張する。旧稿の ``unconditional'' という表示は撤回し、後半の構成計算は両仮定から abstract theoremへの還元として読む。
+\end{statusbox}
+
+\tableofcontents
+
+\section{序論}
+
+\subsection{問題設定}
+$\cA$ を $\PP^n$ の超平面配置とし
+\[
+ U_{\cA}=\PP^n\setminus\bigcup_{H\in\cA}H
+\]
+と置く。Smooth SNC compactification $(Y,B)$ で $K_Y+B$ が ample の場合、$U_{\cA}$ 上の complete finite-volume negative K\"ahler--Einstein metric の first blow-down は、boundary dual complex の Euclidean orthant realizationによって記述される。Part~I はこの ample SNC case を扱う~\cite{UedaI}。
+
+本稿の対象では $K_Y+B$ は big and nef だが ample ではなく、log-canonical morphism は boundary 内の $(-1,-1)$-curves を収縮して ordinary double points を作る。従って wonderful model 上の一部の double-log depth directions は first scale で零距離となり、Bergman complex の non-simplicial square が intrinsic metric cell として現れる。最初の局所モデルが conifold square である。
+
+\subsection{証明範囲の切り分け}
+本版の改訂は次の五原則に従う。
+\begin{enumerate}[label=(\roman*)]
+ \item big-and-nef theory が直接与える ``almost complete'' と genuine metric completenessを区別した上で、Tian--Yau 型存在定理と Yau の completion argumentにより後者を証明する。
+ \item canonical tube の first-scale statementは positive truncated endに限定する。
+ \item Dumas--Wolf 型漸近から使用するのは Blaschke metricの scalar/tensor estimateだけであり、moving-frame estimateを自動的帰結とはしない。
+ \item actual localizationに必要な global exact referenceと outer-collar comparisonを \Hloc として明示し、complete pair-end stability theoremが与える条件付き帰結と区別する。
+ \item actual portal geometryに必要な finite-depth interior anchors、指定端点 transport、radial densityを \Hanc として明示し、abstract gluing theorem自体とは区別する。
+\end{enumerate}
+
+\subsection{三つの尺度}
+本稿では以下を区別する。
+\begin{enumerate}[label=(\roman*)]
+ \item \textbf{analytic pair-germ scale}: node の toric pair germ と canonical square-tube model；
+ \item \textbf{first metric scale}: positive metrized Bergman cone と、\Hloc+\Hanc の下での actual pGH theorem；
+ \item \textbf{residual scale}: lateral boundary strata 上の punctured curves と realization parameters。
+\end{enumerate}
+$M_7(\lambda,\mu)$ では analytic pair germ と first model cone は $(\lambda,\mu)$ を忘れるが、single-node residual data はそれを完全に復元する。この secondary/residual viewpoint は Part~II~\cite{UedaII} と相補的である。
+
+\begin{remark}[Part~I/II への依存]
+Part~I~\cite{UedaI} から用いるのは ordinary depth normalizationと nested-set languageであり、本稿の actual whole-end localizationを Part~I の定理から引用してはいない。Ample residual pairsに対する既知の SNC asymptoticsは局所入力にはなるが、big-and-nef actual endの \Hloc を自動的には与えない。Part~II~\cite{UedaII} は residual viewpointを共有するが、actual pGHへの論理的入力ではなく、本稿の cross-ratio／WP statementsは本稿内で再証明する。
 \end{remark}
-\section{残差Torelli}
-元原稿では$M_{0,5}$の五つのforgetful mapsを用い、
-一つのnodeから$(\lambda,\mu)$を復元する式
-$\lambda=r_3,\ \mu=r_3/r_1$とresidual WP completionを扱う。
-この再構成稿に独立の完成証明はまだ移っていない。
+
+\subsection{主結果}
+$M_6$ を rank four、ground set $[6]$、nonbases $A=1234$, $B=1356$, $C=2456$ を持つ matroid とする。$M_7$ は $M_6$ に
+\[
+ v_7=e_1+\lambda e_2+\mu e_3,
+ \qquad \lambda\mu(\lambda-1)(\mu-1)(\lambda-\mu)\ne0
+\]
+を加えた generic principal extension である。
+
+\begin{theorem}[明示的 log-canonical conifold models]\label{thm:intro-algebraic}
+$M_6$ の log-canonical model $X_6$ は degree $5$ の normal toric threefold で、三つの ordinary double points を持つ。$M_7(\lambda,\mu)$ の log-canonical model $X_7$ は $(\lambda,\mu)$ に依存しない degree $17$ の normal toric threefold で、二つの ordinary double points を持つ。各 node における boundary pair germ は $(\{XY=ZW\},B_{\mathrm{tor}})$ に一致する。
+\end{theorem}
+
+\begin{theorem}[positive square model と canonical cell]\label{thm:intro-square}
+Canonical square tube の real-depth translation completion は $\RR\times C_{8\pi/3}$ である。四本の extreme rays の隣接 spherical distance は $\pi/2$、opposite distance は $\arccos(-1/3)$ である。二つの small-resolution presentations は kernel leaves を商した後に同じ quotient length space を与える。
+
+Phase collapse と fixed-basepoint model convergence は positive truncated end $E_{\square}(Y_*)$ に対して成立し、その target は closed positive subcone $\Sigplus$ である。Full tube 全体の fixed-basepoint balls における phase collapse は成立しない。
+\end{theorem}
+
+\begin{theorem}[scalar calibrated anchored-graph gluing]\label{thm:intro-calibration}
+有限 proper geodesic cone $B$ に対する local skeletal maps が local nonexpansion、sublinear-width overlap value coherence、controlled cutoffs、endpoint anchoring、prescribed-anchor gallery transport、および radial densityを満たすなら、local graphsの和
+\[
+ \Gamma_R=\bigcup_\alpha\{(x,S_{\alpha,R}(x)):x\in U_{\alpha,R}\}
+\]
+は rescaled source balls と $B$ の間の distortion $o(1)$ の correspondenceを与える。Lower-distance estimateは
+\[
+ F_{b,R}=\sum_\alpha\chi_{\alpha,R}\,d_B(S_{\alpha,R},b)
+\]
+を用いて得られ、source geodesicの wall-crossing itineraryを数えない。Upper-distance estimateは exact fibresではなく、両 endpointsを明示的 local anchorsへ接続してから target galleryを transportすることで得られる。
+\end{theorem}
+
+\begin{hypothesis}[whole-end localization package \Hloc]\label{hyp:Hloc}
+各 ordinary augmented end type $\mathfrak f$ に対し、その whole end上に ideal boundary方向へ completeな exact negative K\"ahler--Einstein reference metric $\theta_{\mathfrak f}$ が存在し、次を満たすと仮定する。
+\begin{enumerate}[label=(L\arabic*)]
+ \item $\theta_{\mathfrak f}$ は infinite-order quasi-bounded geometryを持ち、actual metricとの fixed-width outer-collar comparison、volume-ratio bound、および共通 depth parameterに関する complete pair-end stability theoremの仮定を満たす。
+ \item Formal local product $g_{\mathfrak f}^{\mathrm{prod}}$ に対し
+ \[
+  \|\nabla_{\theta_{\mathfrak f}}^k
+    (\theta_{\mathfrak f}-g_{\mathfrak f}^{\mathrm{prod}})\|_{\theta_{\mathfrak f}}
+  \longrightarrow0
+ \]
+ が whole endの deep regionで一様に成り立つ。また fixed outer collarsでは $\theta_{\mathfrak f}$ と formal productsが一様に比較可能で、strict parent/refinement collarsでも同じ component labelsの下で全階漸近が互換である。ここで formal product自身が global exact metricとして貼り合うことは仮定しない。
+ \item 各 conifold nodeの positive square endでは、actual metricと canonical exact metric $\gsq$ が同じ complete pair-end hypotheses、特に fixed-width outer-collar comparisonを一様に満たす。
+\end{enumerate}
+有限個の incidence types、nodes、chosen component-labelled chartsについて定数と全有限階 error moduliは一様とする。
+\end{hypothesis}
+
+\begin{hypothesis}[actual anchor/transport package \Hanc]\label{hyp:Hanc}
+Scales $T_R=o(h_R)$、$h_R=o(R)$ を取った actual ordinary、square-lateral、square-central blocksについて、次の dataが一様に存在すると仮定する。
+\begin{enumerate}[label=(A\arabic*)]
+ \item recorded finite depthsを保つ local endpoint anchorsと、長さ $O(T_R+h_R)$ の paths、および有限 good-cover nerve connectors；
+ \item 各 safe cell segmentに対する prescribed-start/terminal liftと、common true faceで labelsを removeしてから addする portal transitions；
+ \item 指定された二 anchorsを結ぶ bounded-segment gallery transportで total additive error $o(R)$；
+ \item cone vertexの fixed anchorから任意の半径 $O(R)$ の target pointへ至る one-sided radial transportと $o(R)$-density。
+\end{enumerate}
+全 pathsは enlarged $O(R)$ windowに留まり、target tracking errorも $o(R)$ とする。
+\end{hypothesis}
+
+\begin{theorem}[条件付き actual global pGH]\label{thm:intro-global-pgh}
+$\cA=M_6$ または generic $M_7(\lambda,\mu)$ とする。$\omega_{\cA}$ を $U_{\cA}$ 上の unique complete finite-volume negative K\"ahler--Einstein metricとする。任意の固定基点 $o\in U_{\cA}$ に対し
+\Hloc と \Hanc を仮定すれば、
+\[
+ (U_{\cA},R^{-1}d_{\omega_{\cA}},o)
+ \xrightarrow[R\to\infty]{\mathrm{pGH}}
+ (\BKE,0).
+\]
+極限は chosen nested-set subdivision と small-resolution presentation に依存しない。$M_7$ の model cone は $(\lambda,\mu)$ に依存しない。
+\end{theorem}
+
+\begin{theorem}[single-node residual Torelli]\label{thm:intro-torelli}
+$M_7$ の labelled realization space は $M_{0,5}$ と同型である。Node $q_{01}$ に隣接する二つの variable residual four-punctured curves の cross-ratios は
+\[
+ (r_3,r_1)=\left(\lambda,\frac{\lambda}{\mu}\right),
+\]
+従って $\lambda=r_3$, $\mu=r_3/r_1$ で復元される。五 residual Weil--Petersson forms の pullback の和による metric completion は $\ov M_{0,5}$ である。
+\end{theorem}
+
+\subsection{証明状況の一覧}
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}p{0.35\textwidth}p{0.18\textwidth}X@{}}
+\toprule
+項目 & 状況 & 本版での処理\\ \midrule
+Explicit degree $5/17$ models & 無条件 & Semigroup、intersection、node chartsを直接計算。\\
+Degree/null formula in $\PP^n$ & 交点数は無条件 & 高次元 KE/pGH は主張しない。\\
+Canonical $8\pi/3$ cell & 無条件 & Positive end と full translation completionを区別。\\
+Model phase collapse & positive endで無条件 & Full tube statementを撤回し反例を記載。\\
+Metric Titeica asymptotics & 無条件 & Moving-frame claimを削除。\\
+Actual KE existence/completeness & 無条件 & ample-modulo-boundary completenessと Dang--Vu identification。\\
+Whole-end ordinary localization & \Hloc の下で条件付き & Global exact references、outer collars、pair-end stability。\\
+Whole-end square localization & \Hloc の下で条件付き & Positive pair-end stabilityと ordinary lateral control。\\
+Abstract scalar calibration & 無条件 & \cref{sec:calibration} で完全証明。\\
+Finite-depth endpoint anchors & \Hanc の下で条件付き & Recorded depths、finite-nerve connectors、radial representatives。\\
+Actual portal/gallery transport & \Hloc+\Hanc の下で条件付き & Actual/model comparisonと指定端点 liftsを併用。\\
+Actual global pGH & \Hloc+\Hanc の下で条件付き & Local-graph correspondenceへ両 packageを適用。\\
+Residual Torelli/WP completion & 無条件 & Infinity chart と codimension-two plumbingを使用。\\ \bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{論文の構成}
+\Cref{sec:algebraic} で explicit log-canonical modelsを構成し、ample-modulo-boundary completion theoremにより actual metricの completenessを確立する。\Cref{sec:square-model} で positive canonical square endと intrinsic cellを解析する。\Cref{sec:actual-localization} は \Hloc の内容と、それから ordinary／square localizationを導く pair-end reductionを記録する。\Cref{sec:model-cone} で finite model coneと片側 portal collarsを構成し、\Cref{sec:calibration} で abstract scalar calibration theoremを無条件に証明する。\Cref{sec:actual-portal} は \Hanc の定量形を記録し、\Hloc+\Hanc から conditional actual global pGHを導く。\Cref{sec:residual} で residual Torelliと WP completionを扱う。
+
+\section{明示的 log-canonical conifold models}\label{sec:algebraic}
+
+\subsection{Bergman squares と conifold cones}
+Arrangement matroid $M$ の connected flat $F$ に対応する Bergman rayを~\cite{FS,HKT}
+\[
+ \rho_F=\left[\sum_{i\in F}e_i\right]\in\ZZ^E/\ZZ(1,\dots,1)
+\]
+と書く。$M_6$ の Bergman complex は三つの square faces
+\[
+ 1A3B,\qquad 2A4C,\qquad 5B6C
+\]
+を持つ。例えば最初の square では
+\begin{equation}\label{eq:square-relation}
+ \rho_1+\rho_3=\rho_A+\rho_B.
+\end{equation}
+
+\begin{proposition}[square cone は conifold]\label{prop:square-is-conifold}
+\Cref{eq:square-relation} の四本の rays が張る saturated rank-three cone の affine toric variety は
+\[
+ \{XY=ZW\}\subset\CC^4
+\]
+と同型である。他の二 squares、および $M_7$ の二 nodes $q_{01},q_{02}$ に対応する square conesも同様である。
+\end{proposition}
+
+\begin{proof}
+$e_A+e_B=e_1+e_3+(1,\dots,1)$ なので \cref{eq:square-relation} を得る。例えば $\rho_1,\rho_3,\rho_A-\rho_1-\rho_3$ を span lattice の基底に取ると、四本の rays は lattice square 上の標準 cone へ移る。Adjacent triples の determinant は $\pm1$、唯一の primitive relation は \cref{eq:square-relation} である。従って semigroup algebra は四生成元一関係 $XY-ZW$ を持つ。
+\end{proof}
+
+\subsection{\texorpdfstring{$M_6$}{M6} の projective rigidity}
+$M_6$ の標準 realization を
+\begin{equation}\label{eq:M6-standard}
+ v_1=e_1,\quad v_2=e_2,\quad v_3=e_3,\quad
+ v_4=e_1+e_2+e_3,\quad v_5=e_4,\quad v_6=e_1+e_3+e_4
+\end{equation}
+とする。
+
+\begin{proposition}[projective rigidity]\label{prop:M6-rigidity}
+Labelled matroid $M_6$ の complex realizations は、$\mathrm{PGL}_4$ と各 column の rescaling を除いて一意であり、\cref{eq:M6-standard} へ移せる。
+\end{proposition}
+
+\begin{proof}
+$v_1,v_2,v_3,v_5$ を基底に正規化する。Circuit supports $A,B$ により
+\[
+ v_4=ae_1+be_2+ce_3,
+ \qquad
+ v_6=de_1+ee_3+fe_4
+\]
+で全係数は非零である。Circuit $C=2456$ の dependence は $ae=cd$ と同値である。Basis vectors と $v_4,v_6$ の rescaling により全係数を $1$ にできる。
+\end{proof}
+
+双対 projective coordinates $[x_1:x_2:x_3:x_4]$ に対し
+\begin{equation}\label{eq:u-coordinates}
+ (u_0,u_1,u_2,u_3)=(x_4,x_2,x_1,x_1+x_3)
+\end{equation}
+と置く。三つの四重点は
+\[
+ p_0=[1:0:0:0],\qquad p_1=[0:1:0:0],\qquad p_2=[0:0:1:0]
+\]
+となり、六超平面は
+\[
+ u_2,\quad u_1,\quad u_3-u_2,\quad u_1+u_3,\quad u_0,\quad u_0+u_3
+\]
+の零点である。
+
+\subsection{次数五の三-node model}
+$Y=\operatorname{Bl}_{p_0,p_1,p_2}\PP^3$ とし、$H$ を hyperplane class の pullback、$E_i$ を exceptional divisors とする。六超平面の strict transforms と $E_0+E_1+E_2$ の和を $B_6$ とする。
+
+\begin{proposition}[log-canonical class と degree-one generation]\label{prop:L6-generation}
+\[
+ K_Y+B_6=2H-E_0-E_1-E_2=:L_6.
+\]
+Section ring $R(Y,L_6)$ は degree one で生成され、$H^0(Y,L_6)$ は
+\[
+ A=u_0u_1,\quad B=u_0u_2,\quad C=u_0u_3,\quad D=u_1u_2,
+ \quad E=u_1u_3,\quad F=u_2u_3,\quad G=u_3^2
+\]
+を基底に持つ。
+\end{proposition}
+
+\begin{proof}
+一点を blow up したとき、そこを通る boundary hyperplanes の本数を $r$ とすると、$K+B$ における exceptional coefficient は $3-r$ である。各 $p_i$ には四本が通るので表示を得る。
+
+$mL_6$ の monomial section の exponent は
+\[
+ a_0+a_1+a_2+a_3=2m,
+ \qquad 0\le a_0,a_1,a_2\le m
+\]
+を満たす。$m$ 個の boxes を用意し、各 box の total capacity を $2$、labels $0,1,2,3$ の一 box あたりの capacities を $1,1,1,2$ とする。Label $i$ の総供給量を $a_i$ とした integral flow problem の cut inequalities は、singletons $0,1,2$ について上の inequalities、label $3$ について $a_3\le2m$、二 labels 以上について total degree $2m$ から従う。Integral max-flow--min-cut theorem により各 exponent vector は $m$ 個の degree-one vectors の和である。
+\end{proof}
+
+\begin{theorem}[次数五の三-node model]\label{thm:X6}
+$|L_6|$ が定める morphism
+\[
+ \phi_6:Y\longrightarrow X_6\subset\PP^6_{[A:B:C:D:E:F:G]}
+\]
+は log-canonical morphism であり、$X_6$ の homogeneous ideal は
+\begin{equation}\label{eq:X6-ideal}
+ AF-CD,\quad AG-CE,\quad BE-CD,\quad BG-CF,\quad DG-EF
+\end{equation}
+で生成される。$X_6$ は normal toric threefold で
+\[
+ \deg X_6=L_6^3=5.
+\]
+$\phi_6$ は三本の coordinate lines の strict transforms $\ell_{01},\ell_{02},\ell_{12}$ だけを収縮し、その images は ordinary double points である。これ以外に singularities はない。
+\end{theorem}
+
+\begin{proof}
+Elimination は \cref{eq:X6-ideal} を与え、\cref{prop:L6-generation} により image は $\operatorname{Proj}R(Y,L_6)$ である。Intersection number は
+\[
+ (2H-E_0-E_1-E_2)^3=8-1-1-1=5.
+\]
+三本の curves について $L_6\cdot\ell_{ij}=2-1-1=0$ であり、他の torus-invariant curves では正である。各 normal bundle は $\mathcal O(-1)\oplus\mathcal O(-1)$ である。例えば affine chart $A=1$ では $F=CD$、$G=CE$、$BE=CD$ となるので $q_{01}$ の germ は $BE=CD$ である。他の二点も cyclic permutation で同じである。
+\end{proof}
+
+\begin{corollary}[標準 toric boundary-pair germs]\label{cor:X6-pairs}
+各 $q_{ij}$ の近傍で
+\[
+ (X_6,B_{6,\mathrm{lc}})\simeq(\{XY=ZW\},B_{\mathrm{tor}}).
+\]
+特に local pair chart に monomial-times-unit error はない。
+\end{corollary}
+
+\subsection{二次元 realization family \texorpdfstring{$M_7(\lambda,\mu)$}{M7(lambda,mu)}}
+\Cref{eq:M6-standard} に
+\begin{equation}\label{eq:M7-column}
+ v_7=e_1+\lambda e_2+\mu e_3,
+ \qquad
+ \lambda\mu(\lambda-1)(\mu-1)(\lambda-\mu)\ne0
+\end{equation}
+を加える。$A_0=12347$ と置く。
+
+\begin{proposition}[positive-dimensional conifold test family]\label{prop:M7-family}
+\Cref{eq:M7-column} の Zariski-open set 上で labelled matroid $M_7$ は一定であり、その Bergman fan は rays $1,A_0,3,B$ が張る non-simplicial maximal square cone を持つ。さらに
+\[
+ \rho_1+\rho_3=\rho_{A_0}+\rho_B.
+\]
+Labelled realization space は二次元である。
+\end{proposition}
+
+\begin{proof}
+Genericity condition は意図しない $4\times4$ minors の消滅をちょうど除く。Original six columns を label ごとに固定する projective automorphism は scalar なので、$e_1$ coefficient を $1$ にした $(\lambda,\mu)$ は genuine coordinates である。Square interior の initial matroid の connected components は
+\[
+ \{1\}\oplus U_{1,\{2,4,7\}}\oplus\{3\}\oplus U_{1,\{5,6\}}
+\]
+であり、relation は直接従う。
+\end{proof}
+
+\Cref{eq:u-coordinates} では第七超平面は
+\begin{equation}\label{eq:H7}
+ \ell_7=\lambda u_1+(1-\mu)u_2+\mu u_3=0.
+\end{equation}
+Multiplicity は $p_0$ で五、$p_1,p_2$ で四である。
+
+\subsection{次数十七の二-node model}
+七超平面の strict transforms と $E_0+E_1+E_2$ の和を $B_7$ とする。
+
+\begin{theorem}[次数十七の二-node model]\label{thm:X7}
+\[
+ K_Y+B_7=3H-2E_0-E_1-E_2=:L_7.
+\]
+$R(Y,L_7)$ は degree one で生成され、$H^0(Y,L_7)$ は
+\[
+ \left\{u_0^{a_0}u_1^{a_1}u_2^{a_2}u_3^{a_3}:
+ \sum a_i=3,\ a_0\le1,\ a_1,a_2\le2\right\}
+\]
+という十四個の monomials を基底に持つ。従って
+\[
+ X_7:=\operatorname{Proj}R(Y,L_7)\subset\PP^{13}
+\]
+は $(\lambda,\mu)$ に依存しない normal toric threefold で
+\[
+ \deg X_7=L_7^3=27-8-1-1=17.
+\]
+Log-canonical morphism は $\ell_{01},\ell_{02}$ だけを収縮し、二つの ordinary double points $q_{01},q_{02}$ を作る。$\ell_{12}$ は収縮されない。
+\end{theorem}
+
+\begin{proof}
+$mL_7$ の exponent vectors は
+\[
+ a_0+a_1+a_2+a_3=3m,
+ \qquad a_0\le m,\quad a_1,a_2\le2m
+\]
+を満たす。Boxes の total capacity を $3$、labels $0,1,2,3$ の capacities を $1,2,2,3$ とした integral flow argument は \cref{prop:L6-generation} と同様で、integer decomposition property を与える。Intersection number は表示通りである。また
+\[
+ L_7\cdot\ell_{01}=L_7\cdot\ell_{02}=0,
+ \qquad L_7\cdot\ell_{12}=1.
+\]
+Toric curve degrees を調べると zero-degree curves は最初の二本だけであり、local affine semigroup の唯一の primitive relation は $xy=zw$ である。
+\end{proof}
+
+\subsection{Parameter-independent pair germs}
+$q_{01}$ の affine chart では適切な generators $x,z,w,y$ により
+\begin{equation}\label{eq:node-relation}
+ xy=zw
+\end{equation}
+となり、四つの boundary components は toric prime divisors に一致する。$q_{02}$ も同様である。
+
+\begin{theorem}[realization parameter は pair germ から消える]\label{thm:pair-independence}
+Genericity condition \cref{eq:M7-column} の下で、$q_{01},q_{02}$ における log pairs $(X_7,B_{7,\mathrm{lc}})$ の analytic germs は $(\lambda,\mu)$ に依存せず、標準 toric conifold pair に一致する。
+\end{theorem}
+
+\begin{proof}
+Coordinate lines 上の restrictions は
+\[
+ \ell_7|_{\ell_{01}}=\lambda u_1,
+ \qquad
+ \ell_7|_{\ell_{02}}=(1-\mu)u_2.
+\]
+従って $\lambda\ne0,\mu\ne1$ なら第七超平面は各 line と $p_0$ で transverse に交わり、$p_0$ の blow-up 後には $\ell_{01},\ell_{02}$ を避ける。Node を通る boundary components は \cref{eq:node-relation} の toric boundary primes に一致する。
+\end{proof}
+
+\begin{remark}[realization dependence の位置]
+$M_7$ では global variety $X_7$、node の analytic variety germ、boundary pair germ、canonical leading square metric の全てが $(\lambda,\mu)$ を忘れる。Parameters が現れ得るのは global boundary condition から返る decaying modes、residual gluing、または second-scale periods である。
+\end{remark}
+
+\subsection{次数と次元についての安全な一般化}
+\begin{proposition}[二点を通る直線の log-canonical degree]\label{prop:degree-generalization}
+$m$ 枚の超平面からなる配置を $\PP^n$ に取り、相異なる点 $p_i$ のみを blow upした段階を
+$\pi:Y\to\PP^n$ とする。$p_i$ を通る超平面の枚数を $r_i$ とし、boundary $B$ は全超平面の strict transformsと全 exceptional divisorsを係数一で含むとする。このとき
+\[
+ K_Y+B=(m-n-1)H+\sum_i(n-r_i)E_i.
+\]
+二つの blow-up centers $p_a,p_b$ を結び、他の blow-up centerを通らない直線の strict transformを $\ell_{ab}$ とすれば
+\begin{equation}\label{eq:degree-generalization}
+ (K_Y+B)\cdot\ell_{ab}=m+n-1-r_a-r_b.
+\end{equation}
+特に $n=3$ では
+\[
+ (K_Y+B)\cdot\ell_{ab}=m+2-r_a-r_b,
+\]
+したがって null 条件は $r_a+r_b=m+2$ である。
+\end{proposition}
+
+\begin{proof}
+$K_Y=-(n+1)H+(n-1)\sum_iE_i$ であり、hyperplane boundaryの strict transformsの和は $mH-\sum_ir_iE_i$、exceptional boundaryの和は $\sum_iE_i$ である。これらを加えて最初の式を得る。さらに
+$H\cdot\ell_{ab}=1$、$E_a\cdot\ell_{ab}=E_b\cdot\ell_{ab}=1$、他の $E_i$ との交点数は零なので \eqref{eq:degree-generalization} が従う。
+\end{proof}
+
+\begin{remark}[高次元では conifold ではなく Segre cone]
+$\PP^n$ の直線をその二点で ambient blow-upしたとき
+\[
+ N_{\ell_{ab}/Y}\simeq\mathcal O_{\PP^1}(-1)^{\oplus(n-1)}.
+\]
+半正値線形系がこの零切断を収縮する場合の局所代数模型は、Segre variety
+$\PP^1\times\PP^{n-2}$ の affine cone、同値に $2\times(n-1)$ 行列の rank-one determinantal coneである。Ordinary conifold $XY=ZW$ になるのは $n=3$ のときだけである。従って上の交点数公式は次数について無条件に使えるが、高次元での canonical KE local model、portal geometry、pGH gluingは別問題であり、本稿はそれらを主張しない。また \eqref{eq:degree-generalization} の消滅だけでは、当該直線が実際に半正値写像で収縮されることまでは含意しない。
+\end{remark}
+
+\subsection{Positivity と既存 KE theory が与えるもの}\label{subsec:existing-ke}
+\begin{proposition}[big, nef, ample modulo boundary]\label{prop:positivity}
+$L_6=K_Y+B_6$ と $L_7=K_Y+B_7$ は big and nef である。$L_6$ の null curves は $\ell_{01},\ell_{02},\ell_{12}$、$L_7$ の null curves は $\ell_{01},\ell_{02}$ であり、いずれも $B_i$ に含まれる。従って $L_i$ は ample modulo $B_i$ であり、non-ample locus は boundary 内にある。
+\end{proposition}
+
+\begin{proof}
+\Cref{thm:X6,thm:X7} の degree-one generationにより
+\[
+ L_i=\phi_i^*\mathcal O_{X_i}(1)
+\]
+であり、$\mathcal O_{X_i}(1)$ は ampleである。従って $L_i$ は semiampleかつ nefで、$L_6^3=5>0$、$L_7^3=17>0$ より bigである。同じ定理の toric curve computationから $\phi_6$ の exceptional locusは $\ell_{01}\cup\ell_{02}\cup\ell_{12}$、$\phi_7$ の exceptional locusは $\ell_{01}\cup\ell_{02}$ であり、これが null locusの全体である。
+
+Fubini--Study metricを $\mathcal O_{X_i}(1)$ に取り、その curvatureを pull backすると、$Y\setminus\operatorname{Exc}(\phi_i)$ 上で正 definite、$Y$ 全体で semipositiveな representativeを得る。Exceptional locusは $B_i$ に含まれるので、この representativeは $Y\setminus B_i=U_{\cA}$ の neighborhoodで strictly positiveである。これは Tian--Yau の ``ample modulo $B_i$'' conditionそのものである~\cite{TY,Wu08}。特に non-ample locusは boundary内にある。
+\end{proof}
+
+\begin{proposition}[既存理論から得られる metric]\label{prop:almost-complete}
+$\cA=M_6$ または generic $M_7(\lambda,\mu)$ とする。Wonderful pair $(Y,B)$ 上の Berman--Guenancia K\"ahler--Einstein current は $U_{\cA}=Y\setminus B$ 上で smooth K\"ahler metric $\omega_{\cA}$ を定め、有限体積である。さらに $\omega_{\cA}$ は Tian--Yau の意味で almost complete であり、この class の中で一意である。
+\end{proposition}
+
+\begin{proof}
+\Cref{prop:positivity} により $K_Y+B$ は big and nef で、non-ample locus $E$ は $B$ に含まれる。Berman--Guenancia theory~\cite{BG} は full Monge--Amp\`ere mass の K\"ahler--Einstein current を与え、Dang--Vu の theorem~\cite{DangVu} はそれが $Y\setminus(B\cup E)=U_{\cA}$ 上で smooth かつ almost complete であることを示す。Finite volume は full mass identityから従う。Almost-complete uniquenessを用いる~\cite{DangVu}。
+\end{proof}
+
+\begin{remark}[almost complete と complete の論理的区別]\label{rem:almost-vs-complete}
+Dang--Vu theoryだけから直接得られる ``almost complete'' は、complete smooth metricsによる local $C^\infty$ approximationを意味し、形式上は $\omega_{\cA}$ 自身の metric completenessを含まない。しかし本稿の positivityは単なる big and nefより強く、$K_Y+B$ が ample modulo $B$ である。この追加条件に対しては Tian--Yau の metricの genuine completenessが Yauの Schwarz-lemma argumentにより既に確立されている。以下で適用形を明記する。
+\end{remark}
+
+\begin{theorem}[ample-modulo-boundary case の completeness と cusp lower barrier]\label{thm:ty-yau-completeness}
+$(X,D)$ を smooth projective SNC pairとし、$K_X+D$ が big, nef, and ample modulo $D$ とする。Tian--Yau の unique almost-complete negative K\"ahler--Einstein metric $\omega_{\mathrm{TY}}$ は genuine completeである。さらに $p\in D$ の SNC coordinates
+\[
+ D=\{z_1\cdots z_k=0\}
+\]
+を十分小さく取れば、ある $c_p>0$ に対し normal directionsで
+\[
+ \omega_{\mathrm{TY}}
+ \ge c_p\sum_{j=1}^k
+ \frac{\sqrt{-1}\,\dd z_j\wedge\dd\bar z_j}
+ {|z_j|^2(\log|z_j|^2)^2}
+\]
+が成り立つ。従って複数の boundary depthsが同時に発散する pathを含め、$D$ に近づく任意の pathは無限長を持つ。
+\end{theorem}
+
+\begin{proof}
+Tian--Yau~\cite{TY} は $K_X+D$ が big, nef, and ample modulo $D$ のとき unique almost-complete negative K\"ahler--Einstein metricを構成する。本稿で用いる completion statementは Wu~\cite[Introduction, pp.~395--397]{Wu08} に記録された形である。そこでは Yau~\cite[p.~474]{Yau93} の completion argumentと Schwarz lemma~\cite{YauSchwarz} により、limit metricが normal Poincar\'e metricを一様定数倍で下から支配し、したがって genuine completeであることが述べられている。表示した local inequalityは、この引用結果を SNC chartの normal Poincar\'e factorsについて書いたものである。
+
+表示した lower barrierから、$z_j\to0$ となる各成分について
+\[
+ \int \frac{|\dd z_j|}{|z_j|\,|\log|z_j||}=\infty
+\]
+である。任意の boundary-escaping pathでは少なくとも一つの $z_j$ が零へ近づき、同時退化の場合にも上の非負項の和が支配するため、その $\omega_{\mathrm{TY}}$-lengthは無限大である。Hopf--Rinowにより induced distanceは properである。
+\end{proof}
+
+\begin{corollary}[actual arrangement metric の completeness]\label{cor:actual-completeness}
+$\cA=M_6$ または generic $M_7(\lambda,\mu)$ とする。\Cref{prop:almost-complete} の metric $\omega_{\cA}$ は unique complete finite-volume negative K\"ahler--Einstein metricである。特に $(U_{\cA},d_{\omega_{\cA}})$ は proper geodesic metric spaceであり、wonderful boundaryへの全ての approachesは無限距離にある。
+\end{corollary}
+
+\begin{proof}
+\Cref{prop:positivity} により $K_Y+B$ は big, nef, and ample modulo $B$ であるから \Cref{thm:ty-yau-completeness} を適用できる。Dang--Vu~\cite[Theorem~1.1]{DangVu} は non-ample locusが $B$ に含まれる場合、Berman--Guenancia metricが Tian--Yau の unique almost-complete metricと一致することを示す。従って \Cref{prop:almost-complete} の $\omega_{\cA}$ は completeである。Finite volumeは同命題から従う。
+\end{proof}
+
+\section{Canonical square tube と positive intrinsic cone}\label{sec:square-model}
+
+\subsection{Conifold torus end と canonical barrier}
+標準 conifold pair を
+\[
+ V_{\square}=\{XY=ZW\}\subset\CC^4,
+ \qquad
+ B_{\mathrm{tor}}=\bigcup_{j=1}^4D_j
+\]
+とする。Torus orbit 上で
+\[
+ y_1=-\log|X|,\quad y_2=-\log|Z|,\quad
+ y_3=-\log|Y|,\quad y_4=-\log|W|
+\]
+と置くと
+\begin{equation}\label{eq:conifold-depth-relation}
+ y_1+y_3=y_2+y_4=:S.
+\end{equation}
+Positive depth cone は
+\begin{equation}\label{eq:positive-cone}
+ K_{\square}^{\circ}=\{y\in\RR_{>0}^4:y_1+y_3=y_2+y_4\}
+\end{equation}
+であり、section $S=1$ は open square である。Relation lattice の real span を $H$ とすれば logarithmic universal cover は tube domain
+\[
+ T_{\square}=H+\sqrt{-1}K_{\square}^{\circ}
+\]
+になる。
+
+Cheng--Yau canonical potential $\Fbox$ を~\cite{CY,Fox,Hildebrand}
+\begin{equation}\label{eq:canonical-MA}
+ \log\det D^2\Fbox=2\Fbox
+\end{equation}
+で規格化する。
+
+\begin{definition}[canonical square-tube metric]
+\[
+ \omsq=2\sqrt{-1}\,\partial\bar\partial\Fbox,
+ \qquad
+ \gsq=D^2\Fbox(\dd x,\dd x)+D^2\Fbox(\dd y,\dd y).
+\]
+\end{definition}
+
+\begin{proposition}[Einstein normalization]\label{prop:square-Einstein}
+$\omsq$ は complete で $\Ric(\omsq)=-\omsq$ を満たす。$D_4$ symmetry を持ち、\cref{eq:canonical-MA} の規格化で一意である。
+\end{proposition}
+
+\begin{proof}
+$z_j=x_j+\sqrt{-1}y_j$ とすると $g_{i\bar j}=\frac12(\Fbox)_{ij}$ である。従って $\log\det(g_{i\bar j})=2\Fbox+\mathrm{constant}$ となり、Ricci equation が従う。Completeness と uniqueness は proper convex cone 上の canonical potential の一般理論による~\cite{CY,Fox,Hildebrand}。Square symmetries は equation と normalization を保つ。
+\end{proof}
+
+\subsection{Log-homogeneity と real-depth splitting}
+Real dimension of $K_{\square}^{\circ}$ は三であり、\cref{eq:canonical-MA} の scaling から
+\begin{equation}\label{eq:log-homogeneity}
+ \Fbox(ty)=\Fbox(y)-3\log t,
+ \qquad t>0
+\end{equation}
+を得る。$S$ を radial coordinate、$(p,q)=(y_1/S,y_2/S)\in(0,1)^2$ を projective square coordinates とする。
+
+\begin{proposition}[radial--affine-sphere splitting]\label{prop:radial-splitting}
+適切な radial coordinate $r=\sqrt3\log S$ を取ると real-depth block は
+\[
+ \gsq^{\mathrm{depth}}=\dd r^2+g_{\mathrm{Bl},\square}
+\]
+と直交分解する。ここで $g_{\mathrm{Bl},\square}$ は square を asymptotic polygon とする complete hyperbolic affine sphere の Blaschke metric である。
+\end{proposition}
+
+\begin{proof}
+Log-homogeneity から Euler vector field は Hessian metric に関して projective level sets と直交し、constant norm を持つ。$S=1$ section へ制限した centro-affine metric は canonical hyperbolic affine sphere の Blaschke metricである。
+\end{proof}
+
+\subsection{Full tube phase collapse の反例と positive truncation}
+十分大きい $Y_*>1$ に対し
+\begin{equation}\label{eq:positive-truncated-end}
+ E_{\square}(Y_*)
+ =\{y_i\ge Y_*\ (1\le i\le4)\}/(2\pi H_{\ZZ})
+\end{equation}
+と置く。さらに
+\[
+ s_i=\log(y_i/Y_*),
+ \qquad
+ \tau=\min_i s_i
+\]
+とする。
+
+\begin{proposition}[full-tube phase collapse は偽]\label{prop:full-phase-false}
+Full tube $T_{\square}/(2\pi H_{\ZZ})$ の fixed-basepoint balls において、phase fibres の \emph{ambient} diameter が $o(R)$ であるという主張は一般に偽である。
+\end{proposition}
+
+\begin{proof}
+固定 central projective direction $y^0\in K_{\square}^{\circ}$ と $c>0$ に対し $y_R=e^{-cR}y^0$ と置く。\Cref{eq:log-homogeneity} から
+\[
+ D^2\Fbox(y_R)=e^{2cR}D^2\Fbox(y^0),
+\]
+一方 radial distanceは $c\sqrt3R+O(1)$ である。
+
+$H_{\ZZ}$ 上で integralかつ $K_{\square}^{\circ}$ 上で positiveな linear functional $m$ を取り、holomorphic character
+\[
+ w([x+\sqrt{-1}y])=\exp\bigl(\sqrt{-1}\langle m,x+\sqrt{-1}y\rangle\bigr)
+\]
+を考える。これは quotient上 well-definedで $|w|=e^{-\langle m,y\rangle}<1$、従って unit diskへの holomorphic mapである。Phase fibre上の二点 $p_R,q_R$ を、$y=y_R$ を共有し $w(p_R),w(q_R)$ の argumentsが固定正角だけ異なるように取る。両点は、outer base sliceで phaseを先に調整してから radial rayを進むことにより、$c\sqrt3R+O(1)$ ball内にある。
+
+一方 $|w(p_R)|=|w(q_R)|=1-O(e^{-cR})$ なので、Poincar\'e disk distanceは
+\[
+ d_{\mathbb D}(w(p_R),w(q_R))=2cR+O(1).
+\]
+Yau Schwarz lemma~\cite{YauSchwarz} により $w^*g_{\mathbb D}\le C\gsq$、従って
+\[
+ d_{\gsq}(p_R,q_R)\ge C^{-1}d_{\mathbb D}(w(p_R),w(q_R))\ge c'R-O(1).
+\]
+従って ambient phase-fibre diameterも first scaleで消えない。
+\end{proof}
+
+\begin{theorem}[canonical square barrier の facet--Dikin comparison]\label{thm:square-dikin}
+$S=1$ sectionを $(p,q)\in(0,1)^2$ と同一視し、四 facet functionsを
+\[
+ \ell_1=p,\qquad \ell_3=1-p,\qquad
+ \ell_2=q,\qquad \ell_4=1-q
+\]
+とする。ある $C>1$ が存在し、projective tangent vector $\xi$ と cone tangent vector $v$ に対して
+\begin{align}
+ C^{-1}\sum_{j=1}^4\frac{|\dd\ell_j(\xi)|^2}{\ell_j^2}
+ &\le g_{\mathrm{Bl},\square}(\xi,\xi)
+ \le C\sum_{j=1}^4\frac{|\dd\ell_j(\xi)|^2}{\ell_j^2},\label{eq:facet-blaschke}\\
+ C^{-1}\sum_{i=1}^4\frac{|v_i|^2}{y_i^2}
+ &\le D^2\Fbox(y)(v,v)
+ \le C\sum_{i=1}^4\frac{|v_i|^2}{y_i^2}.\label{eq:cone-dikin}
+\end{align}
+ここで二つ目の式は relation tangent space上で解釈する。特に
+\[
+ |\dd\log y_i|_{\gsq}\le C
+\]
+である。
+\end{theorem}
+
+\begin{proof}
+Proper convex squareの Hilbert Finsler normを $F_H$ とする。Benoist--Hulin の一様比較~\cite{BHulin,Tholozan} により Blaschke normと Hilbert normは dimensionだけに依存する定数で同値である。一方 squareでは、直線を正負方向へ延長して boundaryに当たるまでの affine parametersを直接計算すると
+\[
+ F_H((p,q);\xi)^2\asymp
+ \sum_{j=1}^4\frac{|\dd\ell_j(\xi)|^2}{\ell_j(p,q)^2}.
+\]
+有限次元で $\max$ normと Euclidean sumは一様同値なので、これが \eqref{eq:facet-blaschke} を与える。
+
+次に $y=S(\ell_1,\ell_2,\ell_3,\ell_4)$ と書く。Log-homogeneityと \cref{prop:radial-splitting} により canonical Hessian metricは exact radial factor $\dd(\sqrt3\log S)^2$ と projective Blaschke metricの直交和である。$\dd\log y_i=\dd\log S+\dd\log\ell_i$ を用い、\eqref{eq:facet-blaschke} と有限個の linear relationsを組み合わせれば \eqref{eq:cone-dikin} を得る。Dual inequalityが最後の covector boundを与える。
+\end{proof}
+
+\begin{proposition}[positive end における phase collapse]\label{prop:positive-phase-collapse}
+$E_{\square}(Y_*)$ 上で、$\tau\ge T$ の phase torus fibresは
+\[
+ \diam_{\gsq}(\text{phase fibre})\le C e^{-T}
+\]
+を満たす。従って positive endの半径 $O(R)$ windowsで phase directionsは first scaleに collapseする。
+\end{proposition}
+
+\begin{proof}
+Phase blockも $D^2\Fbox(y)$ である。\eqref{eq:cone-dikin} の上側評価から、fixed lattice vector $v\in H_{\ZZ}$ に対し
+\[
+ D^2\Fbox(y)(v,v)\le C\sum_{i=1}^4\frac{|v_i|^2}{y_i^2}.
+\]
+$\tau\ge T$ なら $y_i\ge Y_*e^T$ なので各 fundamental phase generatorの長さは $O(e^{-T})$。Lattice rankは三で一定だから fibre diameterも同じ boundを持つ。
+\end{proof}
+
+\begin{remark}
+Actual arrangement endは defining monomialsの absolute valuesが零へ向かう positive cusp directionしか含まない。従って \cref{eq:positive-truncated-end} への限定は applicationと整合し、negative radial sideを model theoremへ含めない。
+\end{remark}
+
+\subsection{Metric-only Titeica asymptotics}
+Square affine sphereは四つの vertex endsを持つ。各 endには natural coordinate $z$ があり、Pick differentialは leading orderで $\dd z^3$、Blaschke metricは Titeica metricへ指数的に近づく。
+
+\begin{theorem}[all-order metric Titeica asymptotics]\label{thm:titeica-metric}
+各 vertex sectorの closed subsector上で、任意の $m\ge0$ に対して
+\[
+ \bigl|\nabla^m_{g_{\mathrm{Tit}}}
+ (g_{\mathrm{Bl},\square}-g_{\mathrm{Tit}})\bigr|_{g_{\mathrm{Tit}}}
+ \le C_m e^{-\nu_m d_{\mathrm{Tit}}}
+\]
+が成り立つ。四 vertex sectorsの外側に残る projective transition coreは bounded diameterを持ち、有限個の closed subsectorsで全 noncompact partを覆える。
+\end{theorem}
+
+\begin{proof}
+Dumas--Wolf の exponentially small Blaschke error estimateは、zero setからの natural-coordinate distanceに関して conformal factorの $C^0$ decayを与える~\cite{DW}。Closed subsectorの sufficiently deep partでは fixed-radius natural-coordinate disksが zero setを避けて一様に取れる。Wang equationを Titeica solutionのまわりで書くと差 $v$ は
+\[
+ (\Delta_{\mathrm{flat}}-c_0)v=N(v),\qquad N(v)=O(v^2)
+\]
+を満たす。Interior Schauder estimates~\cite{CC} を fixed disks上で反復し、$v$ の全 derivativesに exponential decayを得る。Blaschke metricは $e^vg_{\mathrm{Tit}}$ の形なので tensor estimateが従う。Polynomial cubic differentialの standard sector decompositionでは四つの vertex sectorsが compact setの外側を覆い、有限 overlap上の projective transitionsは固定である。
+\end{proof}
+
+\begin{warning}[moving frame は本定理に含めない]
+Titeica frame自身は方向依存の exponential growthを持つ。従って coefficient errorの decayだけから affine immersionや moving frameの同じ rateを結論することはできず、osculation mapの別解析が必要である。本稿の metric resultsにはそれを用いない。
+\end{warning}
+
+\begin{proposition}[positive square model の quasi-bounded geometry]\label{prop:square-qbg}
+$E_{\square}(Y_*)$ 上の $\gsq$ は infinite-order quasi-bounded geometryを持つ。Phase directionsを logarithmic universal coverへ unwrapし、radial coordinate $r=\sqrt3\log S$ と projective-square quasi-coordinatesを用いると、fixed-radius ballsとその fixed multiples上で metric coefficients、inverse coefficients、および全 derivativesが一様に有界である。さらに
+\[
+ |\dd s_i|_{\gsq}+|\dd\tau|_{\gsq}\le C
+\]
+almost everywhereである。
+\end{proposition}
+
+\begin{proof}
+Radial directionは \cref{prop:radial-splitting} により exact Euclidean factorである。Projective squareの bounded Hilbert coreは有限個の ordinary coordinate chartsで覆う。Coreの外側は \cref{thm:titeica-metric} の四 sector chartsで覆われ、自然座標内で projective metricと全 derivativesが Titeica metricに一様に近い。有限 overlap transitionsの derivativesは固定 projective transformationsから来るため一様である。
+
+Phase blockは depth blockと同じ Hessian matrix $D^2\Fbox$ であり、$x$-variablesへの derivativesは零である。Log-homogeneityは radial derivativesを fixed algebraic combinationsへ還元し、projective derivativesは上の core/sector coverで制御される。従って Hessian-normalized Dikin coordinates上で full tube metricの coefficients、inverse、および全 derivativesが fixed multiple balls上で一様に有界となる。
+
+最後に \cref{thm:square-dikin} の dual estimateから $|\dd\log y_i|_{\gsq}\le C$。$s_i=\log(y_i/Y_*)$ であり、$\tau=\min_i s_i$ は有限個の uniformly Lipschitz functionsの minimumなので最後の表示が従う。ここでは chart boundaryまでの未知の actual geodesic radiusや Cheng--Yau gradient estimateを用いない。
+\end{proof}
+
+\begin{remark}[cone angle]
+Titeica metricは定数倍を除き $|z|^{2/3}|\dd z|^2$ に漸近する。$z=\rho e^{i\theta}$、$R=\frac34\rho^{4/3}$、$\Theta=\frac43\theta$ と置くと
+\[
+ |z|^{2/3}|\dd z|^2=\dd R^2+R^2\dd\Theta^2,
+\]
+$\Theta$ の周期は $8\pi/3$ である。
+\end{remark}
+
+\subsection{Double-log tropical support と exact lifting}
+$s_i=\log y_i$、$s_i=Rv_i+O(1)$ とすると \cref{eq:conifold-depth-relation} の tropicalization は
+\begin{equation}\label{eq:full-tropical-support}
+ \Sigfull=\{v\in\RR^4:\max(v_1,v_3)=\max(v_2,v_4)\}.
+\end{equation}
+Positive fixed-basepoint sector は
+\[
+ \Sigplus=\Sigfull\cap\RR_{\ge0}^4.
+\]
+
+\begin{lemma}[tropical rate の exact positive lifting]\label{lem:exact-positive-lift}
+任意の $v\in\Sigfull$ と $R>0$ に対し、正数 $y_1,\dots,y_4$ を
+\[
+ y_1+y_3=y_2+y_4,
+ \qquad
+ |\log y_i-Rv_i|\le\log2
+\]
+となるように取れる。さらに $v\in\Sigplus$、$T\ge0$ なら、common factor $Y_*e^T$ を掛けて $\tau\ge T-\log2$ とできる。
+\end{lemma}
+
+\begin{proof}
+$a_i=e^{Rv_i}$、$L=a_1+a_3$、$M=a_2+a_4$ と置く。両辺の最大 exponent は同じなので $1/2\le L/M\le2$。そこで
+\[
+ y_1=\frac ML a_1,
+ \quad y_3=\frac ML a_3,
+ \quad y_2=a_2,
+ \quad y_4=a_4
+\]
+と置く。Relation は exact で、logarithmic errors は $\log2$ 以下である。
+\end{proof}
+
+\subsection{Canonical \texorpdfstring{$8\pi/3$}{8pi/3} cell}
+Strict chamber $v_1=v_2=a>v_3=b,v_4=c$ では simplicial Titeica coordinates から
+\[
+ q_{\square}=\dd a^2+\dd b^2+\dd c^2
+\]
+を得る。他の三 chambers も $D_4$ symmetry で同じである。
+
+\begin{proposition}[deficit coordinates]\label{prop:deficit-form}
+Common maximum を $a$、opposite deficits を
+\[
+ \ell=|v_1-v_3|,
+ \qquad r=|v_2-v_4|,
+ \qquad t=a-\frac{\ell+r}{3}
+\]
+と置く。一つの sign chamber 上で
+\begin{equation}\label{eq:deficit-metric}
+ q_{\square}=3\dd t^2+\frac23(\dd\ell^2-\dd\ell\,\dd r+\dd r^2).
+\end{equation}
+Transverse quadrant の二本の axes の angle は $2\pi/3$ である。
+\end{proposition}
+
+\begin{proof}
+Subdominant rates は $a-\ell,a-r$ なので、quadratic form は
+$\dd a^2+\dd(a-\ell)^2+\dd(a-r)^2$。Square completion で \cref{eq:deficit-metric} を得る。Transverse Gram matrix の off-diagonal cosine は $-1/2$ である。
+\end{proof}
+
+\begin{theorem}[canonical conifold translation cone]\label{thm:translation-cone}
+四つの strict chambers の path-metric completion は
+\[
+ (\Sigfull,d_{\square})\simeq\RR_{\sqrt3t}\times C_{8\pi/3}.
+\]
+Positive model cell はその closed subcone $\Sigplus$ である。
+\end{theorem}
+
+\begin{proof}
+各 sign quadrant は \cref{eq:deficit-metric} により angle $2\pi/3$ の Euclidean sector であり、四つが cyclic に貼られて total angle $8\pi/3$ になる。Radial line は直交する。\Cref{thm:titeica-metric} が canonical depth block の blow-down とこの path completion を同定する。
+\end{proof}
+
+四つの extreme rays を cyclic に
+\[
+ \xi_{12}=(1,1,0,0),\quad
+ \xi_{14}=(1,0,0,1),\quad
+ \xi_{34}=(0,0,1,1),\quad
+ \xi_{32}=(0,1,1,0)
+\]
+と書く。
+
+\begin{corollary}[side lengths と intrinsic diagonals]\label{cor:square-distances}
+Unit link 上で adjacent rays の距離は $\pi/2$、opposite rays の距離は
+\[
+ d_{\Lk}(\xi_{12},\xi_{34})
+ =d_{\Lk}(\xi_{14},\xi_{32})
+ =\arccos(-1/3).
+\]
+\end{corollary}
+
+\begin{proof}
+Adjacent pairs は同じ Euclidean strict chamber 内で直交する。Opposite pair を二つの adjacent sectors へ展開すると unit vectors の inner product は $-1/3$ になる。
+\end{proof}
+
+\subsection{二つの small resolutions と metric quotient}
+一方の small resolution は double-log rates で
+\[
+ M_+(\alpha,\beta,\gamma)
+ =(\beta,\max(\alpha,\beta),\max(\alpha,\gamma),\gamma),
+\]
+反対 diagonal は
+\[
+ M_-(\alpha,\beta,\gamma)
+ =(\beta,\gamma,\max(\alpha,\gamma),\max(\alpha,\beta))
+\]
+を与える。
+
+\begin{proposition}[small-resolution pullback forms]\label{prop:small-resolution-forms}
+Strict source chambers 上で $Q_\pm=M_\pm^*q_{\square}$ は両 signs について同じ表を与える。
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+Source chamber & $Q_+=Q_-$ & Kernel\\ \midrule
+$\alpha>\max(\beta,\gamma)$ & $I_3$ & $0$\\
+$\beta>\alpha>\gamma$ & $I_3$ & $0$\\
+$\gamma>\alpha>\beta$ & $I_3$ & $0$\\
+$\beta>\gamma>\alpha$ & $\operatorname{diag}(0,1,2)$ & $\RR\partial_\alpha$\\
+$\gamma>\beta>\alpha$ & $\operatorname{diag}(0,2,1)$ & $\RR\partial_\alpha$\\ \bottomrule
+\end{tabular}
+\end{center}
+Tie walls では hard-max differential によって tensor を定義せず、induced path metric の completion を取る。
+\end{proposition}
+
+\begin{proof}
+最初の三 chambers では independent target rates が $(\alpha,\beta,\gamma)$ の permutation であり pullback は $I_3$。例えば $\beta>\gamma>\alpha$ では image は $(\beta,\beta,\gamma,\gamma)$ なので $q_{\square}=\dd\beta^2+2\dd\gamma^2$、$\alpha$ は消える。反対 presentation も同じである。
+\end{proof}
+
+\begin{warning}[tangent metric と cotangent cometric]
+$Q=\operatorname{diag}(0,1,2)$ の quotient tangent metric は $\dd\beta^2+2\dd\gamma^2$ である。一方 cotangent co-Gram は Moore--Penrose dual $Q^\dagger=\operatorname{diag}(1,1/2)$ である。両者を混同しない。
+\end{warning}
+
+\begin{theorem}[presentation independence]\label{thm:presentation-independence}
+二つの small-resolution presentations へ pull back した path semimetrics は、zero-length kernel leaves を商した後にいずれも $(\Sigfull,d_{\square})$ と isometric になる。
+\end{theorem}
+
+\begin{proof}
+\Cref{prop:small-resolution-forms} により全 strict chambers で quotient forms が一致する。Tie walls の path completion は両 presentations で同じ four-sector cyclic gluing を与え、kernel leaves は exceptional depth directions そのものである。
+\end{proof}
+
+\subsection{Explicit positive square-block map と定量 path lifting}
+Model level では local maps を曖昧な chamber maps の集合としてではなく、一つの intrinsic map として構成できる。$T_R\to\infty$、$T_R/R\to0$ とし、smooth nondecreasing function $\rho_R:[0,\infty)\to[0,\infty)$ を
+\[
+ \rho_R=0\ \text{on }[0,T_R],
+ \qquad
+ \rho_R(r)=r-T_R-1\ \text{on }[T_R+2,\infty),
+ \qquad
+ 0\le\rho_R'\le1
+\]
+となるように取る。Projective affine-sphere core を cone apex へ送り、各 Titeica sector では radial coordinate を $\rho_R$ で truncation し、angular coordinateを intrinsic $C_{8\pi/3}$ へ送る。Exact radial splitting によりこの map は $1+o(1)$-Lipschitz であり、sector descriptions は同じ intrinsic map の表示に過ぎない。これを
+\[
+ S_{\square,R}:E_{\square}(Y_*)\longrightarrow\Sigplus
+\]
+と書く。
+
+\begin{definition}[square path-lifting modulus]\label{def:square-lift-modulus}
+四つの strict Titeica sector を $V_j^{\mathrm{Tit}}$、対応する true-face lateral collar を $V_j^{\mathrm{lat}}$ とする。各 $V_j^{\mathrm{Tit}}$ には cubic natural-coordinate distance $r_j^{\mathrm{Tit}}$、各 $V_j^{\mathrm{lat}}$ には ordinary cusp depth $t_j^{\mathrm{lat}}$ を取る。Overlap では
+\[
+ \tau_{\square,j}:=\min\{r_j^{\mathrm{Tit}},t_j^{\mathrm{lat}}\}
+\]
+とし、片方しか定義されない部分ではその depth を用いる。Finite overlap 上で bounded interpolation をしてもよく、異なる選択は一様加法定数しか違わないので以下の $T\to\infty$ の statementには影響しない。
+
+$T>0$ に対し三つの moduli を次で定める。
+\begin{align*}
+ \mu_{\mathrm{Tit}}(T)
+ &:={\max}_{j}\inf\Bigl\{\eps>0:\;
+  \bigl|L_{\gsq}(\sigma_j^{\mathrm{Tit}}\circ\gamma)-L_{\Sigplus}(\gamma)\bigr|
+  \le \eps L_{\Sigplus}(\gamma)\\
+ &\hspace{43mm}\text{for every rectifiable }\gamma\subset
+  V_j^{\mathrm{Tit}}\cap\{\tau_{\square,j}\ge T\}\Bigr\},\\
+ \mu_{\mathrm{lat}}(T)
+ &:={\max}_{j}\inf\Bigl\{\eps>0:\;
+  \bigl|L_{\gsq}(\sigma_j^{\mathrm{lat}}\circ\gamma)-L_{\Sigplus}(\gamma)\bigr|
+  \le \eps L_{\Sigplus}(\gamma)\\
+ &\hspace{43mm}\text{for every rectifiable }\gamma\subset
+  V_j^{\mathrm{lat}}\cap\{\tau_{\square,j}\ge T\}\Bigr\},\\
+ \mu_{\mathrm{phase}}(T)
+ &:=\sup\Bigl\{\diam_{\gsq}\mathbb T_x:\
+ x\in E_{\square}(Y_*),\ \min_i\log y_i(x)\ge T\Bigr\},
+\end{align*}
+ここで $\sigma_j^{\mathrm{Tit}}$ は intrinsic Titeica phase-zero lift、$\sigma_j^{\mathrm{lat}}$ は ordinary product lift、$\mathbb T_x$ は fixed real-depth pointの phase fibre である。最後に
+\[
+ \mu_\square(T):=
+ \max\{\mu_{\mathrm{Tit}}(T),\mu_{\mathrm{lat}}(T),\mu_{\mathrm{phase}}(T)\}.
+\]
+\Cref{thm:titeica-metric}、ordinary lateral asymptotics、および
+\cref{prop:positive-phase-collapse} により
+\[
+ \mu_{\mathrm{Tit}}(T),\ \mu_{\mathrm{lat}}(T),\ \mu_{\mathrm{phase}}(T)\longrightarrow0,
+ \qquad
+ \mu_\square(T)\longrightarrow0.
+\]
+したがって $T$ は projective Titeica depth と positive normal cusp depth のうち、その chartで有効な最小 depthを測る。特に tie setを dominance gapで除外する定義ではない。
+\end{definition}
+
+\begin{proposition}[positive square prescribed-start gallery lift]\label{prop:square-quantitative-lift}
+$A,L>0$ と整数 $N\ge1$ を固定する。$\gamma$ を $B_{\Sigplus}(0,AR)$ 内の intrinsic galleryで、length $\le LR$、segments数 $\le N$ とする。$x_0$ を local square anchorとし
+\[
+ d_{\Sigplus}(S_{\square,R}(x_0),\gamma(0))\le C T_R
+\]
+と仮定する。すると $x_0$ から、$\gamma(1)$ に対応する canonical local square anchorへ至る path $\widetilde\gamma$ が存在し、
+\begin{align}
+ L_{\gsq}(\widetilde\gamma)
+ &\le (1+\mu_\square(T_R))L_{\Sigplus}(\gamma)+C_{A,L,N}T_R,\label{eq:square-lift-length}\\
+ \sup_t d_{\Sigplus}\bigl(S_{\square,R}(\widetilde\gamma(t)),\gamma(t)\bigr)
+ &\le C_{A,L,N}T_R.\label{eq:square-lift-track}
+\end{align}
+Pathは positive truncated regionから出ず、source basepointから $(A+L+1)R$ の ball内に含まれる。
+\end{proposition}
+
+\begin{proof}
+Galleryを strict Titeica-sector pieces、four true-face collars、および apex/core piecesへ分ける。使用する sector/collar coverは四つの vertex sectorsと四つの lateral collarsからなる固定有限 coverなので、一つの original gallery segmentを分割して生じる pieces数は一様定数 $c_\square$ 以下である。従って分割後の総 segment数は $c_\square N$ 以下であり、以下の transition constantsはこの固定倍を $N$ の記号に吸収してよい。Strict sectorでは cubic natural coordinateにより target metricは Titeica metricそのものであり、\Cref{thm:titeica-metric} と \Cref{def:square-lift-modulus} から phase-zero sectionの length distortionは $\mu_{\mathrm{Tit}}(T_R)\le\mu_\square(T_R)$ 以下である。ここで使う liftは affine-sphere/Titeica coordinateから定める intrinsic prescribed-start liftであり、\Cref{lem:exact-positive-lift} の値の実現だけから length estimateを推論していない。
+
+True-face collarでは lateral ordinary product coordinateを用い、relative length defectは $\mu_{\mathrm{lat}}(T_R)\le\mu_\square(T_R)$ で支配される。Square liftと ordinary face liftの endpointsは、radial truncation level $[0,T_R+2]$ と bounded projective coreを通る長さ $CT_R$ 以下の pathで結ばれる。Core/apex pieceも同じ truncation pathで処理できる。分割後 segment数は上で $c_\square N$ 以下に抑えたので transition costの総和は $C_{A,L,N}T_R$ である。
+
+Phase-zero representativeへの移動 costは定義上 $\mu_{\mathrm{phase}}(T_R)\le\mu_\square(T_R)$ であり、有限回の correctionなので $C_N\mu_\square(T_R)$ として additive termへ吸収できる。各 normal/radial interpolationは $y_i\ge Y_*$ を保つ向きに取り、positive regionを離れない。以上を連結すれば \eqref{eq:square-lift-length}--\eqref{eq:square-lift-track} を得る。Source-window estimateは path length boundと三角不等式による。
+\end{proof}
+
+\begin{proposition}[positive square model pGH]\label{prop:square-model-pgh}
+固定基点を $E_{\square}(Y_*)$ の outer slice に取る。このとき
+\[
+ (E_{\square}(Y_*),R^{-1}d_{\gsq},o_{\square})
+ \xrightarrow[R\to\infty]{\mathrm{pGH}}
+ (\Sigplus,0).
+\]
+さらに、固定 $A,L,N$ の bounded-segment target galleriesは \cref{prop:square-quantitative-lift} の精度で指定始点から liftできる。
+\end{proposition}
+
+\begin{proof}
+Real-depth partについては \cref{thm:titeica-metric,thm:translation-cone} と radial truncation mapを用いる。Core truncation の additive error は $O(T_R)=o(R)$、phase fibre diameter は \cref{prop:positive-phase-collapse} により $o(R)$ である。Upper-distance estimateと target densityは \cref{prop:square-quantitative-lift,lem:exact-positive-lift}、lower-distance estimateは $S_{\square,R}$ の $1+o(1)$-nonexpansionから従う。ここで exact positive liftingは target valuesの実現にのみ使い、path-length controlは \cref{prop:square-quantitative-lift} が担う。
+\end{proof}
+
+\section{Actual metric の条件付き ordinary／conifold whole-end localization}\label{sec:actual-localization}
+
+本節では \Cref{cor:actual-completeness} を無条件の入力とし、actual metricと local exact modelsの比較を \Hloc の下で complete pair-end stability theoremへ帰着する。旧稿では chartwise Poincar\'e productを whole end上の global exact K\"ahler--Einstein metricとして用いたが、その貼り合わせは一般には自動ではない。\Hloc はこの不足を、global exact referencesと outer-collar／refinement compatibilityの形で明示的に補う。本節の localization statementsはこの仮定の条件付き帰結であり、以下の幾何学的議論は \Hloc を検証するための候補となる reductionを記録する。
+
+\subsection{Ordinary flags と ample SNC residual pairs}
+Wonderful boundary~\cite{DCP} の component-labelled flagを
+\[
+ I=(D_{i_1}\supset D_{i_1i_2}\supset\cdots\supset D_{i_1\cdots i_k})
+\]
+と書く。Flagの component-labelled saturated starが $K_Y+B$ の null curveを含まないとき ordinaryと呼ぶ。Null curveに接する directionsは conifold blockまたはその lateral portalsで扱う。最深 stratumを $D_I$、adjunction boundaryを $B_I$ とする。
+
+\begin{proposition}[ordinary residual pairs の ample 性]\label{prop:ordinary-residual-ample}
+$M_6$ と generic $M_7$ に現れる ordinary flagsは有限個の incidence typesを持つ。各 typeについて
+\[
+ K_{D_I}+B_I=(K_Y+B)|_{D_I}
+\]
+であり、$K_{D_I}+B_I$ は ampleである。Surface residual factorsは smooth rank-three line-arrangement pairs、curve factorsは少なくとも三点を除いた $\PP^1$ である。さらに log-canonical morphismは flagの saturated neighborhood上で同型であり、ordinary flagの refinementは再び ordinaryである。
+\end{proposition}
+
+\begin{proof}
+\Cref{prop:positivity} により $L=K_Y+B=\phi^*\mathcal O_X(1)$ で、$\phi$ の exceptional locusは列挙済み null curvesの和である。ここで ``saturated star'' は、flag $I$ を保ったまま residual factorがさらに boundaryへ退化して到達し得る全 labelled strataを含む star とする。従って ordinary という条件は、その recursive residual family全体が $\Null(L)$ の curve componentsを含まないことを意味する。
+
+最深 residual stratum $D_I$ 上の $\phi|_{D_I}$ に positive-dimensional fibreがあれば、その fibreは projectiveなので曲線 $C\subset D_I$ を含み、$L\cdot C=0$ となる。これは saturated ordinary conditionに反する。従って $\phi|_{D_I}$ は quasi-finiteである。今回の explicit residual imagesは coordinate-plane arrangement surfacesまたは rational curvesで normal だから、proper quasi-finite birational map $\phi|_{D_I}$ は finite birational、従って isomorphismである。ゆえに
+\[
+ (K_{D_I}+B_I)=L|_{D_I}
+ = (\phi|_{D_I})^*\bigl(\mathcal O_X(1)|_{\phi(D_I)}\bigr)
+\]
+は ampleである。特に residual surfaceでは $L|_{D_I}$ の null curveが存在せず $L^2\cdot D_I>0$、curve residualでは $\deg L|_{D_I}>0$ であることも同じ議論から従う。
+
+具体的 residual strataは divisorial levelで blow-upされた coordinate planes上の line arrangements、curve levelで punctured rational curvesである。Boundary incidence setは有限なので incidence typeと puncture labelingは有限個である。Refinementの saturated starは元の saturated starの labelled substarであり、したがって exceptional curveを新たに含まない。
+\end{proof}
+
+\begin{lemma}[ample log-canonical model の SNC star estimate]\label{lem:ample-snc-star}
+$(X,D)$ を projective log-canonical pair、$K_X+D$ を ampleとし、$\omega_{X,\mathrm{KE}}$ をその canonical negative K\"ahler--Einstein currentとする。$V\Subset X_{\mathrm{reg}}$ を component-labelled open starで、$D|_V$ が SNC、$\ov V$ が $X_{\mathrm{sing}}$ と交わらないものとする。このとき $V\setminus D$ 上で $\omega_{X,\mathrm{KE}}$ は smoothであり、normal Poincar\'e product metricに対する mixed-cusp tensor estimate、volume-ratio estimate、および infinite-order quasi-coordinate boundsを持つ。有限個の labelled starsに対して constantsは一様に取れる。
+\end{lemma}
+
+\begin{proof}
+Existenceと global $L^\infty$/full-mass controlは ample log-canonical theory~\cite{BG,DangVu} から得られる。$\ov V$ は singular locusを避けるので、canonical currentの local potentialは smooth Monge--Amp\`ere equation
+\[
+ (\omega_0+\ddc u)^n=e^{u+F}\prod_j|s_j|^{-2}\omega_0^n
+\]
+を SNC quasi-coordinates上で満たす。Guenancia--Wu~\cite[Theorem~B]{GW} は ample log-canonical pairの snc locus上で canonical metricが mixed cone/cusp modelと一様に比較できることを与える。本稿の ordinary coefficientsは $1$ なので、ここでは cusp factorsだけが現れる。これと global $C^0$ controlを用いると local Monge--Amp\`ere equationは Cheng--Yau quasi-coordinates上で一様楕円型となり、standard interior Schauder bootstrapにより必要な全階 boundsが得られる。従って $V$ の precompact labelled chartsへ局所化でき、$X$ の別の場所にある singularitiesは estimatesに入らない。Charts、boundary multiplicities、compact transverse closuresが有限であるため constantsを一斉に取れる。
+
+参考として、smooth one-boundary caseのより強い polyhomogeneous expansionは Rochon--Zhang~\cite[Theorem~7.4]{RZ} と Jiang--Shi~\cite[Theorem~1.1]{JS} による。本稿では multi-SNC starの全階局所 boundsをこれらの one-divisor theoremから推論せず、上記 quasi-coordinate Schauder bootstrapを直接用いる。
+\end{proof}
+
+各 active normal coordinate $z_j$ に punctured-disc Poincar\'e metric
+\[
+ g_{\mathrm P}(z_j)=\frac{|\dd z_j|^2}{|z_j|^2(\log|z_j|)^2}
+\]
+を入れ、$D_I\setminus B_I$ にその complete negative K\"ahler--Einstein metricを入れる。各 adapted chart内の積を formal product $g_I^{\mathrm{prod}}$ と書く。各 chart内では全 factorsを $\Ric=-g$ に規格化できるが、normal bundlesの遷移関数を越えて $g_I^{\mathrm{prod}}$ が whole end上の global exact metricとして貼り合うとは主張しない。\Hloc の $\theta_I$ がその役割を担い、deep regionで $g_I^{\mathrm{prod}}$ に漸近する。
+
+\begin{proposition}[\Hloc の下での ordinary local reference package]\label{prop:ordinary-snc-reference}
+\Hloc を仮定する。
+各 ordinary saturated star $\cV_I$ の像は、log-canonical pair $(X,D_X)$ の smooth SNC locusに含まれる。$X$ 上の canonical K\"ahler--Einstein currentを $\omega_{X,\mathrm{KE}}$ とすると
+\[
+ \omega_{\cA}|_{\cV_I}=\phi^*\omega_{X,\mathrm{KE}}|_{\phi(\cV_I)}.
+\]
+固定幅 outer collars上で
+\[
+ C^{-1}g_I^{\mathrm{prod}}\le g_{\cA}\le Cg_I^{\mathrm{prod}},
+ \qquad
+ \left|\log\frac{\omega_{\cA}^n}{(\omega_I^{\mathrm{prod}})^n}\right|\le C,
+\]
+が residual compactification全体で一様に成り立つ。これら chartwise formal productsは一様な infinite-order quasi-bounded geometryを持つ。
+\end{proposition}
+
+\begin{proof}
+Crepant identity
+\[
+ K_Y+B=\phi^*(K_X+D_X),
+ \qquad K_X+D_X\simeq\mathcal O_X(1)
+\]
+と full-mass K\"ahler--Einstein currentの一意性により、$Y$ 上の currentは $X$ 上の canonical currentの crepant pullbackである。Ordinary saturated starは $\phi$ の exceptional locusを避けるので、$\phi$ はその neighborhoodで log pairsの同型であり、$(X,D_X)$ はそこで smooth SNCである。
+
+\Cref{lem:ample-snc-star} と \cref{prop:ordinary-residual-ample} は各 precompact labelled chartにおける quasi-bounded geometryを与える。Residual compactification全体での outer-collar uniformityと volume-ratio comparisonは \Hloc の fixed-collar clauseである。Finite incidence typesにより \Hloc の constantsを一斉に取れる。
+\end{proof}
+
+\begin{definition}[augmented ordinary end type]\label{def:augmented-ordinary}
+Ordinary component flag $I$ に、active depths $s_i$ の発散速度の ordered partitionと、residual pair $(D_I,B_I)$ の component-labelled boundary flagを付加したものを augmented ordinary end typeと呼ぶ。Ordered partitionの refinementまたは residual labelの追加を strict refinementとする。
+\end{definition}
+
+\begin{remark}[central sector と strict refinement]
+一つの augmented typeの central sectorとは、同じ ordered blockに属する depthsの差が一様有界で、recorded residual labelsが固定された領域である。そこから lateralに逃げる列は、depth-ratio blockを分割するか residual labelを追加するため、必ず strict refinementへ入る。従って maximal augmented typeでは transverse outer-collar quotientが compactとなり、\Cref{thm:ordinary-localization} の descending inductionの始点が正当化される。
+\end{remark}
+
+\begin{lemma}[ordinary outer collar の有限 escape compactification]\label{lem:ordinary-escape-compactification}
+各 ordinary flag $I$ と fixed $a_0>0$ に対し
+\[
+ \mathcal O_I(a_0)
+ =\{s_i\ge0,\ \min_i s_i\le a_0\}
+ \times(D_I\setminus B_I)
+\]
+の phase directionsを含む自然な finite manifold-with-corners compactificationが存在し、その proper boundary facesは $I$ の strict augmented refinementsで labelされる。任意の outer-collar escape sequenceは subsequenceを取り、唯一の最小 strict refinementの central collarへ入る。Augmented typesの posetは finiteである。
+\end{lemma}
+
+\begin{proof}
+Residual factorにはその wonderful compactificationを用いる。各 depth half-lineを $q_i=s_i/(1+s_i)\in[0,1]$ で compactifyし、複数の $q_i=1$ が同時に起こる cornersを高 codimensionから real radial blow-upする。得られる depth compactificationの facesは、有限集合 of active labelsの ordered set partitionsで記述される。Residual boundary facesとの productを取り、同じく高 codimensionから cornersを refinementする。
+
+局所的にはこの構成は
+\[
+ [0,\eps)^{a}_{\mathrm{res}}
+ \times[0,\eps)^{b}_{\mathrm{ratio}}
+ \times K
+\]
+という component-labelled corner chartを与える。$K$ は phase torusと compact residual chartの積である。Compactnessから任意の escape sequenceは一つの minimal boundary faceへ収束する subsequenceを持ち、その central collarへ入る。Boundary componentsと ordered partitionsはいずれも有限なので posetも finiteである。
+\end{proof}
+
+\begin{remark}[product model の associativity]\label{rem:product-associativity}
+Strict augmented refinementは、新しい Poincar\'e normal factorsを括弧付けし直すか、ample residual pairをその boundary residual pairへ置き換えるだけである。Active-depth levelの splittingでは normal Poincar\'e factorsが exactに一致する。
+\end{remark}
+
+\begin{proposition}[\Hloc の下での parent/refined model compatibility]\label{prop:parent-refined-models}
+\Hloc を仮定する。
+$\mathfrak f'<\!\mathfrak f$ を一つの strict augmented refinementとし、$g_{\mathfrak f}^{\mathrm{prod}}$、$g_{\mathfrak f'}^{\mathrm{prod}}$ を対応する iterated product metricsとする。Common refinement collarの depthを $\tau_{\mathfrak f'}$ と書くと、任意の $k\ge0$ に対し
+\[
+ \sup_{\{\tau_{\mathfrak f'}\ge T\}}
+ \|\nabla_{g_{\mathfrak f'}^{\mathrm{prod}}}^{k}
+ (g_{\mathfrak f}^{\mathrm{prod}}-g_{\mathfrak f'}^{\mathrm{prod}})
+ \|_{g_{\mathfrak f'}^{\mathrm{prod}}}
+ \longrightarrow0.
+\]
+同時に volume ratioは $1$ へ収束し、fixed-multiple quasi-coordinate radiiと全 finite-order boundsは一様である。Statementは有限個の parent/refinement pairsで一様化できる。
+\end{proposition}
+
+\begin{proof}
+これは \Hloc の parent/refinement compatibility clauseである。\Cref{prop:ordinary-residual-ample,lem:ample-snc-star} はこの clauseを検証する際の局所的入力を与えるが、precompact all-order boundsだけから asymptotic limitの同定は従わないため、ここではそれを独立に仮定している。
+\end{proof}
+
+\subsection{Noncompact outer hypersurface を持つ pair-end stability}
+次の定理は Datar--Fu--Song~\cite{DFS} の point-centred determinant-ratio estimateを、outer hypersurfaceが noncompactな pair endで使うための局所形である。ここで end parameterは residual directionsに properである必要はない。
+
+\begin{lemma}[quasi-coordinate ball 上の局所 Aubin--Yau estimate]\label{lem:local-aubin-yau}
+$V\Subset\widehat V$ を complex dimension $n$ の nested coordinate ballsとし、$\theta$ の coefficients、inverse、curvatureおよび二階 derivativesが $\widehat V$ 上で一様有界とする。$\omega=\theta+\ddc\varphi>0$ が
+\[
+ \omega^n=e^{\varphi}\theta^n,
+ \qquad |\varphi|\le K
+\]
+を満たすなら
+\[
+ \sup_V\bigl(\tr_\theta\omega+\tr_\omega\theta\bigr)\le C
+\]
+である。$C$ は $n,K,V\Subset\widehat V$ と background boundsのみに依存する。
+\end{lemma}
+
+\begin{proof}
+$u=\tr_\theta\omega$ とし、$\chi\in C_c^\infty(\widehat V)$ を $\chi=1$ on $V$、$0\le\chi\le1$、
+\[
+ |\partial\chi|_\theta^2\le C\chi,
+ \qquad
+ |\sqrt{-1}\partial\bar\partial\chi|_\theta\le C
+\]
+となるように取る。未知の metricで cutoffを測る際には、固有値を用いて
+\begin{equation}\label{eq:cutoff-metric-conversion}
+ |\partial\chi|_\omega^2
+ \le (\tr_\omega\theta)|\partial\chi|_\theta^2,
+ \qquad
+ |\Delta_\omega\chi|
+ \le C\tr_\omega\theta
+\end{equation}
+が成り立つ。従って cutoff estimateに事前の uniform ellipticityは用いていない。
+
+Yau の local Laplacian calculationを
+\[
+ Q=\log u-A\varphi+(2n+2)\log\chi
+\]
+へ適用する。Chern--Lu inequality、
+\[
+ \Delta_\omega\varphi=n-\tr_\omega\theta,
+ \qquad
+ u\le C_n e^{\varphi}(\tr_\omega\theta)^{n-1},
+\]
+および maximum pointでの $\partial Q=0$ を用い、\eqref{eq:cutoff-metric-conversion} の termsを整理すると
+\begin{equation}\label{eq:local-yau-cutoff}
+ \chi^{2n+2}u
+ \le C\Bigl(1+\chi^{2n}u^{1-1/n}\Bigr)
+\end{equation}
+を得る。これは標準 local Aubin--Yau estimateの cutoff formであり、$A$ は background bisectional-curvature boundより十分大きく固定する。Young inequalityを \eqref{eq:local-yau-cutoff} に適用すると $\chi^{2n+2}u\le C$。$V$ 上では $\chi=1$ なので $u\le C$ である。Determinant $\det_\theta\omega=e^{\varphi}$ は上下有界であるから各 eigenvalueは上下有界となり、$\tr_\omega\theta\le C$ も従う。
+\end{proof}
+
+\begin{theorem}[complete pair-end stability]\label{thm:pair-end-stability}
+$E$ を piecewise smooth outer hypersurface $\Gamma$ を持つ complex $n$-manifoldとし、$\theta,\omega$ を $E$ 上の K\"ahler metricsで
+\[
+ \Ric(\theta)=-\theta,
+ \qquad
+ \Ric(\omega)=-\omega
+\]
+を満たすものとする。$R_h(x)=d_h(x,\Gamma)$ と書き、次を仮定する。
+\begin{enumerate}[label=(P\arabic*)]
+ \item\label{P1} 両 metricsは ideal endへ completeであり、$0<r<R_h(x)$ なら $\ov B_h(x,r)$ は $E$ の compact subsetである。
+ \item\label{P2} 固定 outer collar上で二 metricsと volume ratioは一様に比較可能である。
+ \item\label{P3} 共通 end parameter $\tau:E\to[0,\infty)$ があり、両 metricsについて
+ \[
+ R_\theta(x)\ge c\tau(x)-C,
+ \qquad
+ R_\omega(x)\ge c\tau(x)-C.
+ \]
+ $\tau$ は residual directionsに properである必要はない。
+ \item\label{P4} $\tau$ は両 metricsに関して一様 Lipschitzである：
+ \[
+ |\dd\tau|_\theta+|\dd\tau|_\omega\le C
+ \]
+ almost everywhere。
+ \item\label{P5} $\theta$ は infinite-order quasi-bounded geometryを持ち、nested quasi-coordinate balls $V\Subset\widehat V$ を同じ constantsで選べる。
+\end{enumerate}
+このとき任意の $k\ge0$ について
+\[
+ \sup_{\{\tau\ge T\}}
+ \|\nabla_\theta^k(\omega-\theta)\|_\theta
+ \longrightarrow0
+ \qquad(T\to\infty).
+\]
+零次の volume-ratio errorは $O(R_\theta^{-1}+R_\omega^{-1})$ であり、高階収束は moving quasi-coordinates上で一様である。
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1: point-centred determinant-ratio estimate.}
+\[
+ \varphi=\log\frac{\omega^n}{\theta^n}
+\]
+と置く。Einstein equationsから
+\[
+ \omega=\theta+\ddc\varphi,
+ \qquad
+ (\theta+\ddc\varphi)^n=e^\varphi\theta^n
+\]
+を得る。Datar--Fu--Song~\cite[Theorem~1.3 and Remark~3.1]{DFS} の point-centred proofを、center $x$、radius $R_h(x)/2$ の ballへ適用する。\ref{P1} により ball closureは compactly containedする。Smoothed distance cutoff $\chi$ は
+\[
+ |\nabla\chi|_h\le C R_h(x)^{-1},
+ \qquad
+ |\Delta_h\chi|\le C(R_h(x)^{-1}+R_h(x)^{-2})
+\]
+を center、radius、lateral positionに一様に満たす。$\theta$ と $\omega$ を交換して二方向の calculationを行うと
+\begin{equation}\label{eq:pair-volume-ratio}
+ 1-\frac{C_n}{R_\omega(x)}
+ \le e^{\varphi(x)}
+ \le1+\frac{C_n}{R_\theta(x)}
+\end{equation}
+を得る。Fixed outer collarでは \ref{P2} を用いる。\ref{P3} より
+\[
+ \sup_{\{\tau\ge T\}}|\varphi|\longrightarrow0.
+\]
+
+\emph{Step 2: uniform ellipticity without circular cutoff norms.}
+\ref{P2} と \eqref{eq:pair-volume-ratio} により $\varphi$ は全体で boundedである。任意の $x$ を中心とする nested $\theta$-quasi-coordinate balls $V_x\Subset\widehat V_x$ を \ref{P5} で選ぶ。Pullback equationへ \cref{lem:local-aubin-yau} を適用すると
+\[
+ C^{-1}\theta\le\omega\le C\theta
+\]
+が $V_x$ 上で一様に成り立つ。とくに、cutoff termsは
+\[
+ |\nabla\chi|_\omega^2
+ \le(\tr_\omega\theta)|\nabla\chi|_\theta^2,
+ \qquad
+ |\Delta_\omega\chi|\le C\tr_\omega\theta
+\]
+として maximum-principle inequalityに入れ、\eqref{eq:local-yau-cutoff} の weighted trace estimateで吸収される。従って uniform ellipticityを cutoff estimateの入力としていない。Outer collarでは \ref{P2} が同じ比較を与える。
+
+\emph{Step 3: moving quasi-coordinate bootstrap.}
+$\tau(x_j)\to\infty$ とする。\ref{P4} により fixed multiple balls上で
+\[
+ \inf_{\widehat V_{x_j}}\tau
+ \ge \tau(x_j)-C\longrightarrow\infty.
+\]
+ここで $\tau$ の global propernessは不要である。Step~1 の $C^0$ errorは ball全体で零へ行き、Step~2により equationは一様楕円型である。Krylov--Safonov、Evans--Krylov、Schauder estimates~\cite{CC,DZZ} を順に適用すると全階 boundsを得る。
+
+一様 $C^k$ convergenceが失敗すると仮定し、反例列を quasi-coordinate chartsへ pull backする。Backgroundsは smooth local limitを持ち、$\varphi_j\to0$ in $C^0$。Interior compactnessにより $\varphi_j\to0$ in $C^{k+2}$ on smaller ballsとなり矛盾する。最後に $\omega-\theta=\ddc\varphi$ を用いる。
+\end{proof}
+
+\begin{remark}
+\Cref{thm:pair-end-stability} の $\tau$ は proper exhaustionではない。必要なのは outer-distance lower boundと moving fixed-radius balls上の divergenceであり、後者は Lipschitz boundから従う。従って normal depthsを固定したまま residual boundaryへ逃げられる ordinary whole endにも文字通り適用できる。
+\end{remark}
+
+\subsection{Ordinary positive pair ends と whole-end localization}
+Active coordinatesについて $y_j=-\log|z_j|$、$s_j=\log(y_j/Y_*)$ と置き、
+\[
+ E_I(Y_*)=\{y_j\ge Y_*\ \text{for all active }j\},
+ \qquad
+ \tau_I=\min_j s_j
+\]
+とする。Outer hypersurfaceを $\Gamma_I=\{\tau_I=0\}$ の fixed-width smoothingとする。
+
+\begin{lemma}[ordinary depth control without circular balls]\label{lem:ordinary-depth-control}
+$h=g_{\cA}$ または $g_I^{\mathrm{prod}}$ とする。ある uniform $C$ に対し
+\[
+ |\dd s_j|_h+|\dd\tau_I|_h\le C
+\]
+almost everywhereである。従って
+\[
+ d_h(x,\Gamma_I)\ge c\tau_I(x)-C.
+\]
+\end{lemma}
+
+\begin{proof}
+Model metricについては $s_j$ が normal Poincar\'e factorの unit-speed coordinateである。Actual metricについては \cref{thm:ty-yau-completeness} の lower barrier $g_{\cA}\ge c g_{\mathrm P}^{\mathrm{normal}}$ を dualizeし、$|\dd s_j|_{g_{\cA}}\le C$ を得る。Nonvanishing unit factorsは bounded $C^1$ errorしか加えない。$\tau_I$ は有限個の uniformly Lipschitz functionsの minimumである。Outer sliceから pathに沿って積分すれば距離下界を得る。
+\end{proof}
+
+\begin{theorem}[\Hloc の下での whole-end ordinary localization]\label{thm:ordinary-localization}
+\Hloc を仮定する。
+全 ordinary augmented types $\mathfrak f$ について次が同時に成り立つ。
+\begin{enumerate}[label=(Q\arabic*)]
+ \item fixed-width outer collar上で actual metric、$g_{\mathfrak f}^{\mathrm{prod}}$、および volume ratioは一様に比較可能である；
+ \item 任意の $k\ge0$ について
+ \[
+  \sup_{\{\tau_{\mathfrak f}\ge T\}}
+  \|\nabla_{g_{\mathfrak f}^{\mathrm{prod}}}^{k}
+   (g_{\cA}-g_{\mathfrak f}^{\mathrm{prod}})
+  \|_{g_{\mathfrak f}^{\mathrm{prod}}}
+  \longrightarrow0.
+ \]
+\end{enumerate}
+収束は同じ incidence typeを持つ全 sectorsで一様であり、residual factorがさらに境界へ逃げる moving sequencesを含む。
+\end{theorem}
+
+\begin{proof}
+\Hloc の global exact reference $\theta_{\mathfrak f}$ と $g_{\cA}$ に \cref{thm:pair-end-stability} を適用する。Outer-collar comparison、volume ratio、completeness、quasi-bounded geometryは \Hloc、depth-distanceと Lipschitz boundsは \cref{lem:ordinary-depth-control} により、その全仮定が満たされる。従って
+\[
+ \|\nabla^k(g_{\cA}-\theta_{\mathfrak f})\|_{\theta_{\mathfrak f}}\longrightarrow0.
+\]
+一方、\Hloc の asymptotic product clauseにより
+$\theta_{\mathfrak f}-g_{\mathfrak f}^{\mathrm{prod}}\to0$ が whole endで全階一様に成り立つ。Uniform equivalenceと三角不等式から (Q2) を得る。(Q1) と全 incidence typesでの一様性も \Hloc に含まれる。
+\end{proof}
+
+\begin{proposition}[\Hloc の下での ordinary $R$-dependent portal form]\label{prop:ordinary-R-dependent}
+\Hloc を仮定する。
+有限個の ordinary incidence typesについて、depth $\ge T$ の tensor／coordinate defectを $\eta_{\mathrm{ord}}(T)$ とすると
+\[
+ \eta_{\mathrm{ord}}(T)\longrightarrow0.
+\]
+$T_R\to\infty$、$T_R=o(h_R)$、$h_R=o(R)$ のとき、半径 $AR$ の任意の ordinary chartで以下を同時に満たせる。
+\begin{enumerate}[label=(O\arabic*)]
+ \item local skeletal mapは $(1+\eta_{\mathrm{ord}}(T_R))$-Lipschitzである；
+ \item length $\ell=O(R)$ の target cell segmentは canonical product sectionにより
+ \[
+  L_{g_{\cA}}(\widetilde\gamma)
+  \le(1+C\eta_{\mathrm{ord}}(T_R))\ell+CT_R
+ \]
+ で liftできる；
+ \item phase、compact residual、inactive-depth piecesを local anchorへ動かす costは $CT_R$ 以下である；
+ \item portal width $h_R$ 内で fixed coordinate functionsの common product coordinatesとの differential defectは $C\eta_{\mathrm{ord}}(T_R)$ 以下である。
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\Cref{thm:ordinary-localization,prop:parent-refined-models} の有限個の error moduliの最大を取る。Product sectionでは model lengthが target lengthに一致する。Actual/model tensor defectが multiplicative termを与え、inactive depthsの truncationと local root connectionが additive $CT_R$ を与える。Coordinate functionsは global component depthsと recursively fixed residual coordinatesとして明示されているため、tensor convergenceはその covector normsの defectへ直接適用される。
+\end{proof}
+
+\subsection{Positive square pair end と outer distance}
+Node $q$ の標準 pair chartで
+\[
+ XY=ZW,
+ \qquad
+ y_1=-\log|X|,\quad y_2=-\log|Z|,\quad
+ y_3=-\log|Y|,\quad y_4=-\log|W|
+\]
+とする。十分大きい $Y_*>1$ に対し
+\[
+ E_q(Y_*)=\{y_i\ge Y_*\}/(2\pi H_{\ZZ})
+\]
+を取り、$\min_i y_i=Y_*$ を一様有界幅で丸めた outer hypersurfaceを $\Gamma_q$ とする。Actual restrictionを $g_{\cA}^{\mathrm{loc}}$、canonical square metricを $\gsq$ と書き、
+\[
+ s_i=\log(y_i/Y_*),\qquad \tau=\min_i s_i
+\]
+と置く。
+
+\begin{lemma}[positive conifold depth control]\label{lem:harmonic-depths}
+$h=\gsq$ または $g_{\cA}^{\mathrm{loc}}$ とする。ある uniform $C>0$ に対し
+\[
+ |\dd s_i|_h\le C,
+ \qquad
+ |\dd\tau|_h\le C
+\]
+almost everywhereに成り立つ。
+\end{lemma}
+
+\begin{proof}
+Canonical metricについては \cref{thm:square-dikin} が $|\dd\log y_i|_{\gsq}\le C$ を直接与える。Actual metricについて、local toric monomialを
+\[
+ m_i=u_i\prod_a w_a^{A_{ia}}
+\]
+と書き、$Y_a=-\log|w_a|$、$t_a=\log Y_a$ と置くと
+\[
+ y_i=\sum_a A_{ia}Y_a+O(1),
+ \qquad
+ s_i=\log\!\left(\sum_a A_{ia}e^{t_a}+O(1)\right)-\log Y_*.
+\]
+従って $\dd s_i$ の主項は component double-log covectors $\dd t_a$ の convex combinationであり、unit termは deep regionで bounded $C^1$ errorを与える。\Cref{thm:ty-yau-completeness} の normal Poincar\'e lower barrierを dualizeすると各 $|\dd t_a|_{g_{\cA}}$ は一様有界なので、$|\dd s_i|_{g_{\cA}}\le C$。$\tau$ は有限 minimumである。未知の uniform geodesic ballsや既に証明すべき localizationを用いない。
+\end{proof}
+
+\begin{corollary}[outer-distance properness]\label{cor:outer-distance}
+$R_h(x)=d_h(x,\Gamma_q)$ と置く。ある $c,C>0$ に対し
+\[
+ R_h(x)\ge c\tau(x)-C.
+\]
+従って $\tau(x_j)\to\infty$ なら $R_h(x_j)\to\infty$ である。
+\end{corollary}
+
+\begin{proof}
+$\tau$ は $\Gamma_q$ 上で一様有界で、\Cref{lem:harmonic-depths} により Lipschitzである。$\Gamma_q$ から $x$ へ至る任意の rectifiable pathに沿って積分する。
+\end{proof}
+
+\begin{proposition}[\Hloc の下での square outer-collar comparison]\label{prop:outer-collar}
+\Hloc を仮定する。
+ある $a_0>0$ と $C>1$ が存在し、$0\le\tau\le a_0$ 上で
+\[
+ C^{-1}\gsq\le g_{\cA}^{\mathrm{loc}}\le C\gsq,
+ \qquad
+ \left|\log\frac{(\omega_{\cA}^{\mathrm{loc}})^3}{\omega_{\square}^3}\right|\le C.
+\]
+\end{proposition}
+
+\begin{proof}
+Projectivized squareの compact coreは有限個の ordinary coordinate ballsで覆う。そこから逃げる sequenceは四つの large-gap lateral flagsまたはその deeper ordinary flagsへ入る。Actual metricには \Cref{thm:ordinary-localization}、canonical metricには \Cref{thm:titeica-metric} と radial splittingを用いる。両者は各 lateral sectorで同じ normal Poincar\'e factorsを持ち、residual factorsは finite list上で一様に比較できる。Outer hypersurfaceの smoothingは fixed-width collar内なので定数へ吸収される。
+\end{proof}
+
+\begin{theorem}[\Hloc の下での actual conifold whole-end localization]\label{thm:actual-square-localization}
+\Hloc を仮定する。
+$q$ を $M_6$ または generic $M_7$ の conifold nodeとする。標準 pair identificationの下で、任意の $k\ge0$ に対し
+\[
+ \sup_{\{\tau\ge T\}}
+ \|\nabla_{\gsq}^k(g_{\cA}^{\mathrm{loc}}-\gsq)\|_{\gsq}
+ \longrightarrow0
+ \qquad(T\to\infty).
+\]
+収束は projective squareの central regionだけでなく、四つの lateral endsとその deeper ordinary flagsを含む positive pair end全体で一様である。
+\end{theorem}
+
+\begin{proof}
+$E=E_q(Y_*)$、$\theta=\gsq$、$\omega=g_{\cA}^{\mathrm{loc}}$ として \Cref{thm:pair-end-stability} を適用する。\ref{P1} は canonical completenessと \Cref{cor:actual-completeness}、\ref{P2} は \Cref{prop:outer-collar}、\ref{P3}--\ref{P4} は \Cref{lem:harmonic-depths,cor:outer-distance}、\ref{P5} は \Cref{prop:square-qbg} から従う。
+\end{proof}
+
+\begin{statusbox}
+Actual metricの existence/completenessは無条件に保持される。一方、ordinary whole-end localizationと square whole-end localizationは \Hloc の下でのみ得られる。以後の $R$-dependent portalsでは、\Hloc の下で有限個の error functions
+\[
+ \eta_{\mathrm{ord},k}(T),\qquad \eta_{\square,k}(T)
+\]
+が $T\to\infty$ で零へ行くことだけを用い、収束率は仮定しない。
+\end{statusbox}
+
+\section{Metrized Bergman model cone と sidewise portal geometry}\label{sec:model-cone}
+
+\subsection{Ordinary cells と conifold replacement}
+Bergman support $|\mathcal B(M_{\cA})|$ の ordinary simplicial coneには、Part~I の Poincar\'e depth normalizationから得る Euclidean orthant metricを入れる。Conifold square coneでは、二つの simplicial diagonalisationsを残さず、\Cref{thm:translation-cone} の positive subcone $\Sigplus$ を一つの intrinsic blockとして入れる。Common true faces上では、\Cref{cor:square-distances} の side normalizationと ordinary orthant normalizationが一致する。
+
+\begin{definition}[metrized Bergman model cone]\label{def:metrized-Bergman}
+Ordinary Euclidean conesと positive conifold blocksを、component labelsを保つ true-face isometriesで貼り合わせた intrinsic length coneを
+\[
+ \BKE
+\]
+と書く。Cone vertexを $0$ とする。
+\end{definition}
+
+\begin{proposition}[properness と presentation independence]\label{prop:model-properness}
+$\BKE$ は finite proper geodesic metric coneである。その underlying topological coneは $M_{\cA}$ の Bergman coneであり、chosen nested-set subdivisionおよび conifold small-resolution diagonal presentationに依存しない。
+\end{proposition}
+
+\begin{proof}
+Unit linkは有限個の compact spherical polyhedra~\cite{BBI} と、角 $8\pi/3$ の conifold link piecesを closed isometric facesで貼った compact length spaceである。従ってその metric coneは properかつ geodesicである。Nested-set subdivisionの変更は ordinary Euclidean coneを isometricに細分するだけである。Conifold presentationsの一致は \Cref{thm:presentation-independence}、ordinary facesとの metric normalizationの一致は strict chamber formula \Cref{prop:deficit-form} から従う。
+\end{proof}
+
+\subsection{Bounded-length galleries}
+Target pathの cell itineraryを制御する際、任意の rectifiable pathを対象にすると無限往復が可能である。必要なのは near-minimizing bounded-length pathsだけである。
+
+\begin{proposition}[finite bounded-length gallery templates]\label{prop:gallery-templates}
+$A,L,\eta>0$ を固定する。$\ov B_{\BKE}(0,A)$ 内の二点 $b,b'$ で $d(b,b')\le L$ を満たすものに対し、length
+\[
+ \operatorname{Length}(\gamma)\le d(b,b')+\eta
+\]
+の piecewise-geodesic gallery $\gamma$ を選べる。Gallery segmentsの数は $N(A,L,\eta)$ 以下であり、各 segmentは一つの open target cellまたは一つの true faceに含まれる。さらに有限個の combinatorial template familiesで全ての $(b,b')$ を覆える。
+\end{proposition}
+
+\begin{proof}
+$\ov B(0,A)$ は compactで、target stratificationは有限である。各 pairに対し geodesicを取り、finite star atlasの Lebesgue numberより小さい meshで分割する。一つの小区間はまず一つの star neighborhoodに入る。その star内の cell decompositionは有限なので、小区間を starの barycentric subdivisionに沿う高々 $N_{\mathrm{star}}$ 本の cell-closure geodesicsへ置換できる。Meshを十分細かくすれば total excessを $<\eta/2$ にできる。Length bound $L+\eta$、fixed mesh、有限 $N_{\mathrm{star}}$ から segment数を一様に抑えられる。Endpointsと crossing dataを小さな neighborhoodsで安定化し、compactnessから有限 subcoverを取れば template familyを得る。
+\end{proof}
+
+\begin{warning}
+\Cref{prop:gallery-templates} の segment boundは length $\le L+\eta$ の near-minimizersに限る。任意に長く同じ faceを往復する rectifiable pathについて一様 segment boundは存在しない。
+\end{warning}
+
+\subsection{True-face half-collars}
+Conifold cellと ordinary cellの unionは、共通 faceの周りで一般に一つの convex Euclidean setではない。従って target-valued affine interpolationは各 sideで別々に行う。
+
+\begin{definition}[sidewise convex portal collar]\label{def:sidewise-collar}
+$F=C_-\cap C_+$ を二つの target cellsの common true faceとする。Scale $h>0$ の sidewise collarとは
+\[
+ \cN_F^\pm(h)\subset C_\pm
+\]
+であって、各 $\cN_F^\pm(h)$ が一つの convex Euclidean sector chartに入り、$F$ の linear spanへの labelled orthogonal projection
+\[
+ p_F^\pm:\cN_F^\pm(h)\longrightarrow F
+\]
+が collar内で定義され $1$-Lipschitzであるものをいう。Collarは projection imageが $F$ の relative interiorに入るように縮める。二つの half-collarsの間で線分を取らず、中央 transitionでは両 sidesを $F$ へ collapseする。
+\end{definition}
+
+\begin{proposition}[canonical half-collars]\label{prop:canonical-half-collars}
+$\BKE$ の全 true incidencesについて、scale $h$ の sidewise convex collarsを compatibilityを保って選べる。Conifold sideでは $C_{8\pi/3}$ の一つの $2\pi/3$ sector内、ordinary sideでは Euclidean orthant内で取ることができる。Nested facesについては高 codimension faceから順に collarsを選び、中央 thirdsを disjointまたは nestedにすることで、face projectionsが component-labelled posetと可換する。
+\end{proposition}
+
+\begin{proof}
+各 cellは有限次元 Euclidean polyhedral cone、または $\RR\times C_{8\pi/3}$ の一つの Euclidean sectorである。Conifold true faceはその sectorの linear faceである。各 labelled face $F$ について orthogonal projection to $\operatorname{span}(F)$ を取り、projection imageが $F$ の relative interiorに留まる片側 collarへ制限する。これは $1$-Lipschitzである。
+
+Nested faces $F\subset G$ については linear subspacesも nestedなので、対応する orthogonal projectionsは collarの common domainで
+\[
+ p_F\circ p_G=p_G\circ p_F=p_F
+\]
+を満たす。一般の closed convex setsへの projectionsが可換すると主張しているのではない。Strataは有限なので、高 codimensionから低 codimensionへ widthsを縮め、multiple intersectionsでは最深 labelled faceの projectionを用いる。
+\end{proof}
+
+\subsection{Model-level block atlas}
+Model source $E_{\mathrm{mod}}$ は ordinary Poincar\'e--residual product blocksと positive square blocksを、actual pair incidenceと同じ component labelsで貼った length spaceとする。各 ordinary blockには log-depth projection、各 square blockには \Cref{prop:square-model-pgh} の intrinsic radial truncation mapを入れる。
+
+\begin{proposition}[explicit model atlas]\label{prop:explicit-model-atlas}
+$T_R\to\infty$、$T_R=o(h_R)$、$h_R=o(R)$ とする。Model blocks上の local mapsは次のように選べる。
+\begin{enumerate}[label=(M\arabic*)]
+ \item ordinary core chartでは inactive depthsを $[0,T_R]$ で truncationし、その compact partを対応 faceへ送る；
+ \item square chartでは \Cref{prop:square-model-pgh} の radial truncationを用いる；
+ \item true-face overlapでは \Cref{def:sidewise-collar} の各 half-cell内で local mapと face projectionを affine interpolationし、central thirdを faceへ送る；
+ \item overlap multiplicity、local Lipschitz constants、transition segment数は $R$ に一様である。
+\end{enumerate}
+各 interpolation line segmentは一つの convex half-cell内に留まり、異なる target cellsを横切る affine combinationは用いない。
+\end{proposition}
+
+\begin{proof}
+Ordinary truncationは coordinatewise map $t\mapsto\rho_R(t)$、square truncationは \Cref{prop:square-model-pgh} の $1$-Lipschitz radial truncationで与える。Half-collar $C_\pm$ 上で local mapを $S_\pm$、face projectionを $P_\pm=\iota_\pm\circ p_F^\pm$ と書き、cutoff $\vartheta$ を用いて
+\[
+ \widehat S_\pm=(1-\vartheta)S_\pm+\vartheta P_\pm
+\]
+と置く。この和は $C_\pm$ の convex chart内で取る。中央 thirdでは $P_\pm$ をさらに $F$ へ collapseし、両 sidesの値を同じ face coordinateにする。Nested portalsは \Cref{prop:canonical-half-collars} の順序で処理する。有限 stratificationにより全 constantsは一様である。
+\end{proof}
+
+\begin{corollary}[model pGH]\label{cor:model-pgh}
+Model sourceについて
+\[
+ (E_{\mathrm{mod}},R^{-1}d_{\mathrm{mod}},o_{\mathrm{mod}})
+ \xrightarrow[R\to\infty]{\mathrm{pGH}}
+ (\BKE,0)
+\]
+が成り立つ。
+\end{corollary}
+
+\begin{proof}
+各 blockでは ordinary product projectionまたは \Cref{prop:square-model-pgh} を使う。Central portal collapseの costは $O(h_R)=o(R)$、core truncationの costは $O(T_R)=o(R)$。\Cref{prop:gallery-templates} の bounded-length galleriesを liftすると upper distanceと densityを得る。Local projectionsは nonexpandingであるため lower distanceも従う。Finite number of transitionsにより errorは $o(R)$ のままである。
+\end{proof}
+
+\section{Scalar calibrated anchored-graph gluing theorem}\label{sec:calibration}
+
+本節は actual K\"ahler--Einstein解析から独立した metric theoremである。Target-valued mapsを singular target上で平均せず、target distance functionsだけを partition of unityで貼る。さらに single-valued global selectorを作らず、local mapsの graph relationをそのまま GH correspondenceに用いる。これにより selector fibreの連結性、exact fibre diameter、global sectionの存在はいずれも仮定しない。
+
+\subsection{Quantified local graph system}
+$(X,d_X,o)$ を proper geodesic metric space、$(B,d_B,0)$ を proper geodesic metric coneとする。$A>0$ を固定し $A^+=3A+1$ と置く。
+
+\begin{definition}[calibrated anchored graph system]\label{def:calibrated-system}
+Scales $h_R=o(R)$ と errors
+\[
+ \eps_R\to0,\qquad \kappa_R=o(h_R),\qquad a_R=o(R)
+\]
+を取る。$B_X(o,A^+R)$ が calibrated anchored graph systemを持つとは、以下が存在することをいう。
+\begin{enumerate}[label=(C\arabic*)]
+ \item\label{C1} multiplicity $N_0$ 以下の finite locally finite cover $\{U_{\alpha,R}\}$ と local maps $S_{\alpha,R}:U_{\alpha,R}\to B$；
+ \item\label{C2} 各 $S_{\alpha,R}$ は $(1+\eps_R)$-Lipschitz；
+ \item\label{C3} overlap上で $d_B(S_{\alpha,R},S_{\beta,R})\le\kappa_R$；
+ \item\label{C4} subordinate Lipschitz partition $\{\chi_{\alpha,R}\}$ で $|\dd\chi_{\alpha,R}|\le Ch_R^{-1}$；
+ \item\label{C5} local graph relation
+ \[
+  \Gamma_R=\bigcup_\alpha\{(x,S_{\alpha,R}(x)):x\in U_{\alpha,R}\}
+ \]
+ の各 pair $(x,z)$ に対し、同じ local system内の anchored pair $(\bar x,\bar z)\in\Gamma_R$ と path $\lambda_x:x\to\bar x$ が選べ、
+ \[
+  L_X(\lambda_x)\le a_R,\qquad d_B(z,\bar z)\le a_R.
+ \]
+ 基点 pairは $(o,0)$ 自身を anchorとする；
+ \item\label{C6} 任意の固定 $\delta>0$ に対し $N(A,\delta)<\infty$ と $\beta_R(A,\delta)=o(R)$ があり、二つの anchored pairs $(\bar x,\bar z)$、$(\bar y,\bar w)$ の間に、segments数 $N(A,\delta)$ 以下、length $\le d_B(\bar z,\bar w)+\delta R$ の target galleryと、\emph{指定された二つの anchorsを正確に結ぶ} source path $\widetilde\gamma$ が存在して
+ \[
+  L_X(\widetilde\gamma)\le L_B(\gamma)+\beta_R(A,\delta)
+ \]
+ を満たす；
+ \item\label{C7} 任意の $b\in B_B(0,AR)$ に対し $(x_b,z_b)\in\Gamma_R$ が存在し
+ \[
+  d_X(o,x_b)\le d_B(0,b)+c_R,\qquad d_B(z_b,b)\le c_R,
+ \]
+ ここで $c_R=o(R)$。
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[fibreを仮定しない]
+\ref{C5} の anchorは $S_{\alpha,R}^{-1}(z)$ の同じ componentに留まる必要がない。Target displacement $a_R=o(R)$ を明示的に許す。\ref{C6} は terminal fibreへ到達するという主張ではなく、最初から指定された terminal anchorで終わる transport statementである。
+\end{remark}
+
+\subsection{Distance-function calibration}
+$b\in B$ に対し
+\[
+ f_{\alpha,b}(x)=d_B(S_{\alpha,R}(x),b),\qquad
+ F_{b,R}(x)=\sum_\alpha\chi_{\alpha,R}(x)f_{\alpha,b}(x)
+\]
+と置く。
+
+\begin{lemma}[scalar calibration]\label{lem:scalar-calibration}
+\ref{C1}--\ref{C4} の下で
+\[
+ \Lip(F_{b,R})\le1+\eps_R+C\frac{\kappa_R}{h_R}=1+o(1)
+\]
+が $b$ に一様に成り立つ。また任意の graph pair $(x,z)\in\Gamma_R$ に対し
+\[
+ |F_{b,R}(x)-d_B(z,b)|\le\kappa_R.
+\]
+\end{lemma}
+
+\begin{proof}
+Distance functionは $1$-Lipschitzなので $f_{\alpha,b}$ は $(1+\eps_R)$-Lipschitzである。$\chi_{\beta,R}(x)>0$ となる $\beta$ を固定し、$\sum\dd\chi_\alpha=0$ を用いると
+\[
+ \dd F_{b,R}=\sum_\alpha\chi_\alpha\dd f_{\alpha,b}
+ +\sum_\alpha\dd\chi_\alpha(f_{\alpha,b}-f_{\beta,b}).
+\]
+第一項は cotangent normの convexity、第二項は reverse triangle inequality、\ref{C3}、cover multiplicity、\ref{C4} により評価される。Cut locus上では weak upper gradientsを用いる。Graph pairの target value $z=S_{\alpha,R}(x)$ を与える chart $\alpha$ の partition weightが零の場合もある。そこで $\chi_{\beta,R}(x)>0$ となる active chart $\beta$ を選ぶと、$x\in U_{\alpha,R}\cap U_{\beta,R}$ なので \ref{C3} が $d_B(z,S_{\beta,R}(x))\le\kappa_R$ を与える。他の active mapsも同様であり、最後の式が従う。
+\end{proof}
+
+\begin{proposition}[global lower-distance estimate]\label{prop:calibrated-lower}
+$(x,z),(y,w)\in\Gamma_R$ で $x,y\in B_X(o,AR)$ とする。このとき
+\[
+ d_B(z,w)\le
+ \left(1+\eps_R+C\frac{\kappa_R}{h_R}\right)d_X(x,y)+2\kappa_R.
+\]
+従って $d_B(z,w)\le d_X(x,y)+o(R)$ が一様に成り立つ。
+\end{proposition}
+
+\begin{proof}
+$b=w$ と置く。\Cref{lem:scalar-calibration} から
+\[
+ F_{w,R}(x)\ge d_B(z,w)-\kappa_R,\qquad F_{w,R}(y)\le\kappa_R.
+\]
+$x,y$ 間の minimizing geodesicは $B_X(o,3AR)\subset B_X(o,A^+R)$ に含まれる。そこへ Lipschitz estimateを積分すればよい。
+\end{proof}
+
+\subsection{Anchors、gallery quantifiers、upper distance}
+\begin{proposition}[anchored gallery upper estimate]\label{prop:gallery-upper}
+\Cref{def:calibrated-system} を仮定する。$(x,z),(y,w)\in\Gamma_R$、$x,y\in B_X(o,AR)$ とし、$\delta>0$ を固定する。このとき
+\[
+ d_X(x,y)\le d_B(z,w)+\delta R+4a_R+\beta_R(A,\delta).
+\]
+\end{proposition}
+
+\begin{proof}
+\ref{C5} で $x,y$ を anchors $\bar x,\bar y$ へ結ぶ。Target anchor valuesは $z,w$ から各 $a_R$ 以内なので
+\[
+ d_B(\bar z,\bar w)\le d_B(z,w)+2a_R.
+\]
+\ref{C6} で指定 anchors間を transportし、両 endpoint anchor pathsを加えると表示を得る。
+\end{proof}
+
+\begin{lemma}[gallery precision の対角選択]\label{lem:gallery-diagonal}
+各整数 $m\ge1$ について $\beta_R(A,1/m)/R\to0$ とする。このとき piecewise constant $\delta_R\downarrow0$ を
+\[
+ \frac{\beta_R(A,\delta_R)}R+\delta_R\longrightarrow0
+\]
+となるように選べる。
+\end{lemma}
+
+\begin{proof}
+各 $m$ について $R_m$ を $R\ge R_m$ なら $\beta_R(A,1/m)/R\le1/m$ となるように取り、$R_m$ を増加させる。$R_m\le R<R_{m+1}$ で $\delta_R=1/m$ と置く。
+\end{proof}
+
+\begin{theorem}[abstract calibrated anchored-graph pGH theorem]\label{thm:abstract-pgh}
+各固定 $A>0$ について \Cref{def:calibrated-system} が存在するとする。このとき
+\[
+ (X,R^{-1}d_X,o)\xrightarrow[R\to\infty]{\mathrm{pGH}}(B,d_B,0).
+\]
+より正確には、$\Gamma_R$ を scale $R^{-1}$ した relationと \ref{C7} の radial representativesから、radius $A$ balls間の distortion $o(1)$ の correspondenceが得られる。
+\end{theorem}
+
+\begin{proof}
+各 source pointは coverの少なくとも一つの local graph valueを持つ。\Cref{prop:calibrated-lower,prop:gallery-upper,lem:gallery-diagonal} を $R$ で割ると、$\Gamma_R$ の任意の二 pairsについて source distanceと target distanceの差が $o(1)$ となる。\ref{C7} は target radius $A$ ballを $o(1)$-denseに表現し、同時に代表 source pointsが radius $A+o(1)$ ball内にあることを保証する。Basepoint pairは $(o,0)$ である。Ballwise correspondence criterion~\cite{BBI} から pointed GH convergenceが従う。
+\end{proof}
+
+\begin{auditbox}
+Abstract theoremは global map、selector、exact fibre、fibre-component diameterを用いない。必要なのは local nonexpansionと value coherenceによる no-shortcut、各 endpointから local anchorへの sublinear path、二つの\emph{指定 anchors}を結ぶ finite-gallery transport、radial densityだけである。
+\end{auditbox}
+
+\section{Conditional actual portal package と global pGH}\label{sec:actual-portal}
+
+\subsection{Rate-free analytic, square-lift, and gallery scales}
+この節では一貫して \Hloc と \Hanc を仮定する。\Hloc から得られる有限個の ordinary/square localization errorsを
+\[
+ \eta(T):=\eta_{\mathrm{ord}}(T)+\eta_{\square}(T)
+ \longrightarrow0
+\]
+と置き、square path-lifting modulusと coordinate-conversion errorも含む全誤差を
+\[
+ \Xi(T):=\eta(T)+\mu_\square(T)+e^{-T}
+ \longrightarrow0
+\]
+へまとめる。
+
+\begin{lemma}[\Hloc の下での analytic scales]\label{lem:portal-scales}
+$T_R\to\infty$ を十分ゆっくり選び $T_R=o(R)$、$h_R=\sqrt{RT_R}$ と置ける。このとき
+\[
+ T_R=o(h_R),\qquad h_R=o(R),\qquad \Xi(T_R)\to0.
+\]
+Finite number of additional error functionsにも同じ選択を用いられる。
+\end{lemma}
+
+\begin{proof}
+有限個の moduliの最大はなお零へ行く。$T_R=o(R)$ の範囲で任意にゆっくり発散させれば $T_R/h_R=h_R/R=\sqrt{T_R/R}\to0$ である。
+\end{proof}
+
+\begin{definition}[common recording convention]\label{def:recording-convention}
+Smooth nondecreasing $\operatorname{rec}_R:[0,\infty)\to[0,\infty)$ を
+\[
+ \operatorname{rec}_R(t)=0\ (t\le T_R),\qquad
+ \operatorname{rec}_R(t)=t-T_R-1\ (t\ge T_R+2),\qquad
+ 0\le\operatorname{rec}_R'\le1
+\]
+となるように固定する。全 ordinary、square lateral、residual chartsで同じ functionと同じ component labelsを用いる。
+\end{definition}
+
+\begin{lemma}[\Hloc の下での analytic--gallery diagonal]\label{lem:portal-gallery-diagonal}
+固定 $A>0$ に対し piecewise constant $\delta_R\downarrow0$ と scales $T_R,h_R$ を、
+\[
+ N_R=N(A^+,2A^++1,\delta_R/2)
+\]
+として
+\begin{align}
+ N_R\left[\Xi(T_R)+\frac{T_R+h_R}{R}\right]+\delta_R&\longrightarrow0,
+ \label{eq:gallery-diagonal-one}\\
+ \frac{N_Rh_R}{\delta_R R}&\longrightarrow0
+ \label{eq:gallery-diagonal-two}
+\end{align}
+となるように同時に選べる。ここで $N(A,L,\delta)$ は sector decomposition と portal-central modificationによる一様固定倍の segment増加をあらかじめ吸収した post-refinement gallery boundとする。
+\end{lemma}
+
+\begin{proof}
+$\delta=1/m$ を固定すれば $N_m=N(A^+,2A^++1,1/(2m))$ は有限である。まず $T$ を大きくして $N_m\Xi(T)<m^{-2}$ とし、次に $R$ を大きくして
+\[
+ N_m(T+\sqrt{RT})/R<m^{-2},
+ \qquad
+ N_m\sqrt{RT}/R<m^{-2}\delta
+\]
+とする。Increasing thresholds $R_m$ 上で対角化し、$R_m\le R<R_{m+1}$ で $\delta_R=1/m$ と置く。
+\end{proof}
+
+\subsection{One coordinate system on square--ordinary portals}
+Wonderful component $B_i$ の Hermitian defining sectionを $s_i$ とし
+\[
+ \rho_i=-\log\|s_i\|^2,\qquad t_i=\log\rho_i
+\]
+を global component depthとする。Conifold pair chartでは $y_j=-\log|m_j|$、$u_j=\log y_j$ と書く。
+
+\begin{lemma}[\Hloc の下での unit-factor normalization]\label{lem:unit-depth-normalization}
+\Hloc を仮定する。
+各 local toric divisor $m_j=0$ と対応する global component depthについて、constant $c_j$ を一度固定すれば positive deep regionで
+\[
+ t_j-c_j=u_j+O(e^{-u_j}),\qquad
+ |\dd(t_j-c_j-u_j)|\le Ce^{-u_j}
+\]
+が adapted modelまたは actual metricの covector normで成り立つ。Positive integral monomial depthは log-sum-exp of the component depthsとなり、その differentialは corresponding convex combination plus $O(e^{-T})$ である。
+\end{lemma}
+
+\begin{proof}
+Local equationは $s_j=a_jm_j$、$a_j\ne0$ である。従って
+\[
+ \rho_j=-\log|m_j|^2-\log\|a_j\|^2=2y_j+b_j,
+\]
+$b_j$ と全 derivativesは finite chart closures上で有界である。よって $t_j=\log y_j+\log2+O(y_j^{-1})$。Monomial caseは
+\[
+ \log\!\left(\sum_a A_a e^{t_a}+O(1)\right)
+\]
+へ同じ計算を適用する。微分評価は \cref{lem:ordinary-depth-control,lem:harmonic-depths} と chain ruleから従う。
+\end{proof}
+
+$\operatorname{LSE}(u,v)=\log(e^u+e^v)$ と置く。$u-v\ge T$ なら
+\begin{equation}\label{eq:lse-direct}
+ 0\le\operatorname{LSE}(u,v)-u\le e^{-T},\qquad
+ |\dd(\operatorname{LSE}(u,v)-u)|\le e^{-T}(|\dd u|+|\dd v|).
+\end{equation}
+例えば $u_1-u_3\ge T_R$、$u_2-u_4\ge T_R$ の lateral sectorで
+\[
+ a=\operatorname{LSE}(u_1,u_3)=\operatorname{LSE}(u_2,u_4)
+\]
+とし、
+\begin{align*}
+ S^{\square}_{R}
+ &=\bigl(\operatorname{rec}_R(a),\operatorname{rec}_R(u_3),
+       \operatorname{rec}_R(u_4),\text{deeper recorded coordinates}\bigr),\\
+ P_{I,R}
+ &=\bigl(\operatorname{rec}_R(u_1),\operatorname{rec}_R(u_3),
+       \operatorname{rec}_R(u_4),\text{same deeper coordinates}\bigr)
+\end{align*}
+と定義する。Ordinary sideも normalized global depths $t_j-c_j$ を用いて同じ $P_{I,R}$ とする。他の sectorsは cyclic permutationである。
+
+\begin{proposition}[\Hloc の下での map-value/differential coherence]\label{prop:coordinate-coherence}
+\Hloc を仮定する。
+全 true square--ordinary portalsで
+\begin{align}
+ \|\dd(S_R^{\square}-P_{I,R})\|&\le C(e^{-T_R}+\eta(T_R)),\label{eq:diff-square-product}\\
+ \|\dd(S_R^{\mathrm{ord}}-P_{I,R})\|&\le C(e^{-T_R}+\eta(T_R)),\label{eq:diff-ord-product}
+\end{align}
+かつ width $h_R$ の connected portal component上で
+\begin{equation}\label{eq:portal-value-coherence-v17}
+ d_{\BKE}(S_R^{\square},P_{I,R})
+ +d_{\BKE}(S_R^{\mathrm{ord}},P_{I,R})
+ \le \kappa_R,
+\end{equation}
+ここで
+\[
+ \kappa_R=C[T_R+1+(e^{-T_R}+\eta(T_R))h_R]=o(h_R).
+\]
+\end{proposition}
+
+\begin{proof}
+Square sideの discrepancyは \eqref{eq:lse-direct}、unit-factor error、common $\operatorname{rec}_R$ の $1$-Lipschitz 性の和である。Ordinary sideでは local toric depthsと normalized global depthsの差だけが残る。Actual/model localizationは、既に固定した coordinate functionsの covector normsを比較するためにのみ使う。Activation bandと bounded projective coreを anchor sliceへ collapseする costは $O(T_R+1)$。Portal内の common product segmentに沿って differential boundsを積分すると \eqref{eq:portal-value-coherence-v17} を得る。
+\end{proof}
+
+\begin{proposition}[\Hloc の下での actual local cover と controlled partition]\label{prop:actual-cover-partition}
+\Hloc を仮定する。
+各 fixed $A>0$ と sufficiently large $R$ に対し、$B_{g_{\cA}}(o,(3A+1)R)$ は ordinary central charts、positive square central charts、および true-face sidewise half-collarsからなる finite-multiplicity cover $\{U_{\alpha,R}\}$ を持つ。Local mapsは $(1+\eps_R)$-Lipschitzで
+\[
+ \eps_R\le C_A\left(\eta(T_R)+e^{-T_R}+\frac{\kappa_R}{h_R}\right)=o(1),
+\]
+overlap valuesは $\kappa_R$ 以内である。さらに subordinate Lipschitz partition $\{\chi_{\alpha,R}\}$ を
+\[
+ \sum_\alpha\chi_{\alpha,R}=1,
+ \qquad
+ |\dd\chi_{\alpha,R}|_{g_{\cA}}\le C_Ah_R^{-1}
+\]
+となるように選べる。
+\end{proposition}
+
+\begin{proof}
+Coverは finite target incidence posetの central blocksと labelled orthogonal half-collarsの pullbackから作る。Membership functionsは normalized component depths、LSE gaps、sidewise face distancesの有限 familyであり、depth-covector boundsにより actual metricで一様 Lipschitzである。幅 $h_R$ の one-variable cutoffを合成し、finite multiplicity coverの有限和で正規化すればよい。
+
+Portal half-collarで二つの coherent local valuesを補間するとき、幅 $h_R$ の cutoff微分と value mismatchの積から $C\kappa_R/h_R$ が生じる。従って local Lipschitz defectは tensor/unit errorsだけでなくこの項も含む。\Cref{prop:coordinate-coherence} と $T_R=o(h_R)$ から
+$\kappa_R/h_R=O(T_R/h_R+\eta(T_R)+e^{-T_R})\to0$ である。
+\end{proof}
+
+\subsection{Boundary collars と quantitative finite-depth anchors}
+Real oriented blow-upを $\wt Y=[Y;B]$ とする。Manifolds with cornersの face conventionsは~\cite{JoyceCorners} に従う。
+
+\begin{lemma}[boundary retractions]\label{lem:boundary-retractions}
+Finite component-labelled logarithmic atlasを取り、boundary collar上で $r_I^{\partial}$ を boundary radii $r_i$ $(i\in I)$ を零にする mapとする。$I\subset J$ なら common domainで
+\[
+ r_I^{\partial}\circ r_J^{\partial}
+ =r_J^{\partial}\circ r_I^{\partial}=r_J^{\partial}.
+\]
+Double-log depthsは boundary上で無限大なので、finite-depth preservationは主張しない。
+\end{lemma}
+
+\begin{proof}
+SNC corner coordinatesにおける coordinate zeroingである。Compositionは union of labelsを零にする。
+\end{proof}
+
+\begin{definition}[quantitative anchor statement $\mathsf A_d(A,R)$]\label{def:anchor-induction}
+Residual complex dimension $\le d$ の local blockについて $\mathsf A_d(A,R)$ とは、各 $x\in B(o,AR)$ に対し local anchor $q_{\alpha,R}(x)$ と pathがあり、次を満たすことをいう。
+\begin{enumerate}[label=(A\arabic*)]
+ \item recorded normal depthsと recursively recorded residual target coordinatesを保持する；
+ \item source path lengthは $C_d(T_R+h_R)$ 以下、local target displacementは $C_d(T_R+\kappa_R)$ 以下；
+ \item pathは positive/deep collarを離れず、$B(o,(A+1)R)$ に含まれる；
+ \item overlapping chartsの二 anchorsは finite good-cover nerveの高々 $M_d$ edgesを通る connectorsで結ばれ、同じ boundsを満たす；
+ \item constants $C_d,M_d$ は chart、depth、source point、$R$ に依存しない。
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[\Hanc の下での quantitative finite-depth anchors]\label{thm:quantitative-anchors}
+\Hanc を仮定する。
+$M_6$ および generic $M_7$ の全 ordinary、square-lateral、residual blocksについて、全 $0\le d\le3$ で $\mathsf A_d(A,R)$ が成り立つ。
+\end{theorem}
+
+\begin{proof}
+結論自体は \Hanc の finite-depth anchor clauseである。以下は、active/inactive depthの完全な chartwise分類と finite-nerve connectorsが \Hanc により与えられた後、各 chart内で必要となる compensation estimateを記録するものであり、\Hanc の独立な検証ではない。各 finite logarithmic chartを
+\[
+ (z_i)_{i\in I},\quad \theta_I,\quad w\in W_{I,a}
+\]
+で書き、$W_{I,a}^{\flat}\Subset W_{I,a}$、root $w_{I,a}^0$、finite good-cover nerveを一度固定する。$\lambda_i=-\log|z_i|^2$ とすると Hermitian depthは
+\[
+ \rho_i=e^{t_i}=\lambda_i+b_i(\lambda,\theta,w),
+\]
+ここで全 derivatives of $b_i$ は finite charts上で一様有界で、deep regionでは
+\[
+ J_I=\left(\frac{\partial\rho_i}{\partial\lambda_j}\right)_{i,j\in I}
+ =\id+O(e^{-T_R}),
+ \qquad \|J_I^{-1}\|\le2.
+\]
+従って recorded $\rho_I$ を固定しながら $(\theta,w,\lambda_{I^c})$ を動かす pathに沿い、
+\[
+ \dot\lambda_I
+ =-J_I^{-1}\left(
+   \partial_{\theta,w}\rho_I(\dot\theta,\dot w)
+   +\partial_{\lambda_{I^c}}\rho_I\dot\lambda_{I^c}
+ \right)
+\]
+を解けば uniform compensated trivializationを得る。これは implicit function theoremを pointwiseに述べるだけでなく、path全体を一様 ODEとして持ち上げる式である。
+
+Recorded depthsは厳密に固定されるため deep/positive conditionを失わない。ここで compensation の小ささは $\dot\lambda_I$ の Euclidean normではなく、normal Poincar\'e logarithmic normで測る。実際 $\lambda_i\asymp e^{t_i}\ge e^{T_R}$ $(i\in I)$、unit factors $b_i$ は元の $(z,w)$-coordinatesで smooth なので、上の ODE と $\|J_I^{-1}\|\le2$ から
+\begin{equation}\label{eq:anchor-poincare-compensation}
+ \left(\sum_{i\in I}\frac{|\dot\lambda_i|^2}{\lambda_i^2}\right)^{1/2}
+ \le C e^{-T_R}\left(
+   |\dot w|_{g_{\mathrm{res}}}
+   +|\dot\theta|_{g_{\mathrm{cusp}}}
+   +\sum_{j\notin I}\frac{|\dot\lambda_j|}{\lambda_j}
+ \right).
+\end{equation}
+例えば $\partial_{\lambda_j}b_i$ は $z_j=e^{-\lambda_j/2}e^{\sqrt{-1}\theta_j}$ に関する smooth unit factorの微分から来るため $|\partial_{\lambda_j}b_i|\le Ce^{-\lambda_j/2}$ であり、$e^{-\lambda_j/2}\le C/(1+\lambda_j)$ を用いれば \eqref{eq:anchor-poincare-compensation} の unrecorded-normal termを得る。Phase と residual derivativesも同様に、recorded factor $\lambda_i^{-1}\le Ce^{-T_R}$ により抑えられる。
+
+\Hanc の chartwise classificationで unrecordedと指定された depthsは $t_j\le T_R+2$ であり、positive interval内の rootまで動かす Poincar\'e costは $CT_R$ 以下である。さらにその unrecorded normal coordinateを大きく動かす場合でも
+\[
+ \int |\partial_{\lambda_j}b_i|\,|\dd\lambda_j|
+ \le C\int_0^\infty e^{-\lambda_j/2}\,\dd\lambda_j\le C
+\]
+なので、compensation の累積変位は一様有界である。Phase circlesは ordinary cuspまたは positive square phase estimateにより bounded、compact residual root pathは $O(1)$ である。従って compensation が追加する Poincar\'e lengthは主 path lengthの $O(e^{-T_R})$ 倍と一様定数で支配され、全 connector length $C_d(T_R+h_R)$ に吸収される。
+
+$d=0$ ではこの局所計算で終了する。$d>0$ で residual coordinateがその boundaryへ逃げる場合、\Hanc の recursive clauseにより residual pair内の recorded coordinatesを $\mathsf A_{d-1}(A',R)$ で anchorする。Normal factorsとの product metricにより新たな costは $C_{d-1}(T_R+h_R)$ 以下であり、residual dimensionが真に下がるので高々 $d$ 回で停止する。Chart間で同じ boundsを保つ finite-nerve connectorsの存在と一様な connector数 $M_d$ は \Hanc の global compatibility clauseである。
+
+Portal normal coordinateを動かす場合は labelled half-cell内で距離 $O(h_R)$ の monotone pathを用いる。Recorded coordinatesは保持され、target displacementは unrecorded truncationの $O(T_R)$ と overlap coherence $\kappa_R$ の和である。全 path lengthは $C_d(T_R+h_R)=o(R)$ なので window containmentも従う。
+\end{proof}
+
+\begin{theorem}[\Hanc の下での local endpoint anchors]\label{thm:component-control-data}
+\Hanc を仮定する。
+各 local graph pair $(x,z)=(x,S_{\alpha,R}(x))$ に対し anchored pair
+\[
+ (a_{\alpha,R}(x),\bar z_{\alpha,R}(x))\in\Gamma_R
+\]
+と path $\lambda_{\alpha,x}$ を
+\[
+ L(\lambda_{\alpha,x})\le a_R,
+ \qquad
+ d_{\BKE}(z,\bar z_{\alpha,R}(x))\le a_R,
+ \qquad
+ a_R=C_A(T_R+h_R+\kappa_R)=o(R)
+\]
+となるように選べる。Anchorは local chart labelを含み、global sectionへ貼る必要はない。
+\end{theorem}
+
+\begin{proof}
+Ordinary／lateral blocksには \cref{thm:quantitative-anchors} を使う。Positive square central blockでは intrinsic phase-zero square anchorを用い、phase/core correctionを \cref{prop:square-quantitative-lift} の $CT_R$ と $\mu_\square(T_R)$ へ吸収する。Portal overlapsでは target displacementに $\kappa_R$ を加える。
+\end{proof}
+
+\subsection{Prescribed-start local lifts and finite label transitions}
+\begin{proposition}[\Hloc+\Hanc の下での prescribed-start local lift]\label{prop:local-section-estimate}
+\Hloc と \Hanc を仮定する。
+Ordinary cell、positive square cell、または一つの sidewise portal half-cellを $C_\alpha$ とする。Segments数 $m$ 以下、length $\ell=O(R)$ の target path
+\[
+ \gamma:[0,1]\longrightarrow C_\alpha^{\mathrm{safe}}
+\]
+と、始点に対応する local endpoint anchor $x_0\in U_{\alpha,R}$ で
+\[
+ d_{\BKE}(S_{\alpha,R}(x_0),\gamma(0))\le C(T_R+\kappa_R)
+\]
+を満たすものを取る。このとき $x_0$ から、終点に対応する local endpoint anchor $x_1$ へ至る prescribed-start lift $\widetilde\gamma_\alpha$ が存在し、
+\begin{align}
+ d_{\BKE}(S_{\alpha,R}(x_1),\gamma(1))
+ &\le C(T_R+\kappa_R),\label{eq:section-value}\\
+ L_{g_{\cA}}(\widetilde\gamma_\alpha)
+ &\le(1+C\Xi(T_R))\ell+C_m(T_R+h_R+\kappa_R),\label{eq:section-length}\\
+ \sup_t d_{\BKE}\bigl(S_{\alpha,R}(\widetilde\gamma_\alpha(t)),\gamma(t)\bigr)
+ &\le C_m(T_R+h_R+\kappa_R).\label{eq:section-track}
+\end{align}
+同じ statement は pathを逆向きにして prescribed terminal anchorからも成り立つ。従って一つの global single-valued section $C_\alpha^{\mathrm{safe}}\to U_{\alpha,R}$ は仮定しない。
+\end{proposition}
+
+\begin{proof}
+Ordinary cellでは、指定 anchorから product horizontal liftを開始し、\cref{prop:ordinary-R-dependent} の actual/model comparisonを適用する。Inactive-depth または residual rootの correctionは \cref{thm:quantitative-anchors} により $C(T_R+h_R)$ 以下である。Positive square cellでは global sectionを選ばず、\cref{prop:square-quantitative-lift} の prescribed-start intrinsic Titeica liftをそのまま使う。Exact positive liftingは endpoint target valueの実現にのみ用いる。Portal half-cellでは common product coordinatesに沿う prescribed-start horizontal pathを取り、各 interpolationを一つの convex side内に留める。始点・終点で必要な anchor adjustmentは \cref{thm:quantitative-anchors} の overlap clauseにより $C(T_R+h_R+\kappa_R)$ 以下である。
+
+Ordinary tensor defect $\eta_{\mathrm{ord}}$、actual-square defect $\eta_\square$、intrinsic square lift defect $\mu_\square$、unit/LSE conversion $e^{-T_R}$ を最大して $\Xi(T_R)$ とすると、三 casesで共通に \eqref{eq:section-length} が得られる。Target trackingは local map coherenceと anchor displacementを加えれば \eqref{eq:section-track} となる。逆向き statementは $\gamma(1-t)$ に同じ構成を適用するだけである。
+\end{proof}
+
+\begin{proposition}[\Hanc の下での one portal transition]\label{prop:add-remove-transition}
+\Hanc を仮定する。
+Target cells $C_-,C_+$ が common true face $F$ で接し、active labelsを $I_-,I_+$ とする。$I_F=I_-\cap I_+$ と置く。Portal central thirdsの prescribed anchorsは
+\[
+ I_-\longrightarrow I_F\longrightarrow I_+
+\]
+という source pathで結べる。Costは $C(T_R+h_R+\kappa_R)$ 以下で、target trackは sidewise collar pathから $C(T_R+\kappa_R)$ 以内にある。
+\end{proposition}
+
+\begin{proof}
+Outgoing labels $I_-\setminus I_F$ を labelled half-cell内で activation thresholdまで戻す。この costは $C(T_R+h_R)$。Common-face anchorsを \cref{thm:quantitative-anchors} の finite-nerve connectorで結び、incoming labelsを逆向きに activateする。Incompatible labelsを同時に activeにせず、異なる cellsを横切る affine interpolationも用いない。
+\end{proof}
+
+\subsection{Prescribed-anchor gallery transport with complete bookkeeping}
+\begin{proposition}[portal-central gallery modification]\label{prop:central-gallery-modification}
+$\delta R/2$-near-minimizing gallery $\gamma_0$ の segments数を $N$ とする。各 true-face transitionを portal central thirdsへ移す gallery $\gamma$ が存在し
+\[
+ L_{\BKE}(\gamma)
+ \le L_{\BKE}(\gamma_0)+C_A N h_R.
+\]
+\end{proposition}
+
+\begin{proof}
+各 transitionの両側に、同じ half-cell内の labelled orthogonal face projectionへ至る normal segmentと face segmentを挿入する。一 insertionの costは $C_Ah_R$。Finite cell decompositionによりこれ以外の segment増加は一様有限であり、修正後 segment数は $c_{\mathrm{port}}N$ 以下である。以下では gallery bound $N(A,\delta)$ を最初からこの固定倍 $c_{\mathrm{port}}$ を吸収した数として取り直す。
+\end{proof}
+
+\begin{theorem}[\Hloc+\Hanc の下での prescribed-anchor gallery transport]\label{thm:prescribed-gallery-lift}
+\Hloc と \Hanc を仮定する。
+二つの local graph pairsと、\cref{thm:component-control-data} で選んだ anchors $(\bar x,\bar z)$、$(\bar y,\bar w)$ を取る。固定 $\delta>0$ と sufficiently large $R$ に対し、segments数
+\[
+ N=N(A,\delta/2)
+\]
+以下の target gallery $\gamma$ と、指定された $\bar x$ から $\bar y$ へ至る source path $\widetilde\gamma$ が存在し
+\begin{align}
+ L_{\BKE}(\gamma)
+ &\le d_{\BKE}(\bar z,\bar w)+\delta R,\label{eq:target-gallery-length-v17}\\
+ L_{g_{\cA}}(\widetilde\gamma)
+ &\le L_{\BKE}(\gamma)
+ +C_AN\Bigl[\Xi(T_R)R+T_R+h_R+\kappa_R\Bigr].\label{eq:anchored-transport-error-v17}
+\end{align}
+Pathは $B_{g_{\cA}}(o,(3A+1)R)$ に含まれる。
+\end{theorem}
+
+\begin{proof}
+まず \cref{prop:gallery-templates} で $\delta R/2$-near-minimizer $\gamma_0$ を選ぶ。\Cref{prop:central-gallery-modification} 後の excessは $C_ANh_R$。固定 $\delta$ では $N$ は有限で、$h_R/R\to0$ だから sufficiently large $R$ で
+\[
+ C_ANh_R\le\delta R/2.
+\]
+これで \eqref{eq:target-gallery-length-v17} を得る。
+
+各 cell segmentを \cref{prop:local-section-estimate} の prescribed-start／prescribed-terminal liftで持ち上げる。Ordinary multiplicative errorは $\eta_{\mathrm{ord}}(T_R)$、square errorは独立に構成した $\mu_\square(T_R)$、actual/model defectは $\eta_\square(T_R)$、coordinate conversionは $e^{-T_R}$ であり、これらが $\Xi(T_R)R$ を与える。Exact tropical lift単独から square length estimateを出していない。
+
+各 portal transitionを \cref{prop:add-remove-transition} で接続する。最初の segmentは $\bar x$ から forward、最後は $\bar y$ から backwardに liftし、中間 endpointsは local endpoint anchorsと quantitative anchor connectorsで結ぶ。従って両端は指定 anchorsに正確に一致する。Transition、core、anchor costsを $N$ 回加えると \eqref{eq:anchored-transport-error-v17} を得る。Target lengthが $O(R)$ で全追加 costが $o(R)$ なので enlarged windowに留まる。
+\end{proof}
+
+\begin{corollary}[\Hloc+\Hanc の下での prescribed-endpoint upper bound]\label{cor:prescribed-upper-diagonal}
+\Hloc と \Hanc を仮定する。
+\Cref{lem:portal-gallery-diagonal} の $\delta_R$ を用いると、任意の local graph pairs $(x,z),(y,w)$ について
+\[
+ d_{g_{\cA}}(x,y)\le d_{\BKE}(z,w)+o(R)
+\]
+が radius $AR$ ball内で一様に成り立つ。
+\end{corollary}
+
+\begin{proof}
+両 endpointsを anchorsへ接続し、\cref{thm:prescribed-gallery-lift} を $\delta=\delta_R$ で適用する。\eqref{eq:gallery-diagonal-one} は source errors、\eqref{eq:gallery-diagonal-two} は portal-central modificationを $\delta_RR$ 内へ吸収する。残る $N_R\kappa_R$ も、\cref{prop:actual-cover-partition} の評価と $h_R/R\to0$ から
+\[
+ \frac{N_R\kappa_R}{R}
+ \le C\left[
+   \frac{N_RT_R}{R}
+   +N_R\Xi(T_R)\frac{h_R}{R}
+   +\frac{N_R}{R}
+ \right]=o(1),
+\]
+ここで第一・第三項は \eqref{eq:gallery-diagonal-one}、第二項は $N_R\Xi(T_R)\to0$ と $h_R/R\to0$ を用いた。従って全 errorは $o(R)$ である。
+\end{proof}
+
+\subsection{Radial density and verification}
+\begin{proposition}[\Hloc+\Hanc の下での radial anchored density]\label{prop:radial-density}
+\Hloc と \Hanc を仮定する。
+任意の $b\in B_{\BKE}(0,AR)$ に対し local graph pair $(x_b,z_b)\in\Gamma_R$ を
+\[
+ d_{g_{\cA}}(o,x_b)\le d_{\BKE}(0,b)+o(R),
+ \qquad
+ d_{\BKE}(z_b,b)=o(R)
+\]
+となるように選べる。
+\end{proposition}
+
+\begin{proof}
+これは \Hanc の one-sided radial transport clauseである。Canonical square terminal blockにおける局所 length/value controlは \cref{prop:square-quantitative-lift,lem:exact-positive-lift} が与えるが、全 cell itineraryを fixed base anchorから実現すること自体は \Hanc の内容であり、\cref{thm:prescribed-gallery-lift} の二端点版から自動的に推論しない。
+\end{proof}
+
+\begin{theorem}[条件付き actual calibrated anchored graph system]\label{thm:verified-portal-system}
+\Hloc と \Hanc を仮定する。
+$\cA=M_6$ または generic $M_7(\lambda,\mu)$ とする。各 fixed $A$ と sufficiently large $R$ に対し \cref{def:calibrated-system} の \ref{C1}--\ref{C7} が成り立つ。Errorsは
+\begin{align*}
+ \eps_R&\le C_A\left(\eta(T_R)+e^{-T_R}+\frac{\kappa_R}{h_R}\right)=o(1),\\
+ \kappa_R&\le C_A[T_R+1+(\eta(T_R)+e^{-T_R})h_R]=o(h_R),\\
+ a_R&\le C_A(T_R+h_R+\kappa_R)=o(R),\\
+ \beta_R(A,\delta)&\le C_AN(A,\delta/2)
+ [\Xi(T_R)R+T_R+h_R+\kappa_R],
+\end{align*}
+である。Portal-central target modificationは別に $C_AN(A,\delta/2)h_R$ であり、\cref{lem:portal-gallery-diagonal} により $\delta R/2$ へ吸収される。Density errorも $o(R)$ である。
+\end{theorem}
+
+\begin{proof}
+\ref{C1}--\ref{C4} は \cref{prop:actual-cover-partition}、\ref{C5} は \cref{thm:quantitative-anchors,thm:component-control-data}、\ref{C6} は \cref{prop:local-section-estimate,thm:prescribed-gallery-lift}、\ref{C7} は \cref{prop:radial-density} である。No boundary-depth identity、global selector、exact fibre component、monotone-only label itineraryは使用しない。
+\end{proof}
+
+\subsection{Conditional actual pGH theorem}
+\begin{theorem}[\Hloc+\Hanc の下での actual global pGH]\label{thm:actual-global-pgh}
+$\cA=M_6$ または generic $M_7(\lambda,\mu)$ とする。任意の fixed basepoint $o\in U_{\cA}$ に対し
+\Hloc と \Hanc を仮定すれば、
+\[
+ \bigl(U_{\cA},R^{-1}d_{\omega_{\cA}},o\bigr)
+ \xrightarrow[R\to\infty]{\mathrm{pGH}}
+ \bigl(\BKE,0\bigr).
+\]
+Limitは small-resolution presentationと nested-set subdivisionに依存しない。$M_7$ の limit coneは $(\lambda,\mu)$ に依存しない。
+\end{theorem}
+
+\begin{proof}
+\Cref{thm:verified-portal-system} と abstract anchored-graph theorem \cref{thm:abstract-pgh} を適用する。Lower distanceは scalar calibration、upper distanceは prescribed anchors間の finite add/remove gallery transport、densityは radial transportから従う。Presentation independenceと parameter independenceは \cref{prop:model-properness,thm:presentation-independence,thm:pair-independence} による。
+\end{proof}
+
+\begin{corollary}[条件付き moving-basepoint first-scale classification]\label{cor:moving-basepoints}
+\Hloc と \Hanc を仮定する。$d_{\omega_{\cA}}(o,x_R)\le AR$ を満たす任意の basepoint列に対し、$x_R$ を含む local graph pair $(x_R,z_R)$ を選ぶ。Cone dilationを $\delta_{1/R}$ と書くと、subsequenceを取り
+\[
+ \delta_{1/R}z_R\longrightarrow b\in\ov B_{\BKE}(0,A)
+\]
+かつ
+\[
+ (U_{\cA},R^{-1}d_{\omega_{\cA}},x_R)
+ \xrightarrow{\mathrm{pGH}}(\BKE,b)
+\]
+とできる。Overlap value coherenceにより $b$ は local graph labelの選択に依存しない。逆に全ての $b\in\BKE$ は適当な $x_R$ で実現される。
+\end{corollary}
+
+\begin{proof}
+\Cref{thm:verified-portal-system} の ballwise correspondencesは distortion $o(R)$ であり、$\ov B_{\BKE}(0,A)$ は compactである。従って $\delta_{1/R}z_R$ の収束 subsequenceを取り、同じ correspondencesを $(x_R,z_R)$ で recenterすればよい。逆向きは \cref{prop:radial-density} による。
+\end{proof}
+
+\begin{remark}
+\Cref{cor:moving-basepoints} は first scaleで $d(o,x_R)=O(R)$ の列だけを分類する。Scale-one moving limitsや $d(o,x_R)/R\to\infty$ の列は本稿では扱わない。
+\end{remark}
+
+\begin{statusbox}
+\Hanc は、boundary retractionそれ自体には finite-depth preservationを要求せず、別の interior anchorsにその役割を課す。また labelsを common faceまで removeしてから addすること、両 endpoint anchorsを最初から指定して transportすること、one-sided radial representativesを構成することを明示的に要求する。従って \cref{thm:actual-global-pgh} は fibre connectivityや global selectorを仮定しないが、これらを置き換える定量的内容は \Hanc として未検証の解析・幾何学的入力に残る。
+\end{statusbox}
+
+\section{Residual \texorpdfstring{$M_{0,5}$}{M0,5} geometry と Torelli theory}\label{sec:residual}
+
+\subsection{Labelled realization space}
+最初の六 columnsを \Cref{eq:M6-standard} の標準形へ固定すると、generic $M_7$ の labelled realizationは
+\[
+ v_7=e_1+\lambda e_2+\mu e_3,
+ \qquad
+ \lambda\mu(\lambda-1)(\mu-1)(\lambda-\mu)\ne0
+\]
+に一意に正規化される。
+
+\begin{theorem}[realization space is $M_{0,5}$]\label{thm:realization-M05}
+$M_7$ の labelled realization spaceは
+\[
+ \mathcal R_{\mathrm{lab}}(M_7)\simeq M_{0,5}
+\]
+である。この同型は Kapranov の $\ov M_{0,n}$ modelとも整合し~\cite{Kapranov}、five labelled pointsを
+\[
+ (1,\lambda,\mu,0,\infty)
+\]
+と取れる。
+\end{theorem}
+
+\begin{proof}
+$E_0=\PP(T_{p_0}\PP^3)$ の coordinatesを $[A:B:C]=[u_1:u_2:u_3]$ とすると、五 boundary linesの coefficient matrixは
+\[
+ M_0=
+ \begin{pmatrix}
+ 0&1&0\\
+ 1&0&0\\
+ 0&-1&1\\
+ 1&0&1\\
+ \lambda&1-\mu&\mu
+ \end{pmatrix}.
+\]
+Its Gale kernelを
+\[
+ G_0=
+ \begin{pmatrix}
+ -1&-1\\
+ -1&-\lambda\\
+ -1&-\mu\\
+ 1&0\\
+ 0&1
+ \end{pmatrix},
+ \qquad
+ M_0^{\mathsf T}G_0=0
+\]
+と取る。Rows of $G_0$ が定める $\PP^1$ の pointsは $(1,\lambda,\mu,0,\infty)$ であり、genericity conditionは五点が相異なる条件である。逆に五 labelled pointsを $0,1,\infty$ で正規化すれば $(\lambda,\mu)$ を回復する。
+\end{proof}
+
+\begin{proposition}[dual conic]\label{prop:dual-conic}
+$M_0$ の five rowsを dual planeの pointsとみなすと、それらは一意な conic
+\[
+ Z^2-XZ+YZ+\kappa XY=0,
+ \qquad
+ \kappa=\frac{\mu(\lambda-1)}{\lambda(1-\mu)}
+\]
+上にある。その symmetric matrix determinantは
+\[
+ -\frac{\mu(\lambda-1)(\lambda-\mu)}{4\lambda^2(1-\mu)^2},
+\]
+従って generic locus上で smoothである。
+\end{proposition}
+
+\begin{proof}
+Five pointsを conic equationへ代入して係数を解き、determinantを直接計算する。
+\end{proof}
+
+\subsection{Five residual four-punctured curves}
+$E_0$ 上の five boundary linesを $L_i=E_0\cap\widetilde H_i$、$i\in\{1,2,3,4,7\}$ とし、他の boundary linesとの intersectionsを除いた open curveを $C_i^\circ$ と書く。各 $C_i^\circ$ は fully labelled four-punctured sphereである。Cusp orderingを固定すると cross-ratiosは次の通りである。
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}c c c c@{}}
+\toprule
+$i$ & line equation & coordinate and ordered punctures & $r_i(\lambda,\mu)$\\
+\midrule
+$1$ & $B=0$ & $s=-C/A:(\infty,0,1,r_1)$ & $\lambda/\mu$\\
+$2$ & $A=0$ & $s=1-C/B:(\infty,0,1,r_2)$ & $1/\mu$\\
+$3$ & $C=B$ & $s=-B/A:(\infty,0,1,r_3)$ & $\lambda$\\
+$4$ & $C=-A$ & $s=-B/A:(\infty,0,1,r_4)$ & $(\lambda-\mu)/(1-\mu)$\\
+$7$ & $\lambda A+(1-\mu)B+\mu C=0$ & $s=-B/A:(\infty,0,\lambda,*)$ & $(\lambda-\mu)/(\lambda(1-\mu))$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+ここで $*=(\lambda-\mu)/(1-\mu)$、最後の cross-ratioは $\operatorname{cr}(\infty,0;\lambda,*)=*/\lambda$ とした。
+
+\begin{theorem}[residual five-web]\label{thm:residual-five-web}
+Moduli maps
+\[
+ r_i:\mathcal R_{\mathrm{lab}}(M_7)\longrightarrow M_{0,4}
+\]
+は \Cref{thm:realization-M05} の同定の下で five forgetful maps $M_{0,5}\to M_{0,4}$ に一致する~\cite{Pirio}。ただし各 targetで cusp orderingに由来する anharmonic automorphismを許す。
+\end{theorem}
+
+\begin{proof}
+Gale points $(1,\lambda,\mu,0,\infty)$ の一つを忘れ、残り四点の cross-ratioを計算すると上表の anharmonic orbitを得る。各 $L_i$ 上で他の four line equationsを直接制限しても同じ formulasになる。
+\end{proof}
+
+\subsection{Single-node residual Torelli}
+$q_{01}$ の cyclic boundary componentsのうち、$E_0$ sideに $C_1^\circ,C_3^\circ$ が現れる。$E_1$ sideの residual curvesは three-punctured spheresで modulusを持たない。
+
+\begin{theorem}[single-node residual Torelli]\label{thm:single-node-torelli}
+Labelsと cusp orderingを保った residual curves adjacent to $q_{01}$ は $M_7(\lambda,\mu)$ を一意に決定する。実際
+\[
+ \Phi_{01}(\lambda,\mu)
+ =(r_3,r_1)
+ =\left(\lambda,\frac{\lambda}{\mu}\right),
+ \qquad
+ \det D\Phi_{01}=-\frac{\lambda}{\mu^2}\ne0,
+\]
+かつ
+\[
+ \lambda=r_3,
+ \qquad
+ \mu=\frac{r_3}{r_1}.
+\]
+第二 node $q_{02}$ も、例えば $(r_2,r_4)$ により birational coordinatesを与える。
+\end{theorem}
+
+\begin{proof}
+Cross-ratio tableから直ちに従う。表示した inverseが global injectivityと reconstructionを同時に与える。
+\end{proof}
+
+\begin{corollary}[residual metric Torelli]\label{cor:residual-metric-torelli}
+Residual curvesに complete curvature $-1$ metricsを入れ、factor labels、cusp labels、K\"ahler orientationsを保持する。このとき $q_{01}$ に隣接する二つの metric curvesだけで arrangementを projective equivalenceまで決定できる。Orientationsを忘れると complex conjugation、cusp orderingsを忘れると finite anharmonic ambiguityが加わるが、generic labelled dataに continuous ambiguityはない。
+\end{corollary}
+
+\begin{proof}
+Fully marked oriented finite-area hyperbolic metricは underlying conformal four-punctured sphere、従って cross-ratioを決定する。\Cref{thm:single-node-torelli} を適用する。
+\end{proof}
+
+\subsection{Residual Weil--Petersson completion}
+$g_{\mathrm{WP},4}$ を $M_{0,4}$ の Weil--Petersson metricとし
+\[
+ g_{\mathrm{res}}
+ =\sum_{i\in\{1,2,3,4,7\}}r_i^*g_{\mathrm{WP},4}
+\]
+と置く。その length distanceを $d_{\mathrm{res}}$ と書く。
+
+\begin{proposition}[positivity]\label{prop:res-WP-positive}
+$g_{\mathrm{res}}$ は $M_{0,5}$ 上 positive definiteである。
+\end{proposition}
+
+\begin{proof}
+$(r_3,r_1)=(\lambda,\lambda/\mu)$ だけでも local coordinatesを与えるので full forgetful map
+\[
+ F=(r_1,r_2,r_3,r_4,r_7):M_{0,5}\longrightarrow(M_{0,4})^5
+\]
+は immersionである。Product WP metricの pullbackが $g_{\mathrm{res}}$ なので正定値である。
+\end{proof}
+
+\begin{proposition}[full forgetful map on the compactification]\label{prop:forgetful-closed-embedding}
+Stabilized forgetful mapsは morphism
+\[
+ \ov F:\ov M_{0,5}\longrightarrow(\ov M_{0,4})^5
+\]
+を定め、これは closed embeddingである。Boundary point $z$ において $r_i(z)=\infty$ の factorでは local target coordinateとして $1/r_i$ を用いる。Codimension-two boundary pointでは二つの nodesをそれぞれ保持する二つの forgetful factorsを選べ、それらの local coordinatesは二つの plumbing parametersを個別に検出する。
+\end{proposition}
+
+\begin{proof}
+Interiorでは \Cref{thm:single-node-torelli} の formulasが point separationと differential injectivityを与える。Boundary divisorの generic pointは partition $I|I^c$、$|I|=2$ で表される。Forgotten markを $I^c$ の適切な一つに取れば nodeは stabilization後も残り、対応 $M_{0,4}$ factorの cusp coordinateは unit times the plumbing parameterである。Cross-ratioが $\infty$ へ行く場合は reciprocal coordinateを取る。
+
+Codimension twoでは stable five-pointed curveは三 componentsの chainで、二つの nodesを持つ。左 nodeを保ち右 nodeを contractする forgetful factorと、その逆を行う factorを選べる。従って二つの target cusp coordinatesは
+\[
+ s_i=u_i t_1,
+ \qquad
+ s_j=u_j t_2,
+ \qquad
+ u_i(0),u_j(0)\ne0
+\]
+と書け、normal differentialを別々に検出する。Boundary stratum directionsは残る marked componentの cross-ratioで検出される。従って $\ov F$ は全点で injectiveかつ local closed immersionである。Domainは projectiveなので $\ov F$ は properであり、point separationと local closed immersionから closed embeddingが従う。
+\end{proof}
+
+\begin{lemma}[plumbing comparison]\label{lem:res-WP-plumbing}
+$z\in\ov M_{0,5}$ を stable treeに対応する boundary pointとし、nodes $e$ の plumbing coordinatesを $t_e$、stratum coordinatesを $w$ とする。このとき $z$ の neighborhoodで
+\[
+ g_{\mathrm{res}}
+ \asymp
+ g_{\mathrm{str}}(w)
+ +\sum_e\frac{|\dd t_e|^2}{|t_e|^2(-\log|t_e|)^3},
+\]
+ここで $g_{\mathrm{str}}$ は boundary stratum上の smooth positive metricで、comparison constantsは chart内で一様である。
+\end{lemma}
+
+\begin{proof}
+$M_{0,4}$ の cusp coordinate $s$ における WP asymptoticは~\cite{Wolpert}
+\[
+ g_{\mathrm{WP},4}
+ \asymp\frac{|\dd s|^2}{|s|^2(-\log|s|)^3}.
+\]
+各 forgetful cross-ratioの finite value near $z$、または infinite valueの reciprocalは
+\[
+ s_i=u_i(w,t)\prod_e t_e^{m_{ie}},
+ \qquad
+ u_i(0)\ne0,
+ \qquad
+ m_{ie}\in\{0,1\}
+\]
+と書ける。\Cref{prop:forgetful-closed-embedding} により各 nodeは少なくとも一 factorで指数 $1$ として検出され、codimension twoでは二つの nodesを別々に検出する二 factorsがある。有限個の pullbacksを足し、unit derivativesと stratum termsを吸収すれば比較を得る。
+\end{proof}
+
+\begin{theorem}[residual WP completion]\label{thm:res-WP-completion}
+Metric completion of $(M_{0,5},d_{\mathrm{res}})$ は $\ov M_{0,5}$ と自然に同相である。
+\end{theorem}
+
+\begin{proof}
+$\rho_e=(-\log|t_e|)^{-1/2}$ と置くと normal radial partは $\dd\rho_e^2$ と比較可能である。従って各 boundary pointは有限距離にあり、同じ stable limitへ収束する sequencesは $d_{\mathrm{res}}$-Cauchyである。
+
+逆に $d_{\mathrm{res}}$-Cauchy sequenceの $F$-imageは product WP completionで Cauchyとなり、$(\ov M_{0,4})^5$ の一点へ収束する。\Cref{prop:forgetful-closed-embedding} によりこの pointが $\ov F(\ov M_{0,5})$ に属するなら stable limitは一意である。Compactness of $\ov M_{0,5}$ から subsequential stable limitは存在し、その imageは上の product limitに一致するため full sequenceの limitが決まる。\Cref{lem:res-WP-plumbing} により異なる stable limitsは positive separationを持つ。
+\end{proof}
+
+\begin{remark}[first cone と residual data]
+無条件に構成される model cone $\BKE$ は $(\lambda,\mu)$ を忘れ、\Hloc+\Hanc の下では actual first pGH coneでもある。一方、\Cref{cor:residual-metric-torelli} の二 lateral hyperbolic metricsは parametersを完全に復元する。Realization dependenceは canonical first cell metricではなく residual scaleに現れる。
+\end{remark}
+
+\section{結論と今後の問題}\label{sec:conclusion}
+
+本稿で無条件に得た構図と、条件付き actual statementの関係は
+\[
+\begin{gathered}
+ \boxed{\text{parameter-independent conifold pair}}\\[1mm]
+ \big\downarrow\\[-1mm]
+ \boxed{\text{parameter-independent canonical model cone }\BKE}\\[1mm]
+ \substack{\Hloc+\Hanc\ \text{の下で}\\ \BKE=\text{actual first pGH cone}}\\[1mm]
+ \big\downarrow\\[-1mm]
+ \boxed{\text{parameter-detecting residual curves}}
+\end{gathered}
+\]
+である。Canonical $8\pi/3$ cellと abstract scalar calibration principleは無条件である。Actual middle stepには、whole-end localizationを供給する \Hloc と quantitative finite-depth anchors／指定端点 transport／radial densityを供給する \Hanc が必要である。
+
+数学監査後の証明状況は次の三点に整理される。
+\begin{enumerate}[label=(\roman*)]
+ \item $K_Y+B$ の ample-modulo-boundary positivityから genuine completenessと Poincar\'e lower barrierを得、depth covector boundsを dual inequalityから直接導いた。
+ \item Complete pair-end stabilityは無条件の抽象比較定理として残るが、ordinary whole endで必要な global exact referencesと limit identificationは \Hloc に分離した。したがって ordinary／square actual localizationは条件付きである。
+ \item Local-graph scalar calibration theoremは無条件であるが、actual endpointsの全 local blocksにわたる分類、finite-nerve connectors、指定端点 gallery transport、および one-sided radial densityは \Hanc に分離した。したがって actual global pGHは \Hloc+\Hanc の下での条件付き系である。
+\end{enumerate}
+
+最優先の問題は次の二仮定を独立に検証することである。
+\begin{problem}[\Hloc の検証]\label{prob:verify-Hloc}
+Ordinary whole ends上に component-labelled global exact reference metricsを構成するか、formal productを global exact metricとみなさずに actual metricの asymptotic limitを一意に同定せよ。Parent/refinement compatibilityと noncompact outer collarsでの一様比較を同時に示す必要がある。
+\end{problem}
+
+\begin{problem}[\Hanc の検証]\label{prob:verify-Hanc}
+$M_6,M_7$ の全 blocksについて active/inactive depths、kernel directions、chart overlaps、portal incidencesを有限表として列挙し、recorded depthsを保つ anchors、finite-nerve connectors、指定端点 lifts、および one-sided radial representativesを本文の一様 boundsで構成せよ。
+\end{problem}
+
+その後の自然な強化は次の通りである。
+\begin{problem}[quantitative pGH rate]\label{prob:quantitative-rate}
+Ordinary mixed-cusp asymptotics、square Titeica error、pair-end determinant ratioを weighted normsで定量化し、GH approximation errorの explicit rateを求めよ。
+\end{problem}
+
+\begin{problem}[higher-valence non-simplicial cells]\label{prob:higher-valence}
+Square conifold以外の non-simplicial Bergman cellsについて canonical complete local modelsと sidewise portal control dataを構成し、本稿の scalar calibration methodを一般配置へ拡張せよ。
+\end{problem}
+
+\begin{problem}[higher-dimensional Segre-cone ends]\label{prob:higher-dimension}
+\Cref{prop:degree-generalization} の null linesを収縮して現れる Segre determinantal conesに対し、canonical complete K\"ahler--Einstein local models、phase collapse、portal controlを構成せよ。$n>3$ では conifold squareをそのまま用いることはできない。
+\end{problem}
+
+\begin{problem}[second-scale metric reconstruction]\label{prob:second-scale}
+First coneが忘れる realization parametersを、residual hyperbolic metrics、Weil--Petersson forms、または renormalized next-order KE termsから metric-intrinsically復元せよ。
+\end{problem}
+
+\appendix
+
+\section{Scalar calibration の weak upper-gradient form}\label{app:weak-gradient}
+Distance function $d_B(\,\boldsymbol\cdot\,,b)$ は arbitrary proper length target上で $1$-Lipschitzである。Local map $S_{\alpha,R}$ が Lipschitzなら compositionは Newtonian/Sobolev senseで minimal weak upper gradient
+\[
+ g_{\alpha,b}\le\Lip(S_{\alpha,R})
+\]
+を持つ。Partition formulaに Leibniz ruleを適用すると
+\[
+ g_{F_{b,R}}
+ \le\sum_\alpha\chi_{\alpha,R}g_{\alpha,b}
+ +\sum_\alpha|\dd\chi_{\alpha,R}|
+  |f_{\alpha,b}-f_{\beta,b}|.
+\]
+従って \Cref{lem:scalar-calibration} は target cut lociの smoothnessを仮定しない。任意の rectifiable curveに upper gradientを積分すれば同じ Lipschitz estimateを得る。
+
+Pointed GH criterionについては、各 $A$ で source radius $A+o(1)$ ballと target radius $A$ ballの間に distortion $o(1)$、target-density $o(1)$ の correspondenceがあれば十分である。\Cref{thm:abstract-pgh} の local-graph correspondenceはこの criterionを満たす。
+
+\section{Proof-status dependency table}\label{app:dependency}
+\begin{longtable}{@{}p{0.30\textwidth}p{0.43\textwidth}p{0.19\textwidth}@{}}
+\toprule
+結論 & 依存する入力 & 追加仮定\\
+\midrule
+\endfirsthead
+\toprule
+結論 & 依存する入力 & 追加仮定\\
+\midrule
+\endhead
+$X_6,X_7$ と node germs & finite semigroup/intersection computations & なし\\
+$\PP^n$ null-line degree formula & point blow-up intersection theory & なし（KE/pGH一般化は未主張）\\
+Canonical barrier metric/Dikin bounds & Cheng--Yau--Fox--Hildebrand、Benoist--Hulin、square Hilbert formula & なし\\
+$\RR\times C_{8\pi/3}$ translation completion & metric Titeica asymptotics、strict chamber calculation & なし\\
+Positive model pGH & positive phase collapse、radial truncation & なし\\
+Actual KE completeness & big/nef/ample modulo boundary、Tian--Yau 型存在定理・Yau completion・Dang--Vu identification & なし\\
+Actual ordinary localization & complete pair-end stability、formal product geometry & \Hloc\\
+Actual square localization & complete pair-end stability、ordinary lateral control & \Hloc\\
+Abstract calibrated pGH & abstract conditions \ref{C1}--\ref{C7}、scalar calibration & なし\\
+Conditional actual portal system & coordinate coherence、quantitative anchors、square prescribed-start lift、finite label remove/add transport & \Hloc, \Hanc\\
+Actual global pGH & anchored graph correspondence、radial density & \Hloc, \Hanc\\
+Residual Torelli/WP completion & cross-ratios、plumbing & なし\\
+\bottomrule
+\end{longtable}
+
+\section{Computational certificates と再現手順}\label{app:certificates}
+Submission source bundleには
+\begin{center}
+\texttt{symbolic\_verification\_v18.py},\qquad
+\texttt{symbolic\_verification\_v18.txt}
+\end{center}
+を含める。External repositoryを仮定せず、bundle自体を archival snapshotとする。\texttt{README\_v18.md} と \texttt{SHA256SUMS} が exact files、software versions、commandsを記録する。実行 commandは
+\begin{verbatim}
+python3 symbolic_verification_v18.py
+\end{verbatim}
+であり、expected final lineは
+\begin{verbatim}
+ALL CHECKS PASSED
+\end{verbatim}
+である。Scriptは次を検査する。
+\begin{enumerate}
+ \item $M_6$ の five binomialsと degree $5$；
+ \item $M_7$ の degree $17$ と local relation $xy=zw$；
+ \item exact tropical liftingの relationと $\log2$ error；
+ \item transverse sector angle $2\pi/3$、side distance $\pi/2$、opposite inner product $-1/3$；
+ \item single-node inverse $(r_3,r_1)\mapsto(\lambda,\mu)$；
+ \item large-gap log-sum-exp value／derivative bounds。
+\end{enumerate}
+これらは finite algebra、normalization、転記の検査である。とくに ample-modulo-boundary completenessや abstract pair-end stabilityの解析を置き換えず、\Hloc の global exact references／whole-end limit identificationも、\Hanc の finite anchors／transitions／radial densityも検証しない。
+
+\section{Tube metric の規格化}\label{app:tube-normalization}
+$F$ を real dimension $n$ の proper convex cone上の solution
+\[
+ \log\det D^2F=2F
+\]
+とし、tube domainで
+\[
+ \omega=2\sqrt{-1}\partial\bar\partial F
+\]
+と置く。$z_j=x_j+\sqrt{-1}y_j$ なら
+\[
+ g_{i\bar j}
+ =\frac{\partial^2(2F)}{\partial z_i\partial\bar z_j}
+ =\frac12F_{ij}.
+\]
+従って
+\[
+ \log\det(g_{i\bar j})=2F+\mathrm{constant},
+ \qquad
+ \Ric(\omega)=-\omega.
+\]
+Associated real metricは
+\[
+ g_{\mathrm{Riem}}
+ =D^2F(\dd x,\dd x)+D^2F(\dd y,\dd y)
+\]
+である。
+
+\small
+\begin{thebibliography}{99}
+\footnotesize
+
+\bibitem{UedaI}
+K.~Ueda,
+\newblock \emph{Multiscale K\"ahler--Einstein Geometry of Hyperplane Arrangement Complements I: Asymptotic Cones, Metrized Dual Complexes, and Volume Asymptotics},
+\newblock Japanese submission-preparation manuscript (2026).
+
+\bibitem{UedaII}
+K.~Ueda,
+\newblock \emph{Multiscale K\"ahler--Einstein Geometry of Hyperplane Arrangement Complements II: Secondary Periods, Torelli Theory, and Weil--Petersson Completion},
+\newblock Japanese submission-preparation manuscript (2026).
+
+\bibitem{BBI}
+D.~Burago, Yu.~Burago and S.~Ivanov,
+\newblock \emph{A Course in Metric Geometry},
+\newblock Graduate Studies in Mathematics 33, American Mathematical Society, 2001.
+
+\bibitem{BG}
+R.~J.~Berman and H.~Guenancia,
+\newblock K\"ahler--Einstein metrics on stable varieties and log canonical pairs,
+\newblock \emph{Geom. Funct. Anal.} \textbf{24} (2014), 1683--1730.
+
+\bibitem{YauSchwarz}
+S.-T.~Yau,
+\newblock A general Schwarz lemma for K\"ahler manifolds,
+\newblock \emph{Amer. J. Math.} \textbf{100} (1978), 197--203.
+
+\bibitem{CY}
+S.-Y.~Cheng and S.-T.~Yau,
+\newblock On the existence of a complete K\"ahler metric on noncompact complex manifolds and the regularity of Fefferman's equation,
+\newblock \emph{Comm. Pure Appl. Math.} \textbf{33} (1980), 507--544.
+
+\bibitem{TY}
+G.~Tian and S.-T.~Yau,
+\newblock Existence of K\"ahler--Einstein metrics on complete K\"ahler manifolds and their applications to algebraic geometry,
+\newblock in \emph{Mathematical Aspects of String Theory}, Adv. Ser. Math. Phys. 1, World Scientific, 1987, 574--628.
+
+\bibitem{DangVu}
+Q.-T.~Dang and D.-V.~Vu,
+\newblock K\"ahler--Einstein metrics on quasi-projective manifolds,
+\newblock \emph{Math. Ann.} \textbf{392} (2025), 4071--4103.
+
+
+\bibitem{Wu08}
+D.~Wu,
+\newblock K\"ahler--Einstein metrics of negative Ricci curvature on general quasi-projective manifolds,
+\newblock \emph{Comm. Anal. Geom.} \textbf{16} (2008), 395--435.
+
+\bibitem{Yau93}
+S.-T.~Yau,
+\newblock A splitting theorem and an algebraic geometric characterization of locally Hermitian symmetric spaces,
+\newblock \emph{Comm. Anal. Geom.} \textbf{1} (1993), 473--486.
+
+\bibitem{JoyceCorners}
+D.~Joyce,
+\newblock On manifolds with corners,
+\newblock \emph{Adv. Geom.} \textbf{12} (2012), 161--190.
+
+\bibitem{CC}
+L.~A.~Caffarelli and X.~Cabr\'e,
+\newblock \emph{Fully Nonlinear Elliptic Equations},
+\newblock American Mathematical Society Colloquium Publications 43, American Mathematical Society, 1995.
+
+\bibitem{DZZ}
+S.~Dinew, X.~Zhang and X.~Zhang,
+\newblock The $C^{2,\alpha}$ estimate of the complex Monge--Amp\`ere equation,
+\newblock \emph{Indiana Univ. Math. J.} \textbf{60} (2011), 1713--1722.
+
+\bibitem{RZ}
+F.~Rochon and Z.~Zhang,
+\newblock Asymptotics of complete K\"ahler metrics of finite volume on quasiprojective manifolds,
+\newblock \emph{Adv. Math.} \textbf{231} (2012), 2892--2952.
+
+\bibitem{GW}
+H.~Guenancia and D.~Wu,
+\newblock On the boundary behavior of K\"ahler--Einstein metrics on log canonical pairs,
+\newblock \emph{Math. Ann.} \textbf{366} (2016), 101--120.
+
+\bibitem{JS}
+X.~Jiang and Y.~Shi,
+\newblock Asymptotic expansions of complete K\"ahler--Einstein metrics with finite volume on quasi-projective manifolds,
+\newblock \emph{Sci. China Math.} \textbf{65} (2022), 1953--1974.
+
+\bibitem{DFS}
+V.~Datar, X.~Fu and J.~Song,
+\newblock K\"ahler--Einstein metrics near an isolated log-canonical singularity,
+\newblock \emph{J. Reine Angew. Math.} \textbf{797} (2023), 79--116.
+
+\bibitem{DCP}
+C.~De Concini and C.~Procesi,
+\newblock Wonderful models of subspace arrangements,
+\newblock \emph{Selecta Math. (N.S.)} \textbf{1} (1995), 459--494.
+
+\bibitem{FS}
+E.~M.~Feichtner and B.~Sturmfels,
+\newblock Matroid polytopes, nested sets and Bergman fans,
+\newblock \emph{Port. Math. (N.S.)} \textbf{62} (2005), 437--468.
+
+\bibitem{HKT}
+P.~Hacking, S.~Keel and J.~Tevelev,
+\newblock Compactification of the moduli space of hyperplane arrangements,
+\newblock \emph{J. Algebraic Geom.} \textbf{15} (2006), 657--680.
+
+\bibitem{Hildebrand}
+R.~Hildebrand,
+\newblock Canonical barriers on convex cones,
+\newblock \emph{Math. Oper. Res.} \textbf{39} (2014), 841--850.
+
+\bibitem{Fox}
+D.~J.~F.~Fox,
+\newblock A Schwarz lemma for K\"ahler affine metrics and the canonical potential of a proper convex cone,
+\newblock \emph{Ann. Mat. Pura Appl.} \textbf{194} (2015), 1--42.
+
+\bibitem{BHulin}
+Y.~Benoist and D.~Hulin,
+\newblock Cubic differentials and finite volume convex projective surfaces,
+\newblock \emph{Geom. Topol.} \textbf{17} (2013), 595--620.
+
+\bibitem{Tholozan}
+N.~Tholozan,
+\newblock Entropy of Hilbert metrics and length spectrum of Hitchin representations in $\mathrm{PSL}(3,\RR)$,
+\newblock \emph{Duke Math. J.} \textbf{166} (2017), 1373--1403.
+
+\bibitem{DW}
+D.~Dumas and M.~Wolf,
+\newblock Polynomial cubic differentials and convex polygons in the projective plane,
+\newblock \emph{Geom. Funct. Anal.} \textbf{25} (2015), 1734--1798.
+
+\bibitem{Kapranov}
+M.~M.~Kapranov,
+\newblock Veronese curves and Grothendieck--Knudsen moduli space $\ov M_{0,n}$,
+\newblock \emph{J. Algebraic Geom.} \textbf{2} (1993), 239--262.
+
+\bibitem{Pirio}
+L.~Pirio,
+\newblock On the $(n+3)$-webs by rational curves induced by the forgetful maps on the moduli spaces $\mathcal M_{0,n+3}$,
+\newblock preprint, arXiv:2204.04772 (2022).
+
+\bibitem{Wolpert}
+S.~A.~Wolpert,
+\newblock The Weil--Petersson metric geometry,
+\newblock in \emph{Handbook of Teichm\"uller Theory, Vol.~II}, European Mathematical Society, 2009, 47--64.
+
+\end{thebibliography}
 
 \end{document}

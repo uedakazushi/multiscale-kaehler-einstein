@@ -1,0 +1,383 @@
+\documentclass[11pt,a4paper]{ltjsarticle}
+\usepackage[margin=27mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,longtable,array,tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref,bookmark}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+
+\definecolor{deepblue}{RGB}{25,65,105}
+\definecolor{darkgreen}{RGB}{30,100,60}
+\definecolor{softblue}{RGB}{238,245,251}
+\definecolor{softorange}{RGB}{252,246,235}
+\definecolor{darkorange}{RGB}{150,85,15}
+\definecolor{softgreen}{RGB}{239,248,241}
+\definecolor{darkgreenbox}{RGB}{35,105,65}
+\hypersetup{colorlinks=true,linkcolor=deepblue,citecolor=darkgreen,urlcolor=deepblue,
+ pdftitle={Multiscale Kahler-Einstein Geometry of Hyperplane Arrangement Complements: Research Notes Beyond Parts I-III},
+ pdfauthor={Kazushi Ueda}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry: Beyond Parts I--III}
+\fancyhead[R]{\small 研究ノート v2.2}
+\fancyfoot[C]{\thepage}
+\setlength{\parindent}{1em}\setlength{\parskip}{0.22em}
+\setlist[enumerate]{leftmargin=2.5em,itemsep=0.2em,topsep=0.3em}
+\setlist[itemize]{leftmargin=2.2em,itemsep=0.2em,topsep=0.3em}
+\allowdisplaybreaks\emergencystretch=3em
+
+\newcommand{\PP}{\mathbb P}\newcommand{\RR}{\mathbb R}\newcommand{\CC}{\mathbb C}
+\newcommand{\ZZ}{\mathbb Z}\newcommand{\dd}{\mathrm d}\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\cA}{\mathcal A}\newcommand{\cH}{\mathcal H}\newcommand{\cL}{\mathcal L}
+\newcommand{\cM}{\mathcal M}\newcommand{\cX}{\mathcal X}\newcommand{\cY}{\mathcal Y}
+\newcommand{\ov}{\overline}\newcommand{\eps}{\varepsilon}\newcommand{\Spec}{\operatorname{Spec}}
+
+\theoremstyle{plain}
+\newtheorem{conjecture}{予想}[section]
+\newtheorem{problem}[conjecture]{問題}
+\newtheorem{proposition}[conjecture]{命題}
+\newtheorem{theorem}[conjecture]{定理候補}
+\theoremstyle{definition}
+\newtheorem{definition}[conjecture]{定義}
+\theoremstyle{remark}
+\newtheorem{remark}[conjecture]{注意}
+\crefname{conjecture}{予想}{予想}\crefname{problem}{問題}{問題}
+\crefname{proposition}{命題}{命題}\crefname{theorem}{定理候補}{定理候補}
+\crefname{definition}{定義}{定義}\crefname{remark}{注意}{注意}
+
+\newtcolorbox{scopebox}{enhanced,breakable,colback=softblue,colframe=deepblue,
+ boxrule=0.7pt,arc=1mm,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,
+ title={本ノートの収録原則},fonttitle=\bfseries}
+\newtcolorbox{warningbox}{enhanced,breakable,colback=softorange,colframe=darkorange,
+ boxrule=0.7pt,arc=1mm,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,
+ title={証明状況に関する注意},fonttitle=\bfseries}
+\newtcolorbox{resultbox}{enhanced,breakable,colback=softgreen,colframe=darkgreenbox,
+ boxrule=0.7pt,arc=1mm,left=2mm,right=2mm,top=1.5mm,bottom=1.5mm,
+ title={三部作外で記録しておく結果},fonttitle=\bfseries}
+
+\title{\bfseries Multiscale K\"ahler--Einstein Geometry of\\
+Hyperplane Arrangement Complements\\[2mm]
+\large Research Notes Beyond Parts I--III\\
+Scattering, families, singular metric--measure geometry, and generalizations}
+\author{植田一石}
+\date{研究ノート v2.2（2026年8月22日）}
+
+\begin{document}\maketitle
+
+\begin{warningbox}
+2026年11月20日移行時の状態整理：本ノートの数式・証明・研究素材は2026年8月22日版から保持する。
+本文中の旧Part IIIのactual local localizationを証明済みとする記述は、
+8月31日統合再監査稿の条件付き化より優先しない。
+現行のactual localizationとglobal pGHは$(H_{\mathrm{loc}})+(H_{\mathrm{anc}})$の下にあり、
+一般secondary WP completionにもcontrolled parallel push-offが必要である。
+本ノートのthreshold law・数値benchmark・将来課題はそのまま候補・観察・未解決として扱う。
+\end{warningbox}
+
+
+\begin{scopebox}
+本ノートには、Parts I--III に\emph{入れなかった}が、今後の研究のために記録しておく価値がある結果・障害・予想だけを残す。
+したがって、Part I の bounded-additive cone theorem、LDP、face masses、Busemann exact tails、Part II の oriented/unoriented Torelli、period closure、cross-ratio Weil--Petersson completion、Part III の explicit conifold models、actual local conifold localization、canonical $8\pi/3$ cell、resolution-presentation independence、$M_7$ residual Torelli、および Part III 本文にすでに記載した global pGH 予想はここでは再述しない。
+旧研究ノートにあった rank-three 分類、two-pencil product、$M_6/M_7$ の代数計算、five-web、局所 flop 計算なども、三部作へ移したため本版から削除した。
+\end{scopebox}
+
+\begin{warningbox}
+本ノートの中には、canonical square-tube model 上で厳密に導出した結果と、低エネルギー scattering 文献を入力とする未査読の定理候補と、将来の研究問題が混在する。各節で状態を明記する。三部作の主定理とは論理的に独立である。
+\end{warningbox}
+
+\tableofcontents
+
+\section{Part III より先の定量化：rate と family-uniformity}
+
+Part III は固定した $M_6$ または generic $M_7(\lambda,\mu)$ の conifold pair end において、actual K\"ahler--Einstein metric が canonical square-tube metricへ定性的に全階局所化することを扱う。本節では、その結論を強化する二方向だけを記録する。
+
+\subsection{Sharp decay rate}
+
+\begin{problem}[quantitative conifold localization]\label{prob:quantitative-localization-v22}
+Central square-tube sector、四つの lateral flags、および deeper flags において、actual metric と canonical local models の差に対する共通の weighted estimateを証明せよ。特に
+\[
+ \|\nabla^k(\widetilde\omega_\cA-\omega_\square)\|
+ \le C_k e^{-\gamma T}
+ \qquad\text{または少なくとも}\qquad
+ C_k(1+T)^{-1-\delta}
+\]
+型の可積分 rate が成立する条件を決定せよ。
+\end{problem}
+
+Part III の定性的 modulusだけでは、wall layersを含む global distance comparisonの sharp rateは出ない。可積分 rate が得られれば、local cone convergenceに bounded-additive comparisonや明示的 GH rateを付けられる可能性がある。解析上の核心は、central Jacobi spectrum と lateral residual modesのうち、どれが最遅 decayを与えるかを決めることである。
+
+\subsection{Family-uniformity と discriminant}
+
+$M_7(\lambda,\mu)$ の parameter compactum上では、residual punctured curvesの bounded geometryと outer collar dataを一様化できる可能性が高い。一方
+\[
+ \lambda\mu(\lambda-1)(\mu-1)(\lambda-\mu)\longrightarrow0
+\]
+では residual curves自体が Deligne--Mumford boundaryへ退化し、conifold depthとは独立な plumbing depthが現れる。
+
+\begin{problem}[family-uniform localization]\label{prob:family-uniform-v22}
+Realization spaceの compact subsets上で central/lateral localization constantsと parameter derivativesを一様に制御せよ。さらに $\ov M_{0,5}$ の boundaryへ近づく族について、conifold double-log depth、residual plumbing depth、後述する scattering depthを同時に記述する relative-scale compactificationを構成せよ。
+\end{problem}
+
+一様性が discriminant 近傍で破れるなら、その failure profile 自体が additional multiscale datum になる可能性がある。
+
+\section{Square-tube Jacobi operator と scattering}
+
+この節の内容は三部作に入れていない。Canonical square-tube metric の first cone より一段細かい減衰層を記述するものである。
+
+\subsection{Exact normal operator}
+
+Canonical tube quotientを
+\[
+ g_\square
+ =3\,\dd r^2+g_{\cH}
+ +e^{-2r}H_q(\dd\vartheta,\dd\vartheta)
+\]
+と書く。Phase-zero partの scalar Laplacianは、非正符号規約で
+\[
+ 2\Delta_0
+ =\frac13\partial_r^2-\partial_r+\Delta_{\cH}.
+\]
+$\cL_{\cH}:=-\Delta_{\cH}\ge0$ と置くと、linearized negative KE operatorの phase-zero decaying branchは
+\[
+ B_\square
+ :=\sqrt{\frac{33}{4}+3\cL_{\cH}}-\frac32,
+ \qquad
+ u(r)=e^{-(r-r_0)B_\square}f
+\]
+で与えられる。Essential threshold は
+\[
+ \beta_0=\frac{\sqrt{33}-3}{2}.
+\]
+Quadrilateral affine sphere $(\cH_\square,g_{\cH})$ は angle $8\pi/3$ の asymptotically conic surface なので
+\[
+ \Spec_{\mathrm{ess}}(\cL_{\cH})=[0,\infty),
+ \qquad
+ \Spec_{\mathrm{ess}}(B_\square)=[\beta_0,\infty).
+\]
+$0$ は $L^2$ harmonic eigenvalueではないため、$\beta_0$ に $L^2$ ground stateは存在しない。
+
+\begin{resultbox}
+上の factorization と threshold の位置は canonical model 上の exact calculation である。従って、任意の固定 $L^2$ profileに対して一個の非零 scalar ``first coefficient'' が存在する、という解釈は正しくない。Scalar leading dataを得るには weighted/compactly supported profiles と low-energy spectral measureを用いる必要がある。
+\end{resultbox}
+
+\subsection{Canonical scattering radius}
+
+Degree-one cubic differential $C=z\,\dd z^3$ に対する radial Wang solutionを、Painlev\'e--Tzitzeica variable $\rho$ と correction $v(\rho)$ で書くと
+\[
+ v_{\rho\rho}+\frac1\rho v_\rho=e^v-e^{-2v},
+ \qquad
+ v(\rho)\sim\frac{\sqrt3}{\pi}K_0(\sqrt3\rho).
+\]
+Geodesic radius $s$ と angular warping $a$ は
+\[
+ s(\rho)=\sqrt{\frac32}\int_0^\rho e^{v(\eta)/2}\,\dd\eta,
+ \qquad
+ a(\rho)=\frac4{\sqrt6}\rho e^{v(\rho)/2}.
+\]
+そこで
+\[
+ \delta_\square
+ :=\int_0^\infty\bigl(e^{v(\rho)/2}-1\bigr)\,\dd\rho,
+ \qquad
+ \ell_\square:=-\sqrt{\frac32}\,\delta_\square,
+ \qquad
+ \sigma=s+\ell_\square
+\]
+と置く。このとき
+\[
+ a(\sigma)=\frac43\sigma
+ +O\!\left(\sigma^{1/2}e^{-\sqrt2\sigma}\right)
+\]
+が全階微分込みで成立する。すなわち smooth center が conic radius の加法定数を canonical に固定する。
+
+数値 BVP quadrature では
+\[
+ \delta_\square=0.2994607543588\ldots,
+ \qquad
+ \ell_\square=-0.3667630230840\ldots
+\]
+を得た。これは theorem input ではなく、将来の scattering code の normalization benchmark である。
+
+\subsection{Exact zero modes と leading threshold moments}
+
+二次元では scalar harmonicity は共形因子に依存しない。$z=\varrho e^{i\psi}$ として
+\[
+ h_k(z)=
+ \begin{cases}
+ z^k,&k\ge0,\\
+ \overline z^{-k},&k<0
+ \end{cases}
+\]
+は $k$-th angular zero-energy modeを与える。Canonical radiusに対し
+\[
+ \nu_k=\frac{3|k|}{4},
+ \qquad
+ h_k(\sigma,\psi)
+ \sim A_k\sigma^{\nu_k}e^{ik\psi}
+\]
+となる。
+
+\begin{theorem}[model threshold moment law：未査読]\label{thm:model-threshold-v22}
+$k$-th angular channelに属する compactly supported smooth profile $f$ に対し、標準的な two-dimensional asymptotically conic low-energy parametrixを用いると、compacta上で
+\[
+ e^{\beta_0t}t^{1+\nu_k}e^{-tB_\square}f
+ \longrightarrow
+ C_k h_k\,\mathsf M_k(f),
+ \qquad
+ \mathsf M_k(f)=\int_{\cH_\square}\overline{h_k}f\,\dd V_{\cH}.
+\]
+特に $k=0$ では
+\[
+ e^{\beta_0t}t\,e^{-tB_\square}f
+ \longrightarrow
+ \frac{\sqrt{33}}{16\pi}
+ \int_{\cH_\square}f\,\dd V_{\cH}.
+\]
+\end{theorem}
+
+\begin{warningbox}
+この threshold law は三部作では使用していない。Canonical radiusと zero modesは直接計算で固定できるが、leading spectral-measure coefficientの完全な出版用証明には perturbed Bessel/Jost construction と二次元 zero-energy resolvent の normalizationを独立に監査する必要がある。Higher orderには $\log t$ termsが混入する可能性がある。
+\end{warningbox}
+
+\subsection{Trace-only subtraction の不可能性}
+
+Global arrangement から得られる outer profileは、$\cH_\square$ の conic infinityにある lateral face dataを一般に含む。このとき boundary tracesだけを cutoffで差し引いて scalar threshold momentを作る操作は canonical ではない。
+
+Trace map $T:\cX\to\cY$ と right inverse $E$ に対し
+\[
+ f_E^{\mathrm{ren}}=f-E(Tf)\in\ker T
+\]
+と置く。
+
+\begin{proposition}[trace-only subtraction obstruction]\label{prop:trace-obstruction-v22}
+Linear functional $\mathsf M$ について、$\mathsf M(f_E^{\mathrm{ren}})$ が全 right inverses $E$ に依存しないための必要十分条件は
+\[
+ \mathsf M|_{\ker T}=0
+\]
+である。$C_c^\infty(\cH_\square)\subset\ker T$ かつ $\mathsf M$ が threshold momentである場合、この条件は一般に成立しない。
+\end{proposition}
+
+\begin{proof}
+$E'-E$ は $\cY$ から $\ker T$ への作用素なので
+\[
+ \mathsf M(f_{E'}^{\mathrm{ren}})-\mathsf M(f_E^{\mathrm{ren}})
+ =-\mathsf M\bigl((E'-E)Tf\bigr).
+\]
+従って $\mathsf M|_{\ker T}=0$ なら独立性が従う。逆に rank-one perturbation $E'=E+g\otimes\ell$ を使えば、独立性から全 $g\in\ker T$ に対して $\mathsf M(g)=0$ が従う。
+\end{proof}
+
+\begin{problem}[Poisson--Calder\'on matching]\label{prob:calderon-v22}
+Central Jacobi operatorと lateral residual operatorsを一つの coupled normal operatorとして定式化し、その Calder\'on projector または Dirichlet-to-Neumann dataから canonical splittingを構成せよ。その splitting後の renormalized profileに対して、\Cref{thm:model-threshold-v22} 型の momentsを arrangement-intrinsic に定義せよ。
+\end{problem}
+
+\section{一般 toroidal lc cusp と一般 matroid}
+
+\subsection{一般 toroidal localization}
+
+Part III の actual localization は square/conifold pair に特化している。一般 affine toric lc pairでは projective affine sphere、kernel directions、non-simplicial chambersが複雑になる。
+
+\begin{problem}[general toroidal localization]\label{prob:general-toroidal-v22}
+Regular affine toric log-canonical pairと toric boundary complementに対し、canonical barrier metricを actual complete negative KE metricの universal local modelとして同定せよ。全 boundary flagsに一様な lateral localization、toric-depth Schwarz estimate、resolution-independent semidefinite quotient compatibilityを構成せよ。
+\end{problem}
+
+\subsection{一般 matroid の canonical metrized Bergman quotient}
+
+Part III の metrized Bergman modelは $M_6,M_7$ の conifold cellsに対して構成した。一般 matroidでは、各 non-simplicial toric cellに別の canonical barrier geometryが現れるはずである。
+
+\begin{conjecture}[general canonical metrized Bergman quotient]\label{conj:general-bergman-v22}
+Essential connected arrangement $\cA$ に対し、log-canonical/visible-contour cone complexの各 toric cellには canonical barrierから得られる chamberwise Hessian metricが存在し、任意の toroidal resolutionへの pullback seminormを zero-length directionsで商すると、resolution-independentな proper metric coneを得る。
+\end{conjecture}
+
+最初の計算課題は rank four realizable matroids の non-simplicial maximal cellsを列挙し、squareの次に pentagonal cells、products of simplices、非 Gorenstein quotient conesを調べることである。
+
+\section{Singular metric--measure geometry}
+
+Part I の face mass と LDP は smooth SNC strata上の結果である。Singular log-canonical contractionを伴う場合、resolution上の face massesを単純に足すと、zero-length kernelに沿う重複と subdivision dependenceが起こり得る。
+
+\begin{problem}[singular face mass]\label{prob:singular-face-mass-v22}
+Metrized Bergman quotientの各 quotient faceに resolution-independentな massを割り当てよ。候補として dlt strata、b-divisors、log-canonical polarizationの pushforward intersectionsを比較せよ。
+\end{problem}
+
+同時に large-deviation rateも source orthantsの coordinate sumを機械的に quotientへ降ろすだけでは不十分な可能性がある。Kernel directionsを積分消去する contraction principleを組み込み、
+\[
+ \bigl(\mathfrak B_\cA^{\mathrm{KE}},d,\mathcal I,
+       \{\mathfrak m_F\},\{\text{residual metric--measure spaces}\}\bigr)
+\]
+という singular metric--measure skeletonを定式化したい。
+
+\section{Part II より先の secondary geometry}
+
+\subsection{General secondary WP branch separation}
+
+Part II は一般 rank の period closure normalizationを既知の cross-ratio compactificationと同定し、さらに $M_{0,N}$ の全四点 WP metricの completionを決定した。しかし、一般 $(n,m)$ の grouped period imageの normalization上で、異なる analytic branchesを pullback product WP metric の \emph{inner completion} がどのように扱うかは残っている。
+
+\begin{conjecture}[secondary WP branch separation]\label{conj:wp-branch-v22}
+Full residual curve-period imageの normalizationにおける異なる branchesは、product Weil--Petersson metricの pullbackが定める inner metric completionで分離される。
+\end{conjecture}
+
+最初の具体的課題は、非正規 period imageを持つ最小 $(n,m)$ を求め、normalization、conductor、branch parametrizations、inner distancesを computer algebraと plumbing asymptoticsで比較することである。
+
+\subsection{Residual period maps for general matroids}
+
+一般 matroid $M$ の realization spaceから rank-two minorsに付随する $M_{0,4}$ factorsへの写像について、その differential rank、generic finiteness、embedding性を circuits/cocircuits、principal extensions、Gale dualityから判定する組合せ条件を求めたい。Uniform matroidに対する Part II と $M_7$ に対する Part III は、この一般問題の二つの benchmarkである。
+
+\subsection{Fully unlabelled Riemannian Torelli}
+
+Part II が orientation-free theoremで保持しているのは factor labels と全 cusp labelsである。これらまで忘れた genuinely unlabelled dataでは、arrangement automorphisms、anharmonic actions、factor permutations、independent conjugationsを同時に考える必要がある。
+
+\begin{problem}[unlabelled metric Torelli]\label{prob:unlabelled-v22}
+Unlabelled residual Riemannian dataの generic fibreを、arrangement automorphism groupと period-compatibility hypergraphを用いて記述せよ。Product-type lociで生じる independent factor conjugationsを明示的な exceptional locusとして分類せよ。
+\end{problem}
+
+\section{Degenerating families と hybrid/non-Archimedean geometry}
+
+Double-log depthは ordinary tropicalization のさらに logarithm を取る。このため family degenerationでは、valuation skeletonと cusp metric skeletonの間に複数の relative scalesが現れる。
+
+研究目標は、complex KE metrics、hybrid space、Berkovich skeleton、metrized Bergman geometryを一つの family objectとして結ぶことである。退化parameter $t$ と boundary coordinates $z_i$ に対し
+\[
+ \frac{\log(-\log|z_i|)}{\log(-\log|t|)}
+\]
+を固定する scalingで、valuation data、matroid subdivisions、residual stable curves、metric first conesを同時に回収する compactificationを構成したい。
+
+この方向は arrangementだけでなく、canonically polarized varietiesの degenerationsに対する general multiscale KE skeleton の試験場になる。
+
+\section{Higher-rank test families と計算基盤}
+
+\subsection{Principal-extension families}
+
+同じ local toric germまたは同じ canonical first cellを保ちながら realization dimensionを増やす principal extensionsを系統的に構成し、leading metric rigidityと residual moduliの分離を試験する。特に model coneが一定で period mapだけが高次元化する familyは、secondary Torelliと family-uniform localizationの benchmarkになる。
+
+\subsection{再利用可能な計算パイプライン}
+
+今後の計算は、単発の scriptsではなく、次を一括出力する形に整理する価値がある。
+\begin{enumerate}
+ \item matroid circuits、Bergman/nested-set cells；
+ \item log-canonical divisor、section polytope、contracted curves；
+ \item local toric ideals、primitive relations、small modifications；
+ \item chamberwise canonical-barrier metrics、pullback kernels、link distances；
+ \item realization-space coordinates、Gale transforms、residual cross-ratios；
+ \item period-map Jacobian、normalization、conductor、branch data；
+ \item Painlev\'e/Jacobi normalization tests と low-energy scattering benchmarks。
+\end{enumerate}
+
+\section{結語}
+
+三部作に移した結果・証明・具体例を削除すると、残る研究課題は四群に整理できる。第一は Part III の qualitative local theoryを quantitative/family theoryへ精密化すること、第二は square-tube の Jacobi/scattering dataを canonical matchingによって arrangement-intrinsic にすること、第三は一般 toroidal lc cusp・一般 matroidへ拡張して singular metric--measure skeletonを構成すること、第四は Part II の secondary geometryを一般 matroid・unlabelled data・degenerating familiesへ拡張することである。
+
+これらは三部作の再述ではなく、その次に進むための未収録の研究素材である。
+
+\small
+\begin{thebibliography}{99}\footnotesize
+\bibitem{UedaI} K. Ueda, \emph{Multiscale K\"ahler--Einstein Geometry of Hyperplane Arrangement Complements I: Asymptotic Cones, Metrized Dual Complexes, and Volume Asymptotics}, Japanese submission-preparation manuscript, v1.3 (2026).
+\bibitem{UedaII} K. Ueda, \emph{Multiscale K\"ahler--Einstein Geometry of Hyperplane Arrangement Complements II: Secondary Periods, Torelli Theory, and Weil--Petersson Completion}, Japanese submission-preparation manuscript, v1.2 (2026).
+\bibitem{UedaIII} K. Ueda, \emph{Multiscale K\"ahler--Einstein Geometry of Hyperplane Arrangement Complements III: Conifold Localization, Metrized Bergman Cells, and Residual Torelli Theory}, Japanese submission-preparation manuscript, v1.2 (2026).
+\bibitem{RZ} F. Rochon and Z. Zhang, Asymptotics of complete K\"ahler metrics of finite volume on quasiprojective manifolds, \emph{Adv. Math.} \textbf{231} (2012), 2892--2952.
+\bibitem{DW} D. Dumas and M. Wolf, Polynomial cubic differentials and convex polygons in the projective plane, \emph{Geom. Funct. Anal.} \textbf{25} (2015), 1734--1798.
+\bibitem{SherHeat} D. A. Sher, The heat kernel on an asymptotically conic manifold, \emph{Anal. PDE} \textbf{6} (2013), 1755--1791.
+\bibitem{DF} J. Derezi\'nski and J. Faupin, Perturbed Bessel operators, \emph{J. Funct. Anal.} \textbf{284} (2023), 109737.
+\bibitem{GW} H. Guenancia and D. Wu, On the boundary behavior of K\"ahler--Einstein metrics on log canonical pairs, \emph{Math. Ann.} \textbf{366} (2016), 101--120.
+\bibitem{DFS} V. Datar, X. Fu and J. Song, K\"ahler--Einstein metrics near an isolated log-canonical singularity, \emph{J. Reine Angew. Math.} \textbf{797} (2023), 79--116.
+\bibitem{Spotti} C. Spotti, On multiscale aspects of K\"ahler--Einstein metrics and algebraic geometry, arXiv:2509.11646 (2025).
+\end{thebibliography}
+\end{document}
