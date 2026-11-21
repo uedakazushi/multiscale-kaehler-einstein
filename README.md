@@ -6,10 +6,10 @@
 
 | 原稿 | 頁数 | 状態 |
 | --- | ---: | --- |
-| [Part I](papers/multiscale-kaehler-einstein.tex) | 組版確認中 | 固定補空間の距離錐・測度漸近。整合的カラー・Ξ延長比較・全残余一様tensor評価を証明 |
+| [Part I](papers/multiscale-kaehler-einstein.tex) | 46 | 固定補空間の距離錐・測度漸近。整合的カラー・Ξ延長比較・全残余一様tensor評価を証明 |
 | [Part II](papers/secondary-periods-torelli.tex) | 28 | 一般WP completionはcontrolled push-off付き |
 | [Part III](papers/conifold-localization.tex) | 57 | Actual localization/pGHは(H_loc)+(H_anc)付き |
-| [総説](papers/series-overview.tex) | 組版確認中 | 五篇と曲面実現の共同方針、定理の条件・正規化 |
+| [総説](papers/series-overview.tex) | 11 | 五篇と曲面実現の共同方針、定理の条件・正規化 |
 | [研究素材](papers/research-directions.tex) | 10 | Jacobi/scattering・一般matroid等。現行仮定の注意を付記 |
 
 **現行の数学的到達点：** Part I付録に、固定Hermitian depthsを保つ整合的カラーの構成、Rochon–Zhangの延長Ξとcollar pullbackの全残余一様比較、一面tensor評価の三補題を統合した。Theorem 5.1からmetric-IRFAとsmooth/exponential volume-IRFAへ渡す段階を、全残余depths・全有限階fc微分を含めて証明し、複数担当で限定的に点検した。一般log-smooth collarと残余normを保存しないrho-smooth射影ではこの翻訳が破れる例も記載した。固定SNC対の結果であり、退化族の一様比較やPart Iの他の全証明を今回検証したとはしない。

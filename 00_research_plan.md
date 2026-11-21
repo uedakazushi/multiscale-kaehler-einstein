@@ -16,10 +16,10 @@
 固定成分は $H_i\simeq\mathbf P^2$ から $d-1$ 本の直線を除いた補空間である。Part Iの固定空間の $R\to\infty$ を $t\to0$ の族一様性へ読み替えない。Part IIの残余複素periodは第二作用積分と異なる。曲面側の直接大域証明があっても、(CP)/(PBE)/(TC)や(H_loc)/(H_anc)自体の検証状況は変えない。同じ曲面fibrationで作用atlasとGHを同時実現する問題も別に残す。
 
 ## 論文と証明の状態
-- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.2。距離錐・face masses・tails/LDP。Mellinの二重torus係数訂正とweighted uniform integrabilityを保持する。距離の再帰的接続は同じfiberの端点を結ぶambient曲線を用い、fiber内の長さ評価を主張しない。実有向カラーの構成・延長比較・全残余一様tensor評価を三補題に展開した。
+- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.2、46頁。距離錐・face masses・tails/LDP。Mellinの二重torus係数訂正とweighted uniform integrabilityを保持する。距離の再帰的接続は同じfiberの端点を結ぶambient曲線を用い、fiber内の長さ評価を主張しない。実有向カラーの構成・延長比較・全残余一様tensor評価を三補題に展開した。
 - `papers/secondary-periods-torelli.tex`：Part II、28頁。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
-- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.2。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
+- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.2、11頁。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
 
 ## 固定SNC入力の確立範囲
 主稿 `lem:SNC-compatible-collars` は、元の実有向blow-up上の固定Hermitian normsを用い、全strataのcollarsと全normal line bundleのproduct connectionsを次元順に同時構成する。残余の深さの保存、circle-equivariance、quotient-in-stagesを厳密に保つ。`lem:fc-collar-transfer` はRochon–Zhangの延長Ξと選んだ射影の差、およびHessianの差を、任意Nに対し $x_i^N C^\infty_{\rm fc}$ と評価する。`lem:RZ-collar-tensor` はTheorem 5.1と背景形から $O(x_i^{\min(1,\nu)})$ の全残余一様tensor評価を得る。有限face反復によりsmooth/exponential volume-IRFAも成立する。

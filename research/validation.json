@@ -13,13 +13,13 @@
     },
     {
       "source": "papers/multiscale-kaehler-einstein.tex",
-      "pages": 41,
-      "pdf_sha256": "7ab3b1c971bc6faf546b8522763a5d439036ba540977fac49709f4a43fc76e82",
+      "pages": 46,
+      "pdf_sha256": "95b73fe4e4d810ff586c8f79a9c83ec322e153b7dea9b3929abd02872fa82a78",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Japanese font scaling and small math-font size substitutions remain; main manuscript also has PDF bookmark math-token warnings.",
+      "other_warnings": "Small math-font size substitutions and the legacy \\rm class warning remain. Overview also reports Japanese font scaling and an ignored font-feature setting; no missing glyphs were observed.",
       "build_date": "2026-11-22",
-      "rerun_in_current_revision": false,
-      "source_sha256": "55cd64cc528de603111743b6345778e1e3791c552323edbe7d23ef34c4b5e7aa",
+      "rerun_in_current_revision": true,
+      "source_sha256": "127bd731d605200234fad5f1c614264ffa0244008805d72c5c121cdf80a964f3",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -29,19 +29,21 @@
       },
       "visual_check_pages": [
         1,
+        3,
+        7,
         9,
-        13,
-        14,
-        15,
-        16,
-        35,
-        38,
-        39
+        32,
+        33,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
       ],
-      "visual_check_result": "Poppler-rendered pages inspected; no clipping, overlap or missing glyphs observed.",
-      "current_source_changed": true,
-      "pending_source_sha256": "127bd731d605200234fad5f1c614264ffa0244008805d72c5c121cdf80a964f3",
-      "current_build_status": "Pending v1.2 rebuild; the existing PDF/hash/page record is from the preceding source."
+      "visual_check_result": "Poppler-rendered selected pages inspected. New appendix pages 39-44 were viewed individually; remaining selected pages were also inspected in layout sheets. No clipping, overlap or missing glyphs observed."
     },
     {
       "source": "papers/research-directions.tex",
@@ -63,13 +65,13 @@
     },
     {
       "source": "papers/series-overview.tex",
-      "pages": 10,
-      "pdf_sha256": "4d6508c9c02b7d5ed4a0e1cce27fe366132b787950c989eea826f247e643c626",
+      "pages": 11,
+      "pdf_sha256": "1534145a7dbf4ecedc5e336bb3d737c14303880c8f9a899270c92c34957606c1",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Japanese font scaling and small math-font size substitutions remain; main manuscript also has PDF bookmark math-token warnings.",
+      "other_warnings": "Small math-font size substitutions and the legacy \\rm class warning remain. Overview also reports Japanese font scaling and an ignored font-feature setting; no missing glyphs were observed.",
       "build_date": "2026-11-22",
-      "rerun_in_current_revision": false,
-      "source_sha256": "ef6d2c9140d9aa7a58af7d82ab8d4e6808d901eee3e062db3ce40af73d280047",
+      "rerun_in_current_revision": true,
+      "source_sha256": "355bb5115aa948001eabb2dc640f82d03101fdf767373e4d3c5ea1584f1bb371",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -87,19 +89,17 @@
         7,
         8,
         9,
-        10
+        10,
+        11
       ],
-      "visual_check_result": "All 10 Poppler-rendered pages inspected; after final bibliography synchronization, the changed bibliography page 10 was rebuilt and visually rechecked. No clipping, overlap or missing glyphs observed.",
-      "current_source_changed": true,
-      "pending_source_sha256": "c09dc03f9150bc48303cbb71c96badbbb95737c2c04d4e0fb9887f5ae9a86084",
-      "current_build_status": "Pending v1.2 rebuild; the existing PDF/hash/page record is from the preceding source."
+      "visual_check_result": "All 11 Poppler-rendered pages inspected. After the final current-priority edit, the changed pages 10-11 were viewed again; unchanged rendered pages were pixel-identical. No clipping, overlap or missing glyphs observed."
     }
   ],
-  "scope": "Current v1.2 source integrates the fixed-SNC collar/extension/tensor input chain and two collar counterexamples. Targeted internal proof review completed; two manuscript rebuilds and changed-page visual QA are pending. Other manuscripts were not re-audited or rebuilt.",
+  "scope": "Current Part I v1.2 integrates the fixed-SNC collar/extension/tensor input chain and two collar counterexamples. Targeted internal proof review and the two edited-manuscript LuaLaTeX builds and visual QA completed. Other manuscripts retain earlier records and were not re-audited or rebuilt.",
   "visual_check": {
     "date": "2026-11-22",
-    "sample": "All 10 overview pages and Part I pages 1, 9, 13, 14, 15, 16, 35, 38, 39.",
-    "result": "No visible clipping or overlap. After the final Part I header/abstract clarification, pages 1 and 9 were viewed again; all eight selected body regions other than page 1 were pixel-identical to the inspected render, and the shared new header was inspected. After final overview bibliography synchronization, its page 10 was rebuilt and viewed again.",
+    "sample": "Part I pages 1, 3, 7, 9, 32, 33, 39-46; all 11 overview pages.",
+    "result": "New Part I appendix pages 39-44 and overview pages 4, 5, 10, 11 were inspected individually; the other selected pages were inspected in layout sheets. The final overview priority edit was rebuilt and its changed pages rechecked. No visible clipping, overlap or missing glyphs.",
     "full_page_review": {
       "series-overview": true,
       "multiscale-kaehler-einstein": false
@@ -109,7 +109,7 @@
   "current_revision": {
     "date": "2026-11-22",
     "version": "Part I v1.2; overview v1.2; current research set v1.3",
-    "status": "Targeted source and mathematical review completed; LuaLaTeX and visual QA pending.",
+    "status": "Targeted internal proof and source review, LuaLaTeX builds, and selected-page visual QA completed. Final GitHub saving is handled separately.",
     "edited_manuscripts": [
       "papers/multiscale-kaehler-einstein.tex",
       "papers/series-overview.tex"
@@ -117,18 +117,22 @@
     "mathematical_scope": "Fixed SNC: lemma SNC-compatible-collars constructs exact collars preserving the given Hermitian residual norms and canonical boundary circle actions by simultaneous stratum and product-connection induction; lemma fc-collar-transfer proves flat-to-all-orders extension and Hessian comparison in the full-residual fc norms; lemma RZ-collar-tensor combines RZ Theorem 5.1 and the background formula to yield exponent min(1,nu), and finite iteration yields smooth/exponential volume-IRFA. This chain and both explicit collar obstructions received independent internal readings. No new analytic hypothesis is imposed on the ample SNC application.",
     "not_verified": "No complete independent proof audit of the remaining Part I co-Gram/contraction and Busemann/exact-tail arguments, Parts II-III, or the external surface theorem. No new verification of family-uniform CP/PBE/TC, H_loc/H_anc, or controlled push-off. No formal proof or exhaustive novelty check.",
     "runtime": "Existing local TeX runtime /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh; TEXFONTMAPS=/tmp/multiscale-texmaps//: supplies the installed rsfs font map. Repository build settings and shared runtime are unchanged.",
-    "command": "latexmk papers/multiscale-kaehler-einstein.tex papers/series-overview.tex with the stated runtime and font-map environment; planned, not yet run for these sources.",
-    "source_checks": "git diff --check passed; final label/link/control-character checks pending.",
-    "external_primary_source_check": "Rochon-Zhang arXiv:1106.0873v2: Lemma 1.1 and (1.10)-(1.15), Lemma 2.4, (2.25)-(2.29), (2.43)-(2.46), (2.62)-(2.68), (5.3), (5.10), Theorem 5.1. Albin-Melrose arXiv:1012.5765v1: Definition 1.1, Proposition 1.2, (1.3)-(1.4), pp.4-5. The extension with prescribed SNC boundary data is proved in the current manuscript, not attributed wholesale to the iterated-fibration theorem.",
+    "command": "With /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh sourced and TEXFONTMAPS=/tmp/multiscale-texmaps//:, ran latexmk -interaction=nonstopmode -halt-on-error papers/multiscale-kaehler-einstein.tex papers/series-overview.tex; reran the overview after the final current-priority edit.",
+    "source_checks": "git diff --check, JSON parsing, edited-text control-character scan, relative Markdown-link existence, and label/reference checks for both edited manuscripts passed. External paper trees were compared: KE papers are unchanged from b2180e5 to a81817e, and surface papers are unchanged from 68c7e375 to cdab2cd.",
+    "external_primary_source_check": "Rochon-Zhang arXiv:1106.0873v2: Lemma 1.1 and (1.10)-(1.15), Lemma 2.4, (2.25)-(2.29), (2.43)-(2.46), (2.62)-(2.68), (5.3), (5.10), Theorem 5.1. Albin-Melrose arXiv:1012.5765v1: Definition 1.1, Proposition 1.2, (1.3)-(1.4), pp.4-5. The extension with prescribed SNC boundary data is proved in the current manuscript, not attributed wholesale to the iterated-fibration theorem. Albin-Melrose publication metadata (Contemporary Mathematics 535, 2011, pp.1-26) was checked against the author final-manuscript record, the book catalog, and the publisher contents scan; the mathematical reference remains the arXiv v1 snapshot.",
     "external_reference_versions": {
       "kaehler-einstein-degeneration": {
+        "research_set_version": "v1.10",
+        "commit": "a81817eef8b6e6a45da3aee44c42eaad98ed4d02",
         "part_iv_version": "v1.9",
-        "commit": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7"
+        "mathematical_source_commit_cited_in_overview": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7",
+        "paper_tree_unchanged": true
       },
       "surface-lagrangian-torus-fibration": {
         "revision": 33,
         "date": "2026-11-22",
-        "reference": "Current main manuscript; same-map intermediate cone result with uniform core/collar basepoints under R(epsilon+eta)/a -> 0; the proof remains in its owning repository."
+        "reference": "Current main manuscript; same-map intermediate cone result with uniform core/collar basepoints under R(epsilon+eta)/a -> 0; the proof remains in its owning repository.",
+        "commit": "cdab2cd78147f9d2953b5877f5e643fc964a0daa"
       }
     }
   },
