@@ -1,5 +1,5 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.5（Part I v1.4）
+更新：2026-11-22 / v1.6（Part I v1.5）
 
 ## 現行稿の仮定（2026-08-31統合稿を回収）
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
@@ -35,7 +35,7 @@ H_i^\circ=H_i\setminus\bigcup_{j\ne i}(H_i\cap H_j)
 
 主稿の `lem:fibres` の直径はambient距離である。帰納仮定から得るのは同じresidual fibreに属する二点を**残余空間内で**結ぶ長さ≤B+1の曲線であり、fibre内の曲線ではない。Full collarは固定depthで全残余空間上のprincipal torus束をなすので、compactな曲線像の上で指定初期点からhorizontal liftが全区間存在する。Full-sectorのtensor比較は残余depthsに一様であるため、曲線がresidual fibreを離れても長さ評価を保つ。終端のnormal torus補正はO(exp(−t_i))である。
 
-このendpoint版を `prop:lifting` と `cor:upper`、付録 `app:lifting` に統一した。必要なのは始点・終点のskeletal値の一致と加法長さ誤差であり、全曲線のexact trackingやfibreの内在径ではない。Finite itinerary、product synchronization、可積分誤差を使う帰納順は維持する。入力側のfull sector・exact collar構造とRochon–Zhangからのtensor翻訳は、後述の三補題が正本である。距離下界・全射性と測度側の点検範囲は次の三節に分ける。
+このendpoint版を `prop:lifting` と `cor:upper`、付録 `app:lifting` に統一した。必要なのは始点・終点のskeletal値の一致と加法長さ誤差であり、全曲線のexact trackingやfibreの内在径ではない。Finite itinerary、product synchronization、可積分誤差を使う帰納順は維持する。入力側のfull sector・exact collar構造とRochon–Zhangからのtensor翻訳は、後述の三補題が正本である。距離下界・全射性、移動基点・link、測度側の点検範囲は以下で区別する。
 
 ## 全射収縮と中心・半径に一様な閉球近似
 
@@ -51,6 +51,22 @@ d_{\rm GH}\!\left(
 \right)\le\frac{3K}{2R}.
 \]
 両球はambient距離の制限を持つ。全射性でtarget点の逆像を取り、source球からはみ出す分を最短路上で戻すとK/R-denseな像を得る。基点対を含む対応の歪みが3K/R以下になるのでpointed収束も従う。中心・半径への一様性は一つの固定空間内の主張で、退化族のparameterや変動するcollarの定数を制御しない。
+
+## 移動基点の分類とmetric linkの復元
+
+正本は主稿 `thm:moving`、`prop:cone-limits`、`prop:link`。移動基点については、先に固定した粗い錐写像Sの加法定数Kを用い、scaled centers y_j=S(x_j)/R_j を有限orthant coneで分類する。有限個のcell copiesから一つを選び、座標ごとに有界／無限大へ発散する部分列を取る。発散座標のface copy α と、残る座標の極限 z により、全ての部分列極限は (C,y) または (R^α×C(Lk α),(0,z)) となる。空linkのconeは一点とする。各型はSの全射性を使って任意のR_j→∞に対して実現できるが、同じunmarked pointed isometry typeを複数のfaceが与えることはある。
+
+積構造には、αを含むcoface copiesをαを保つface mapsだけで貼るincidence linkを使う。α座標が全て正の領域は内在長さについて積である。中心yから各α-wallまでの距離の最小値をmとすると、m>2Aで、閉A球はambient距離を含めて対応するEuclidean factor×link coneの閉球と等長になる。球内の二点から壁までの距離は各々m−A以上なので、退出・再進入する経路は2(m−A)>2Aとなる。これがambient距離の短絡を排除する。残余中心zの大きさに条件はなく、z_j→zなら球GH誤差は3K/(2R_j)+d(z_j,z)で抑えられる。
+
+**閉starを大域積と扱えない例。** 三頂点a,b,cの三辺cycleからなるall-right linkで、aの閉starは二つのquadrantsである。b,cの半径rの点のstar内距離は2rだが、第三のquadrantを通るambient距離は√2 rになる。さらに同じ二頂点a,bを結ぶ二つのedge copiesでは、aを保つincidence linkは二点であり、abstract productのa=0上の二本のb-axisがambient coneでは同一視される。従って境界を含むclosed-star productの単射性にも注意が必要である。正のα領域と壁距離の評価は両方の障害を避ける。
+
+Metric linkでは、各連結成分のspherical path distanceを使い、異なる成分間は∞とする。Equal-radius chord distanceからまずmin(π,d_len)を回収し、そのpath metricを取ると元のextended length distanceになる。この標準cone幾何をSのcoarse sectionへ移せばradial divergenceはO(1/r)の誤差で成立する。決まるのは固定基点blow-downのpointed isometry typeとlinkのisometry typeであり、元のdivisor labelsや選ばれたcell分割ではない。v_i=√c_i u_iという座標変更はface gluingと両立するので、metric coneだけから元のdepth規格化c_iも復元しない。Component-labelled Mellin transformsによるincidenceの検出は、このmetric dataに標識付きの観測系を加えた主張である。
+
+**Radial familiesと一般rough rays。** 第一象限のγ(t)=(t,√t)は |t−s|≤d(γ(t),γ(s))≤|t−s|+1/2 を満たすが、どのradial rayとも有界距離にない。従ってcoarse sectionで選んだradial familiesの結果を、全rough raysのbounded-distance商やgenuine geodesic-ray boundaryへ読み替えない。Sublinear同値による方向空間は別の検討課題であり、現行主定理に含めない。
+
+**一次文献との比較。** [Bridson–Haefliger原著](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/bridsonhaefligerx.pdf), Chapter I, Definition 5.6・Remarks 5.7（印刷pp.59–60）のcone metricとlength-metric recoveryを確認した。同書Theorem 7.39（p.115）・Lemma 7.56（p.120）はpolyhedral local modelsの入力で、無限遠の移動基点分類を直接述べる結果ではない。[Leuzinger 2004出版社版](https://www.heldermann-verlag.de/jlt/jlt14/leuzams.pdf), Lemma 5.1（pp.330–331）、Theorem 5.2（pp.331–332）、Corollary 6.3（p.336）は局所対称空間のnet上の有界加法誤差・asymptotic cone・radial公式を与える。これら自体を本研究の新規性とせず、ample SNCのKE metricからの構成と残余測度への接続を比較対象とする。指定箇所の照合であり、全関連文献の網羅的な優先権確認は未了である。
+
+[Datar–Fu–Song, arXiv:2106.05486v2](https://arxiv.org/abs/2106.05486v2), Corollary 1.1（pp.3–4）は孤立log canonical表面特異点のcomplete負KE metricについて、無縮小の移動基点pGH極限を直線またはflat cylinderと記述する。[Engberg博士論文](https://data.math.au.dk/publications/phd/2022/math-phd-2022-lbe.pdf), Definition 1.2.12・Proposition 1.2.13（pp.25–27）は二次元Hilbert modular cuspのcharacteristic linkの非崩壊baseとexceptional dual complexのhomeomorphismを構成する。Isometryや一般ample SNC対の大域加法比較を述べる結果ではない。両者の指定本文を照合し、固定補空間のspatial blow-downとの対象・尺度の違いをIntroductionへ記した。DFSの定理番号は確認したarXiv v2に固定し、出版版の番号は未照合である。
 
 ## LDP下界とexact-support制限の違い
 

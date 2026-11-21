@@ -31,7 +31,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I}
-\fancyhead[R]{\small 現行稿 v1.4}
+\fancyhead[R]{\small 現行稿 v1.5}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{現行稿 v1.4（2026年11月22日）}
+\date{現行稿 v1.5（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -136,7 +136,7 @@ centered measured limitを、bounded normal strips上の全変動収束と
  \mathfrak m_F=\frac{(2\pi)^n}{(n-k)!}
  \bigl((K_{\ov X}+D)^{n-k}\cdot F\bigr),
 \]
-したがって無限遠の metric--measure geometry は log-canonical polarization の intersection profileを記憶する。
+したがってfaceとnormal-depth規格化を指定したmetric--measure limitsは、log-canonical polarizationのintersection profileを与える。
 さらに cusp Busemann functionsを構成し、metric-ball tailの exact leading coefficient、joint extreme-value law、distance Laplace transform と facewise Abel--Mellin boundary coefficientsを求める。
 全faceで整合するvolume漸近からsubcritical residual momentsを一様に評価し、
 Abel--Mellin recursionのparameter一様性も導く。
@@ -259,18 +259,30 @@ $\cS_{\mathrm{KE}}(K_0)=\{0\}$となるように選べる（$K$は$K_0$に依存
 \]
 \end{theorem}
 
-この結論は usual quasi-isometry より強い。Multiplicative constant は正確に $1$ で、全誤差が一つの additive constant に閉じる。
-そのため全 scaling sequences に対する cone の一意性だけでなく、moving-basepoint blow-down も有限 cone complex の問題に還元できる。
-Scaled basepoint が face $\alpha$ の方向へさらに発散すると、部分列極限は適切な transverse basepoint $z$ を用いて
+\eqref{eq:intro-rough}のmultiplicative constantは$1$であり、誤差は一つの加法定数で抑えられる。
+従って全scaling sequencesに対するfixed-basepoint coneの一意性と、
+moving-basepoint blow-downを有限orthant complexの問題へ還元できる。
+Scaled basepointが有界な場合は$(\cC_D,y)$が現れる。
+無限遠へ発散する場合は、部分列を取り、一つのcell copyで発散する座標の
+face copyを$\alpha\ne\varnothing$、収束する残余座標を$z$とすると、極限は
 \[
  \bigl(\RR^{|\alpha|}\times\Cone(\Lk_{\Delta(D)}\alpha),(0,z)\bigr)
 \]
-となる。また link の intrinsic spherical length metric は、open metric space 内の coarse radial rays $\gamma_\xi$ に対する
+となり、これらの型は全て実現される。
+ここでlinkはcofaceのincidence copiesを保って取る。
+証明では正の$\alpha$座標を持つ領域の積構造と、
+各壁までの距離が$2A$を超えれば閉$A$球のambient距離も積の距離に一致することを用いる。
+
+さらにcoarse sectionで持ち上げたradial families $\gamma_\xi$について
 \[
  \lim_{r\to\infty}\frac{d_{\mathrm{KE}}(\gamma_\xi(r),\gamma_\eta(r))}{r}
- =2\sin\!\left(\frac{\min\{\pi,d_\Sigma(\xi,\eta)\}}2\right)
+ =2\sin\!\left(\frac{\min\{\pi,d_\Sigma^{\mathrm{len}}(\xi,\eta)\}}2\right)
 \]
-から回収できる。すなわち dual complex は compactification を選んで後から付けた combinatorial object であるだけでなく、metrized object として open K\"ahler--Einstein manifold の大域距離に符号化されている。
+が成り立つ。異なる連結成分間では$d_\Sigma^{\mathrm{len}}=\infty$とする。
+標準的なcone metricの復元により、linkのspherical length metricの
+\emph{isometry type}が固定基点blow-downから決まる。
+この主張は$X$上のgenuine geodesic raysによるvisual boundaryの同定や、
+元のdivisor labelsを持つcell decompositionの復元を含まない。
 
 \subsection{主結果 II：体積の第一・第二漸近}
 有限体積を確率測度として普通に blow down すると、全質量は cone point へ落ちる。
@@ -369,10 +381,36 @@ Smooth SNC log-general-type pair に対する負 KE metrics の存在と境界�
 本稿は新しい local Monge--Amp\`ere expansion を証明するものではなく、facewise tensor asymptotics から global distance geometry と finite-volume statistics を組み立てる。
 その入力をexact collarへ移す際には、Albin--Melroseのboundary product construction \cite[Proposition~1.2]{AlbinMelrose}をSNCのtorus束図式に沿って行い、全残余一様な延長比較を別途証明する（\cref{lem:SNC-compatible-collars,lem:fc-collar-transfer,lem:RZ-collar-tensor}）。
 
-非コンパクト有限体積 locally symmetric spaces に対して、Leuzinger は arithmetic reduction theory を用い Euclidean cone over a finite complex への coarse model を構成した \cite{Leuzinger}。
-本稿の結論はこれと形式的に近いが、Tits building の代わりに divisor dual complex が現れ、局所対称性や arithmeticity は仮定しない。
-Proof mechanism も reduction theory ではなく、recursive cusp products、co-metric contraction、端点を保つambient path lifting である。
-有限 Euclidean polyhedral complexes の intrinsic metric と geodesic existenceについては \cite{BridsonHaefliger,BBI} を参照する。
+実rankが$2$以上の対称空間のirreducible nonuniform lattice quotientについて、
+Leuzingerはarithmetic reduction theoryを用い、Lemma~5.1でnet上の加法誤差が有界なcone比較、
+Theorem~5.2で有限Tits quotient上のEuclidean asymptotic cone、
+Corollary~6.3でgeodesic raysのradial divergence公式を与えている
+\cite[Lemma~5.1, Theorem~5.2, Corollary~6.3]{Leuzinger}。
+従って加法誤差によるcone記述やradial公式そのものを本稿の新規性とはしない。
+本稿が構成するのは、ample SNC pairの負KE metricに対して、
+recursive cusp products、co-metric contraction、端点を保つambient liftingから得る
+divisor dual complexへの比較と、残余metric--measure dataへの接続である。
+局所対称性やarithmeticityは仮定しない。
+
+Euclidean coneの距離公式とtruncated angular metricからのlength metricの復元は
+\cite[Chapter~I, Definition~5.6 and Remarks~5.7, pp.~59--60]{BridsonHaefliger}
+の標準事項である。Polyhedral local modelsは同書Theorem~7.39とLemma~7.56を参照する。
+本稿ではcomponent incidencesとambient距離の退出経路を明示して、
+有限orthant coneの移動基点極限を直接記述する。
+Radial familiesはcoarse sectionsによるもので、Leuzingerのgeodesic-ray boundaryの同定を
+このKE設定へ移すものではない。有限polyhedral spacesの長さ構造には
+\cite{BridsonHaefliger,BBI}を用いる。
+
+KE cuspの移動基点極限にも先行例がある。
+Datar--Fu--Songは孤立log canonical表面特異点の近傍で、complete負KE metricの
+\emph{無縮小}の移動基点極限を$\RR$またはflat cylinder $S^1\times\RR$と記述している
+\cite[Corollary~1.1, arXiv version~2, pp.~3--4]{DatarFuSong}。
+またEngbergは二次元Hilbert modular cuspのcharacteristic linkの非崩壊baseと
+exceptional dual complexの間に幾何学的なhomeomorphismを構成している
+\cite[Definition~1.2.12 and Proposition~1.2.13, pp.~25--27]{Engberg}。
+後者はisometryを主張する結果ではない。
+いずれも特異点近傍を対象とし、本稿の固定ample SNC補空間に対する
+大域spatial blow-downとは対象・尺度が異なる。
 
 測度側では、本稿の LDP は finite-dimensional exponential kernelに対する elementary Laplace boundsを recursive face decompositionへ適用するもので、一般的な large-deviation formalismは \cite{DemboZeitouni} に沿う。Pointed measured convergenceは Fukaya の collapsing framework \cite{Fukaya} と同型の local weak-measure conventionで用いるが、本稿では必要な定義を本文中に明記する。Busemann functions 自体は古典的である \cite{Busemann}。本稿ではbounded-additive cusp modelからcompact-core dependent phaseを抽出し、exact finite-volume tail coefficientへ結び付ける。これらの大域結果の網羅的な優先権・新規性比較は、公表前の確認事項として残る。
 
@@ -1010,82 +1048,437 @@ $z$がsource ballの外なら、完備Riemannian manifold上の最短路$o$--$z$
 \end{proof}
 
 \subsection{リンク計量の内在的復元}
-$\Sigma$ を $\cC=\Cone(\Sigma)$ の spherical linkとし、角距離には $\bar d_\Sigma=\min\{\pi,d_\Sigma^{\mathrm{len}}\}$ を用いる。
-Coarse section $s:\cC\to X$ を選び $\gamma_\xi(r)=s(r,\xi)$ とする。
+$\cC=\cC(\Delta,\bm c)$ のcone pointを$0$とし、
+$\Sigma=\{q\in\cC:d_\cC(0,q)=1\}$を各cellの球面計量で貼り合わせた
+spherical linkとする。$d_\Sigma^{\mathrm{len}}$はそのintrinsic length metricであり、
+異なる連結成分の間では$+\infty$と定める。
+以下では$\Sigma\ne\varnothing$の場合を扱う。$\cC=\{0\}$の場合にはlinkは空であり、
+linkに関する主張は空集合についての主張と解する。
 
-\begin{proposition}[Radial divergence]
-\label{prop:link}
+\begin{lemma}[Coneの距離公式と長さ距離の回復]
+\label{lem:cone-link-metric}
+$\bar d_\Sigma=\min\{\pi,d_\Sigma^{\mathrm{len}}\}$と置くと、
+$r,s\ge0$と$\xi,\eta\in\Sigma$について
+\begin{equation}
+\label{eq:cone-polar-distance}
+ d_\cC(r\xi,s\eta)^2
+ =r^2+s^2-2rs\cos\bar d_\Sigma(\xi,\eta).
+\end{equation}
+従って単位球面に制限したambient距離は
 \[
- \lim_{r\to\infty}\frac{d_g(\gamma_\xi(r),\gamma_\eta(r))}{r}
- =2\sin\left(\frac{\bar d_\Sigma(\xi,\eta)}2\right).
+ d_\cC(\xi,\eta)
+ =2\sin\!\left(\frac{\bar d_\Sigma(\xi,\eta)}2\right)
 \]
-この極限は coarse section の変更に依存しない。従って truncated angular metric $\bar d_\Sigma$ と、その induced path metric $d_\Sigma^{\mathrm{len}}$ の isometry type は、一意な blow-down cone の link として $(X,d_g)$ から決定される。
-\end{proposition}
+であり、この距離から$\bar d_\Sigma$、さらにそのinduced path metricとして
+$d_\Sigma^{\mathrm{len}}$が回復される。
+この結論にCAT$(0)$性やlinkの連結性は必要ない。
+\end{lemma}
 \begin{proof}
-$\cS\circ s$ は identity から bounded distance、$\cS$ は $(1,K)$-rough isometry なので、左辺は cone内の equal-radius distance $2r\sin(\bar d/2)$ と $O(1)$ だけ異なる。
-二つの coarse sections の同一点上の liftsも rough upper boundにより一様有界距離にあるので、$r^{-1}$ 倍した極限は section の選択に依存しない。
+各cellで$v_i=\sqrt{c_i}\,u_i$と置くとEuclidean orthantになり、
+この変換は全てのface mapsと可換である。
+従って任意の正の重みに対し$\Sigma$は$\Delta$のall-right spherical realizationと
+等長であり、各cellの極座標計量は
+$\dd r^2+r^2\dd s_\Sigma^2$となる。
+\eqref{eq:cone-polar-distance}はEuclidean coneの標準距離公式である
+\cite[Chapter~I, Definition~5.6 and Remarks~5.7, pp.~59--60]{BridsonHaefliger}。
+本稿の有限polyhedral coneについて、そのlength-metricの意味を確認する。
+
+各link成分はcompact length spaceなので、その二点間に最短路が存在する。
+片方の半径が零の場合は明らかなので$r,s>0$とする。
+$a=d_\Sigma^{\mathrm{len}}(\xi,\eta)<\pi$なら、link内の長さ$a$の最短路上のconeを
+平面の角度$a$のsectorに展開し、そのEuclidean chordを写すことにより、
+\eqref{eq:cone-polar-distance}の右辺の平方根を上界として得る。
+$a\ge\pi$または$a=+\infty$なら、cone pointを経由する長さ$r+s$の経路が同じ上界を与える。
+
+下界は、距離を定めるcellwise piecewise smooth pathsで確認すればよい。
+Cone pointを通る経路の長さは$r+s$以上である。
+通らない経路を$(\rho(t),\zeta(t))$と書き、angular projectionの累積長を$\theta(t)$とする。
+平面曲線
+\[
+ t\longmapsto\rho(t)(\cos\theta(t),\sin\theta(t))
+\]
+は元の経路と同じ長さを持つ。
+Angular projectionの全長$b$は$a$以上である。
+$b<\pi$なら平面の端点間距離から、元の経路の長さは
+$\sqrt{r^2+s^2-2rs\cos b}$以上であり、これは求める下界以上である。
+$b\ge\pi$なら$\theta=\pi$へ初めて到達する時点の半径を$\rho_*$とする。
+それまでの長さは$r+\rho_*$以上、残りは$|s-\rho_*|$以上なので、全長は$r+s$以上である。
+異なるlink成分を結ぶ経路はcone pointを通らなければならない。
+以上から\eqref{eq:cone-polar-distance}が従う。
+
+単位球面のambient距離に$z\mapsto2\arcsin(z/2)$を適用すれば
+$\bar d_\Sigma$が得られる。
+さらに$\bar d_\Sigma$と$d_\Sigma^{\mathrm{len}}$は、距離が$\pi$未満の範囲で一致し、
+同じ局所位相を定める。
+任意の連続曲線の任意のpartitionを、隣接点間の$\bar d_\Sigma$が$\pi$未満となるように
+細分すれば、細分後の距離和は二つの距離について一致する。
+三角不等式とpartitionについての上限を取ることにより、曲線の長さも一致する。
+従って$\bar d_\Sigma$のinduced path metricは$d_\Sigma^{\mathrm{len}}$である。
+異なる連結成分を結ぶ連続曲線は存在しないので、この回復は成分間の距離$+\infty$も含む。
 \end{proof}
 
-\subsection{移動基点}
+\Cref{thm:rough}の$\cS:X\to\cC$と加法定数$K$を固定する。
+$\cS$は全射なので、$\cS\circ s=\mathrm{id}_\cC$を満たすset-theoretic sectionが存在する。
+より一般に、coarse sectionとは
+\[
+ A_s:=\sup_{q\in\cC}d_\cC(\cS(s(q)),q)<\infty
+\]
+を満たす写像$s:\cC\to X$をいう。
+連続性は要求せず、$\gamma_\xi(r)=s(r\xi)$をcoarse radial familyと呼ぶ。
+
+\begin{proposition}[Radial divergenceとmetric linkの復元]
+\label{prop:link}
+任意のcoarse sectionについて、全ての$r>0$と$\xi,\eta\in\Sigma$に一様に
+\begin{equation}
+\label{eq:link-uniform-divergence}
+ \left|
+ \frac{d_g(\gamma_\xi(r),\gamma_\eta(r))}{r}
+ -2\sin\!\left(\frac{\bar d_\Sigma(\xi,\eta)}2\right)
+ \right|
+ \le\frac{K+2A_s}{r}.
+\end{equation}
+特にradial divergenceの極限はcoarse sectionの変更に依存しない。
+$\bar d_\Sigma$およびそのinduced path metric
+$d_\Sigma^{\mathrm{len}}$の等長型は、$(X,d_g)$の一意なpointed blow-down coneから決定される。
+与えられたcone pointを保つ等長写像は、このlink計量の等長写像を誘導する。
+\end{proposition}
+\begin{proof}
+三角不等式と\cref{thm:rough}から、任意の$q,q'\in\cC$について
+\[
+ d_\cC(q,q')-2A_s
+ \le d_g(s(q),s(q'))
+ \le d_\cC(q,q')+2A_s+K.
+\]
+$q=r\xi$, $q'=r\eta$と置き、\cref{lem:cone-link-metric}を用いて$r$で割ると
+\eqref{eq:link-uniform-divergence}を得る。
+二つのcoarse sections $s,s'$については、さらに
+\[
+ d_g(s(q),s'(q))\le K+A_s+A_{s'}
+ \qquad(q\in\cC)
+\]
+なので、同一点上のliftsの変更は極限に影響しない。
+
+\Cref{cor:GH}により、固定基点でのpointed blow-downは
+cone pointを基点とする$\cC$に一意に収束する。
+固定基点を変更した場合の距離はrescaling後に零へ収束するため、このpointed等長型は変わらない。
+Cone pointを保つ等長写像$\Phi:\cC\to\cC'$は単位球面を単位球面へ写す。
+また$0$から$r\xi$へのunit-speed最短路は$u\mapsto u\xi$に限る。
+実際、半径$u\in(0,r)$の点がその最短路上にあるなら、
+\eqref{eq:cone-polar-distance}において等号
+$d_\cC(u\eta,r\xi)=r-u$が成立するため、$\bar d_\Sigma(\eta,\xi)=0$となる。
+従って$\Phi(r\xi)=r\Phi(\xi)$であり、単位球面のambient距離、
+$\bar d_\Sigma$、そのinduced path metricが順に保たれる。
+これによりmetric linkの等長型と、与えられたpointed cone isometryに関する自然性が従う。
+\end{proof}
+
+\begin{remark}[復元する計量と付加された標識]
+\label{rem:link-metric-scope}
+ここで復元するのはmetric linkの等長型である。
+一般にはcell subdivisionやcomponent labelsまで計量から標準的に復元されるとは限らない。
+例えば四本の辺からなるall-right circleのconeはEuclidean平面であり、
+任意角度の回転はcone pointを保つ等長写像だが、指定した四つのquadrantsを保存するとは限らない。
+また$v_i=\sqrt{c_i}\,u_i$は全faceで整合する等長写像
+\[
+ \cC(\Delta,\bm c)\longrightarrow\cC(\Delta,\bm1)
+\]
+を与える。従ってnormal depth座標の数値規格化$c_i$も、metric linkだけからは得られない。
+Labelled depth、rate function、localized face transformsは別の付加情報である。
+
+Coarse radial familiesはsectionから選んだ写像であり、連続なgeodesic raysであるとは主張しない。
+\Cref{prop:link}は$X$のgenuine geodesic-ray boundaryの同定を必要としない。
+さらに、一般の$(1,A)$-rough raysを有界距離で同一視した集合とlinkとの同定も、
+この命題の結論には含めない。
+\end{remark}
+
+\subsection{移動基点と面に沿う局所積}
+
 \begin{theorem}[Moving-basepoint blow-down]
 \label{thm:moving}
-任意の $x_j\in X$、$R_j\to\infty$ に対し
+\Cref{thm:rough}の写像$\cS$と定数$K$を固定する。
+任意の$x_j\in X$、$R_j\to\infty$に対し
 \[
  y_j=R_j^{-1}\cS(x_j)\in\cC
 \]
-と置くと、全ての$A>0$について中心と半径に一様に
+と置く。このとき全ての$A>0$について、ambient距離を制限した閉球の間に、
+基点対を含み歪みが$3K/R_j$以下の対応が存在する。特に
 \[
  d_{\GH}\!\left(
  \ov B_{(X,R_j^{-1}d_g)}(x_j,A),
  \ov B_\cC(y_j,A)
  \right)\le\frac{3K}{2R_j}.
 \]
+定数は中心と半径に一様である。
 \end{theorem}
 \begin{proof}
 \Cref{cor:based-ball-approximation}を中心$x_j$、scale $R_j$に適用する。
 \end{proof}
 
+以下では、面のコピーとそのincidenceを保ってcone側の移動基点を記述する。
+本稿の複体では一つのcell内の頂点labelsは相異なり、
+各cellの各coordinate faceは一つの指定されたface copyへ貼られる。
+同じ頂点集合を持つ異なるface copiesは許すが、
+一つのcell内の異なる頂点を同一視する一般の$\Delta$-complexは扱わない。
+$\alpha$をnonempty face copy、$I=I_\alpha$をその頂点集合、
+$|\alpha|=|I|$とする。
+
+\begin{definition}[Incidenceを保つlink cone]
+\label{def:incidence-link}
+$\alpha$をfaceとして持つ各coface copy $\sigma\succeq\alpha$について、
+残余orthant
+\[
+ Q_{\sigma\mid\alpha}=\RR_{\ge0}^{I_\sigma\setminus I},
+ \qquad
+ q_{\sigma\mid\alpha}
+ =\sum_{i\in I_\sigma\setminus I}c_i\dd u_i^2
+\]
+を一つずつ用意する。
+$\alpha$を保つincidences
+$\alpha\preceq\tau\preceq\sigma$に対応するface mapsだけを用いて貼った、
+intrinsic length metricを持つconeを
+\[
+ \mathcal L_\alpha
+ :=\cC(\Lk_\Delta\alpha,\bm c)
+\]
+と書く。これが本稿で用いるlink coneである。
+同じ残余頂点labelsを持つcofacesも、指定されたincidenceがなければ同一視しない。
+$\alpha$自身に対応するzero-dimensional orthantが共通のcone pointとなる。
+特に$\alpha$がmaximalなら$\Lk_\Delta\alpha=\varnothing$とし、
+$\cC(\varnothing)=\{0\}$と約束する。
+\end{definition}
+
+各global vertex label $i$について、cellに$i$がないところでは$u_i=0$と置く。
+Face mapsがlabelsを保つので、これは$\cC$上の連続関数を定める。
+各cellでgradient normが$1$以下であることから
+\begin{equation}
+\label{eq:cone-coordinate-barrier}
+ w_i:=\sqrt{c_i}\,u_i
+ \quad\text{は$\cC$上で$1$-Lipschitzである。}
+\end{equation}
+実際、各cellでの長さ評価を貼り合わせ、経路長のinfimumを取ればよい。
+
+\begin{lemma}[正の面座標を持つstarの積表示]
+\label{lem:positive-star-product}
+$\mathcal U_\alpha\subset\cC$を、$\alpha$を含むcoface copies内で
+$u_i>0$ ($i\in I$)となる点の集合とする。
+この集合はopenで、canonicalな写像
+\[
+ \Phi_\alpha:
+ Q_\alpha^\circ\times\mathcal L_\alpha
+ \longrightarrow\mathcal U_\alpha,
+ \qquad Q_\alpha^\circ=\RR_{>0}^{I},
+\]
+はhomeomorphismである。
+$\mathcal U_\alpha$にその内部の経路によるintrinsic length metricを入れると、
+これはweighted Euclidean productとのisometryとなる。
+さらに
+\[
+ \partial\mathcal U_\alpha
+ \subset\bigcup_{i\in I}\{u_i=0\}.
+\]
+\end{lemma}
+\begin{proof}
+一つのcoface $\sigma\succeq\alpha$上では、
+$I$座標と残余座標の分離により
+\[
+ Q_\sigma\cap\{u_i>0\ (i\in I)\}
+ =Q_\alpha^\circ\times Q_{\sigma\mid\alpha}
+\]
+である。全ての$I$座標が正である点を同一視するface mapsは、
+必ず$\alpha$を保つ。従ってこの領域でのgluingは
+\cref{def:incidence-link}のgluingと厳密に一致し、
+同じlabelsを持つ異なるface copiesを余分に同一視することはない。
+これで$\Phi_\alpha$の全単射性と局所的なcell構造の一致が従う。
+有限個のcell copiesによるquotient topologyからhomeomorphismを得る。
+
+各cellの二次形式は二因子の直交和であり、gluingは第一因子を保つので、
+$\Phi_\alpha$は内部の経路長を保つ。
+二点間のproduct distanceは、第一因子の直線と
+第二因子の最短路をconstant speedで組み合わせて実現される。
+正のorthantは凸であり、その直線は$Q_\alpha^\circ$内にある。
+$\mathcal L_\alpha$は有限orthant coneなのでproper geodesic spaceである
+（\cref{lem:cell-convex}と同じ有限cellの議論を適用できる）。
+従って内部距離についての積表示を得る。
+
+全ての$I$座標が正である領域では、点の属するcellの$I$-face copyは
+well-definedで局所的に一定である。
+実際、正の$I$座標を持つ点を共有するface mapsは$I$を落とせない。
+従ってこの領域は$I$-face copiesによる互いに交わらないopen setsに分かれる。
+そのうち$\alpha$に対応する集合が$\mathcal U_\alpha$であり、
+その境界へ出るには少なくとも一つの$I$座標を零にしなければならない。
+\end{proof}
+
+\begin{remark}[閉star全体の積表示に対する障害]
+\label{rem:closed-star-obstruction}
+上の積表示を、closed starに制限したambient距離の大域的積表示へ
+拡張することはできない。
+例えば、三頂点$a,b,c$を三辺で結ぶcycleで全$c_i=1$とし、
+$\alpha=a$とする。Closed starは$ab$と$ac$の二つのquadrantsからなる。
+その内部距離では、$b$-rayと$c$-ray上の半径$r$の二点間距離は$2r$だが、
+全coneでは$bc$-quadrant内の線分により$\sqrt2\,r$となる。
+
+Face copiesを持つ場合には、closed productからclosed starへの写像の
+単射性自体が失われることもある。
+例えば二頂点$a,b$を結ぶ二つのedge copiesを考えると、
+$a$のincidence linkは二つの異なる頂点を持つ。
+対応するproductの$a=0$上には二本の残余$b$-raysがあるが、
+元のconeのclosed starでは両者は同じ$b$-rayへ貼られる。
+正の$a$座標の領域ではこの同一視は起こらない。
+以下では正のstarと、外部へのshortcutsを排除する定量評価を組み合わせる。
+\end{remark}
+
+\begin{lemma}[深い面座標のまわりのambient閉球]
+\label{lem:star-ball-isometry}
+$b=\Phi_\alpha(a,z)\in\mathcal U_\alpha$とし、
+\[
+ m_\alpha(a)=\min_{i\in I}\sqrt{c_i}\,a_i,
+ \qquad
+ M_\alpha=\RR^I_{\bm c}\times\mathcal L_\alpha
+\]
+と置く。任意の$A>0$に対し$m_\alpha(a)>2A$なら、
+第一因子を$-a$だけ平行移動する写像は
+\[
+ \ov B_\cC(b,A)
+ \longrightarrow
+ \ov B_{M_\alpha}((0,z),A)
+\]
+の基点を保つisometryである。
+両辺の球には全空間の距離を制限し、球内のpath metricへ置き換えない。
+この半径条件は$z\in\mathcal L_\alpha$に一様である。
+\end{lemma}
+\begin{proof}
+$m=m_\alpha(a)$と略記する。
+まず$m>A$の下で球の点集合を同定する。
+$b$から長さ$A$以下の経路は、
+\cref{eq:cone-coordinate-barrier,lem:positive-star-product}により
+$\mathcal U_\alpha$の境界へ到達できない。
+従って$b$から閉$A$-ball内の点への最短路は$\mathcal U_\alpha$内にあり、
+積表示と平行移動の下で$M_\alpha$内の長さ$A$以下の経路となる。
+逆に$M_\alpha$の閉$A$-ball上では、第一因子$v$について
+$\sqrt{c_i}|v_i|\le A$である。
+積の最短路を$a$だけ戻すと全ての$I$座標は正のままであり、
+$\Phi_\alpha$によって$\cC$内の同じ長さの経路となる。
+これで二つの閉球の全単射を得る。
+
+球内の二点$x,x'$を取る。
+全ての$i\in I$に対して
+\[
+ w_i(x),\ w_i(x')\ge m-A
+\]
+である。$x$と$x'$を結ぶ経路が$\mathcal U_\alpha$を出るなら、
+最初の退出点と最後の再入点では、それぞれ少なくとも一つの$I$座標が零となる。
+経路の初めと終わりの互いに交わらない部分に
+\cref{eq:cone-coordinate-barrier}を適用すると、その全長は少なくとも
+\[
+ 2(m-A)>2A
+\]
+である。
+一方、積表示の中で$b$を経由する経路の長さは$2A$以下であり、
+積の最短路はそれ以下である。
+従って外部へ出る経路は距離を短縮できず、ambient距離と積距離が一致する。
+この議論は境界の横断回数を仮定しない。
+\end{proof}
+
 \begin{proposition}[Cone basepoint limits]
 \label{prop:cone-limits}
-$y_j\in\cC(\Delta,\bm c)$ が無限遠へ発散するとする。部分列を取れば、ある nonempty face copy $\alpha$ と
-$z\in\cC(\Lk_\Delta\alpha,\bm c)$ が存在して
-\[
- (\cC,y_j)\xrightarrow{\pGH}
- \RR^{|\alpha|}_{\bm c}\times
- (\cC(\Lk_\Delta\alpha,\bm c),z).
-\]
-全ての pointed limits はこの形または bounded basepoint limitsである。
+$\cC=\cC(\Delta,\bm c)$を本稿の有限component-labelled orthant coneとする。
+任意の点列$y_j\in\cC$は、部分列において次のいずれかのpointed limitを持つ。
+\begin{enumerate}
+ \item $y_j\to y\in\cC$であり、極限は$(\cC,y)$である。
+ \item あるnonempty face copy $\alpha$と$z\in\mathcal L_\alpha$に対し
+ \[
+  (\cC,y_j)\xrightarrow{\pGH}
+  (\RR^I_{\bm c}\times\mathcal L_\alpha,(0,z)),
+  \qquad I=I_\alpha,
+ \]
+  となる。この場合、さらに部分列を取って
+  $y_j=\Phi_\alpha(a_j,z_j)$、
+  $m_\alpha(a_j)\to\infty$、$z_j\to z$と書ける。
+\end{enumerate}
+無限遠へ発散する点列には第二の場合が適用される。
+このリストは全てのpointed subsequential limitsを尽くし、
+各$(\cC,y)$および各$(M_\alpha,(0,z))$は実際に生じる。
+表現の一意性は主張しない。
 \end{proposition}
 \begin{proof}
-Finite component-labelled cell copiesしかないので、部分列を取り $y_j$ が一つの closed cell copy $Q_\sigma$ に属するとしてよい。各 coordinateについて bounded / divergent の別を固定し、divergent labelsの集合を $\alpha\subset\sigma$ とする。これは face copyを定める。Bounded transverse coordinatesは、さらに部分列を取って
-\[
- z_j\longrightarrow z\in \cC(\Lk_\Delta\alpha,\bm c)
-\]
-とできる。
+Cell copiesは有限個なので、部分列を取って全ての$y_j$が
+一つのclosed cell copy $Q_\sigma$に属するとしてよい。
+有限個の各座標について$[0,\infty]$内の収束部分列を順に取り、
+極限が有限の座標と$+\infty$の座標に分ける。
+全座標の極限が有限なら$y_j$は$Q_\sigma$内で一つの点$y$へ収束する。
 
-Closed star は component labels を保った metric productとして
+発散する座標集合$I\ne\varnothing$がある場合、
+$\sigma$の$I$-face copyを$\alpha$とする。
+$I$座標を$a_j$、残りの座標を
+$Q_{\sigma\mid\alpha}\subset\mathcal L_\alpha$内の点$z_j$と書くと、
 \[
- \Star(\alpha)\cong Q_\alpha\times
- \cC(\Lk_\Delta\alpha,\bm c)
+ m_\alpha(a_j)\to\infty,
+ \qquad z_j\to z\in Q_{\sigma\mid\alpha}
 \]
-を持つ。実際、$\alpha$ を含む各 cell copyは $Q_\alpha\times Q_\beta$ と一意に書け、face mapsは第二因子の face mapsだけを貼り合わせる。
+である。ここでは座標の発散速度の比を制限せず、
+異なるcoface copiesを一つの残余cellへまとめていない。
 
-固定 $A<\infty$ を取る。$c_{\min}=\min_i c_i>0$ とする。十分大きい $j$ では
+固定$A>0$について、十分大きい$j$では$m_\alpha(a_j)>2A$である。
+\Cref{lem:star-ball-isometry}により、ambient閉球は厳密に
 \[
- \min_{i\in\alpha}\sqrt{c_i}\,y_{j,i}>A+1.
+ \ov B_\cC(y_j,A)
+ \cong
+ \ov B_{M_\alpha}((0,z_j),A)
 \]
-従って $A$-ball 内の path はどの $i\in\alpha$ についても wall $u_i=0$ に到達できず、ball が出会う全 cell copiesは $\Star(\alpha)$ に属する。$Q_\alpha$-coordinatesを $-y_{j,\alpha}$ だけ translationすると、各 lower wall は ballの外へ退き、$A$-ball上では half-lines $u_i\ge0$ が full Euclidean coordinates $\RR^{|\alpha|}_{\bm c}$ と区別できなくなる。従って
-\[
- B_\cC(y_j,A)
-\]
-は、$j\to\infty$ で
-\[
- B_{\RR^{|\alpha|}_{\bm c}\times
- \cC(\Lk\alpha)}((0,z),A)
-\]
-へ convergenceする。実際、固定 $A$ では translation後の cellwise identificationsは eventually isometricであり、唯一の変化は transverse basepoint $z_j\to z$ である。
+となる。$\delta_j=d_{\mathcal L_\alpha}(z_j,z)\to0$と置く。
+同じproper geodesic space内の同半径の閉球は、
+中心間距離が$\delta_j$ならHausdorff距離も$\delta_j$以下である。
+実際、一方の球の点が他方の球の外にあれば、
+他方の中心からその点への最短路を半径$A$で切ればよい。
+従って
+\begin{equation}
+\label{eq:cone-moving-ball-bound}
+ d_{\GH}\!\left(
+ \ov B_\cC(y_j,A),
+ \ov B_{M_\alpha}((0,z),A)
+ \right)\le\delta_j
+ \qquad(m_\alpha(a_j)>2A).
+\end{equation}
+距離$\delta_j$以下の点を対応させると、基点対を含み
+歪み$2\delta_j$以下の対応が得られるので、pointed convergenceも従う。
+有限極限$y_j\to y$の場合にも同じ閉球の議論を用いる。
 
-$A$ は任意なので pointed Gromov--Hausdorff convergenceを得る。Bounded sequenceなら通常の compactnessで bounded basepoint limitを得る。以上で全 pointed subsequential limitsを尽くす。
+これで任意の点列から収束部分列を取り出せた。
+既にpointed limitを持つ列にもこの抽出を適用すれば、
+pointed limitの一意性により、その極限はリスト中の一つとpointedly isometricである。
+逆に$(\cC,y)$は定数列によって実現する。
+任意の$\alpha,z$に対して
+$a_{j,i}=j/\sqrt{c_i}$とし、
+$y_j=\Phi_\alpha(a_j,z)$とすれば、
+$m_\alpha(a_j)=j$であるから第二の極限を実現する。
+$\alpha$がmaximalなら$\mathcal L_\alpha=\{0\}$なので、
+これは$\RR^{|\alpha|}_{\bm c}$そのものである。
+$\Delta=\varnothing$で$\cC=\{0\}$の場合には第一の場合だけが残る。
+\end{proof}
+
+\begin{corollary}[全ての移動基点blow-downの実現]
+\label{cor:moving-limit-classification}
+Metric-IRFAを持つclean finite-depth torus-cusp spaceの
+全てのmoving-basepoint blow-down limitsは、
+\cref{prop:cone-limits}のリストと一致する。
+任意に指定した$R_j\to\infty$に対して、
+そのリストの各pointed spaceを適切な$x_j\in X$により実現できる。
+
+第二の場合の記号を用いると、$m_\alpha(a_j)>2A$の全ての$j$について
+\[
+ d_{\GH}\!\left(
+ \ov B_{(X,R_j^{-1}d_g)}(x_j,A),
+ \ov B_{M_\alpha}((0,z),A)
+ \right)
+ \le\frac{3K}{2R_j}+\delta_j.
+\]
+両球にはambient距離を制限し、基点対を含む対応の歪みは
+$3K/R_j+2\delta_j$以下に取れる。
+\end{corollary}
+\begin{proof}
+\Cref{thm:moving}と\cref{eq:cone-moving-ball-bound}を組み合わせる。
+逆方向には、\cref{prop:cone-limits}の証明で得たcone内の実現列$y_j$を用い、
+$\cS$の全射性から$\cS(x_j)=R_jy_j$となる$x_j$を選べばよい。
+この議論はmetric-IRFAだけを用い、volumeの仮定や退化族への一様性を要求しない。
 \end{proof}
 
 \section{体積大偏差原理と面ごとの測度付き極限}
@@ -1809,7 +2202,7 @@ $k=n$ の場合は $F$ が一点で、その residual volume は $1$ とする�
 \end{proof}
 
 \begin{remark}
-この theorem は first cone の incidence dataを、log-canonical polarization の numerical intersection profile で decorationする。
+このtheoremは与えられたcomponent-labelled cone structureのincidence dataを、log-canonical polarization の numerical intersection profile で decorationする。
 Full measure $\lambda_F$ はさらに residual KE geometryを保持し、一般に continuous moduli を持つ。
 \end{remark}
 
@@ -2593,7 +2986,7 @@ Determinant mapは uniformly positive definite forms上で smoothであり、
 \begin{remark}[Rochon--Zhang から用いる入力]
 \label{rem:RZ-input}
 本稿が \cite{RochonZhang} から用いる箇所をまとめると、(i) logarithmic compactification と polyfibred-cusp face fibrations（§1--2）、(ii) standard spatial asymptotics の定義（Definition~2.10）、(iii) ample log-canonical classに対する KE/residual KE equations (5.3)--(5.9)、(iv) residual-uniform decay \cite[Theorem~5.1]{RochonZhang} である。
-本稿独自の部分は、それらを \cref{def:metricIRFA,def:volumeIRFA} へ翻訳した後の bounded-additive global distance theorem、moving-basepoint classification、LDP、calibrated exact tailsである。Simultaneous full-corner polyhomogeneous expansionはこれらの主結果に仮定しない。
+本稿で追加して証明する大域的結論は、それらを \cref{def:metricIRFA,def:volumeIRFA} へ翻訳した後の bounded-additive global distance theorem、moving-basepoint classification、LDP、calibrated exact tailsである。Simultaneous full-corner polyhomogeneous expansionはこれらの主結果に仮定しない。
 \end{remark}
 
 \begin{remark}[一次資料のSNC定理と滑らかな因子での展開を区別する]
@@ -3382,10 +3775,27 @@ R.~Kobayashi,
 \newblock K\"ahler--Einstein metric on an open algebraic manifold,
 \newblock \emph{Osaka J. Math.} \textbf{21} (1984), 399--418.
 
+\bibitem{DatarFuSong}
+V.~Datar, X.~Fu and J.~Song,
+\newblock K\"ahler--Einstein metrics near an isolated log-canonical singularity,
+\newblock \emph{J. reine angew. Math.} \textbf{797} (2023), 79--116.
+\newblock DOI: \href{https://doi.org/10.1515/crelle-2022-0095}{10.1515/crelle-2022-0095}.
+\newblock 確認版：\href{https://arxiv.org/abs/2106.05486v2}{arXiv:2106.05486v2},
+Corollary~1.1, pp.~3--4.
+
+\bibitem{Engberg}
+L.~B.~Engberg,
+\newblock \emph{On some algebraic aspects of special K\"ahler metrics},
+\newblock Ph.D. thesis, Aarhus University, 2022.
+\newblock \href{https://data.math.au.dk/publications/phd/2022/math-phd-2022-lbe.pdf}{大学公開版},
+Definition~1.2.12 and Proposition~1.2.13, pp.~25--27.
+
 \bibitem{Leuzinger}
 E.~Leuzinger,
 \newblock Tits geometry, arithmetic groups, and the proof of a conjecture of Siegel,
 \newblock \emph{J. Lie Theory} \textbf{14} (2004), 317--338.
+\newblock \href{https://www.heldermann-verlag.de/jlt/jlt14/leuzams.pdf}{出版社版},
+Lemma~5.1, Theorem~5.2, Corollary~6.3.
 
 \bibitem{Mumford}
 D.~Mumford,

@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.4（2026年11月22日）}
+\date{現行総説 v1.5（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -189,6 +189,30 @@ ambient距離を制限した閉球
 のGH距離を$3K/(2R)$以下と評価する．定数は中心・半径に一様であり，
 指定compact集合を原点へ送るように$\cS$を選ぶ場合は，$K$がその集合に依存する．
 これは一つの固定空間での評価であり，退化族のparameterに一様な定数を与えない．
+
+移動基点の分類では，主稿の補題\texttt{lem:positive-star-product}により，
+face copy $\alpha$を保つincidence link cone $\mathcal L_\alpha$を用いて，
+正の$\alpha$座標を持つ領域を内部の長さ距離について積に同定する．
+中心から各$\alpha$-wallまでの距離が$2A$を超えると，
+閉$A$球のambient距離もその積距離に一致する
+（補題\texttt{lem:star-ball-isometry}）．
+これにより，全moving-basepoint limitsは$(\cC,y)$または
+\[
+ \bigl(\RR^{I_\alpha}_{\boldsymbol c}\times\mathcal L_\alpha,(0,z)\bigr)
+\]
+となり，全ての型が任意に指定したrescaling sequenceで実現する．
+閉star全体には外側を通る短絡や境界での同一視があり，
+その大域的な積表示を用いることはできない．
+
+命題\texttt{prop:link}は，coarse sectionsで持ち上げたradial familiesの
+距離比を$O(1/r)$で評価し，pointed blow-downからmetric linkの等長型を復元する．
+非連結linkには成分間距離を$+\infty$とする長さ距離を用い，
+まず$\pi$で切断した角距離，次にそのpath metricを回収する．
+Divisor labels，cell subdivision，depth規格化$c_i$，genuine geodesic-ray boundaryの復元は含まない．
+Cone距離とlinkの復元はBridson--Haefligerの標準事項であり，
+有界加法誤差のcone比較とradial公式にはLeuzingerの算術商での先行結果がある．
+本稿の寄与の比較はample SNCのKE metricからの構成と残余metric--measure dataへの接続に置き，
+一次文献の定理・仮定はPart I Introductionの引用を正本とする．
 
 測度側では，LDPの下界をfull face collar内のcompact residual集合から
 ambient open setへ移して証明する．Exact-support sectorだけに制限した測度の正質量は仮定しない．
@@ -500,7 +524,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
 \item 第IV篇のcapped volume・full-triple・closed-corner・固定成分収束と，曲面論文のscalar/portal・core fillingを定理単位で照合する．同じ写像，fixed段階からslow diagonalへ進む順序，全曲面ambient距離の上下界を確認する．
-\item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellinと，通常volume-IRFAによるexact tailの証明も点検した．次はmoving-basepoint cone・link recoveryの量化と，主要結果の先行研究比較を詰める．固定補空間と退化族の一様評価を区別する．
+\item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellinと，通常volume-IRFAによるexact tailの証明も点検した．移動基点のpositive-star/ambient閉球の証明とlink復元の範囲も点検した．次は公表用Introductionと主定理の仮定・依存の最終照合，および主要な距離・測度結果の網羅的な先行研究比較を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
 \item Part III の localization と anchor を，global normal-bundle models と chart-compatible quantitative estimatesから構成する．

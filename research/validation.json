@@ -13,13 +13,13 @@
     },
     {
       "source": "papers/multiscale-kaehler-einstein.tex",
-      "pages": 57,
-      "pdf_sha256": "1b8f499ce34ecfbe83e5337fbe44cc0aed3b62fd2314658c124fd03a12866a1b",
+      "pages": 62,
+      "pdf_sha256": "8e3c2043a8bd180bebb6bc81f35a8bba4dd056addcf5e46f6782d6edb7f0b487",
       "unresolved_or_box_warnings": [],
       "other_warnings": "Small math-font size substitutions and the legacy class rm warning remain; no missing glyphs.",
       "build_date": "2026-11-22",
       "rerun_in_current_revision": true,
-      "source_sha256": "0baad07dc11d5967f5bf69dbd58e850c6e2ff94fe774baf6e8844c76b659235d",
+      "source_sha256": "767d7a8ee86c5d4a3e47aca12bd3e6e9b9eb58c7bda1869664bc1ea31d82274c",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -37,29 +37,20 @@
         6,
         7,
         8,
+        21,
+        22,
+        23,
+        24,
         25,
         26,
         27,
-        28,
-        29,
-        30,
-        31,
-        34,
-        35,
         36,
-        37,
-        38,
-        39,
-        40,
-        41,
-        42,
-        43,
-        55,
-        56,
-        57
+        48,
+        61,
+        62
       ],
-      "visual_check_result": "Poppler raster images inspected: pages 1-8 in 90 dpi four-page layout sheets; pages 25-31,34-43,55-57 individually at 150 dpi by an independent internal reviewer. The bibliography heading was consolidated and affected table-of-contents/bibliography pages were rechecked after rebuilding.",
-      "source_version": "v1.4"
+      "visual_check_result": "Final PDF inspected after the last source edit: pages 1-8 in 90 dpi four-page sheets, pages 36 and 48 individually at 120 dpi by the main reviewer; pages 21-27 and 61-62 individually at 150 dpi by an independent internal reviewer. No visible clipping, overlap, missing glyphs or unintended blank pages.",
+      "source_version": "v1.5"
     },
     {
       "source": "papers/research-directions.tex",
@@ -81,13 +72,13 @@
     },
     {
       "source": "papers/series-overview.tex",
-      "pages": 11,
-      "pdf_sha256": "b86eab2eac0a1b9ec610a768825794308f282b1869a0828631d03985d7833433",
+      "pages": 12,
+      "pdf_sha256": "35f3feb9cf822c6b364bed4c2f56159f815fa740d8a95187c454cc606ba498b4",
       "unresolved_or_box_warnings": [],
       "other_warnings": "Small math-font size substitutions, legacy class rm, Japanese font scaling and an ignored addjfontfeatures setting remain; no missing glyphs.",
       "build_date": "2026-11-22",
       "rerun_in_current_revision": true,
-      "source_sha256": "172c029a9cfb506e194ab49bb8220071d341d02b1291ed7ff3806bcd7457e3d3",
+      "source_sha256": "cb2b55acc361290b00652aff3aec40f6f2ef527c750fd394ad35930e6ae5e96e",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -107,17 +98,18 @@
         8,
         9,
         10,
-        11
+        11,
+        12
       ],
-      "visual_check_result": "All 11 pages rendered with Poppler at 90 dpi and actually viewed in four-page layout sheets. No visible clipping, overlap, missing glyphs or misplaced headings.",
-      "source_version": "v1.4"
+      "visual_check_result": "All 12 final PDF pages rendered with Poppler at 90 dpi and actually viewed in four-page layout sheets. No visible clipping, overlap, missing glyphs or misplaced headings.",
+      "source_version": "v1.5"
     }
   ],
-  "scope": "Part I v1.4 proves arbitrary facewise normal translations in strip/ambient-ball total variation under ordinary volume-IRFA, gives direct bounded-primitive Chern-Weil and checked face-mass normalizations, derives conditional subcritical moments from all full faces, and uses them for exact tail/joint/Laplace and uniform Abel-Mellin without exponential-volume or chosen-dominator weighted assumptions. Mixed localized coefficients detect component incidence. Selected proofs received independent internal review. Both edited manuscripts were rebuilt and selected mathematical chains and rendered pages were reviewed; this is not a complete independent audit of all manuscript claims.",
+  "scope": "Part I v1.5 repairs the closed-star product argument by a positive incidence-star intrinsic product and a uniform m_alpha>2A ambient closed-ball isometry, classifies and realizes all moving-basepoint blow-down limits, and proves uniform coarse-radial divergence and metric-link recovery including disconnected links. It separates metric isometry type from labels, subdivision, depth weights and genuine-ray boundaries. Previously reviewed measure, Chern-Weil, moment, exact-tail and Mellin chains remain in the current manuscript. New selected proofs and global scope were independently reviewed internally; this is not a complete independent audit or novelty certification of all claims.",
   "visual_check": {
     "date": "2026-11-22",
-    "sample": "Part I pages 1-8,25-31,34-43,55-57 (28 pages); all 11 overview pages.",
-    "result": "Poppler raster images actually viewed. Part I pages 25-31,34-43,55-57 individually at 150 dpi; pages 1-8 and overview in 90 dpi layout sheets. Bibliography heading duplication corrected; affected contents/bibliography pages rechecked after rebuilding. No visible clipping, overlap or missing glyphs.",
+    "sample": "Part I pages 1-8,21-27,36,48,61-62 (19 pages); all 12 overview pages.",
+    "result": "Final PDFs rendered with Poppler and actually viewed: Part I pages 1-8 in 90 dpi layout sheets, pages 36 and 48 individually at 120 dpi, pages 21-27 and 61-62 individually at 150 dpi by an independent internal reviewer; all overview pages in 90 dpi sheets. No visible clipping, overlap or missing glyphs.",
     "full_page_review": {
       "series-overview": true,
       "multiscale-kaehler-einstein": false
@@ -126,22 +118,22 @@
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
   "current_revision": {
     "date": "2026-11-22",
-    "version": "Part I v1.4; overview v1.4; current research set v1.5",
-    "status": "Selected new and strengthened mathematical chains independently reviewed internally. Both edited manuscripts rebuilt successfully; final logs and selected rendered pages checked. GitHub saving is confirmed separately from mathematical and build verification.",
+    "version": "Part I v1.5; overview v1.5; current research set v1.6",
+    "status": "Moving-basepoint and metric-link proofs independently reviewed internally, scope checked across the complete Part I source, and specified primary-literature statements compared. Both edited manuscripts rebuilt successfully; final logs and 19 Part I / all 12 overview rendered pages checked. GitHub saving is confirmed separately.",
     "edited_manuscripts": [
       "papers/multiscale-kaehler-einstein.tex",
       "papers/series-overview.tex"
     ],
-    "mathematical_scope": "Arbitrary normal centers min(T_i)->infinity; full-residual strip total variation with explicit modulus; recursive submersion model, shrinking torus fibers, ambient-path escape control, moving offsets and all-radius ball total variation. Smooth reference curvature and bounded real primitive give Chern-Weil by finite-volume Stokes; verified KE background sign, dV=omega^m/m!, normal circle period 2pi, adjunction and zero-dimensional case. Full-corner densities give a.e. conditional residual measures and essential-uniform subcritical exponential moments. These actual moments give uniform weighted TV by Holder, unrestricted relative normal Abel rates, mixed component incidence and ordinary-volume vertex tightness/exact tail/joint/Laplace. Meromorphic continuation is separated by explicit residual-L1 joint-polyhomogeneity conditions and Laurent sign.",
-    "not_verified": "No exhaustive audit of the complete moving-basepoint/link-recovery arguments, Parts II-III or the external surface theorem. No new proof of family-uniform CP/PBE/TC, H_loc/H_anc or controlled push-off. No formal proof, external referee review or exhaustive novelty investigation. Existing exact/numerical certificate suites were not rerun.",
+    "mathematical_scope": "Positive incidence-star topology and intrinsic product; global weighted coordinate barriers; exact ambient closed-ball product when m_alpha>2A, uniform in the residual center; finite-cell classification, residual-center error delta_j, and realization of all pointed types for every prescribed rescaling sequence. Direct finite-cone polar-distance proof without CAT or connected-link assumptions, uniform coarse-section divergence error (K+2A_s)/r, recovery of truncated and extended length metrics, section independence and naturality under pointed cone isometries. Explicit obstructions to a global closed-star product and to identifying all rough rays modulo bounded distance. Metric-link data do not recover divisor labels, chosen cells or depth weights. Existing reviewed distance/measure results remain in place; no family-uniform or genuine-geodesic-boundary conclusion is added.",
+    "not_verified": "No exhaustive proof audit of all Part I claims, Parts II-III or the external surface theorem. No new proof of family-uniform CP/PBE/TC, H_loc/H_anc, controlled push-off or a genuine geodesic-ray boundary theorem. No formal proof, external referee review or exhaustive novelty investigation. External literature proofs were not audited in full. Existing exact/numerical certificate suites were not rerun.",
     "runtime": "Local TeX environment /workspace/scratch/aae2295273c8/tex-runtime/env.sh; writable TEXMFCACHE inside the repository build output at build/tex-cache-v14; TEXFONTMAPS=/tmp/multiscale-texmaps//:. Shared runtime and repository build/editor settings unchanged.",
-    "command": "After sourcing the local TeX environment and setting TEXMFCACHE and TEXFONTMAPS, latexmk -g -interaction=nonstopmode -halt-on-error papers/multiscale-kaehler-einstein.tex papers/series-overview.tex completed successfully. Part I alone was then rebuilt after consolidating its bibliography heading.",
-    "source_checks": "git diff --check, JSON parsing, control-character scan and relative Markdown links passed. All 110 Part I labels are unique; all 154 parsed references resolve. Final individual build logs have no undefined references/citations, duplicate labels, missing characters or overfull/underfull boxes. Rendered-page checks are listed separately.",
-    "external_primary_source_check": "Rochon-Zhang arXiv:1106.0873v2: bounded derivative space (2.26)-(2.30), normal metric (2.69)-(2.70), background/potential (5.1)-(5.9), opening of Lemma 5.2. Grieser author notes 2019-03-25, section 2.1.2, Theorem 2.12 and (29)-(31), pp.18-20. Mumford author-PDF search index confirms section 1 definition and Theorem 1.4 statement only; full proof not inspected and not used by the direct Chern-Weil proof.",
+    "command": "After sourcing the local TeX environment and setting TEXMFCACHE and TEXFONTMAPS, latexmk -g -interaction=nonstopmode -halt-on-error papers/multiscale-kaehler-einstein.tex papers/series-overview.tex completed successfully. Part I alone was rebuilt after three scope wording refinements; final PDF checks use that last build.",
+    "source_checks": "git diff --check, JSON parsing, control-character scan and relative Markdown links passed. All 121 Part I labels are unique; all 176 parsed references and all parsed citation keys resolve. Final individual build logs have no undefined references/citations, duplicate labels, missing characters or overfull/underfull boxes. Rendered-page checks are listed separately.",
+    "external_primary_source_check": "Bridson-Haefliger original book text I.5.6-5.7 (pp.59-60), I.7.39 (p.115), I.7.56 (p.120); original-page images independently inspected. Leuzinger publisher PDF Lemma 5.1, Theorem 5.2, Corollary 6.3. Datar-Fu-Song arXiv:2106.05486v2 Corollary 1.1 (pp.3-4), publisher bibliographic record; published theorem numbering not checked. Engberg university thesis Definition 1.2.12 and Proposition 1.2.13 (pp.25-27). These selected statements and hypotheses were checked; the complete literature proofs and exhaustive priority comparison were not. Existing RZ, Albin-Melrose and Mellin input checks are recorded in notes/source-audit.",
     "external_reference_versions": {
       "kaehler-einstein-degeneration": {
-        "research_set_version": "v1.11",
-        "commit": "e965c780ed777d190b880831a556e57d39ab5bf0",
+        "research_set_version": "v1.12",
+        "commit": "30494b170ba1d2538bab723e57f15badddacdae5",
         "part_iv_version": "v1.9",
         "mathematical_source_commit_cited_in_overview": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7",
         "paper_tree_unchanged": true
@@ -150,7 +142,7 @@
         "revision": 33,
         "date": "2026-11-22",
         "reference": "Current main manuscript; same-map intermediate cone result with uniform core/collar basepoints under R(epsilon+eta)/a -> 0; the proof remains in its owning repository.",
-        "commit": "f62d86253aba0c477a1f9988624c0ca5a1d245f5"
+        "commit": "d17f7a78d00129e2fbf8093cdf55f2135a220383"
       }
     }
   },

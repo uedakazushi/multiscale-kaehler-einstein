@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.4。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
+2026-11-22 / v1.5。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
 
 ## 結論
 
@@ -36,7 +36,8 @@
 - 単独のmass一覧からincidenceを復元する主張を、mixed localized transformsの最高Abel係数による検出へ精密化した。通常のLaurent変数(s_i−1)に対する係数には符号(−1)^|I|が付く。
 - `lem:CW` は滑らかな基準曲率と有界primitiveから直接Stokesで証明する。KE適用の背景形・potential・normal circle規格化はRochon–Zhang第2・5節の一次資料に照合し、face massの数値式は維持する。指数的shell評価やMumfordのsingular Chern–Weil theoremを主証明の入力としない。
 - Chern–Weil の Stokes 符号、LDP lower bound、properness/net/fibre control を修正または展開。
-- link の復元を、追加 marking なしの強すぎる表現から isometry type の決定へ弱めた。
+- `prop:cone-limits` は正のface領域とincidence linkの積、壁までの距離が2Aを超える場合のambient閉球同定を使う。閉star全体の大域積は一般に成り立たず、三辺cycleの短絡と重複edge copiesの境界同一視をノートに保持する。全極限の分類と実現を内部点検した。
+- `prop:link` はcoarse sectionに一様なO(1/r)誤差と、非連結成分間∞を許すlength metricの回復を示す。Metric linkのisometry typeを復元対象とし、labels・depth weights・genuine geodesic-ray boundaryは主張しない。Bridson–Haefliger I.5.6–7とLeuzinger Lemma5.1/Theorem5.2/Corollary6.3の一次箇所を照合し、標準事項を独自成果として扱わない。
 
 ### Part II
 
