@@ -29,7 +29,7 @@
 ## 大域距離と測度の現行到達点
 `prop:cogram` は十分深い共通カラーで全逆計量を比較し、残余共変ベクトルの一様ノルムを使ってrow errorを抑える。可積分majorantと深い単調cutoffから `thm:contract` のproperな1-Lipschitz全射を得る。`cor:based-ball-approximation` は、加法誤差Kに対して全中心・全半径の閉球GH距離を3K/(2R)以下とする。指定compact集合を潰す選択ではKがその集合に依存する。
 
-LDPはexact-supportへの制限測度の下界を使わず、full collarの正質量compact残余集合をscaled ambient open setへ入れて証明する。残余raw座標はO(1)なのでRで割れば消え、既存のvolume-IRFAで足りる。`lem:level`→`lem:calibration`→`lem:vertex-tightness`→`thm:tail`→`thm:joint` は一面比較と距離上界から直接閉じ、co-Gram下界・LDP下界への依存を除いた。一般重みの角分布の分母は最小entropyのverticesだけの重み総和である。これらの鎖は複数担当で限定的に点検したが、全主張の外部査読・形式証明・新規性確認は未了。
+LDPはexact-supportへの制限測度の下界を使わず、full collarの正質量compact残余集合をscaled ambient open setへ入れて証明する。残余raw座標はO(1)なのでRで割れば消え、既存のvolume-IRFAで足りる。`lem:level`→`lem:calibration`→`lem:vertex-tightness`→`thm:tail`→`thm:joint` は一面比較・全faceのconditional moment評価・距離上界から直接閉じ、co-Gram下界・LDP下界への依存を除いた。一般重みの角分布の分母は最小entropyのverticesだけの重み総和である。これらの鎖は複数担当で限定的に点検したが、全主張の外部査読・形式証明・新規性確認は未了。
 
 ## 測度付き極限・体積公式・一様Mellinの到達点
 `thm:translation` は $\min_iT_i\to\infty$ の任意のnormal深さ列に対し、全残余空間を含むbounded normal strip上で全変動収束を与える。Metric-IRFAと通常のvolume-IRFAだけで、基点のnormal offsetと残余点が収束すれば、各固定半径のambient閉球上のpointed measured GH収束と押出し測度の全変動収束が従う。Smooth volume-IRFAは不要であり、normal深さの相対速度は指定しない。

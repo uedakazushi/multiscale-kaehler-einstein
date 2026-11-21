@@ -6,10 +6,10 @@
 
 | 原稿 | 頁数 | 状態 |
 | --- | ---: | --- |
-| [Part I](papers/multiscale-kaehler-einstein.tex) | 再組版中 | 距離錐・LDP・裾漸近、測度付き平行移動、面質量、一様Mellin recursion |
+| [Part I](papers/multiscale-kaehler-einstein.tex) | 57 | 距離錐・LDP・裾漸近、測度付き平行移動、面質量、一様Mellin recursion |
 | [Part II](papers/secondary-periods-torelli.tex) | 28 | 一般WP completionはcontrolled push-off付き |
 | [Part III](papers/conifold-localization.tex) | 57 | Actual localization/pGHは(H_loc)+(H_anc)付き |
-| [総説](papers/series-overview.tex) | 再組版中 | 五篇と曲面実現の共同方針、定理の条件・正規化 |
+| [総説](papers/series-overview.tex) | 11 | 五篇と曲面実現の共同方針、定理の条件・正規化 |
 | [研究素材](papers/research-directions.tex) | 10 | Jacobi/scattering・一般matroid等。現行仮定の注意を付記 |
 
 **現行の数学的到達点：** Part Iでは、固定SNCの整合的カラー・Ξ延長比較・全残余一様tensor評価に加え、co-Gramから全射な距離収縮への証明を点検した。加法誤差をKとすると、対応する中心を持つ閉球のGH誤差は全中心・全半径に一様に3K/(2R)以下となる。指定compact集合を原点へ送る選択も可能で、この場合Kはその集合に依存する。

@@ -129,7 +129,7 @@ d\mu=e^{-t}(e^{-r}+e^{-t}e^{-\alpha r})\,dt\,dr
 \]
 を考える。t方向のconditional measureはν_t=(e^−r+e^−t e^−αr)dr、leading measureはe^−r drで、全変動誤差はe^−t/αである。しかしα<τ<1なら各ν_tのτ指数momentは無限大になる。この密度はfull r-face/cornerのvolume-IRFAを満たさないので、全face版定理の反例ではない。全ての深い面を制御する必要を示す。
 
-**Dominationの選択は固有でない。** Exact product dμ=e^−t−r dt drではerrorが0なので、b=e^−αrも形式上dominatorに選べる。そのbのweighted momentは発散し得るが、b=0という別の良い選択もある。したがって、任意のchosen bの可積分性と、実際の測度の一様momentを区別する。
+**Dominationの選択は固有でない。** Exact product $d\mu=e^{-t-r}dt\,dr$ ではerrorが0なので、$b=e^{-\alpha r}$ も形式上dominatorに選べる。そのbのweighted momentは発散し得るが、b=0という別の良い選択もある。したがって、任意のchosen bの可積分性と、実際の測度の一様momentを区別する。
 
 単独のface mass一覧からは面のincidenceを確定しない。I⊂J、F⊂D_I、G⊂D_Jについてχ_Fχ_Gを使ったmixed localized transformのJ-Abel係数は、G⊂Fならm_G、そうでなければ0である。正質量により、このlabel付きmixed観測の集合からconnected faceの包含関係を検出する。
 
