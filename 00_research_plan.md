@@ -16,10 +16,10 @@
 固定成分は $H_i\simeq\mathbf P^2$ から $d-1$ 本の直線を除いた補空間である。Part Iの固定空間の $R\to\infty$ を $t\to0$ の族一様性へ読み替えない。Part IIの残余複素periodは第二作用積分と異なる。曲面側の直接大域証明があっても、(CP)/(PBE)/(TC)や(H_loc)/(H_anc)自体の検証状況は変えない。同じ曲面fibrationで作用atlasとGHを同時実現する問題も別に残す。
 
 ## 論文と証明の状態
-- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I。距離錐・face masses・tails/LDP。Mellinの二重torus係数訂正とweighted uniform integrabilityを保持する。距離の再帰的接続は同じfiberの端点を結ぶambient曲線を用い、fiber内の長さ評価を主張しない。
+- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I、現行組版41頁。距離錐・face masses・tails/LDP。Mellinの二重torus係数訂正とweighted uniform integrabilityを保持する。距離の再帰的接続は同じfiberの端点を結ぶambient曲線を用い、fiber内の長さ評価を主張しない。
 - `papers/secondary-periods-torelli.tex`：Part II、28頁。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
-- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
+- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、現行組版10頁。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
 
 ## 解析的入力とsmooth-divisorの精密誤差
 Rochon–Zhang Theorem 5.1はSNC strataの共通指数\(\nu>0\)のfc漸近を与え、Theorem 7.4・7.6のpolyhomogeneous展開と\(x\log x\)の係数はsmooth divisorに限る。Smooth degree-\(e\) hypersurface\(D_e\subset\mathbf P^n\)（\(e>n+1\)、\(n\ge2\)）では\(\widetilde b_e=2(n-1)e/[3(e-n-1)]\)と計算できる。さらにnormal-circle connectionを含むcompatible modelへのtensor誤差は\(C(1+t)e^{-t}\)で、tail積分は\(C(T+2)e^{-T}\)（`cor:RZ-smooth-sharp-IRFA`）。これは一次資料から得られるsmooth boundaryの可積分評価であり、一般SNCの全大域path liftingやactual conifold gluingの証明ではない。五直線のface mass係数はintersectionとGauss–Bonnetから数値検算済み。

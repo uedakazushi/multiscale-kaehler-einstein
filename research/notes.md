@@ -6,7 +6,7 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[Part IV–V commit 1abc96c](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/1abc96cea3d9c369410e0e9d2a57414276e7c776)と[曲面改訂31 commit 2a374e7](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/2a374e735c1a9598e78e7c539087418980eb2c4b)。確認日2026-11-22。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)と[曲面改訂32・2026-11-22](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex)。確認日2026-11-22。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |

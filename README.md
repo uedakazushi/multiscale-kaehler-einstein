@@ -6,10 +6,10 @@
 
 | 原稿 | 頁数 | 状態 |
 | --- | ---: | --- |
-| [Part I](papers/multiscale-kaehler-einstein.tex) | 組版記録参照 | 固定補空間の距離錐・測度漸近。端点を保つambient接続。Mellinにweighted uniform integrability |
+| [Part I](papers/multiscale-kaehler-einstein.tex) | 41 | 固定補空間の距離錐・測度漸近。端点を保つambient接続。Mellinにweighted uniform integrability |
 | [Part II](papers/secondary-periods-torelli.tex) | 28 | 一般WP completionはcontrolled push-off付き |
 | [Part III](papers/conifold-localization.tex) | 57 | Actual localization/pGHは(H_loc)+(H_anc)付き |
-| [総説](papers/series-overview.tex) | 組版記録参照 | 五篇と曲面実現の共同方針、定理の条件・正規化 |
+| [総説](papers/series-overview.tex) | 10 | 五篇と曲面実現の共同方針、定理の条件・正規化 |
 | [研究素材](papers/research-directions.tex) | 10 | Jacobi/scattering・一般matroid等。現行仮定の注意を付記 |
 
 **現行の数学的到達点：** [Part I](papers/multiscale-kaehler-einstein.tex)でRochon–ZhangのSNC定理5.1とsmooth divisorに限る定理7.4・7.6の入力を区別。滑らかな次数 $e>n+1$ の超曲面の $x\log x$ 係数 $2(n-1)e/[3(e-n-1)]$ を特殊化し、smooth boundary一面でのテンソル誤差 $O((1+t)e^{-t})$ とその可積分tailを記載した。一般SNCの大域距離定理やactual conifold localizationを今回独立に再証明したわけではない。
@@ -19,3 +19,5 @@
 最初に[研究方針](00_research_plan.md)、次に[研究ノート](research/notes.md)を読む。[移行・検証範囲](research/migration.md)と[ソース対応](research/source-manifest.json)を確認する。短い再構成稿は全文へ置換済み。旧稿独自資産の網羅的照合は残る。
 
 ルートで `latexmk`。PDF/SyncTeXはbuild/。現行の[検証状態](research/validation.json)で数学的点検・組版・表示確認を分ける。正本はmain。[research-hub](https://github.com/uedakazushi/research-hub)。
+
+組版にはLuaLaTeX/latexmk、LuaTeX-ja（ltjsarticleとHaranoAjiフォント）、TikZ、AMS、mathrsfs等の原稿で指定した標準TeXパッケージが必要。lualatex.fmtとrsfsのフォントmapが有効なTeX環境で上記コマンドを実行する。今回の2稿の再組版・表示確認と、変更していない3稿の過去の検証記録は区別している。

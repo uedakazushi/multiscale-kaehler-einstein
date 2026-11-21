@@ -1,66 +1,136 @@
 {
-  "date": "2026-11-20",
-  "engine": "LuaHBTeX 1.24.0 / TeX Live 2026",
+  "date": "2026-11-22",
+  "engine": "Latest two-manuscript build: LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian); unchanged manuscript records retain their earlier build.",
   "manuscripts": [
     {
       "source": "papers/conifold-localization.tex",
       "pages": 57,
       "pdf_sha256": "f4024b0c137fc22ca55655cbfd8f9d7cfbf7d66b893a450f9d3667777d3f1ef9",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain.",
+      "build_date": "2026-11-20",
+      "rerun_in_current_revision": false
     },
     {
       "source": "papers/multiscale-kaehler-einstein.tex",
-      "pages": 39,
-      "pdf_sha256": "85fc1e119d1f63fa56d036a8c69f4e4d8ab3c8c8f281821fd9fdcc2c2dcf0958",
+      "pages": 41,
+      "pdf_sha256": "7ab3b1c971bc6faf546b8522763a5d439036ba540977fac49709f4a43fc76e82",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+      "other_warnings": "Japanese font scaling and small math-font size substitutions remain; main manuscript also has PDF bookmark math-token warnings.",
+      "build_date": "2026-11-22",
+      "rerun_in_current_revision": true,
+      "source_sha256": "55cd64cc528de603111743b6345778e1e3791c552323edbe7d23ef34c4b5e7aa",
+      "log_check_counts": {
+        "undefined_references_or_citations": 0,
+        "duplicate_labels": 0,
+        "missing_characters": 0,
+        "overfull_boxes": 0,
+        "underfull_boxes": 0
+      },
+      "visual_check_pages": [
+        1,
+        9,
+        13,
+        14,
+        15,
+        16,
+        35,
+        38,
+        39
+      ],
+      "visual_check_result": "Poppler-rendered pages inspected; no clipping, overlap or missing glyphs observed."
     },
     {
       "source": "papers/research-directions.tex",
       "pages": 10,
       "pdf_sha256": "8ae53a8ed31638bc14fb26588d1bea916b5ec649a1c41a5079a32236e21dd2ac",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain.",
+      "build_date": "2026-11-20",
+      "rerun_in_current_revision": false
     },
     {
       "source": "papers/secondary-periods-torelli.tex",
       "pages": 28,
       "pdf_sha256": "417292249842008849fca61d75a223879b99746f0edc199a78cb29d5a5a983b1",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain.",
+      "build_date": "2026-11-20",
+      "rerun_in_current_revision": false
     },
     {
       "source": "papers/series-overview.tex",
-      "pages": 9,
-      "pdf_sha256": "3ab06a864ac35d0a5eb15bd2ce6fbb1ada0efabf020c029406ddab1928ceb770",
+      "pages": 10,
+      "pdf_sha256": "4d6508c9c02b7d5ed4a0e1cce27fe366132b787950c989eea826f247e643c626",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain."
+      "other_warnings": "Japanese font scaling and small math-font size substitutions remain; main manuscript also has PDF bookmark math-token warnings.",
+      "build_date": "2026-11-22",
+      "rerun_in_current_revision": true,
+      "source_sha256": "ef6d2c9140d9aa7a58af7d82ab8d4e6808d901eee3e062db3ce40af73d280047",
+      "log_check_counts": {
+        "undefined_references_or_citations": 0,
+        "duplicate_labels": 0,
+        "missing_characters": 0,
+        "overfull_boxes": 0,
+        "underfull_boxes": 0
+      },
+      "visual_check_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "visual_check_result": "All 10 Poppler-rendered pages inspected; after final bibliography synchronization, the changed bibliography page 10 was rebuilt and visually rechecked. No clipping, overlap or missing glyphs observed."
     }
   ],
-  "scope": "Build and representative-page visual checks; not independent mathematical validation.",
+  "scope": "Latest source edits and targeted internal proof/interface review, two complete LuaLaTeX builds, and 19 distinct PDF pages visually checked. The other three manuscripts were not rebuilt. This is not a complete mathematical proof audit.",
   "visual_check": {
-    "sample": "First, middle and last pages of each manuscript (38 distinct pages across the three repositories).",
-    "result": "Reviewed rendered contact sheets; no visible clipping or overlap in sampled pages.",
-    "full_page_review": false
+    "date": "2026-11-22",
+    "sample": "All 10 overview pages and Part I pages 1, 9, 13, 14, 15, 16, 35, 38, 39.",
+    "result": "No visible clipping or overlap. After the final Part I header/abstract clarification, pages 1 and 9 were viewed again; all eight selected body regions other than page 1 were pixel-identical to the inspected render, and the shared new header was inspected. After final overview bibliography synchronization, its page 10 was rebuilt and viewed again.",
+    "full_page_review": {
+      "series-overview": true,
+      "multiscale-kaehler-einstein": false
+    }
   },
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
-  "current_math_audit_2026_11_20": {
-    "mathematics_verified": "Under Rochon–Zhang's smooth-divisor normalization, Theorem 7.6 implies x log x coefficient 2(n-1)e/[3(e-n-1)] for a smooth degree-e hypersurface D_e in P^n, e>n+1. Derived a corresponding compatible fc-tensor model error O((1+t)exp(-t)) and integrable tail C(T+2)exp(-T).",
-    "external_primary_source_verified": "Rochon and Zhang, Advances in Mathematics 231 (2012), 2892–2952, Theorems 5.1, 7.4, 7.6, Example 7.7 (author-hosted primary PDF text inspected).",
-    "post_edit_lualatex_rerun": false,
-    "claims_not_established": "Full SNC global rough cone proof, family-uniform conifold localization, actual global pGH remain beyond this inspection."
-  },
   "current_revision": {
     "date": "2026-11-22",
-    "status": "Source and cross-repository interface checks complete; LuaLaTeX rebuild and visual QA in progress.",
+    "status": "Source/interface checks, two LuaLaTeX builds and specified visual QA completed.",
     "edited_manuscripts": [
       "papers/multiscale-kaehler-einstein.tex",
       "papers/series-overview.tex"
     ],
     "mathematical_scope": "Part I endpoint/ambient connector induction reviewed internally by a second reader under full-sector principal torus bundle and residual-uniform metric-IRFA assumptions. CP/PBE/TC route matched to Part IV-V statements. Fixed component indexing and metric normalization checked. Surface component-cone and selected intermediate-scale results cited from their proof owner.",
     "not_verified": "No complete independent proof audit of Part I SNC collar/Rochon-Zhang translation, Parts II-III, or the external surface theorem. No new verification of CP/PBE/TC, H_loc/H_anc or controlled push-off. No formal proof or exhaustive novelty check.",
-    "runtime": "System LuaLaTeX lacks lualatex.fmt; using the existing local TeX runtime via /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh without changing repository build settings.",
-    "previous_manuscript_records": "The earlier manuscript and visual-check records below concern the previous sources and are not post-edit build results."
+    "runtime": "System LuaLaTeX lacks lualatex.fmt. Used the existing local TeX runtime /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh; its pdftex.map lacked rsfs, so TEXFONTMAPS pointed to a temporary map combining that existing map and the installed rsfs.map. No repository build settings or shared runtime were modified.",
+    "command": "latexmk papers/multiscale-kaehler-einstein.tex papers/series-overview.tex (with the stated local runtime and font-map environment). PDF and SyncTeX are both in build/.",
+    "source_checks": "git diff --check passed; no duplicate or unresolved internal TeX labels; relative Markdown file links resolve.",
+    "external_primary_source_check": "Rochon-Zhang arXiv:1106.0873v2, Lemma 1.1 and §1 (1.10)-(1.15), and Theorem 5.1 checked directly: global boundary torus bundle survives logarithmic blow-up and a common decay exponent is provided across all strata. No full reproof of the collar-to-model tensor translation.",
+    "external_reference_versions": {
+      "kaehler-einstein-degeneration": {
+        "part_iv_version": "v1.9",
+        "commit": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7"
+      },
+      "surface-lagrangian-torus-fibration": {
+        "revision": 32,
+        "date": "2026-11-22",
+        "reference": "Current main manuscript, with its formal Japanese title; no obsolete baseline-revision statement."
+      }
+    }
+  },
+  "smooth_divisor_primary_check": {
+    "mathematics_verified": "Under Rochon–Zhang's smooth-divisor normalization, Theorem 7.6 implies x log x coefficient 2(n-1)e/[3(e-n-1)] for a smooth degree-e hypersurface D_e in P^n, e>n+1. Derived a corresponding compatible fc-tensor model error O((1+t)exp(-t)) and integrable tail C(T+2)exp(-T).",
+    "external_primary_source_verified": "Rochon and Zhang, Advances in Mathematics 231 (2012), 2892–2952, Theorems 5.1, 7.4, 7.6, Example 7.7 (author-hosted primary PDF text inspected).",
+    "post_edit_lualatex_rerun": true,
+    "claims_not_established": "Full SNC global rough cone proof, family-uniform conifold localization, actual global pGH remain beyond this inspection.",
+    "primary_check_date": "2026-11-20",
+    "scope": "The current Part I build includes this existing derivation. The 2026-11-22 work did not re-prove its full analytic argument."
   }
 }
