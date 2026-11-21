@@ -1,12 +1,12 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.6（Part I v1.5）
+更新：2026-11-22 / v1.7（Part I v1.6）
 
-## 現行稿の仮定（2026-08-31統合稿を回収）
+## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.11・commit e965c78](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/e965c780ed777d190b880831a556e57d39ab5bf0)と[曲面改訂33・研究資料v3.14・commit f62d862](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/f62d86253aba0c477a1f9988624c0ca5a1d245f5)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.13・commit 29714a9](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/29714a96102498a28d3531ad43999e6b935a2897)と[曲面改訂33・研究資料v3.16・commit 0c4457c](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/0c4457c9a9ce5785229ccd932e458e1ca6c64f6e)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -30,6 +30,14 @@ H_i^\circ=H_i\setminus\bigcup_{j\ne i}(H_i\cap H_j)
 従ってPart Iのパラメータは $(n,m)=(2,d-1)$、log-canonical classは $(d-4)H$、固定成分の錐は $C_{2,d-1}$。Ambient $\mathbf P^3$ のd平面補空間なら $(n,m)=(3,d)$ であり別対象である。五次の成分は四直線補空間、Part Iの五直線の例は六次の成分に対応する。二重線の残余曲線は $\mathbf P^1$ から $d-2$ 個の三重点を除く。五次ではM0,3、六次以上では一般にmoduliを持つが、F_dの零点を含むsource markingの情報とは区別する。
 
 固定補空間の $R^{-1}d_{\rm KE}$ と退化族の $R_t^{-1}d_{g_t}$、$R_t=\log(-\log|t|^2)$ は異なる極限である。固定空間の定数の存在だけから、tに依存するcutを越える一様比較を得ることはできない。Ric=-ωからω/(d−4)へ変える場合、距離は1/√(d−4)、tensorは1/(d−4)、co-Gramは(d−4)倍となる。Secondary complex periodsは残余曲線のmarked複素・双曲幾何であり、Lagrangian torusの第二symplectic actionではない。
+
+### 主定理の適用範囲と残余の標識
+
+Part Iの共通対象は連結smooth projective n-fold、n≥1、reduced SNC divisor D、ample L=K+Dである。Dが空なら距離coneは一点、定値写像とK=diam(X)で距離定理は成立し、faceの主張は空、tailは十分大きい半径で0となる。非空境界のBusemann/tail定理と区別する。抽象clean構造にはX=int(tilde X)、各残余の連結完備計量、deeper facesで同じ構造とnormal weightsを引き継ぐことを明記する。
+
+一般多次数SNC配置のdual complexでは交叉の連結成分を保持する。例えばP²の横断する二つの滑らかなconicsはK+D=Hがampleで、dual complexは2頂点と4本の異なる辺を持つ。一本の辺を持つ超平面型のC₂,₂ではない。主稿 `cor:multidegree` は各connected faceの次数・質量を使う。
+
+Part II `prop:partI-translation` の標識はcomponent-labelled collarとdeeper-face labelsから運ぶ付加構造である。`lem:metric-conjugation` により、fully marked oriented hyperbolic curveはordered complex moduli pointを決め、向きを忘れれば複素共役の曖昧さが残る。`thm:intro-star` はn本のoriented periods、`thm:intro-unoriented` は全curve factors・全cusp labelsを保ち向きだけを忘れたgeneric reconstructionを扱い、後者は配置全体の共役までの結論である。裸のmetric limitからlabelsを復元するとは主張しない。
 
 ## Part Iの端点接続で確認した論理
 
@@ -121,6 +129,8 @@ Rochon–Zhangのbackgroundではq_i=−log(ε‖s_i‖²)、ω₀=Θ−2Σddᶜ
 
 **一次資料の確認範囲。** [Rochon–Zhang 1106.0873v2](https://arxiv.org/html/1106.0873v2) の (2.26)–(2.30)、Definition 2.10、(2.69)–(2.70)、(5.1)–(5.9)、Lemma 5.2冒頭を照合した。Monge–Ampère potentialのbounded derivativesは(5.6)直後に記載され、ここではTheorem 5.1の残余減衰を使わない。[Mumfordの著者版](https://www.dam.brown.edu/people/mumford/alg_geom/papers/1977b--HirzProp-GT.pdf)、第1節・Theorem 1.4の定義とstatementは検索索引で確認したが、PDF本文の取得・全証明の精読は未了。Good metricsは比較remarkに留め、直接Stokes証明の依存入力にしない。
 
+LDPの確率測度μ/μ(X)から面極限を取れば、λ_Fとm_Fを共に全体積で割る。主稿 `rem:probability-face-mass` の式は、hat m_F=n!/(n−k)!·(L^(n−k)·F)/L^nである。異なるfaceの拡大極限は確率分割ではないため、その質量和は1と限らない。五直線P²では全体積8π²、各divisor face 8π²、各intersection point 4π²なので、確率規格化の面質量はそれぞれ1、1/2となる。
+
 ## 全faceの体積評価と一様Abel–Mellin recursion
 
 I-normal depthsをTに固定し、normal torusを積分した残余測度をν_F,Tとする。一般Borel densityではconditional measureはa.e. Tで定まり、以下の上限はessential supremumで解釈する。Exact quotient-in-stagesを使い、残余の深いlabel集合JごとにI∪Jのvolume-IRFAを適用すると、r_αを残余depth、χ(r_α)を非負raw depthとして、全q<1に対し
@@ -151,13 +161,7 @@ d\mu=e^{-t}(e^{-r}+e^{-t}e^{-\alpha r})\,dt\,dr
 
 複素meromorphic continuationは、normal変数x_i=e^−t_iについて、係数・conormal remaindersが残余L1で制御されるjoint polyhomogeneous展開を別途仮定する。通常のLaurent変数(s_i−1)では最高係数は(−1)^|I|m_Fであり、Abel規約の(1−s_i)ではm_Fである。一般SNCにfull polyhomogeneityが既知とは扱わない。比較資料はDaniel Grieser, [Polyhomogeneous functions, regularized integrals, push-forward theorem etc.](https://uol.de/f/5/inst/mathe/personen/daniel.grieser/Lehre/Singular_Analysis_2020/literature/Gri_phg-fcns_2019_03_25.pdf), 2019-03-25、第2.1.2節・Theorem 2.12・(29)–(31), pp.18–20。通常の一変数Mellin変換と極・係数の対応を確認し、本稿の多変数・残余L1の条件は本文で明示する。
 
-**Abel residueとmeromorphic continuationの違い。** 一面density dμ=e^−t(1+(1+t)^−1)dt、t≥0は通常のvolume-IRFAを満たす。ε=1−sに対して
-\[
-\mathscr M(s)=\varepsilon^{-1}
-+e^\varepsilon\int_\varepsilon^\infty e^{-u}\frac{du}{u}
-=\varepsilon^{-1}-\log\varepsilon+O(1).
-\]
-従ってεM(s)→1だが、ε=0でmeromorphicではない。二つの結論を同一視できない具体例である。
+**Abel residueとmeromorphic continuationの違い。** 証明は主稿 `ex:Abel-not-meromorphic` に置く。Exact cusp上の抽象有限測度 dμ=(2π)⁻¹e⁻ᵗ(1+1/t)dt dθ（t≥T>1）ではordinary volume-IRFAと面質量1を持つが、ε=1−sに対するlocalized transformは M(1−ε)=ε⁻¹+log(1/ε)+O(1) となる。Abel係数は1でも、simple poleを引いた対数発散により臨界点近傍への有理型延長は存在しない。これはKE体積そのものの反例ではない。
 
 以上の三つの鎖は担当ごとの独立点検と統合時の再読を行った。全文の外部査読・形式証明・網羅的新規性確認を終えたとの意味ではない。
 

@@ -1,5 +1,5 @@
 # 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
-更新：2026-11-22 / v1.6（Part I v1.5）
+更新：2026-11-22 / v1.7（Part I v1.6）
 
 ## 研究固有の目標と入口
 固定配置補空間の距離錐・測度漸近、secondary periods・Torelli・WP、conifold gluingを研究する。Part I–IIIの全文と必要な証明を現行原稿に保持し、退化族・actual Lagrangian実現との接続を定理単位で検証する。達成基準は、条件付きの解析段階を隠さず、正本の全文と本ノートだけから入力・適用範囲・残る核心を追えることである。
@@ -16,10 +16,10 @@
 固定成分は $H_i\simeq\mathbf P^2$ から $d-1$ 本の直線を除いた補空間である。Part Iの固定空間の $R\to\infty$ を $t\to0$ の族一様性へ読み替えない。Part IIの残余複素periodは第二作用積分と異なる。曲面側の直接大域証明があっても、(CP)/(PBE)/(TC)や(H_loc)/(H_anc)自体の検証状況は変えない。同じ曲面fibrationで作用atlasとGHを同時実現する問題も別に残す。
 
 ## 論文と証明の状態
-- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.5。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tailと、測度付き極限・Chern–Weil・Mellinに加え、moving-basepoint分類とmetric link復元の指定証明鎖を限定的に内部点検した。組版の頁数と確認範囲はREADME・検証状態を参照する。
-- `papers/secondary-periods-torelli.tex`：Part II、28頁。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
+- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.6。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tailと、測度付き極限・Chern–Weil・Mellinに加え、moving-basepoint分類とmetric link復元の指定証明鎖を限定的に内部点検した。組版の頁数と確認範囲はREADME・検証状態を参照する。
+- `papers/secondary-periods-torelli.tex`：Part II v2.1。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
-- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.5。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
+- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.6。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
 
 ## 固定SNC入力の確立範囲
 主稿 `lem:SNC-compatible-collars` は、元の実有向blow-up上の固定Hermitian normsを用い、全strataのcollarsと全normal line bundleのproduct connectionsを次元順に同時構成する。残余の深さの保存、circle-equivariance、quotient-in-stagesを厳密に保つ。`lem:fc-collar-transfer` はRochon–Zhangの延長Ξと選んだ射影の差、およびHessianの差を、任意Nに対し $x_i^N C^\infty_{\rm fc}$ と評価する。`lem:RZ-collar-tensor` はTheorem 5.1と背景形から $O(x_i^{\min(1,\nu)})$ の全残余一様tensor評価を得る。有限face反復によりsmooth/exponential volume-IRFAも成立する。
@@ -43,12 +43,21 @@ LDPはexact-supportへの制限測度の下界を使わず、full collarの正�
 
 全てのdeeper faceのvolume密度とexact quotient-in-stagesから、normal深さで条件付けた実際の残余測度のsubcritical指数momentsを一様に抑えられる。この評価と通常の全変動収束により、一様Abel–Mellin recursionに追加のweighted-dominator仮定は不要となる。同じconditional moment評価によりactual residual tailを一様に抑え、exact metric-ball tail・joint law・距離Laplace変換にもexponential volume-IRFAを追加しない。単独のface mass一覧だけではincidenceを結論せず、mixed localized transformsの正の最高Abel係数から包含関係を検出する。複素meromorphic continuationには、別途、残余方向に積分可能なjoint polyhomogeneous展開を要求する。
 
+## 公表用の対象範囲とPart IIへの接続
+Part I Introductionの主定理・Abstractを本文と照合し、連結な射影多様体、複素次元n≥1、reduced SNC境界、ample log canonical classを共通の対象として明記した。空境界では固定基点coneが一点となり、tailは非空境界で扱う。一般多次数配置にはcomponent-labelled dual complexを用い、超平面配置の単一cell表示を流用しない。
+
+面質量の交点数公式は非正規化体積に対する値であり、LDPの確率正規化とは区別する。確率体積による面質量は主稿 `rem:probability-face-mass` の交点数比となる。Abel recursionの残余parameter一様性はcompact subcritical集合上である。通常volume-IRFAから有理型延長が従わない対数特異性の例は `ex:Abel-not-meromorphic` に証明を置く。
+
+Part II v2.1では、複素periodの復元にfactor/cusp labelsとKähler orientationを保持することをIntroductionと図で明示し、Part Iへの引用を安定した定理ラベルに揃えた。向きだけを忘れるgeneric Torelliは全curve factorsから配置全体の複素共役までの結論である。今回の作業はこの接続の照合であり、Part IIの全Torelli証明の再監査ではない。
+
+一次比較では、Kobayashiの存在定理、Guenancia–Wuの境界比較、Jiang–Shiのsmooth-divisor展開をRochon–Zhangの再帰的入力から区別した。Chambert-Loir–TschinkelのIgusa積分・residue measures・height-ball漸近を比較対象に加え、Mellin係数と面測度を結ぶ一般原理を独自成果とは扱わない。確認版・箇所・未確認点の正本は `research/source-audit.md`。
+
 ## 解析的入力とsmooth-divisorの精密誤差
 Rochon–Zhang Theorem 5.1はSNC strataの共通指数\(\nu>0\)のfc漸近を与え、Theorem 7.4・7.6のpolyhomogeneous展開と\(x\log x\)の係数はsmooth divisorに限る。Smooth degree-\(e\) hypersurface\(D_e\subset\mathbf P^n\)（\(e>n+1\)、\(n\ge2\)）では\(\widetilde b_e=2(n-1)e/[3(e-n-1)]\)と計算できる。さらにnormal-circle connectionを含むcompatible modelへのtensor誤差は\(C(1+t)e^{-t}\)で、tail積分は\(C(T+2)e^{-T}\)（`cor:RZ-smooth-sharp-IRFA`）。これは一次資料から得られるsmooth boundaryの可積分評価であり、一般SNCの全大域path liftingやactual conifold gluingの証明ではない。五直線のface mass係数はintersectionとGauss–Bonnetから数値検算済み。
 
 ## 次の課題
 1. **共通の最優先監査。** Part IVのcapped volume・full-triple・closed-corner・固定成分収束から曲面側のsame-map大域証明へ渡す仮定を照合する。局所protected距離と全曲面ambient距離を分け、(CP)/(PBE)/(TC)経路へ循環しないことを確認する。
-2. **Part I。** 距離・測度・moving-basepoint分類・metric link復元の指定鎖を起点に、公表用Introductionと主定理の対象範囲・入力を通して点検する。Leuzinger・Bridson–Haefligerとの確認済みの重なりを踏まえ、他のdual-complex limits・metric-measure cusp asymptoticsの一次資料との比較を進める。主要結果の網羅的新規性確認は未了であり、標準cone幾何を独自成果として数えない。
+2. **Part I。** 主定理の仮定対応表を起点に、未点検の証明箇所と主要結果の網羅的な先行研究比較を詰める。距離側ではLeuzinger・Bridson–Haefliger、測度側ではChambert-Loir–Tschinkelとの既知の重なりを踏まえ、recursive cusp geometryから実距離球のBusemann phase・tail係数までのどの部分が新しいかを具体化する。標準cone幾何や一般的なresidue-measure原理を独自成果として数えない。
 3. **Part III。** (H_loc)のwhole-end localization・parent/refined compatibility、(H_anc)のanchors・portal transport・radial densityをactual metricで確立する。曲面側の手法は検証課題の手掛かりであり、conifold模型・対象・尺度が一致する証明ではない。
 4. **Part II。** Controlled parallel push-offを証明するか適用範囲を限定する。一般matroid・Jacobi/scatteringの独立素材は `papers/research-directions.tex` に保持し、核心の監査後に進める。
 

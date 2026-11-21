@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.5（2026年11月22日）}
+\date{現行総説 v1.6（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -230,12 +230,28 @@ Normal offsetと残余基点の収束の下で，各ambient閉球についてpmG
 同稿の補題\texttt{lem:CW}は滑らかな基準曲率と有界primitiveからの
 直接Stokesで体積の交点数公式を示し，定理\texttt{thm:facemass}では
 normal circleの周期$2\pi$とadjunctionから全係数を固定する．
+このface massは非正規化KE体積に対する値であり，
+LDPの確率測度を用いるなら全体積で割る．
+$L=K_{\overline X}+D$，$k=\operatorname{codim}F$とすると，
+\[
+ \widehat{\mathfrak m}_F
+ =\frac{n!}{(n-k)!}\frac{L^{n-k}\cdot F}{L^n}
+\]
+である．異なるfaceの拡大極限は確率分割をなさず，質量の総和は$1$とは限らない．
 さらに共通の補題\texttt{lem:Mellin-conditional-moments}が
 全deeper faceのactual densityからconditional residual measuresの
 subcritical指数momentsをnormal深さに一様に評価する．
 この評価はexact tailの残余逃避と一様Abel--Mellin recursionの双方に用いられ，
 exponential volume remainderやchosen dominatorのweighted momentを追加仮定しない．
 面のincidenceはcomponent-labelled mixed transformsから検出する．
+残余parametersの一様性は固定compact subcritical集合上である．
+Ordinary volume-IRFAだけでは複素有理型延長は従わず，
+Part Iの例\texttt{ex:Abel-not-meromorphic}が
+$e^{-t}(1+1/t)$の密度による対数特異性を示す．
+有理型延長には角・残余変数で$L^1$評価を持つjoint polyhomogeneityを別途要求する．
+Mellin主要係数と層上の測度を結ぶ一般的原理には
+Chambert-Loir--TschinkelのIgusa積分・height-ball漸近の先行結果があり，
+本稿のlog-cusp $L^1$ Abel設定との比較をPart I Introductionに置く．
 これらの指定した証明鎖は内部で独立に点検したが，
 全文の外部査読・形式証明・網羅的新規性比較は未了である．
 
@@ -245,6 +261,11 @@ exponential volume remainderやchosen dominatorのweighted momentを追加仮定
  \cong\PP^2\setminus\{d-1\text{ 本の直線}\}
 \]
 は Part I の配置補空間である．ただしPart Iはこの\emph{固定空間}の空間的blow-down \(R\to\infty\) を扱い，退化族の \(t\to0\) に対するmoving domains上の一様比較を与えるものではない．Part VはPart IVのraw mapとco-Gram modulusを，明示したcoarse packageと合わせて有限複体上の大域距離へ変換する．
+
+Part IIへ渡すcomplex periodsにはfactor/cusp labelsとK\"ahler orientationを保持する．
+標識を持つRiemannian curveだけでは複素共役の曖昧さがあり，
+向きだけを忘れたgeneric Torelliは全curve factorsを使って配置全体の共役まで復元する．
+裸のmetric limitからこれらの標識が内在的に定まるとは主張しない．
 
 \subsection{三研究の正本と共同監査}
 第I--III篇と本総説は \texttt{multiscale-kaehler-einstein}，
@@ -524,7 +545,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
 \item 第IV篇のcapped volume・full-triple・closed-corner・固定成分収束と，曲面論文のscalar/portal・core fillingを定理単位で照合する．同じ写像，fixed段階からslow diagonalへ進む順序，全曲面ambient距離の上下界を確認する．
-\item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellinと，通常volume-IRFAによるexact tailの証明も点検した．移動基点のpositive-star/ambient閉球の証明とlink復元の範囲も点検した．次は公表用Introductionと主定理の仮定・依存の最終照合，および主要な距離・測度結果の網羅的な先行研究比較を詰める．固定補空間と退化族の一様評価を区別する．
+\item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
 \item Part III の localization と anchor を，global normal-bundle models と chart-compatible quantitative estimatesから構成する．

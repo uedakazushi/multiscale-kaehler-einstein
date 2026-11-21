@@ -1,6 +1,6 @@
 {
   "date": "2026-11-22",
-  "engine": "LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian) via latexmk; both edited manuscripts rebuilt successfully. Unchanged manuscripts retain separately dated prior build records.",
+  "engine": "LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian) via latexmk; all three edited manuscripts rebuilt successfully. The two unchanged manuscripts retain separately dated prior build records.",
   "manuscripts": [
     {
       "source": "papers/conifold-localization.tex",
@@ -13,13 +13,13 @@
     },
     {
       "source": "papers/multiscale-kaehler-einstein.tex",
-      "pages": 62,
-      "pdf_sha256": "8e3c2043a8bd180bebb6bc81f35a8bba4dd056addcf5e46f6782d6edb7f0b487",
+      "pages": 64,
+      "pdf_sha256": "7a2677d5182e90ab0bac0cfbe2e1bc73fc710685abd0ebd43e3861c058509283",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Small math-font size substitutions and the legacy class rm warning remain; no missing glyphs.",
+      "other_warnings": "Math-font size substitutions, Japanese font scaling or unavailable italic-shape fallback, legacy class rm and ignored addjfontfeatures notices may remain; no missing glyphs.",
       "build_date": "2026-11-22",
       "rerun_in_current_revision": true,
-      "source_sha256": "767d7a8ee86c5d4a3e47aca12bd3e6e9b9eb58c7bda1869664bc1ea31d82274c",
+      "source_sha256": "61afb2fdc75e08158d1ced75f146036b80c2ac10eb0b61064e6c2f7b59e01d7d",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -37,20 +37,18 @@
         6,
         7,
         8,
-        21,
-        22,
-        23,
-        24,
-        25,
-        26,
-        27,
-        36,
+        9,
+        10,
+        11,
+        12,
+        37,
         48,
-        61,
-        62
+        49,
+        63,
+        64
       ],
-      "visual_check_result": "Final PDF inspected after the last source edit: pages 1-8 in 90 dpi four-page sheets, pages 36 and 48 individually at 120 dpi by the main reviewer; pages 21-27 and 61-62 individually at 150 dpi by an independent internal reviewer. No visible clipping, overlap, missing glyphs or unintended blank pages.",
-      "source_version": "v1.5"
+      "visual_check_result": "Pages 1-12 rendered with Poppler at 90 dpi and actually viewed in four-page layout sheets by the main reviewer; pages 37,48,49,63,64 separately rendered and actually viewed at 150 dpi by an independent internal reviewer. The final table of contents and introduction, hypothesis table, probability normalization, Abel obstruction and bibliography have no visible clipping, overlap or missing glyphs.",
+      "source_version": "v1.6"
     },
     {
       "source": "papers/research-directions.tex",
@@ -64,21 +62,42 @@
     {
       "source": "papers/secondary-periods-torelli.tex",
       "pages": 28,
-      "pdf_sha256": "417292249842008849fca61d75a223879b99746f0edc199a78cb29d5a5a983b1",
+      "pdf_sha256": "6d837ee486a50de06dbbfb88adf907bf88b202753777c71cb544e63c4c6b8bd9",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Font substitution/scaling and PDF bookmark math warnings may remain.",
-      "build_date": "2026-11-20",
-      "rerun_in_current_revision": false
+      "other_warnings": "Math-font size substitutions, Japanese font scaling or unavailable italic-shape fallback, legacy class rm and ignored addjfontfeatures notices may remain; no missing glyphs.",
+      "build_date": "2026-11-22",
+      "rerun_in_current_revision": true,
+      "source_sha256": "e15ca2c1e7dde21c1cbdd5d6b48d53d58945cf162b71cc0ea3aaa786b11e68f5",
+      "source_version": "v2.1",
+      "log_check_counts": {
+        "undefined_references_or_citations": 0,
+        "duplicate_labels": 0,
+        "missing_characters": 0,
+        "overfull_boxes": 0,
+        "underfull_boxes": 0,
+        "latex_errors": 0
+      },
+      "visual_check_pages": [
+        1,
+        2,
+        3,
+        4,
+        8,
+        9,
+        27,
+        28
+      ],
+      "visual_check_result": "All eight specified pages rendered with Poppler at 150 dpi and actually viewed individually by an independent internal reviewer. Setup n>=2, markings/orientation, diagram, stable translation reference, period definition and single bibliography heading were checked; no visible clipping, overlap or missing glyphs."
     },
     {
       "source": "papers/series-overview.tex",
       "pages": 12,
-      "pdf_sha256": "35f3feb9cf822c6b364bed4c2f56159f815fa740d8a95187c454cc606ba498b4",
+      "pdf_sha256": "aeb9b0fe183c9a49a6b0675b51efe043c38edb751353afc6afed3778e97d7567",
       "unresolved_or_box_warnings": [],
-      "other_warnings": "Small math-font size substitutions, legacy class rm, Japanese font scaling and an ignored addjfontfeatures setting remain; no missing glyphs.",
+      "other_warnings": "Math-font size substitutions, Japanese font scaling or unavailable italic-shape fallback, legacy class rm and ignored addjfontfeatures notices may remain; no missing glyphs.",
       "build_date": "2026-11-22",
       "rerun_in_current_revision": true,
-      "source_sha256": "cb2b55acc361290b00652aff3aec40f6f2ef527c750fd394ad35930e6ae5e96e",
+      "source_sha256": "eb321242b2e718a3d2a6fe1f416a4e9f8ce3e0af96995c609f8632a58d6fb123",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -101,48 +120,53 @@
         11,
         12
       ],
-      "visual_check_result": "All 12 final PDF pages rendered with Poppler at 90 dpi and actually viewed in four-page layout sheets. No visible clipping, overlap, missing glyphs or misplaced headings.",
-      "source_version": "v1.5"
+      "visual_check_result": "All 12 pages rendered with Poppler at 90 dpi and actually viewed in four-page layout sheets by an independent internal reviewer. No visible clipping, overlap, missing glyphs or misplaced headings; continued tables and bibliography are legible.",
+      "source_version": "v1.6"
     }
   ],
-  "scope": "Part I v1.5 repairs the closed-star product argument by a positive incidence-star intrinsic product and a uniform m_alpha>2A ambient closed-ball isometry, classifies and realizes all moving-basepoint blow-down limits, and proves uniform coarse-radial divergence and metric-link recovery including disconnected links. It separates metric isometry type from labels, subdivision, depth weights and genuine-ray boundaries. Previously reviewed measure, Chern-Weil, moment, exact-tail and Mellin chains remain in the current manuscript. New selected proofs and global scope were independently reviewed internally; this is not a complete independent audit or novelty certification of all claims.",
+  "scope": "Part I v1.6 aligns Abstract/Introduction with the body: connected smooth projective reduced SNC ample pairs, n>=1, empty versus nonempty boundary, component-labelled multidegree complexes, metric versus ordinary-volume inputs and convergent centers. It makes raw/probability face-mass normalization explicit, proves a logarithmic obstruction to meromorphic continuation under ordinary volume-IRFA, and separates compact subcritical parameter uniformity from stronger continuation assumptions. Part II v2.1 aligns fully marked oriented residual periods and stable references, with n>=2 for nonempty-face translation and n=1 retained as its separate identity case. Existing distance, measure, moving/link and Chern-Weil proofs remain in place; this revision is a selected scope/interface and new-example audit, not a complete proof or priority certification.",
   "visual_check": {
     "date": "2026-11-22",
-    "sample": "Part I pages 1-8,21-27,36,48,61-62 (19 pages); all 12 overview pages.",
-    "result": "Final PDFs rendered with Poppler and actually viewed: Part I pages 1-8 in 90 dpi layout sheets, pages 36 and 48 individually at 120 dpi, pages 21-27 and 61-62 individually at 150 dpi by an independent internal reviewer; all overview pages in 90 dpi sheets. No visible clipping, overlap or missing glyphs.",
+    "sample": "Part I pages 1-12,37,48-49,63-64 (17 pages); Part II pages 1-4,8-9,27-28 (8 pages); all 12 overview pages.",
+    "result": "Final PDF hashes were checked. Poppler-rendered final pages were actually viewed: Part I introduction and overview in 90 dpi layout sheets; Part I added formulas/example/bibliography and Part II selected pages individually at 150 dpi. No visible clipping, overlap or missing glyphs. The table-of-contents pagination in Part I and single bibliography heading in Part II were also checked.",
     "full_page_review": {
       "series-overview": true,
-      "multiscale-kaehler-einstein": false
+      "multiscale-kaehler-einstein": false,
+      "secondary-periods-torelli": false
     }
   },
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
   "current_revision": {
     "date": "2026-11-22",
-    "version": "Part I v1.5; overview v1.5; current research set v1.6",
-    "status": "Moving-basepoint and metric-link proofs independently reviewed internally, scope checked across the complete Part I source, and specified primary-literature statements compared. Both edited manuscripts rebuilt successfully; final logs and 19 Part I / all 12 overview rendered pages checked. GitHub saving is confirmed separately.",
+    "version": "Part I v1.6; Part II v2.1; overview v1.6; current research set v1.7",
+    "status": "Main theorem hypotheses, dependencies and residual-period interface were reviewed internally, including independent checks of the normalization and logarithmic obstruction. All three edited manuscripts built successfully; final logs, source references and the specified rendered pages passed. GitHub saving is verified separately.",
     "edited_manuscripts": [
       "papers/multiscale-kaehler-einstein.tex",
+      "papers/secondary-periods-torelli.tex",
       "papers/series-overview.tex"
     ],
-    "mathematical_scope": "Positive incidence-star topology and intrinsic product; global weighted coordinate barriers; exact ambient closed-ball product when m_alpha>2A, uniform in the residual center; finite-cell classification, residual-center error delta_j, and realization of all pointed types for every prescribed rescaling sequence. Direct finite-cone polar-distance proof without CAT or connected-link assumptions, uniform coarse-section divergence error (K+2A_s)/r, recovery of truncated and extended length metrics, section independence and naturality under pointed cone isometries. Explicit obstructions to a global closed-star product and to identifying all rough rays modulo bounded distance. Metric-link data do not recover divisor labels, chosen cells or depth weights. Existing reviewed distance/measure results remain in place; no family-uniform or genuine-geodesic-boundary conclusion is added.",
-    "not_verified": "No exhaustive proof audit of all Part I claims, Parts II-III or the external surface theorem. No new proof of family-uniform CP/PBE/TC, H_loc/H_anc, controlled push-off or a genuine geodesic-ray boundary theorem. No formal proof, external referee review or exhaustive novelty investigation. External literature proofs were not audited in full. Existing exact/numerical certificate suites were not rerun.",
+    "mathematical_scope": "The public statements now explicitly distinguish metric-IRFA, ordinary volume-IRFA, bounded-primitive intersection theory and residual/angular L1 polyhomogeneity. Raw KE face mass m_F=(2pi)^n(L^(n-k).F)/(n-k)! is divided by total volume for probability-normalized data; normalized face masses do not form a probability partition. The abstract cusp measure e^(-t)(1+1/t)dt dtheta/(2pi) has Abel coefficient 1 and a logarithm after subtraction of its principal pole, so cannot continue meromorphically across the critical point. This is not asserted to be KE volume. Part II complex periods require factor/cusp labels and Kahler orientation; its generic unoriented theorem retains all labels, uses all curve factors, and recovers the arrangement only up to global conjugation. The pre-existing n=1 identity case is separate from nonempty-face translation. Previous selected proof audits remain valid without adding family-uniform conclusions.",
+    "not_verified": "No exhaustive proof audit of all Part I claims, Part II Torelli/Weil-Petersson proofs, Part III or the external surface theorem. No new proof of CP/PBE/TC, H_loc/H_anc, controlled push-off, simultaneous same-projection atlas/GH realization, or a genuine geodesic-ray boundary theorem. No formal proof, external referee review or exhaustive novelty investigation. External primary proofs were not read in their entirety. Existing certificate/numerical suites were not rerun.",
     "runtime": "Local TeX environment /workspace/scratch/aae2295273c8/tex-runtime/env.sh; writable TEXMFCACHE inside the repository build output at build/tex-cache-v14; TEXFONTMAPS=/tmp/multiscale-texmaps//:. Shared runtime and repository build/editor settings unchanged.",
-    "command": "After sourcing the local TeX environment and setting TEXMFCACHE and TEXFONTMAPS, latexmk -g -interaction=nonstopmode -halt-on-error papers/multiscale-kaehler-einstein.tex papers/series-overview.tex completed successfully. Part I alone was rebuilt after three scope wording refinements; final PDF checks use that last build.",
-    "source_checks": "git diff --check, JSON parsing, control-character scan and relative Markdown links passed. All 121 Part I labels are unique; all 176 parsed references and all parsed citation keys resolve. Final individual build logs have no undefined references/citations, duplicate labels, missing characters or overfull/underfull boxes. Rendered-page checks are listed separately.",
-    "external_primary_source_check": "Bridson-Haefliger original book text I.5.6-5.7 (pp.59-60), I.7.39 (p.115), I.7.56 (p.120); original-page images independently inspected. Leuzinger publisher PDF Lemma 5.1, Theorem 5.2, Corollary 6.3. Datar-Fu-Song arXiv:2106.05486v2 Corollary 1.1 (pp.3-4), publisher bibliographic record; published theorem numbering not checked. Engberg university thesis Definition 1.2.12 and Proposition 1.2.13 (pp.25-27). These selected statements and hypotheses were checked; the complete literature proofs and exhaustive priority comparison were not. Existing RZ, Albin-Melrose and Mellin input checks are recorded in notes/source-audit.",
+    "command": "After sourcing the documented local TeX environment and setting TEXMFCACHE and TEXFONTMAPS, latexmk -g -interaction=nonstopmode -halt-on-error built Part I, Part II and the overview. Part I/II were then rebuilt after scope wording fixes, and Part I alone after the table-of-contents pagination adjustment. Metadata and visual checks refer only to the final files.",
+    "source_checks": "git diff --check, JSON parsing, control-character scan and 14 relative Markdown links passed. Part I: 123 unique labels and 198 parsed references; Part II: 81 labels and 68 references; overview: 20 labels and 7 references. All parsed references and citation keys resolve. All three final logs have zero undefined references/citations, duplicate labels, missing characters, overfull/underfull boxes or LaTeX errors.",
+    "external_primary_source_check": "Kobayashi university publisher copy, Theorem 1 and finite-volume statement pp.399-400; Guenancia-Wu arXiv:1410.5366v1 Theorems A-B and mixed cone/cusp definition; Jiang-Shi arXiv:1809.06504v1 smooth-divisor setup and Theorem 1.1 pp.2-3. Chambert-Loir-Tschinkel published PDF, residue measures in sections 2.1.12-13, Clemens components in section 3.1.3, Propositions 4.2-4.3/4.6 and Theorem 4.7/Corollary 4.8 were compared with the present log-log depth and ordinary L1 Abel setting. Cheng-Yau publication metadata only; no unverified theorem number supplied. Existing RZ, Albin-Melrose, Grieser, Bridson-Haefliger, Leuzinger, Datar-Fu-Song and Engberg checks remain documented in notes/source-audit.",
     "external_reference_versions": {
       "kaehler-einstein-degeneration": {
-        "research_set_version": "v1.12",
-        "commit": "30494b170ba1d2538bab723e57f15badddacdae5",
+        "research_set_version": "v1.13",
+        "commit": "29714a96102498a28d3531ad43999e6b935a2897",
         "part_iv_version": "v1.9",
         "mathematical_source_commit_cited_in_overview": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7",
-        "paper_tree_unchanged": true
+        "paper_tree_unchanged": true,
+        "scope": "Saved main at the start of this synchronization; IV/V mathematical sources remain at the previously cited v1.9. Subsequent downstream documentation synchronization is saved separately."
       },
       "surface-lagrangian-torus-fibration": {
         "revision": 33,
         "date": "2026-11-22",
         "reference": "Current main manuscript; same-map intermediate cone result with uniform core/collar basepoints under R(epsilon+eta)/a -> 0; the proof remains in its owning repository.",
-        "commit": "d17f7a78d00129e2fbf8093cdf55f2135a220383"
+        "commit": "0c4457c9a9ce5785229ccd932e458e1ca6c64f6e",
+        "research_set_version": "v3.16",
+        "scope": "Saved main at the start of this synchronization; revision 33 mathematical manuscript is unchanged. Subsequent downstream documentation synchronization is saved separately."
       }
     }
   },

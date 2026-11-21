@@ -32,7 +32,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry・五部作 II}
-\fancyhead[R]{\small 日本語ゼロベース再構成稿 v2.0}
+\fancyhead[R]{\small 現行稿 v2.1}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -99,16 +99,17 @@ Five-Paper Series II\\[2mm]
 \large Secondary Periods, Torelli Theory,\\
 and Weil--Petersson Geometry}
 \author{植田一石}
-\date{日本語ゼロベース再構成稿 v2.0（2026年8月31日）}
+\date{現行稿 v2.1（2026年11月22日）}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
 本稿は、超平面配置補空間の multiscale K\"ahler--Einstein 幾何を扱う連作の第二部として、第一 blow-down が失う realization moduli を scale-one 無限遠極限から回収する。
-$\cA=(H_1,\ldots,H_m)$ を $\PP^n$ 上のラベル付き一般位置超平面配置、$m\ge n+2$ とする。
+$\cA=(H_1,\ldots,H_m)$を$\PP^n$上のラベル付き一般位置超平面配置、
+$n\ge2$、$m\ge n+2$とする。
 Part I の facewise translation theorem により、$|I|=n-1$ の curve stratum
-$C_I=\bigcap_{i\in I}H_i\simeq\PP^1$ に沿う unrescaled moving-basepoint limit の非 Euclid 因子は、component-labelled collar と deeper-face labelsを伴う標識付き収束の意味で、$[m]\setminus I$ で fully marked された complete finite-area curvature-$-1$ surface $(C_I^\circ,g_I)$ である。本稿はその marked moduli pointを secondary K\"ahler--Einstein period とみなす。裸の pointed metric spaceだけから labelsが復元されるとは主張しない。
+$C_I=\bigcap_{i\in I}H_i\simeq\PP^1$に沿うunrescaled moving-basepoint limitの非Euclid因子は、component-labelled collarとdeeper-face labelsを伴う標識付き収束の意味で、$[m]\setminus I$でfully markedされたcomplete finite-area curvature-$-1$ surface $(C_I^\circ,g_I)$である。K\"ahler orientationを保ったそのmarked moduli pointをsecondary K\"ahler--Einstein periodとみなす。裸のpointed metric spaceだけからlabelsが復元されるとは主張しない。
 
 任意の $n$ 元集合 $B\subset[m]$ が定める $n$ 本の oriented curve periods は、配置 moduli から $(M_{0,m-n+1})^n$ の determinant-open subsetへの明示的同型を与える。従って $n$ 個の oriented fully marked periods から配置を復元でき、$m\ge n+3$ では、isolated curve factors を個別に用いる generic reconstructionという意味で $n$ は次元論的に最小である。全 curve periods を用いると、factor labels と全 cusp-end labelsを保ち K\"ahler orientationだけを忘れた Riemannian dataからも、有限個の真の閉実解析部分集合の合併の外で、配置を projective equivalence と全体複素共役まで復元できる。証明は五直線配置の cross-ratio compatibility と Johnson graph の連結性による。
 
@@ -142,8 +143,9 @@ K\"ahler--Einstein metric; hyperplane arrangement; Torelli theorem; cross ratio;
  \cA=(H_1,\ldots,H_m),\qquad
  U_{\cA}=\PP^n\setminus\bigcup_{i=1}^mH_i
 \]
-を考える。$m\ge n+2$ なら
-$K_{\PP^n}+\sum_iH_i\simeq\mathcal O_{\PP^n}(m-n-1)$ は ample である。Kobayashi--Tian--Yau の log-smooth negative K\"ahler--Einstein theorem~\cite{Kobayashi,TianYau} により、$U_{\cA}$ は
+を考え、$n\ge2$とする。$m\ge n+2$なら
+$K_{\PP^n}+\sum_iH_i\simeq\mathcal O_{\PP^n}(m-n-1)$ は ample である。
+Kobayashiの存在定理\cite[Theorem~1, pp.~399--400]{Kobayashi}により、$U_{\cA}$は
 $\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ と規格化された一意な完備有限体積 K\"ahler--Einstein metric を持つ。
 Part I~\cite{UedaI} では、その第一 blow-down が
 \begin{equation}
@@ -171,7 +173,8 @@ $|I|=n-1$ とし
  \RR^{n-1}\times(C_I^\circ,g_I)
 \end{equation}
 となる。ここで $g_I$ は $m-n+1$ 個の labeled cusps を持つ punctured sphere の complete curvature-$-1$ metric である。
-その marked isometry class は $M_{0,[m]\setminus I}$ の一点を決定する。
+そのfully marked oriented isometry classは$M_{0,[m]\setminus I}$の一点を決定する。
+向きを忘れたfully marked metricだけでは、その点と複素共役を区別しない。
 
 \begin{figure}[t]
 \centering
@@ -183,10 +186,10 @@ $|I|=n-1$ とし
  \draw[-{Latex[length=2mm]},thick] (ke)--node[above] {$R^{-1}$} (cone);
  \draw[-{Latex[length=2mm]},thick] (ke)--node[left] {face translation} (curves);
  \draw[-{Latex[length=2mm]},thick] (curves)--node[above] {period map} (moduli);
- \node[below=5mm of cone,text width=39mm] {incidenceのみを保持};
+ \node[below=5mm of cone,text width=39mm] {第一尺度の計量};
  \node[below=5mm of moduli,text width=43mm] {連続moduliを回収};
 \end{tikzpicture}
-\caption{Part I の第一尺度と、本稿の secondary periods の役割分担。}
+\caption{Part Iの第一尺度とsecondary periods。下段のperiod mapでは各factor・cuspの標識とK\"ahler orientationを保持する。}
 \label{fig:scales}
 \end{figure}
 
@@ -383,7 +386,9 @@ $|I|=n-1$ とし、$v=(v_i)_{i\in I}\in\RR_{>0}^{I}$ を固定する。$I$-face 
 \end{proposition}
 
 \begin{proof}
-これは Part I~\cite[Theorem~6.6]{UedaI} を $F=C_I$ に適用したものである。一般位置配置では全 normal coefficients は $1$、residual log pairは
+これはPart Iの測度付き平行移動定理
+\cite[\texttt{thm:translation}]{UedaI}を$F=C_I$に適用したものである。
+一般位置配置では全normal coefficientsは$1$、residual log pairは
 $(C_I,\sum_{j\notin I}p_{I,j})$ であり、その canonical K\"ahler--Einstein metricは曲率 $-1$ の uniformizing metricである。Part I の component-labelled collar constructionを収束データの一部として保持することにより、face labelsと cusp labelsも極限へ運ばれる。
 \end{proof}
 
@@ -405,7 +410,10 @@ $|I|=n-1$ に対し
 \Cref{prop:partI-translation} により、$C_I^\circ$ に沿う scale-one pointed limitは \eqref{eq:intro-translation} であり、factor label $I$ と全 cusp labelsを canonical に伴う。曲率 $-1$ uniformizationの一意性により、oriented fully marked metric factor $(C_I^\circ,g_I)$ はちょうど $r_I(\cA)$ を決定する。
 
 \begin{definition}[secondary K\"ahler--Einstein period]
-$|I|=n-1$ に対する marked hyperbolic curve $r_I(\cA)$、または同値に scale-one limitの非 Euclid factor $(C_I^\circ,g_I)$ を、$I$-th secondary K\"ahler--Einstein period と呼ぶ。
+$|I|=n-1$に対するfully marked oriented hyperbolic curve $r_I(\cA)$、
+または同値に、factor/cusp labelsとK\"ahler orientationを保持した
+scale-one limitの非Euclid factor $(C_I^\circ,g_I)$を、
+$I$-th secondary K\"ahler--Einstein periodと呼ぶ。
 \end{definition}
 
 全 factorsの積を
@@ -1314,20 +1322,24 @@ $a_i>0$ なら $A\ge c a_iL_i$ であるから、第一項を radial segment上�
 \end{enumerate}
 固定した一つのpathのpointwise push-offや、$E$ のcompactness・path-connectednessだけでは、これらの一様評価は従わない。本稿はこの段階を \eqref{eq:controlled-pushoff-estimate} として仮定し、一般 finite period mapについて証明済みとは扱わない。将来 Whitney/subanalytic triangulationとSNC control dataからこの仮定を検証できれば、\Cref{thm:general-secondary-completion} は直ちに無条件化される。一方、\Cref{prop:finite-wp-branch-separation} のdistance barrierはこの問題と独立である。
 
-\section{参考文献}
 \begin{thebibliography}{99}
+\addcontentsline{toc}{section}{\refname}
 \footnotesize
 
 \bibitem{UedaI}
 K. Ueda,
-\newblock Multiscale K\"ahler--Einstein geometry of hyperplane arrangement complements I:
-Asymptotic cones, metrized dual complexes, and volume asymptotics,
-\newblock Japanese final referee-response manuscript, v1.3 (2026).
+\newblock Multiscale K\"ahler--Einstein Geometry I:
+Spatial Infinity, Metrized Dual Complexes, and Volume Asymptotics,
+\newblock 現行稿 v1.6 (2026).
+\newblock \href{https://github.com/uedakazushi/multiscale-kaehler-einstein/blob/main/papers/multiscale-kaehler-einstein.tex}{同repoの主原稿},
+測度付き平行移動定理\texttt{thm:translation}.
 
 \bibitem{Kobayashi}
 R. Kobayashi,
 \newblock K\"ahler--Einstein metric on an open algebraic manifold,
 \newblock \emph{Osaka J. Math.} \textbf{21} (1984), 399--418.
+\newblock \href{https://ir.library.osaka-u.ac.jp/repo/ouka/all/6442/ojm21_02_12.pdf}{大学公開版},
+Theorem~1, pp.~399--400.
 
 \bibitem{TianYau}
 G. Tian and S.-T. Yau,

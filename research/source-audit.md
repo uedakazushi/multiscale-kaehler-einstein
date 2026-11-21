@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.5。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
+2026-11-22 / v1.6。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。
 
 ## 結論
 
@@ -21,6 +21,29 @@
 | III | algebraic models、canonical cell、positive model pGH、abstract scalar gluing、residual Torelli/WP | actual localization、anchors、portal transport、actual global pGH |
 | IV | 明記した局所模型・full-triple/closed-corner比較、source packing、固定次数の代数・残差 package | 五次exterior粗比較は(TC)5、moving-window product exhaustionとsharp co-GramはPBE |
 | V | abstract pruning–transport、`diam(C_5)=sqrt(13)` | actual degree-`d` GH application |
+
+## Part I の一次文献と適用範囲
+
+以下の定理番号・頁は明記した確認版による。一次本文の指定箇所を読み、仮定と結論を本稿の入力に照合した。各原著の全証明の再検証や、網羅的な優先権調査の完了を意味しない。実際の資料確認日は2026-11-22（日本時間）。
+
+| 一次資料・確認版 | 確認した仮定・結果 | 本稿に対する役割と限界 |
+|---|---|---|
+| R. Kobayashi, *Kähler–Einstein metric on an open algebraic manifold*, Osaka J. Math. **21** (1984), 399–418。[公刊本文](https://ir.library.osaka-u.ac.jp/repo/ouka/all/6442/ojm21_02_12.pdf)、[公式書誌](https://doi.org/10.18910/6442) | Theorem 1, pp.399–400：滑らかな射影多様体、SNC divisor、ample log canonical class から完備負 KE metric の存在と定数倍を除く一意性。直後に有限体積と曲率の全共変微分の有界性。p.409 に一般位置超平面補空間の例 | 本稿の reduced SNC pair における存在・規格化後の一意性の直接入力。bounded-additive 距離比較や再帰的減衰率の出典にはしない。出版年は公式本文・書誌の **1984** に従う |
+| S.-Y. Cheng–S.-T. Yau, Comm. Pure Appl. Math. **33** (1980), 507–544。[出版社書誌](https://onlinelibrary.wiley.com/doi/10.1002/cpa.3160330404) | 書誌を確認。本文全体は取得できず、特定の定理番号は未確認。Kobayashi p.400 は存在証明の deformation method の出典として同論文を挙げる | 解析的方法の歴史的参照に留める。未確認の定理番号・一般 SNC での精密漸近を補わない |
+| H. Guenancia–D. Wu, Math. Ann. **366** (2016), 101–120。[arXiv:1410.5366v1](https://arxiv.org/pdf/1410.5366v1)、[出版社](https://link.springer.com/article/10.1007/s00208-015-1306-9) | Theorem A, p.3：SNC support、係数が1以下、ample log canonical class における potential の cusp 主項と有界 remainder。Theorem B, p.4：projective log canonical pair の SNC locus で mixed cone/cusp singularities。§4.1, p.13 はこの語を標準模型との局所 quasi-isometry と定義 | より広い境界挙動の比較。残余全域に一様な可積分 tensor 誤差の直接入力ではない。A が許す負係数と、B の effective boundary を区別する |
+| X. Jiang–Y. Shi, Sci. China Math. **65** (2022), 1953–1974。[arXiv:1809.06504v1](https://arxiv.org/pdf/1809.06504v1)、[出版社](https://link.springer.com/article/10.1007/s11425-021-1903-7) | setup p.2、Theorem 1.1, pp.2–3：**smooth hypersurface** と ample log canonical class。inverse-log normal variable による potential の polyhomogeneous expansion。§2 の Theorem 2.1 は既知の存在結果の再掲 | Rochon–Zhang の smooth-divisor 展開の別証明。一般 SNC crossing の joint expansion を与える文献としては使わない |
+| F. Rochon–Z. Zhang, Adv. Math. **231** (2012), 2892–2952。[arXiv:1106.0873v2](https://arxiv.org/html/1106.0873v2) | §5 (5.1)–(5.10)、Theorem 5.1, p.39：adjunction により residual positivity を保ち、全 compatible `(I,i)` に共通の指数で `u_I−Ξ_{I,i}u_{I∪i} ∈ x_i^ν C∞_fc(D_I)`。標準模型の係数 `c_i=1` は (5.8) の前に明記 | 全 residual faces を含む再帰的解析の直接入力。著者の extension `Ξ` と本稿の exact collar pullback の比較は、本稿の3補題で別途行う。Theorems 7.4/7.6 の smooth-divisor phg を一般 SNC へ拡大しない |
+
+### Residue measures と Mellin 係数の先行研究
+
+A. Chambert-Loir–Y. Tschinkel, *Igusa integrals and volume asymptotics in analytic and adelic geometry*, Confluentes Math. **2**(3) (2010), 351–429、[公刊一次本文](https://www.numdam.org/item/CML_2010__2_3_351_0.pdf)、[DOI](https://doi.org/10.1142/S1793744210000223) を確認した。
+
+- §§2.1.12–13, pp.361–363 は metrized canonical/normal bundles と adjunction から residue measures を定義する。§3.1.3, pp.378–379 の geometric Clemens complex は divisor labels と交わりの irreducible component の対を持ち、component incidence を記録する。
+- Proposition 4.2, p.388 は smooth metrics と test functions による多変数 Igusa integral の正則化を、Propositions 4.3/4.6, pp.389/394 は主要係数の残余面積分表示を与える。Theorem 4.7 と Corollary 4.8, pp.395–396 は archimedean height balls の体積漸近と面上の測度極限を扱う。
+- 本稿の変数は `t_i=log(−log ρ_i)` であり、入力は全faceで整合する通常の `L1` volume-IRFA である。各normal parameterが独立に境界へ近付く一側Abel極限・残余parameter一様性と、residual KE mass・実距離球のBusemann phaseへの接続を主張範囲とする。元の algebraic defining norm のべきから作る height balls と実距離球は区別する。
+- 「面測度が Mellin 主要係数に現れる」という一般原理や Clemens incidence の構成そのものを独自成果として扱わない。通常の `L1` IRFA から複素 meromorphic continuation は導かず、本文の joint polyhomogeneity と residual integrability の追加条件を保つ。`prop:Mellin-incidence` は与えられた labelled mixed observables の係数から非空incidenceを検出するものであり、metric link単独からlabelsやmassを回復する主張ではない。
+
+上記は既存の Bridson–Haefliger、Leuzinger、Datar–Fu–Song、Engberg との距離側比較を補う。Exact finite-volume metric-ball tail の同一仮定・同一係数式について網羅的な文献比較は未完であり、検索で直接一致する定理を確定できなかったことを優先権の根拠にはしない。
 
 ## 具体的に修正した誤り・過剰主張
 
