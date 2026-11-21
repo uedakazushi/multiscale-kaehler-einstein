@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.3。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
+2026-11-22 / v1.4。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
 
 ## 結論
 
@@ -16,7 +16,7 @@
 
 | 篇 | 無条件で保持した中核 | 明示仮定下へ変更した部分 |
 |---|---|---|
-| I | 距離錐、facewise translation、LDP、face mass、exact tail | 一様 Mellin 極限に weighted uniform integrability を追加 |
+| I | 距離錐、全変動・測度付きtranslation、LDP、face mass、exact tail、一様Mellin recursion | 通常の全face volume-IRFAで上記は成立。複素Mellin continuationには残余L1で制御したjoint polyhomogeneity |
 | II | oriented/full/generic Torelli、finite period closure、branch separation、全四点 metric、minimal-excess completion | 一般 secondary WP completion |
 | III | algebraic models、canonical cell、positive model pGH、abstract scalar gluing、residual Torelli/WP | actual localization、anchors、portal transport、actual global pGH |
 | IV | 明記した局所模型・full-triple/closed-corner比較、source packing、固定次数の代数・残差 package | 五次exterior粗比較は(TC)5、moving-window product exhaustionとsharp co-GramはPBE |
@@ -29,9 +29,12 @@
 - `lem:SNC-compatible-collars`、`lem:fc-collar-transfer`、`lem:RZ-collar-tensor`：固定Hermitian normsを保つ実有向カラーとproduct connectionを同時構成し、RZ延長Ξからexact collarへの全残余一様比較と再帰的tensor評価を証明。RZ 1106.0873v2およびAlbin–Melrose 1012.5765v1の指定一次箇所を照合し、この入力鎖を複数担当で点検した。詳細は `notes.md` と主稿付録。
 - `lem:fibres`→`prop:lifting` はambient endpoint接続として点検。`prop:cogram`→`thm:contract` の全逆計量評価・共通の深い閾値・局所一セルの長さ評価を補強し、properな1-Lipschitz全射を得た。`cor:based-ball-approximation` は全中心・全半径の閉球GH距離≤3K/(2R)を証明。指定compact集合を潰す場合のKの依存も明記し、同範囲を複数担当で点検した。
 - `lem:cellwise-LDP` の下界はfull face collarの正質量compact residual集合からambient open setへ入れる形で成立する。Exact-supportへ制限した測度の正質量は一般に従わず、clean product二端cuspの反例を研究ノートに置く。`lem:deep-sector-partition` は浅い座標を残余側へ含め、追加仮定なしでglobal LDPを保つ。
-- `lem:level`→`thm:tail`→`thm:joint`→`cor:Laplace` は一面比較・直接指数積分・距離上界から閉じ、LDP/co-Gramの下界に依存しない。一般重みの角分布の分母は最小entropyのverticesの重み総和。KE規格化の分布は不変である。限られた鎖の点検と、全Part Iの包括的再検証・外部査読・新規性確認を区別する。
+- `lem:level`→`thm:tail`→`thm:joint`→`cor:Laplace` は一面比較・全faceからのconditional moment評価・直接指数積分・距離上界から閉じ、LDP/co-Gramの下界に依存しない。一般重みの角分布の分母は最小entropyのverticesの重み総和。Actual conditional residual measuresの指数tailにより、volume remainderの指数減衰も不要である。KE規格化の分布は不変である。限られた鎖の点検と、全Part Iの包括的再検証・外部査読・新規性確認を区別する。
 - Mellin recursion の `(2π)^{|I|}` は normal torus を二重計上していたため削除。
-- 一様 dominated convergence に必要な error-weighted exponential terms の uniform integrability を追加。
+- `thm:translation` は任意のnormal深さ列の最小値が発散する場合を扱い、全残余を含むstripの全変動収束、ambient短経路の退出防止、水平liftとtorus収縮から、各半径の閉球のpmGHと押出し測度の全変動収束を得る。通常のvolume-IRFAで十分であり、基点のnormal offsetと残余点の収束を明示する。
+- 一様Mellinでは、全deeper faceの実際の密度からconditional residual measuresのsubcritical指数momentsを一様に評価し、全変動収束との補間からweighted convergenceを導く。任意に選んだL1 dominator自身のweighted momentは要求しない。一面だけの支配では不足する反例と、normal cutoff transition・chart partitionの違いを本文に明記する。
+- 単独のmass一覧からincidenceを復元する主張を、mixed localized transformsの最高Abel係数による検出へ精密化した。通常のLaurent変数(s_i−1)に対する係数には符号(−1)^|I|が付く。
+- `lem:CW` は滑らかな基準曲率と有界primitiveから直接Stokesで証明する。KE適用の背景形・potential・normal circle規格化はRochon–Zhang第2・5節の一次資料に照合し、face massの数値式は維持する。指数的shell評価やMumfordのsingular Chern–Weil theoremを主証明の入力としない。
 - Chern–Weil の Stokes 符号、LDP lower bound、properness/net/fibre control を修正または展開。
 - link の復元を、追加 marking なしの強すぎる表現から isometry type の決定へ弱めた。
 

@@ -1,12 +1,12 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.4（Part I v1.3）
+更新：2026-11-22 / v1.5（Part I v1.4）
 
 ## 現行稿の仮定（2026-08-31統合稿を回収）
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.10・commit a81817e](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a81817eef8b6e6a45da3aee44c42eaad98ed4d02)と[曲面改訂33・commit cdab2cd](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/cdab2cd78147f9d2953b5877f5e643fc964a0daa)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.11・commit e965c78](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/e965c780ed777d190b880831a556e57d39ab5bf0)と[曲面改訂33・研究資料v3.14・commit f62d862](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/f62d86253aba0c477a1f9988624c0ca5a1d245f5)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -69,12 +69,81 @@ t_\pm=T_0\pm s\quad(\pm s\ge0).
 
 `lem:level`→`thm:Busemann`→`lem:calibration` は一面metric-IRFAだけを用いる。深さt_iに対する関数√c_i∫√(1−η)をcollar外へ定数延長すると1-Lipschitzになり、level間の距離下界を直接与える。Calibrationでは最初のlevel Aを固定して終端T→∞、次にA→∞とする。近似最近点の残余位置がAとともに逃げても、この順序なら問題にならない。
 
-`lem:residual-exp` は一面の積分密度Ce⁻ᵗと有限union boundから得る。`lem:vertex-tightness` ではraw残余半径r=|Ψ_i|を使い、leading partの残余shellとexponential volume remainderを別々に評価する。まずR→∞のlimsupを取り、次に残余cut M→∞。Minimizing vertices外のangular gapは有限sectorの直接積分で処理する。`thm:tail` のnormal thresholdは二つの集合包含で挟み、actual距離のnormal単調性を仮定しない。`thm:joint` はmodel excessとの一様差と狭いthreshold stripを用い、excessのtightnessはF(R+Q)/F(R)→e^(−h_*Q)から得る。この鎖はLDP下界・co-Gram下界を用いない。
+`lem:residual-exp` は共通の `lem:Mellin-conditional-moments` から、actual conditional residual measures ν_i,tとleading measureの双方に一様な指数momentを与える。`lem:vertex-tightness` ではraw残余半径r=|Ψ_i|のshell m≤r<m+1について、ν_i,t(shell)≤Ce^−κmと狭いvertex sectorのnormal下界t≥h_iR−C−κ(m+1)/2を合わせる。Normal積分はCe^−h_iR e^−κm/2以下となり、shellの和が収束する。従って通常の全face volume-IRFAだけで十分で、leading/errorの分割もvolume remainderの指数減衰も不要である。まずR→∞のlimsupを取り、次に残余cut M→∞。Minimizing vertices外のangular gapは有限sectorの直接積分で処理する。`thm:tail` のnormal thresholdは二つの集合包含で挟み、actual距離のnormal単調性を仮定しない。`thm:joint` はmodel excessとの一様差と狭いthreshold stripを用い、excessのtightnessはF(R+Q)/F(R)→e^(−h_*Q)から得る。この鎖はLDP下界・co-Gram下界を用いない。
 
 一般重みh_i=c_i^(−1/2)ではV_*={i:h_i=h_*}だけがleading tailを担い、角分布の重みはw_i/W、W=Σ_{j∈V_*}w_jである。全verticesの総和を分母に使うと、非minimizing vertexがある場合に確率の総和が1にならない。KE規格化は全c_i=1なのでV_*が全verticesとなる。Boundary空のcompact caseでは大きいRでtailは0であり、min_i h_iを定義しない。
 
 以上の距離収縮・LDP・tailの鎖は複数担当で限定的に独立点検した。現在の原稿の全証明、外部査読、形式証明、先行研究との網羅的な新規性比較が完了したとの意味ではない。
 
+
+## 全残余上の測度付き平行移動
+
+正本は `thm:translation`。非空のnormal label集合Iとconnected face Fを固定し、normal深さのベクトルTについて min_i T_i→∞だけを課す。固定方向Rvへ比例させる必要はない。Cutoffは全残余空間上で、min_i t_iが十分深ければ1となるnormal cutoffである。Π_T=(t_I−T,π_F)と置くと
+\[
+\left\|\left[e^{\sum T_i}(\Pi_T)_*(\chi_F\mu)
+-e^{-\sum s_i}ds_I\otimes\lambda_F\right]
+\big|_{[-A,A]^I\times X_F}\right\|_{\mathrm{TV}}
+\le (2\sinh A)^{|I|}\bar\omega_F(\min T_i-A)\|b_F\|_1.
+\]
+ここでbarωは非増加tail envelopeである。Residual compactへ切ることなく全X_Fで成り立つ。
+
+Metric-IRFAの一面比較をexact quotient-in-stagesに沿って反復すると、全normal torusを潰すRiemannian submersion modelが得られる。短いambient経路はnormalの有限側境界へ戻れず、残余の完備性により無限遠へも退出できない。水平liftの終端をcircle内で補正すると、全torus fibreの径はO(Σe^−t_i)となる。これにより、normal offsetと残余基点が収束すれば、通常のvolume-IRFAだけでpmGH収束まで従う。
+
+各固定半径のambient閉球をtargetの半径A±o(1)の全逆像で挟む。Target sphereのnormal sliceはEuclidean球面・一点・空集合なので、I非空ならnormal Lebesgue measureは0。従ってλ_Fにatomがあっても全ての半径で球面測度は0となり、球制限の押出し測度も全変動収束する。Smooth volume-IRFA、co-Gram、rough-isometry、LDP、exact-tail theoremはこの証明に不要である。この固定空間の基点移動は、退化族での一様tensor比較や極限交換を与えない。
+
+## 有界primitiveとface massの規格化
+
+`lem:CW` は滑らかなHermitian line bundle L→Yの実曲率Θに対し、M=Y∖B上でω−Θ=dβ、βとωのPoincaré normが有界なら
+\[
+\int_M\omega^m=\int_Y\Theta^m=(2\pi)^m\int_Yc_1(L)^m
+\]
+を示す。有限体積と有界勾配のcompact cutoffからStokes境界項が0へ行くため、指数的shell評価は不要である。β=dᶜψの場合もψの有界性は要求しない。
+
+Rochon–Zhangのbackgroundではq_i=−log(ε‖s_i‖²)、ω₀=Θ−2Σddᶜlog q_i、ω_KE=ω₀+ddᶜuなので、β=dᶜ(u−2Σlog q_i)を取れる。u∈C∞_fcと局所式q_i=−log|z_i|²+O(1)からβの有界性を直接確認できる。主稿の `app:CW` にこの適用を展開した。
+
+実計量とKähler formはω(v,w)=g(Jv,w)、dV_g=ω^m/m!、曲率はΘ/(2π)=c₁(L)とする。Normal depth t=log(−log|z|)・circle周期2πに対してg_P=dt²+e^−2t dθ²であり、λ_F=(2π)^k dV_gF。Adjunctionと合わせて、`thm:facemass` の係数は (2π)^n/(n−k)! となる。Residual次元0は一点の体積1、boundary空はcompact Chern–Weilとして処理する。
+
+**一次資料の確認範囲。** [Rochon–Zhang 1106.0873v2](https://arxiv.org/html/1106.0873v2) の (2.26)–(2.30)、Definition 2.10、(2.69)–(2.70)、(5.1)–(5.9)、Lemma 5.2冒頭を照合した。Monge–Ampère potentialのbounded derivativesは(5.6)直後に記載され、ここではTheorem 5.1の残余減衰を使わない。[Mumfordの著者版](https://www.dam.brown.edu/people/mumford/alg_geom/papers/1977b--HirzProp-GT.pdf)、第1節・Theorem 1.4の定義とstatementは検索索引で確認したが、PDF本文の取得・全証明の精読は未了。Good metricsは比較remarkに留め、直接Stokes証明の依存入力にしない。
+
+## 全faceの体積評価と一様Abel–Mellin recursion
+
+I-normal depthsをTに固定し、normal torusを積分した残余測度をν_F,Tとする。一般Borel densityではconditional measureはa.e. Tで定まり、以下の上限はessential supremumで解釈する。Exact quotient-in-stagesを使い、残余の深いlabel集合JごとにI∪Jのvolume-IRFAを適用すると、r_αを残余depth、χ(r_α)を非負raw depthとして、全q<1に対し
+\[
+\mathop{\mathrm{ess\,sup}}_{\min T_i\ge L}
+\int e^{qH_F}\,d\nu_{F,T}<\infty,\qquad
+H_F=\sum_\alpha\chi(r_\alpha).
+\]
+同じ評価はleading measure λ_Fにも成立する。これは実際の密度を評価した結果であり、任意に選んだdominator b_F自体にweighted momentがあるとは主張しない。
+
+Compact subcritical parameter集合でτ_*<q<1を選び、σ_T=|ν_F,T−λ_F|とする。Hölderにより
+\[
+\sup_{\tau\in K}\int e^{\sum_\alpha\tau_\alpha r_\alpha}\,d\sigma_T
+\le C_K\sigma_T(X_F)^{1-\tau_*/q}
+\left(\int e^{qH_F}\,d\sigma_T\right)^{\tau_*/q}\longrightarrow0.
+\]
+これをnormal product Abel kernelへ適用すると、`thm:Mellin-recursion` のparameter一様性が通常の全face volume-IRFAから従う。Normal torusはλ_Fに含まれるため、右辺に再度(2π)^|I|を掛けない。Normal cutoffのtransitionは一つのnormal depthが有界となる領域だが、chart partitionの重なりは深部にもあり得る。後者ではpartitionの和が1であることを使う。
+
+**一面だけの支配の限界。** Normal anglesを積分したquadrant densityとして、t,r≥0、0<α<1で
+\[
+d\mu=e^{-t}(e^{-r}+e^{-t}e^{-\alpha r})\,dt\,dr
+\]
+を考える。t方向のconditional measureはν_t=(e^−r+e^−t e^−αr)dr、leading measureはe^−r drで、全変動誤差はe^−t/αである。しかしα<τ<1なら各ν_tのτ指数momentは無限大になる。この密度はfull r-face/cornerのvolume-IRFAを満たさないので、全face版定理の反例ではない。全ての深い面を制御する必要を示す。
+
+**Dominationの選択は固有でない。** Exact product dμ=e^−t−r dt drではerrorが0なので、b=e^−αrも形式上dominatorに選べる。そのbのweighted momentは発散し得るが、b=0という別の良い選択もある。したがって、任意のchosen bの可積分性と、実際の測度の一様momentを区別する。
+
+単独のface mass一覧からは面のincidenceを確定しない。I⊂J、F⊂D_I、G⊂D_Jについてχ_Fχ_Gを使ったmixed localized transformのJ-Abel係数は、G⊂Fならm_G、そうでなければ0である。正質量により、このlabel付きmixed観測の集合からconnected faceの包含関係を検出する。
+
+複素meromorphic continuationは、normal変数x_i=e^−t_iについて、係数・conormal remaindersが残余L1で制御されるjoint polyhomogeneous展開を別途仮定する。通常のLaurent変数(s_i−1)では最高係数は(−1)^|I|m_Fであり、Abel規約の(1−s_i)ではm_Fである。一般SNCにfull polyhomogeneityが既知とは扱わない。比較資料はDaniel Grieser, [Polyhomogeneous functions, regularized integrals, push-forward theorem etc.](https://uol.de/f/5/inst/mathe/personen/daniel.grieser/Lehre/Singular_Analysis_2020/literature/Gri_phg-fcns_2019_03_25.pdf), 2019-03-25、第2.1.2節・Theorem 2.12・(29)–(31), pp.18–20。通常の一変数Mellin変換と極・係数の対応を確認し、本稿の多変数・残余L1の条件は本文で明示する。
+
+**Abel residueとmeromorphic continuationの違い。** 一面density dμ=e^−t(1+(1+t)^−1)dt、t≥0は通常のvolume-IRFAを満たす。ε=1−sに対して
+\[
+\mathscr M(s)=\varepsilon^{-1}
++e^\varepsilon\int_\varepsilon^\infty e^{-u}\frac{du}{u}
+=\varepsilon^{-1}-\log\varepsilon+O(1).
+\]
+従ってεM(s)→1だが、ε=0でmeromorphicではない。二つの結論を同一視できない具体例である。
+
+以上の三つの鎖は担当ごとの独立点検と統合時の再読を行った。全文の外部査読・形式証明・網羅的新規性確認を終えたとの意味ではない。
 
 ## SNCカラーとRochon–Zhang入力の翻訳
 

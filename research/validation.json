@@ -1,6 +1,6 @@
 {
   "date": "2026-11-22",
-  "engine": "Latest two-manuscript build: LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian); unchanged manuscript records retain their earlier build.",
+  "engine": "Current two-manuscript LuaLaTeX rebuild pending. Last successful manuscript builds are explicitly marked as previous-version records.",
   "manuscripts": [
     {
       "source": "papers/conifold-localization.tex",
@@ -18,7 +18,7 @@
       "unresolved_or_box_warnings": [],
       "other_warnings": "Small math-font size substitutions and the legacy \\rm class warning remain. Overview also reports Japanese font scaling and an ignored font-feature setting; no missing glyphs were observed.",
       "build_date": "2026-11-22",
-      "rerun_in_current_revision": true,
+      "rerun_in_current_revision": false,
       "source_sha256": "01c69808c7f0ae510277ce51d2a3fa8bee6ff240fa913b9b644f44173eeb64da",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
@@ -56,7 +56,8 @@
         33,
         34
       ],
-      "visual_check_result": "Poppler raster images inspected: Part I pages 1-8 in four-page layout sheets; pages 11,16-24,26-34 individually at 150 dpi by the independent reviewer. All 11 overview pages inspected in layout sheets. No clipping, overlap, missing glyphs or misplaced headings found."
+      "visual_check_result": "Poppler raster images inspected: Part I pages 1-8 in four-page layout sheets; pages 11,16-24,26-34 individually at 150 dpi by the independent reviewer. All 11 overview pages inspected in layout sheets. No clipping, overlap, missing glyphs or misplaced headings found.",
+      "source_version": "v1.3; previous successful build, superseded source"
     },
     {
       "source": "papers/research-directions.tex",
@@ -83,7 +84,7 @@
       "unresolved_or_box_warnings": [],
       "other_warnings": "Small math-font size substitutions and the legacy \\rm class warning remain. Overview also reports Japanese font scaling and an ignored font-feature setting; no missing glyphs were observed.",
       "build_date": "2026-11-22",
-      "rerun_in_current_revision": true,
+      "rerun_in_current_revision": false,
       "source_sha256": "6452c03da4f96fbbae2fb55a98ba5aebe38b0eda5b2e81986f951f8f068ffb4f",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
@@ -105,10 +106,11 @@
         10,
         11
       ],
-      "visual_check_result": "Poppler raster images inspected: Part I pages 1-8 in four-page layout sheets; pages 11,16-24,26-34 individually at 150 dpi by the independent reviewer. All 11 overview pages inspected in layout sheets. No clipping, overlap, missing glyphs or misplaced headings found."
+      "visual_check_result": "Poppler raster images inspected: Part I pages 1-8 in four-page layout sheets; pages 11,16-24,26-34 individually at 150 dpi by the independent reviewer. All 11 overview pages inspected in layout sheets. No clipping, overlap, missing glyphs or misplaced headings found.",
+      "source_version": "v1.3; previous successful build, superseded source"
     }
   ],
-  "scope": "Part I v1.3 strengthens the metric-IRFA cone map to a proper 1-Lipschitz surjection and proves ambient closed-ball GH error <=3K/(2R), uniformly in center and radius. The global LDP lower proof now uses full collars and ambient open sets; exact-support restricted positivity is removed, with a clean product-cusp obstruction retained in the notes. The Busemann/exact-tail/joint/Laplace chain is audited using direct one-face estimates. These selected chains received independent internal review. Both edited manuscripts were rebuilt and selected pages visually checked; unchanged manuscripts retain earlier records.",
+  "scope": "Part I v1.4 proves arbitrary facewise normal translations in strip/ambient-ball total variation under ordinary volume-IRFA, gives direct bounded-primitive Chern-Weil and checked face-mass normalizations, derives conditional subcritical moments from all full faces, and uses them for exact tail/joint/Laplace and uniform Abel-Mellin without exponential-volume or chosen-dominator weighted assumptions. Mixed localized coefficients detect component incidence. Selected proofs received independent internal review. Current source is complete; current PDF rebuild is pending an environment cache repair.",
   "visual_check": {
     "date": "2026-11-22",
     "sample": "Part I pages 1-8,11,16-24,26-34 (27 pages); all 11 overview pages.",
@@ -116,27 +118,28 @@
     "full_page_review": {
       "series-overview": true,
       "multiscale-kaehler-einstein": false
-    }
+    },
+    "current_revision": "Pending current v1.4 build; the listed pages describe the preceding v1.3 PDFs."
   },
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
   "current_revision": {
     "date": "2026-11-22",
-    "version": "Part I v1.3; overview v1.3; current research set v1.4",
-    "status": "Selected mathematical chains independently reviewed internally; both LuaLaTeX builds and specified-page visual QA completed. GitHub saving is confirmed separately.",
+    "version": "Part I v1.4; overview v1.4; current research set v1.5",
+    "status": "Selected new and strengthened mathematical chains independently reviewed internally. Current sources saved as a checkpoint while the local luaotfload cache environment is repaired; current PDF rebuild/visual QA not yet complete. GitHub saving is confirmed separately.",
     "edited_manuscripts": [
       "papers/multiscale-kaehler-einstein.tex",
       "papers/series-overview.tex"
     ],
-    "mathematical_scope": "Metric: common deep collar threshold on all residual copies; full inverse-metric stability with residual covector norm <=sqrt(4/3); smooth integrable majorant and deep cutoff; global length contraction via local single-cell images; proper surjection H composed with Psi; bounded ambient fibers; arbitrary prescribed compact collapsed to the apex with compact-dependent K; basepoint-containing correspondences of distortion <=3K/R for all centers and ball radii. Measure: deep-sector compact upper bounds, full-collar compact-residual ambient-open LDP lower bound, direct one-face exponential tightness, and clean product-cusp counterexample to exact-support restricted lower bounds. Tail: direct level potential, ordered calibration limits, raw residual exponential tails, angular-sector remainder control, threshold inclusions, minimizing-vertex normalization W, joint excess strip and tightness, Laplace coefficient. No new analytic hypothesis on the noncompact ample SNC application.",
-    "not_verified": "No exhaustive audit of facewise measured-GH translation, Chern-Weil/face-mass and Abel-Mellin uniformity, Parts II-III, or the complete external surface theorem. No new proof of family-uniform CP/PBE/TC, H_loc/H_anc, or controlled push-off. No formal proof, external referee review or exhaustive novelty investigation. Existing exact/numerical certificate suites were not rerun.",
-    "runtime": "Existing local TeX runtime /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh; TEXFONTMAPS=/tmp/multiscale-texmaps//: supplies the installed rsfs font map. Repository build settings and shared runtime are unchanged.",
-    "command": "With the recorded TeX runtime and TEXFONTMAPS sourced, ran latexmk -interaction=nonstopmode -halt-on-error for the two edited manuscripts. An initially missing overview macro was defined and the overview rebuilt successfully.",
-    "source_checks": "git diff --check, JSON parsing, control-character scan, relative Markdown links, duplicate labels and label/reference checks passed. Final logs: undefined references/citations, duplicate labels, missing characters, overfull and underfull boxes all zero.",
-    "external_primary_source_check": "The previously checked fixed-SNC RZ and Albin-Melrose inputs are retained in notes.md and source-audit.md. No new external literature claim or comprehensive novelty conclusion is made in this revision.",
+    "mathematical_scope": "Arbitrary normal centers min(T_i)->infinity; full-residual strip total variation with explicit modulus; recursive submersion model, shrinking torus fibers, ambient-path escape control, moving offsets and all-radius ball total variation. Smooth reference curvature and bounded real primitive give Chern-Weil by finite-volume Stokes; verified KE background sign, dV=omega^m/m!, normal circle period 2pi, adjunction and zero-dimensional case. Full-corner densities give a.e. conditional residual measures and essential-uniform subcritical exponential moments. These actual moments give uniform weighted TV by Holder, unrestricted relative normal Abel rates, mixed component incidence and ordinary-volume vertex tightness/exact tail/joint/Laplace. Meromorphic continuation is separated by explicit residual-L1 joint-polyhomogeneity conditions and Laurent sign.",
+    "not_verified": "No exhaustive audit of the complete moving-basepoint/link-recovery arguments, Parts II-III or the external surface theorem. No new proof of family-uniform CP/PBE/TC, H_loc/H_anc or controlled push-off. No formal proof, external referee review or exhaustive novelty investigation. Existing exact/numerical certificate suites were not rerun.",
+    "runtime": "Local available TeX resources at /workspace/scratch/aae2295273c8/tex-runtime/env.sh. luaotfload currently stops before reading the manuscript with no writeable cache path, including with an existing task-local TEXMFCACHE. Repair is in progress; shared runtime and repo build settings are unchanged.",
+    "command": "Current latexmk attempt for both edited manuscripts stopped at luaotfload cache initialization; this is not a manuscript compilation success.",
+    "source_checks": "Current edited sources checked for whitespace errors, JSON parsing, control characters, local Markdown links and TeX label/reference consistency. PDF log/visual verification remains pending.",
+    "external_primary_source_check": "Rochon-Zhang arXiv:1106.0873v2: bounded derivative space (2.26)-(2.30), normal metric (2.69)-(2.70), background/potential (5.1)-(5.9), opening of Lemma 5.2. Grieser author notes 2019-03-25, section 2.1.2, Theorem 2.12 and (29)-(31), pp.18-20. Mumford author-PDF search index confirms section 1 definition and Theorem 1.4 statement only; full proof not inspected and not used by the direct Chern-Weil proof.",
     "external_reference_versions": {
       "kaehler-einstein-degeneration": {
-        "research_set_version": "v1.10",
-        "commit": "a81817eef8b6e6a45da3aee44c42eaad98ed4d02",
+        "research_set_version": "v1.11",
+        "commit": "e965c780ed777d190b880831a556e57d39ab5bf0",
         "part_iv_version": "v1.9",
         "mathematical_source_commit_cited_in_overview": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7",
         "paper_tree_unchanged": true
@@ -145,7 +148,7 @@
         "revision": 33,
         "date": "2026-11-22",
         "reference": "Current main manuscript; same-map intermediate cone result with uniform core/collar basepoints under R(epsilon+eta)/a -> 0; the proof remains in its owning repository.",
-        "commit": "cdab2cd78147f9d2953b5877f5e643fc964a0daa"
+        "commit": "f62d86253aba0c477a1f9988624c0ca5a1d245f5"
       }
     }
   },

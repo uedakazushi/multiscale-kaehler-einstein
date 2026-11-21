@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.3（2026年11月22日）}
+\date{現行総説 v1.4（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -159,7 +159,7 @@ This note connects Parts I--III on fixed arrangement complements, Parts IV--V on
 篇 & 主対象 & 中核出力 & 定理状態 \\
 \midrule
 \endhead
-I & log-smooth arrangement complements & 距離錐，facewise translation limits，測度・tail 漸近 & 距離・測度定理は本文の幾何仮定下で \Safe．一様 Mellin 版は weighted uniform integrability を明記 \\
+I & log-smooth arrangement complements & 距離錐，facewise translation limits，測度・tail 漸近 & 距離・測度定理は本文の幾何仮定下で \Safe．全faceのvolume-IRFAからexact tailと一様Mellinも導く \\
 II & secondary curve periods & oriented／generic unoriented Torelli，period closure，secondary WP geometry & 代数部分と minimal-excess completion は \Safe．一般 completion は controlled push-off 仮定下で \Conditional \\
 III & singular／conifold ends & canonical local model，抽象 calibrated gluing，residual Torelli & 代数模型と抽象 gluing は \Safe．actual localization／global pGH は localization--anchor 仮定下で \Conditional \\
 IV & hyperplane degenerations of surfaces & source 模型，complete windows，full-triple・closed-corner 比較，co-Gram & 代数と明記した局所比較は \Safe．全exteriorの粗い比較は \(\mathrm{(TC)}_5\)，sharp co-Gramは \(\mathrm{PBE}_d\) 下で \Conditional \\
@@ -196,6 +196,24 @@ Busemannからexact tailへ進む証明は，一面の計量・体積比較と�
 LDPの下界から独立である．一般重みで最小entropyを持つverticesを$V_*$とすると，
 角分布の重みは$w_i/\sum_{j\in V_*}w_j$である．KE規格化では全verticesが$V_*$に属する．
 
+
+測度付き平行移動では，Part Iの定理\texttt{thm:translation}が
+$\min_iT_i\to\infty$の任意のnormal深さ列に対し，
+全残余空間を含むbounded normal strip上の全変動収束を与える．
+Normal offsetと残余基点の収束の下で，各ambient閉球についてpmGH収束と
+押出し測度の全変動収束も成立する．Smooth volume-IRFAは追加しない．
+
+同稿の補題\texttt{lem:CW}は滑らかな基準曲率と有界primitiveからの
+直接Stokesで体積の交点数公式を示し，定理\texttt{thm:facemass}では
+normal circleの周期$2\pi$とadjunctionから全係数を固定する．
+さらに共通の補題\texttt{lem:Mellin-conditional-moments}が
+全deeper faceのactual densityからconditional residual measuresの
+subcritical指数momentsをnormal深さに一様に評価する．
+この評価はexact tailの残余逃避と一様Abel--Mellin recursionの双方に用いられ，
+exponential volume remainderやchosen dominatorのweighted momentを追加仮定しない．
+面のincidenceはcomponent-labelled mixed transformsから検出する．
+これらの指定した証明鎖は内部で独立に点検したが，
+全文の外部査読・形式証明・網羅的新規性比較は未了である．
 
 実質的依存は次の通りである．Part II の Torelli core は Part I と独立であり，Part I はその periods を KE translation limits として解釈する時だけ必要になる．Part III の抽象 gluing は Part I の log-smooth ends を local pieces として受け取れるが，actual metrics への適用には別途 localization と anchor が必要である．Part IV の central component
 \[
@@ -467,7 +485,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \section{仮定と規格化に関する重要な区別}
 
 \begin{enumerate}[label=\textup{(A\arabic*)}]
-\item Part I の Mellin recursion では，normal torus をすでに積分した face measure に \((2\pi)^{|I|}\) を再度掛けない．一様極限には face-weighted exponential terms の uniform integrability を仮定として明記する．
+\item Part I の Mellin recursion では，normal torus をすでに積分した face measure に \((2\pi)^{|I|}\) を再度掛けない．一様極限のweighted total variationは，全faceのconditional moment評価と通常の全変動収束からH\"older不等式で導く．同じmoment評価によりexact tailのexponential-volume追加仮定も不要である．
 \item Part II の一般 secondary WP completion は，SNC exceptional fibres 内の paths を補集合へ一様に押し出す controlled push-off が必要である．代数的 finite map と branch separation はこの仮定から分離する．Schaffler--Tevelev の直接入力は Corollary~3.5 であり，\(d=N+2\) は一点の場合として別処理する．
 \item Part III の actual global pGH は，global product reference metrics と parent--refined compatibility を含む localization 仮定，および全 actual points の記録可能性を保証する anchor 仮定の下に置く．canonical local model と抽象 metric gluing theorem は無条件のまま保持する．
 \item Part IV の cusp-adapted order-zero gauge は fast-cusp shear を代数的に除くが，それだけで global product boxes の exhaustion は従わない．必要な四段階を \(\mathrm{PBE}_d\) として独立させる．
@@ -482,7 +500,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
 \item 第IV篇のcapped volume・full-triple・closed-corner・固定成分収束と，曲面論文のscalar/portal・core fillingを定理単位で照合する．同じ写像，fixed段階からslow diagonalへ進む順序，全曲面ambient距離の上下界を確認する．
-\item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．次はfacewise measured translation・Chern--Weil・Abel--Mellinの規格化と一様性，および主要結果の先行研究比較を詰める．固定補空間と退化族の一様評価を区別する．
+\item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellinと，通常volume-IRFAによるexact tailの証明も点検した．次はmoving-basepoint cone・link recoveryの量化と，主要結果の先行研究比較を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
 \item Part III の localization と anchor を，global normal-bundle models と chart-compatible quantitative estimatesから構成する．
