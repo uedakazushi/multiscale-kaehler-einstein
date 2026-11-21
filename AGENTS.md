@@ -1,5 +1,5 @@
 # multiscale-kaehler-einstein — 研究・保存指示
-2026-11-20 / v1.0
+2026-11-22 / v1.1
 
 ## 入口と正本
 - 研究全体の入口は https://github.com/uedakazushi/research-hub 。再開時はhubの該当項目を確認し、最初にこのrepoの `00_research_plan.md`、次に本書、`research/notes.md` と必要な原稿を読む。
@@ -13,6 +13,12 @@
 4. 論文は原則日本語のLuaLaTeX。https://github.com/uedakazushi/research-hub の `papers/paper-template.tex`, `papers/README.md`, `.latexmkrc`, `.vscode/` を参考にする。主原稿を改名するときはinput、分割原稿のTeX root、文献、README、設定も更新する。
 5. 研究ノートは現行の着想・例・補題・計算・障害・文献比較を保持する。論文中の十分な証明は複製せず参照する。過去の会話や更新日誌・旧版ZIPを蓄積しない。
 6. 誤りの判明時は依存する主張を含めて修正し、ノート・方針・公表原稿・hubの記述を一致させる。
+
+## 三研究の共同編集と証明の正本
+- 本repoは固定SNC対・配置補空間のPart I–IIIとシリーズ総説、`kaehler-einstein-degeneration` は退化族の局所一様解析Part IVと条件付き大域枠組Part V、`surface-lagrangian-torus-fibration` はactual KE形式上の曲面fibrationと同じ射影による大域GH実現を担当する。研究方針・記法・依存関係・証明監査を一体で進め、repoや独立論文を機械的に統合しない。
+- 他repoの結果は定理ラベル・仮定・規格化・固定する対象・距離の範囲・確認版を `research/notes.md` に記す。必要な定理の変更は証明の正本を先に直し、利用先と総説・hubを追随させる。証明全文を複製しない。
+- 固定補空間の空間的blow-downを退化parameterに一様な評価と読み替えない。曲面側の直接scalar/portal証明を、Part IV–Vの(CP)/(PBE)/(TC)やPart IIIの(H_loc)/(H_anc)の検証済み表示へ流用しない。Secondary complex periodsとsymplectic action periodsを同一視しない。
+- まずPart IVから曲面側へ渡す局所入力と全域化の非循環性を共同監査し、Part Iの再帰的接続、Part IIのcontrolled push-off、Part IIIのlocalization/anchorsは独立の未解決課題として追う。修正は必要な範囲へ限定し、他研究・並行編集を保持する。
 
 ## 保存と検証
 - 現行資料だけで再開できるよう、ソース、必要な文献情報、再現コード、入力、証明書を保持する。軽量化を理由に価値ある証明を削らない。古い資料の有効部分を統合するまでは消去しない。

@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{五部作統合・再監査稿 v1.0（2026年8月31日）}
+\date{現行稿 v1.1（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -429,7 +429,7 @@ Connected complete Riemannian manifold $(X,g)$ が \emph{clean finite-depth toru
  \[
    \pi_{\mathfrak f}:\mathcal U_{\mathfrak f}(T_0)\longrightarrow X_{\mathfrak f}
  \]
- がある。$\mathcal U_{\mathfrak f}(T_0)$ では $t_i\ge T_0$ ($i\in I$) であり、normal torus fibres は compact である。
+ がある。$\mathcal U_{\mathfrak f}(T_0)$ では $t_i\ge T_0$ ($i\in I$) であり、normal torus fibres は compact である。ここでfull collar sectorは、depthsを固定すると残余空間 $X_{\mathfrak f}$ 全体上のprincipal $\mathbb T^I$ 束をなすものとする。従って有限区間の残余曲線は、指定初期点からdepthsを固定してconnection-horizontalに全区間持ち上がる。
  \item $\mathfrak g=(J,G)$ が $\mathfrak f=(I,F)$ の deeper face ($I\subset J$) なら、$q_{\mathfrak f}(G)$ は $\wt X_{\mathfrak f}$ の component-labelled faceをなし、quotient-in-stages diagram
  \[
  \begin{CD}
@@ -634,11 +634,13 @@ Boundary depth $d$ 以下の clean metric-IRFA spaces に対し定数 $B_d<\inft
 \[
  \diam_g\Psi^{-1}(\ov B_\cC(0,A))\le C_d(1+A).
 \]
+が成り立つ。ここで直径は $X$ の ambient 距離で測る。接続曲線を同じ
+skeletal fibre 内に保つことや、その fibre の内在長さ直径は主張しない。
 \end{lemma}
 \begin{proof}
 $d=0$ では $X$ は compact coreである。$d>0$ とし、depth $<d$ の residual spacesについて主張を仮定する。
 
-$u\in\cC$ を固定する。$u$ が cutoff transitionだけからなる bounded subcomplexに属すれば、その逆像は fixed compact truncation に入り一様有界である。そうでなければ、$u_i$ が十分大きい active vertex $i$ を一つ選ぶ。Component-labelled cell copyを固定すると \eqref{eq:clean-recursive-map} により、同じ raw fibre内の二点 $x,x'$ は同じ normal depth $t_i$ を持ち、residual projections $\pi_i(x),\pi_i(x')$ は同じ residual raw fibreに入る。帰納仮定により residual fibre内を長さ $\le B_{d-1}+1$ の曲線で結べる。この曲線を connection-horizontal に、$t_i$ を固定して liftする。Metric-IRFA と $\eta\le1/4$ により horizontal lift の長さは residual lengthの一様定数倍で抑えられる。最後に compact normal torus fibre内を動かすが、その直径は $O(e^{-t_i})$、従って一様 boundedである。
+$u\in\cC$ を固定する。$u$ が cutoff transitionだけからなる bounded subcomplexに属すれば、その逆像は fixed compact truncation に入り一様有界である。そうでなければ、$u_i$ が十分大きい active vertex $i$ を一つ選ぶ。Component-labelled cell copyを固定すると \eqref{eq:clean-recursive-map} により、同じ raw fibre内の二点 $x,x'$ は同じ normal depth $t_i$ を持ち、residual projections $\pi_i(x),\pi_i(x')$ は同じ residual raw fibreに入る。帰納仮定による ambient 距離の上界から、これらの residual 端点を residual 空間内の長さ $\le B_{d-1}+1$ の曲線で結べる。その途中の raw depth 値を固定する必要はない。この曲線を connection-horizontal に、$t_i$ を固定して liftする。比較は full $i$-sector 上で residual depths に一様なので、曲線が residual fibre を離れても Metric-IRFA と $\eta\le1/4$ が適用でき、 horizontal lift の長さは residual lengthの一様定数倍で抑えられる。最後に compact normal torus fibre内を動かすが、その直径は $O(e^{-t_i})$、従って一様 boundedである。
 
 同じ cone pointが複数の labelled sector germsに属する wall pointの場合、clean compatibilityによりそれらは共通 lower-dimensional face fibre上で一致する。Face posetは有限なので、上の sectorwise connectorsを有限個連結すれば一様定数を得る。これが $B_d$ を構成する。
 
@@ -661,7 +663,7 @@ $\sqrt{a^2+(b+E)^2}$ であり、Euclidean normの $1$-Lipschitz性から
 \]
 \end{proof}
 
-\subsection{ファイバーを正確に保つ再帰的持ち上げ}
+\subsection{端点のファイバーを正確に保つ再帰的持ち上げ}
 \begin{proposition}[Bounded-defect path lifting]
 \label{prop:lifting}
 Boundary depth $d$ の metric-IRFA space に対し $E_d<\infty$ が存在する。
@@ -672,6 +674,8 @@ Boundary depth $d$ の metric-IRFA space に対し $E_d<\infty$ が存在する�
  L_g(\wt\sigma)\le L_\cC(\sigma)+E_d
 \]
 とできる。$E_d$ は path の長さ、endpoint depths、cell positions に依存しない。
+要求する一致は両端点の skeletal 値であり、
+$\Psi\circ\wt\sigma=\sigma$ という途中の点ごとの追跡は主張しない。
 \end{proposition}
 \begin{proof}
 \Cref{def:clean} の raw map は surjective なので、各 target pointに対応する skeletal fibre は非空である。$d$ に関する帰納法を行う。$d=0$ は compact coreで明らか。$d>0$ とし、\cref{lem:fibres} により $B_d$ が既に構成され、depth $<d$ では path-lifting theorem が成立すると仮定する。
@@ -698,6 +702,10 @@ $u_i$ が cutoff threshold以下の pieceは $\Psi^{-1}(\ov B(0,A_*))$ の fixed
  C\int_{\sigma_{\rm piece}}\eta(T_0+u_i)\,ds
 \]
 で抑えられる。全 piecesを合わせても \cref{lem:dyadic} と有限 itineraryから一様定数 $C_\eta$ 以下である。
+ここでは residual replacementを定速化してnormal affine motionと同期しているので、
+product speedと元の線分speedの差は $E_{d-1}$ 以下である。
+Maximal-coordinate条件を使うのは元のtarget線分だけであり、
+actual lift上のresidual depthsのorderingは要求しない。
 
 Cell boundaryでは incoming liftの終点は exact skeletal fibreに属する。Clean quotient-in-stages compatibilityにより common face fibreが両 sector descriptionsで同一であり、\cref{lem:fibres} の $B_d$-connectorで outgoing collar sectionへ移れる。終端でも同じ fibre connectorを用いる。Cell数と ordering pieces数には cone complexのみに依存する一様上界があるので
 \[
@@ -716,7 +724,7 @@ Cell boundaryでは incoming liftの終点は exact skeletal fibreに属する�
 が全 $p,q\in X$ で成り立つ。
 \end{corollary}
 \begin{proof}
-$\Psi p,\Psi q$ を結ぶ再訪なし minimizing piecewise Euclidean pathを \cref{lem:cell-convex} で選ぶ。\Cref{prop:lifting} を $p$ から適用し、終点 fibre内を \cref{lem:fibres} で $q$ へ補正する。
+$\Psi p,\Psi q$ を結ぶ再訪なし minimizing piecewise Euclidean pathを \cref{lem:cell-convex} で選ぶ。\Cref{prop:lifting} を $p$ から適用し、同じ終端 fibre に属する二点を \cref{lem:fibres} の ambient 接続で結び、$q$ へ補正する。
 \end{proof}
 
 \subsection{余計量による収縮}
@@ -1801,11 +1809,31 @@ $\sk_{n-1}\Delta^{m-1}$ の all-right spherical realization である。
 \]
 各 maximal spherical simplex は all-right であり、first cone は arrangement の realization には依存せず $(n,m)$ のみに依存する。
 
-Degree-$d$ hypersurface が $d$ 枚の超平面へ退化する文脈では $m=d$ と置けばよい。従って本節の結論は任意の複素次元 $n\ge1$ と任意の次数
+固定された ambient 配置補空間 $\PP^n\setminus\bigcup_{i=1}^dH_i$ に適用するときは $m=d$ と置く。従ってこの補空間について本節の結論は任意の複素次元 $n\ge1$ と任意の超平面数
 \[
  d\ge n+2
 \]
 に対して同時に成立する。境界値 $d=n+1$ は log Calabi--Yau であり、$d\le n$ とともに $K_{\PP^n}+D$ が ample でないので、本稿の負 K\"ahler--Einstein theorem の範囲外である。
+
+
+\begin{remark}[固定成分と退化族の入力の区別]
+\label{rem:fixed-family-interface}
+$\PP^3$ 内の degree-$d$ 曲面の全平面退化では、各固定成分の開部分は
+\[
+ H_i^\circ
+ =H_i\setminus\bigcup_{j\ne i}(H_i\cap H_j)
+ \cong\PP^2\setminus\{d-1\text{ 本の一般位置直線}\}.
+\]
+従って本系のパラメータは $(n,m)=(2,d-1)$、
+log-canonical classは $(d-4)H$、固定成分の距離錐は
+$C_{2,d-1}$ である。各二重線の残余曲線は
+$\PP^1$ から $d-2$ 個の三重点を除いたものである。
+この固定空間の $R\to\infty$ というblow-downは、
+コンパクト退化族の $t\to0$ におけるmoving領域上の一様評価ではない。
+後者には第IV篇の局所一様解析と、曲面実現論文のscalar/portal大域評価が必要である。
+本稿のbounded-additive定理全体を、これらの族一様入力の代用にしない。
+正本と定理の対応は総説および研究ノートを参照する。
+\end{remark}
 
 同じ議論は、超平面に限らず一般の SNC hypersurface arrangement にも直ちに適用できる。
 
@@ -1907,13 +1935,25 @@ Depth $0$ の residual spaceは compact coreなので
 と取れる。Depth $d>0$ では、まず depth $<d$ の全 residual fibre boundsから \cref{lem:fibres} の $B_d$ を構成する。その後、既に得た $B_d$ と depth $<d$ の $E_{d-1}$ を用いて \cref{prop:lifting} の $E_d$ を定める。
 Finite labelled face posetのため、同じ depthの residual spacesが複数あっても定数は最大値で統一できる。
 
-\subsection{ファイバー内の接続曲線}
+\subsection{同じファイバーの端点を結ぶambient曲線}
 $u\in\cC$ が deep cell copy $Q_\sigma$ に属し、$i$ が active coordinateなら、clean recursion
 \[
  \Psi=\chi(t_i)e_i+\iota_i\Psi_i\circ\pi_i
 \]
-により、$\Psi^{-1}(u)$ の residual projectionsは一つの residual fibreに入る。Residual fibre pathを fixed $t_i$ で horizontal liftし、normal torus内を最後に動かすことで fibre connectorを得る。
-Wall pointでは、incoming/outgoing sector descriptionsの quotient-in-stages diagramsが common lower-dimensional face fibreで一致する。従って transition connectorは fibreを離れない。これが \cref{lem:fibres} の ``same skeletal fibre'' の意味である。
+により、$\Psi^{-1}(u)$ の residual projectionsは一つの residual fibreに入る。
+帰納仮定はその二点間の residual ambient 距離を抑える。
+残余空間内の接続曲線を fixed $t_i$ で horizontal liftし、
+normal torus内を最後に動かせば、元の二端点を結ぶ曲線を得る。
+曲線の像は残余空間のcompact部分に入り、その上のprincipal torus束の
+compact fibresによりhorizontal liftは全区間で存在する。
+Full $i$-sectorの比較は全residual depthsに一様なので、
+その途中でresidual skeletal値が動いても長さ上界は保たれる。
+Wall pointでは、incoming/outgoing sector descriptionsの
+quotient-in-stages diagramsが common lower-dimensional face fibreで一致する。
+従って両側の指定端点を同じfibreから選び、既に証明したambient径評価で接続できる。
+ここで「同じskeletal fibre」は端点の所属を表し、
+transition connector全体がfibreを離れないという意味ではない。
+Endpoint版の \cref{prop:lifting} と距離上界にはこれで十分である。
 
 \subsection{一セル内の線分と積計量での同期}
 $\sigma:[0,1]\to Q_I$ を一つの Euclidean segmentとする。Coordinate orderingは finitely many affine functionsの orderingなので、intervalを有限個に分け、各 pieceで $u_i=\max_j u_j$ となる $i$ を固定できる。
@@ -1951,6 +1991,9 @@ Actual metric errorでは、synchronized residual excessの追加速度に対す
 
 \subsection{整合的カラーと段階的商}
 Smooth SNC pair $(\ov X,D)$ の real oriented/logarithmic blow-up $\widetilde X$ では、各 irreducible divisor $D_i$ に boundary hypersurface $H_i$ が対応し、その fibreは oriented normal argument $S^1$ である。Connected component $F\subset D_I$ に対応する corner face上では normal argumentsは独立で、$\mathbb T^I$-actionの quotientは $F$ の logarithmic compactification $\widetilde X_F$ になる。
+Boundary face上のglobal torus束とlogarithmic blow-up後の維持は
+\cite[Lemma~1.1, \S1, (1.10)--(1.15)]{RochonZhang} に従う。
+Compactなfull face $H_i$ のcollarにおいて固定 $x_i$ のsliceは $H_i$ 全体に対応し、その残余interiorへの制限は $X_i$ 全体上のprincipal $S^1$ 束である。交叉faceでも同様にprincipal $\mathbb T^I$ 束を得る。従って \cref{def:clean} のfull-sector条件は、残余compactごとに異なる局所束だけを用意する条件ではない。
 
 $I\subset J$ とし $G\subset D_J$ が $F\subset D_I$ に含まれる connected componentとする。Normal bundleの transverse direct-sum decompositionにより、まず $I$-normal argumentsを quotientし、その後 $(J\setminus I)$-normal argumentsを quotientしても、最初から $J$ 全体を quotientしても同じ $\widetilde X_G$ を得る。これが \cref{def:clean} の quotient-in-stages diagramである。
 

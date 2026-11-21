@@ -50,5 +50,17 @@
     "external_primary_source_verified": "Rochon and Zhang, Advances in Mathematics 231 (2012), 2892–2952, Theorems 5.1, 7.4, 7.6, Example 7.7 (author-hosted primary PDF text inspected).",
     "post_edit_lualatex_rerun": false,
     "claims_not_established": "Full SNC global rough cone proof, family-uniform conifold localization, actual global pGH remain beyond this inspection."
+  },
+  "current_revision": {
+    "date": "2026-11-22",
+    "status": "Source and cross-repository interface checks complete; LuaLaTeX rebuild and visual QA in progress.",
+    "edited_manuscripts": [
+      "papers/multiscale-kaehler-einstein.tex",
+      "papers/series-overview.tex"
+    ],
+    "mathematical_scope": "Part I endpoint/ambient connector induction reviewed internally by a second reader under full-sector principal torus bundle and residual-uniform metric-IRFA assumptions. CP/PBE/TC route matched to Part IV-V statements. Fixed component indexing and metric normalization checked. Surface component-cone and selected intermediate-scale results cited from their proof owner.",
+    "not_verified": "No complete independent proof audit of Part I SNC collar/Rochon-Zhang translation, Parts II-III, or the external surface theorem. No new verification of CP/PBE/TC, H_loc/H_anc or controlled push-off. No formal proof or exhaustive novelty check.",
+    "runtime": "System LuaLaTeX lacks lualatex.fmt; using the existing local TeX runtime via /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh without changing repository build settings.",
+    "previous_manuscript_records": "The earlier manuscript and visual-check records below concern the previous sources and are not post-edit build results."
   }
 }

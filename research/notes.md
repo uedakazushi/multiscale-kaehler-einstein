@@ -1,8 +1,49 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-20 / v1.1
+更新：2026-11-22 / v1.2
 
 ## 現行稿の仮定（2026-08-31統合稿を回収）
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
+
+## 三研究の定理接続と正本
+
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[Part IV–V commit 1abc96c](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/1abc96cea3d9c369410e0e9d2a57414276e7c776)と[曲面改訂31 commit 2a374e7](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/2a374e735c1a9598e78e7c539087418980eb2c4b)。確認日2026-11-22。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
+
+| 正本・定理ラベル | 入力・出力と利用範囲 |
+| --- | --- |
+| Part I `thm:intro-metric`, `thm:rough`, `prop:RZ`, `cor:arrangement-cone` | 固定ample SNC対のcomplete KE metric。Clean collar＋metric-IRFAからbounded-additive cone。退化族のmoving領域の一様性は含まない。 |
+| Part II `thm:intro-star`, `thm:intro-general-completion`, `hyp:controlled-pushoff` | Marked residual複素・双曲曲線のperiodsとTorelli。一般WP completionにはcontrolled push-off。曲面の第二作用積分との同一視はない。 |
+| Part III `hyp:Hloc`, `hyp:Hanc`, `thm:actual-global-pgh` | Ordinary/conifold whole-end比較とtracked anchors等を追加仮定とする。対象・positive square模型・空間的blow-downを曲面退化と区別する。 |
+| Part IV `coarse:cor:degree-d-volume-lower`, `coarse:thm:full-triple-tensor` | 全固定d≥5のcapped volume下界と深部triple比較。後者の詳細証明は `papers/sections/full_triple_comparison.tex`。 |
+| Part IV `simplex:cor:actual-closed-corner-metric`, `pair:thm:fixed-end-moment` | Closed tripleの内在・protected距離、および固定source-free residual compact上のmoment入力。全曲面ambient距離や任意のmoving exhaustionへの一様性へ拡張しない。 |
+| Part IV `coarse:hyp:TC5`, `coarse:thm:main`; Part V `hyp:CPd`, `hyp:PBEd`, `thm:degree-d-limit` | Part IVの五次coarse定理は(TC)5付き。Part Vの大域適用は(CP)d＋(PBE)d付き。有限targetの直径 `thm:intro-diameter-C5` は独立。 |
+| 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
+
+曲面側の入力一覧・適用証明の正本は同repoの `research/ke-dependencies.md`。P0はPart Iのfull rough-isometry theorem全体を入力にせず、固定成分のSNC cusp評価とfixed-compact収束を用いる。本repoの総説は上の接続と条件を要約し、本文の証明を複製しない。依存定理が変わったら正本を先に保存し、利用先・総説・research-hubを追随させる。
+
+## 固定成分・尺度・periodの辞書
+
+全平面退化 $\prod_{i=1}^dL_i+tF_d=0$ で $H_i=\{L_i=0\}$ と置く。成分の開部分は
+\[
+H_i^\circ=H_i\setminus\bigcup_{j\ne i}(H_i\cap H_j)
+\cong\mathbf P^2\setminus\{d-1\text{ 本の直線}\}.
+\]
+従ってPart Iのパラメータは $(n,m)=(2,d-1)$、log-canonical classは $(d-4)H$、固定成分の錐は $C_{2,d-1}$。Ambient $\mathbf P^3$ のd平面補空間なら $(n,m)=(3,d)$ であり別対象である。五次の成分は四直線補空間、Part Iの五直線の例は六次の成分に対応する。二重線の残余曲線は $\mathbf P^1$ から $d-2$ 個の三重点を除く。五次ではM0,3、六次以上では一般にmoduliを持つが、F_dの零点を含むsource markingの情報とは区別する。
+
+固定補空間の $R^{-1}d_{\rm KE}$ と退化族の $R_t^{-1}d_{g_t}$、$R_t=\log(-\log|t|^2)$ は異なる極限である。固定空間の定数の存在だけから、tに依存するcutを越える一様比較を得ることはできない。Ric=-ωからω/(d−4)へ変える場合、距離は1/√(d−4)、tensorは1/(d−4)、co-Gramは(d−4)倍となる。Secondary complex periodsは残余曲線のmarked複素・双曲幾何であり、Lagrangian torusの第二symplectic actionではない。
+
+## Part Iの端点接続で確認した論理
+
+主稿の `lem:fibres` の直径はambient距離である。帰納仮定から得るのは同じresidual fibreに属する二点を**残余空間内で**結ぶ長さ≤B+1の曲線であり、fibre内の曲線ではない。Full collarは固定depthで全残余空間上のprincipal torus束をなすので、compactな曲線像の上で指定初期点からhorizontal liftが全区間存在する。Full-sectorのtensor比較は残余depthsに一様であるため、曲線がresidual fibreを離れても長さ評価を保つ。終端のnormal torus補正はO(exp(−t_i))である。
+
+このendpoint版を `prop:lifting` と `cor:upper`、付録 `app:lifting` に統一した。必要なのは始点・終点のskeletal値の一致と加法長さ誤差であり、全曲線のexact trackingやfibreの内在径ではない。Finite itinerary、product synchronization、可積分誤差を使う帰納順は維持する。これは接続の量化を限定点検した結果であり、`prop:RZ`／`app:SNC` のfull sector・exact collar構造を全SNC対で一次資料から独立に再構成したことは意味しない。次の監査はその入力とrecursive uniformityを対象にする。 Rochon–Zhang [arXiv:1106.0873v2](https://arxiv.org/html/1106.0873v2) §1 Lemma 1.1・(1.10)–(1.15)のglobal torus束とlogarithmic blow-up、Theorem 5.1の全I,i共通指数を一次資料で照合した。延長作用素Ξをexact compatible collarのpullbackへ替える全残余一様tensor誤差の論証は引き続き監査対象である。
+
+## 成分の距離錐と選択した中間尺度
+
+曲面repoの `topo:component-cone-germ` では、成分頂点 e_i の半径0<r<1/2の閉球が C_{2,d−1} の同半径球とambient距離で等長であることを証明する。正規化global distortionを ε_t=dis(f_t) と置くと、同repoの `ke:intermediate-component-cone` は
+\[
+a_t\to\infty,\qquad a_t/R_t\to0,\qquad R_t\varepsilon_t/a_t\to0
+\]
+の下で、x_{i,t}∈f_t^{-1}(e_i)を基点とする (X_t,a_t^{-1}d_{g_t},x_{i,t}) のpointed GH極限が同じ錐になることを示す。a_t=R_t√(ε_t+1/R_t)は一つの許容選択である。二つの証明の正本は[曲面repo](https://github.com/uedakazushi/surface-lagrangian-torus-fibration)の現行主稿。これは同じglobal mapとtarget小球の幾何から得る帰結で、Part Iの固定空間の極限との任意の極限交換や、任意指定尺度での収束は述べない。
 
 ## Actual global pGHの障害
 Part IIIの条件付きpGH theoremでは、全central/lateral/ordinary/tie wall layersでtemplate lifts・kernel connectors・zero-cost quotient directionsが整合するtracked liftingを仮定する。actual KE metricでこの誤差を一様 \(o(R)\) に抑える部分は未証明。fixed nodeのqualitative local localizationとは別問題である。
