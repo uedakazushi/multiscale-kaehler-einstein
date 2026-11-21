@@ -31,7 +31,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I}
-\fancyhead[R]{\small 現行稿 v1.2}
+\fancyhead[R]{\small 現行稿 v1.3}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{現行稿 v1.2（2026年11月22日）}
+\date{現行稿 v1.3（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -121,12 +121,12 @@ and Volume Asymptotics}
 \begin{abstract}
 本稿は、超平面配置補空間の multiscale K\"ahler--Einstein 幾何を扱う連作の第一部として、有限体積負 K\"ahler--Einstein cusp の第一尺度を構成する。
 $(\ov X,D)$ を smooth projective SNC pair、$X=\ov X\setminus D$ とし、$K_{\ov X}+D$ が ample とする。
-$\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ と規格化した complete K\"ahler--Einstein metric に対し、$D$ の dual $\Delta$-complex の各 simplexを標準 Euclid orthantへ置き換えた cone $\cC_D$ と proper $1$-Lipschitz map $\cS:X\to\cC_D$ を構成し
+$\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ と規格化した complete K\"ahler--Einstein metric に対し、$D$ の dual $\Delta$-complex の各 simplexを標準 Euclid orthantへ置き換えた cone $\cC_D$ と proper $1$-Lipschitz全射 $\cS:X\to\cC_D$ を構成し
 \[
  d_{\cC_D}(\cS p,\cS q)\le d_{\mathrm{KE}}(p,q)
  \le d_{\cC_D}(\cS p,\cS q)+K
 \]
-を証明する。従って asymptotic cone は一意で、fixed/moving basepoint blow-down と metrized spherical link は有限 orthant complexから決まり、fixed-radius balls の pointed Gromov--Hausdorff error は $O(R^{-1})$ である。
+を証明する。従って asymptotic cone は一意で、fixed/moving basepoint blow-down と metrized spherical link は有限 orthant complexから決まる。対応する中心を持つ閉球のGH誤差は、中心・半径に一様に $3K/(2R)$ 以下である。
 
 有限体積測度については、scaled skeletal distributions が rate function $\cI(u)=\sum_i u_i$ の large deviation principleを満たすことを示す。
 Connected codimension-$k$ stratum $F$ に沿う centered measured limit の face mass は
@@ -221,7 +221,7 @@ $F\subset D_{i_0}\cap\cdots\cap D_{i_k}$ に一つの $k$-simplex を対応さ�
 \begin{theorem}[K\"ahler--Einstein cusp cone theorem]
 \label{thm:intro-metric}
 $L=K_{\ov X}+D$ が ample とする。$X=\ov X\setminus D$ 上の完備有限体積 K\"ahler--Einstein metricを
-$\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ と規格化する。このとき proper な $1$-Lipschitz map
+$\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ と規格化する。このとき proper な $1$-Lipschitz全射
 \[
  \cS_{\mathrm{KE}}:(X,d_{\mathrm{KE}})\longrightarrow(\cC_D,d_{\cC_D})
 \]
@@ -232,13 +232,14 @@ $\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ と規格化する。このとき prope
  \le d_{\mathrm{KE}}(p,q)
  \le d_{\cC_D}(\cS_{\mathrm{KE}}p,\cS_{\mathrm{KE}}q)+K
 \end{equation}
-が成り立つ。さらに $\cS_{\mathrm{KE}}(X)$ は $\cC_D$ の一様 net である。
-従って任意の固定基点 $o\in X$ と $A<\infty$ に対し
+が成り立つ。任意に指定したcompact集合$K_0\Subset X$に対し、
+$\cS_{\mathrm{KE}}(K_0)=\{0\}$となるように選べる（$K$は$K_0$に依存してよい）。
+特に基点$o\in X$を指定して$\cS_{\mathrm{KE}}(o)=0$と選ぶと、全ての$A,R>0$に対し
 \[
  d_{\GH}\!\left(
  \ov B_{(X,R^{-1}d_{\mathrm{KE}})}(o,A),
  \ov B_{\cC_D}(0,A)
- \right)=O_A(R^{-1}).
+ \right)\le\frac{3K}{2R}.
 \]
 \end{theorem}
 
@@ -307,6 +308,7 @@ Abstract volume theoryでは LDP と face masses に mere volume-IRFA で十分�
 
 \begin{theorem}[Exact tail and joint extreme-value law]
 \label{thm:intro-tail}
+$D\ne\varnothing$ とする。
 $\Ric(g_{\mathrm{KE}})=-g_{\mathrm{KE}}$ の規格化では全 vertex entropy は $1$ である。
 各 divisor component に対し
 \[
@@ -358,8 +360,8 @@ Proof mechanism も reduction theory ではなく、recursive cusp products、co
 \subsection{証明の骨格と論文の構成}
 距離定理には三つの要点がある。
 第一に、有限 orthant complex の geodesic path を boundary depth に関して再帰的に指定skeletal fibresの端点を結ぶ曲線へ liftし、integrable metric error を dyadic segment estimate で $O(1)$ に積分する。
-第二に、raw depth map は正確には nonexpanding でないため、normal depth covectors の inverse-metric Gram matrixを row-wise に評価し、depth derivatives を可積分量だけ縮める。Gershgorin theorem により得られる skeletal map は厳密に $1$-Lipschitz で、raw mapとは bounded distance にある。
-第三に、volume density の exponential kernel に cellwise Laplace/Abel analysis を適用する。LDP と face masses は mere volume-IRFA で扱い、exact tail のみ exponential volume-IRFA に強める。Exact tail では level-crossing による Busemann limit、compact residual sets 上の calibrating estimate、residual escape と volume remainder の exponential tightness を別々の補題として証明する。
+第二に、raw depth map は正確には nonexpanding でないため、normal depth covectors の inverse-metric Gram matrixを row-wise に評価し、depth derivatives を可積分量だけ縮める。Gershgorin theorem とcompatibleな単調cutoffにより、skeletal mapは厳密に $1$-Lipschitzな全射となり、raw mapとはbounded distanceにある。全射性と最短路の切断から、中心・半径に一様な閉球近似も得る。
+第三に、volume density のexponential kernelに有限face分解とLaplace/Abel analysisを適用する。LDPの下界はfull face collarのcompact residual集合をambient open setへ入れることで示し、exact-support sectorだけへの制限測度に正質量を要求しない。LDP と face masses は mere volume-IRFA で扱い、exact tail のみ exponential volume-IRFA に強める。Exact tailでは一面計量比較からのBusemann limit、compact residual calibration、残余逃避とvolume remainderのtightnessを別々に証明する。このtailの鎖はLDPの下界やcontracting mapによる距離下界を用いない。
 
 第2節で finite-depth cusp category と仮定を定義し、第3節で metrized dual complex を準備する。
 第4節で bounded-additive cone theorem、第5節で fixed/moving blow-down と link recoveryを証明する。
@@ -494,7 +496,7 @@ $(I+A)^{-1}-I=-(I+A)^{-1}A$ を用いる。
 \end{proof}
 
 \subsection{体積仮定}
-距離仮定と測度仮定を分離する。有限 Borel measure $\mu$ が各 connected face collar $F\subset D_I$ で
+距離仮定と測度仮定を分離する。非零有限 Borel measure $\mu$ が各 connected face collar $F\subset D_I$ で
 \begin{equation}
 \label{eq:volumeIRFA}
  \dd\mu=e^{-\sum_{i\in I}t_i}
@@ -521,7 +523,11 @@ Normal torusを積分した leading residual measureを $\lambda_F$ とし、そ
 \label{eq:face-mass-positive}
   0<\mathfrak m_F<\infty
 \end{equation}
-を仮定する。特に、各 exact-support sector の relative interior に対応する open set は leading order で正の質量を持つ。
+を仮定する。従って各 residual space $X_F$ には
+$\lambda_F(K)>0$ を満たす compact set $K\Subset X_F$ が存在し、
+normal depthsが一様に無限大へ進むとき、その上でnormal torusを積分した
+leading densityは正の有限質量を持つ。
+Raw residual mapのzero fibreに正の測度を仮定する必要はない。
 
 さらに、任意の component-labelled face chart と任意の compact set $K\Subset F^\circ$ に対し、centered coordinates $s_i=t_i-T_i$ を用いた pullback density が、$T_i\to\infty$ のとき $K$ 上で全ての fc/collar derivativesについて leading product densityへ収束し、その評価が deeper residual collarsに再帰的に一様であるとき \emph{smooth volume-IRFA} と呼ぶ。
 \end{definition}
@@ -729,101 +735,226 @@ $\Psi p,\Psi q$ を結ぶ再訪なし minimizing piecewise Euclidean pathを \cr
 \end{proof}
 
 \subsection{余計量による収縮}
+Compactな角付きcompactificationと有限個のface copiesを用い、全残余空間に共通の
+$T_{\mathrm{geom}}\ge T_0$を十分大きく選ぶと、$t_i\ge T_{\mathrm{geom}}$を満たす
+collarsの共通部分は、対応するcomponent-labelled face collarsで覆われる。
+実際、任意に深い共通部分が全ての対応collarsの外に残れば、compactification上の集積点は
+対応boundary facesの交わりに属し、そのface collarに入ることと矛盾する。
+Nonincident facesの十分深いcollarsは交わらない。
+この閾値は以下の微分評価のために選ぶもので、raw cutoffや既証の上界の$T_0$は変更しない。
+
 Normalized depth covectorsを
 \[
- \alpha_i=\sqrt{c_i}\,\dd t_i,
- \qquad
+ \alpha_i=\sqrt{c_i}\,\dd t_i,\qquad
  G_{ij}=\langle\alpha_i,\alpha_j\rangle_{g^{-1}}
 \]
-と置く。
+と置く。以下でactiveとは、その点が対応するcollarに属し、
+$t_i\ge T_{\mathrm{geom}}$であることをいう。
+残余空間でも同じlabelのweight $c_i$を用いる。
 
 \begin{proposition}[Row-wise co-Gram estimate]
 \label{prop:cogram}
-非増加可積分関数 $\varepsilon$ を $\varepsilon\le C\eta$ in the deep region と選び、各 active $i$ について
+ある定数$C_d$に対し、非増加可積分関数$\varepsilon=C_d\eta$を取れば、
+各active $i$について
 \[
  |G_{ii}-1|+\sum_{j\ne i}|G_{ij}|\le\varepsilon(t_i)
 \]
-とできる。
+が成り立つ。和はその点のactive labelsについて取り、残余depths全域に一様である。
+ここでは$t_i$が最大のdepthであることを要求しない。
 \end{proposition}
 \begin{proof}
-$i$-th one-face modelでは $\alpha_i$ は unitで residual depth covectorsと直交する。
-\cref{lem:inverse} と metric-IRFAから inverse tensor differenceは $O(\eta(t_i))$。Active depth数は有限なので row sum estimateを得る。
+$h_i=g_i^\times$、$\eta_i=\eta(t_i)$と置く。一面product modelでは
+$|\alpha_i|_{h_i^{-1}}=1$であり、$\alpha_i$は全residual covectorsと直交する。
+Active $j\ne i$について、exact depth compatibilityにより
+$\alpha_j=\pi_i^*\alpha_{j,i}$である。残余計量$g_i$自身の$j$-face比較から
+\[
+ |\alpha_j|_{h_i^{-1}}^2
+ =|\alpha_{j,i}|_{g_i^{-1}}^2
+ \le\frac{1}{1-\eta(t_j)}\le\frac43.
+\]
+従って、他のdepthsが深くなる場合にもこのnormは一様有界である。
+\Cref{lem:inverse}を\emph{全接空間上の}計量に適用すると
+\[
+ |G_{ii}-1|\le\frac{\eta_i}{1-\eta_i},\qquad
+ |G_{ij}|\le\frac{2}{\sqrt3}\frac{\eta_i}{1-\eta_i}\quad(j\ne i).
+\]
+Normal blockだけを先に反転する操作は行っていない。
+Active座標数はboundary depth $d$以下なので、$d\ge1$では例えば
+$C_d=\frac43(1+2(d-1)/\sqrt3)$と取れる。$d=0$では主張は空である。
 \end{proof}
 
 \begin{lemma}[可積分収縮関数の選択]
 \label{lem:lambda-choice}
-Row error $\varepsilon$ を必要なら増やして、smooth・非増加・可積分な majorant $\widetilde\varepsilon\ge\varepsilon$ を取り、deep regionで $0\le\widetilde\varepsilon\le1/8$ とする。
-Cutoff transitionで $0\le\lambda\le1$ を smooth に選び、$t\le T_0$ では $\lambda=0$、十分深いところでは
+Row error $\varepsilon$には、smooth・非増加・可積分なmajorant
+$\widetilde\varepsilon\ge\varepsilon$が存在する。
+十分大きい共通閾値$T_*>\max\{T_{\mathrm{geom}},T_0+1\}$を選び、smooth関数$\lambda$を
 \[
- \lambda(t)=1-2\widetilde\varepsilon(t)
+ \lambda(t)=0\quad(t\le T_*),\qquad
+ 0<\lambda(t)\le1\quad(t>T_*),\qquad
+ \lambda(t)=1-2\widetilde\varepsilon(t)\quad(t\ge T_*+1)
 \]
-とする。このとき常に $\lambda(t)\le(1-2\varepsilon(t))_+$ であり、
+と取れて、全ての$t\ge T_0$で
+$\lambda(t)\le(1-2\varepsilon(t))_+$となる。
+十分深い$t$では$1-\lambda(t)=2\widetilde\varepsilon(t)$であり、
 \[
- 1-\lambda(t)=O(\widetilde\varepsilon(t)),\qquad
- \int_{T_0}^\infty(1-\lambda(t))\,dt<\infty.
+ \int_{T_0}^\infty(1-\lambda(t))\,\dd t<\infty.
 \]
-従って $f(t)=\int_0^t\lambda(s)\,ds$ は
+$f(t)=\int_0^t\lambda(s)\,\dd s$は非減少で、$t>T_*$では狭義単調である。
+さらに有限定数$\beta$に対し
 \begin{equation}
 \label{eq:f-asymptotic}
  f(t)=t-\beta+o(1),\qquad
- \sup_{t\ge0}|f(t)-(t-T_0)_+|<\infty
+ D_f:=\sup_{t\ge0}|f(t)-\chi(t)|<\infty.
 \end{equation}
-を満たす。
+同じ$T_*,\lambda,f$を全残余空間で用いることができる。
 \end{lemma}
 \begin{proof}
-非増加可積分関数の smooth majorantは standard mollification と monotone envelopeで取れる。
-Deep regionでは
+$\varepsilon$を$t<T_0$で定数延長し、非負の
+$\kappa\in C_c^\infty((1,2))$、$\int\kappa=1$を用いて
 \[
- t-f(t)=\text{constant}+2\int^{t}\widetilde\varepsilon(s)\,ds
+ \widetilde\varepsilon(t)=\int_1^2\kappa(s)\varepsilon(t-s)\,\dd s
 \]
-が有限極限を持つので第一式が従う。Shallow/transition regionは compact なので第二式へ吸収できる。
+とする。非増加性から$\widetilde\varepsilon\ge\varepsilon$であり、
+smooth性、非増加性、tailの可積分性もこの式から従う。
+$T_*$を大きくして$t\ge T_*$で$\widetilde\varepsilon(t)\le1/8$とし、さらに
+\[
+ T_*-T_0>\max_{[T_0,T_0+1]}\chi
+\]
+を満たすようにする。$0\le\psi\le1$をsmooth・非減少で、
+$t\le T_*$では$0$、$t>T_*$では正、$t\ge T_*+1$では$1$と選ぶ。
+$\lambda=\psi(1-2\widetilde\varepsilon)$とし、$t\le T_*$では零と解釈する。
+これは全ての表示した条件を満たす。
+有限transitionの積分と可積分tailを合わせると
+$\beta=\int_0^\infty(1-\lambda(s))\,\dd s<\infty$であり、
+\[
+ f(t)=t-\beta+2\int_t^\infty\widetilde\varepsilon(s)\,\dd s
+ \qquad(t\ge T_*+1).
+\]
+最後に$\chi(t)=t-T_0$が十分深いところで成立することから$D_f<\infty$を得る。
+全face copiesとdepthは有限であり、共通の$\eta$を使ったので、選択は全残余空間に共通でよい。
 \end{proof}
 
-以下では \cref{lem:lambda-choice} の $\lambda,f$ を固定する。
-
-\begin{theorem}[Contracting skeletal map]
+\begin{theorem}[全射なcontracting skeletal map]
 \label{thm:contract}
-Raw map $\Psi$ と同じ component-labelled cell copyを用い、各 active depth coordinate $\chi(t_i)$ を $f(t_i)$ に置き換えて再帰的に $\cS:X\to\cC$ を定める。One-face sectorでは
+各raw depth coordinate $\chi(t_i)$を$f(t_i)$へ置き換え、component labelsを保って
+$\cS:X\to\cC$を定める。One-face sectorでは
 \[
  \cS(x)=f(t_i(x))e_i+\iota_i\cS_i(\pi_i(x)).
 \]
-Clean compatibilityによりこれは overlap上で一致する。
-この $\cS$ は proper $1$-Lipschitz mapで、$\sup_X d_\cC(\cS,\Psi)<\infty$。
-さらに fibres は一様有界で imageは $\cC$ の一様 net である。
+この写像はproperな$1$-Lipschitz\emph{全射}であり、
+$C_0:=\sup_X d_\cC(\cS,\Psi)<\infty$を満たす。
+さらに\cref{cor:upper}の定数$K_+$を用いて
+\[
+ \sup_{u\in\cC}\diam_g\cS^{-1}(u)\le K_++2C_0
+\]
+となる。ここでもfiberの直径はambient距離で測る。
 \end{theorem}
 \begin{proof}
-点 $x$ で $\lambda_i=\lambda(t_i)$ とし、$B_{ij}=\lambda_i\lambda_jG_{ij}$ と置く。
-$\lambda_i>0$ なら
+まず写像の定義と全射性を確認する。$h(u)=f(T_0+u)$（$u\ge0$）とすると、
+閾値の選択から$h(\chi(t))=f(t)$が全ての$t$で成立する。
+$h$は連続非減少で$h(0)=0$、$h(u)\to\infty$なので、$[0,\infty)$への全射である。
+各cell copy上で全座標へ$h$を作用させる写像$H:\cC\to\cC$は、
+$h(0)=0$によりface同定と両立する。
+各target pointの座標別逆像を同じcell copyで選べるので、$H$も全射である。
+同じvertex集合を持つ複数のcell copiesを同一視する必要はない。
+従って$\cS=H\circ\Psi$はwell-definedな連続全射で、表示した再帰式も成立する。
+
+点$x$で$\lambda_i=\lambda(t_i)$とし、
+$B_{ij}=\lambda_i\lambda_jG_{ij}$と置く。
+$\lambda_i>0$なら$t_i>T_*$であり、\cref{prop:cogram}から
 \[
  B_{ii}+\sum_{j\ne i}|B_{ij}|
  \le\lambda_i^2(1+\varepsilon_i)+\lambda_i\varepsilon_i
- \le1.
+ \le\lambda_i^2+2\lambda_i\varepsilon_i
+ \le\lambda_i\le1.
 \]
-最後の不等式は $\lambda_i\le1-2\varepsilon_i$ を代入して直接確認できる。
-$B$ は symmetric positive semidefinite なので Gershgorin theoremにより最大固有値は $1$ 以下。
-従って $|\dd\cS(v)|\le|v|_g$。Cell boundariesを横切る rectifiable curvesへ piecewise に適用すれば global 1-Lipschitz性を得る。
-$f(t)=t+O(1)$ から $C_0:=\sup_Xd_\cC(\cS,\Psi)<\infty$ が従う。$\Psi$ は \cref{def:clean} で proper と仮定したので、compact $K\subset\cC$ に対し
-\[
- \cS^{-1}(K)\subset
- \Psi^{-1}\bigl(N_{C_0}(K)\bigr)
-\]
-は compact set の closed subsetであり、$\cS$ も proper である。また $\Psi$ の surjectivity と bounded-distance comparisonから $\cS(X)$ は一様 net である。
+$\lambda_i=0$のrowは零である。$B$はsymmetric positive semidefiniteなので、
+Gershgorin theoremにより最大固有値は$1$以下である。
+すなわち各cellのweighted Euclidean normで$|\dd\cS(v)|\le|v|_g$となる。
 
-$\cS$-fibreの一様有界性は別に同じ boundary-depth inductionで確認する。Deep $i$-sectorでは $f'(t)\to1$ なので、十分深いところで $f$ は狭義単調であり、$\cS(x)=\cS(x')$ は $t_i(x)=t_i(x')$ と $\cS_i(\pi_i x)=\cS_i(\pi_i x')$ を与える。Residual fibreを帰納仮定で結び、fixed-depth horizontal liftと shrinking normal torus correctionを用いる。$f$ が単調でない可能性のある部分は fixed compact transitionに含まれ、wall transitionsは finite face poset と quotient-in-stages compatibilityで一様に処理できる。これにより $\sup_u\diam_g\cS^{-1}(u)<\infty$ を得る。
+この微分評価から大域長さ評価へ移る点を明記する。
+その点で定義されたcollar depthsのうち
+$J_x=\{i:t_i(x)\ge T_*\}$とし、$x$の近傍$O_x$を十分小さく取る。
+$i\notin J_x$の座標は$O_x$上でも$f(t_i)=0$であり、
+$J_x$のcollarsは一つの固定したconnected face collarに入るようにできる。
+Exact compatibilityにより、$\cS(O_x)$は一つの閉cell copy $Q_{J_x,F}$内にある。
+$t_i=T_*$を横切っても$f$はsmoothであり、そこでの微分も零である。
+$J_x=\varnothing$なら$\cS$はこの近傍で零である。
+従って$O_x$内の区分$C^1$曲線について、微分評価を積分してcell内の長さを縮める。
+\Cref{lem:cell-convex}によりこのcell距離はambient cone距離と一致する。
+任意の区分$C^1$曲線のcompact像を有限個の$O_x$で覆い、parameter区間を分割すると、
+全曲線でも長さを縮める。元の曲線がcutを無限回横切る場合にも、この局所議論が適用できる。
+曲線の長さのinfimumを取れば大域$1$-Lipschitz性を得る。
+
+$\cS(x)$と$\Psi(x)$は共通の閉cell copyに入り、\eqref{eq:f-asymptotic}から
+\[
+ C_0\le D_f\max_\sigma\left(\sum_{i\in\sigma}c_i\right)^{1/2}<\infty.
+\]
+同様に$H$はidentityから有界距離にあり、finite orthant complexはproperなので$H$はproperである。
+ここではcompact setの\emph{閉}有界近傍がcompactであることを使う。
+$\Psi$もproperだから$\cS=H\circ\Psi$はproperである。
+最後に$\cS(p)=\cS(q)$なら、既証の\cref{cor:upper}から
+\[
+ d_g(p,q)\le d_\cC(\Psi(p),\Psi(q))+K_+\le2C_0+K_+.
+\]
+これでfiber直径の評価も得る。
 \end{proof}
 
 \begin{theorem}[Bounded-additive orthant-cone model]
 \label{thm:rough}
-Metric-IRFA を持つ finite-depth clean torus-cusp space に対し $K<\infty$ が存在して
+Metric-IRFAを持つfinite-depth clean torus-cusp spaceに対し、properな
+$1$-Lipschitz全射$\cS:X\to\cC$と$K<\infty$が存在して
 \[
  \boxed{
  d_\cC(\cS p,\cS q)\le d_g(p,q)
  \le d_\cC(\cS p,\cS q)+K}
 \]
-が全 $p,q$ に対して成り立ち、$\cS(X)$ は $K$-net である。
+が全$p,q\in X$に対して成り立つ。
 \end{theorem}
 \begin{proof}
-左側は \cref{thm:contract}。右側は \cref{cor:upper} と $d_\cC(\Psi,\cS)=O(1)$ を組み合わせる。
+全射性と左側は\cref{thm:contract}。
+右側は\cref{cor:upper}と$d_\cC(\Psi,\cS)\le C_0$を組み合わせ、
+$K=K_++2C_0$とすればよい。
+\end{proof}
+
+
+\begin{corollary}[指定compact集合の収縮と一様な閉球近似]
+\label{cor:based-ball-approximation}
+任意に指定したcompact集合$K_0\Subset X$に対し、
+$\cS(K_0)=\{0\}$となるように\cref{thm:rough}の写像を選べる。
+この選択では加法定数$K$は$K_0$に依存してよい。
+
+いったん$\cS,K$を固定すれば、任意の中心$o\in X$と$A,R>0$に対し、
+ambient距離を制限した閉球
+\[
+ \ov B_{(X,R^{-1}d_g)}(o,A),\qquad
+ \ov B_\cC(R^{-1}\cS(o),A)
+\]
+の間に、基点対を含み歪みが$3K/R$以下の対応が存在する。特に通常のGH距離は
+$3K/(2R)$以下であり、この定数は中心$o$と半径$A$に一様である。
+\end{corollary}
+\begin{proof}
+$\Psi(K_0)$はcompactなので、有限個のcell copiesでその全座標に共通な上界$M$を取れる。
+\Cref{lem:lambda-choice}でさらに$T_*-T_0>M$と選べば、
+$h(u)=f(T_0+u)=0$（$0\le u\le M$）となり、$\cS=H\circ\Psi$は$K_0$を零へ送る。
+
+$F_R=R^{-1}\cS$、$\delta=K/R$と置く。
+$F_R$はsourceの閉$A$-ballをtargetの閉$A$-ballへ送り、歪みは$\delta$以下である。
+Targetの任意の点$y$に対して、全射性から$F_R(z)=y$となる$z$を取ると
+$R^{-1}d_g(o,z)\le A+\delta$である。
+$z$がsource ballの外なら、完備Riemannian manifold上の最短路$o$--$z$を
+距離$AR$で切って得る点$x$を取る。内側なら$x=z$とする。
+いずれも$R^{-1}d_g(x,z)\le\delta$なので、$d_\cC(F_R(x),y)\le\delta$となる。
+従って像は$\delta$-denseである。
+
+両閉球の直積内で
+\[
+ \mathcal R_R=\{(x,y):d_\cC(F_R(x),y)\le\delta\}
+\]
+と置くと、両射影は全射で、基点対$(o,F_R(o))$を含む。
+三角不等式と$F_R$の歪み評価から$\operatorname{dis}\mathcal R_R\le3\delta$である。
+通常のGH距離と対応の歪みの関係により結論を得る。
+ここでは球内のintrinsic length metricへ置き換えていない。
 \end{proof}
 
 \section{ブローダウンと計量付きリンク}
@@ -831,17 +962,19 @@ Metric-IRFA を持つ finite-depth clean torus-cusp space に対し $K<\infty$ �
 
 \begin{corollary}[Quantitative fixed-basepoint blow-down]
 \label{cor:GH}
-任意の $A<\infty$ について
+基点$o$を指定し、$\cS(o)=0$となるように\cref{thm:rough}の写像を選ぶ。
+このとき全ての$A,R>0$について
 \[
  d_{\GH}\!\left(
  \ov B_{(X,R^{-1}d_g)}(o,A),
  \ov B_\cC(0,A)
- \right)=O_A(R^{-1}).
+ \right)\le\frac{3K}{2R}.
 \]
 特に asymptotic cone は subsequenceによらず $\cC$ である。
 \end{corollary}
 \begin{proof}
-Graph of $\cS$ の distortion と net constantはいずれも rescaling後 $O(R^{-1})$。Ball boundaryの $O(R^{-1})$ radial mismatchを吸収する。
+\Cref{cor:based-ball-approximation}を用いる。
+対応は基点対を含むのでpointed convergenceも従う。
 \end{proof}
 
 \subsection{リンク計量の内在的復元}
@@ -868,16 +1001,16 @@ $\cS\circ s$ は identity から bounded distance、$\cS$ は $(1,K)$-rough isom
 \[
  y_j=R_j^{-1}\cS(x_j)\in\cC
 \]
-と置くと、各固定 $A$ について
+と置くと、全ての$A>0$について中心と半径に一様に
 \[
  d_{\GH}\!\left(
  \ov B_{(X,R_j^{-1}d_g)}(x_j,A),
  \ov B_\cC(y_j,A)
- \right)=O_A(R_j^{-1}).
+ \right)\le\frac{3K}{2R_j}.
 \]
 \end{theorem}
 \begin{proof}
-\cref{thm:rough} を scale $R_j^{-1}$ に直すだけである。
+\Cref{cor:based-ball-approximation}を中心$x_j$、scale $R_j$に適用する。
 \end{proof}
 
 \begin{proposition}[Cone basepoint limits]
@@ -941,103 +1074,227 @@ Raw map $\Psi$ と contracted map $\cS$ は一様有界距離にあるので、r
 が決定論的に成立する。従ってまず $R^{-1}\Psi$ について LDP を証明すれば十分である。
 
 
-\begin{lemma}[Exact-support measurable partition]
-\label{lem:exact-support-partition}
-Fixed cutoff transitionを含む compact truncationを $X_{\mathrm{cmp}}$ とする。$X\setminus X_{\mathrm{cmp}}$ は有限個の Borel sets $X_\sigma^\circ$ へ分割でき、各 $X_\sigma^\circ$ は一つの component-labelled face copy $\sigma$ の相対内部を exact support として持つ。すなわち $x\in X_\sigma^\circ$ なら、正の raw coordinates の labels とそれらが属する connected intersection component がちょうど $\sigma$ を定める。
-
-各 $X_\sigma^\circ$ 上で normal angles と residual variablesを積分した coefficient
+\begin{lemma}[深いnormal directionsによる可測分割]
+\label{lem:deep-sector-partition}
+一つの十分大きい $L>\max\{T_0+1,T_{\mathrm{geom}}\}$ を固定する。
+Compact set $X_{\mathrm{cmp}}$ と、非空のcomponent-labelled face copies
+$F\subset D_I$ に対応する有限個のBorel sets $E_F$ により、
+$X$ を可測分割できる。$E_F$ 上では
 \[
- a_\sigma(t)=\int A_\sigma(t,\theta,y)\,d\theta\,d\nu_\sigma(y)
+ t_i\ge L\quad(i\in I),
+ \qquad
+ t_j<L\quad(j\notin I\text{ でそのcollarに属するもの})
 \]
-は一様上方有界である。また $B\Subset\operatorname{relint}Q_\sigma$ を固定すれば、十分大きい $R$ に対し $RB$ 上で、angle/residual variables の一つの compact positive-measure subset 上に $A_\sigma\ge c_B>0$ を一様に取れる。
+であり、$\mathcal U_F(T_0)$ のfull face coordinatesを使える。
+Normal torusとresidual variablesを全て積分したcoefficientは、
+$t_i\ge L$ 上で一様に有界である。
+また $E_F$ 上では
+\begin{equation}
+\label{eq:deep-sector-rate}
+ \cI(\Psi(x))=\sum_{i\in I}t_i(x)+O_L(1),
+\end{equation}
+であり、$I$ 外のraw coordinatesは一様に有界である。
 \end{lemma}
 \begin{proof}
-Active labelsは有限個の continuous truncated depth functions $\chi(t_i)$ の正値条件で決まり、connected intersection componentは component-labelled collar atlasで一意に定まる。従って exact-support sets は有限個の Borel setsであり、wall pointsはその minimal active face copyへ割り当てられる。Compact transitionは $X_{\mathrm{cmp}}$ へ入れる。
+Face copiesは有限個なので、全てのvolume remainder functionsが
+$[L,\infty)$ 上で有界となるように $L$ を選べる。
+各 $x$ に対し $I(x)=\{i:t_i(x)\ge L\}$ とする。
+$L>T_0+1$ なので、$i\in I(x)$ のraw coordinateは
+$\chi(t_i)=t_i-T_0>0$ である。Clean collar compatibilityにより、
+$I(x)$ が非空なら $x$ は対応する一意のcomponent-labelled
+full face collarに属する。Threshold equalityは $\ge L$ 側へ
+割り当てる。これにより有限個のBorel sets $E_F$ を得る。
 
-Upper boundは \eqref{eq:volume-domination} を angle/residual variablesについて積分し、$b_F\in L^1$ と $\lambda_F(F^\circ)<\infty$ を用いれば従う。Lower boundについては \eqref{eq:face-mass-positive} と full support、および $A_\sigma^\infty>0$ almost everywhere より、ある $c,M>0$ に対して
+$I(x)=\varnothing$ の集合では全raw coordinatesが有界である。
+この集合を含むfixed compact truncationを、$\Psi$ のpropernessにより
+取ることができる。このtruncationを $X_{\mathrm{cmp}}$ とし、
+$E_F$ からそれとの交わりを除けば可測分割となる。
+
+Full face densityのnormal torusと全residual space上の積分は
 \[
- E=\{A_\sigma^\infty\ge2c,\ b_\sigma\le M\}
+ \int A_F(t_I,\theta,y)\,d\theta\,d\nu_F(y)
+ \le \mathfrak m_F+
+ \omega_F\!\left(\min_{i\in I}t_i\right)
+ \int b_F(\theta,y)\,d\theta\,d\nu_F(y)
+ \le C_L
 \]
-が正測度を持つように選べる。Inner regularityにより $E$ の正測度 compact subset $K$ を取る。$B$ は relative interiorに compactly contained するため、$RB$ では全 active depthsが一様に $\to\infty$ し、十分大きい $R$ では $\omega_\sigma(\min t_i)M\le c$ である。従って \eqref{eq:volume-domination} から $A_\sigma\ge c$ on $K$ が一様に従う。
+で抑えられる。$E_F$ に対応するresidual subsetへ積分を制限しても、
+非負のdensityの上界は保たれる。
+$I$ 外のraw coordinatesは $L$ にのみ依存する定数以下であり、
+active coordinatesについては $\chi(t_i)=t_i-T_0$ だから
+\eqref{eq:deep-sector-rate} を得る。
+一部のnormal coordinatesだけがcutoff transitionにある点は、
+この分割のresidual側に含まれる。それらを一括してcompact setへ
+入れる必要はない。
 \end{proof}
 
-\begin{lemma}[Cellwise Laplace bounds]
+\begin{lemma}[Compact upper bound と ambient open lower bound]
 \label{lem:cellwise-LDP}
-Component-labelled face copy $\sigma$ と、\cref{lem:exact-support-partition} の exact-support sector $X_\sigma^\circ$ を固定する。
-$G\subset\operatorname{relint}Q_\sigma$ を open、$K\subset Q_\sigma$ を compact とする。この sectorに restricted した measureを $\mu_\sigma$ と書けば
+Volume-IRFAの下で、coneのcompact set $K$ とopen set $G$ に対して
 \[
- \liminf_{R\to\infty}\frac1R\log
- \mu_\sigma\{R^{-1}\Psi\in G\}
- \ge-\inf_G\cI,
+ \limsup_{R\to\infty}\frac1R
+ \log\mu\{R^{-1}\Psi\in K\}
+ \le-\inf_K\cI,
 \]
 \[
- \limsup_{R\to\infty}\frac1R\log
- \mu_\sigma\{R^{-1}\Psi\in K\}
- \le-\inf_K\cI.
+ \liminf_{R\to\infty}\frac1R
+ \log\mu\{R^{-1}\Psi\in G\}
+ \ge-\inf_G\cI
 \]
-同じ upper bound は $K$ が cell boundaryを含む場合にも、boundaryを lower-dimensional face copiesへ割り当てる有限 measurable partitionの下で成立する。
+が成り立つ。下界のopen setはcone全体の位相に関してopenであり、
+measureをexact-support sectorへ制限していない。
 \end{lemma}
 \begin{proof}
-\Cref{lem:exact-support-partition} の partitionを用いる。Face collarで normal anglesと residual variablesを積分して
+まずupper boundを示す。$0\in K$ の場合は
+$\inf_K\cI=0$ と $\mu(X)<\infty$ から明らかである。
+$0\notin K$ とする。$\Psi(X_{\mathrm{cmp}})$ は有界なので、
+十分大きい $R$ ではcompact truncationは事象に寄与しない。
+\Cref{lem:deep-sector-partition} の一つの $E_F$、
+$F\subset D_I$、$k=|I|$ を固定する。
+$R^{-1}\Psi(x)\in K$ なら
 \[
- a_\sigma(t)=\int A_\sigma(t,\theta,y)\,d\theta\,d\nu_\sigma(y)
+ L\le t_i\le C_KR+C_L\quad(i\in I),
+ \qquad
+ \sum_{i\in I}t_i\ge R\inf_K\cI-C_L.
 \]
-と置く。Volume-IRFA の $L^1$ dominationから、$\min t_i\ge T_0$ で $a_\sigma(t)$ は一様有界で、relative interiorの深部では正の有限極限 $a_\sigma^\infty$ を持つ。
+従ってfull residual spaceで積分したcoefficientの一様上界より
+\[
+ \mu\{x\in E_F:R^{-1}\Psi(x)\in K\}
+ \le C_{K,L}(1+R)^k
+       \exp\{-R\inf_K\cI+C_L\}.
+\]
+ここではcutoffの逆関数を用いる変数変換をしていない。
+Normal variablesのpreimageが上のbounded boxに入り、
+そのboxのEuclidean volumeが $O((1+R)^k)$ であることだけを使った。
+有限個のface copiesについて和し、対数を $R$ で割れば上界を得る。
 
-Upper boundでは $t=Ru+O(1)$ と変数変換し、$a_\sigma(t)\le C$ と finite-dimensional volume growthを用いて
+次に $u\in G\setminus\{0\}$ を固定し、$u$ のminimal
+component-labelled faceを $Q_\sigma$ とする。
+対応するconnected faceを $F\subset D_I$、$k=|I|$ と書く。
+$\lambda_F$ は非零finite Radon measureなので、
+$\lambda_F(C_F)>0$ となるcompact set $C_F\Subset X_F$ を取れる。
+Continuityにより
 \[
- \mu_\sigma\{R^{-1}\Psi\in K\}
- \le C R^{\dim Q_\sigma}
- \exp\{-R(\inf_K\cI-o(1))\}.
+ M_F:=\sup_{y\in C_F}|\Psi_F(y)|<\infty.
 \]
-Lower boundでは $u_0\in G\cap\operatorname{relint}Q_\sigma$ を取り、$u_0$ の小さい box $B\Subset G$ を選ぶ。十分大きい $R$ では $RB$ は deep exact-support sectorに入り、$a_\sigma(t)\ge c_B>0$ on a positive-measure compact subset of angle/residual variables. したがって
+$u$ の十分小さいclosed normal box
+$B\Subset\operatorname{relint}Q_\sigma$ を選び、
+そのcone内のあるfixed neighborhoodが $G$ に含まれるようにする。
+
+$t_i=T_0+Rv_i$、$v\in B$ とし、residual pointを $C_F$ 内に取る。
+十分大きい $R$ では全ての $t_i$ が $T_0+1$ より大きい。
+Clean quotient-in-stages compatibilityと
+\eqref{eq:clean-recursive-map} を繰り返し用いると
 \[
- \mu_\sigma\{R^{-1}\Psi\in B\}
- \ge c R^{\dim Q_\sigma}
- \exp\{-R(\sup_B\cI+o(1))\}.
+ \Psi(x)=Rv+\iota_F\Psi_F(\pi_F(x)).
 \]
-$B\downarrow\{u_0\}$、さらに $u_0$ を infimumへ近づける。Cell boundary pointsはその exact supportを持つ lower-dimensional labelled face sectorへ割り当てれば同じ argumentを適用できる。
+同じface copyのnormal--residual product coordinates内で
+residual radial segmentを取れば
+\[
+ d_{\cC}(R^{-1}\Psi(x),v)\le M_F/R.
+\]
+従って、この全normal torusとfixed residual set上の点は、
+十分大きい $R$ に対して全て $\{R^{-1}\Psi\in G\}$ に入る。
+Residual raw coordinatesが正であってもよく、
+その場合のimageは $Q_\sigma$ を含むhigher face内にある。
+
+Volume-IRFAのdominationより
+\[
+ \left|
+ \int_{(S^1)^I\times C_F}A_F(t_I,\theta,y)\,
+           d\theta\,d\nu_F(y)-\lambda_F(C_F)
+ \right|
+ \le
+ \omega_F\!\left(\min_{i\in I}t_i\right)
+ \int_{(S^1)^I\times C_F}b_F(\theta,y)\,
+           d\theta\,d\nu_F(y).
+\]
+右辺は $v\in B$ に一様に $0$ へ収束するので、
+左のintegrated coefficientは十分大きい $R$ に対して
+$\lambda_F(C_F)/2$ 以上である。従って
+\[
+ \mu\{R^{-1}\Psi\in G\}
+ \ge
+ \frac{\lambda_F(C_F)}2 e^{-kT_0}R^k
+ \int_B e^{-R\sum_{i\in I}v_i}\,dv
+ \ge c_B R^k e^{-R\sup_B\cI}.
+\]
+$B$ を $u$ へ縮めると下界 $-\cI(u)$ を得る。
+
+$0\in G$ の場合は、$\mu(C)>0$ となる一つのfixed compact
+$C\subset X$ を取る。$\Psi(C)$ は有界なので、
+十分大きい $R$ では $R^{-1}\Psi(C)\subset G$ であり、rate $0$
+の下界を得る。ここで $C$ を $\Psi^{-1}(0)$ に含める必要はない。
+最後に $u\in G$ 全体についてinfimumを取る。
 \end{proof}
 
 \begin{lemma}[Exponential tightness]
 \label{lem:exp-tight}
-ある $a,C>0$ が存在し、$L$ が十分大きいとき
+ある $a,C,L_0>0$ が存在して、$L\ge L_0$、$R\ge1$ に対し
 \[
- \mu\{\,|\Psi|\ge LR\,\}\le C e^{-aLR}
+ \mu\{|\Psi|\ge LR\}\le Ce^{-aLR}
 \]
-が $R\ge1$ に一様に成立する。
+が成り立つ。
 \end{lemma}
 \begin{proof}
-Finite face sectorsへ分ける。各 sectorでは $|\Psi|\le C(1+|t|)$ かつ $\sum_i t_i\ge c|t|$ であり、integrated volume coefficientは一様 boundedである。従って
+Finite cone complexとpositive weightsにより、
+$|\Psi(x)|\ge LR$ なら、あるlabel $i$ について
+$\chi(t_i(x))\ge a_0LR$ となる $a_0>0$ が存在する。
+$L_0$ を大きくすれば、このcoordinateはcutoff transitionの外にあり、
+$t_i\ge a_0LR+T_0$ を満たす。One-face volume-IRFAをnormal torusと
+全residual spaceで積分すると、十分深い $t_i$ では
 \[
- \int_{|t|\ge cLR}e^{-\sum t_i}a_\sigma(t)\,dt
- \le C(1+LR)^N e^{-aLR}.
+ \int A_i(t_i,\theta,y)\,d\theta\,d\nu_i(y)\le C_i
 \]
-Finite sumを取る。
+であるから
+\[
+ \mu\{t_i\ge a_0LR+T_0\}
+ \le C_i\int_{a_0LR+T_0}^{\infty}e^{-t_i}\,dt_i
+ \le C_i'e^{-a_0LR}.
+\]
+有限個のlabelsについてunion boundを取ればよい。
 \end{proof}
 
 \begin{theorem}[Volume large deviations]
 \label{thm:LDP}
-Metric-IRFA と volume-IRFA の下で
+Metric-IRFAとvolume-IRFAの下で
 \[
  \nu_R=(R^{-1}\cS)_*\frac{\mu}{\mu(X)}
 \]
-は speed $R$、good rate function $\cI$ の large deviation principleを満たす。すなわち Borel $A\subset\cC$ に対し
+はspeed $R$、good rate function $\cI$ のlarge deviation principleを
+満たす。すなわちBorel $A\subset\cC$ に対し
 \[
  -\inf_{A^\circ}\cI
  \le\liminf_{R\to\infty}\frac1R\log\nu_R(A)
  \le\limsup_{R\to\infty}\frac1R\log\nu_R(A)
- \le-\inf_{\ov A}\cI.
+ \le-\inf_{\overline A}\cI.
 \]
 \end{theorem}
 \begin{proof}
-$\Psi$ による scaled pushforwardについて、\cref{lem:exact-support-partition} の finite labelled decomposition、\cref{lem:cellwise-LDP}、\cref{lem:exp-tight} を組み合わせると standard weak-LDP plus exponential-tightness argumentにより full LDPを得る（有限次元 Laplace principleの一般的背景については \cite{DemboZeitouni}）。
-Cone pointを含む open setの lower boundは、固定 compact coreが正の測度を持つことから rate $0$ で直ちに従う。
-最後に \eqref{eq:exp-equivalence} により、$R^{-1}\Psi$ と $R^{-1}\cS$ の images は deterministic distance $O(R^{-1})$ 以内にある。Open/closed setsを $O(R^{-1})$-neighborhoodで挟めば同じ rate functionが $\cS$ にも移る。
+まずraw mapを使う。
+\Cref{lem:cellwise-LDP} はcompact upper boundと全ambient open setsの
+lower boundを与える。\Cref{lem:exp-tight} によりclosed set $F$ の
+upper boundも得られる。実際、
+\[
+ \mu\{R^{-1}\Psi\in F\}
+ \le
+ \mu\{R^{-1}\Psi\in F\cap\overline B_{\cC}(0,L)\}
+ +Ce^{-aLR}
+\]
+にcompact upper boundを適用し、最後に $L\to\infty$ とすればよい。
+これがraw scaled pushforwardのfull LDPである。
+確率測度へのnormalizationは対数を $R$ で割った極限を変えない。
+
+最後に\eqref{eq:exp-equivalence}を用いる。
+任意のfixed $\varepsilon>0$ に対し、十分大きい $R$ では二つの
+scaled imagesの距離が $\varepsilon$ 未満となる。
+Open setsのinner neighborhoodsとclosed setsのouter neighborhoodsを
+用いてraw mapのLDPで挟み、最後に $\varepsilon\downarrow0$ とする。
+$\cI$ はgood rate functionなので同じboundsが $\cS$ にも移る。
 \end{proof}
 
 \begin{corollary}
-$\nu_R\Rightarrow\delta_0$。また
+$\nu_R\Rightarrow\delta_0$。Boundaryが非空なら、さらに
 \[
  \lim_{R\to\infty}\frac1R\log\mu(X\setminus B(o,R))
  =-\min_i c_i^{-1/2}.
@@ -1154,10 +1411,15 @@ Full measure $\lambda_F$ はさらに residual KE geometryを保持し、一般�
 \section{厳密な裾漸近と Busemann 幾何}
 \label{sec:tails}
 
+本節ではboundary verticesが非空の場合を扱う。
+Boundary depthが $0$ のcompact空間では、tailは十分大きい半径で $0$ となる。
+
 Busemann function と compact-residual calibration は metric-IRFA のみから従う。これに対し exact metric-ball coefficient、joint law、distance Laplace transform では、one-face volume remainder が residual infinity と同時に現れるため、以下では \cref{def:exp-volumeIRFA} の exponential volume-IRFA を仮定する。この追加仮定は \cref{sec:measure} の LDP や face massesには不要であり、K\"ahler--Einstein caseでは \cref{prop:RZ} により自動的に満たされる。
 
 \subsection{カスプ Busemann 関数}
 $i$-th levelを $H_i(T)=\{t_i=T\}$ とする。Abstract weightsを残し $h_i=c_i^{-1/2}$、$h_*=\min_i h_i$ と置く。
+Collar外の点に対して $t_i(p)$ を用いるときは値 $T_0$ と約束する。
+Full collarの有限側の境界は $H_i(T_0)$ なので、この延長は連続である。
 
 \begin{lemma}[Level crossing と separation]
 \label{lem:level}
@@ -1166,37 +1428,49 @@ $i$-th levelを $H_i(T)=\{t_i=T\}$ とする。Abstract weightsを残し $h_i=c_
 \begin{equation}
 \label{eq:level-separation}
  \left|d_g(H_i(T_1),H_i(T_2))-\sqrt{c_i}(T_2-T_1)\right|
- \le C\int_{T_1}^{T_2}\widetilde\eta(s)\,ds,
+ \le C\int_{T_1}^{T_2}\eta(s)\,ds,
 \end{equation}
-ここで $\widetilde\eta=\eta+\widetilde\varepsilon$ は非増加可積分関数である。
 従って
 \begin{align}
  d(p,H_i(T_2))
  &\ge d(p,H_i(T_1))
    +\sqrt{c_i}(T_2-T_1)
-   -C\int_{T_1}^{T_2}\widetilde\eta,\label{eq:level-cross-lower}\\
+   -C\int_{T_1}^{T_2}\eta,\label{eq:level-cross-lower}\\
  d(p,H_i(T_2))
  &\le d(p,H_i(T_1))
    +\sqrt{c_i}(T_2-T_1)
-   +C\int_{T_1}^{T_2}\eta +o(1)\label{eq:level-cross-upper}
+   +C\int_{T_1}^{T_2}\eta\label{eq:level-cross-upper}
 \end{align}
-が成り立つ。最後の $o(1)$ は $H_i(T_1)$ の近似最近点の選択誤差で、任意に小さくできる。
+が成り立つ。これらの比較は一面のmetric-IRFAだけから従う。
 \end{lemma}
 \begin{proof}
-Crossing statementは $t_i$ の連続性から従う。Lower separationには contracting skeletal mapの $i$-th coordinateを使う。\Cref{lem:lambda-choice} により
+Crossing statementは延長した $t_i$ の連続性から従う。
+Metric-IRFAより $g\ge(1-\eta(t_i))g_i^\times$ だから、full $i$-sector上で
+\[
+ |dt_i|_{g^{-1}}\le \frac{1}{\sqrt{c_i(1-\eta(t_i))}}.
+\]
+従って、collar上で
+\[
+ \Phi_i(x)=\sqrt{c_i}\int_{T_0}^{t_i(x)}\sqrt{1-\eta(s)}\,ds
+\]
+と置き、collar外で $0$ とすれば、$\Phi_i$ は連続かつ局所Lipschitzで
+$|d\Phi_i|_{g^{-1}}\le1$ almost everywhereである。任意のrectifiable curveに沿って積分することにより、$\Phi_i$ は $X$ 全体で $1$-Lipschitzとなる。特に
 \[
  d_g(H_i(T_1),H_i(T_2))
- \ge \sqrt{c_i}\bigl(f(T_2)-f(T_1)\bigr)
- \ge \sqrt{c_i}(T_2-T_1)-C\int_{T_1}^{T_2}\widetilde\varepsilon.
+ \ge\sqrt{c_i}\int_{T_1}^{T_2}\sqrt{1-\eta(s)}\,ds
+ \ge\sqrt{c_i}(T_2-T_1)-C\int_{T_1}^{T_2}\eta.
 \]
-Upper separationは residual pointと normal angleを固定した radial pathを用い、metric-IRFAからその長さを
-$\sqrt{c_i}(T_2-T_1)+C\int_{T_1}^{T_2}\eta$ で抑える。
+逆向きは residual pointを固定したnormal-horizontal radial pathを用いる。
+そのproduct speedは $\sqrt{c_i}$ なので、metric-IRFAから長さは
+$\sqrt{c_i}\int_{T_1}^{T_2}\sqrt{1+\eta(s)}\,ds$ 以下である。
+これは $\sqrt{c_i}(T_2-T_1)+C\int_{T_1}^{T_2}\eta$ で抑えられる。
 
 任意の $p$--$H_i(T_2)$ pathは最初の $H_i(T_1)$ crossing $z$ を持つので
 \[
  L\ge d(p,H_i(T_1))+d(H_i(T_1),H_i(T_2)).
 \]
 Infimumを取れば \eqref{eq:level-cross-lower}。逆向きには $H_i(T_1)$ 上の $p$ に対する近似最近点から radial pathを延長して \eqref{eq:level-cross-upper} を得る。
+近似最近点の選択誤差は最後に $0$ へ送る。最近点の存在や、その残余位置の一様有界性は必要ない。
 \end{proof}
 
 \begin{theorem}[Cusp Busemann functions]
@@ -1209,7 +1483,7 @@ Infimumを取れば \eqref{eq:level-cross-lower}。逆向きには $H_i(T_1)$ �
 \begin{equation}
 \label{eq:busemann-depth}
  b_i(x)+\sqrt{c_i}t_i(x)
- =O\left(\int_{t_i(x)}^\infty\widetilde\eta(s)\,ds\right)
+ =O\left(\int_{t_i(x)}^\infty\eta(s)\,ds\right)
 \end{equation}
 が成り立つ。
 \end{theorem}
@@ -1217,18 +1491,19 @@ Infimumを取れば \eqref{eq:level-cross-lower}。逆向きには $H_i(T_1)$ �
 $a_p(T)=d(p,H_i(T))-\sqrt{c_i}T$ と置く。\Cref{lem:level} から、$T_2>T_1$ sufficiently large なら
 \[
  |a_p(T_2)-a_p(T_1)|
- \le C\int_{T_1}^{T_2}\widetilde\eta(s)\,ds+o(1).
+ \le C\int_{T_1}^{T_2}\eta(s)\,ds.
 \]
-近似最近点誤差を0へ送り、$\widetilde\eta\in L^1$ を用いると $a_p(T)$ は Cauchyである。各 $a_{(\cdot)}(T)$ は $1$-Lipschitzだから極限も $1$-Lipschitz。
+$\eta\in L^1$ を用いると $a_p(T)$ はCauchyで、有限な実数へ収束する。
+各 $a_{(\cdot)}(T)$ は $1$-Lipschitzだから極限も $1$-Lipschitz。
 
-$x\in H_i(t)$ から $H_i(T)$ へ residual pointと angleを固定した radial pathを取ると
+$x\in H_i(t)$ から $H_i(T)$ へ residual pointを固定したnormal-horizontal radial pathを取ると
 \[
  d(x,H_i(T))\le \sqrt{c_i}(T-t)+C\int_t^T\eta.
 \]
-一方 contracting coordinateは
+一方、上で構成した $\Phi_i$ は
 \[
- d(x,H_i(T))\ge \sqrt{c_i}\bigl(f(T)-f(t)\bigr)
- \ge\sqrt{c_i}(T-t)-C\int_t^T\widetilde\varepsilon.
+ d(x,H_i(T))\ge\sqrt{c_i}\int_t^T\sqrt{1-\eta(s)}\,ds
+ \ge\sqrt{c_i}(T-t)-C\int_t^T\eta.
 \]
 $T\to\infty$ として \eqref{eq:busemann-depth} を得る。この比較は one-face full sectorで residual depthsに一様である。
 \end{proof}
@@ -1261,12 +1536,12 @@ Upper boundを示す。大きい固定 level $A$ を取り、$z_A\in H_i(A)$ を
 \[
  D_{A,K}:=\sup_{y\in K}d_{g_i}(\pi_i(z_A),y)+1<\infty.
 \]
-$x\in H_i(T)$、$\pi_i(x)\in K$ とする。Residual geodesicを $[A,T]$ 上で constant speed $\le D_{A,K}/(T-A)$ に parametrizationし、$z_A$ の normal angleから connection-horizontalに liftしながら $t_i=s$ とする。Endpointの normal angleが $x$ と異なる場合は depth $T$ の torus fibre内で補正する。その cost は $O(e^{-T})$ である。Exact product metricでこの diagonal pathの長さは
+$x\in H_i(T)$、$\pi_i(x)\in K$ とする。長さ $\le D_{A,K}$ のresidual curveを $[A,T]$ 上でconstant speedにparametrizeし、$z_A$ からconnection-horizontalにliftしながら $t_i=s$ とする。Full sectorのprincipal束条件により、残余曲線の全区間でこのliftを取れる。Endpointのnormal angleが $x$ と異なる場合はdepth $T$ のtorus fibre内で補正する。そのcostは $O(e^{-T})$ である。Exact product metricでこのdiagonal pathの長さは
 \[
  \sqrt{c_i(T-A)^2+D_{A,K}^2}
  =\sqrt{c_i}(T-A)+o_{T\to\infty}(1)
 \]
-で、$o(1)$ は $K$ 上一様である。
+以下で、$o(1)$ は $K$ 上一様である。
 Metric-IRFA errorの積分は正確に
 \[
  C\sqrt{c_i+\left(\frac{D_{A,K}}{T-A}\right)^2}
@@ -1284,12 +1559,26 @@ Metric-IRFA errorの積分は正確に
  \le d(o,H_i(A))-\sqrt{c_i}A+\epsilon_A
  +C\int_A^\infty\eta.
 \]
-まず $T\to\infty$、次に $A\to\infty$ とし、Busemann definition、$\epsilon_A\to0$、$\eta\in L^1$ を用いれば右辺は $b_i(o)$ へ収束する。Lower boundと合わせて \eqref{eq:calibration} を得る。
+まず $A$ を固定して $T\to\infty$、次に $A\to\infty$ とする。
+$D_{A,K}$ が $A$ とともに発散しても、この順序なら上の評価に影響しない。
+Busemann definition、$\epsilon_A\to0$、$\eta\in L^1$ を用いれば右辺は $b_i(o)$ へ収束する。Lower boundと合わせて \eqref{eq:calibration} を得る。
 \end{proof}
 
 \subsection{残余方向への逃避の一様制御}
 Exact coefficientを得るには、vertex normal depthを深くしたまま residual pointだけがさらに無限遠へ逃げる部分を一様に除く必要がある。
-Residual skeletal radiusを $\rho_i^{\rm res}$ と書く。 $V_i$ は link neighborhood と同時に、compact core外で $\cS(x)/|\cS(x)|\in V_i$ を満たす点の集合も表す。
+ここではraw mapで残余半径を $\rho_i^{\rm res}(y)=|\Psi_i(y)|$ と定め、
+full $i$-sectorではそのpullbackも同じ記号で表す。
+Propernessより $K_M=\{\rho_i^{\rm res}\le M\}\subset X_i$ はcompactである。
+$V_i$ はlink neighborhoodと同時に、$\Psi(x)\ne0$ かつ
+$\Psi(x)/|\Psi(x)|\in V_i$ を満たす点の集合も表す。
+Vertexの十分小さい近傍はそのopen starに含まれるから、$|\Psi|$ が十分大きいこの集合はfull $i$-sectorに入り、
+\[
+ |\Psi(x)|^2=c_i\chi(t_i(x))^2+\rho_i^{\rm res}(x)^2.
+\]
+従って $V_i$ を狭くすれば、任意に小さい固定 $\delta_0>0$ に対して
+$\rho_i^{\rm res}\le\delta_0 t_i$ とできる。
+Raw mapとcontracted mapの有界距離差により、actual tail上で両angular mapsの距離は $O(R^{-1})$ となる。
+従って以下で得るangular極限は $\cS$ を用いても同じである。
 
 \begin{lemma}[Residual exponential tail]
 \label{lem:residual-exp}
@@ -1302,12 +1591,19 @@ Residual skeletal radiusを $\rho_i^{\rm res}$ と書く。 $V_i$ は link neigh
 が成り立つ。
 \end{lemma}
 \begin{proof}
-Residual depthが $0$ なら residual spaceは compact であり、$M$ が十分大きいと左辺は $0$ なので明らかである。正の depthでは、\cref{def:volumeIRFA} の recursive compatibilityにより residual spaceは boundary depthが一つ低い metric/volume-IRFA spaceである。\Cref{thm:LDP} の tail exponentを residual basepointで適用すると
+Residual depthが $0$ ならraw mapは原点へ写り、主張は明らかである。
+正のdepthでは、\cref{def:volumeIRFA} のrecursive compatibilityにより、
+$\lambda_i$ 自身が各残余一面collarでvolume-IRFAを満たす。
+そのnormal depthを $s_j$ とすると、十分大きい $L$ について、角と全残余変数を積分した係数は一様有界であり
 \[
- \limsup_{M\to\infty}\frac1M\log
- \lambda_i\{\rho_i^{\rm res}\ge M\}<0.
+ \lambda_i\{s_j\ge L\}
+ \le C_j\int_L^\infty e^{-s}\,ds=C_je^{-L}.
 \]
-その負の値の絶対値より小さい $\kappa_0$ を取り、有限な初期区間を定数 $C_0$ に吸収する。
+これは $A_j^\infty$ と $b_j$ の可積分性、および $\omega_j(s)\to0$ から従う。
+Finite weighted orthants上では、raw radiusが $M$ 以上なら、少なくとも一つのnormal depthが
+$s_j\ge aM-C$ を満たす。ここで $a>0,C<\infty$ は有限なweightsとcutoffだけに依存する。
+上の評価を有限個の $j$ について和すれば結論を得る。
+この証明はLDPや残余計量球のtail公式を用いない。
 \end{proof}
 
 \begin{lemma}[Vertex sector tightness under exponential volume remainder]
@@ -1326,9 +1622,35 @@ Metric-IRFA と exponential volume-IRFA を仮定する。$V_i$ を link 上の 
 $O(e^{-(h_*+\delta)R})$ for some $\delta>0$ である。
 \end{lemma}
 \begin{proof}
-まず minimizing vertices の補集合を考える。Finite spherical link上で $\cI$ の minima は $h_i=h_*$ を満たす vertices のみにあり、compact complementでは $\cI\ge h_*+2\delta$ for some $\delta>0$。\Cref{thm:LDP} と bounded-additive cone theoremにより tail angular complementは $O(e^{-(h_*+\delta)R})$ である。
+まずminimizing verticesの近傍の補集合を考える。
+Finite spherical link上で $\cI$ のminimaは $h_i=h_*$ を満たすverticesのみにあり、
+そのcompact complementでは $\cI\ge h_*+2\delta$ for some $\delta>0$。
+\Cref{cor:upper} と三角不等式から
+\[
+ d(o,x)\le |\Psi(x)|+C_o.
+\]
+従ってactual tailでは $|\Psi(x)|\ge R-C_o$ であり、上のangular complementでは
+$\cI(\Psi(x))\ge(h_*+2\delta)(R-C_o)$ となる。
 
-$i$-sectorでは cone coordinatesを normal depth $t$ と residual radius $r=\rho_i^{\rm res}$ で書く。$V_i$ を十分小さく取れば $r\le\delta_0 t$ が成立する。\Cref{thm:rough} により
+十分深い固定cut $L$ を取り、$I=\{j:t_j\ge L\}$ とconnected face copyによって領域を有限分割する。
+$I$ 外のraw depthsは有界なので
+$\sum_{j\in I}t_j\ge\cI(\Psi)-C_L$ であり、$R$ が十分大きいtailでは $I\ne\varnothing$ である。
+$L$ を大きく選べば、volume-IRFAにより各sectorの角・全残余変数を積分した係数は一様有界である。
+従って $|I|=k$ のsectorの寄与は、ある固定 $N$ に対して
+\[
+ C\int_{\substack{t_j\ge L\\
+       \sum_{j\in I}t_j\ge(h_*+2\delta)R-C}}
+       e^{-\sum_{j\in I}t_j}\prod_{j\in I}dt_j
+ \le C'(1+R)^N e^{-(h_*+2\delta)R}
+ =O(e^{-(h_*+\delta)R}).
+\]
+有限和を取れば補集合の主張を得る。Bounded cutoff領域は残余側に含めており、
+深い別方向があるtransition領域をcompactとみなす必要はない。
+ここでもLDPの下界やcontracting mapによる距離下界は用いていない。
+
+$i$-sectorではnormal depthを $t$、residual radiusを $r=\rho_i^{\rm res}$ と書く。
+$V_i$ を十分小さく取れば $r\le\delta_0t$ が成立する。
+上の $|\Psi|\ge R-C_o$ と $\chi(t)=t-T_0$ により
 \[
  \sqrt{c_it^2+r^2}\ge R-C
 \]
@@ -1342,13 +1664,19 @@ $i$-sectorでは cone coordinatesを normal depth $t$ と residual radius $r=\rh
 実際
 $h_i\sqrt{c_it^2+r^2}=\sqrt{t^2+r^2/c_i}\le t+C r^2/t$ であり、$r\le\delta_0t$ により $Cr^2/t\le(\kappa_0/2)r$ とできる。
 
-Volume-IRFA densityを leading part と error part に分ける。Leading partを normal anglesで積分すると正確に $e^{-t}dt\,d\lambda_i$ 型であり、Residual annuli $m\le r<m+1$ に \cref{lem:residual-exp} を適用し、\eqref{eq:normal-residual-linear} を用いて normal $t$ を積分すると各 shellの寄与は
+Volume-IRFA densityをleading partとerror partに分ける。
+Leading partをnormal anglesで積分すると正確に $e^{-t}dt\,d\lambda_i$ 型である。
+Residual annulus $m\le r<m+1$ では \eqref{eq:normal-residual-linear} より
+$t\ge h_iR-C-\kappa_0(m+1)/2$ となる。
+Normal積分の下端が $T_0$ より小さい場合も、下端を $T_0$ に上げると積分は減るので、
+\cref{lem:residual-exp} と合わせて各shellの寄与は
 \[
  Ce^{-h_iR}e^{-\kappa_0m/2}
 \]
 以下である。
 
-Error partには exponential volume-IRFA を用いる。$\nu=\nu_{\mathrm{vol}}>0$ とすると、residual variablesを全て積分した後
+Error partにはexponential volume-IRFAを用いる。
+$\nu=\nu_{\mathrm{vol}}>0$ とすると、その絶対値は、normal anglesと全残余変数を積分した後
 \[
  C e^{-(1+\nu)t}\,dt
 \]
@@ -1369,14 +1697,20 @@ Error partには exponential volume-IRFA を用いる。$\nu=\nu_{\mathrm{vol}}>
  \le C'\exp\!\left(-\bigl((1+\nu)a_i(\delta_0)-h_i\bigr)R\right)
  \longrightarrow0.
 \]
-Leading shellsを $m\ge M-1$ について和し、limsupを取れば \eqref{eq:vertex-tight} を得る。Finite boundary depthのため residual inductionで現れる finitely many constantsの最小・最大を取れば一様な $\kappa,C$ が得られる。
+Leading shellsを $m\ge M-1$ について和し、まず $R\to\infty$ のlimsupを取れば
+\eqref{eq:vertex-tight} を得る。Verticesは有限個なので、定数の最小・最大を取れば
+全 $i$ に共通な $\kappa,C,M_0$ とできる。
 \end{proof}
 
 \subsection{計量球の厳密な裾漸近}
 $V_*:=\{i:h_i=h_*\}$ とし
 \[
- \mathfrak w_i(o):=\mathfrak m_i e^{h_i b_i(o)}.
+ \mathfrak w_i(o):=\mathfrak m_i e^{h_i b_i(o)},
+ \qquad
+ W(o):=\sum_{i\in V_*}\mathfrak w_i(o)
 \]
+と置く。$b_i(o)\in\RR$ と $0<\mathfrak m_i<\infty$ より、これらの重みは正かつ有限である。
+また $|\log\mathfrak w_i(p)-\log\mathfrak w_i(q)|\le h_i d(p,q)$ だから、基点に連続に依存する。
 以下では $B(o,R)=\{x:d(o,x)<R\}$ を開球とする。
 
 \begin{theorem}[Exact tail]
@@ -1390,30 +1724,58 @@ Metric-IRFA と exponential volume-IRFA の下で
 さらに tail で条件づけた angular distribution は
 \[
  \sum_{i\in V_*}
- \frac{\mathfrak w_i(o)}{\sum_j\mathfrak w_j(o)}\,\delta_{v_i}
+ \frac{\mathfrak w_i(o)}{W(o)}\,\delta_{v_i}
 \]
 へ弱収束する。
 \end{theorem}
 \begin{proof}
-$V_i$ を \cref{lem:vertex-tightness} の pairwise disjoint neighborhoodsとする。その補集合は $o(e^{-h_*R})$ である。
-$i\in V_*$ を固定する。Residual compact truncation
-$K_M=\{\rho_i^{\rm res}\le M\}$ 上では \cref{lem:calibration} により
-\[
- d(o,x)=\sqrt{c_i}t_i+b_i(o)+o_M(1)
-\]
-が $t_i\to\infty$ で一様に成立する。従って $d(o,x)\ge R$ は
-\[
- t_i\ge h_i(R-b_i(o))+o_M(1)
-\]
-と同値である。Volume-IRFA の one-face densityを normal variableで積分し、$R\to\infty$ とすると
-\[
- e^{-h_iR+h_ib_i(o)}\lambda_i(K_M)(1+o_M(1))
-\]
-を得る。
+$V_i$ を \cref{lem:vertex-tightness} のpairwise disjoint neighborhoodsとする。
+その和集合の補集合は $o(e^{-h_*R})$ である。
+測度の分割にはこれらのangular setsを用いるため、複数の一面collarに属する点も高々一回数える。
 
-一方 \cref{lem:vertex-tightness} により
-$e^{h_iR}$ 倍した $\rho_i^{\rm res}>M$ の寄与の limsup は $Ce^{-\kappa M}$ 以下である。まず $R\to\infty$、次に $M\to\infty$ として
-$\lambda_i(K_M)\to\mathfrak m_i$ を用いる。$i\notin V_*$ の vertex sectorは $e^{-h_iR}=o(e^{-h_*R})$。有限和を取って主式を得る。Angular distributionは同じ sector decompositionを total tailで正規化すれば従う。
+任意のvertex $i$ と $M<\infty$ を固定し、$K_M=\{\rho_i^{\rm res}\le M\}$ とする。
+\Cref{cor:upper} より、full $i$-sectorの $\pi_i^{-1}(K_M)$ では
+$d(o,x)\le\sqrt{c_i}t_i+C_M$ である。
+従ってそのactual tailでは、$R$ が十分大きければ $t_i\ge h_iR/2$ となる。
+\Cref{lem:calibration} により
+\[
+ \epsilon_R:=
+ \sup_{\substack{t_i(x)\ge h_iR/2\\\pi_i(x)\in K_M}}
+ \left|d(o,x)-\sqrt{c_i}t_i(x)-b_i(o)\right|
+ \longrightarrow0.
+\]
+$L_R^\pm=h_i(R-b_i(o)\pm\epsilon_R)$ と置く。
+$K_M$ 上で $t_i\to\infty$ とすれば方向は $v_i$ へ一様に近づくので、
+十分大きい $R$ についてfull $i$-sector内で
+\begin{align*}
+ \{t_i\ge L_R^+,\ \pi_i\in K_M\}
+ &\subset \{d(o,x)\ge R\}\cap V_i\cap\{\pi_i\in K_M\}\\
+ &\subset \{t_i\ge L_R^-,\ \pi_i\in K_M\}
+\end{align*}
+が成り立つ。この包含には $d(o,x)$ のnormal方向の単調性を仮定しない。
+
+One-face densityを積分すると、$\nu=\nu_{\mathrm{vol}}$ に対して
+\[
+ \mu\{t_i\ge L,\ \pi_i\in K_M\}
+ =e^{-L}\lambda_i(K_M)+O(e^{-(1+\nu)L}).
+\]
+誤差の定数は一面collarの支配関数 $b_{\{i\}}$ の全残余 $L^1$ normで抑えられ、$M$ に依存しない。
+上の二つの包含へ適用して $R\to\infty$ とすると
+\[
+ \lim_{R\to\infty}e^{h_iR}
+ \mu\bigl(\{d(o,x)\ge R\}\cap V_i\cap\{\pi_i\in K_M\}\bigr)
+ =e^{h_ib_i(o)}\lambda_i(K_M).
+\]
+\Cref{lem:vertex-tightness} は、残りの $\rho_i^{\rm res}>M$ の正規化質量のlimsupを
+$Ce^{-\kappa M}$ で抑える。
+従って、まず $R\to\infty$、次に $M\to\infty$ とし、
+$\lambda_i(K_M)\uparrow\mathfrak m_i$ を用いれば
+\[
+ \mu\bigl(\{d(o,x)\ge R\}\cap V_i\bigr)
+ =e^{-h_iR}\bigl(\mathfrak w_i(o)+o(1)\bigr)
+\]
+を得る。$i\notin V_*$ の項は $o(e^{-h_*R})$ だから、有限和を取って主式を得る。
+各 $V_i$ は任意に小さく選べるので、同じ計算をtotal tailで正規化するとangular弱収束も従う。
 \end{proof}
 
 \begin{theorem}[Joint extreme-value law]
@@ -1430,6 +1792,8 @@ Metric-IRFA と exponential volume-IRFA を仮定する。Tail $\{d(o,x)\ge R\}$
 へ弱収束する。
 \end{theorem}
 \begin{proof}
+Labelとprojectionは、互いに交わらない $V_i$ 上でそれぞれ $i,\pi_i$ として記録する。
+その補集合には一つの追加状態を割り当てると、\cref{lem:vertex-tightness,thm:tail} より、その条件付き質量は $0$ へ収束する。
 直接 $q=d(o,x)-R$ を微分変数として扱わず、bounded continuous test functionsで示す。まず $i\in V_*$、$Q,M<\infty$ を固定し、
 \[
  K_M=\{\rho_i^{\rm res}\le M\},
@@ -1451,10 +1815,11 @@ $\Phi(i,q,y)$ を $q\in[0,Q]$、$y\in K_M$ に支えを持つ bounded continuous
  \cap\{|\widehat q_R|\le Q+1\}
  \subset\{|\widehat q_R|\le\varepsilon_R\}.
 \]
-Model normal densityを用いると、この strip の $e^{-h_*R}$-正規化質量は
+Model normal densityとvolume remainderを用いると、このstripの正規化質量は
 \[
- \int_{-\varepsilon_R}^{\varepsilon_R} h_i e^{-h_iq}\,\dd q
- =O(\varepsilon_R)\longrightarrow0.
+ e^{h_*R}\mu\{|\widehat q_R|\le\varepsilon_R,\ \pi_i\in K_M\}
+ \le C_{i,M}\int_{-\varepsilon_R}^{\varepsilon_R}h_i e^{-h_iq}\,\dd q+o(1)
+ =o(1).
 \]
 従って threshold set を actual excess から model excessへ置き換えてよい。その上で \eqref{eq:q-model-close} と uniform continuityにより、tail integral中の $q_R=d(o,x)-R$ を $\widehat q_R$ へ置き換えても、$e^{-h_*R}$ で正規化した誤差は $o(1)$ である。Model variableについては
 \[
@@ -1469,7 +1834,15 @@ Model normal densityを用いると、この strip の $e^{-h_*R}$-正規化質�
 \]
 Volume-IRFA の compact residual convergenceにより residual factorは $\lambda_i|_{K_M}$ へ収束し、exponential remainderは \cref{lem:vertex-tightness} の証明と同じ評価で $o(e^{-h_*R})$ である。従って固定 $M,Q$ では model joint lawへ収束する。
 
-$M\to\infty$ の一様性は \cref{lem:vertex-tightness}、$Q\to\infty$ の一様性は normal exponential tail $\int_Q^\infty h_*e^{-h_*q}dq$ と \cref{thm:tail} から得る。最後に total tailで正規化し、有限個の minimizing verticesを和すれば主張を得る。
+$M\to\infty$ のtightnessは \cref{lem:vertex-tightness} とtotal tailの正の主係数から従う。
+Excessについて $F(R)=\mu\{d(o,x)\ge R\}$ と置けば、固定した $Q\ge0$ に対して
+\[
+ \frac{\mu\{d(o,x)\ge R+Q\}}{F(R)}
+ =\frac{F(R+Q)}{F(R)}
+ \longrightarrow e^{-h_*Q}.
+\]
+従って、まず $R\to\infty$ のlimsupを取り、次に $Q\to\infty$ とすることでexcess方向もtightとなる。
+最後にtotal tailで正規化し、有限個のminimizing verticesを和すれば主張を得る。
 \end{proof}
 
 \begin{corollary}[Distance Laplace transform]

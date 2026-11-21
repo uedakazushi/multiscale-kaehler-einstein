@@ -38,6 +38,7 @@
 \newcommand{\RR}{\mathbf R}
 \newcommand{\CC}{\mathbf C}
 \newcommand{\cC}{\mathcal C}
+\newcommand{\cS}{\mathcal S}
 \newcommand{\cM}{\mathcal M}
 \newcommand{\supp}{\operatorname{supp}}
 \newcommand{\Ric}{\operatorname{Ric}}
@@ -70,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.2（2026年11月22日）}
+\date{現行総説 v1.3（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -175,6 +176,25 @@ Part Iでは，Rochon--ZhangのSNC漸近\cite[Theorem~5.1]{RZ}からexact collar
 延長作用素とcollar pullbackの差を全残余方向に一様に評価することで，
 固定SNC対のmetric-IRFAとsmooth/exponential volume-IRFAを得る．
 一般のlog-smooth collarに同じtensor比較が自動成立するとは主張しない．
+
+同じPart Iの命題\texttt{prop:cogram}から定理\texttt{thm:contract}では，
+全残余一様な余計量評価と深い単調cutoffにより，properな$1$-Lipschitz全射
+$\cS:X\to\cC$を構成する．加法誤差を$K$とすると，
+系\texttt{cor:based-ball-approximation}は任意の中心$o$と$A,R>0$について，
+ambient距離を制限した閉球
+\[
+ \overline B_{(X,R^{-1}d)}(o,A),\qquad
+ \overline B_\cC(R^{-1}\cS(o),A)
+\]
+のGH距離を$3K/(2R)$以下と評価する．定数は中心・半径に一様であり，
+指定compact集合を原点へ送るように$\cS$を選ぶ場合は，$K$がその集合に依存する．
+これは一つの固定空間での評価であり，退化族のparameterに一様な定数を与えない．
+
+測度側では，LDPの下界をfull face collar内のcompact residual集合から
+ambient open setへ移して証明する．Exact-support sectorだけに制限した測度の正質量は仮定しない．
+Busemannからexact tailへ進む証明は，一面の計量・体積比較と既証の距離上界を用いて閉じ，
+LDPの下界から独立である．一般重みで最小entropyを持つverticesを$V_*$とすると，
+角分布の重みは$w_i/\sum_{j\in V_*}w_j$である．KE規格化では全verticesが$V_*$に属する．
 
 
 実質的依存は次の通りである．Part II の Torelli core は Part I と独立であり，Part I はその periods を KE translation limits として解釈する時だけ必要になる．Part III の抽象 gluing は Part I の log-smooth ends を local pieces として受け取れるが，actual metrics への適用には別途 localization と anchor が必要である．Part IV の central component
@@ -462,7 +482,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
 \item 第IV篇のcapped volume・full-triple・closed-corner・固定成分収束と，曲面論文のscalar/portal・core fillingを定理単位で照合する．同じ写像，fixed段階からslow diagonalへ進む順序，全曲面ambient距離の上下界を確認する．
-\item Part Iでは，点検済みのendpoint接続とSNC入力を踏まえ，co-Gramから距離収縮への下界とBusemann・exact-tailの定量的依存を監査する．固定補空間と退化族の一様評価を区別する．
+\item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．次はfacewise measured translation・Chern--Weil・Abel--Mellinの規格化と一様性，および主要結果の先行研究比較を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
 \item Part III の localization と anchor を，global normal-bundle models と chart-compatible quantitative estimatesから構成する．

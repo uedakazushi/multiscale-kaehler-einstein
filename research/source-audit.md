@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.2。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
+2026-11-22 / v1.3。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
 
 ## 結論
 
@@ -27,7 +27,9 @@
 ### Part I
 
 - `lem:SNC-compatible-collars`、`lem:fc-collar-transfer`、`lem:RZ-collar-tensor`：固定Hermitian normsを保つ実有向カラーとproduct connectionを同時構成し、RZ延長Ξからexact collarへの全残余一様比較と再帰的tensor評価を証明。RZ 1106.0873v2およびAlbin–Melrose 1012.5765v1の指定一次箇所を照合し、この入力鎖を複数担当で点検した。詳細は `notes.md` と主稿付録。
-- `lem:fibres`→`prop:lifting` はambient endpoint接続として点検。`prop:cogram`→`thm:contract`、Busemann/exact-tailを含む全証明の包括的再検証は未了。
+- `lem:fibres`→`prop:lifting` はambient endpoint接続として点検。`prop:cogram`→`thm:contract` の全逆計量評価・共通の深い閾値・局所一セルの長さ評価を補強し、properな1-Lipschitz全射を得た。`cor:based-ball-approximation` は全中心・全半径の閉球GH距離≤3K/(2R)を証明。指定compact集合を潰す場合のKの依存も明記し、同範囲を複数担当で点検した。
+- `lem:cellwise-LDP` の下界はfull face collarの正質量compact residual集合からambient open setへ入れる形で成立する。Exact-supportへ制限した測度の正質量は一般に従わず、clean product二端cuspの反例を研究ノートに置く。`lem:deep-sector-partition` は浅い座標を残余側へ含め、追加仮定なしでglobal LDPを保つ。
+- `lem:level`→`thm:tail`→`thm:joint`→`cor:Laplace` は一面比較・直接指数積分・距離上界から閉じ、LDP/co-Gramの下界に依存しない。一般重みの角分布の分母は最小entropyのverticesの重み総和。KE規格化の分布は不変である。限られた鎖の点検と、全Part Iの包括的再検証・外部査読・新規性確認を区別する。
 - Mellin recursion の `(2π)^{|I|}` は normal torus を二重計上していたため削除。
 - 一様 dominated convergence に必要な error-weighted exponential terms の uniform integrability を追加。
 - Chern–Weil の Stokes 符号、LDP lower bound、properness/net/fibre control を修正または展開。

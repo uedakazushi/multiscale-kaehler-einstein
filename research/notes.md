@@ -1,5 +1,5 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.3（Part I v1.2）
+更新：2026-11-22 / v1.4（Part I v1.3）
 
 ## 現行稿の仮定（2026-08-31統合稿を回収）
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
@@ -10,7 +10,7 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
-| Part I `thm:intro-metric`, `thm:rough`, `prop:RZ`, `cor:arrangement-cone` | 固定ample SNC対のcomplete KE metric。Clean collar＋metric-IRFAからbounded-additive cone。退化族のmoving領域の一様性は含まない。 |
+| Part I `thm:intro-metric`, `thm:contract`, `thm:rough`, `cor:based-ball-approximation`, `prop:RZ` | 固定ample SNC対のcomplete KE metric。Clean collar＋metric-IRFAからproperな1-Lipschitz全射と加法誤差K。対応する中心を持つ閉球のGH誤差≤3K/(2R)は中心・半径に一様。退化族のmoving領域の一様性は含まない。 |
 | Part II `thm:intro-star`, `thm:intro-general-completion`, `hyp:controlled-pushoff` | Marked residual複素・双曲曲線のperiodsとTorelli。一般WP completionにはcontrolled push-off。曲面の第二作用積分との同一視はない。 |
 | Part III `hyp:Hloc`, `hyp:Hanc`, `thm:actual-global-pgh` | Ordinary/conifold whole-end比較とtracked anchors等を追加仮定とする。対象・positive square模型・空間的blow-downを曲面退化と区別する。 |
 | Part IV `coarse:cor:degree-d-volume-lower`, `coarse:thm:full-triple-tensor` | 全固定d≥5のcapped volume下界と深部triple比較。後者の詳細証明は `papers/sections/full_triple_comparison.tex`。 |
@@ -35,7 +35,46 @@ H_i^\circ=H_i\setminus\bigcup_{j\ne i}(H_i\cap H_j)
 
 主稿の `lem:fibres` の直径はambient距離である。帰納仮定から得るのは同じresidual fibreに属する二点を**残余空間内で**結ぶ長さ≤B+1の曲線であり、fibre内の曲線ではない。Full collarは固定depthで全残余空間上のprincipal torus束をなすので、compactな曲線像の上で指定初期点からhorizontal liftが全区間存在する。Full-sectorのtensor比較は残余depthsに一様であるため、曲線がresidual fibreを離れても長さ評価を保つ。終端のnormal torus補正はO(exp(−t_i))である。
 
-このendpoint版を `prop:lifting` と `cor:upper`、付録 `app:lifting` に統一した。必要なのは始点・終点のskeletal値の一致と加法長さ誤差であり、全曲線のexact trackingやfibreの内在径ではない。Finite itinerary、product synchronization、可積分誤差を使う帰納順は維持する。接続の点検範囲はこの端点量化と帰納に限る。入力側のfull sector・exact collar構造とRochon–Zhangからのtensor翻訳は、次節の三補題が正本である。`prop:cogram`→`thm:contract`の下界と、Busemann/exact-tailの全証明を今回独立に再検証したとは扱わない。
+このendpoint版を `prop:lifting` と `cor:upper`、付録 `app:lifting` に統一した。必要なのは始点・終点のskeletal値の一致と加法長さ誤差であり、全曲線のexact trackingやfibreの内在径ではない。Finite itinerary、product synchronization、可積分誤差を使う帰納順は維持する。入力側のfull sector・exact collar構造とRochon–Zhangからのtensor翻訳は、後述の三補題が正本である。距離下界・全射性と測度側の点検範囲は次の三節に分ける。
+
+## 全射収縮と中心・半径に一様な閉球近似
+
+正本は主稿 `prop:cogram`→`lem:lambda-choice`→`thm:contract`→`thm:rough` と `cor:based-ball-approximation`。共通の深い閾値T_geomを全残余空間で先に固定し、そこで同じface collarに入るactive labelsだけを余計量行列に用いる。一面product metric h_iに対し、残余j面のIRFAから正規化共変ベクトルのノルムは |α_j|²_(h_i⁻¹)≤4/3。全逆計量の摂動を評価するので、normal blockを先に反転して混合項を落とす操作はない。
+
+Row error εの左向き畳み込みからsmoothな非増加・可積分majorantを作る。これはεと同時刻で定数倍比較できるとは限らない。十分深いところまでλ=0とし、その先でλ≤1−2εかつ∫(1−λ)<∞となるよう選ぶ。f=∫λとh(u)=f(T0+u)を使えば、cellごとにhを作用させるproper全射Hを通じてS=HΨと書ける。Gershgorin評価と、各点近傍の像が一つの閉cellへ入る事実から大域1-Lipschitz性を得る。曲線がcutを無限回横切ってもよい。Fiber径は既証のambient上界から直接抑える。
+
+指定compact K0のraw座標の上界を越えてcutを選べばS(K0)={0}となる。このとき加法定数KはK0に依存する。いったんS,Kを固定すると、任意の中心oとA,R>0について
+\[
+d_{\rm GH}\!\left(
+\overline B_{(X,R^{-1}d_g)}(o,A),
+\overline B_{\mathcal C}(R^{-1}S(o),A)
+\right)\le\frac{3K}{2R}.
+\]
+両球はambient距離の制限を持つ。全射性でtarget点の逆像を取り、source球からはみ出す分を最短路上で戻すとK/R-denseな像を得る。基点対を含む対応の歪みが3K/R以下になるのでpointed収束も従う。中心・半径への一様性は一つの固定空間内の主張で、退化族のparameterや変動するcollarの定数を制御しない。
+
+## LDP下界とexact-support制限の違い
+
+正本は `lem:deep-sector-partition`、`lem:cellwise-LDP`、`lem:exp-tight`、`thm:LDP`。上界では十分深い座標の集合とface copyによる有限分割を使い、残るbounded座標を残余側へ含める。一部の座標だけがtransition内にある領域全体をcompactとは扱わない。下界ではfull face collarの正質量compact残余集合C_Fを取り、そのraw残余座標がRで割るとO(R⁻¹)となることを用いて、cone全体のopen setへ入れる。Exact-supportだけへの制限測度の正質量もraw zero fibreの正質量も不要であり、global LDPのrate function Σu_iは既存のvolume-IRFAで成立する。
+
+**制限測度の下界が成立しないclean product cuspの例。** Y=ℝ_s×S¹_θで0<δ<1/16とし、|s|を台[−δ,δ]のeven smooth probability kernelで畳み込んだφ_δを取る。φ_δ=|s|（|s|≥δ）、0≤φ_δ−|s|≤δである。
+\[
+g_Y=ds^2+e^{-2T_0-2\varphi_\delta(s)}d\theta^2,\qquad
+t_\pm=T_0\pm s\quad(\pm s\ge0).
+\]
+この計量は完備・有限体積で、両端のproduct cuspからの誤差はη(t)=4δe^{−(t−T0)}≤1/4で抑えられ、|s|≥δではexactである。体積誤差もcompactなnormal区間に支えを持つのでexponential volume-IRFAを満たす。標準の二端compactificationとproduct circle dataを使えばclean構造を持つ。
+
+χ(T0)=0、χ(t)>0（t>T0）、深部でχ(t)=t−T0と選び、Ψ_Y(s,θ)=sgn(s)χ(T0+|s|)とする。これは二本のraysからなるℝへのproper全射だが、零fiber {s=0}×S¹の面積は0である。X=Y×Yはdepth2のclean product spaceで、Ψ_X=(Ψ_Y,Ψ_Y)。第一因子の正rayだけをexact supportとする集合は{s₁>0,s₂=0}×(S¹)²であり、体積0である。一方、一面のleading残余測度2π dV_Yはfull supportを持つ。従って、このexact-supportへ制限した測度について、ray内のopen intervalに対するfinite-rate下界は得られない。Ambient open setのLDP下界は上のfull-collar証明で成立する。
+
+## Busemannからexact tailへの依存
+
+`lem:level`→`thm:Busemann`→`lem:calibration` は一面metric-IRFAだけを用いる。深さt_iに対する関数√c_i∫√(1−η)をcollar外へ定数延長すると1-Lipschitzになり、level間の距離下界を直接与える。Calibrationでは最初のlevel Aを固定して終端T→∞、次にA→∞とする。近似最近点の残余位置がAとともに逃げても、この順序なら問題にならない。
+
+`lem:residual-exp` は一面の積分密度Ce⁻ᵗと有限union boundから得る。`lem:vertex-tightness` ではraw残余半径r=|Ψ_i|を使い、leading partの残余shellとexponential volume remainderを別々に評価する。まずR→∞のlimsupを取り、次に残余cut M→∞。Minimizing vertices外のangular gapは有限sectorの直接積分で処理する。`thm:tail` のnormal thresholdは二つの集合包含で挟み、actual距離のnormal単調性を仮定しない。`thm:joint` はmodel excessとの一様差と狭いthreshold stripを用い、excessのtightnessはF(R+Q)/F(R)→e^(−h_*Q)から得る。この鎖はLDP下界・co-Gram下界を用いない。
+
+一般重みh_i=c_i^(−1/2)ではV_*={i:h_i=h_*}だけがleading tailを担い、角分布の重みはw_i/W、W=Σ_{j∈V_*}w_jである。全verticesの総和を分母に使うと、非minimizing vertexがある場合に確率の総和が1にならない。KE規格化は全c_i=1なのでV_*が全verticesとなる。Boundary空のcompact caseでは大きいRでtailは0であり、min_i h_iを定義しない。
+
+以上の距離収縮・LDP・tailの鎖は複数担当で限定的に独立点検した。現在の原稿の全証明、外部査読、形式証明、先行研究との網羅的な新規性比較が完了したとの意味ではない。
+
 
 ## SNCカラーとRochon–Zhang入力の翻訳
 
@@ -76,7 +115,7 @@ B_\square=\sqrt{\tfrac{33}{4}+3\mathcal L_{\mathcal H}}-\tfrac32,
 \(M_{0,5}\) の判別式 \(\lambda\mu(\lambda-1)(\mu-1)(\lambda-\mu)\to0\) でresidual plumbing scaleが出現する。Fixed-realization localizationとfamily-uniform theoremを混同しない。一般matroidのmetrized Bergman quotient、singular face masses、secondary WP branchesも独立した重要課題。
 
 ## 一次資料を直接確認した入力と数値規格化
-Rochon–Zhang, *Asymptotics of complete Kähler metrics of finite volume on quasiprojective manifolds* (Adv. Math. 231 (2012)) の Theorem 5.1 は **SNC pair** の全 strata にわたる共通指数 \(\nu>0\) の \(x_i^\nu C^\infty_{\rm fc}\) 漸近を扱う。Theorem 7.4 の full polyhomogeneous expansion は **smooth divisor** を仮定する。一般 SNC へ Theorem 7.4 をそのまま適用しない。主原稿の `rem:RZ-primary-scope` に一次資料との対応を統合した。Theorem 5.1からmetric-IRFAへの翻訳は上記三補題に展開した。この限定点検と、大域的path-lifting・tailを含む全証明の包括的再監査は区別する。
+Rochon–Zhang, *Asymptotics of complete Kähler metrics of finite volume on quasiprojective manifolds* (Adv. Math. 231 (2012)) の Theorem 5.1 は **SNC pair** の全 strata にわたる共通指数 \(\nu>0\) の \(x_i^\nu C^\infty_{\rm fc}\) 漸近を扱う。Theorem 7.4 の full polyhomogeneous expansion は **smooth divisor** を仮定する。一般 SNC へ Theorem 7.4 をそのまま適用しない。主原稿の `rem:RZ-primary-scope` に一次資料との対応を統合した。Theorem 5.1からmetric-IRFAへの翻訳は上記三補題に展開した。大域距離・LDP・tailは上記の鎖を別に点検しており、これらの限定点検と全Part I–IIIの包括的再監査は区別する。
 
 一般位置の五直線の規格化では \(L=2H\), \((L^2)=4\) なので、主稿のface mass formulaを代入すると
 \[
