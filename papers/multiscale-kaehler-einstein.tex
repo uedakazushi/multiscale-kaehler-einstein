@@ -31,7 +31,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I}
-\fancyhead[R]{\small 現行稿 v1.1}
+\fancyhead[R]{\small 現行稿 v1.2}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{現行稿 v1.1（2026年11月22日）}
+\date{現行稿 v1.2（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -342,10 +342,11 @@ Polyhomogeneous expansionを追加仮定した場合のみ、通常の Mellin po
 本稿の local analytic input は Rochon--Zhang による finite-volume K\"ahler metrics の polyfibred-cusp compactification と recursive boundary asymptotics である \cite{RochonZhang}。
 Smooth SNC log-general-type pair に対する負 KE metrics の存在と境界挙動は Cheng--Yau、Kobayashi、Guenancia--Wu、Jiang--Shi などの仕事に連なる \cite{ChengYau,Kobayashi,GuenanciaWu,JiangShi}。
 本稿は新しい local Monge--Amp\`ere expansion を証明するものではなく、facewise tensor asymptotics から global distance geometry と finite-volume statistics を組み立てる。
+その入力をexact collarへ移す際には、Albin--Melroseのboundary product construction \cite[Proposition~1.2]{AlbinMelrose}をSNCのtorus束図式に沿って行い、全残余一様な延長比較を別途証明する（\cref{lem:SNC-compatible-collars,lem:fc-collar-transfer,lem:RZ-collar-tensor}）。
 
 非コンパクト有限体積 locally symmetric spaces に対して、Leuzinger は arithmetic reduction theory を用い Euclidean cone over a finite complex への coarse model を構成した \cite{Leuzinger}。
 本稿の結論はこれと形式的に近いが、Tits building の代わりに divisor dual complex が現れ、局所対称性や arithmeticity は仮定しない。
-Proof mechanism も reduction theory ではなく、recursive cusp products、co-metric contraction、exact-fibre path lifting である。
+Proof mechanism も reduction theory ではなく、recursive cusp products、co-metric contraction、端点を保つambient path lifting である。
 有限 Euclidean polyhedral complexes の intrinsic metric と geodesic existenceについては \cite{BridsonHaefliger,BBI} を参照する。
 
 測度側では、本稿の LDP は finite-dimensional exponential kernelに対する elementary Laplace boundsを recursive face decompositionへ適用するもので、一般的な large-deviation formalismは \cite{DemboZeitouni} に沿う。Pointed measured convergenceは Fukaya の collapsing framework \cite{Fukaya} と同型の local weak-measure conventionで用いるが、本稿では必要な定義を本文中に明記する。Busemann functions 自体は古典的である \cite{Busemann}; 本稿で新しいのは bounded-additive cusp modelから compact-core dependent phaseを抽出し、exact finite-volume tail coefficientへ結び付ける点である。
@@ -356,7 +357,7 @@ Proof mechanism も reduction theory ではなく、recursive cusp products、co
 
 \subsection{証明の骨格と論文の構成}
 距離定理には三つの要点がある。
-第一に、有限 orthant complex の geodesic path を boundary depth に関して再帰的に exact skeletal fibres へ liftし、integrable metric error を dyadic segment estimate で $O(1)$ に積分する。
+第一に、有限 orthant complex の geodesic path を boundary depth に関して再帰的に指定skeletal fibresの端点を結ぶ曲線へ liftし、integrable metric error を dyadic segment estimate で $O(1)$ に積分する。
 第二に、raw depth map は正確には nonexpanding でないため、normal depth covectors の inverse-metric Gram matrixを row-wise に評価し、depth derivatives を可積分量だけ縮める。Gershgorin theorem により得られる skeletal map は厳密に $1$-Lipschitz で、raw mapとは bounded distance にある。
 第三に、volume density の exponential kernel に cellwise Laplace/Abel analysis を適用する。LDP と face masses は mere volume-IRFA で扱い、exact tail のみ exponential volume-IRFA に強める。Exact tail では level-crossing による Busemann limit、compact residual sets 上の calibrating estimate、residual escape と volume remainder の exponential tightness を別々の補題として証明する。
 
@@ -409,7 +410,7 @@ Adjunction は
 を与えるから、$K_{\ov X}+D$ が ample なら各 residual open stratum $F^\circ$ 自身も同型の finite-volume KE cusp geometry を持つ。
 
 本稿の抽象距離論に必要なのは、real oriented/logarithmic blow-up において boundary faces が finite-depth torus fibrationsをなし、face restrictions と quotient-in-stages が compatible であることである。
-Smooth SNC pairs は標準的にこの条件を満たす \cite{RochonZhang}。一般論を必要以上に重くしないため、以下では証明に用いる dataを公理化する。
+Smooth SNC pairsに対する境界torus束は\cite[Lemma~1.1]{RochonZhang}で与えられ、必要な整合的collarsは\cref{lem:SNC-compatible-collars}で構成する。以下では証明に用いるdataを公理化する。
 
 \begin{definition}[Clean finite-depth torus-cusp structure]
 \label{def:clean}
@@ -1629,7 +1630,7 @@ $\omega_{\rm KE}=\omega+\sqrt{-1}\partial\bar\partial u$ を構成する。Adjun
 \end{equation}
 を全 compatible pairs $(I,i)$ について与える \cite[Theorem~5.1]{RochonZhang}。特に residual variablesがさらに全 boundary facesへ発散しても同じ fc estimateが成立する。
 
-Background form (5.3) は Definition~2.10 の standard spatial asymptoticsを持ち、normal Poincar\'e coefficients は KE normalizationでは $c_i=1$ である。同論文の exact polyfibred-cusp model formulae（特に §2 の (2.62)--(2.68)）から one-face product modelとの差は fc frameで $O(x_i)$ である。\eqref{eq:RZ-51} を fc vector fieldsで二階微分しても $x_i^\nu$ orderは保たれるから、ある $\nu_0=\min\{1,\nu\}>0$ に対し
+Background form (5.3) は Definition~2.10 の standard spatial asymptoticsを持ち、normal Poincar\'e coefficients は KE normalizationでは $c_i=1$ である。ただし延長作用素$\Xi_{I,i}$は、選んだexact collar pullbackそのものではない。\Cref{lem:SNC-compatible-collars}で実有向blow-up上のdepth-preserving collarsを選び、\cref{lem:fc-collar-transfer}で両延長の差とHessianの差が全残余方向に一様に$x_i$の任意冪へ入ることを示す。背景形との差を含めた\cref{lem:RZ-collar-tensor}により、$\nu_0=\min\{1,\nu\}>0$に対し
 \[
  |g_{\mathrm{KE}}-g_i^\times|_{g_i^\times}
  \le Cx_i^{\nu_0}=Ce^{-\nu_0t_i}
@@ -1667,7 +1668,7 @@ x_i^\nu C^\infty_{\mathrm{fc}}(D_I)$ を述べている．
 \emph{smooth divisor} を仮定して polyhomogeneous expansion を与える．
 従って Theorem~7.4 を一般 SNC pair の full-corner 展開定理としては
 引用しない．本稿の \cref{prop:RZ} の定量的積比較は
-Theorem~5.1 の fc derivatives と §2 の model formulae に還元され，
+Theorem~5.1のfc評価と、\cref{lem:SNC-compatible-collars,lem:fc-collar-transfer,lem:RZ-collar-tensor}で示すカラー・延長・tensorの比較に基づき，
 その後の path-lifting・global distance・tail estimates は本稿側の
 追加論証である．この区別は一次資料の仮定を直接照合して確認した．
 \end{remark}
@@ -1990,14 +1991,107 @@ Actual metric errorでは、synchronized residual excessの追加速度に対す
 \label{app:SNC}
 
 \subsection{整合的カラーと段階的商}
-Smooth SNC pair $(\ov X,D)$ の real oriented/logarithmic blow-up $\widetilde X$ では、各 irreducible divisor $D_i$ に boundary hypersurface $H_i$ が対応し、その fibreは oriented normal argument $S^1$ である。Connected component $F\subset D_I$ に対応する corner face上では normal argumentsは独立で、$\mathbb T^I$-actionの quotientは $F$ の logarithmic compactification $\widetilde X_F$ になる。
+Smooth SNC pair $(\ov X,D)$ の実有向blow-upを$\widehat X$、そのlogarithmic blow-upを$\widetilde X$とする。両者は同じboundary facesとtorus束を持つが、smooth構造を区別する。各々において、各 irreducible divisor $D_i$ に boundary hypersurface $H_i$ が対応し、その fibreは oriented normal argument $S^1$ である。Connected component $F\subset D_I$に対応するcorner face上ではnormal argumentsは独立である。$\mathbb T^I$-quotientは、実有向側では$F$の残余SNC divisorに沿う実有向blow-up $B_F$、対数側ではそのlogarithmic compactification $\widetilde X_F$となる。
 Boundary face上のglobal torus束とlogarithmic blow-up後の維持は
 \cite[Lemma~1.1, \S1, (1.10)--(1.15)]{RochonZhang} に従う。
 Compactなfull face $H_i$ のcollarにおいて固定 $x_i$ のsliceは $H_i$ 全体に対応し、その残余interiorへの制限は $X_i$ 全体上のprincipal $S^1$ 束である。交叉faceでも同様にprincipal $\mathbb T^I$ 束を得る。従って \cref{def:clean} のfull-sector条件は、残余compactごとに異なる局所束だけを用意する条件ではない。
 
 $I\subset J$ とし $G\subset D_J$ が $F\subset D_I$ に含まれる connected componentとする。Normal bundleの transverse direct-sum decompositionにより、まず $I$-normal argumentsを quotientし、その後 $(J\setminus I)$-normal argumentsを quotientしても、最初から $J$ 全体を quotientしても同じ $\widetilde X_G$ を得る。これが \cref{def:clean} の quotient-in-stages diagramである。
 
-Collarsは deepest facesからの下降帰納法で選ぶ。既に deeper faces上で選んだ commuting normal vector fieldsを保ちつつ、次の tubular vector fieldを compact torus actionで平均して invariantにする。Finite depthなので有限段階で終了する。Hermitian defining sectionsから得る $x_i$ は common collars上で同じ normal flowsに沿って用いることができ、$t_i=-\log x_i$ は global truncated depthsへ延長できる。Nonintersecting divisor componentsは compactnessにより十分深い collarsを disjointに取れる。
+\begin{lemma}[Hermitian depthsを保つ整合的な実有向カラー]
+\label{lem:SNC-compatible-collars}
+$D_I$の各connected componentの実有向blow-upを$B_I$とし、
+同じHermitian defining sectionsの制限から$\rho_j^I$（$j\notin I$）を定める。
+全$B_I$上に、次を満たすcollarsとnormal-circle connectionsを同時に選べる。
+\begin{enumerate}
+\item Normal fields $V_i^I$は$\rho_i^I$をcollar parameterとし、
+\[
+ V_i^I\rho_j^I=\delta_{ij},\qquad [V_i^I,V_j^I]=0
+\]
+が対応する共通collarsで成立する。$i\ne j$の条件は
+$\rho_j^I$も十分小さい共通collarでだけ要求する。
+\item $V_i^I|_{H_j^I}$（$j\ne i$）はcanonicalな$j$-circle作用に不変で、
+$\Phi_j^I:H_j^I\to B_{I\cup\{j\}}$の下で$V_i^{I\cup\{j\}}$へ射影される。
+従ってfull collarからの射影
+$p_i^I:U_i^I\to B_{I\cup\{i\}}$は実有向blow-up上でsmoothであり、
+各残余faceでcircle-equivariantかつ、共通collarでは
+$(p_i^I)^*\rho_j^{I\cup\{i\}}=\rho_j^I$を満たす。
+\item Circle actions、collars、projections、connectionsは全face diagramsで
+quotient-in-stagesとexactに両立する。Connectionは残余collar方向にproduct型に取れる。
+\end{enumerate}
+以上を$x_i=(-\log\rho_i)^{-1}$へ書き換えたcollarsは
+\cref{def:clean}の幾何的dataを与える。
+\end{lemma}
+\begin{proof}
+境界のtorus束は\cite[Lemma~1.1, (1.10)--(1.15)]{RochonZhang}による。
+以下では$L_a=\mathcal O(D_a)$の全restrictionを補助dataとして同時に扱う。
+各$B_I$で、collarsに加えて$E_{a,I}=\beta_I^*(L_a|_{D_I})$のunitary connectionを選び、
+その$H_j^I$への制限を$\Phi_j^{I*}A_{a,I\cup\{j\}}$とする。
+最深strataでは境界がないので任意のunitary connectionsから始める。
+以下の二操作を$\dim_\CC D_I$に関する上向き帰納で行う。
+
+まず、既にcompatible collarsを持つcompact corners manifold $M$上のprincipal
+torus bundleについて、boundary connectionsが交わりで一致し、
+boundary自身のcollars上でproduct型なら、それらを延長するproduct connectionを作れる。
+任意connectionとの差はbase上のone-formだから、局所corner座標での延長と
+partition of unityで、所定boundary valuesを持つ$A^{(0)}$を得る。
+一つのface $H_j$を処理するとき、現在のconnectionの$V_j$-horizontal
+parallel transportでbundleを$H_j$上のbundleのpullbackに同定し、
+所定boundary connectionを$\rho_j$方向にconstantに延長した$A_j^{\rm prod}$を取る。
+既にproduct化した$H_k$ collarとの交わりでは、現在のconnectionは
+$H_k$上の所定connectionのpullbackであり、そのconnectionは$j$方向にもproduct型である。
+従ってそこで$A_j^{\rm prod}=A$である。
+これは$[V_j,V_k]=0$とproduct方向のcurvature contractionが零であることからも分かる。
+他のboundary faces上でも同じ理由で新旧connectionは一致する。
+よって
+\[
+ A\longmapsto A+\chi_j(\rho_j)(A_j^{\rm prod}-A)
+\]
+とすれば、既設dataを変えず、より小さい$j$-collarでproduct化できる。
+有限回繰り返す。この操作はunitary connectionsのaffine空間内で行うので、
+principal torus作用へのequivarianceを保つ。
+
+次に$B_I$のcollarsを構成する。下位次元のcollarsとconnectionsは既に固定されている。
+$j\ne i$について$H_j^I$上に、
+$V_i^{I\cup\{j\}}$の$A_{j,I\cup\{j\}}$-horizontal lift $W_i^{(j)}$を定める。
+$\rho_i^I|_{H_j^I}=\Phi_j^{I*}\rho_i^{I\cup\{j\}}$だから
+$W_i^{(j)}\rho_k^I=\delta_{ik}$を対応する共通collarで満たす。
+$H_j^I\cap H_k^I$では双方が同じbase fieldの$\mathbb T^{\{j,k\}}$-horizontal liftであり、
+従って一致する。各$H_j^I$上で異なるnormal liftsも可換である。
+実際、base fieldsは可換で、horizontal liftsのcommutatorのvertical成分は
+connectionのcurvatureであるが、上のproduct条件によりそのnormal方向のcontractionは零である。
+
+このconsistent boundary dataを、与えた$\rho_i^I$に対するboundary product
+construction \cite[Proposition~1.2, (1.3)--(1.4)]{AlbinMelrose}で延長する。
+追加のboundary条件を保つ点を明記する。
+最初のnormal fieldは、全$j\ne i$上の$W_i^{(j)}$とaffine条件
+$V_i\rho_k=\delta_{ik}$を局所延長とpartition of unityで満たす。
+既に$V_a$を選んだ段階では、$H_a$からそのflowで$W_i^{(a)}$をtransportし、
+$[V_a,V_i]=0$となるように延長する。
+既設$V_a$同士は可換なので、多重collar上のtransportは順序によらず一致する。
+また他の$H_j$上では$W_a^{(j)}$と$W_i^{(j)}$が既に可換なので、
+このtransportは所定の$W_i^{(j)}$を変えない。
+残る部分をaffineな$\rho$条件を保って延長し、既設のより小さいcollarsの外で貼る。
+必要に応じてcollarsを縮めると帰納が閉じる。
+可換性を得た後にvector fieldsを平均する操作は用いていない。
+
+こうして$B_I$のcollarsを得た後、最初の操作を各$E_{a,I}$に適用する。
+所定boundary valuesは、交わりでいずれも
+$\Phi_{jk}^{I*}A_{a,I\cup\{j,k\}}$に一致し、
+$H_j^I$自身のcollarsに沿ってproduct型なので操作の仮定を満たす。
+これで次の次元への帰納dataが揃い、循環はない。
+
+Canonicalな$i$-circle作用を$V_i^I$のflowで延長する。
+追加active labelsを$J\subset I^c$とする共通cornerでは、これは元の$\mathbb T^J$作用のcommuting-flow延長であり、
+他のcircle作用と可換である。Fieldのprojectabilityから残余のflowと射影も厳密に可換になる。
+Connectionsは上のproduct constructionから同じcompatibilityを持つ。
+各full faceはcompactなのでcollar幅は全faceで一つの正数に取れ、
+固定$\rho_i$のsliceは残余interior全体上のprincipal circle bundleとなる。
+多重faceも同様である。Nonincident facesは十分小さいcollarsで交わらない。
+最後に$x_i$への変数変換は各$\rho_i$だけに依存するので、
+全commutation、equivariance、quotient identitiesを保つ。
+\end{proof}
+
 
 この構成により、face restrictions、connection forms、projectionsは exactに compatibleである。Raw mapは deepest faceから再帰的に
 \[
@@ -2008,23 +2102,211 @@ Collarsは deepest facesからの下降帰納法で選ぶ。既に deeper faces�
 
 $\Psi$ は proper でもある。実際、cone の bounded set上では全 active raw depthsが一様に boundedである。Residual raw coordinatesについて同じ主張を boundary depthに関して帰納的に用いると、その逆像は $\widetilde X$ の全 boundary defining functionsが一様に正である fixed truncationへ入る。この truncationは compactであり、compact setの $\Psi$-inverseは continuityによりその closed subsetである。以上で \cref{def:clean} に要求した propernessを得る。
 
+\subsection{延長作用素とカラー射影の全残余一様な比較}
+Rochon--Zhangの延長作用素は局所正則射影とpartition of unityで定義される
+\cite[(2.43)--(2.46), (5.10)]{RochonZhang}。
+これを選んだexact collarのpullbackへ替えるには、縮むcircle方向のfc微分も評価する必要がある。
+\Cref{lem:SNC-compatible-collars}がそのための幾何的条件を与える。
+
+\begin{lemma}[実有向カラーからの全残余一様な延長比較]
+\label{lem:fc-collar-transfer}
+$(\bar M,D)$ をcompactなsmooth SNC pairとし、$B$をその実有向
+blow-upとする。各componentのHermitian defining normを$\rho_j$、
+$x_j=(-\log\rho_j)^{-1}$と置く。$H_i$のcollarから残余空間へ
+向かう射影$p_i$が次を満たすとする。
+\begin{enumerate}
+\item $p_i$は$B$上でsmoothに延び、$H_i$ではcanonicalなcircle quotientである。
+\item $j\ne i$について$\rho_j$が十分小さい領域では
+$p_i^*(\rho_j|_{D_i})=\rho_j$である。
+\item 各$H_j$（$j\ne i$）への制限はcanonicalな$j$-circle作用に
+equivariantである。ここでtarget側の作用も残余SNC pairのnormal circleである。
+\end{enumerate}
+Rochon--Zhangの局所正則射影とpartition of unityで定めた延長を$\Xi_i$とする。
+任意の$N\ge0$について、十分深いfull $i$-sectorで
+\[
+ \Xi_i f-p_i^*f\in x_i^N C^\infty_{\rm fc},\qquad
+ \dd\dd^c(p_i^*f)-p_i^*(\dd\dd^cf)\in
+ x_i^N C^\infty_{\rm fc}(\Lambda^2)
+\]
+が全$f\in C^\infty_{\rm fc}(D_i^\circ)$に対して成り立つ。
+各有限階seminormは$f$の有限個のfc seminormで抑えられ、
+定数は全残余depthsに一様である。Residualのbounded fc tensorsの
+局所正則射影によるpullbackと$p_i$によるpullbackにも同じ評価が成り立つ。
+\end{lemma}
+\begin{proof}
+ここでtensorに対する$C^\infty_{\rm fc}$は、fc metricに関する全てのcovariant derivativesがboundedであることを表す。有限個のSNC chartを使う。$q_i$を$z_i=0$とする正則射影とし、
+残余normal coordinatesを$z_j=r_j e^{\sqrt{-1}\theta_j}$、
+残りを$w$と書く。十分小さい$\rho_i$上でangle差を局所的にliftすると
+\[
+ r_j(p_i)=r_j e^{a_j},\quad
+ \theta_j(p_i)=\theta_j+b_j,\quad w(p_i)=w+c
+\]
+と書ける。$a_j,b_j,c$は実有向blow-up上smoothで、$\rho_i=0$で零。
+しかも各残余face $H_k$上のtraceは$k$-circleにbasicである。
+$b_j,c$にはequivarianceを使う。$a_j$には第2条件が必要である。
+実際$\rho_j=r_j e^{\varphi_j}$、$\varphi_j\in C^\infty(\bar M)$と書けば
+$a_j=\varphi_j-\varphi_j|_{D_i}\circ p_i$なので、同じbasic性が従う。
+従ってこれらの係数は$\rho_i A$の形である。$\rho_i|_{H_k}$も$k$-circleにbasicであるため、$\rho_i>0$で割った後に連続延長すると、$A$の全残余face上のtraceもbasicである。
+
+Local holomorphic logarithmic variables $\xi_j=(-\log r_j)^{-1}$における
+fc vector fieldsは
+\[
+ \xi_j\partial_{\xi_j}=\frac{r_j}{\xi_j}\partial_{r_j},\qquad
+ \xi_j^{-1}\partial_{\theta_j},\qquad \partial_w.
+\]
+このlocal frameとHermitian defining normsによるfc normは一様に同値である\cite[Lemma~2.4, (2.25)--(2.29)]{RochonZhang}。
+Basic traceにより$\partial_{\theta_j}A=r_j A_j$となる。
+反復fc微分で生じる$r_j\xi_j^{-m}$は任意の固定$m$でboundedであり、
+normal $i$方向の微分で生じる$\rho_i x_i^{-m}$も$x_i$の任意の冪より小さい。
+異なる角方向の微分は可換であり、各face上の消滅idealの共通部分はその境界定義関数の積のidealである。従って異なる角方向の反復では対応する$r_j$の積が出る。
+従って$a_j,b_j,c$は、全残余変数に一様に$x_i^N C^\infty_{\rm fc}$へ属する。
+
+$q_i$と$p_i$の間を
+\[
+ P_s:(r_j,\theta_j,w)\longmapsto
+ (r_j e^{s a_j},\theta_j+s b_j,w+s c),\qquad 0\le s\le1,
+\]
+で結ぶ。有限chartのsupportsを先に縮めればこのpathは同じchart内にある。
+例えば$\xi_j(P_s)=\xi_j/(1-s a_j\xi_j)$であり、$s$を固定した微分について
+\[
+ \begin{aligned}
+ \frac{\dd\xi_j(P_s)}{\xi_j(P_s)}-\frac{\dd\xi_j}{\xi_j}
+ &=\frac{s(\xi_j\,\dd a_j+a_j\,\dd\xi_j)}{1-s a_j\xi_j},\\
+ \xi_j(P_s)\,\dd(\theta_j+s b_j)-\xi_j\,\dd\theta_j
+ &=\frac{s(a_j\xi_j^2\,\dd\theta_j+\xi_j\,\dd b_j)}{1-s a_j\xi_j}.
+ \end{aligned}
+\]
+上の係数評価を代入すると、$P_s$のfc differentialは一様boundedで、
+$P_s$と$q_i$のfc differentialの差、および$\partial_sP_s$の残余fc normは
+全微分込みで$x_i^N$で抑えられる。よって
+\[
+ p_i^*f-q_i^*f=\int_0^1 df_{P_s}(\partial_sP_s)\,ds
+\]
+をfc微分してscalarの評価を得る。同じchain ruleをtensorの成分と
+pullback differentialに適用すればtensorの評価も得る。
+これは$f$がcompactificationまでsmoothであることを要求しない。
+
+Rochon--Zhangの$\Xi_i$は、元のcompact divisor上の有限partition
+$\{\phi_\alpha\}$を用いた$\sum_\alpha q_{i,\alpha}^*(\phi_\alpha f)$であり、
+normal cutoffは十分深いsectorで1である。同じ$\phi_\alpha f$に上の評価を適用し、
+$\sum\phi_\alpha=1$を使うと$\Xi_i f-p_i^*f$の評価を得る。
+正則射影$q_i$は$\dd\dd^c$と可換なので、scalarの評価を二階微分したものと
+$T=\dd\dd^cf$に対するtensor評価を足せば、表示したHessianの差を得る。
+$q_i$は複素線形なdifferentialを持ち、$dp_i-dq_i$もfc frameでflatなので、
+対応するRiemannian tensorsに替えても同じ結論になる。
+\end{proof}
+
+
+\begin{remark}[Log-smooth性だけでは足りない]
+\label{rem:log-collar-obstruction}
+Product cusp $g=(\dd x/x)^2+x^2\dd\theta^2+\dd y^2$を考える。
+Logarithmic compactification上でsmoothなcollar変更
+$F(x,\theta,y)=(x,\theta,y+x\sin\theta)$は境界で恒等写像だが、
+$F^*g-g$をunit angular vector $x^{-1}\partial_\theta$に評価すると
+$\cos^2\theta$が残る。従って誤差は一般に$O(x)$にならない。
+本稿の翻訳では、元の実有向blow-upでのsmooth性、残余Hermitian normsの保存、
+各face上のcircle-equivarianceを使う。抽象的な\cref{def:clean}の全collar choicesについて
+metric-IRFAが自動成立すると主張しているわけではない。
+
+残余normの保存も省略できない。局所的に$\rho_i=r_i$、$\rho_j=r_j$とし、
+$p_i(r_i,r_j,\theta_j)=(r_j e^{r_i\sin\theta_j},\theta_j)$を考える。
+これは実有向blow-up上でsmoothで、$H_i$上では正しいquotient、
+$H_j$上ではcircle-equivariantだが、$\rho_j$を保存しない。
+$0<\alpha<1$、$f(x_j)=x_j^\alpha\in C^\infty_{\rm fc}$に対し
+\[
+ p_i^*f-q_i^*f
+ =\alpha r_i\sin\theta_j\,x_j^{\alpha+1}
+  +O(r_i^2x_j^{\alpha+2}).
+\]
+二回のfc角微分$(x_j^{-1}\partial_{\theta_j})^2$の主要項は
+$-\alpha r_i\sin\theta_j\,x_j^{\alpha-1}$なので、固定$r_i>0$でも
+残余$x_j\to0$で非有界になる。これは座標変更に関する障害であり、
+KE計量や\cref{prop:RZ}の反例ではない。
+\end{remark}
+
 \subsection{Rochon--Zhang の評価からテンソル評価へ}
-Rochon--Zhang の notationで boundary defining functionを $x_i$ とする。同論文 Definition~2.10 は standard spatial asymptotics を exact polyfibred-cusp tensorsの boundary restrictionsとして定式化している。§5 の KE setupでは background form (5.3)、residual equations (5.8)--(5.9)、extension maps (5.10) が compatible familyを与える。
 
-Theorem~5.1 は一つの共通 $\nu>0$ に対して
-\[
- u_I-\Xi_{I,i}(u_{I\cup\{i\}})
- \in x_i^\nu C^\infty_{\rm fc}(D_I)
-\]
-を全 residual pairsで同時に与える \cite[Theorem~5.1]{RochonZhang}。$C^\infty_{\rm fc}$ とは all fc derivativesを含む estimateなので、二階微分して K\"ahler formsを比較しても $x_i^\nu$ orderは失われない。Background form自身の boundary restrictionは normal Poincar\'e factorと residual formの積で、one-face productとの差は $O(x_i)$ in the fc frameである。従って
-\[
- |g_{\rm KE}-g_i^\times|_{g_i^\times}
- \le Cx_i^{\nu_0},
- \qquad \nu_0=\min\{1,\nu\}.
-\]
-Fc compactification上の coefficient boundsなので $C$ は deeper residual depthsに一様である。$x_i=e^{-t_i}$ だから $\eta(t)=Ce^{-\nu_0t}$ を得る。
+\begin{lemma}[選んだカラーにおける一面tensor評価]
+\label{lem:RZ-collar-tensor}
+\Cref{prop:RZ}のSNC pairに\cref{lem:SNC-compatible-collars}のdataを選ぶ。
+Rochon--Zhang Theorem~5.1の共通指数を$\nu>0$、
+$\nu_0=\min\{1,\nu\}$とする。全residual pairs $(I,i)$について
+\begin{equation}
+\label{eq:RZ-collar-tensor}
+ g_{\mathrm{KE},I}
+ -\left(\dd t_i^2+x_i^2\vartheta_i^2
+           +(p_i^I)^*g_{\mathrm{KE},I\cup\{i\}}\right)
+ \in x_i^{\nu_0}C^\infty_{\mathrm{fc}}(\operatorname{Sym}^2T^*)
+\end{equation}
+がfull $i$-sectorで成立する。全ての有限階fc seminormの定数は、
+より深い残余depthsに一様である。
+\end{lemma}
+\begin{proof}
+まず選んだcircle connectionの残余部分は全fc derivatives込みでboundedである。
+実際、$H_i$上の局所holomorphic normal frameで$\vartheta_i=\dd\theta_i+\alpha_i$と書くと、
+product connectionの$j$-faceへの制限はそのcircle quotientからのpullbackである。
+従って$\alpha_i$の$\dd\theta_j$係数は$\rho_j=0$で零、通常の接方向の係数のtraceは
+$j$-circleにbasicである。これらの係数とその角微分には$\rho_j$因子が生じる。
+法一形式$\dd\rho_j$の係数にはそのtrace条件を要求しないが、
+$\dd\rho_j=(\rho_j/x_j)\,\dd x_j/x_j$自体が急減衰する。
+実有向blow-up上のsmooth性とこれらの因子が、fc normと有限階微分の$x_j^{-m}$を吸収する。
+カラー延長と局所角座標との差は$H_i$で消える$\rho_i$-smoothな係数からなり、同じfc計算で急減衰する。従ってfull collarでもこのboundednessを保つ。
+これは任意のlog-smooth connectionについての主張ではない。
 
-Determinant と volume densityは positive definite matricesの smooth functionsなので、同じ all-derivative fc controlから smooth volume-IRFA が従う。Normal coefficient $c_i=1$ は RZ の KE standard spatial asymptoticsにおける transverse Poincar\'e coefficientである。
+Rochon--Zhangの背景形(5.3)と各residual backgroundを、それぞれ
+$\omega_{0,I}$、そのRiemannian tensorを$g_{0,I}$とする。
+同論文(2.62)--(2.68)の局所式を一面について比較すると
+\begin{equation}
+\label{eq:RZ-background-collar}
+ g_{0,I}-\left(\dd t_i^2+x_i^2\vartheta_i^2
+                  +(p_i^I)^*g_{0,I\cup\{i\}}\right)
+ \in x_i C^\infty_{\mathrm{fc}}(\operatorname{Sym}^2T^*)
+\end{equation}
+を得る。全残余一様性の理由を記す。
+局所正則射影$q_i$でまず比較する。
+残余$j\ne i$の項は、元のcompactification上のsmoothな係数と
+bounded fc coframes $\xi_j\,\dd z_j/z_j$の積であり、
+$z_i=0$への制限との差は$\rho_i$に比例するsmooth係数である。
+$\rho_j$が零へ近づいても、normal denominatorsはこのfc coframeに含まれるので
+係数に負の$\rho_j$冪を残さない。
+Normal $i$項では$\rho_i=|z_i|e^{\varphi_i}$、
+$\xi_i=(-\log|z_i|)^{-1}$より
+$x_i=\xi_i/(1-\varphi_i\xi_i)$である。
+従って$\dd\xi_i/\xi_i-\dd x_i/x_i$は$O(x_i)$、
+$\xi_i\dd\theta_i-x_i\vartheta_i$も上のconnection boundから$O(x_i)$である。
+背景形の残るcurvature termsには$x_i$因子、または法方向の急減衰因子がある。
+これらの計算は全fc derivativesを保ち、normal coefficientはRZのKE規格化で1である。
+最後に\cref{lem:fc-collar-transfer}のtensor比較を$g_{0,I\cup\{i\}}$に適用し、
+$q_i$を$p_i^I$へ替える。この差は$x_i$の任意冪に入るので
+\eqref{eq:RZ-background-collar}を得る。
+
+KE potentialsには\cite[Theorem~5.1, (5.10)]{RochonZhang}が
+\[
+ u_I-\Xi_{I,i}u_{I\cup\{i\}}
+ \in x_i^\nu C^\infty_{\mathrm{fc}}(D_I^\circ)
+\]
+を与える。この$C^\infty_{\mathrm{fc}}$はopen residual space上のbounded-derivative空間であり、
+$u_I$のcompactificationへのsmooth extensionは仮定していない。
+\Cref{lem:fc-collar-transfer}を適用すると
+$u_I-(p_i^I)^*u_{I\cup\{i\}}$にも同じ$x_i^\nu$評価が成立する。
+Fc frameにおいて$\dd\dd^c$は二階のbounded-coefficient作用素であり、
+$x_i^\nu C^\infty_{\mathrm{fc}}$を保つ。
+さらに同補題のHessian比較を用いるので、非正則な$p_i^I$と$\dd\dd^c$の可換性を
+仮定する必要はない。対応するRiemannian tensorsについても同じである。
+これを\eqref{eq:RZ-background-collar}へ加えると
+\eqref{eq:RZ-collar-tensor}が従う。
+
+残余pairsは有限個で、RZの指数$\nu$はそれらに共通である。
+以上の座標比較もcompactな実有向blow-upsの有限coverで行ったので、
+同じ$\nu_0$と各微分階数ごとの有限定数を全pairsに用いられる。
+\end{proof}
+
+\Cref{lem:RZ-collar-tensor}とexactなquotient-in-stagesにより、一面比較をface flagに沿って
+反復した誤差は$C\sum_{i\in I}x_i^{\nu_0}$となる。
+正定値なproduct modelを基準に十分深いcollarsを取れば、determinantのsmooth性から
+volume densityの比にも同じ全微分評価が成立する。
+これが\cref{prop:RZ}で使うmetric-IRFAとsmooth/exponential volume-IRFAの入力である。
+一般SNCのfull-corner polyhomogeneous expansionや、退化parameterに一様な評価は用いていない。
 
 \section{対数的 Chern--Weil cutoff の補足}
 \label{app:CW}
@@ -2045,6 +2327,15 @@ Regularized maximum $T$ of the depthsを用いて $\chi_R=1$ on $T\le R$、$0$ o
 \section{参考文献}
 \small
 \begin{thebibliography}{99}
+
+\bibitem{AlbinMelrose}
+P.~Albin and R.~Melrose,
+\newblock Resolution of smooth group actions,
+\newblock in \emph{Spectral Theory and Geometric Analysis},
+Contemporary Mathematics 535, American Mathematical Society, 2011, 1--26.
+\newblock 確認版：\href{https://arxiv.org/abs/1012.5765v1}{arXiv:1012.5765v1},
+Definition~1.1, Proposition~1.2, pp.~4--5.
+
 
 \bibitem{BBI}
 D.~Burago, Y.~Burago and S.~Ivanov,

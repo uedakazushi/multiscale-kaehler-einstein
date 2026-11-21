@@ -70,7 +70,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.1（2026年11月22日）}
+\date{現行総説 v1.2（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -168,6 +168,15 @@ V & finite cubical metric limits & pruning--transport theorem，\(\cC_d\) 極限
 
 この表の「無条件」は，各定理の幾何学的仮定のほかに記載の解析packageを課さないという意味であり，原稿にある全証明の独立再検証・外部査読・新規性確認を意味しない．
 
+Part Iでは，Rochon--ZhangのSNC漸近\cite[Theorem~5.1]{RZ}からexact collarへの翻訳を，
+主稿の補題 \texttt{lem:SNC-compatible-collars}，\texttt{lem:fc-collar-transfer}，
+\texttt{lem:RZ-collar-tensor}に分けて証明する．
+元の実有向blow-up上で残余Hermitian depthsを保つcollarsを構成し，
+延長作用素とcollar pullbackの差を全残余方向に一様に評価することで，
+固定SNC対のmetric-IRFAとsmooth/exponential volume-IRFAを得る．
+一般のlog-smooth collarに同じtensor比較が自動成立するとは主張しない．
+
+
 実質的依存は次の通りである．Part II の Torelli core は Part I と独立であり，Part I はその periods を KE translation limits として解釈する時だけ必要になる．Part III の抽象 gluing は Part I の log-smooth ends を local pieces として受け取れるが，actual metrics への適用には別途 localization と anchor が必要である．Part IV の central component
 \[
  H_i^\circ=H_i\setminus\bigcup_{j\ne i}H_j
@@ -200,7 +209,7 @@ actual曲面fibrationとsame-map GH実現は
 局所protected距離を全曲面ambient距離へ読み替えない．
 次数・配置に一様な定数，任意に先指定した木系，最適収束速度は結論しない．
 \(f_t\)のfiberは\(\pi_t\)のfiberの合併であり，両者を同じLagrangian fiberと呼ばない．
-同じ\(\pi_t\)に作用適合atlasとGH実現を同時に課す問題は別に残る．
+同じ\(\pi_t\)に作用適合atlasを課す条件はGH実現と区別する．さらに\(d\ge7\)では，曲面論文の系\texttt{ke:global-core-nonmatroidal}が，この同じ基底のcore頂点にmatroidal chartを置けないことを示す．これは選んだ基底の局所位相障害であり，全てのfibrationや収縮先\(\cC_d\)についての不存在主張ではない．
 
 この直接経路により対象曲面の大域GH証明が原稿に存在しても，
 第IV--V篇の \(\mathrm{(CP)}_d,\mathrm{(PBE)}_d,\mathrm{(TC)}_5\) 自体，
@@ -222,6 +231,14 @@ ambient距離で等長であることを示す．さらに同論文の系
 を満たす尺度では，\(x_{i,t}\in f_t^{-1}(e_i)\) を基点とする
 \((X_t,a_t^{-1}d_{g_t},x_{i,t})\) が \(C_{2,d-1}\) にpointed GH収束することを示す．
 例えば \(a_t=\Rt\sqrt{\varepsilon_t+\Rt^{-1}}\) と選べる．
+より一般に，\(A_t\subset X_t\)について
+\(\eta_t=\sup_{y\in A_t}d_\square(f_t(y),e_i)\to0\)なら，
+第三条件を \(\Rt(\varepsilon_t+\eta_t)/a_t\to0\)に強めることで，
+全\(y_t\in A_t\)を基点とする収束を各固定半径で一様に得る．
+同じfibrationのcomponent coreと変更collarの合併はこの条件に適合し，
+\(a_t=\Rt\sqrt{\varepsilon_t+q_t}\)，
+\(q_t=(1+\log(N_{j(t)}+1))/\Rt\to0\)を選べる．
+
 証明の正本は曲面repoであり，これは同じglobal GH写像と有限target幾何からの帰結である．
 任意に先指定した中間尺度での収束，full tensor比較，二つの極限の交換を意味しない．
 \end{remark}
@@ -470,7 +487,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂32，2026年11月22日，
+\newblock 改訂33，2026年11月22日，
 \newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，系 \texttt{ke:intermediate-component-cone}．
 

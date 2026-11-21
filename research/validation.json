@@ -18,7 +18,7 @@
       "unresolved_or_box_warnings": [],
       "other_warnings": "Japanese font scaling and small math-font size substitutions remain; main manuscript also has PDF bookmark math-token warnings.",
       "build_date": "2026-11-22",
-      "rerun_in_current_revision": true,
+      "rerun_in_current_revision": false,
       "source_sha256": "55cd64cc528de603111743b6345778e1e3791c552323edbe7d23ef34c4b5e7aa",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
@@ -38,7 +38,10 @@
         38,
         39
       ],
-      "visual_check_result": "Poppler-rendered pages inspected; no clipping, overlap or missing glyphs observed."
+      "visual_check_result": "Poppler-rendered pages inspected; no clipping, overlap or missing glyphs observed.",
+      "current_source_changed": true,
+      "pending_source_sha256": "127bd731d605200234fad5f1c614264ffa0244008805d72c5c121cdf80a964f3",
+      "current_build_status": "Pending v1.2 rebuild; the existing PDF/hash/page record is from the preceding source."
     },
     {
       "source": "papers/research-directions.tex",
@@ -65,7 +68,7 @@
       "unresolved_or_box_warnings": [],
       "other_warnings": "Japanese font scaling and small math-font size substitutions remain; main manuscript also has PDF bookmark math-token warnings.",
       "build_date": "2026-11-22",
-      "rerun_in_current_revision": true,
+      "rerun_in_current_revision": false,
       "source_sha256": "ef6d2c9140d9aa7a58af7d82ab8d4e6808d901eee3e062db3ce40af73d280047",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
@@ -86,10 +89,13 @@
         9,
         10
       ],
-      "visual_check_result": "All 10 Poppler-rendered pages inspected; after final bibliography synchronization, the changed bibliography page 10 was rebuilt and visually rechecked. No clipping, overlap or missing glyphs observed."
+      "visual_check_result": "All 10 Poppler-rendered pages inspected; after final bibliography synchronization, the changed bibliography page 10 was rebuilt and visually rechecked. No clipping, overlap or missing glyphs observed.",
+      "current_source_changed": true,
+      "pending_source_sha256": "c09dc03f9150bc48303cbb71c96badbbb95737c2c04d4e0fb9887f5ae9a86084",
+      "current_build_status": "Pending v1.2 rebuild; the existing PDF/hash/page record is from the preceding source."
     }
   ],
-  "scope": "Latest source edits and targeted internal proof/interface review, two complete LuaLaTeX builds, and 19 distinct PDF pages visually checked. The other three manuscripts were not rebuilt. This is not a complete mathematical proof audit.",
+  "scope": "Current v1.2 source integrates the fixed-SNC collar/extension/tensor input chain and two collar counterexamples. Targeted internal proof review completed; two manuscript rebuilds and changed-page visual QA are pending. Other manuscripts were not re-audited or rebuilt.",
   "visual_check": {
     "date": "2026-11-22",
     "sample": "All 10 overview pages and Part I pages 1, 9, 13, 14, 15, 16, 35, 38, 39.",
@@ -102,26 +108,27 @@
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
   "current_revision": {
     "date": "2026-11-22",
-    "status": "Source/interface checks, two LuaLaTeX builds and specified visual QA completed.",
+    "version": "Part I v1.2; overview v1.2; current research set v1.3",
+    "status": "Targeted source and mathematical review completed; LuaLaTeX and visual QA pending.",
     "edited_manuscripts": [
       "papers/multiscale-kaehler-einstein.tex",
       "papers/series-overview.tex"
     ],
-    "mathematical_scope": "Part I endpoint/ambient connector induction reviewed internally by a second reader under full-sector principal torus bundle and residual-uniform metric-IRFA assumptions. CP/PBE/TC route matched to Part IV-V statements. Fixed component indexing and metric normalization checked. Surface component-cone and selected intermediate-scale results cited from their proof owner.",
-    "not_verified": "No complete independent proof audit of Part I SNC collar/Rochon-Zhang translation, Parts II-III, or the external surface theorem. No new verification of CP/PBE/TC, H_loc/H_anc or controlled push-off. No formal proof or exhaustive novelty check.",
-    "runtime": "System LuaLaTeX lacks lualatex.fmt. Used the existing local TeX runtime /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh; its pdftex.map lacked rsfs, so TEXFONTMAPS pointed to a temporary map combining that existing map and the installed rsfs.map. No repository build settings or shared runtime were modified.",
-    "command": "latexmk papers/multiscale-kaehler-einstein.tex papers/series-overview.tex (with the stated local runtime and font-map environment). PDF and SyncTeX are both in build/.",
-    "source_checks": "git diff --check passed; no duplicate or unresolved internal TeX labels; relative Markdown file links resolve.",
-    "external_primary_source_check": "Rochon-Zhang arXiv:1106.0873v2, Lemma 1.1 and §1 (1.10)-(1.15), and Theorem 5.1 checked directly: global boundary torus bundle survives logarithmic blow-up and a common decay exponent is provided across all strata. No full reproof of the collar-to-model tensor translation.",
+    "mathematical_scope": "Fixed SNC: lemma SNC-compatible-collars constructs exact collars preserving the given Hermitian residual norms and canonical boundary circle actions by simultaneous stratum and product-connection induction; lemma fc-collar-transfer proves flat-to-all-orders extension and Hessian comparison in the full-residual fc norms; lemma RZ-collar-tensor combines RZ Theorem 5.1 and the background formula to yield exponent min(1,nu), and finite iteration yields smooth/exponential volume-IRFA. This chain and both explicit collar obstructions received independent internal readings. No new analytic hypothesis is imposed on the ample SNC application.",
+    "not_verified": "No complete independent proof audit of the remaining Part I co-Gram/contraction and Busemann/exact-tail arguments, Parts II-III, or the external surface theorem. No new verification of family-uniform CP/PBE/TC, H_loc/H_anc, or controlled push-off. No formal proof or exhaustive novelty check.",
+    "runtime": "Existing local TeX runtime /workspace/scratch/5ad2c7536ef5/tex-runtime/env.sh; TEXFONTMAPS=/tmp/multiscale-texmaps//: supplies the installed rsfs font map. Repository build settings and shared runtime are unchanged.",
+    "command": "latexmk papers/multiscale-kaehler-einstein.tex papers/series-overview.tex with the stated runtime and font-map environment; planned, not yet run for these sources.",
+    "source_checks": "git diff --check passed; final label/link/control-character checks pending.",
+    "external_primary_source_check": "Rochon-Zhang arXiv:1106.0873v2: Lemma 1.1 and (1.10)-(1.15), Lemma 2.4, (2.25)-(2.29), (2.43)-(2.46), (2.62)-(2.68), (5.3), (5.10), Theorem 5.1. Albin-Melrose arXiv:1012.5765v1: Definition 1.1, Proposition 1.2, (1.3)-(1.4), pp.4-5. The extension with prescribed SNC boundary data is proved in the current manuscript, not attributed wholesale to the iterated-fibration theorem.",
     "external_reference_versions": {
       "kaehler-einstein-degeneration": {
         "part_iv_version": "v1.9",
         "commit": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7"
       },
       "surface-lagrangian-torus-fibration": {
-        "revision": 32,
+        "revision": 33,
         "date": "2026-11-22",
-        "reference": "Current main manuscript, with its formal Japanese title; no obsolete baseline-revision statement."
+        "reference": "Current main manuscript; same-map intermediate cone result with uniform core/collar basepoints under R(epsilon+eta)/a -> 0; the proof remains in its owning repository."
       }
     }
   },

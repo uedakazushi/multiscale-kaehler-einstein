@@ -1,7 +1,6 @@
-# 数学的再監査報告
+# 現行原稿と回収元の監査範囲
 
-日付: 2026-08-31  
-対象: `Multiscale Kähler–Einstein Geometry I–V` 統合改訂稿 v1.0
+2026-11-22 / v1.2。回収元の2026-08-31統合改訂稿v1.0の監査事項と、現行稿で有効な判定を整理する。実行済み組版・限定的内部点検の正本は `validation.json`。原稿に証明があることと今回その証明を点検したことを区別する。
 
 ## 結論
 
@@ -9,7 +8,7 @@
 
 1. Part II: controlled parallel push-off
 2. Part III: `(H_loc)` と `(H_anc)`
-3. Part IV–V: `(PBE)_d`、および一般次数の大域適用では `(CP)_d`
+3. Part IV–V: actual大域適用に `(CP)_d` と `(PBE)_d`。五次coarseを引用Part IVから得る経路にも `(TC)_5` が必要。
 
 したがって、統合稿は未証明事項を無条件定理として提示しません。
 
@@ -20,13 +19,15 @@
 | I | 距離錐、facewise translation、LDP、face mass、exact tail | 一様 Mellin 極限に weighted uniform integrability を追加 |
 | II | oriented/full/generic Torelli、finite period closure、branch separation、全四点 metric、minimal-excess completion | 一般 secondary WP completion |
 | III | algebraic models、canonical cell、positive model pGH、abstract scalar gluing、residual Torelli/WP | actual localization、anchors、portal transport、actual global pGH |
-| IV | quintic coarse geometry、局所模型、source packing、固定次数の代数・残差 package | moving-window product exhaustion、sharp co-Gram |
+| IV | 明記した局所模型・full-triple/closed-corner比較、source packing、固定次数の代数・残差 package | 五次exterior粗比較は(TC)5、moving-window product exhaustionとsharp co-GramはPBE |
 | V | abstract pruning–transport、`diam(C_5)=sqrt(13)` | actual degree-`d` GH application |
 
 ## 具体的に修正した誤り・過剰主張
 
 ### Part I
 
+- `lem:SNC-compatible-collars`、`lem:fc-collar-transfer`、`lem:RZ-collar-tensor`：固定Hermitian normsを保つ実有向カラーとproduct connectionを同時構成し、RZ延長Ξからexact collarへの全残余一様比較と再帰的tensor評価を証明。RZ 1106.0873v2およびAlbin–Melrose 1012.5765v1の指定一次箇所を照合し、この入力鎖を複数担当で点検した。詳細は `notes.md` と主稿付録。
+- `lem:fibres`→`prop:lifting` はambient endpoint接続として点検。`prop:cogram`→`thm:contract`、Busemann/exact-tailを含む全証明の包括的再検証は未了。
 - Mellin recursion の `(2π)^{|I|}` は normal torus を二重計上していたため削除。
 - 一様 dominated convergence に必要な error-weighted exponential terms の uniform integrability を追加。
 - Chern–Weil の Stokes 符号、LDP lower bound、properness/net/fibre control を修正または展開。
@@ -86,7 +87,9 @@ Degree `d` hypersurface `X ⊂ P^N` について、次は確定部分として�
 
 一方 `N ≥ 4` では double stratum 上の source locus が正次元で triple strata と交わるため、`x_1…x_r=tz` 型の mixed cores が不可避です。また residual factor は高次元 arrangement complement になります。このため高次元 GH 極限は予想に留めています。
 
-## 機械・視覚検査
+## 回収元に記載された機械・視覚検査
+
+以下は回収元の記録であり、現行変更後の再実行ではない。現行版は `validation.json` を参照。
 
 - LuaLaTeX: 全六ソース成功
 - Cross-reference/citation: 未解決なし
