@@ -1,6 +1,16 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.17（Part I v1.9、総説v1.13）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。実行済み組版・対象限定の内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。Part I v1.9は73頁、総説v1.13は20頁にLuaLaTeXで組版し、両稿とも未定義参照・引用、重複label、欠字、LaTeX error、overfull/underfullの主要6分類は零である。Part Iの指定13頁、総説の指定14頁を150 dpiで実表示し、切れ・重なり・欠字を認めなかった。Part Iの命題・再和式の頁跨ぎは連続性を保ち判読できる。全頁の逐頁表示ではない。Part II–III・研究素材のTeXと有効な既存検証記録は変更しない。数学的点検・組版・表示範囲の正本は `research/validation.json`。 総説はPart Iの新命題・系、Part IV v1.12、曲面改訂43の現行結果を反映する。
+2026-11-22 / v1.18（Part I v1.9、総説v1.14）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。実行済み組版・対象限定の内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。Part I v1.9の既存の73頁の組版と指定13頁・150 dpiの実表示記録を保持する。今回はPart I–III・研究素材を再組版せず、そのTeX本文を変更していない。総説v1.14はLuaLaTeX/latexmkで22頁に組版し、主要log六分類は全て0。変更頁と隣接頁1–5、9–10、13–15、20–22の計13頁を150 dpiで実表示確認した。全頁の目視確認や全証明の再検証を意味しない。頁数・source/PDF hash・log分類・実表示範囲は `research/validation.json` に記録する。 総説はPart Iの有効な命題・系とPart IV v1.12を保持し、曲面改訂44の標準六次同時実現とPille-Schneiderの先行性を反映する。
+
+## 今回の六次同時実現とhybrid測度の照合
+
+曲面改訂44の `ke:petersen-actual-neck-periods`、`ke:petersen-full-moment`、`ke:sextic-simultaneous-realization` の指定証明鎖を作成担当・統合担当・独立担当が実読した。全ρ=4π/5とsource allocation (1,1,1,1;2)のfinite-t period整合、内部Euler framingの符号、十一entryの正配分、内部二端cuts、両側三sourcesのseparator、source wallの相殺、Dini、中央parameter freeze後のfull source保持を確認した。Core domains・primitivesの先固定とanchor葉の後選び、free anchor bandsでの全open germs相対の再補正、三面共通の平行移動2ρr'_vとprimitive normal covector、同じ射影へのGH・測度移送にも具体的な欠落を認めなかった。この限定点検は全P0・一般面積定理・全原著の全面再監査ではない。
+
+L. Pille-Schneider, *Hybrid convergence of Kähler–Einstein measures*, Ann. Inst. Fourier **72** (2022), no.2, 587–615、[DOI 10.5802/aif.3455](https://doi.org/10.5802/aif.3455)、[刊行版本文](https://www.numdam.org/item/10.5802/aif.3455.pdf)を実読した。Theorem A（pp.589–590）は半安定還元を持つ正準偏極退化、Theorem B（p.590）はnormalなreduced中央fiber模型と、特異locusに質量を置かない解析的測度極限を仮定する。Theorem 2.1（p.604）のcanonical model、Remark 2.4（p.605）とProposition 3.1（p.607）の成分交点数、Definition 1.2（p.593）の重複度付きmodel MA、およびp.600のdivisorial付値の規格化を照合した。標準的な付値はord_D/m_Dであり、reduced canonical modelではm_D=1。本族のnormal canonical全空間・reduced slc中央fiber・相対正準束O(d−4)は既存の曲面証明と整合する。
+
+原典の[ω̂]=c_1(K)、μ=ω̂²と本稿のω=2πω̂、dV=ω²/2の差を確認した。成分交点数(d−4)²は本稿の質量2π²(d−4)²と確率重み1/dを与える。従って原子化・等重み自体を新規成果とはしない。Hybrid中央fiberはBerkovich空間であり、cubical計量基底や細分化されたfibration基底と同一視する比較写像は構成していない。本稿で追加されるのは、同じactual Lagrangian射影上での全域GH近似・作用atlas・測度収束の同時実現である。
+
+2024–2026年の関連検索も含めた限定探索では、これら三条件を同時に扱う追加の一次結果は確定できなかった。この不検出を新規性・優先権の証明とせず、既存のEM・Mikhalkin・Ruan・FBP・Zhang・Mandel等の対象別比較を保持する。
 
 ## 結論
 
@@ -132,16 +142,16 @@ Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さ�
 
 ## 曲面正本の大域距離・相対変更の確認範囲
 
-現行接続先は[曲面改訂43・保存commit 1716a17](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1716a175dddbccf23e86027c34fba239c0cf527b)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I–III本文の新しい退化族入力にはしない。総説v1.13はこの確認版とPart IV v1.12（commit `11910259dd1628d542df57d370123d0a40b08d61`）を引用する。以下に保持する対象限定監査は、各指定証明の範囲で有効であり、現行曲面全稿の全面再監査ではない。保存と外部組版は曲面正本の検証記録へ分ける。
+現行接続先は[曲面改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I–III本文の新しい退化族入力にはしない。総説v1.14はこの確認版とPart IV v1.12（commit `11910259dd1628d542df57d370123d0a40b08d61`）を引用する。以下に保持する対象限定監査は、各指定証明の範囲で有効であり、現行曲面全稿の全面再監査ではない。曲面改訂44の外部組版は321頁、主要log六分類0、指定22頁の150 dpi実表示確認を統合担当から受領した。最終PDFの10・321頁を再表示し、他20頁は確認済み画像とbyte一致である。これは本repoでの再組版ではなく、具体的なhash・表示頁・保存先は `research/validation.json` の外部参照記録に分ける。
 
-- **同じ射影の体積測度極限の直接点検。** 改訂43 `ke:global-volume-measure` の証明を読み、Part Iのbounded-primitive Chern–Weilを用いる各成分質量V_*=2π²(d−4)²と全体積dV_*、固定compactのgraph像の互いの素性・体積収束・clipped-depth値、exhaustionによる残り質量の抑制を確認した。同じfの押出しは成分頂点に質量1/dを置く。p_T^−1(e_i)が一点であることとcompact性によりπの固定位相底空間にも移り、五次の作用指定射影は一様な値比較で同じ結論を持つ。Moving neckの体積評価・追加速度・対角列の変更は用いず、極限測度の全台性を要求しない。
+- **同じ射影の体積測度極限の直接点検。** 改訂44 `ke:global-volume-measure` の証明を読み、Part Iのbounded-primitive Chern–Weilを用いる各成分質量V_*=2π²(d−4)²と全体積dV_*、固定compactのgraph像の互いの素性・体積収束・clipped-depth値、exhaustionによる残り質量の抑制を確認した。同じfの押出しは成分頂点に質量1/dを置く。p_T^−1(e_i)が一点であることとcompact性によりπの固定位相底空間にも移り、五次と標準等重み六次の作用指定射影は一様な値比較で同じ結論を持つ。Moving neckの体積評価・追加速度・対角列の変更は用いず、極限測度の全台性を要求しない。
 
 - **Actual両端periodの独立内部点検。** `ke:k4-actual-neck-periods`、等重み系 `ke:k4-equal-weight-periods`、非対称例 `ke:k4-cyclic-weight-periods` の全証明を作成担当と別の二担当が読んだ。全K2 tube上のnormal period零の閉差からχの共通性を、clutchingからΣχ=−2πを得る。Basinsのdisk上のactual normal framesとsource zero/puncture poleのwindingを使い、end shear −1とcritical shear n−1を区別する。有限整合式、等重みの必要十分条件、非対称5cycle例の隣接・非隣接二ケースを確認した。独立primitiveの任意定数による合わせ込みはない。既固定allocationに対する障害と、初期allocationを選ぶ存在主張を区別した。
 - **全momentと全open germsの独立内部点検。** `ng8:uniform-k2-end-periods`、`ng8:thin-source-tail-choice`、`ng8:quintic-full-moment` の統合本文と成分別面積定理・ordered cuts・source wallを読んだ。負側の補正は(J_i+(n−1)μ)−(R_i−μ)=J_i−R_i+nμ、全量は正側−ΣR−μ／負側−ΣR+4μで一致する。全深部評価からextended bandの正marginを得て、Darboux-ball分割による面積連続性とDiniで初期全tailsを小さくする。Target−protected massのsmoothness、最後の同targetへの相対Moser・open germs恒等・source point first jetsを照合した。同じP_j内で初期葉を選び、通常P0と作用指定構成を別に作る量化とfixed Tも確認した。
 - **同じπのatlas/GHへの接続。** `ke:quintic-simultaneous-realization` の実本文を読み、same analytic cuts・canonical moments・full K2 partitions・中央full nodal neighborhoodsからrelative-replacementの四条件を確認した。新foliationについても飽和となるcuts、whole-fiber閉商、core/branchの一斉2π換算、q=1 branch chart、actual cocycle、同じ射影の値比較からslow diagonalへの接続を照合した。改訂42では `atl:qone-chart`・`atl:gluing-criterion`・`qg8:star-transition`・actual-anchor・endpointへ逆向きにたどり、全平行移動付きの式 `ke:eq:quintic-affine-full-transition` を独立に確認した。ζ'=ζ、s'=−s+(y_k+y'_k)ζ+w_i,j+w_j,iは全三面で同じtranslationを持ち、Σy=Σy'=1からGL(3,Z)へ延びる。Primitive branch gradient、非対称正weights、2π、focus puncturesも整合する。主担当も新式を別に点検した。
 - **Source-free限定とthin葉の量化。** `neck_action_matching.tex` 前半の `ng8:central-criterion` までの自由作用・面積affine性は、source-free neckに限る。Actual source-inclusive neckはt≠0でもμ=0に固定点を持ち、全intervalにはwall項を使う。`ng8:thin-source-tail-choice` と `ng8:quintic-full-moment` ではS_t・Dを先に固定し、引戻し座標でthin葉を選ぶ。S_tが新annuliを保つことや全source円葉がDの支持外にあることは不要。点近傍のμ非依存とmarked classを保ち、全同一moment connector・同じclipped-depth mapによりGH予算へ葉の幅・C^k定数・追加t閾値を入れない。この修正箇所の対象限定点検を曲面側から同期する。
 
-これらの既存独立監査と今回の体積測度極限の直接点検は指定接続に限り、一般成分別面積定理、P0全体又は外部解析原著を全面的に再監査したものではない。各tの同じ射影でのatlas/GHは、atlasのt方向の収束、極限基底のintegral affine構造、cubical距離のHessian・Monge–Ampère性を含まない。任意先指定source tails・六次・t連続性・速度も結論しない。
+これらの既存独立監査と今回の体積測度極限の直接点検は指定接続に限り、一般成分別面積定理、P0全体又は外部解析原著を全面的に再監査したものではない。各tの同じ射影でのatlas/GHは、atlasのt方向の収束、極限基底のintegral affine構造、cubical距離のHessian・Monge–Ampère性を含まない。任意先指定source tails・非標準六次targets・t連続性・速度も結論しない。
 
 - **Actual五次anchorの独立内部点検。** `ke:k4-actual-end-anchor` と `ke:k4-protected-anchor-selection`、`ke:actual-anchor-fan-criterion`、`ke:anchor-stokes-budget`、component linkのmoment・meridian規格化、相対面積実現、actual cone fillingの指定証明を読んだ。O(1)のsectionの単純零点によるwinding −1と、同じgraph/averaging/Hamiltonian isotopiesによるactual cyclesへの移送を確認した。K2内側cutの二深度比一様評価とj→N→tの順序、三basinのstrict margins、Diff_0(P rel K)内のdensity–Moserと有限marked点のfirst-jet固定、fan角の単調性、全normal–corner開overlapの保持を確認した。Source全飽和近傍はδ決定後に中央へ選び、大きい相対isotopyを先に入れてから同anchorの二族をsmall interpolationで合わせる。この限定選択で新たなgapは認めなかった。任意先指定の大source近傍や追加anchor保持annuli、この局所系単体には全neckの作用直線性、反対端の切片/shear・全域atlasは含まれず、上の全moment構成と統合定理を使う。
 
@@ -156,7 +166,7 @@ Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さ�
 - **有限targetの独立内部点検。** `topo:cubical-local-models`、`topo:cubical-moving-blowups` の全局所閉球とmoving-basepointの証明を読んだ。Support二元の折れ点e_i+e_jもbookであり、三座標全て1の点だけが全角3π/2の錐となる。固定局所錐のfull-ambient閉球へ移し、成分錐から逃げる場合はpositive-starの退出費用でbook又は平面を得る。四型の任意の有限基点は、任意の拡大列で実現できる。
 - **実曲面への移送。** `ke:distortion-to-pointed-balls` はcompact geodesic spaces間の全射の歪みδから、全中心・同半径閉球の基点付きGH距離≤3δ/2を与える。`ke:intermediate-moving-classification` は同じf=pπを用い、a→∞、a/R→0、Rε/a→0の条件下で全型と実現を移す。Core・変更collarへの既存の一様成分錐も保持する。一般的な局所cone幾何・GH移送自体の新規性を主張せず、任意尺度・tensor収束・極限交換へ拡張しない。
 
-この指定範囲で結論を妨げるgapは認めなかった。五次では初期source葉を選ぶ存在問題として同じπのatlas/GHまで証明が閉じ、六次と任意先指定のfull source tailsへの相対問題は別に残る。全曲面原稿・Part IV原著の包括的再監査、外部査読、形式証明、網羅的な先行研究比較は未了である。CP/PBE/TC、H_loc/H_anc、controlled push-offは独立のままである。
+この指定範囲で結論を妨げるgapは認めなかった。五次と標準等重み六次では初期source葉を選ぶ存在問題として同じπのatlas/GH/測度収束まで証明が閉じる。任意先指定のfull source tailsと非標準targetsへの相対問題は別に残る。全曲面原稿・Part IV原著の包括的再監査、外部査読、形式証明、網羅的な先行研究比較は未了である。CP/PBE/TC、H_loc/H_anc、controlled push-offは独立のままである。
 
 ## 曲面接続の一次文献比較
 

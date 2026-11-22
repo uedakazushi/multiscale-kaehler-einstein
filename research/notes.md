@@ -1,14 +1,14 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.17（Part I v1.9、総説v1.13）
+更新：2026-11-22 / v1.18（Part I v1.9、総説v1.14）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。現行接続先は[KE Part IV v1.12・Part V v1.10・研究資料v1.24](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/11910259dd1628d542df57d370123d0a40b08d61)と[曲面改訂43・保存commit 1716a17](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1716a175dddbccf23e86027c34fba239c0cf527b)。資料確認日は2026-11-22。今回の数学的点検はPart Iの積の複素対数germと距離分布回収、および総説への現在有効な三研究の結果の統合である。既存のPart Iの全face/tail/Abel鎖、Part IVのcapped下界と固定end、曲面のactual両端period・全moment・作用接続・確率体積極限の指定点検は有効な範囲で保持する。全原稿・P0全体・外部解析原著の全面再監査ではない。
+研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。現行接続先は[KE Part IV v1.12・Part V v1.10・研究資料v1.24](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/11910259dd1628d542df57d370123d0a40b08d61)と[曲面改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)。資料確認日は2026-11-22。今回の数学的点検は六次のfinite-t period条件・全momentの二端cuts・balanced separator・中央freeze・作用atlas/GH/測度収束の指定証明鎖と、Pille-Schneiderの一次定理への照合である。Part Iの積の複素対数germと距離分布回収の既存点検は保持し、今回再検証したとはしない。既存のPart Iの全face/tail/Abel鎖、Part IVのcapped下界と固定end、曲面のactual両端period・全moment・作用接続・確率体積極限の指定点検は有効な範囲で保持する。全原稿・P0全体・外部解析原著の全面再監査ではない。
 
-Part I v1.9は73頁、総説v1.13は20頁にLuaLaTeXで組版し、両稿とも未定義参照・引用、重複label、欠字、LaTeX error、overfull/underfullの主要6分類は零である。Part Iの指定13頁、総説の指定14頁を150 dpiで実表示し、切れ・重なり・欠字を認めなかった。Part Iの命題・再和式の頁跨ぎは連続性を保ち判読できる。全頁の逐頁表示ではない。Part II–III・研究素材のTeXと有効な既存検証記録は変更しない。数学的点検・組版・表示範囲の正本は `research/validation.json`。 総説v1.13の科学的入力は上記の曲面改訂43とPart IV v1.12である。
+Part I v1.9の既存の73頁の組版と指定13頁・150 dpiの実表示記録を保持する。今回はPart I–III・研究素材を再組版せず、そのTeX本文を変更していない。総説v1.14はLuaLaTeX/latexmkで22頁に組版し、主要log六分類は全て0。変更頁と隣接頁1–5、9–10、13–15、20–22の計13頁を150 dpiで実表示確認した。全頁の目視確認や全証明の再検証を意味しない。頁数・source/PDF hash・log分類・実表示範囲は `research/validation.json` に記録する。 総説v1.14の科学的入力は上記の曲面改訂44とPart IV v1.12である。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -19,7 +19,7 @@ Part I v1.9は73頁、総説v1.13は20頁にLuaLaTeXで組版し、両稿とも�
 | Part IV `simplex:cor:actual-closed-corner-metric`, `pair:thm:fixed-end-moment` | Closed tripleの内在・protected距離、および固定source-free residual compact上のmoment入力。全曲面ambient距離や任意のmoving exhaustionへの一様性へ拡張しない。 |
 | Part IV `coarse:hyp:TC5`, `coarse:thm:main`; Part V `hyp:CPd`, `hyp:PBEd`, `thm:degree-d-limit` | Part IVの五次coarse定理は(TC)5付き。Part Vの大域適用は(CP)d＋(PBE)d付き。有限targetの直径 `thm:intro-diameter-C5` は独立。 |
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
-| 曲面 `ke:global-volume-measure` | 全固定d≥5、同じf=pπによる正規化KE体積の押出しは成分頂点上の等重み1/dの原子測度へ収束。固定成分体積と全体積の一致、固定compact収束を用いる。πの固定位相底空間にも成立し、五次の作用指定射影へ移せる。全台の極限測度やmoving-neck体積速度は結論しない。 |
+| 曲面 `ke:global-volume-measure` | 全固定d≥5、同じf=pπによる正規化KE体積の押出しは成分頂点上の等重み1/dの原子測度へ収束。固定成分体積と全体積の一致、固定compact収束を用いる。πの固定位相底空間にも成立し、五次と標準等重み六次の作用指定射影へ移せる。全台の極限測度やmoving-neck体積速度は結論しない。 |
 | 曲面 `ke:moment-relative-replacement`, `ke:relative-replacement-gh` | 同じcanonical moment・anchor cuts・保持corner全葉・source nodal neighborhoods・component領域、marked product/cone商、whole-fiber接着を保つ候補の射影値差≤Cη。C1小ささは不要。固定木系の候補がslow diagonalに沿って存在すればGHを移せる。Atlas候補の存在は入力。 |
 | 曲面 `ng8:fixed-fiber-relative-dh`, `ng8:source-dh-wall` | 固定tのfree compact bandのinvariant primitiveとaffine boundary actionsからStokes面積式。Source固定点を横切る(1,−1)模型では周期2πで面積π(c−|μ|)。Actual全P0の面積公式ではない。 |
 | 曲面 `ng8:componentwise-critical-area`, `ng8:strict-area-cuts`, `ng8:p0-small-area-flexibility` | Rel-Kのmarked初期familyを入力とし、critical areasの指定は自由成分への正行列配分と同値。成分別総量＋strict cutsで判定。Actual sourceの全近傍を固定した小さい総和零の変更を構成する。この微小定理自体から所定大targetは結論せず、五次の初期葉選択による全moment構成を別に用いる。 |
@@ -27,7 +27,8 @@ Part I v1.9は73頁、総説v1.13は20頁にLuaLaTeXで組版し、両稿とも�
 | 曲面 `ke:k4-protected-anchor-selection`, `ke:k4-actual-end-anchor` | 同系の仮定を満たす保持end collarsと飽和annuliにはprotected periodsによる有限判定。標準P0で全K2 end collarsだけをanchor上に保持し、source全飽和近傍をδ決定後に離す選択では、Qの負値性とactual clutchingを証明し、任意有向四角形のactual局所K4 chartを同じdomain・primitive・skeleton上に構成する。有限非零bandで元neckへ戻せるが、全neck action・反対端・全域atlas整合は含まない。 |
 | 曲面 `ke:k4-actual-neck-periods`, `ke:k4-equal-weight-periods` | Actual共通primitive・transported cyclesで両端整合をresidueとsource countsの有限等式へ帰着。等重みでは対称六系と(3,1,1) allocationで満たす。自由なprimitive定数の変更は用いない。 |
 | 曲面 `ng8:uniform-k2-end-periods`, `ng8:thin-source-tail-choice`, `ng8:quintic-full-moment` | 同じK2全moment評価と初期source葉の全tail選択からstrict cutsを満たし、affine critical actionsと両coreへの全開collar接着を実現。Full nodal neighborhoodsは選択後に固定する。 |
-| 曲面 `ke:quintic-simultaneous-realization` | 五次の有限compatible dataから各tの同じactual πに作用適合matroidal atlasとf=pπの全曲面GHを同時実現。全平行移動付きGL(3,Z)式は非対称正weightsにも成立。Focus値は穿孔扱い。Atlasのt極限、極限integral affine構造、Hessian・Monge–Ampère性、六次・任意先指定の大source tails・t連続性・速度は含まない。 |
+| 曲面 `ke:quintic-simultaneous-realization` | 五次の有限compatible dataから各tの同じactual πに作用適合matroidal atlasとf=pπの全曲面GHを同時実現。全平行移動付きGL(3,Z)式は非対称正weightsにも成立。Focus値は穿孔扱い。Atlasのt極限、極限integral affine構造、Hessian・Monge–Ampère性、任意先指定の大source tails・t連続性・速度は含まない。六次は次行の別定理による。 |
+| 曲面 `ke:petersen-full-moment`, `ke:sextic-simultaneous-realization` | 標準六次Petersen、全w=2/5、source allocation (1,1,1,1;2)。内部annulusの二端cutsと三対三separator、中央parameter freeze後のfull source保持により、同じactual射影の全域作用atlas/GH/確率測度収束を得る。非等重み一般化・先指定の大source保持・t連続性・速度は含まない。 |
 | 曲面 `ke:source-inclusive-fixed-shell`, `ke:global-clipped-cogram-lower` | Sourceを含む固定残余compact・固定rでの同一frameのmomentとshell横断下界。有限stageのco-Gram不等式を極限操作から分ける。異なるnormal formsのprimitive一致、任意moving exhaustionは含まない。 |
 | 曲面 `topo:cubical-local-models`, `topo:cubical-moving-blowups` | 全targetのambient局所閉球から成分錐、book、角3π/2の錐、平面を得る。全moving拡大極限と任意拡大列での各有限基点の実現。 |
 | 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
@@ -36,14 +37,16 @@ Part I v1.9は73頁、総説v1.13は20頁にLuaLaTeXで組版し、両稿とも�
 
 ## 同じ曲面射影の体積測度極限
 
-正本は曲面改訂43の `papers/sections/paper/ke_global_metric_realization.tex`、`ke:global-volume-measure`。固定d≥5と既存の同じf_t=p_Tπ_tを用い、ν_t=dV_t/[2π²d(d−4)²]とすると
+正本は曲面改訂44の `papers/sections/paper/ke_global_metric_realization.tex`、`ke:global-volume-measure`。固定d≥5と既存の同じf_t=p_Tπ_tを用い、ν_t=dV_t/[2π²d(d−4)²]とすると
 \[
 (f_t)_*\nu_t\rightharpoonup \frac1d\sum_i\delta_{e_i},\qquad
 (\pi_t)_*\nu_t\rightharpoonup \frac1d\sum_i\delta_{v_i}.
 \]
-Part Iの `lem:CW` と体積公式から各固定成分W_iの質量はV_*=2π²(d−4)²であり、smooth fiberの全体積dV_*と一致する。固定compact K_i⊂W_iではgraph embeddingによる体積収束と、clipped-depth mapの値が最終的にe_iとなることから、f_tの像もe_iへ一様に近づく。各K_iを先に大きく取れば、互いに素なgraph像の補集合のlimsup質量を任意に小さくできる。p_T^−1(e_i)={v_i}と底空間のcompact性からπ_tにも移る。五次の作用指定射影は一様な値比較で同じ極限を持つ。
+Part Iの `lem:CW` と体積公式から各固定成分W_iの質量はV_*=2π²(d−4)²であり、smooth fiberの全体積dV_*と一致する。固定compact K_i⊂W_iではgraph embeddingによる体積収束と、clipped-depth mapの値が最終的にe_iとなることから、f_tの像もe_iへ一様に近づく。各K_iを先に大きく取れば、互いに素なgraph像の補集合のlimsup質量を任意に小さくできる。p_T^−1(e_i)={v_i}と底空間のcompact性からπ_tにも移る。五次と標準等重み六次の作用指定射影は一様な値比較で同じ極限を持つ。
 
 今回この証明と固定compact→全質量の極限順序を直接読んだ。Moving coreへの包含、対角列の選び直し、moving neckの一様体積漸近、追加の収束速度は要しない。極限測度は頂点に集中するが、GH極限の辺とsquareは距離として残るため、全台性を要求しないcompact measured GHの意味で述べる。これはPart Iの固定空間のscaled体積が錐頂点へ集中するLDPとは対象・写像・極限parameterが異なる。
+
+Pille-Schneider, *Hybrid convergence of Kähler–Einstein measures*, Ann. Inst. Fourier **72**(2) (2022), 587–615、[DOI 10.5802/aif.3455](https://doi.org/10.5802/aif.3455)、Theorems A–B（pp.589–590）は、正準モデル成分上の交点数を重みとするhybrid原子極限を既に与える。本族の等重み1/dはこの既知結果と一致する。原典は[ω̂]=c_1(K)、測度ω̂²を用いるため、本稿のdV=2π²ω̂²との規格化差を保つ。Hybrid中央Berkovich fiberと本稿のcubical基底を同一視する比較写像は未構成であり、原子化・等重み自体を新規成果としない。同じactual Lagrangian射影の全域GH・作用atlas・測度収束の実現が追加部分である。仮定・重複度・一次確認頁は `research/source-audit.md` に置く。
 
 ## Part IVのcapped volume下界と監査範囲
 
@@ -310,7 +313,7 @@ L_\square(\Theta_t\gamma)\le \frac{R\sqrt{1+\epsilon}}S L_{R^{-2}g_t}(\gamma).
 \sup_{x\in X_t}d_\square(f_{j,t}(x),\widehat f_{j,t}(x))
 \le C\eta_{j,t},\qquad \eta_{j,t}=\frac{1+\log(N_j+1)}{R_t}.
 \]
-両像が同じ小さなcomponent cap内にあることと、neckで同じμの辺像を比較するだけで足り、reduced葉のdiffeomorphismのC1小ささは不要である。`ke:relative-replacement-gh` は一つの固定木系の候補がslow diagonalに沿って存在する場合に、dis(fhat)≤dis(f)+Cη→0を得る。全coarse fiber、すなわち一つのp_T-fiber上のLagrangian fibersの合併もambientに一様収縮する。Atlas候補はこの安定性定理への入力であり、五次では下記の全moment構成が実現する。六次での同時実現は未解決である。
+両像が同じ小さなcomponent cap内にあることと、neckで同じμの辺像を比較するだけで足り、reduced葉のdiffeomorphismのC1小ささは不要である。`ke:relative-replacement-gh` は一つの固定木系の候補がslow diagonalに沿って存在する場合に、dis(fhat)≤dis(f)+Cη→0を得る。全coarse fiber、すなわち一つのp_T-fiber上のLagrangian fibersの合併もambientに一様収縮する。Atlas候補はこの安定性定理への入力であり、五次と標準等重み六次では下記の全moment構成が実現する。
 
 `ke:raw-moment-error-insufficient` は固定stageと0<α<β<1に対し、μ_t=−L_t^(−α)、ν_t=−L_t^(−β)を使う。Raw momentの差は零へ向かうが、σ_t(μ_t)→α、σ_t(ν_t)→βなのでtargetの辺距離は消えない。近似matchingにはprofile値の一様誤差を制御する必要がある。この例はatlas不存在を結論しない。
 
@@ -373,9 +376,23 @@ s'=-s+(y_k+y'_k)\zeta+w_{i,j}+w_{j,i}.
 \]
 三面の平行移動は同じ(w_i,j+w_j,i)r_jiである。各四角形のpredecessorの一意性Σy=Σy'=1がK4のrelationを保ち、線形部分はGL(3,Z)に属する。共通χの相殺には同じneck primitiveを使い、非対称な正weightsにも成立する。Normal covectorはprimitiveで、枝の分母は1。計算は既に一致する全open collarsの実際の葉と作用を入力とする。
 
-各tで同じ射影に二つの性質を持たせる主張であり、作用atlasのt方向の収束、極限基底のintegral affine構造、d_□の作用座標に関するHessian・Monge–Ampère性は結論しない。任意先指定の大source tailsではtarget>Lが破れ得るため別に有限cut判定を要する。t方向の連続性・速度も含まない。六次Petersenの同時実現はinternal annuliの二端cuts、actual periodsと全overlapsが未解決である。
+各tで同じ射影に二つの性質を持たせる主張であり、作用atlasのt方向の収束、極限基底のintegral affine構造、d_□の作用座標に関するHessian・Monge–Ampère性は結論しない。任意先指定の大source tailsではtarget>Lが破れ得るため別に有限cut判定を要する。t方向の連続性・速度も含まない。六次Petersenの標準等重みデータは次節の二端cut構成で同時実現する。
 
 Actual period命題、全moment定理・統合定理と指定依存の独立内部点検を保持する。作用atlasの指定点検ではqone・gluing・actual-anchor・endpointから平行移動付き式を逆向きに読み、主担当も別に式を確認した。Source-free限定とthin葉・解析定数の量化は曲面側の対象限定監査として同期済みである。この範囲で新たなgapは認めなかったが、一般成分別面積定理・P0全体・外部解析原著の全面再監査、形式証明、外部査読、網羅的新規性確認とは区別する。
+
+## 標準六次Petersenの全momentと同じ射影
+
+正本は曲面改訂44の `ke:petersen-actual-neck-periods`、`ke:petersen-full-moment`、`ke:sextic-simultaneous-realization`。標準external critical periodsを零とし、各coreのresidue和を4πとすると、finite-tのshear n_k−1と共通closed差χの切片比較から各external source数は1、全ρ_i,j=4π/5（w_i,j=2/5）となる。内部は二sourceであり、K-side cycleのEuler relationはA端でΣ_Kβ_k、B端で−α−Σ_Kcβ_kとなる。二端のshear n_K−2、n_K+n_0−2は0、2で整合する。旧blow-up模型の異なるrow sumsと面積差をactual KEへ移す計算ではない。
+
+全momentでの面積targetsは a_k=ρ−ν_k+min(μ,0)、a_0=ρ−|μ|、ρ=4π/5。前者のsource wallは一source、後者は二sourcesに対応し、保護質量を引くと自由需要は滑らかになる。内部二保護annuliのblockの累積位置S_A,S_Bに対する二端条件は A_K<S_A、S_B<A_K+a_0（A_K=a_1+a_2）である。四つのexternal tails条件と合わせた5×7のincidence配分には十一の非零entryがあり、これらのstrict positivityが必要十分となる。
+
+両側に三sourcesずつを持つseparatorの面積をS=A_K+a_0/2とし、source点discsとend collarsだけを先に固定して二領域density–Moserで実現する。Sのwallも三sourcesに一致する。Darboux ballsの寄与とfree quotientから質量の連続性を示し、nestedなthin graph neighborhoodsへDiniを適用して、内部blockをSの近傍に置く。Strict marginを得た後、helper family G_μを小さい|μ|でG_0に固定し、それからfull source annuliを保持する。この順序により通常P0の同じμ非依存reference葉と中央full nodal neighborhoodsが一致する。
+
+同じcore domainsとprimitivesは先に固定し、anchor葉とPetersen fillingを全moment構成後に選ぶ。Free anchor bandsの通常補間後には、K2 endsだけを保持して再び五面積を合わせ、両open germsで補正を恒等にする。Source sectionsのfirst jetsを固定してallocationと内部順序を保つが、中央から離れたbandにfull source annuliの保持を新たに課さない。
+
+各A/B branch starで適切な側のexternal cyclesを使うと、三面の作用は同じ整数star同型L_i,jと平行移動2ρr'_vで接続する。Star basisのnormal covectorは(−1,0,0)でprimitive。全periodを2πで割った規約では平行移動は(4/5)r'_vとなる。相対基底値比較により、六つのPetersen chartsを持つ同じactual πが径尺度GHと等重み1/6の確率体積収束を与える。各triangleの三nodes・各bigonの二nodesも同じsource配分による。
+
+指定証明鎖は作成担当・統合担当・独立担当が実読し、二端cutのsource数、wall相殺、Dini、中央freeze、marked class、全open接続とnormal covectorを確認した。全曲面原稿や外部解析全体の再監査ではない。非等重み一般化、既指定の大きいsource neighborhoods、t方向の滑らかさ、atlasの極限、Hessian性、収束速度は含まない。
 
 ## 曲面の全移動基点と選択した中間尺度
 

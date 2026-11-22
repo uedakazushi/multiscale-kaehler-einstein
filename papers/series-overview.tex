@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 固定補空間，退化族の局所解析，曲面実現の接続と定理状態}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.13（2026年11月22日）}
+\date{現行総説 v1.14（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -88,14 +88,17 @@
 
 五次では，初期source葉とその保持近傍を選ぶ存在問題として，両端periodの有限整合式，
 sourceを跨ぐ全moment面積実現，全開collarの接着を閉じた．
-これにより同じ射影が作用適合matroidal atlasと上のGH実現を同時に持つ．
-六次の同時実現と，任意先指定のfull source tailsを保つ相対問題は別に残す．
+六次でも標準等重みPetersen系について，内部annulusの二端cutsとsource wallに適合する
+separatorを用いて全moment構成を閉じた．これにより五次と六次では，同じ射影が
+作用適合matroidal atlas，径尺度のGH近似，確率体積収束を同時に持つ．
+負KE体積のhybrid原子極限はPille--Schneiderの既知結果であり，
+本稿の同じactual射影による実現と区別する．任意先指定のfull source tailsを保つ相対問題は別に残す．
 \end{abstract}
 
 \begin{center}
 \begin{minipage}{0.93\textwidth}\small
 \textbf{Abstract.}
-This overview connects fixed SNC complements, local KE degeneration analysis, and global Lagrangian realizations. For a cusped hyperbolic curve times a compact factor, the logarithmic germ of the actual distance Laplace transform determines the factor's normalized radial distribution. On degenerating surfaces, the same fibration realizes the full cubical GH limit and pushes probability KE volume to equal atoms at the component vertices. The local interface isolates fixed-end log-density convergence and normal frame winding. For quintics, an initial choice of source leaves also gives an action-compatible matroidal atlas for the same fibration; the analogous sextic problem remains open. The direct scalar/portal proof does not verify the independent coarse-package, product-box, tensor-comparison, localization or anchor hypotheses.
+This overview connects fixed SNC complements, local KE degeneration analysis, and global Lagrangian realizations. For a cusped hyperbolic curve times a compact factor, the logarithmic germ of the actual distance Laplace transform determines the factor's normalized radial distribution. On degenerating surfaces, the same fibration realizes the full cubical GH limit and pushes probability KE volume to equal atoms at the component vertices. The hybrid atomic limit is already known from Pille-Schneider; the additional realization uses the same actual Lagrangian projection. Initial source leaves can be chosen so that this projection also carries an action-compatible matroidal atlas for quintics and standard equal-weight Petersen sextics. The local interface isolates fixed-end log-density convergence and normal frame winding. The direct scalar/portal proof does not verify the independent coarse-package, product-box, tensor-comparison, localization or anchor hypotheses.
 \end{minipage}
 \end{center}
 
@@ -120,8 +123,8 @@ This overview connects fixed SNC complements, local KE degeneration analysis, an
 actual負KE曲面の同じLagrangian射影による全域GH実現と確率体積極限である．
 局所解析を扱うPart IVは後者への独立した入力を与える．
 五篇という番号は証明の所在を示すものであり，投稿順や論文数を固定する条件ではない．
-無条件に得られた結果と五次の同時atlas/GH実現を公表単位とし，
-六次の拡張や独立した条件付き解析をそれらの公表条件にしない．
+無条件に得られた結果と五次・標準六次の同時atlas/GH実現を公表単位とし，
+任意先指定のsource tailsへの拡張や独立した条件付き解析をそれらの公表条件にしない．
 
 Part Iでは，実球裾係数
 \[
@@ -186,7 +189,10 @@ cut選択の量化順序の順に読む構成とする．
 等重みと対称四角形系は必要な有限条件を実際に満たすので，
 五次のこの存在主張に未検証の追加解析仮定はない．
 初期葉を選んだ後にfull nodal neighborhoodsを固定する構成であり，
-任意先指定の大きいsource tailsには適用しない．六次Petersenの同時実現は未解決である．
+任意先指定の大きいsource tailsには適用しない．六次では等重みと標準Petersen系に対し，
+内部annulusの二端cutsをsource wallに適合するseparatorで満たし，
+同じ射影のatlas・GH・確率体積収束を得る
+（\texttt{ke:petersen-full-moment}，\texttt{ke:sextic-simultaneous-realization}）．
 
 \section{共通記号と正規化}
 
@@ -375,8 +381,8 @@ ambient経路として許す．同一moment上の全fiber合併と両端を接�
 target線分の厳密な持上げや保持領域のintrinsic上界は必要ない．
 次数・配置に一様な定数，任意に先指定した木系，最適収束速度は結論しない．
 \(f_t\)のfiberは\(\pi_t\)のfiberの合併であり，両者を同じLagrangian fiberと呼ばない．
-同じ\(\pi_t\)に作用適合atlasを課す条件はGH実現と区別する．五次では後述の
-全moment構成によって両者を同時に満たし，六次ではこの同時実現が未解決である．
+同じ\(\pi_t\)に作用適合atlasを課す条件はGH実現と区別する．五次と標準等重み六次では，
+後述の全moment構成によって両者を同時に満たす．
 さらに\(d\ge7\)では，曲面論文の系\texttt{ke:global-core-nonmatroidal}が，この同じ基底のcore頂点にmatroidal chartを置けないことを示す．これは選んだ基底の局所位相障害であり，全てのfibrationや収縮先\(\cC_d\)についての不存在主張ではない．
 
 同じ射影の測度側は，系\texttt{ke:global-volume-measure}で閉じる．
@@ -393,12 +399,21 @@ target線分の厳密な持上げや保持領域のintrinsic上界は必要な�
 各固定成分の体積\(2\pi^2(d-4)^2\)を対数的Chern--Weil公式で計算し，
 固定compact上の滑らかな収束，その像の成分頂点への収束，全質量の一致を用いる．
 従って既存の対角選択のまま結論でき，moving neckの一様体積漸近を追加しない．
-五次の作用atlasと同時実現する射影にも同じ結論が成立する．
+五次と標準等重み六次の作用atlasと同時実現する射影にも同じ結論が成立する．
 全台性を要求しないcompact measured GHの規約では，これは同じ写像による
 計量・測度収束である．極限測度の台は成分頂点だけだが，辺とsquareの距離は残る．
 一方，\(\Rt^{-2}g_t\)の未正規化体積は\(\Rt^{-4}dV_t\)であり，全質量が零へ向かう．
-成分体積保存やexhaustionの一般原理自体を新規成果とは数えず，
-同じLagrangian射影上で質量の位置と重みを同定する帰結として扱う．
+負KE体積の原子化についてはPille--Schneider\cite[Theorems~A--B, pp.~589--590]{PilleSchneiderHybrid}が先行する．
+Theorem~Aは半安定還元を持つ正準偏極退化について，hybrid空間の中央Berkovich fiber上の
+極限を，正準モデルの既約成分に対応するdivisorial付値上のDirac測度の和として与える．
+重みは正準交点数であり，同論文の規格化
+$[\widehat\omega_t]=c_1(K_{X_t})$と本稿は$\omega_t=2\pi\widehat\omega_t$で対応する．
+本族では各成分の$(K_{H_i}+D_i)^2=(d-4)^2$から，同じ確率重み$1/d$を得る．
+Theorem~Bは，全空間がnormalで中央fiberがreducedな模型上で，測度極限が特異locusに質量を置かないと仮定し，
+本族の固定compact収束と全質量等式はこれにも適合する．
+Hybrid空間と$\cC_d$または$B_d(T)$を同一視して射影を比較する写像は構成していない．
+原子化や等重み自体の新規性を主張せず，同じactual Lagrangian射影による
+全域GH近似と作用atlasにこの測度極限を同時実現することを追加部分とする．
 
 この直接経路により対象曲面の大域GH証明が原稿に存在しても，
 第IV--V篇の \(\mathrm{(CP)}_d,\mathrm{(PBE)}_d,\mathrm{(TC)}_5\) 自体，
@@ -660,8 +675,66 @@ Focus valuesは通常のmatroidal chartsの定義域から除き，穿孔近傍�
 任意先指定のfull source tailsでは$a_k^{\rm tar}>L_k$が破れ得るので，
 この存在定理をその相対問題へ拡張しない．
 $t$に連続なfibration族や収束速度も結論しない．
-六次Petersenの同じ射影によるatlas/GHは未解決であり，internal annuliの二端cuts，
-actual periodsと全overlapsを別に整合させる必要がある．
+
+\subsection{標準六次Petersen系の同時実現}
+\label{sec:sextic-simultaneous}
+
+六次では各componentのresidue和が$4\pi$である．標準Petersenのexternal critical periodsを
+全て零に指定すると，actual source shearと両端切片の一致は，
+各external basinにsourceを一つ，内部annulusに二つ置くallocationと，
+全$\rho_{i,j}=4\pi/5$を与える．すなわち$w_{i,j}=2/5$である．
+この有限条件は同じcanonical primitiveとfinite-$t$の式$uv=t h_t(p)$から導かれ，
+旧surgery模型の異なるrow sumsやblow-up面積差を流用しない
+（\texttt{ke:petersen-actual-neck-periods}）．
+
+\begin{theorem}[標準六次の同時実現：曲面正本の結論]
+\label{thm:sextic-simultaneous-summary}
+一般位置の六平面と固定した$F_6$による全平面退化を考える．
+$F_6$は三重点で非零，各二重線上で三重点を避けた単純零点だけを持ち，
+十分小さい非零parameterのfibersは滑らかとする．
+同時Petersen quartet systemを一つ固定し，source allocationを$(1,1,1,1;2)$とする．
+十分小さい全複素$t\ne0$について，一つの固定marked木系$T$と
+actual負KE形式上の全域Lagrangian fibration
+$\widehat\pi_t:X_t\to B_6(T)$を選び，同じ射影に以下を同時実現できる．
+\begin{enumerate}
+\item 六つのPetersen core charts，denominator $1$の全branch chartsを持つ
+作用適合matroidal atlas．Focus値には穿孔近傍のactual affine構造を用いる．
+各triangleに三つ，各bigonに二つのnodal valuesを持つ．
+\item 同じ$\widehat f_t=p_T\widehat\pi_t$による
+$\operatorname{dis}(\widehat f_t)\to0$という径尺度GH近似と，
+内部木上の全fiber合併を含む全$\widehat f_t$-fibersの正規化ambient直径の一様消失．
+\item 同じ$\widehat f_t$と$\widehat\pi_t$による
+\eqref{eq:same-map-probability-volume}の確率体積収束（$d=6$）．
+\end{enumerate}
+初期source葉とfull nodal neighborhoodsは構成中に選ぶ．
+非等重み，先指定した大きい保持近傍，$t$に滑らかな射影族，
+作用atlasのparameter極限やHessian性，収束速度は主張しない．
+\end{theorem}
+
+証明の正本は\texttt{ke:petersen-full-moment}と
+\texttt{ke:sextic-simultaneous-realization}である．全momentの必要面積は
+\[
+ a_k=\rho-\nu_k+\min\{\mu,0\}\quad(1\le k\le4),
+ \qquad a_0=\rho-|\mu|,\qquad \rho=4\pi/5
+\]
+であり，source wallはexternalの一個，internalの二個と一致する．
+内部の二保護annuliを挟む累積面積を$S_A,S_B$，
+$A_K=a_1+a_2$とすると，必要な二端cutsは
+$A_K<S_A$と$S_B<A_K+a_0$である．
+各側に三sourcesを持つseparatorの累積面積を$A_K+a_0/2$に合わせ，
+その周りに薄い内部blockを選ぶことで，四つのexternal tail条件とともにstrictに満たす．
+このseparatorの壁項も三sourcesに一致するので，相対density--Moserの自由需要は滑らかである．
+正の余裕を確保した後で中央の葉族をmomentに依存しない形へ固定し，
+その後にfull source annuliを保持する．これにより通常P0と同じ中央nodal neighborhoodsを使える．
+
+Anchor葉から同じdomainとprimitiveのPetersen fillingを選び，
+free anchor bandsで両open germsを保つ面積補正を再び行う．
+三面の作用接続は，同じ飽和star latticeの同型$L_{ij}$に対して
+$F_j=L_{ij}F_i+2\rho r'_v$となり，平行移動も共通である．
+Normal actionはambient-affineでbranch上の勾配がprimitiveであるため，全open atlasが接着する．
+同じmomentの相対値比較からGHと確率測度収束を移す．
+この六次の指定証明鎖は複数担当で独立内部点検したが，
+全原稿の再検証，外部査読，網羅的な新規性確認を完了したという意味ではない．
 
 \begin{remark}[同半径閉球の比較と全移動基点の中間尺度]
 曲面論文の補題 \texttt{ke:distortion-to-pointed-balls} は，compact geodesic spaces間の
@@ -930,7 +1003,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
-\item 第IV篇のcapped下界について，residue規格化・Chern曲率・frame誤差予算から六局所型とcompact最小値原理までの指定鎖を担当が実読し，式・定数・量化を別担当も確認した．固定endの最小入力・windingと，Full-triple・closed-corner，曲面scalar/portalの限定点検を保持する．五次では両端period条件，全moment strict cuts，source固定輸送，全open overlapsから同じ射影のatlas/GHまでの証明を独立内部点検した．同じ射影の確率体積極限とともに公表用の中心結果として整理し，主要先行結果との比較と残る未点検箇所を詰める．六次Petersenではinternal annuliの二端cutsと実際のperiod整合が次の課題である．任意先指定の大きいsource tailsへの相対存在は別に判定する．
+\item 第IV篇のcapped下界について，residue規格化・Chern曲率・frame誤差予算から六局所型とcompact最小値原理までの指定鎖を担当が実読し，式・定数・量化を別担当も確認した．固定endの最小入力・windingと，Full-triple・closed-corner，曲面scalar/portalの限定点検を保持する．五次と標準等重み六次では，両端period条件，全moment strict cuts，source固定輸送，全open overlapsから同じ射影のatlas/GHまでの指定証明を独立内部点検した．同じ射影の確率体積極限とともに公表用の中心結果として整理し，Pille--Schneiderのhybrid原子極限との関係を明示した．主要先行結果との比較と残る未点検箇所を詰め，任意先指定の大きいsource tailsへの相対存在は実際の有限cut条件で別に判定する．
 \item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
@@ -958,8 +1031,8 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂43，2026年11月22日，
-\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/1716a175dddbccf23e86027c34fba239c0cf527b/papers/surface-lagrangian-torus-fibration.tex}{原稿ソース}，
+\newblock 改訂44，2026年11月22日，
+\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/1088f86cf8f0c70c74a1e4caa3b90393ff627067/papers/surface-lagrangian-torus-fibration.tex}{原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，
 \newblock 系 \texttt{ke:global-volume-measure}，
 \newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}，
@@ -968,7 +1041,16 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 系 \texttt{ke:k4-actual-end-anchor}，
 命題 \texttt{ke:k4-actual-neck-periods}，
 定理 \texttt{ng8:quintic-full-moment}，
-\texttt{ke:quintic-simultaneous-realization}．
+\texttt{ke:quintic-simultaneous-realization}，
+\texttt{ke:petersen-full-moment}，\texttt{ke:sextic-simultaneous-realization}．
+
+\bibitem{PilleSchneiderHybrid}
+L.~Pille--Schneider,
+\newblock Hybrid convergence of Kähler--Einstein measures,
+\newblock \emph{Ann. Inst. Fourier} \textbf{72} (2022), no.~2, 587--615,
+\newblock \href{https://doi.org/10.5802/aif.3455}{doi:10.5802/aif.3455}.
+\newblock Theorems~A--B, pp.~589--590; Theorem~2.1, p.~604;
+Remark~2.4, p.~605; Proposition~3.1, p.~607.
 
 \bibitem{FBP}
 J.~Fernández de Bobadilla and T.~Pełka,
