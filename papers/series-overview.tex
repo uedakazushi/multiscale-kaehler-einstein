@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 固定補空間，退化族の局所解析，曲面実現の接続と定理状態}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.11（2026年11月22日）}
+\date{現行総説 v1.12（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -85,15 +85,21 @@
                  |\supp w|\le3\}
 \]
 と，その局所代数・残差曲線・正規化を与える．第IV--V篇の経路では，鋭い co-Gram 極限に Product-Box Exhaustion，大域 GH 極限にさらに coarse packageを要する．一方，曲面実現論文は局所入力に直接のscalar下界と同一moment portal上界を組み合わせ，同じactual Lagrangian fibrationの射影で全曲面のGH極限を与える．この別経路の証明は，上記package自体の検証を意味しない．高次元 \(\PP^N\) ではmixed source--higher-stratum 模型が不可避であり，GH収束は予想として分離する．
+
+五次では，初期source葉とその保持近傍を選ぶ存在問題として，両端periodの有限整合式，
+sourceを跨ぐ全moment面積実現，全開collarの接着を閉じた．
+これにより同じ射影が作用適合matroidal atlasと上のGH実現を同時に持つ．
+六次の同時実現と，任意先指定のfull source tailsを保つ相対問題は別に残す．
 \end{abstract}
 
 \begin{center}
 \begin{minipage}{0.93\textwidth}\small
 \textbf{Abstract.}
-This note connects Parts I--III on fixed arrangement complements, Parts IV--V on compact degenerating surfaces, and the related actual Lagrangian realization paper. It separates the conditional coarse-package/product-box route from the direct scalar/portal route to the global surface limit. The latter does not verify the former hypotheses, nor the localization and anchor hypotheses for conifold ends. The repositories retain distinct proof ownership while their notation, interfaces and proof audits are coordinated.
+This note connects Parts I--III on fixed arrangement complements, Parts IV--V on compact degenerating surfaces, and the related actual Lagrangian realization paper. It separates the conditional coarse-package/product-box route from the direct scalar/portal route to the global surface limit. For quintics, an initial choice of source leaves gives an action-compatible matroidal atlas and the KE metric realization for the same fibration. The analogous sextic problem remains open. These results do not verify the independent coarse-package, product-box, localization or anchor hypotheses. The repositories retain distinct proof ownership while their notation, interfaces and proof audits are coordinated.
 \end{minipage}
 \end{center}
 
+\clearpage
 \tableofcontents
 
 \section{再構成の原則}
@@ -114,7 +120,8 @@ This note connects Parts I--III on fixed arrangement complements, Parts IV--V on
 actual負KE曲面の同じLagrangian射影による全域GH実現である．
 局所解析を扱うPart IVは後者への独立した入力を与える．
 五篇という番号は証明の所在を示すものであり，投稿順や論文数を固定する条件ではない．
-無条件に得られた結果の公表準備を，条件付き拡張や同時atlasの完成と分けて進める．
+無条件に得られた結果と五次の同時atlas/GH実現を公表単位とし，
+六次の拡張や独立した条件付き解析をそれらの公表条件にしない．
 
 Part Iでは，実球裾係数
 \[
@@ -135,24 +142,24 @@ Part IVの\texttt{coarse:thm:boundary-to-triple}は，exact triple領域の
 境界上界のparameter一様性は仮定しない．
 全平面退化への適用ではcapped density下界がこの境界入力を供給する．
 局所安定性と全曲面のambient距離比較は別の定理である．
+第IV篇v1.11では，固定residueによるcanonical densityの規格化，
+Chern微分によるcap曲率の全点表示，Hermitian frame誤差の吸収定数，
+source軸を含む六局所型と有限被覆の選択順を明記した．
+Compact fiber上の片側最小値原理から固定次数$d\ge5$の$t$一様volume下界を得るが，
+この下界だけから二側tensor比較，次数一様性，又はmoving bufferは結論しない．
 
 曲面実現論文の入口は，精密な主定理，解析入力四群，同じ射影を保つ六段階の証明，
 cut選択の量化順序の順に読む構成とする．
-五次の固定anchorについては，保護tailの内側period $Q_{ab}$ とnormal period $M_a<0$から，
-所定$K_4$ targetの可解性を
-$Q_{a,f(a)}<-M_a$，$Q_{ab}<0$ for $b\ne a,f(a)$で判定できる
-（曲面稿，\texttt{ke:k4-protected-anchor-selection}）．
-有向四角形の選択はforced arrowsの有限判定へ帰着する．
-標準P0の選択でanchor上の保持集合を全K2交わりを含むend collarsだけとし，
-sourceのcompact nodal neighborhoodsをanchor決定後に
-$|\widehat\mu_N|<\delta/2$へ選ぶ場合には，
-$Q_{ab}< -\rho_b/2<0$とactual meridian clutchingを確認できる．
-従って任意の有向四角形について，actual anchorの葉を同じmarked relative class内で選び，
-同一のLiouville domain・primitive・skeletonに局所$K_4$ core chartを構成できる
-（曲面稿，\texttt{ke:k4-actual-end-anchor}）．
-有限の非零moment band内で元のneck葉族へ戻すことも可能である．
-Sourceを跨ぐ全区間での作用の直線性と面積条件，両側neckの切片・整数shear，
-全域の作用atlasの整合は引き続き別に確認する必要がある．
+五次では，actual $K_4$ anchorを出発点に，両端のprimitive差とsource shearを
+有限等式へ帰着し，初期source葉の全tailを小さく選んで全momentのstrict cutsを満たす．
+全開collar上の作用と葉を一致させ，normal momentを保つ相対変更により，
+同じ$\widehat\pi_t$の大域作用atlasと$\widehat f_t=p_T\widehat\pi_t$のGH実現を得る
+（曲面稿，\texttt{ng8:quintic-full-moment}，
+\texttt{ke:quintic-simultaneous-realization}）．
+等重みと対称四角形系は必要な有限条件を実際に満たすので，
+五次のこの存在主張に未検証の追加解析仮定はない．
+初期葉を選んだ後にfull nodal neighborhoodsを固定する構成であり，
+任意先指定の大きいsource tailsには適用しない．六次Petersenの同時実現は未解決である．
 
 \section{共通記号と正規化}
 
@@ -341,7 +348,9 @@ ambient経路として許す．同一moment上の全fiber合併と両端を接�
 target線分の厳密な持上げや保持領域のintrinsic上界は必要ない．
 次数・配置に一様な定数，任意に先指定した木系，最適収束速度は結論しない．
 \(f_t\)のfiberは\(\pi_t\)のfiberの合併であり，両者を同じLagrangian fiberと呼ばない．
-同じ\(\pi_t\)に作用適合atlasを課す条件はGH実現と区別する．さらに\(d\ge7\)では，曲面論文の系\texttt{ke:global-core-nonmatroidal}が，この同じ基底のcore頂点にmatroidal chartを置けないことを示す．これは選んだ基底の局所位相障害であり，全てのfibrationや収縮先\(\cC_d\)についての不存在主張ではない．
+同じ\(\pi_t\)に作用適合atlasを課す条件はGH実現と区別する．五次では後述の
+全moment構成によって両者を同時に満たし，六次ではこの同時実現が未解決である．
+さらに\(d\ge7\)では，曲面論文の系\texttt{ke:global-core-nonmatroidal}が，この同じ基底のcore頂点にmatroidal chartを置けないことを示す．これは選んだ基底の局所位相障害であり，全てのfibrationや収縮先\(\cC_d\)についての不存在主張ではない．
 
 この直接経路により対象曲面の大域GH証明が原稿に存在しても，
 第IV--V篇の \(\mathrm{(CP)}_d,\mathrm{(PBE)}_d,\mathrm{(TC)}_5\) 自体，
@@ -466,11 +475,110 @@ small interpolationを適用する順序を用い，元のneckへ復帰する．
 
 Anchor上の追加source annuliや先指定した大きい保持集合に対しては，
 実際のtail periodsと有限cut条件を改めて確認する．
-中央sourceを跨ぐ所定targetの全moment配分，両端の切片・整数shear，
-作用chartの全open overlapsの整合は，なお残る課題である．
+初期source葉を選べる五次では，次の構成が中央sourceを跨ぐ全moment配分，
+両端の切片・整数shear，作用chartの全open overlapsを同時に実現する．
 証明の正本は曲面repoであり\cite{SurfaceKE}，有限輸送，Moser，Stokes，GH移送，
 cone extensionの一般原理の新規性は主張しない．
 \end{remark}
+
+\subsection{五次の同じ射影による作用atlasとGH実現}
+\label{sec:quintic-simultaneous}
+
+正のweightsを$\sum_{j\ne i}w_{i,j}=1$，$\rho_{i,j}=2\pi w_{i,j}$とし，
+各成分に有向四角形$f_i$を選ぶ．$x_{i;jk}=\mathbf1_{\{k=f_i(j)\}}$と置き，
+二重線$ij$の五つのlabelled sourcesのうち$k$-basinに入れる数を$n_{ij;k}$とする．
+曲面稿の命題\texttt{ke:k4-actual-neck-periods}は，actual transported cyclesと
+同じcanonical primitiveを用いて，両端のaffine critical periodsの一致を
+次の有限条件へ帰着する：
+\begin{align}
+ n_{ij;k}&=1+x_{i;jk}+x_{j;ik},\label{eq:quintic-source-counts}\\
+ \rho_{i,k}+x_{i;jk}\rho_{i,j}
+   &=\rho_{j,k}+x_{j;ik}\rho_{j,i}.\label{eq:quintic-residue-matching}
+\end{align}
+Source allocationはfull source近傍の固定前に選び，固定後に変更しない．
+独立なprimitiveの加法定数で切片を調整する自由は用いない．
+
+実際，共通左frameのnormal cycleを$\alpha$，periodを$\mu$とすると，
+K2 endでのmeridianは$\beta_{j;k}=\beta_{i;k}-\alpha$，
+critical側では$\beta_{j;k}=\beta_{i;k}+(n_{ij;k}-1)\alpha$である．
+同じneck primitiveと成分primitiveの閉差は
+$\kappa^{\rm prim}_{i;k}=\chi_{ij;k}+\rho_{i,k}$，
+$\kappa^{\rm prim}_{j;k}=\chi_{ij;k}+\rho_{j,k}$と書ける．
+Normal periodが零の共通閉差から$\chi$の共通性を，正のmeridianのclutchingから
+$\sum_k\chi_{ij;k}=-2\pi$を得る．両端periodsの比較により
+\eqref{eq:quintic-source-counts}--\eqref{eq:quintic-residue-matching}が従う．
+
+この有限整合だけでは全neckの存在を結論しない．
+定理\texttt{ng8:quintic-full-moment}は全momentを次のように構成する．
+添字$ij$を省略し，K2 endのsmall logarithmic periodを$\nu_k(\mu)$とすると，
+共通左frameの目標作用と，それに必要な実面積は
+\begin{align*}
+ J_k^{\rm tar}(\mu)
+   &=\chi_k+\rho_{i,k}+x_{i;jk}\rho_{i,j}-x_{i;jk}\mu,\\
+ a_k^{\rm tar}(\mu)
+   &=\rho_{i,k}+x_{i;jk}\rho_{i,j}-x_{i;jk}\mu-\nu_k(\mu)
+      +n_k\min\{\mu,0\}.
+\end{align*}
+負側のsource補正はcriticalとendの二つのshearの差から厳密に得られる．
+また$R_k=\chi_k+\nu_k$として
+\[
+ \operatorname{Area}(P_\mu)
+ =-\sum_kR_k(\mu)-\mu+5\min\{\mu,0\}
+ =\sum_ka_k^{\rm tar}(\mu).
+\]
+保護質量を$\kappa_k$とすると，自由要求量$a_k^{\rm tar}-\kappa_k$では
+同じsource wallが相殺し，滑らかになる．
+
+全深部tripleの同じprimitive評価から$|\nu_k|\le C/b_j$を全momentで得る．
+固定した正residuesに対し$b_j$，$N_j$，最後に$t$を選べば，
+$\delta=4\pi/N_j$，$|\mu|\le2\delta$に共通の正のtarget面積下界がある．
+同じmarked classのrooted treesを細いannular neighborhoodsで囲み，
+reduced measureの連続性とDiniの定理を用いて，初期source葉の\emph{全tail}を
+その下界より小さくする．Source annuliをこの後に固定するため，全strict cutsを満たす．
+既に固定したannulusの幅だけを縮めているのではない．
+
+成分別相対Moserにより全neckを構成し，anchorでは同じLiouville coreの$K_4$ chartを使う．
+Free bandのmarked interpolation後に同じtargetへの面積Moserを再実行し，
+両open end germsと有限source sectionsを固定することで，作用と全葉の接着を両立させる．
+全K2 overlapsと中央のfull nodal neighborhoodsは保存される．
+解析的なcutsと$P_j$は先に固定し，初期葉をその内部で選ぶ．
+Metric接続は同一moment上の$P_j$全体を使うため，reduced葉の一様微分評価を要しない．
+
+\begin{theorem}[五次の同時実現：曲面正本の結論]
+\label{thm:quintic-simultaneous-summary}
+一般位置の五平面と固定した$F_5$による全平面退化を考える．
+$F_5$は三重点で非零，各二重線上で三重点を避けた単純零点だけを持ち，
+十分小さい非零parameterのfibersは滑らかとする．この一つの固定族について，
+上の正weights・四角形・source allocationが有限整合式を満たすとする．
+一つの固定marked木系$T$と，十分小さい全複素$t\ne0$に対し，
+actual負KE形式上の全域Lagrangian fibration
+$\widehat\pi_t:X_t\to B_5(T)$を選べる．
+同じfibrationは五つの$K_4$ core chartsとdenominator $1$のbranch chartsを持つ
+作用適合matroidal atlasを備え，同じ$\widehat f_t=p_T\widehat\pi_t$について
+\[
+ \sup_{x,y\in X_t}
+ \left|R_t^{-1}d_{g_t}(x,y)
+       -d_\square(\widehat f_t(x),\widehat f_t(y))\right|\longrightarrow0
+\]
+が成り立つ．全$\widehat f_t$-fibersの正規化ambient直径も一様に零へ向かう．
+Focus valuesは通常のmatroidal chartsの定義域から除き，穿孔近傍にはactual focus affine structureを用いる．
+\end{theorem}
+
+証明の正本は曲面稿の\texttt{ke:quintic-simultaneous-realization}である．
+上の全moment構成が相対変更定理の四条件とwhole-fiber閉商を与える．
+周期$1$のraw periodsをcore・branchを含め一斉に$2\pi$で割り，
+共通normal actionのambient-affine性と整数star transitionから大域atlasを得る．
+同じmarked商への射影値差$C(1+\log(N_j+1))/R_t$を使い，slow diagonalでGH評価を移す．
+非直線のcritical actionを基底の座標変更だけで直線化する議論ではない．
+
+等重み$w_{i,j}=1/4$では，有限整合は$f_i(j)=f_j(i)$とallocation $(3,1,1)$に同値である．
+既存の六つの対称四角形系を使えるため，五次の存在に未検証の追加解析仮定はない．
+非対称なcompatible weightsの明示族も曲面稿に保持する．
+任意先指定のfull source tailsでは$a_k^{\rm tar}>L_k$が破れ得るので，
+この存在定理をその相対問題へ拡張しない．
+$t$に連続なfibration族や収束速度も結論しない．
+六次Petersenの同じ射影によるatlas/GHは未解決であり，internal annuliの二端cuts，
+actual periodsと全overlapsを別に整合させる必要がある．
 
 \begin{remark}[同半径閉球の比較と全移動基点の中間尺度]
 曲面論文の補題 \texttt{ke:distortion-to-pointed-balls} は，compact geodesic spaces間の
@@ -739,7 +847,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
-\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．標準P0のend collarsだけを保持する五次anchorでは，actual $K_4$ core chartと有限band内の相対復帰を得た．同じfibrationでの全域atlas/GHには，中央sourceを跨ぐ全momentの有限cut条件，sourceを固定した輸送，両端の切片・整数shearと作用chartの全overlapsをさらに整合させる．六次Petersenについても実際の保持集合で所定targetを判定する．
+\item 第IV篇v1.11のcapped下界について，residue規格化・Chern曲率・frame誤差予算から六局所型とcompact最小値原理までの指定鎖を担当が実読し，変更式・定数・量化を別担当も確認した．Full-triple・closed-cornerと曲面scalar/portalの既存の限定点検を保持する．五次では両端period条件，全moment strict cuts，source固定輸送，全open overlapsから同じ射影のatlas/GHまでの新証明を独立内部点検した．これを公表用の中心結果として整理し，主要先行結果との比較と残る未点検箇所を詰める．六次Petersenではinternal annuliの二端cutsと実際のperiod整合が次の課題である．任意先指定の大きいsource tailsへの相対存在は別に判定する．
 \item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
@@ -753,7 +861,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{KEIV}
 植田一石，
 \newblock \emph{Kähler--Einstein degeneration}, 第IV篇，
-\newblock 確認版 v1.10（2026年11月22日），
+\newblock 確認版 v1.11（2026年11月22日），
 \newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/main/papers/kaehler-einstein-degeneration.tex}{原稿ソース}．
 
 \bibitem{KEV}
@@ -765,13 +873,16 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂39，2026年11月22日，
+\newblock 改訂41，2026年11月22日，
 \newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，
 \newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}，
 \newblock 命題 \texttt{ke:moment-relative-replacement}，系 \texttt{ke:relative-replacement-gh}，
 定理 \texttt{ng8:componentwise-critical-area}，命題 \texttt{ke:actual-anchor-fan-criterion}，
-系 \texttt{ke:k4-actual-end-anchor}．
+系 \texttt{ke:k4-actual-end-anchor}，
+命題 \texttt{ke:k4-actual-neck-periods}，
+定理 \texttt{ng8:quintic-full-moment}，
+\texttt{ke:quintic-simultaneous-realization}．
 
 \bibitem{FBP}
 J.~Fernández de Bobadilla and T.~Pełka,

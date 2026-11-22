@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.13（Part I v1.7、総説v1.11）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。
+2026-11-22 / v1.14（Part I v1.7、総説v1.12）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。
 
 ## 結論
 
@@ -101,19 +101,31 @@ Part I v1.7の追加本文は次の範囲である。
 
 ### 全深部triple比較の最小入力
 
-Part IV v1.10 の `coarse:thm:boundary-to-triple` と `coarse:thm:full-triple-tensor` への適用を、2026-11-22 の現行作業版 `papers/sections/full_triple_comparison.tex` で直接点検した。Fixed-face density下界はparameterに一様であり、上界は各固定parameterのradial閉包上の滑らかさから得る有限値だけで足りる。Radial simplexと全角phaseのcompact quotientで先に最大値原理を使い、complete inner comparisonの境界発散で上側比を閉じる。Outer translated modelとの比較は境界下界を用いる。角被覆へのpullbackはこの後の局所正則性にのみ用い、被覆上の非compact最大値原理や一様な境界上界を追加しない。
+Part IV v1.10で抽出され現行v1.11にも保持する `coarse:thm:boundary-to-triple` と `coarse:thm:full-triple-tensor` への適用を、2026-11-22 の現行作業版 `papers/sections/full_triple_comparison.tex` で直接点検した。Fixed-face density下界はparameterに一様であり、上界は各固定parameterのradial閉包上の滑らかさから得る有限値だけで足りる。Radial simplexと全角phaseのcompact quotientで先に最大値原理を使い、complete inner comparisonの境界発散で上側比を閉じる。Outer translated modelとの比較は境界下界を用いる。角被覆へのpullbackはこの後の局所正則性にのみ用い、被覆上の非compact最大値原理や一様な境界上界を追加しない。
 
-Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さを選ぶ順序、actual capped densityからfixed-face入力を得る有限chartの量化を照合した。`coarse:lem:small-volume-tensor` の証明も読み、[Savinの著者版](https://www.math.columbia.edu/~savin/Small_pert.pdf) の(H1)–(H2), p.558、(H4), p.559、Theorem 1.3, p.560 と対応させた。この指定証明鎖で新たなgapは認めなかったが、capped determinant package全体、Cheng–Yau原著全証明、全exteriorのTC/CP/PBEの検証を含まない。局所結果を全曲面ambient距離へ拡張する主張でもない。
+Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さを選ぶ順序、actual capped densityからfixed-face入力を得る有限chartの量化を照合した。`coarse:lem:small-volume-tensor` の証明も読み、[Savinの著者版](https://www.math.columbia.edu/~savin/Small_pert.pdf) の(H1)–(H2), p.558、(H4), p.559、Theorem 1.3, p.560 と対応させた。この局所安定性の指定点検で新たなgapは認めなかった。Capped determinant鎖の担当別の実読は次節に区別し、Cheng–Yau原著全証明や全exteriorのTC/CP/PBEの検証は含まない。局所結果を全曲面ambient距離へ拡張する主張でもない。
+
+### Capped densityから全smooth fiberの下界まで
+
+[Part IV v1.11・commit a6cf38a](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a6cf38a417a9c5707cc06cf25d8b9faf94e58725)の `coarse:lem:capped-positivity` → `coarse:lem:weighted-cap-lower` → capped pair/triple → `coarse:thm:global-determinant`（六型）→ `coarse:lem:one-sided-volume` → `coarse:cor:degree-d-volume-lower` を退化担当が実読した。固定d≥5・固定族・固定Hermitian dataに対してt一様であり、一般位置planes、Fのtriple非零・double上単純零、small fibersの滑らかさを入力とする。
+
+公表用に明示した `coarse:eq:residue-density-normalization`、`coarse:eq:intrinsic-cap-curvature`、`coarse:eq:cap-absorption-budget`、`coarse:rem:capped-global-potential` は、固定residueとHermitian weight、Chern微分によるsource軸を含む全点式、α_*≥4Σk_iとframe error budget、全fiber上の片側potentialを区別する。有限cover → A_0 → 比較定数 → t閾値の順も明示した。変更式・定数・量化は別担当も独立に点検した。本資料の編集担当はこの新式と任意次数corollary・potentialの原文を読み、旧六型全証明の再監査を自ら行ったとはしない。
+
+新しい外部解析定理の適用、原著全証明の再読、形式証明、既存証明書の再実行はない。二側actual tensor比較、次数一様性、moving buffer、TC/CP/PBEの検証は含まない。Part IVの120頁組版と指定12頁の実表示は退化repo側の検証記録で、本repoでの再組版ではない。
 
 ## 曲面正本の大域距離・相対変更の確認範囲
 
-現行接続先は[曲面改訂39](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/76ffe7e6b3f166cb4a116dbfec7e70254b244487)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I・Part II・Part III本文の新しい退化族入力にはしない。以下の既存証明を直接点検した数学版は[改訂36・commit c056ecb](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/c056ecba5d25a55f135e739faab5993582814484)であり、その現在も有効な指定範囲を記す。この旧確認pinを現行改訂39の保存commitや全稿再監査として扱わない。改訂39の `ke:k4-actual-end-anchor` は今回の統合本文を独立に実読した。標準P0のend collarsだけをanchor上に保持する選択について符号・clutchingが確定し、同じactual coreの局所K4 chartと有限band内の復帰を得た。全moment・反対端・全域作用atlasの整合は未解決のままである。保存・外部組版の確認は `validation.json` と曲面正本を参照する。
+現行接続先は[曲面改訂41・commit 84d8b8b](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/84d8b8b17d9426ede5792a301b5f45ec90eb48da)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I–III本文の新しい退化族入力にはしない。既存の距離・相対面積証明を最初に直接点検した数学版は[改訂36・commit c056ecb](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/c056ecba5d25a55f135e739faab5993582814484)で、その現在も有効な指定範囲を保持する。旧pinを現行改訂41の保存commitや全稿再監査として扱わない。Actual K4 anchorの指定点検に加え、改訂41の両端period条件・全moment構成・同じπの作用atlas/GHの統合本文を複数担当が独立に実読した。保存と外部組版は曲面正本の検証記録へ分ける。
 
-- **Actual五次anchorの独立内部点検。** `ke:k4-actual-end-anchor` と `ke:k4-protected-anchor-selection`、`ke:actual-anchor-fan-criterion`、`ke:anchor-stokes-budget`、component linkのmoment・meridian規格化、相対面積実現、actual cone fillingの指定証明を読んだ。O(1)のsectionの単純零点によるwinding −1と、同じgraph/averaging/Hamiltonian isotopiesによるactual cyclesへの移送を確認した。K2内側cutの二深度比一様評価とj→N→tの順序、三basinのstrict margins、Diff_0(P rel K)内のdensity–Moserと有限marked点のfirst-jet固定、fan角の単調性、全normal–corner開overlapの保持を確認した。Source全飽和近傍はδ決定後に中央へ選び、大きい相対isotopyを先に入れてから同anchorの二族をsmall interpolationで合わせる。この限定選択で新たなgapは認めなかった。任意先指定の大source近傍や追加anchor保持annuli、全neckの作用直線性、反対端の切片/shear・全域atlasは含まない。
+- **Actual両端periodの独立内部点検。** `ke:k4-actual-neck-periods`、等重み系 `ke:k4-equal-weight-periods`、非対称例 `ke:k4-cyclic-weight-periods` の全証明を作成担当と別の二担当が読んだ。全K2 tube上のnormal period零の閉差からχの共通性を、clutchingからΣχ=−2πを得る。Basinsのdisk上のactual normal framesとsource zero/puncture poleのwindingを使い、end shear −1とcritical shear n−1を区別する。有限整合式、等重みの必要十分条件、非対称5cycle例の隣接・非隣接二ケースを確認した。独立primitiveの任意定数による合わせ込みはない。既固定allocationに対する障害と、初期allocationを選ぶ存在主張を区別した。
+- **全momentと全open germsの独立内部点検。** `ng8:uniform-k2-end-periods`、`ng8:thin-source-tail-choice`、`ng8:quintic-full-moment` の統合本文と成分別面積定理・ordered cuts・source wallを読んだ。負側の補正は(J_i+(n−1)μ)−(R_i−μ)=J_i−R_i+nμ、全量は正側−ΣR−μ／負側−ΣR+4μで一致する。全深部評価からextended bandの正marginを得て、Darboux-ball分割による面積連続性とDiniで初期全tailsを小さくする。Target−protected massのsmoothness、最後の同targetへの相対Moser・open germs恒等・source point first jetsを照合した。同じP_j内で初期葉を選び、通常P0と作用指定構成を別に作る量化とfixed Tも確認した。
+- **同じπのatlas/GHへの接続。** `ke:quintic-simultaneous-realization` の実本文を読み、same analytic cuts・canonical moments・full K2 partitions・中央full nodal neighborhoodsからrelative-replacementの四条件を確認した。新foliationについても飽和となるcuts、whole-fiber閉商、core/branchの一斉2π換算、q=1 branch chartと一般compatible dataのstar transition、actual cocycle、同じ射影の値比較からslow diagonalへの接続を照合した。この五次存在証明で新たなgapは認めなかった。任意先指定source tails・六次・t連続性・速度を含まない。
+
+- **Actual五次anchorの独立内部点検。** `ke:k4-actual-end-anchor` と `ke:k4-protected-anchor-selection`、`ke:actual-anchor-fan-criterion`、`ke:anchor-stokes-budget`、component linkのmoment・meridian規格化、相対面積実現、actual cone fillingの指定証明を読んだ。O(1)のsectionの単純零点によるwinding −1と、同じgraph/averaging/Hamiltonian isotopiesによるactual cyclesへの移送を確認した。K2内側cutの二深度比一様評価とj→N→tの順序、三basinのstrict margins、Diff_0(P rel K)内のdensity–Moserと有限marked点のfirst-jet固定、fan角の単調性、全normal–corner開overlapの保持を確認した。Source全飽和近傍はδ決定後に中央へ選び、大きい相対isotopyを先に入れてから同anchorの二族をsmall interpolationで合わせる。この限定選択で新たなgapは認めなかった。任意先指定の大source近傍や追加anchor保持annuli、この局所系単体には全neckの作用直線性、反対端の切片/shear・全域atlasは含まれず、上の全moment構成と統合定理を使う。
 
 - **成分別輸送の独立内部点検。** `ng8:componentwise-primitive`、`ng8:componentwise-critical-area`、`ng8:strict-area-cuts` の全証明を読んだ。Rel-K orbitが各自由成分を保つ必要性、固定線型right inverseと凸性によるsmooth正配分、cell densities、成分ごとの零積分差の固定支持primitive、相対Moserの順序を確認した。Protected mass自体がnonsmoothでもfree要求量r=a−κがsmoothなら足りる。Strict cutはalternating pathによる非負配分と全edgeへの小さい先行配分から証明される。Annulus障害と端点模型は、正のbaselineとcell内bumpsにより実面積familyとして実現できることも確認した。既存のdisjoint-disks版への反例ではない。
 - **Actual source固定の微小変更。** `ng8:p0-source-protected-reduction` と `ng8:p0-small-area-flexibility` の統合証明を読んだ。全source annuliの外のsmooth reduction、incidence graphの連結性、spanning-tree right inverse、正のbaselineからの小摂動、自由部分のMoserとcircle liftを確認した。源点だけでなくfull nodal neighborhoodsを固定する。支持するfree部分の大きさに依存する小変更であり、所定大targetやtに一様な自由度を結論しない。
-- **Anchorとcoreの指定証明。** `ke:anchor-liouville-actions`、`ke:actual-anchor-fan-criterion`、`ke:anchor-stokes-budget` の草案作成と統合時の点検を行い、別担当も独立に読んだ。Liouville actionの倍率、closed primitive差・整数framing、Stokesの符号と総量、actual annulusからのface係数の正値性、near-core fan chartとambient normal actionの整数延長を確認した。一般のcore判定ではactual clutching/marking、anchor葉の面積実現、neck両端の切片とwhole-fiber一致を入力として保持する。標準P0の五次end-collar選択については、今回の `ke:k4-actual-end-anchor` がclutchingと所定anchor targetを実現するが、全neckと反対端の整合は含まない。無理period ratioの障害は固定したfillingのchartに対するものである。
+- **Anchorとcoreの指定証明。** `ke:anchor-liouville-actions`、`ke:actual-anchor-fan-criterion`、`ke:anchor-stokes-budget` の草案作成と統合時の点検を行い、別担当も独立に読んだ。Liouville actionの倍率、closed primitive差・整数framing、Stokesの符号と総量、actual annulusからのface係数の正値性、near-core fan chartとambient normal actionの整数延長を確認した。一般のcore判定ではactual clutching/marking、anchor葉の面積実現、neck両端の切片とwhole-fiber一致を入力として保持する。標準P0の五次end-collar選択については、今回の `ke:k4-actual-end-anchor` がclutchingと所定anchor targetを実現するが、この局所系自体には全neckと反対端の整合は含まれない。無理period ratioの障害は固定したfillingのchartに対するものである。
 
 - **相対変更の指定証明。** `ke:moment-relative-replacement`、`ke:relative-replacement-gh`、`ke:raw-moment-error-insufficient` を本文で読んだ。Whole-fiber閉商を底空間同定より先に作る順序、同じ保持corner全葉・source nodal neighborhoods・canonical moment・anchor/cap・component領域、実際のmarked product/cone商という条件を確認した。Cornerでの厳密一致とneckでの共通profile比較から全域Cη評価を得るため、reduced diffeomorphismのC1小ささは不要。一つの固定木系をslow diagonalに沿って構成する量化と、raw momentのL^(-α)例も確認した。Atlas候補の存在を安定性から推論しない。
 - **Fixed-fiber面積とsource wall。** `ng8:fixed-fiber-relative-dh` と `ng8:source-dh-wall` の証明を読んだ。固定tのfree compact band、作用不変primitive、affine boundary actionsと整数framingからのStokes式を確認した。周期2πのweights(1,−1)模型の面積π(c−|μ|)は固定点で折れる。Source横断全intervalへの適用、actual P0全体の面積公式、t=0へのsmooth extension、族一様な評価を結論しない。相対Moserのarea positivity・総量・保存collars/capsの余裕・端germsは別入力である。
@@ -122,7 +134,7 @@ Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さ�
 - **有限targetの独立内部点検。** `topo:cubical-local-models`、`topo:cubical-moving-blowups` の全局所閉球とmoving-basepointの証明を読んだ。Support二元の折れ点e_i+e_jもbookであり、三座標全て1の点だけが全角3π/2の錐となる。固定局所錐のfull-ambient閉球へ移し、成分錐から逃げる場合はpositive-starの退出費用でbook又は平面を得る。四型の任意の有限基点は、任意の拡大列で実現できる。
 - **実曲面への移送。** `ke:distortion-to-pointed-balls` はcompact geodesic spaces間の全射の歪みδから、全中心・同半径閉球の基点付きGH距離≤3δ/2を与える。`ke:intermediate-moving-classification` は同じf=pπを用い、a→∞、a/R→0、Rε/a→0の条件下で全型と実現を移す。Core・変更collarへの既存の一様成分錐も保持する。一般的な局所cone幾何・GH移送自体の新規性を主張せず、任意尺度・tensor収束・極限交換へ拡張しない。
 
-この指定範囲で結論を妨げるgapは認めなかった。全曲面原稿・Part IV原著の包括的再監査、外部査読、形式証明、網羅的な先行研究比較は未了である。CP/PBE/TC、H_loc/H_anc、controlled push-offは独立のままである。同じπでのatlas/GHには、所定大targetの全moment配分とcritical actions、両端の切片・整数shear、marked open overlapsの同時実現が残る。標準五次anchorのactual Euler framingと局所K4 core chartは今回の限定系で確定している。
+この指定範囲で結論を妨げるgapは認めなかった。五次では初期source葉を選ぶ存在問題として同じπのatlas/GHまで証明が閉じ、六次と任意先指定のfull source tailsへの相対問題は別に残る。全曲面原稿・Part IV原著の包括的再監査、外部査読、形式証明、網羅的な先行研究比較は未了である。CP/PBE/TC、H_loc/H_anc、controlled push-offは独立のままである。
 
 ## 曲面接続の一次文献比較
 

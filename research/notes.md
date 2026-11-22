@@ -1,12 +1,12 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.13（Part I v1.7、総説v1.11）
+更新：2026-11-22 / v1.14（Part I v1.7、総説v1.12）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。現行の接続先は[KE Part IV–V v1.10・研究資料v1.20](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/73d6b01a0cc01d99dfe4bccf3302a9e532cb635d)と[曲面改訂39](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/76ffe7e6b3f166cb4a116dbfec7e70254b244487)。資料確認日は2026-11-22。Part IVの新しい局所安定性の証明は今回の作業版を直接読み、全深部比較への適用まで独立に点検した。曲面の `ke:k4-actual-end-anchor` の統合本文と、そのclutching・marked相対面積・fan・有限band補間の指定依存を独立に実読した。この担当が曲面全稿を再検証したとはしない。保存commitと実際の組版・表示確認の範囲は `validation.json` に分けて記す。
+研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。接続先は[KE Part IV v1.11・Part V v1.10・研究資料v1.21](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a6cf38a417a9c5707cc06cf25d8b9faf94e58725)と[曲面改訂41](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/84d8b8b17d9426ede5792a301b5f45ec90eb48da)。資料確認日は2026-11-22。Part IVのboundary-to-tripleの指定独立点検を保持し、capped下界の全鎖は担当の実読と別担当の変更式点検を同期した。曲面のactual両端period、全moment構成と同じπのatlas/GHの統合本文を複数担当が独立に実読した。曲面全稿・外部原著の包括的再検証、形式証明とは区別する。保存commitと実際の組版・表示範囲は `validation.json` に分けて記す。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -19,14 +19,25 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
 | 曲面 `ke:moment-relative-replacement`, `ke:relative-replacement-gh` | 同じcanonical moment・anchor cuts・保持corner全葉・source nodal neighborhoods・component領域、marked product/cone商、whole-fiber接着を保つ候補の射影値差≤Cη。C1小ささは不要。固定木系の候補がslow diagonalに沿って存在すればGHを移せる。Atlas候補の存在は入力。 |
 | 曲面 `ng8:fixed-fiber-relative-dh`, `ng8:source-dh-wall` | 固定tのfree compact bandのinvariant primitiveとaffine boundary actionsからStokes面積式。Source固定点を横切る(1,−1)模型では周期2πで面積π(c−|μ|)。Actual全P0の面積公式ではない。 |
-| 曲面 `ng8:componentwise-critical-area`, `ng8:strict-area-cuts`, `ng8:p0-small-area-flexibility` | Rel-Kのmarked初期familyを入力とし、critical areasの指定は自由成分への正行列配分と同値。成分別総量＋strict cutsで判定。Actual sourceの全近傍を固定した小さい総和零の変更は構成可能だが、所定大targetは未検証。 |
+| 曲面 `ng8:componentwise-critical-area`, `ng8:strict-area-cuts`, `ng8:p0-small-area-flexibility` | Rel-Kのmarked初期familyを入力とし、critical areasの指定は自由成分への正行列配分と同値。成分別総量＋strict cutsで判定。Actual sourceの全近傍を固定した小さい総和零の変更を構成する。この微小定理自体から所定大targetは結論せず、五次の初期葉選択による全moment構成を別に用いる。 |
 | 曲面 `ke:anchor-liouville-actions`, `ke:actual-anchor-fan-criterion`, `ke:anchor-stokes-budget` | Actual anchorの有限period条件からK4/Petersen core chartを構成する十分条件。Liouville homogeneityは実係数affine性を与え、整数勾配・neck切片一致は別条件。Clutchingを入力にStokes総量を計算し、relative輸送や両端matchingの存在を推論しない。 |
 | 曲面 `ke:k4-protected-anchor-selection`, `ke:k4-actual-end-anchor` | 同系の仮定を満たす保持end collarsと飽和annuliにはprotected periodsによる有限判定。標準P0で全K2 end collarsだけをanchor上に保持し、source全飽和近傍をδ決定後に離す選択では、Qの負値性とactual clutchingを証明し、任意有向四角形のactual局所K4 chartを同じdomain・primitive・skeleton上に構成する。有限非零bandで元neckへ戻せるが、全neck action・反対端・全域atlas整合は含まない。 |
+| 曲面 `ke:k4-actual-neck-periods`, `ke:k4-equal-weight-periods` | Actual共通primitive・transported cyclesで両端整合をresidueとsource countsの有限等式へ帰着。等重みでは対称六系と(3,1,1) allocationで満たす。自由なprimitive定数の変更は用いない。 |
+| 曲面 `ng8:uniform-k2-end-periods`, `ng8:thin-source-tail-choice`, `ng8:quintic-full-moment` | 同じK2全moment評価と初期source葉の全tail選択からstrict cutsを満たし、affine critical actionsと両coreへの全開collar接着を実現。Full nodal neighborhoodsは選択後に固定する。 |
+| 曲面 `ke:quintic-simultaneous-realization` | 五次の有限compatible dataから同じactual πの作用適合matroidal atlasとf=pπの全曲面GHを同時実現。等重み対称系で存在。Focus値は穿孔扱い。六次・任意先指定の大source tails・t連続性・収束速度を含まない。 |
 | 曲面 `ke:source-inclusive-fixed-shell`, `ke:global-clipped-cogram-lower` | Sourceを含む固定残余compact・固定rでの同一frameのmomentとshell横断下界。有限stageのco-Gram不等式を極限操作から分ける。異なるnormal formsのprimitive一致、任意moving exhaustionは含まない。 |
 | 曲面 `topo:cubical-local-models`, `topo:cubical-moving-blowups` | 全targetのambient局所閉球から成分錐、book、角3π/2の錐、平面を得る。全moving拡大極限と任意拡大列での各有限基点の実現。 |
 | 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
 
 曲面側の入力一覧・適用証明の正本は同repoの `research/ke-dependencies.md`。P0はPart Iのfull rough-isometry theorem全体を入力にせず、固定成分のSNC cusp評価とfixed-compact収束を用いる。本repoの総説は上の接続と条件を要約し、本文の証明を複製しない。依存定理が変わったら正本を先に保存し、利用先・総説・research-hubを追随させる。
+
+## Part IVのcapped volume下界と監査範囲
+
+Part IV v1.11の正本は `papers/kaehler-einstein-degeneration.tex`。`coarse:lem:capped-positivity` → `coarse:lem:weighted-cap-lower` → capped pair/triple → `coarse:thm:global-determinant`（六局所型）→ `coarse:lem:one-sided-volume` → `coarse:cor:degree-d-volume-lower` の鎖を担当が実読した。別担当は変更式・定数・量化を独立に確認した。固定d≥5、一般位置planes、三重点で非零・各double line上で単純零の固定F、small smooth fibers、固定Hermitian dataが入力であり、定数はtに一様だがdに一様とはしない。
+
+公表補強のラベルは `coarse:eq:residue-density-normalization`、`coarse:eq:intrinsic-cap-curvature`、`coarse:eq:cap-absorption-budget`、`coarse:rem:capped-global-potential`。Adjunctionの固定residueによるcanonical densityを用い、t依存scalarを挿入しない。Chern微分の全点式でsource軸を含む正値性を示し、α_*≥4Σk_iと追加frame budgetを分ける。固定有限cover → A_0 → 各型の共通定数 → 最後にt閾値の順に選ぶ。Compact最小値原理は全smooth fiber上の一つのpotentialに適用する。この下界からactual tensorの二側比較、moving buffer、TC/CP/PBEの検証は導かない。
+
+本ノートの編集担当は上の新式・corollary・potentialの本文を読み、全六型の実読は担当の報告として区別する。新しい外部解析定理の適用や証明書の再実行はなく、旧一次文献確認を保持する。組版120頁と指定12頁の実画像確認は退化repo側の検証記録であり、本repoでの再組版ではない。
 
 ## 固定成分・尺度・periodの辞書
 
@@ -224,7 +235,7 @@ L_\square(\Theta_t\gamma)\le \frac{R\sqrt{1+\epsilon}}S L_{R^{-2}g_t}(\gamma).
 \sup_{x\in X_t}d_\square(f_{j,t}(x),\widehat f_{j,t}(x))
 \le C\eta_{j,t},\qquad \eta_{j,t}=\frac{1+\log(N_j+1)}{R_t}.
 \]
-両像が同じ小さなcomponent cap内にあることと、neckで同じμの辺像を比較するだけで足り、reduced葉のdiffeomorphismのC1小ささは不要である。`ke:relative-replacement-gh` は一つの固定木系の候補がslow diagonalに沿って存在する場合に、dis(fhat)≤dis(f)+Cη→0を得る。全coarse fiber、すなわち一つのp_T-fiber上のLagrangian fibersの合併もambientに一様収縮する。Atlasを持つ局所候補の実構成は別の未解決課題である。
+両像が同じ小さなcomponent cap内にあることと、neckで同じμの辺像を比較するだけで足り、reduced葉のdiffeomorphismのC1小ささは不要である。`ke:relative-replacement-gh` は一つの固定木系の候補がslow diagonalに沿って存在する場合に、dis(fhat)≤dis(f)+Cη→0を得る。全coarse fiber、すなわち一つのp_T-fiber上のLagrangian fibersの合併もambientに一様収縮する。Atlas候補はこの安定性定理への入力であり、五次では下記の全moment構成が実現する。六次での同時実現は未解決である。
 
 `ke:raw-moment-error-insufficient` は固定stageと0<α<β<1に対し、μ_t=−L_t^(−α)、ν_t=−L_t^(−β)を使う。Raw momentの差は零へ向かうが、σ_t(μ_t)→α、σ_t(ν_t)→βなのでtargetの辺距離は消えない。近似matchingにはprofile値の一様誤差を制御する必要がある。この例はatlas不存在を結論しない。
 
@@ -257,7 +268,26 @@ I_\beta(q_a)=\frac{A}{\delta_a-\rho_a}(q_a-\rho_a)
 
 `ke:anchor-stokes-budget` は、実際のclutching Σ[β_b]=−[α]を入力とし、normal period M<0とpuncture reference periods c_bに対してArea(P)=−Σc_b−Mを示す。非閉primitiveをhomology関係へ直接積分せず、global sectionと整数windingからStokesを適用する。K4のbasin areas A_b−c_b、Petersenのexternal areas−c_bとinternal area−Mは総量と一致する。保持集合がend collarsだけで内側境界periodも負ならmarginを得るが、追加source annuliには上の有限輸送条件が要る。
 
-比A/(δ_a−ρ_a)が無理数なら、その固定Liouville fillingのbranchを有理作用方向へ変える整数座標変換はない。これもatlas候補全体の不存在ではない。五次の `ke:k4-actual-end-anchor` は、全K2交わりを含むend collarsのみを保持し、source全飽和近傍をδ決定後に $|\widehat\mu_N|<\delta/2$ へ選ぶ標準P0選択で、$Q_{ab}=\nu_b-\rho_b< -\rho_b/2$ と同じactual meridiansの $\sum_{b\ne a}[\beta_{ab}]=-[\alpha_a]$ を確認する。三basinの全strict marginが正なので、元のmarked relative class内で任意有向四角形のtargetsを実現し、同一coreの局所K4 chartを得る。大きいanchor isotopyをmoment cutoffで先に入れ、その後で同じanchorを共有する二族にsmall interpolationを用いることで、有限非零bandで元neckへ戻せる。次の課題はsourceを跨ぐ全momentの面積・作用条件、両端primitive・切片・整数shear、作用chartの全open overlapsの整合である。追加のanchor保持annuliや先指定した大source近傍は一般のprotected-period判定で別に扱う。数学的正本は曲面repoであり、有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理を独自成果とは扱わない。
+比A/(δ_a−ρ_a)が無理数なら、その固定Liouville fillingのbranchを有理作用方向へ変える整数座標変換はない。これもatlas候補全体の不存在ではない。五次の `ke:k4-actual-end-anchor` は、全K2交わりを含むend collarsのみを保持し、source全飽和近傍をδ決定後に $|\widehat\mu_N|<\delta/2$ へ選ぶ標準P0選択で、$Q_{ab}=\nu_b-\rho_b< -\rho_b/2$ と同じactual meridiansの $\sum_{b\ne a}[\beta_{ab}]=-[\alpha_a]$ を確認する。三basinの全strict marginが正なので、元のmarked relative class内で任意有向四角形のtargetsを実現し、同一coreの局所K4 chartを得る。大きいanchor isotopyをmoment cutoffで先に入れ、その後で同じanchorを共有する二族にsmall interpolationを用いることで、有限非零bandで元neckへ戻せる。この局所系を全neckへ接続する有限period条件と全moment構成は次節にまとめる。追加のanchor保持annuliや先指定した大source近傍は一般のprotected-period判定で別に扱う。数学的正本は曲面repoであり、有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理を独自成果とは扱わない。
+
+## 五次の両端period・全moment・同じπのatlas/GH
+
+曲面改訂41の `ke:k4-actual-neck-periods` を正本とする。正weightsのrow sumsを1とし、ρ_ij=2πw_ij、x_i;jk=1_{k=f_i(j)}と置く。実際の両端affine critical periodsの整合は
+\[
+n_{ij;k}=1+x_{i;jk}+x_{j;ik},\qquad
+\rho_{i,k}+x_{i;jk}\rho_{i,j}=\rho_{j,k}+x_{j;ik}\rho_{j,i}
+\]
+と必要十分に同値である。共通neck primitiveとの差はκ_i;k=χ_k+ρ_i,k、κ_j;k=χ_k+ρ_j,kで、Σχ=−2π。K2 endのshearは−1、sourceを含むcritical境界のshearはn_k−1である。Normal O(1)の正meridiansを同じ実同定で運び、閉差にだけclutchingを適用する。Source windingはbasin disk上で実normal bundlesを自明化して計算する。独立primitiveの自由な定数変更で整合させない。
+
+等重み1/4ではf_i(j)=f_j(i)が必要十分となり、六つの対称四角形系と(3,1,1) allocationを使える。`ke:k4-cyclic-weight-periods` は有向5cycleのsuccessor sと正a_i、Σa_i=1からw_i,j=a_j+a_i 1_{j=s(i)}を取り、隣接pairは(3,1,1)、非隣接pairは(2,2,1)となるcompatible非対称族を与える。全cycle系の新しい分類は主張しない。Source identities・basin・順序・relative classは初期に選び、full source neighborhoods固定後には変えない。
+
+`ng8:quintic-full-moment` では、共通左frameのJ_k=χ_k+ρ_i,k+x_iρ_i,j−x_iμに対する面積要求をa_k=ρ_i,k+x_iρ_i,j−x_iμ−ν_k(μ)+n_k min(μ,0)とする。全量は−ΣR_k−μ+5min(μ,0)で、ΣJ_k=−μから一致する。K2全momentの|ν_k|≤C/b_jにより正marginを得る。Analytic cutsとP_jを先に固定し、その内部のrooted-tree neighborhoodsで初期source葉の全tailをDini一様に小さくしてから飽和annuliを固定する。Targetとprotected massの同じsource wallを引いた自由需要はsmoothで、三つのexternal-basin strict cutsが成分別相対Moserを可能にする。
+
+最後のfree bandでは、同じanchorを持つLiouville/neck二族のmarked interpolation後に、同じtarget面積へのMoserを再実行する。両open germsは既にtargetを持ち、有限source sectionsのfirst jetsも固定する。中央full nodal neighborhoodsと全K2 partitionsを保ち、全開collarで作用と全葉を一致させる。通常P0と作用指定構成を同じ初期葉から別々に作るので、既固定のP0のsource fibersを無断で取り替えない。固定Tと解析的接続予算は保たれ、葉の一様微分評価は不要である。
+
+`ke:quintic-simultaneous-realization` は、この構成からrelative-replacementの四条件・whole-fiber閉商・denominator 1のbranch charts・整数star transitionsを確認し、同じactual πの大域作用atlasとf=p_Tπの全域ambient歪み消失を得る。Raw periodsはcore/branchとも一斉に2πで割ってatlas規約へ換算する。Focus値は通常chartから除き穿孔近傍のactual affine構造を保つ。任意先指定の大source tailsではtarget>Lが破れ得るため別に有限cut判定を要する。t方向の連続性・速度は含まない。六次Petersenの同時実現はinternal annuliの二端cuts、actual periodsと全overlapsが未解決である。
+
+Actual period命題は作成担当以外の二担当も独立に読んだ。全moment定理・統合定理と指定依存も複数担当で実読し、この範囲で新たなgapは認めなかった。原稿全体の包括的再監査・外部査読・形式証明・網羅的新規性確認とは区別する。
 
 ## 曲面の全移動基点と選択した中間尺度
 
