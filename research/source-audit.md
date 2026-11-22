@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-23 / v1.19（Part I v1.10、総説v1.14）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。実行済み組版・対象限定の内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説はPart Iの有効な命題・系とPart IV v1.12を保持し、曲面改訂44の標準六次同時実現とPille-Schneiderの先行性を反映する。
+2026-11-23 / v1.20（Part I v1.10、総説v1.15）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。実行済み組版・対象限定の内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。総説v1.15は22頁にLuaLaTeX組版済みで、主要log六分類は全て0。1–6・21–22頁の計8頁を150 dpiで実表示し、要旨・局所比較・最適性の式・隣接本文・書誌に欠字、重なり、切断を認めない。実行状態とhashは `research/validation.json` を正本とする。Part I v1.10の73頁、主要log六分類0、1・36–38・73頁の150 dpi実表示は既存確認記録として保持し、今回再組版・再表示したとはしない。Part II・III・研究素材の本文も変更していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説はPart Iの有効な命題・系、Part IV v1.12の固定endと曲面改訂44の入力pinを保持し、局所安定性・最適性と一次比較にはPart IV v1.15を加える。
 
 ## 固定対のcutoff予算の最小入力
 
@@ -132,9 +132,25 @@ A. Chambert-Loir–Y. Tschinkel, *Igusa integrals and volume asymptotics in anal
 
 ### 全深部triple比較の最小入力
 
-Part IV v1.10で抽出され現行v1.11にも保持する `coarse:thm:boundary-to-triple` と `coarse:thm:full-triple-tensor` への適用を、2026-11-22 の現行作業版 `papers/sections/full_triple_comparison.tex` で直接点検した。Fixed-face density下界はparameterに一様であり、上界は各固定parameterのradial閉包上の滑らかさから得る有限値だけで足りる。Radial simplexと全角phaseのcompact quotientで先に最大値原理を使い、complete inner comparisonの境界発散で上側比を閉じる。Outer translated modelとの比較は境界下界を用いる。角被覆へのpullbackはこの後の局所正則性にのみ用い、被覆上の非compact最大値原理や一様な境界上界を追加しない。
+Part IV v1.10で抽出されv1.11にも保持された `coarse:thm:boundary-to-triple` と `coarse:thm:full-triple-tensor` への適用を、2026-11-22 の現行作業版 `papers/sections/full_triple_comparison.tex` で直接点検した。Fixed-face density下界はparameterに一様であり、上界は各固定parameterのradial閉包上の滑らかさから得る有限値だけで足りる。Radial simplexと全角phaseのcompact quotientで先に最大値原理を使い、complete inner comparisonの境界発散で上側比を閉じる。Outer translated modelとの比較は境界下界を用いる。角被覆へのpullbackはこの後の局所正則性にのみ用い、被覆上の非compact最大値原理や一様な境界上界を追加しない。
 
 Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さを選ぶ順序、actual capped densityからfixed-face入力を得る有限chartの量化を照合した。`coarse:lem:small-volume-tensor` の証明も読み、[Savinの著者版](https://www.math.columbia.edu/~savin/Small_pert.pdf) の(H1)–(H2), p.558、(H4), p.559、Theorem 1.3, p.560 と対応させた。この局所安定性の指定点検で新たなgapは認めなかった。Capped determinant鎖の担当別の実読は次節に区別し、Cheng–Yau原著全証明や全exteriorのTC/CP/PBEの検証は含まない。局所結果を全曲面ambient距離へ拡張する主張でもない。
+
+### 局所安定性率・最適性と一次比較
+
+2026-11-23に[Part IV v1.15・保存commit 1ee0aca](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/1ee0acaf876b1334c964d60c409feb3b18b62373)の局所安定性・先行比較と `simplex:prop:boundary-floor-sharpness` を直接読んだ。固定m_0,bのfacet shift族は同じ一様density floorを持つ。Balanced点での正確なscalingとL=m²、p_m=(m²−2m,m,m)における体積対数比−4b/m+O_b(m^−2)、相対tensor差−2b/m Id+O_b(m^−2)を照合した。これが排除するのは、同じ局所仮定クラスで固定深度座標・比較模型k_Lを保ったo(1/m)改善である。Facet shift吸収後やcompact射影的退化族の最適率を示すものではない。引用するdominant-product評価と旧capped鎖の全面再監査は今回の範囲に含めない。
+
+以下は実際に開いた一次本文の指定箇所である。頁は挙げたarXiv版の頁番号を使う。
+
+| 一次資料・確認箇所 | 確認した範囲と本稿との比較 |
+| --- | --- |
+| Y. Zhang, *Collapsing of negative Kähler–Einstein metrics*, [arXiv:1505.04728v2](https://arxiv.org/pdf/1505.04728v2), Theorem 2.4(ii) p.8、(3.7)–(3.9)/Lemma 3.2 pp.13–15、Lemma 3.3 p.16、Proposition 3.4 p.17、Lemma 3.5 pp.18–19。刊行版MRL 22(6) (2015),1843–1869, [DOI](https://doi.org/10.4310/MRL.2015.v22.n6.a16)。 | Simple toroidal、Q-factorial全空間、相対canonical ampleの下でcanonical complete affine解から作るsemi-flat模型へのC∞loc収束。Normalized x_i=ℓ_i/Lの固定K⊂⊂Δ_1上で進み、角度coverの周期性により全phaseを含む。この誤差の有効率は与えず、m/L→0のmoving点を固定Kの結論からは扱えない。本稿と同じactual-ball buffer仮定を課すと読み替えず、背景quasi-isometryと固定cover窓を使う証明である。 |
+| W.-D. Ruan, *Degeneration of Kähler–Einstein manifolds I: the normal crossing case*, [arXiv:math/0303112v2](https://arxiv.org/pdf/math/0303112v2), Theorems 4.1–4.2 p.9。刊行版Commun. Contemp. Math. 6 (2004),301–313。 | Smooth全空間・normal-crossing退化の仮定で、固定成分exhaustion上のCk収束とactual/constructed backgroundの全域一様quasi-isometryを与える。粗い比較にはmoving点・全phaseも含まれるが、canonical simplexへの消える相対誤差ではない。 |
+| W.-D. Ruan, *Degeneration of Kähler–Einstein manifolds II: the toroidal case*, [arXiv:math/0303113v4](https://arxiv.org/pdf/math/0303113v4), Theorems 5.1–5.2 p.15。刊行版Comm. Anal. Geom. 14 (2006),1–24。 | Toroidalかつ原典のbase point free条件下で上記の収束・全域粗比較を拡張する。全中央stratumを一つの全空間smooth stratumへ含める条件はsource xy=tzにそのまま適合しない。 |
+| W.-D. Ruan, *H-minimal Lagrangian fibrations in Kähler manifolds and minimal Lagrangian vanishing tori in Kähler–Einstein manifolds*, [arXiv:math/0309177v2](https://arxiv.org/pdf/math/0309177v2), §3、Proposition 3.1/Corollary 3.1 p.7、Theorem 3.1 p.9。 | 一様C∞ quasi-isometryの下で、固定c<1のΔ_{cτ}上のpotentialの零torus平均成分に各NのO(τ^−N)を与え、定数はN,c,微分階に依存する。比較相手ω_τ^0はactual potentialのτ依存torus平均を用いる。Theorem 3.1のO(1/τ)はH-minimal fibrationの摂動である。「Ruanには率がない」とはしない。 |
+| W.-D. Ruan, *Degeneration of Kähler–Einstein hypersurfaces in complex torus to generalized pair of pants decomposition*, [arXiv:math/0311098v2](https://arxiv.org/pdf/math/0311098v2), Theorems 6.2–6.3 pp.15–16、Lemma 8.1 pp.18–19。 | 非compact hypersurfaceのcomplete KE比較、固定raw cutoff Δ_{τ−μ}上の粗比較もある。固定normalized compactしか先行しないとはしない。指定canonical simplexへの全深度比一様O(1/m)小誤差との相違を記す。 |
+
+従って確認できる比較点は、指定canonical complete simplex解への小誤差、全深度比での一様性、および固定face density下界という局所入力の組合せである。全phase・定量化そのものの新規性や網羅的優先権を主張しない。CY1982の原典Theorem 4.4本文は未確認のままであり、この比較の確認範囲へ含めない。
 
 ### Capped densityから全smooth fiberの下界まで
 
@@ -146,7 +162,7 @@ Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さ�
 
 ## 曲面正本の大域距離・相対変更の確認範囲
 
-現行接続先は[曲面改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I–III本文の新しい退化族入力にはしない。総説v1.14はこの確認版とPart IV v1.12（commit `11910259dd1628d542df57d370123d0a40b08d61`）を引用する。以下に保持する対象限定監査は、各指定証明の範囲で有効であり、現行曲面全稿の全面再監査ではない。曲面改訂44の外部組版は321頁、主要log六分類0、指定22頁の150 dpi実表示確認を統合担当から受領した。最終PDFの10・321頁を再表示し、他20頁は確認済み画像とbyte一致である。これは本repoでの再組版ではなく、具体的なhash・表示頁・保存先は `research/validation.json` の外部参照記録に分ける。
+現行接続先は[曲面改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I–III本文の新しい退化族入力にはしない。総説v1.15でもこの曲面確認版と固定endのPart IV v1.12（commit `11910259dd1628d542df57d370123d0a40b08d61`）を保持し、局所安定性・最適性の入力版だけを別に記す。以下に保持する対象限定監査は、各指定証明の範囲で有効であり、現行曲面全稿の全面再監査ではない。曲面改訂44の外部組版は321頁、主要log六分類0、指定22頁の150 dpi実表示確認を統合担当から受領した。最終PDFの10・321頁を再表示し、他20頁は確認済み画像とbyte一致である。これは本repoでの再組版ではなく、具体的なhash・表示頁・保存先は `research/validation.json` の外部参照記録に分ける。
 
 - **同じ射影の体積測度極限の直接点検。** 改訂44 `ke:global-volume-measure` の証明を読み、Part Iのbounded-primitive Chern–Weilを用いる各成分質量V_*=2π²(d−4)²と全体積dV_*、固定compactのgraph像の互いの素性・体積収束・clipped-depth値、exhaustionによる残り質量の抑制を確認した。同じfの押出しは成分頂点に質量1/dを置く。p_T^−1(e_i)が一点であることとcompact性によりπの固定位相底空間にも移り、五次と標準等重み六次の作用指定射影は一様な値比較で同じ結論を持つ。Moving neckの体積評価・追加速度・対角列の変更は用いず、極限測度の全台性を要求しない。
 
@@ -230,4 +246,3 @@ Degree `d` hypersurface `X ⊂ P^N` について、次は確定部分として�
 - Relative Bishop–Gromov bookkeeping audit: PASS
 
 補助数値検査は解析証明の代わりではありません。定理状態は本文の仮定表示を最終的な基準としてください。
-

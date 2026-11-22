@@ -1,5 +1,5 @@
 # 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
-更新：2026-11-23 / v1.19（Part I v1.10、総説v1.14）
+更新：2026-11-23 / v1.20（Part I v1.10、総説v1.15）
 
 ## 公表に向けた実行計画
 
@@ -16,13 +16,15 @@
 
 ### 実行状況と次の課題
 
+総説v1.15は、Part IV v1.15の全深度比一様な局所安定性と `simplex:prop:boundary-floor-sharpness` を接続する。局所仮定クラスでは、固定深度座標とcomplete simplex模型に対する体積対数比・C0 tensor誤差のO(1/m)は一般に改善できず、balancedな厳密例と正規化simplexの境界へ逃げる例の両方を持つ。Zhangの固定normalized compact上のcanonical semi-flat収束、Ruanの全域粗比較とactual potentialの定量的torus平均化を一次本文で比較した。全phaseや率自体を新規性とはしない。変更証明の直接実読とこの対象限定比較を今回の範囲とし、Part I–III本文・既存のfixed-end等の入力pinを保持する。詳細と未確認範囲はノート・一次資料監査を参照する。
+
 Part I v1.10の `cor:CW-fixed-cutoff-budget` は、固定SNC対の $T=\log(1+\sum_iq_i)$ によるcompact $K_A=\{T\le A\}$ の外側のKE体積とcutoff Stokes defectを $Ce^{-A}$ で抑える。有限SNC chartsの一変数cusp積分と全残余の有限体積だけを使い、exact-tail、Rochon–Zhangの残余減衰、退化族に一様なtensor評価に依存しない。曲面の同じ射影による原子測度極限に対して、固定成分のexhaustion誤差を具体的に分離する入力となる。定数は固定対・reference norms・計量に依存し、Aを先に固定してから退化parameterを小さくする。Aを任意の速度で動かす誤差評価やtについての有効収束率ではない。新たな基本原理や最適係数を主張するものではなく、既存Stokes証明の最小入力を定量化した補強である。
 
 現行Part Iは、尖点付き有限面積双曲曲線Sと任意の閉コンパクト連結Riemann因子Yの積について、実距離Laplace変換を Re s<3 の切断半平面で W/(1−s)−H(s)Log(1−s)+G(s) と表示する。Hはentire、GはRe s<3全体で正則である。`prop:compact-product-logarithmic-germ` は曲線裾A(p)e^−R+O(e^−3R)をStieltjes部分積分で扱い、積距離kernelの級数の一様絶対収束まで証明する。`cor:compact-radial-recovery` はWと対数monodromyからYの正規化された基点距離分布を復元する。コンパクト負KE因子なら総複素次元2以上のactual KE例となる。一般の通常volume-IRFAからの解析接続・基点付き等長型・安定性へは拡張しない。作成担当・統合担当・別担当が指定証明を読んで点検した。指数積分・Bessel公式とcompact moment一意性は既知の原理であり、新規性の網羅的確認は未了。 既存の全face conditional moments→vertex tightness→actual-ball tail、weighted total variation→Abel–Mellin recursion、内在的裾係数・compact基点一様性・norm gauge・非KE cusp・K5比較の対象限定点検は有効な範囲で保持し、今回の新証明の点検と区別する。
 
 現行の曲面接続先は[改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)。`ke:global-volume-measure` は全固定d≥5について、同じf=pπによる正規化KE体積の押出しを成分頂点上の等重み原子測度へ収束させる。固定成分の体積公式と全体積の一致、固定compact上の収束、頂点逆像の一点性を直接確認した。五次と標準等重み六次の同時atlas/GHにも適用するが、atlasのt方向の収束、極限integral affine構造、Hessian・Monge–Ampère性は含まない。標準六次の同時実現は `ke:petersen-full-moment` と `ke:sextic-simultaneous-realization` により証明され、任意先指定source tailsへの相対存在は別に残る。原子化自体の先行性はPille-Schneiderのhybrid収束定理へ帰属させ、同じactual射影の実現と区別する。
 
-Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説v1.14はPart Iの対数germ、Part IV v1.12の固定end最小入力とwinding、曲面改訂44の同じ射影の確率体積極限を統合する。五次の全moment構成を保持し、標準等重み六次の二端cuts・source wallに適合するseparator・全平行移動を含む作用atlas/GH/測度収束を統合する。
+総説v1.15は22頁にLuaLaTeX組版済みで、主要log六分類は全て0。1–6・21–22頁の計8頁を150 dpiで実表示し、要旨・局所比較・最適性の式・隣接本文・書誌に欠字、重なり、切断を認めない。実行状態とhashは `research/validation.json` を正本とする。Part I v1.10の73頁、主要log六分類0、1・36–38・73頁の150 dpi実表示は既存確認記録として保持し、今回再組版・再表示したとはしない。Part II・III・研究素材の本文も変更していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説v1.15はPart Iの対数germ、Part IV v1.12の固定end最小入力とwinding、曲面改訂44の同じ射影の確率体積極限を統合する。五次の全moment構成を保持し、標準等重み六次の二端cuts・source wallに適合するseparator・全平行移動を含む作用atlas/GH/測度収束を統合する。
 
 ### 次の具体的な着手点
 
@@ -46,7 +48,7 @@ Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。
 - `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.10。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。KE積の実球裾の二次項、コンパクト因子との積の複素対数germと基点距離分布の復元を加え、normal-depth変換と区別した。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tail、測度付き極限・Chern–Weil・Mellin、moving-basepoint分類とmetric link復元の指定証明鎖の限定点検を保持する。今回の実施範囲と組版・表示記録は検証状態を参照する。
 - `papers/secondary-periods-torelli.tex`：Part II v2.1。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
-- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.14。曲面改訂44のactual両端period条件、全moment構成、同じ射影の五次・標準等重み六次の作用atlas/GH/測度収束を紹介し、先指定source tailsと非標準targetsの限界を明記する。Pille-Schneiderのhybrid原子極限と等重みの先行性を比較する。全移動基点の四型分類、同半径閉球比較、source-inclusive固定shell、有限stage co-Gramも保持する。Part I v1.9の対数germとradial分布回収、曲面の確率体積極限、Part IV v1.12の固定end入力・frame windingを統合する。Part IVのcapped下界補強も保持するが、五次(CP)の引用経路に(TC)、Part Vのactual直径帰結に(CP)＋(PBE)が必要なことは変えない。曲面側の直接経路と区別する。組版後の頁数と表示範囲はREADME・検証状態を参照する。
+- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.15。曲面改訂44のactual両端period条件、全moment構成、同じ射影の五次・標準等重み六次の作用atlas/GH/測度収束を紹介し、先指定source tailsと非標準targetsの限界を明記する。Pille-Schneiderのhybrid原子極限と等重みの先行性を比較する。全移動基点の四型分類、同半径閉球比較、source-inclusive固定shell、有限stage co-Gramも保持する。Part I v1.9の対数germとradial分布回収、曲面の確率体積極限、Part IV v1.12の固定end入力・frame windingを統合する。Part IV v1.15の全深度比一様安定性、固定座標・模型での率の最適性、Zhang・Ruanの一次比較を加えた。Part IVのcapped下界補強も保持するが、五次(CP)の引用経路に(TC)、Part Vのactual直径帰結に(CP)＋(PBE)が必要なことは変えない。曲面側の直接経路と区別する。組版後の頁数と表示範囲はREADME・検証状態を参照する。
 
 ## 固定SNC入力の確立範囲
 主稿 `lem:SNC-compatible-collars` は、元の実有向blow-up上の固定Hermitian normsを用い、全strataのcollarsと全normal line bundleのproduct connectionsを次元順に同時構成する。残余の深さの保存、circle-equivariance、quotient-in-stagesを厳密に保つ。`lem:fc-collar-transfer` はRochon–Zhangの延長Ξと選んだ射影の差、およびHessianの差を、任意Nに対し $x_i^N C^\infty_{\rm fc}$ と評価する。`lem:RZ-collar-tensor` はTheorem 5.1と背景形から $O(x_i^{\min(1,\nu)})$ の全残余一様tensor評価を得る。有限face反復によりsmooth/exponential volume-IRFAも成立する。

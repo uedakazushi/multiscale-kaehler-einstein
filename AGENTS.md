@@ -1,5 +1,5 @@
 # multiscale-kaehler-einstein — 研究・保存指示
-2026-11-22 / v1.6
+2026-11-23 / v1.7
 
 ## 公表計画の実行
 
@@ -23,6 +23,7 @@
 - 本repoは固定SNC対・配置補空間のPart I–IIIとシリーズ総説、`kaehler-einstein-degeneration` は退化族の局所一様解析Part IVと条件付き大域枠組Part V、`surface-lagrangian-torus-fibration` はactual KE形式上の曲面fibrationと同じ射影による大域GH実現を担当する。研究方針・記法・依存関係・証明監査を一体で進め、repoや独立論文を機械的に統合しない。
 - 他repoの結果は定理ラベル・仮定・規格化・固定する対象・距離の範囲・確認版を `research/notes.md` に記す。必要な定理の変更は証明の正本を先に直し、利用先と総説・hubを追随させる。証明全文を複製しない。
 - 固定補空間の空間的blow-downを退化parameterに一様な評価と読み替えない。曲面側の直接scalar/portal証明を、Part IV–Vの(CP)/(PBE)/(TC)やPart IIIの(H_loc)/(H_anc)の検証済み表示へ流用しない。Secondary complex periodsとsymplectic action periodsを同一視しない。
+- 局所KE安定性の先行比較では、Zhangの固定normalized compact、Ruanの全域粗比較とactual potentialのtorus平均化を区別し、全phase又は定量率自体を新規性としない。Part IV `simplex:prop:boundary-floor-sharpness` の最適性は局所仮定クラス・固定深度座標・固定模型に限る。Facet shiftを模型へ吸収した後やcompact射影的退化族の最適率へ拡張しない。既存の入力・証明点検のcommit pinは、その範囲を確認せず新しい版で一律に置換しない。
 - Part Iの `lem:SNC-compatible-collars`、`lem:fc-collar-transfer`、`lem:RZ-collar-tensor` を固定SNC入力の正本とする。距離収縮・LDP・tail・measured translation・Chern–Weil・Abel–Mellinの依存関係と限定的な点検範囲は研究ノートを参照する。測度付き極限にsmooth volume-IRFAを追加せず、一様Mellinとexact tailに必要なconditional moment評価は全deeper faceの整合性から導き、exponential volume-IRFAをこれらの追加仮定としない。Moving-basepointではincidenceを保つ正のface領域とambient距離の退出評価を使い、閉star全体を積とみなさない。Link復元はmetric isometry typeに限定し、標識・depth規格化・genuine ray boundaryと区別する。主要結果の先行研究比較、Part IIのcontrolled push-off、Part IIIのlocalization/anchorsを別々に追う。修正は必要な範囲へ限定し、他研究・並行編集を保持する。
 
 ## 保存と検証

@@ -1,17 +1,19 @@
 # Multiscale Kähler–Einstein geometry
 
-固定配置補空間の多重尺度KE幾何。現行研究一式：2026-11-23 / v1.19（Part I v1.10、総説v1.14）。最初に[研究方針](00_research_plan.md)を読む。主たる公表用原稿は `papers/multiscale-kaehler-einstein.tex`。
+固定配置補空間の多重尺度KE幾何。現行研究一式：2026-11-23 / v1.20（Part I v1.10、総説v1.15）。最初に[研究方針](00_research_plan.md)を読む。主たる公表用原稿は `papers/multiscale-kaehler-einstein.tex`。
 
 **公表計画：** 数学的価値の最大化を基準に、曲面P0・Part IVの最小局所解析・Part Iの距離と実球体積漸近を優先する。[研究方針](00_research_plan.md)に実行順序・達成基準・担当を記した。まず中心定理の構成、入力の範囲、先行研究との差を確定し、五次と標準等重み六次の同時atlas/GH/測度収束を中心成果へ統合し、任意先指定source tailsと独立した条件付き解析は別の完成基準で進める。
 
 **三研究の共同編集：** 本repoは固定補空間のPart I–IIIと総説、[kaehler-einstein-degeneration](https://github.com/uedakazushi/kaehler-einstein-degeneration)は退化族の局所一様解析Part IVと条件付き大域枠組Part V、[surface-lagrangian-torus-fibration](https://github.com/uedakazushi/surface-lagrangian-torus-fibration)はactual曲面fibrationと同じ射影による全域GH実現を担当する。方針・記法・定理の依存関係・監査は一体で進め、repoと独立論文は役割別に保つ。詳細の定理ラベル・入力条件・確認版は[研究ノート](research/notes.md)に置く。
+
+**局所安定性の率と先行比較：** 総説v1.15は、Part IVの固定face入力からcanonical complete simplexへの全深度比一様O(1/m)比較と、その局所仮定クラスでの最適性を紹介する。固定深度座標・固定模型におけるbalanced exact例と境界へ逃げる例を用い、compact射影的退化族やfacet shiftを吸収した後の最適率とは区別する。Zhangの固定normalized compact上の収束、Ruanの全域粗比較とactual potentialのtorus平均への任意多項式率を一次資料で照合し、全phaseや率自体を新規性としない。Part I–III本文と既存の入力pinは保持する。
 
 | 原稿 | 頁数 | 状態 |
 | --- | ---: | --- |
 | [Part I](papers/multiscale-kaehler-einstein.tex) | 73 | 距離錐・測度漸近・一様Mellin recursion、積の距離Laplaceの複素対数germと基点距離分布の復元 |
 | [Part II](papers/secondary-periods-torelli.tex) | 28 | 一般WP completionはcontrolled push-off付き |
 | [Part III](papers/conifold-localization.tex) | 57 | Actual localization/pGHは(H_loc)+(H_anc)付き |
-| [総説](papers/series-overview.tex) | 22 | 五篇と曲面実現の共同方針、同一πの作用atlas/GHと確率体積極限、固定end入力、Part Iの対数germ |
+| [総説](papers/series-overview.tex) | 22 | 五篇と曲面実現、同一πの作用atlas/GH/測度、固定end入力、局所安定性の率と一次比較 |
 | [研究素材](papers/research-directions.tex) | 10 | Jacobi/scattering・一般matroid等。現行仮定の注意を付記 |
 
 **公表準備で具体化した成果：** `cor:tail-intrinsic-uniform` により実球裾係数Wは内在量で、KE規格化ではlog Wが1-Lipschitz、裾漸近が任意のcompact基点集合上で一様となる。許されるnorm変更での不変性とdepth定数shiftの補償を区別した。非KE回転cuspの明示例では非可積分なo(1)誤差からR^a因子が現れ、coneとleading normal massだけでは実球裾係数を決められない。五直線のK5 linkのconeが非CAT(0)であることも証明し、Leuzingerの局所対称coneと具体的に比較した。これら四項は担当と別担当が証明を読んで点検した。
@@ -52,10 +54,10 @@ FBPのTheorem 6.14(b)は部分fibration、(c)はproperな場合の全fiberの構
 
 Part II v2.1では、複素periodに必要なfactor/cusp labelsとKähler orientationを明記し、Part Iの測度付き平行移動への参照を定理ラベルに揃えた。Fully markedな全curve factorsで向きだけを忘れるgeneric Torelliは、配置全体の複素共役までの結論である。今回の点検はこの接続の範囲であり、Part IIの全証明再監査ではない。
 
-Part IV v1.12（確認済み保存commit `1191025`）では、capped volume下界に加えて固定endの最小入力、同一正則frameのmoment符号、Hermitian半径補正、normal windingによるperiod変化を本文に明示した。総説v1.14はこれらを同期し、fixed-base Moser被覆と別の主張として扱う。Capped下界の指定証明の既存点検は保持する。固定d≥5・固定族でtに一様であり、次数一様性は結論しない。五次の(CP)をPart IVから得る別経路には(TC)、Part Vのactual直径帰結には(CP)＋(PBE)が必要なことも保持する。曲面側の直接scalar/portal経路はこれらのpackage自体を検証しない。固定成分はd−1本の直線の補空間であり、固定補空間のblow-downを退化族の一様比較へ読み替えない。
+固定end等の確認入力として保持するPart IV v1.12（保存commit `1191025`）では、capped volume下界に加えて固定endの最小入力、同一正則frameのmoment符号、Hermitian半径補正、normal windingによるperiod変化を本文に明示した。総説v1.15はこれらを同期し、fixed-base Moser被覆と別の主張として扱う。Capped下界の指定証明の既存点検は保持する。固定d≥5・固定族でtに一様であり、次数一様性は結論しない。五次の(CP)をPart IVから得る別経路には(TC)、Part Vのactual直径帰結には(CP)＋(PBE)が必要なことも保持する。曲面側の直接scalar/portal経路はこれらのpackage自体を検証しない。固定成分はd−1本の直線の補空間であり、固定補空間のblow-downを退化族の一様比較へ読み替えない。
 
 最初に[研究方針](00_research_plan.md)、次に[研究ノート](research/notes.md)を読む。[移行・検証範囲](research/migration.md)と[ソース対応](research/source-manifest.json)を確認する。短い再構成稿は全文へ置換済み。旧稿独自資産の網羅的照合は残る。
 
 ルートで `latexmk`。PDF/SyncTeXはbuild/。現行の[検証状態](research/validation.json)で数学的点検・組版・表示確認を分ける。正本はmain。[research-hub](https://github.com/uedakazushi/research-hub)。
 
-組版にはLuaLaTeX/latexmk、LuaTeX-ja（ltjsarticleとHaranoAjiフォント）、TikZ、AMS、mathrsfs等の標準TeXパッケージと有効なformat/font mapが必要。Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 数学的点検・組版・視覚確認・GitHub保存は別の状態として扱う。
+組版にはLuaLaTeX/latexmk、LuaTeX-ja（ltjsarticleとHaranoAjiフォント）、TikZ、AMS、mathrsfs等の標準TeXパッケージと有効なformat/font mapが必要。総説v1.15は22頁にLuaLaTeX組版済みで、主要log六分類は全て0。1–6・21–22頁の計8頁を150 dpiで実表示し、要旨・局所比較・最適性の式・隣接本文・書誌に欠字、重なり、切断を認めない。実行状態とhashは `research/validation.json` を正本とする。Part I v1.10の73頁、主要log六分類0、1・36–38・73頁の150 dpi実表示は既存確認記録として保持し、今回再組版・再表示したとはしない。Part II・III・研究素材の本文も変更していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 数学的点検・組版・視覚確認・GitHub保存は別の状態として扱う。

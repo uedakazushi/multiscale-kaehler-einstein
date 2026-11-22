@@ -71,13 +71,15 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 固定補空間，退化族の局所解析，曲面実現の接続と定理状態}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.14（2026年11月22日）}
+\date{現行総説 v1.15（2026年11月23日）}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
 本稿は，固定配置補空間の多重尺度幾何を扱う第I--III篇と，コンパクト曲面の全平面退化を扱う第IV--V篇，および関連するactual Lagrangian実現論文の共通総説である．第一対数尺度における距離錐，translation limits と secondary periods，conifold 型特異端の抽象貼合せ，退化族の局所模型，有限立方体複体への大域 Gromov--Hausdorff 極限を，対象・尺度・仮定を明示して接続する．双曲cusp曲線とコンパクト因子の積では，実距離Laplace変換の対数分岐から因子の正規化された基点距離分布を回収する．Controlled push-off，localization--anchor，tensor comparison，coarse package，Product-Box Exhaustion は独立の追加仮定として区別する．
+
+第IV篇の局所比較では，指定したcomplete simplex模型への全深度比一様な$O(m^{-1})$安定性と，固定深度座標・固定模型での局所仮定クラスにおける率の最適性を述べる．Zhangの正規化simplexの固定compact上の収束，Ruanの全域粗比較・定量的torus平均化と比較し，全phaseや定量評価自体を新規性として扱わない．
 
 曲面については五次に限定せず，\(\PP^3\) 内の任意の固定次数 \(d\ge5\) に対する候補複体
 \[
@@ -168,7 +170,9 @@ monodromy \(-2\pi iH_o\)のgermから全ての正規化偶数momentsを求め，
 Part IVの\texttt{coarse:thm:boundary-to-triple}は，exact triple領域の
 固定faceにおける一様なvolume下界と，各固定parameterのradial閉包近傍で
 滑らかな負KE metricを入力とする．全angular phasesのcompact quotientで
-二つのtranslated complete simplexを比較し，全深部の$O(m^{-1})$ tensor安定性を得る．
+二つのtranslated complete simplexを比較する．$\ell_i=-\log|z_i|^2$，
+$\sum_{i=0}^2\ell_i=L$，$m=\min_i\ell_i$ とすると，指定したcomplete simplex
+模型$k_L$への相対$C^q$ tensor誤差は全深度比に一様な$C_q/m$で抑えられる．
 境界上界のparameter一様性は仮定しない．
 全平面退化への適用ではcapped density下界がこの境界入力を供給する．
 局所安定性と全曲面のambient距離比較は別の定理である．
@@ -177,6 +181,37 @@ Chern微分によるcap曲率の全点表示，Hermitian frame誤差の吸収定
 source軸を含む六局所型と有限被覆の選択順を明記した．
 Compact fiber上の片側最小値原理から固定次数$d\ge5$の$t$一様volume下界を得るが，
 この下界だけから二側tensor比較，次数一様性，又はmoving bufferは結論しない．
+
+先行結果との比較では，模型・領域・率を分ける．Ruan
+\cite[Theorem~4.2]{RuanI}\cite[Theorem~5.2]{RuanII}はactual KEと構成背景計量の
+全域一様quasi-isometryを与える．Zhang
+\cite[Theorem~2.4(ii), Lemmas~3.2--3.3 and~3.5, Proposition~3.4]{ZhangNegativeKE}の
+canonical semi-flat模型への$C^\infty_{\mathrm{loc}}$収束は，
+$x_i=\ell_i/L$の固定$K\Subset\Delta_1$上の比較で，その誤差の有効率は示されない．
+この領域でも全phaseは既に含まれる．さらにRuan
+\cite[Proposition~3.1, Corollary~3.1]{RuanHMinimal}は，固定$c<1$の縮小polytope
+$\Delta_{c\tau}$上でactual potentialとその$\tau$依存torus平均との差に
+任意多項式率を与え，定数は$c$に依存する．従って本稿の比較点は定量化や全phase自体でなく，
+固定したcomplete simplex解への小誤差，$m\to\infty$かつ$m/L\to0$も含む全深度比，
+および固定faceの局所境界入力である．
+
+この局所仮定クラスにおける率の最適性は，第IV篇
+\cite{KEIV}の\texttt{simplex:prop:boundary-floor-sharpness}が与える．
+$b>0$を固定し，$F_b(w)=w+b\mathbf1$，$\omega_{b,L}=F_b^*k_{L+3b}$，
+$A_{b,L}=(g_L^{\mathrm{sf}})^{-1}g_{b,L}$と置く．同じ固定face上の一様なdensity下界を満たし，
+balanced点$q_m=(m,m,m)$と境界へ逃げる点$p_m=(m^2-2m,m,m)$で
+\[
+ \begin{aligned}
+ A_{b,3m}(q_m)&=\left(\frac{m}{m+b}\right)^2\operatorname{Id},\\
+ \log\frac{\omega_{b,m^2}^2}{k_{m^2}^2}(p_m)
+     &=-\frac{4b}{m}+O_b(m^{-2}),\qquad
+ A_{b,m^2}(p_m)-\operatorname{Id}
+     =-\frac{2b}{m}\operatorname{Id}+O_b(m^{-2}).
+ \end{aligned}
+\]
+第二式のtensor誤差は$g_{m^2}^{\mathrm{sf}}$のoperator normで測る．
+従って固定深度座標と比較模型$k_L$に対して一般に$o(m^{-1})$へ改善できない．
+Facet shiftを模型へ吸収した後の率や，compact射影的退化族での最適性は主張しない．
 
 曲面実現論文の入口は，精密な主定理，解析入力四群，同じ射影を保つ六段階の証明，
 cut選択の量化順序の順に読む構成とする．
@@ -1021,6 +1056,9 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/11910259dd1628d542df57d370123d0a40b08d61/papers/kaehler-einstein-degeneration.tex}{原稿ソース}．
 \newblock 命題\texttt{pair:prop:fixed-end-transfer}，
 定理\texttt{pair:thm:fixed-end-moment}，注意\texttt{pair:rem:normal-frame-winding}．
+\newblock 局所安定性と率の最適性はv1.15（2026年11月23日），
+\href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/1ee0acaf876b1334c964d60c409feb3b18b62373/papers/kaehler-einstein-degeneration.tex}{同稿の局所比較}，
+定理\texttt{coarse:thm:boundary-to-triple}，命題\texttt{simplex:prop:boundary-floor-sharpness}を参照．
 
 \bibitem{KEV}
 植田一石，
@@ -1064,6 +1102,35 @@ Proposition~6.13，Theorem~6.14(b),(c)，Remark~7.4．
 F.~Rochon and Z.~Zhang,
 \newblock Asymptotics of complete K\"ahler metrics of finite volume on quasiprojective manifolds,
 \newblock \emph{Adv. Math.} \textbf{231} (2012), 2892--2952.
+
+\bibitem{ZhangNegativeKE}
+Y.~Zhang,
+\newblock Collapsing of negative Kähler--Einstein metrics,
+\newblock \emph{Math. Res. Lett.} \textbf{22} (2015), no.~6, 1843--1869,
+\href{https://doi.org/10.4310/MRL.2015.v22.n6.a16}{doi:10.4310/MRL.2015.v22.n6.a16}.
+\newblock 確認版\href{https://arxiv.org/abs/1505.04728v2}{arXiv:1505.04728v2}，
+Theorem~2.4(ii), p.~8; Lemmas~3.2--3.3, pp.~13--16;
+Proposition~3.4, p.~17; Lemma~3.5, pp.~18--19．
+
+\bibitem{RuanI}
+W.-D.~Ruan,
+\newblock Degeneration of Kähler--Einstein manifolds I: the normal crossing case,
+\newblock \emph{Commun. Contemp. Math.} \textbf{6} (2004), 301--313.
+\newblock 確認版\href{https://arxiv.org/abs/math/0303112v2}{arXiv:math/0303112v2}，
+Theorems~4.1--4.2, p.~9．
+
+\bibitem{RuanII}
+W.-D.~Ruan,
+\newblock Degeneration of Kähler--Einstein manifolds II: the toroidal case,
+\newblock \emph{Comm. Anal. Geom.} \textbf{14} (2006), 1--24.
+\newblock 確認版\href{https://arxiv.org/abs/math/0303113v4}{arXiv:math/0303113v4}，
+Theorems~5.1--5.2, p.~15．
+
+\bibitem{RuanHMinimal}
+W.-D.~Ruan,
+\newblock H-minimal Lagrangian fibrations in Kähler manifolds and minimal Lagrangian vanishing tori in Kähler--Einstein manifolds,
+\newblock \href{https://arxiv.org/abs/math/0309177v2}{arXiv:math/0309177v2}，
+Proposition~3.1, Corollary~3.1, p.~7; Theorem~3.1, p.~9．
 
 \bibitem{Mandel}
 H.~Mandel,

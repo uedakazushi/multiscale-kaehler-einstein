@@ -1,14 +1,14 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-23 / v1.19（Part I v1.10、総説v1.14）
+更新：2026-11-23 / v1.20（Part I v1.10、総説v1.15）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。総説v1.14の固定引用は[KE Part IV v1.12・Part V v1.10](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/11910259dd1628d542df57d370123d0a40b08d61)と[曲面改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)。今回の資料確認日は2026-11-23で、Part Iの `lem:CW`・`app:CW` の固定対での最小入力から有限cutoff予算を証明した。Rochon–Zhangの(5.3)–(5.9)とLemma 5.2冒頭の原文を再確認し、background curvatureとbounded derivativeの利用を残余減衰から分離した。曲面六次の指定証明鎖、Pille-Schneider比較、Part Iの積の複素対数germ・全face/tail/Abel鎖、Part IVのcapped下界と固定endの既存点検は、その記録範囲で保持する。これらを今回一律に再検証したとはしない。全原稿・P0全体・外部原著の全面再監査ではない。
+研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。総説v1.15でも固定end等の入力は[KE Part IV v1.12・Part V v1.10](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/11910259dd1628d542df57d370123d0a40b08d61)、曲面実現の入力は[改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)を保持する。今回の局所安定性・最適性の入力は[Part IV v1.15](https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/1ee0acaf876b1334c964d60c409feb3b18b62373/papers/kaehler-einstein-degeneration.tex)（保存commit `1ee0aca`）であり、2026-11-23に指定証明とZhang・Ruanの比較箇所を直接読んだ。Part Iの有限cutoff・Rochon–Zhang入力、曲面六次・Pille-Schneider比較、積の複素対数germ・全face/tail/Abel鎖、Part IVのcapped下界と固定endの既存点検は、その記録範囲で保持する。これらを今回一律に再検証したとはしない。全原稿・P0全体・外部原著の全面再監査ではない。
 
-Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説v1.14の科学的入力は上記の曲面改訂44とPart IV v1.12である。
+総説v1.15は22頁にLuaLaTeX組版済みで、主要log六分類は全て0。1–6・21–22頁の計8頁を150 dpiで実表示し、要旨・局所比較・最適性の式・隣接本文・書誌に欠字、重なり、切断を認めない。実行状態とhashは `research/validation.json` を正本とする。Part I v1.10の73頁、主要log六分類0、1・36–38・73頁の150 dpi実表示は既存確認記録として保持し、今回再組版・再表示したとはしない。Part II・III・研究素材の本文も変更していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説v1.15では上記の固定引用を保持し、局所安定性・最適性に限ってPart IV v1.15を加える。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -17,6 +17,7 @@ Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。
 | Part II `thm:intro-star`, `thm:intro-general-completion`, `hyp:controlled-pushoff` | Marked residual複素・双曲曲線のperiodsとTorelli。一般WP completionにはcontrolled push-off。曲面の第二作用積分との同一視はない。 |
 | Part III `hyp:Hloc`, `hyp:Hanc`, `thm:actual-global-pgh` | Ordinary/conifold whole-end比較とtracked anchors等を追加仮定とする。対象・positive square模型・空間的blow-downを曲面退化と区別する。 |
 | Part IV `coarse:thm:boundary-to-triple`, `coarse:cor:degree-d-volume-lower`, `coarse:thm:full-triple-tensor` | Fixed-face density下界と各固定parameterでradial閉包近傍まで滑らかな負KE metricから、全phase quotient上のcomplete比較により全深部tensor安定性を得る。Parameter一様な境界上界を仮定しない。Capped volume下界が全固定d≥5の族でこの入力を供給する。証明の正本は `papers/sections/full_triple_comparison.tex`。 |
+| Part IV `simplex:prop:boundary-floor-sharpness` | 同じ局所仮定を満たす固定facet shift族から、固定深度座標・固定模型での体積対数比とC0 tensor誤差が一般にo(1/m)にならない。Balanced点の厳密式と、m→∞かつm/L→0の境界へ逃げる列を含む。Compact射影的退化族又は模型のshift吸収後の最適率ではない。 |
 | Part IV `simplex:cor:actual-closed-corner-metric`, `pair:thm:fixed-end-moment` | Closed tripleの内在・protected距離、および固定source-free residual compact上のmoment入力。全曲面ambient距離や任意のmoving exhaustionへの一様性へ拡張しない。 |
 | Part IV `coarse:hyp:TC5`, `coarse:thm:main`; Part V `hyp:CPd`, `hyp:PBEd`, `thm:degree-d-limit` | Part IVの五次coarse定理は(TC)5付き。Part Vの大域適用は(CP)d＋(PBE)d付き。有限targetの直径 `thm:intro-diameter-C5` は独立。 |
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
@@ -48,6 +49,14 @@ Part Iの `lem:CW` と体積公式から各固定成分W_iの質量はV_*=2π²(
 今回この証明と固定compact→全質量の極限順序を直接読んだ。Moving coreへの包含、対角列の選び直し、moving neckの一様体積漸近、追加の収束速度は要しない。極限測度は頂点に集中するが、GH極限の辺とsquareは距離として残るため、全台性を要求しないcompact measured GHの意味で述べる。これはPart Iの固定空間のscaled体積が錐頂点へ集中するLDPとは対象・写像・極限parameterが異なる。
 
 Pille-Schneider, *Hybrid convergence of Kähler–Einstein measures*, Ann. Inst. Fourier **72**(2) (2022), 587–615、[DOI 10.5802/aif.3455](https://doi.org/10.5802/aif.3455)、Theorems A–B（pp.589–590）は、正準モデル成分上の交点数を重みとするhybrid原子極限を既に与える。本族の等重み1/dはこの既知結果と一致する。原典は[ω̂]=c_1(K)、測度ω̂²を用いるため、本稿のdV=2π²ω̂²との規格化差を保つ。Hybrid中央Berkovich fiberと本稿のcubical基底を同一視する比較写像は未構成であり、原子化・等重み自体を新規成果としない。同じactual Lagrangian射影の全域GH・作用atlas・測度収束の実現が追加部分である。仮定・重複度・一次確認頁は `research/source-audit.md` に置く。
+
+## Part IVの局所安定性率と最適性
+
+正本はPart IV v1.15の `coarse:thm:boundary-to-triple` と `papers/sections/simplex_boundary_geometry.tex` の `simplex:prop:boundary-floor-sharpness`。比較先は深度座標を固定したcomplete simplex模型k_Lであり、m=min ℓ_iについて相対Cq誤差をC_q/mで抑える。全phaseと全深度比を含み、m→∞かつm/L→0の列も許す。固定faceの一様density下界と各固定parameterのradial閉包近傍での滑らかさを入力とし、parameter一様な境界上界や全曲面ambient比較を追加しない。
+
+固定b>0の平行移動F_b(w)=w+b1によるω_{b,L}=F_b^*k_{L+3b}は、固定m_0>0に対してc_*=(1/3)(m_0/(m_0+b))^6の共通境界下界を持つ。L=3m、q_m=(m,m,m)で相対tensorは(m/(m+b))²Id。L=m²、p_m=(m²−2m,m,m)では体積対数比が−4b/m+O_b(m^−2)、相対tensor差が−2b/m Id+O_b(m^−2)となる。証明はモデルのscalingとdominant-product評価を参照し、全phaseに独立である。今回、固定格子、境界floor、balanced scaling、boundary-escaping列と剰余normの指定を直接照合した。元のdominant-product全証明の新規再監査とはしない。局所仮定クラスで固定座標・固定模型に関する1/mの最適性であり、facet shiftを模型へ吸収した後又はcompact射影的退化族の率へ拡張しない。
+
+一次比較は `source-audit.md` の指定頁・URLを正本とする。Zhangのcanonical semi-flat収束は固定normalized compact K上で全phaseを含み、この比較誤差の有効率はない。Ruanのglobal coarse comparisonはmoving点も含み、torus平均化は固定c<1の領域で任意多項式率を持つが、比較先はactual potentialに依存する平均である。確認した差はcanonical模型への小誤差、全深度比一様性と局所境界入力の組合せであり、全phase・定量化の一般的新規性や網羅的な優先権は主張しない。
 
 ## Part IVのcapped volume下界と監査範囲
 
@@ -457,4 +466,3 @@ Rochon--Zhang の Theorem 7.6 を、smooth degree e>n+1 hypersurface D_e⊂P^n (
 =\frac{2(n-1)e}{3(e-n-1)}.
 \]
 n=2では2e/[3(e-3)]で、原論文 Example 7.7 と一致する。t=-log x なら x log x=-t e^{-t} であり、O(e^{-\nu t}) は任意 \nu<1 で成立するが、O(e^{-t}) とは一般にいえない。一般のmetric-IRFAにlog-free指数1を入力しない。t e^{-t}自身は可積分で \(\int_T^\infty t e^{-t}\,dt=(T+1)e^{-T}\)。大域粗等長性の全証明に代わらない。数式の証明は主原稿 papers/multiscale-kaehler-einstein.tex の prop:RZ-smooth-hypersurface-coefficient。一次資料：Rochon--Zhang, Adv. Math. 231 (2012), 2892–2952, Theorems 5.1, 7.4, 7.6, Example 7.7, DOI 10.1016/j.aim.2012.08.005。smooth divisorとSNCを混同しない。
-
