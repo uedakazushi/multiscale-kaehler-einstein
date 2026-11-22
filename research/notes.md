@@ -1,12 +1,12 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.12（Part I v1.7、総説v1.10）
+更新：2026-11-22 / v1.13（Part I v1.7、総説v1.11）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。現行の接続先は[KE Part IV–V v1.10・研究資料v1.19](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/main)と[曲面改訂38](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/main)。資料確認日は2026-11-22。Part IVの新しい局所安定性の証明は今回の作業版を直接読み、全深部比較への適用まで独立に点検した。曲面の新しいprotected-anchor選択条件は共同担当の本文と総説で接続を照合し、この担当が曲面全稿を再検証したとはしない。保存commitと実際の組版・表示確認の範囲は `validation.json` に分けて記す。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。現行の接続先は[KE Part IV–V v1.10・研究資料v1.19](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/main)と[曲面改訂39](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/main)。資料確認日は2026-11-22。Part IVの新しい局所安定性の証明は今回の作業版を直接読み、全深部比較への適用まで独立に点検した。曲面の `ke:k4-actual-end-anchor` の統合本文と、そのclutching・marked相対面積・fan・有限band補間の指定依存を独立に実読した。この担当が曲面全稿を再検証したとはしない。保存commitと実際の組版・表示確認の範囲は `validation.json` に分けて記す。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -21,7 +21,7 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | 曲面 `ng8:fixed-fiber-relative-dh`, `ng8:source-dh-wall` | 固定tのfree compact bandのinvariant primitiveとaffine boundary actionsからStokes面積式。Source固定点を横切る(1,−1)模型では周期2πで面積π(c−|μ|)。Actual全P0の面積公式ではない。 |
 | 曲面 `ng8:componentwise-critical-area`, `ng8:strict-area-cuts`, `ng8:p0-small-area-flexibility` | Rel-Kのmarked初期familyを入力とし、critical areasの指定は自由成分への正行列配分と同値。成分別総量＋strict cutsで判定。Actual sourceの全近傍を固定した小さい総和零の変更は構成可能だが、所定大targetは未検証。 |
 | 曲面 `ke:anchor-liouville-actions`, `ke:actual-anchor-fan-criterion`, `ke:anchor-stokes-budget` | Actual anchorの有限period条件からK4/Petersen core chartを構成する十分条件。Liouville homogeneityは実係数affine性を与え、整数勾配・neck切片一致は別条件。Clutchingを入力にStokes総量を計算し、relative輸送や両端matchingの存在を推論しない。 |
-| 曲面 `ke:k4-protected-anchor-selection` | 固定した五次anchorの内側protected periodsとnormal periodから所定K4 targetへの有限配分条件を判定する条件付き結果。Actual P0の符号・framing、sourceを跨ぐ全moment区間、neck両端の切片と全open overlapsの確認は別入力。 |
+| 曲面 `ke:k4-protected-anchor-selection`, `ke:k4-actual-end-anchor` | 同系の仮定を満たす保持end collarsと飽和annuliにはprotected periodsによる有限判定。標準P0で全K2 end collarsだけをanchor上に保持し、source全飽和近傍をδ決定後に離す選択では、Qの負値性とactual clutchingを証明し、任意有向四角形のactual局所K4 chartを同じdomain・primitive・skeleton上に構成する。有限非零bandで元neckへ戻せるが、全neck action・反対端・全域atlas整合は含まない。 |
 | 曲面 `ke:source-inclusive-fixed-shell`, `ke:global-clipped-cogram-lower` | Sourceを含む固定残余compact・固定rでの同一frameのmomentとshell横断下界。有限stageのco-Gram不等式を極限操作から分ける。異なるnormal formsのprimitive一致、任意moving exhaustionは含まない。 |
 | 曲面 `topo:cubical-local-models`, `topo:cubical-moving-blowups` | 全targetのambient局所閉球から成分錐、book、角3π/2の錐、平面を得る。全moving拡大極限と任意拡大列での各有限基点の実現。 |
 | 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
@@ -257,7 +257,7 @@ I_\beta(q_a)=\frac{A}{\delta_a-\rho_a}(q_a-\rho_a)
 
 `ke:anchor-stokes-budget` は、実際のclutching Σ[β_b]=−[α]を入力とし、normal period M<0とpuncture reference periods c_bに対してArea(P)=−Σc_b−Mを示す。非閉primitiveをhomology関係へ直接積分せず、global sectionと整数windingからStokesを適用する。K4のbasin areas A_b−c_b、Petersenのexternal areas−c_bとinternal area−Mは総量と一致する。保持集合がend collarsだけで内側境界periodも負ならmarginを得るが、追加source annuliには上の有限輸送条件が要る。
 
-比A/(δ_a−ρ_a)が無理数なら、その固定Liouville fillingのbranchを有理作用方向へ変える整数座標変換はない。これもatlas候補全体の不存在ではない。固定した五次anchorの所定K4 targetには、曲面改訂38の `ke:k4-protected-anchor-selection` の有限period判定を使える。次の課題はactual P0の値・符号・Euler framingを代入し、sourceを跨ぐ全moment輸送、両端primitive・切片・整数勾配、marked open collarのwhole-fiber一致を同時に満たすことである。数学的正本は曲面repoであり、有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理を独自成果とは扱わない。
+比A/(δ_a−ρ_a)が無理数なら、その固定Liouville fillingのbranchを有理作用方向へ変える整数座標変換はない。これもatlas候補全体の不存在ではない。五次の `ke:k4-actual-end-anchor` は、全K2交わりを含むend collarsのみを保持し、source全飽和近傍をδ決定後に $|\widehat\mu_N|<\delta/2$ へ選ぶ標準P0選択で、$Q_{ab}=\nu_b-\rho_b< -\rho_b/2$ と同じactual meridiansの $\sum_{b\ne a}[\beta_{ab}]=-[\alpha_a]$ を確認する。三basinの全strict marginが正なので、元のmarked relative class内で任意有向四角形のtargetsを実現し、同一coreの局所K4 chartを得る。大きいanchor isotopyをmoment cutoffで先に入れ、その後で同じanchorを共有する二族にsmall interpolationを用いることで、有限非零bandで元neckへ戻せる。次の課題はsourceを跨ぐ全momentの面積・作用条件、両端primitive・切片・整数shear、作用chartの全open overlapsの整合である。追加のanchor保持annuliや先指定した大source近傍は一般のprotected-period判定で別に扱う。数学的正本は曲面repoであり、有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理を独自成果とは扱わない。
 
 ## 曲面の全移動基点と選択した中間尺度
 

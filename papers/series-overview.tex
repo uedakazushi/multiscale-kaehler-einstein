@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 固定補空間，退化族の局所解析，曲面実現の接続と定理状態}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.10（2026年11月22日）}
+\date{現行総説 v1.11（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -143,8 +143,16 @@ cut選択の量化順序の順に読む構成とする．
 $Q_{a,f(a)}<-M_a$，$Q_{ab}<0$ for $b\ne a,f(a)$で判定できる
 （曲面稿，\texttt{ke:k4-protected-anchor-selection}）．
 有向四角形の選択はforced arrowsの有限判定へ帰着する．
-実際のP0データでの符号・framing，sourceを跨ぐ全区間の面積条件，
-両側neckの切片と全open overlapsは引き続き別に確認する必要がある．
+標準P0の選択でanchor上の保持集合を全K2交わりを含むend collarsだけとし，
+sourceのcompact nodal neighborhoodsをanchor決定後に
+$|\widehat\mu_N|<\delta/2$へ選ぶ場合には，
+$Q_{ab}< -\rho_b/2<0$とactual meridian clutchingを確認できる．
+従って任意の有向四角形について，actual anchorの葉を同じmarked relative class内で選び，
+同一のLiouville domain・primitive・skeletonに局所$K_4$ core chartを構成できる
+（曲面稿，\texttt{ke:k4-actual-end-anchor}）．
+有限の非零moment band内で元のneck葉族へ戻すことも可能である．
+Sourceを跨ぐ全区間での作用の直線性と面積条件，両側neckの切片・整数shear，
+全域の作用atlasの整合は引き続き別に確認する必要がある．
 
 \section{共通記号と正規化}
 
@@ -442,8 +450,24 @@ actual annulusのStokes単調性とunimodular face matricesからcore値の近�
 総量一致だけから上の有限配分の可解性は従わず，無理なperiod比を持つ固定fillingには
 有理作用方向の障害が残る．
 
-所定大targetの全moment配分，actual Euler framing，両端の切片・整数勾配，
-marked open collarsのwhole-fiber一致を同時に実現することが，なお残る課題である．
+五次の系\texttt{ke:k4-actual-end-anchor}は，標準P0の保持end collarsに対し，
+この有限判定をactual dataで満たす．Positive weightsを先に固定し，
+残余段階$b_j$，normal cut $N_j$，最後に$t$の閾値を選ぶ．
+保持collarの内側境界で$Q_{ab}=\nu_b-\rho_b=-\rho_b+O(b_j^{-1})<0$となり，
+$\mathcal O(1)$のnormal bundleの正のmeridian framingsは
+$\sum_{b\ne a}[\beta_{ab}]=-[\alpha_a]$を満たす．
+三つのbasinsのstrict area marginsが正なので，同じmarked relative orbit内で
+任意の有向四角形のcritical periodsを実現できる．
+Sourceの全飽和近傍は$\delta$の決定後に$|\widehat\mu_N|<\delta/2$へ選ぶため，
+このanchor変更とその有限band内の補間から離せる．
+大きい相対isotopyをmoment cutoffで先に入れ，同じanchorを共有する二族に
+small interpolationを適用する順序を用い，元のneckへ復帰する．
+同じcoreのdomain・primitive・skeletonと全corner torus葉は変えない．
+
+Anchor上の追加source annuliや先指定した大きい保持集合に対しては，
+実際のtail periodsと有限cut条件を改めて確認する．
+中央sourceを跨ぐ所定targetの全moment配分，両端の切片・整数shear，
+作用chartの全open overlapsの整合は，なお残る課題である．
 証明の正本は曲面repoであり\cite{SurfaceKE}，有限輸送，Moser，Stokes，GH移送，
 cone extensionの一般原理の新規性は主張しない．
 \end{remark}
@@ -715,7 +739,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
-\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．同じfibrationでのatlas/GHには，所定K4/Petersen targetを全momentの有限cut条件へ代入し，sourceを固定した輸送，anchor periods，Euler framing，両端の切片・整数shearとmarked閉商を同時に実現する．
+\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．標準P0のend collarsだけを保持する五次anchorでは，actual $K_4$ core chartと有限band内の相対復帰を得た．同じfibrationでの全域atlas/GHには，中央sourceを跨ぐ全momentの有限cut条件，sourceを固定した輸送，両端の切片・整数shearと作用chartの全overlapsをさらに整合させる．六次Petersenについても実際の保持集合で所定targetを判定する．
 \item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
@@ -741,12 +765,13 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂38，2026年11月22日，
+\newblock 改訂39，2026年11月22日，
 \newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，
 \newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}，
 \newblock 命題 \texttt{ke:moment-relative-replacement}，系 \texttt{ke:relative-replacement-gh}，
-定理 \texttt{ng8:componentwise-critical-area}，命題 \texttt{ke:actual-anchor-fan-criterion}．
+定理 \texttt{ng8:componentwise-critical-area}，命題 \texttt{ke:actual-anchor-fan-criterion}，
+系 \texttt{ke:k4-actual-end-anchor}．
 
 \bibitem{FBP}
 J.~Fernández de Bobadilla and T.~Pełka,
