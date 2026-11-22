@@ -1,5 +1,5 @@
 # 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
-更新：2026-11-22 / v1.15（Part I v1.7、総説v1.12）
+更新：2026-11-22 / v1.16（Part I v1.8、総説v1.12）
 
 ## 公表に向けた実行計画
 
@@ -7,7 +7,7 @@
 
 1. 距離錐と精密な体積漸近を中心に、一般SNCへの適用とRochon–Zhangからのtensor入力、全域の加法誤差への接続を読者が追える形にする。
 2. 実球裾係数 \(W(o)=\lim_{R\to\infty}e^R\operatorname{vol}(X\setminus B(o,R))\) の内在性、基点比較、compact基点集合上の一様性を証明する。面質量とoffsetの表示について、幾何学的量と座標規格化を区別する。
-3. 非可積分な小さいcusp誤差から距離の対数補正と裾の多項式因子が現れる明示例を点検する。KE計量ではない例は解析仮定の役割を示す例として限定し、KEの反例とはしない。
+3. 非可積分metric誤差、弱いvolume remainder、実距離というobservableの三つの役割を区別する。非KE回転cuspの多項式裾と抽象測度のAbel/Mellin例を保持し、厳密な積型密度を持つactual KE積でも実球裾に正のe^−R/R補正と距離Laplace変換の対数発散が生じることを証明する。
 4. Leuzingerの局所対称空間の錐、Chambert-Loir–Tschinkelのheight積分・residue measuresとの対象・observable・仮定の差を一次資料で確定する。既存原理を新規成果に数えず、個別検索で未発見であることを新規性の証明としない。
 5. Part IIの無条件Torelliと条件付きWP、Part IIIの(H_loc)+(H_anc)付き局在を保持し、Part I完成の阻害要因にしない。総説は中心結果と現在の依存関係を示す入口とする。
 
@@ -16,9 +16,11 @@
 
 ### 実行状況と次の課題
 
-Part I v1.7の裾係数の内在性・compact基点一様性、norm gauge、非KE cusp例、K5非CAT(0)比較は指定証明の独立内部点検を保持する。現行の曲面接続先は[改訂42・数学確認commit 497b241](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/497b241898bc91787aacb09a97754fa2ea0fccf8)であり、全平行移動を含む三面共通の整数格子延長、source-free面積式の適用範囲、thin source葉の選択とGH定数の独立性を研究資料へ同期した。五次の同時実現は各固定tの同じ射影に作用atlasとGH実現を持たせる存在主張で、atlasのt方向の収束、極限のintegral affine構造、Hessian又はMonge–Ampère性は含まない。任意先指定のfull source tailsへの相対存在と六次Petersenの同時実現も別に残る。次は中心結果の公表用構成・先行研究比較と残る未点検証明を詰める。
+Part I v1.8は、全faceのconditional moments→vertex tightness→actual-ball tailとweighted total variation→Abel–Mellin recursionを対象限定で再点検し、既存の仮定下で新たなgapを認めなかった。`lem:hyperbolic-curve-tail` と `ex:KE-product-distance-log` を加え、有限面積双曲曲線×コンパクト双曲曲線における正のe^−R/R補正と距離Laplace変換の非有理型性を証明した。法深さのMellin変換はこの例でも有理型である。作成担当と統合担当が指定証明を点検し、Haasのcusp模型、Chambert-Loir–Tschinkelのheight積分、GrieserのMellin公式を一次本文で照合した。実軸上の一側漸近であり、slit domainへの解析接続や例の優先権は主張しない。内在的裾係数・compact基点一様性・norm gauge・非KE cusp・K5比較の既存点検も保持する。
 
-本資料v1.15は文書同期のみで、Part I–III、研究素材、総説TEXを変更・再組版しない。総説v1.12はPart IV v1.11と曲面改訂41を引用する既存のチェック済み版であり、改訂42の追記を総説本文へ反映済みとは扱わない。18頁の組版、最終1–4・7–12・17–18頁の150dpi実表示、主要ログ6分類0と記号整理後の再表示・PNG同一性確認は、その版についての既存記録として保持する。以前の入力確認pin、頁数、hash、実施範囲の正本は `research/validation.json`。今回の独立内部点検は指定された接続に限り、一般成分別面積定理、P0全体、外部解析原著の全面再監査ではない。
+現行の曲面接続先は[改訂43・数学確認commit 102ae9a](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/102ae9a382406bcd14755c216d2bc0ca8bc84321)。`ke:global-volume-measure` は全固定d≥5について、同じf=pπによる正規化KE体積の押出しを成分頂点上の等重み原子測度へ収束させる。固定成分の体積公式と全体積の一致、固定compact上の収束、頂点逆像の一点性を直接確認した。五次の同時atlas/GHにも適用するが、atlasのt方向の収束、極限integral affine構造、Hessian・Monge–Ampère性は含まない。任意先指定source tailsへの相対存在と六次の同時実現は別に残る。
+
+Part I v1.8はLuaLaTeXで69頁に組版し、参照・label・欠字・box・errorの主要6分類は零、変更箇所を含む指定10頁を150 dpiで実表示した。切れ・重なり・欠字を認めなかった。Part II–III・研究素材・総説TEXは変更しない。総説v1.12はPart IV v1.11と曲面改訂41を引用する18頁のチェック済み版として、入力pin・組版hash・指定表示範囲を保持する。曲面改訂43や今回のPart Iの追加を総説へ反映済みとはしない。正本は `research/validation.json`。次は公表用構成と残る未点検証明・先行研究比較を詰める。
 
 ## 研究固有の目標と入口
 固定配置補空間の距離錐・測度漸近、secondary periods・Torelli・WP、conifold gluingを研究する。Part I–IIIの全文と必要な証明を現行原稿に保持し、退化族・actual Lagrangian実現との接続を定理単位で検証する。達成基準は、条件付きの解析段階を隠さず、正本の全文と本ノートだけから入力・適用範囲・残る核心を追えることである。
@@ -35,7 +37,7 @@ Part I v1.7の裾係数の内在性・compact基点一様性、norm gauge、非K
 固定成分は $H_i\simeq\mathbf P^2$ から $d-1$ 本の直線を除いた補空間である。Part Iの固定空間の $R\to\infty$ を $t\to0$ の族一様性へ読み替えない。Part IIの残余複素periodは第二作用積分と異なる。曲面側の直接大域証明があっても、(CP)/(PBE)/(TC)や(H_loc)/(H_anc)自体の検証状況は変えない。五次では同じ曲面fibrationの作用atlasとGHを同時実現し、六次の同時実現は別に残す。
 
 ## 論文と証明の状態
-- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.7、67頁。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tailと、測度付き極限・Chern–Weil・Mellinに加え、moving-basepoint分類とmetric link復元の指定証明鎖を限定的に内部点検した。組版の頁数と確認範囲はREADME・検証状態を参照する。
+- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.8、69頁。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。KE積の実球裾の二次項と距離Laplace変換の対数発散を追加し、normal-depth変換と区別した。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tail、測度付き極限・Chern–Weil・Mellin、moving-basepoint分類とmetric link復元の指定証明鎖の限定点検を保持する。今回の実施範囲と組版・表示記録は検証状態を参照する。
 - `papers/secondary-periods-torelli.tex`：Part II v2.1。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
 - `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.12、18頁。曲面改訂41のactual両端period条件、全moment構成、同じ射影の作用atlas/GHを紹介し、六次と先指定source tailsの限界を明記する。全移動基点の四型分類、同半径閉球比較、source-inclusive固定shell、有限stage co-Gramも保持する。Part IV v1.11のcapped下界補強を同期するが、五次(CP)の引用経路に(TC)、Part Vのactual直径帰結に(CP)＋(PBE)が必要なことは変えない。曲面側の直接経路と区別する。組版後の頁数と表示範囲はREADME・検証状態を参照する。
@@ -51,7 +53,7 @@ Part I v1.7の裾係数の内在性・compact基点一様性、norm gauge、非K
 LDPはexact-supportへの制限測度の下界を使わず、full collarの正質量compact残余集合をscaled ambient open setへ入れて証明する。残余raw座標はO(1)なのでRで割れば消え、既存のvolume-IRFAで足りる。`lem:level`→`lem:calibration`→`lem:vertex-tightness`→`thm:tail`→`thm:joint` は一面比較・全faceのconditional moment評価・距離上界から直接閉じ、co-Gram下界・LDP下界への依存を除いた。一般重みの角分布の分母は最小entropyのverticesだけの重み総和である。これらの鎖は複数担当で限定的に点検したが、全主張の外部査読・形式証明・新規性確認は未了。
 
 ## 曲面正本の全移動基点と固定段階の入力
-[現行曲面稿（改訂42）](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/497b241898bc91787aacb09a97754fa2ea0fccf8)に保持する `topo:cubical-local-models` と `topo:cubical-moving-blowups` は、成分頂点の $C_{2,d-1}$、二元supportのbook $\mathbb R\times\mathcal Y_{d-2}$、三座標が全て1の頂点の全角 $3\pi/2$ の錐、残る点の平面を、全targetのambient局所閉球から記述する。移動基点が局所錐内で逃げる場合もpositive-starの退出費用を使い、これらの任意の有限基点で全型を尽くす。
+[現行曲面稿（改訂43）](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/102ae9a382406bcd14755c216d2bc0ca8bc84321)に保持する `topo:cubical-local-models` と `topo:cubical-moving-blowups` は、成分頂点の $C_{2,d-1}$、二元supportのbook $\mathbb R\times\mathcal Y_{d-2}$、三座標が全て1の頂点の全角 $3\pi/2$ の錐、残る点の平面を、全targetのambient局所閉球から記述する。移動基点が局所錐内で逃げる場合もpositive-starの退出費用を使い、これらの任意の有限基点で全型を尽くす。
 
 同じ全射の歪みが $\delta$ 以下なら、`ke:distortion-to-pointed-balls` により対応する中心・同じ半径の閉球の基点付きGH距離は $3\delta/2$ 以下である。従って `ke:intermediate-moving-classification` は、$a_t\to\infty$、$a_t/R_t\to0$、$R_t\varepsilon_t/a_t\to0$ の下で、actual曲面の任意の移動基点の全部分列極限を四型に分類し、任意の許容尺度・退化列で全型を実現する。既存のcomponent core・変更collarの一様成分錐も保持する。速度未評価の $\varepsilon_t$ に対する条件を除いた任意尺度、tensor収束、極限交換は含まない。証明は曲面repoに保持し、局所錐とGH移送の一般原理の新規性は主張しない。
 
@@ -94,7 +96,7 @@ Rochon–Zhang Theorem 5.1はSNC strataの共通指数\(\nu>0\)のfc漸近を与
 
 ## 次の課題
 
-1. **本repoの第一優先：Part Iの公表準備。** 主定理の仮定対応表を起点に、未点検の証明箇所と主要結果の網羅的な先行研究比較を詰める。距離側ではLeuzinger・Bridson–Haefliger、測度側ではChambert-Loir–Tschinkelとの既知の重なりを踏まえ、recursive cusp geometryから実距離球のBusemann phase・tail係数までの貢献を具体化する。今回の内在性・compact基点一様性・gauge・非KE例・K5比較は独立内部点検と組版確認を終えており、未解決事項へ戻さない。標準cone幾何や一般的なresidue-measure原理を独自成果として数えない。
+1. **本repoの第一優先：Part Iの公表準備。** 主定理の仮定対応表を起点に、未点検の証明箇所と主要結果の網羅的な先行研究比較を詰める。距離側ではLeuzinger・Bridson–Haefliger、測度側ではChambert-Loir–Tschinkelとの既知の重なりを踏まえ、recursive cusp geometryから実距離球のBusemann phase・tail係数までの貢献を具体化する。内在性・compact基点一様性・gauge・非KE例・K5比較の既存点検を保持し、今回のactual-ball/Abel–Mellin鎖とKE積の対数項の指定証明も内部点検を終えた。これらを未解決事項へ戻さない。標準cone幾何や一般的なresidue-measure原理を独自成果として数えない。
 2. **三研究の接続と五次同時実現の公表。** 曲面P0・五次の同一πによる作用atlas/GH・Part IVの最小局所解析の公表準備を共同で進め、最小入力・尺度・距離の範囲を一致させる。Part IV v1.11はcapped下界鎖のresidue規格化・全点Chern式・frame吸収予算・六型・compact最小値原理と固定族での量化を明記し、担当の全鎖実読と別担当の変更式点検を行った。全深部比較の境界上界をparameter一様とする追加仮定は入れない。五次の有限period条件から全moment・全open overlaps・同一πのatlas/GHまでの指定証明は閉じたので未解決へ戻さず、先行研究比較と公表用の依存整理を進める。六次Petersenではinternal annuliの二端cutsから着手する。任意先指定のfull source tailsは実際の有限cut判定へ戻す。局所protected距離と全曲面ambient距離を区別し、(CP)/(PBE)/(TC)、(H_loc)/(H_anc)は独立の課題とする。
 3. **Part III。** (H_loc)のwhole-end localization・parent/refined compatibility、(H_anc)のanchors・portal transport・radial densityをactual metricで確立する。曲面側の手法は検証課題の手掛かりであり、conifold模型・対象・尺度が一致する証明ではない。
 4. **Part II。** Controlled parallel push-offを証明するか適用範囲を限定する。一般matroid・Jacobi/scatteringの独立素材は `papers/research-directions.tex` に保持し、核心の監査後に進める。

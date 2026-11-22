@@ -31,7 +31,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I}
-\fancyhead[R]{\small 現行稿 v1.7}
+\fancyhead[R]{\small 現行稿 v1.8}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{現行稿 v1.7（2026年11月22日）}
+\date{現行稿 v1.8（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -152,6 +152,10 @@ $\log W$は$1$-Lipschitz、裾漸近は固定空間のcompactな基点集合上�
 全faceで整合するvolume漸近からsubcritical residual momentsを一様に評価し、
 残余parametersの固定compact subcritical集合上で
 Abel--Mellin recursionの一様性を導く。
+有限面積双曲曲線とコンパクト双曲曲線のKE積では、実球裾の
+$e^{-R}/R$補正と距離Laplace変換の対数発散を計算する。
+この例は、厳密な積型密度によるnormal-depth transformの有理型性と、
+実距離変換のAbel境界係数との違いを示す。
 解析的入力は Rochon--Zhang の recursive facewise cusp asymptoticsである。
 一般位置の $m$ 超平面の $\PP^n$ における補空間では、第一錐は
 $\{u\in\RR_{\ge0}^m:\#\supp u\le n\}$、link は $\sk_{n-1}\Delta^{m-1}$ の all-right spherical realizationとなる。
@@ -451,6 +455,12 @@ Mellinのpole係数として解釈できる。延長領域はremainderの次数�
 （\cref{rem:Mellin-continuation}）。
 通常のvolume-IRFAだけでは臨界点近傍への有理型延長は従わない
 （\cref{ex:Abel-not-meromorphic}）。
+さらに\cref{ex:KE-product-distance-log}では、有限面積双曲曲線と
+コンパクト双曲曲線のKE積について、normal densityが厳密な積型でも
+実球裾に正の$e^{-R}/R$補正が現れることを示す。
+従って実距離Laplace変換は$W(o)/(1-s)$を引いた後に対数発散し、
+$s=1$近傍へ有理型に延長できない。
+ここで求めるのは実軸上の一側漸近であり、slit domainへの解析接続は主張しない。
 
 \subsection{先行研究との位置関係}
 本稿の local analytic input は Rochon--Zhang による finite-volume K\"ahler metrics の polyfibred-cusp compactification と recursive boundary asymptotics である \cite{RochonZhang}。
@@ -2929,6 +2939,160 @@ Layer-cake formula
 $(h_*-s)s\int e^{sR}F(R)dR\to h_*W(o)$。$s\ge h_*$ の発散も同じ tail lower boundから従う。
 \end{proof}
 
+\subsection{KE積での距離Laplace変換の対数特異項}
+\Cref{cor:Laplace}は一側のAbel境界係数を与える。
+Normal densityが厳密な積型であるKE計量でも、実距離のLaplace変換には
+simple poleに加えて対数発散が現れ得る。これを双曲cuspの標準模型と積距離から直接計算する。
+
+\begin{lemma}[有限面積双曲曲線の実球裾]
+\label{lem:hyperbolic-curve-tail}
+$\ov S$を滑らかな射影曲線、$P\subset\ov S$を非空有限集合とし、
+$2g(\ov S)-2+|P|>0$とする。
+$S=\ov S\setminus P$に曲率$-1$の完備有限面積計量を入れ、$p\in S$を固定する。
+ある$A(p)>0$が存在して
+\begin{equation}
+\label{eq:hyperbolic-curve-tail}
+ F_{S,p}(R):=\vol_S\{z:d_S(p,z)\ge R\}
+ =A(p)e^{-R}+O(e^{-3R})
+ \qquad(R\to\infty)
+\end{equation}
+となる。
+\end{lemma}
+\begin{proof}
+各cusp $c$を上半平面の
+$\{v>V_c\}/(u\sim u+\ell_c)$、$\ell_c>0$として表す。
+計量は$(\dd u^2+\dd v^2)/v^2$であり、互いに交わらない十分深いcuspを除いた部分はcompactである。
+この標準cusp表示と面積の規格化については
+\cite[\S1.1, p.~68; \S2.1]{HaasCusp}を参照する。
+閾値$V_c$を大きくして$p$をcuspの外に置く。
+このcuspを無限遠へ移したuniformizing groupを$\Gamma_c$、$p$の一つのliftを$\widetilde p_c$とする。
+全orbit pointsの高さは$V_c$以下である。
+Parabolic translationで実部を$[0,\ell_c]$へ移すと、任意の$a>0$について
+高さ$a$以上のorbit pointsは上半平面内のcompact集合に入る。
+Orbitの局所有限性より
+\[
+ v_c(p):=\max_{\gamma\in\Gamma_c}
+               \operatorname{Im}(\gamma\widetilde p_c)
+ \in(0,V_c]
+\]
+は実際に達成される。
+
+上半平面では$|\dd\log v|$のノルムが$1$なので、全orbit pointsに対する距離のinfimumを取れば
+$d_S(p,[u+iv])\ge\log(v/v_c(p))$となる。
+逆向きには最大高さを持つliftをparabolic translationで移し、
+その実部$a_c$が$|u-a_c|\le\ell_c/2$を満たすようにする。
+上半平面の距離公式から
+\[
+ \cosh d_{\mathbb H}(a_c+iv_c(p),u+iv)
+ =\cosh\!\left(\log\frac{v}{v_c(p)}\right)
+   +\frac{(u-a_c)^2}{2v v_c(p)}.
+\]
+$v\to\infty$で$\sinh(\log(v/v_c(p)))\asymp v$であるから、
+$\operatorname{arcosh}$に平均値定理を用いて、$u$に一様な評価
+\begin{equation}
+\label{eq:hyperbolic-cusp-distance-error}
+ 0\le d_S(p,[u+iv])-\log\frac{v}{v_c(p)}\le C_cv^{-2}
+\end{equation}
+を得る。最大高さ以外のorbit pointsとのgapや、最近liftの一意性は用いない。
+十分大きな$R$について、この上下界はcusp内で
+\[
+ \{v\ge v_c(p)e^R\}
+ \subset\{d_S(p,\cdot)\ge R\}
+ \subset\{v\ge v_c(p)e^{R-C'_ce^{-2R}}\}
+\]
+を与える。最後の包含では、まず\eqref{eq:hyperbolic-cusp-distance-error}から
+$v\ge c_ce^R$を得て、その後に$v^{-2}=O(e^{-2R})$を代入する。
+面積要素$\dd u\,\dd v/v^2$を積分すると、このcuspの寄与は
+$(\ell_c/v_c(p))e^{-R}+O(e^{-3R})$である。
+Compact部分は十分大きい球に含まれるので、有限個のcuspsを足し合わせて
+\eqref{eq:hyperbolic-curve-tail}を得る。ここで
+$A(p)=\sum_c\ell_c/v_c(p)>0$である。
+\end{proof}
+
+\begin{example}[KE積の実距離に由来する非有理型特異性]
+\label{ex:KE-product-distance-log}
+\Cref{lem:hyperbolic-curve-tail}の$S$と、種数$2$以上の滑らかな射影曲線$Y$に
+それぞれ曲率$-1$の計量を入れ、$X=S\times Y$を積計量$g=g_S\oplus g_Y$で考える。
+これは
+\[
+ \ov X=\ov S\times Y,\qquad D=P\times Y,\qquad
+ K_{\ov X}+D=\operatorname{pr}_S^*(K_{\ov S}+P)
+                      +\operatorname{pr}_Y^*K_Y
+\]
+がampleなSNC対の完備KE計量であり、$\Ric(g)=-g$である。
+$o=(p,y_0)$、$V_Y=\vol(Y)$と置くと
+\begin{align}
+ \vol_X\{x:d_X(o,x)\ge R\}
+ &=e^{-R}\left(W(o)+\frac{C_o}{R}+O(R^{-2})\right),
+ \label{eq:KE-product-tail-second-order}\\
+ W(o)&=A(p)V_Y,\qquad
+ C_o=\frac{A(p)}2\int_Y d_Y(y_0,y)^2\dd V_Y(y)>0.
+ \label{eq:KE-product-log-coefficient}
+\end{align}
+従って$\epsilon\downarrow0$に対し
+\begin{equation}
+\label{eq:KE-product-distance-log}
+ \mathcal Z_o(1-\epsilon)
+ =\frac{W(o)}{\epsilon}+C_o\log\frac1\epsilon+O(1).
+\end{equation}
+特に、$\operatorname{Re}s<1$で正則な$\mathcal Z_o(s)$は、$s=1$の近傍へ有理型に延長できない。
+一方、各cuspのnormal-depth transformはsimple poleを持つ有理型関数である。
+\end{example}
+\begin{proof}
+Product metricのRicci tensorは二因子の直和であり、上の二つのcurve line bundlesは正次数である。
+従ってKE性とlog-canonical classのamplenessが従う。
+積距離は厳密に
+\[
+ d_X((p,y_0),(z,y))^2=d_S(p,z)^2+d_Y(y_0,y)^2
+\]
+を満たす。$D_Y(y)=d_Y(y_0,y)$と書き、$R>\diam(Y)$とすると
+\[
+ \vol_X\{d_X(o,\cdot)\ge R\}
+ =\int_Y F_{S,p}\!\left(\sqrt{R^2-D_Y(y)^2}\right)\dd V_Y(y).
+\]
+$D_Y$は有界なので、\cref{lem:hyperbolic-curve-tail}と$Y$上で一様な展開
+\[
+ e^{R-\sqrt{R^2-D_Y(y)^2}}
+ =1+\frac{D_Y(y)^2}{2R}+O(R^{-2})
+\]
+から\eqref{eq:KE-product-tail-second-order}を得る。
+正次元の$Y$上で$D_Y^2$の積分は正だから$C_o>0$である。
+
+\Cref{cor:Laplace}のlayer-cake formulaにこの裾展開を代入する。
+固定した十分大きい$R_0$について
+\[
+ \int_{R_0}^\infty e^{-\epsilon R}\dd R
+ =\epsilon^{-1}+O(1),\qquad
+ \int_{R_0}^\infty e^{-\epsilon R}\frac{\dd R}{R}
+ =\log(1/\epsilon)+O(1),
+\]
+かつ$R^{-2}$ remainderの積分は$\epsilon\downarrow0$で一様有界である。
+前のfactor $s=1-\epsilon$も含めて\eqref{eq:KE-product-distance-log}が従う。
+$\operatorname{Re}s<1$での正則性は、各compact parameter集合を
+少し大きい実指数による可積分関数で支配すれば従う。
+仮に$s=1$近傍で有理型なら、$\epsilon\mathcal Z_o(1-\epsilon)\to W(o)>0$より
+simple poleの主部は$W(o)/(1-s)$である。
+これを引いた関数は正則かつ有界となるはずだが、
+\eqref{eq:KE-product-distance-log}の$C_o\log(1/\epsilon)$と矛盾する。
+
+最後にcusp $c$で
+$q=\exp(2\pi i(u+iv)/\ell_c)$、$t=\log(-\log|q|)$、$\theta=\arg q$と取れば
+\[
+ g=\dd t^2+e^{-2t}\dd\theta^2+g_Y,\qquad
+ \dd V_g=e^{-t}\dd t\,\dd\theta\,\dd V_Y
+\]
+であり、$\theta$の周期は$2\pi$である。
+従ってnormal densityにはremainderがなく、smooth/exponential volume-IRFAと
+normal variable $e^{-t}$に関するpolyhomogeneityを満たす。
+十分深いnormal cutoff $\chi_c$に対して
+\[
+ \int_X\chi_c e^{st}\dd V_g
+ =\frac{2\pi V_Y}{1-s}+E_c(s)
+\]
+となり、$E_c$はentireである。
+このnormal-depth transformの有理型性を、実距離Laplace変換へ移すことはできない。
+\end{proof}
+
 \section{面ごとの Abel--Mellin 境界データ}
 \label{sec:Mellin}
 
@@ -4148,6 +4312,14 @@ H.~Guenancia and D.~Wu,
 \newblock \emph{Math. Ann.} \textbf{366} (2016), 101--120.
 \newblock 確認版：\href{https://arxiv.org/abs/1410.5366v1}{arXiv:1410.5366v1},
 Theorems~A--B, pp.~3--4.
+
+\bibitem{HaasCusp}
+A.~Haas,
+\newblock Geodesic cusp excursions and metric diophantine approximation,
+\newblock \emph{Math. Res. Lett.} \textbf{16} (2009), no.~1, 67--85.
+\newblock \href{https://arxiv.org/abs/0709.0313}{arXiv:0709.0313}。
+\href{https://intlpress.com/api/bgcloud-front/resource/pdf/volume/1806604938178359298-1806604938178359298-47d35ef29e172eaacb043bc0cbef26f3.pdf}{出版社版}の
+\S1.1, p.~68; \S2.1でcusp quotientと面積規格化を確認した。
 
 \bibitem{JiangShi}
 X.~Jiang and Y.~Shi,

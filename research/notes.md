@@ -1,14 +1,14 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.15（Part I v1.7、総説v1.12）
+更新：2026-11-22 / v1.16（Part I v1.8、総説v1.12）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。現行接続先は[KE Part IV v1.11・Part V v1.10・研究資料v1.21](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a6cf38a417a9c5707cc06cf25d8b9faf94e58725)と[曲面改訂42・数学確認commit 497b241](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/497b241898bc91787aacb09a97754fa2ea0fccf8)。資料確認日は2026-11-22。Part IVのboundary-to-tripleとcapped下界鎖、曲面のactual両端period・全moment・同じπのatlas/GHについて、以前の指定独立点検の範囲を保持する。今回の曲面側対象限定監査では、全平行移動を含む整数格子接続、source-freeの範囲、thin葉とGH定数の独立性、各tの同時実現とatlas極限の区別を確認した。一般成分別面積定理、P0全体、外部解析原著の全面再監査ではない。
+研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。現行接続先は[KE Part IV v1.11・Part V v1.10・研究資料v1.21](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a6cf38a417a9c5707cc06cf25d8b9faf94e58725)と[曲面改訂43・数学確認commit 102ae9a](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/102ae9a382406bcd14755c216d2bc0ca8bc84321)。資料確認日は2026-11-22。今回の対象限定点検は、Part Iの全face conditional moments・actual-ball tail・Abel–Mellinの鎖とKE積の対数項、および曲面の同じ射影による体積測度極限である。Part IVのboundary-to-triple/capped下界、曲面のactual両端period・全moment・平行移動を含む整数格子接続・source-free/thin葉の指定点検は既存範囲を保持する。全原稿・P0全体・外部解析原著の全面再監査ではない。
 
-本資料v1.15では論文本体を変更・再組版していない。総説v1.12は[曲面改訂41・commit 84d8b8b](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/84d8b8b17d9426ede5792a301b5f45ec90eb48da)を引用する既存のチェック済み版であり、その入力pinと組版・表示記録を保持する。現行の接続先と総説の確認済み引用版を区別し、保存commitと実際の検証範囲は `validation.json` に分けて記す。
+Part I v1.8は69頁に組版し、参照・label・欠字・box・errorの主要6分類は零、指定10頁を150 dpiで実表示して切れ・重なり・欠字を認めなかった。Part II–III・研究素材・総説TEXは変更しない。総説v1.12は[曲面改訂41・commit 84d8b8b](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/84d8b8b17d9426ede5792a301b5f45ec90eb48da)を引用する18頁のチェック済み版として、入力pinと組版・表示記録を保持する。今回のPart I追加や曲面改訂43を総説本文へ反映済みとはしない。各状態の正本は `validation.json`。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -19,6 +19,7 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | Part IV `simplex:cor:actual-closed-corner-metric`, `pair:thm:fixed-end-moment` | Closed tripleの内在・protected距離、および固定source-free residual compact上のmoment入力。全曲面ambient距離や任意のmoving exhaustionへの一様性へ拡張しない。 |
 | Part IV `coarse:hyp:TC5`, `coarse:thm:main`; Part V `hyp:CPd`, `hyp:PBEd`, `thm:degree-d-limit` | Part IVの五次coarse定理は(TC)5付き。Part Vの大域適用は(CP)d＋(PBE)d付き。有限targetの直径 `thm:intro-diameter-C5` は独立。 |
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
+| 曲面 `ke:global-volume-measure` | 全固定d≥5、同じf=pπによる正規化KE体積の押出しは成分頂点上の等重み1/dの原子測度へ収束。固定成分体積と全体積の一致、固定compact収束を用いる。πの固定位相底空間にも成立し、五次の作用指定射影へ移せる。全台の極限測度やmoving-neck体積速度は結論しない。 |
 | 曲面 `ke:moment-relative-replacement`, `ke:relative-replacement-gh` | 同じcanonical moment・anchor cuts・保持corner全葉・source nodal neighborhoods・component領域、marked product/cone商、whole-fiber接着を保つ候補の射影値差≤Cη。C1小ささは不要。固定木系の候補がslow diagonalに沿って存在すればGHを移せる。Atlas候補の存在は入力。 |
 | 曲面 `ng8:fixed-fiber-relative-dh`, `ng8:source-dh-wall` | 固定tのfree compact bandのinvariant primitiveとaffine boundary actionsからStokes面積式。Source固定点を横切る(1,−1)模型では周期2πで面積π(c−|μ|)。Actual全P0の面積公式ではない。 |
 | 曲面 `ng8:componentwise-critical-area`, `ng8:strict-area-cuts`, `ng8:p0-small-area-flexibility` | Rel-Kのmarked初期familyを入力とし、critical areasの指定は自由成分への正行列配分と同値。成分別総量＋strict cutsで判定。Actual sourceの全近傍を固定した小さい総和零の変更を構成する。この微小定理自体から所定大targetは結論せず、五次の初期葉選択による全moment構成を別に用いる。 |
@@ -32,6 +33,17 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
 
 曲面側の入力一覧・適用証明の正本は同repoの `research/ke-dependencies.md`。P0はPart Iのfull rough-isometry theorem全体を入力にせず、固定成分のSNC cusp評価とfixed-compact収束を用いる。本repoの総説は上の接続と条件を要約し、本文の証明を複製しない。依存定理が変わったら正本を先に保存し、利用先・総説・research-hubを追随させる。
+
+## 同じ曲面射影の体積測度極限
+
+正本は曲面改訂43の `papers/sections/paper/ke_global_metric_realization.tex`、`ke:global-volume-measure`。固定d≥5と既存の同じf_t=p_Tπ_tを用い、ν_t=dV_t/[2π²d(d−4)²]とすると
+\[
+(f_t)_*\nu_t\rightharpoonup \frac1d\sum_i\delta_{e_i},\qquad
+(\pi_t)_*\nu_t\rightharpoonup \frac1d\sum_i\delta_{v_i}.
+\]
+Part Iの `lem:CW` と体積公式から各固定成分W_iの質量はV_*=2π²(d−4)²であり、smooth fiberの全体積dV_*と一致する。固定compact K_i⊂W_iではgraph embeddingによる体積収束と、clipped-depth mapの値が最終的にe_iとなることから、f_tの像もe_iへ一様に近づく。各K_iを先に大きく取れば、互いに素なgraph像の補集合のlimsup質量を任意に小さくできる。p_T^−1(e_i)={v_i}と底空間のcompact性からπ_tにも移る。五次の作用指定射影は一様な値比較で同じ極限を持つ。
+
+今回この証明と固定compact→全質量の極限順序を直接読んだ。Moving coreへの包含、対角列の選び直し、moving neckの一様体積漸近、追加の収束速度は要しない。極限測度は頂点に集中するが、GH極限の辺とsquareは距離として残るため、全台性を要求しないcompact measured GHの意味で述べる。これはPart Iの固定空間のscaled体積が錐頂点へ集中するLDPとは対象・写像・極限parameterが異なる。
 
 ## Part IVのcapped volume下界と監査範囲
 
@@ -122,7 +134,7 @@ t_\pm=T_0\pm s\quad(\pm s\ge0).
 
 ## 実距離球から回復する裾係数
 
-正本は Part I v1.7 `cor:tail-intrinsic-uniform`。非空境界、metric-IRFAと全faceの通常volume-IRFAの下で、h_*は実球外体積のexponential decay rate、W(o)はその正規化極限であり、pointed metric–measure spaceの内在量である。D=d(o,o')として
+正本は Part I v1.8 `cor:tail-intrinsic-uniform`。非空境界、metric-IRFAと全faceの通常volume-IRFAの下で、h_*は実球外体積のexponential decay rate、W(o)はその正規化極限であり、pointed metric–measure spaceの内在量である。D=d(o,o')として
 \[
 e^{-h_*D}W(o)\le W(o')\le e^{h_*D}W(o).
 \]
@@ -134,6 +146,24 @@ e^{-h_*D}W(o)\le W(o')\le e^{h_*D}W(o).
 
 先行研究との比較では、Chambert-Loir–Tschinkel §4.2式(4.1)のalgebraic height sublevelsと本稿の有限体積の実距離球外側を区別する。一面でlog H≈λe^tとなるheightとt+b_i(o)で較正される距離は異なるobservableである。実球のBusemann較正と全faceのconditional momentsが本稿のWへ接続する。一般的な基点比較・有限netの原理やresidue-measure原理自体の新規性を主張せず、一次資料の指定箇所と未確認点は `source-audit.md` を参照する。
 
+
+## KE積の実球裾と距離Laplace変換の対数項
+
+証明の正本は Part I `lem:hyperbolic-curve-tail` と `ex:KE-product-distance-log`。有限面積双曲曲線Sの固定基点pについて、各cuspを上半平面のparabolic quotientで表す。pのdeck orbitの最大高さv_c(p)は、cusp外での高さの上界とparabolic translationで割ったorbitの局所有限性から達成される。垂直方向の距離下界と一つの最大高さのliftによる上界は、角に一様なO(v^−2)誤差を与える。従ってA(p)=Σ_cℓ_c/v_c(p)>0として、F_S(R)=A(p)e^−R+O(e^−3R)。最大高さ以外とのgapや最近liftの一意性は要らない。
+
+種数2以上のcompact双曲曲線Yとの積X=S×Yは、ample SNC対のactual負KE曲面である。o=(p,y_0)、V_Y=vol(Y)として
+\[
+\begin{aligned}
+F_X(R)&=e^{-R}\left(W(o)+\frac{C_o}{R}+O(R^{-2})\right),\\
+W(o)&=A(p)V_Y,\qquad
+C_o=\frac{A(p)}2\int_Y d_Y(y_0,y)^2\,dV_Y>0,\\
+\mathcal Z_o(1-\epsilon)&=\frac{W(o)}\epsilon+C_o\log(1/\epsilon)+O(1)
+\quad(\epsilon\downarrow0).
+\end{aligned}
+\]
+この二次項は厳密な積距離d_X²=d_S²+d_Y²から生じる。Cusp coordinate qでt=log(−log|q|)とすればnormal densityは厳密にe^−t dt dθ dV_Yであり、normal-depth transformは2πV_Y/(1−s)+entireである。従ってpolyhomogeneousなnormal densityから実距離Laplaceの有理型性や実球裾の指数的な誤差改善は導けない。上式は実軸上の一側漸近であり、slit domainへの解析接続を証明したものではない。
+
+これは既存の非KE回転cusp例（metric誤差の非可積分性）および抽象測度の `ex:Abel-not-meromorphic`（通常volume-IRFAの弱いremainder）とは別の障害を示す。標準双曲cuspと積距離による直接計算であり、先行例の網羅的調査・優先権確認は未了。作成担当と統合担当がこの指定証明を点検し、cusp表示の一次資料は `source-audit.md` に記す。
 
 ## 全残余上の測度付き平行移動
 
@@ -198,7 +228,7 @@ d\mu=e^{-t}(e^{-r}+e^{-t}e^{-\alpha r})\,dt\,dr
 
 **Abel residueとmeromorphic continuationの違い。** 証明は主稿 `ex:Abel-not-meromorphic` に置く。Exact cusp上の抽象有限測度 dμ=(2π)⁻¹e⁻ᵗ(1+1/t)dt dθ（t≥T>1）ではordinary volume-IRFAと面質量1を持つが、ε=1−sに対するlocalized transformは M(1−ε)=ε⁻¹+log(1/ε)+O(1) となる。Abel係数は1でも、simple poleを引いた対数発散により臨界点近傍への有理型延長は存在しない。これはKE体積そのものの反例ではない。
 
-以上の三つの鎖は担当ごとの独立点検と統合時の再読を行った。全文の外部査読・形式証明・網羅的新規性確認を終えたとの意味ではない。
+全faceのconditional moments→vertex tightness→actual-ball tailとweighted total variation→一様Abel recursionを今回対象限定で再読し、新たなgapを認めなかった。一般Borel densityでのa.e. disintegration、全残余での深いsector分割、compact subcritical parameter集合、法cutoffとchart partitionの違いを確認した。SNCカラーとRochon–Zhang入力の全面再監査、全文の外部査読・形式証明・網羅的新規性確認とは区別する。
 
 ## SNCカラーとRochon–Zhang入力の翻訳
 
@@ -243,7 +273,7 @@ L_\square(\Theta_t\gamma)\le \frac{R\sqrt{1+\epsilon}}S L_{R^{-2}g_t}(\gamma).
 
 `ng8:fixed-fiber-relative-dh` は固定t≠0、自由な周期2πのcircle作用、E_t/S1≅J×P（Pは境界を持つcompact connected surface）、作用不変primitive λ_t(V)=μを仮定する。Boundary framingとcutsを固定し、向き付き第二作用R_ℓ,t(μ)がaffineなら、Stokesにより面積は2πΣ_ℓ(R_ℓ,t(μ)+k_ℓ,t μ)、k_ℓ,t∈Zでaffineとなる。Reference constantsのt依存を許し、t=0へのsmooth extensionや族一様性を入力にしない。
 
-曲面改訂42では `neck_action_matching.tex` 前半の `ng8:central-criterion` までを、compact nodal fibersとその飽和近傍から離したsource-free neckに明示的に限定する。固定t≠0でもactual source-inclusive neckのμ=0には固定点があるため、その全intervalへ自由作用の自明化又は面積affine性を流用しない。
+現行曲面稿では `neck_action_matching.tex` 前半の `ng8:central-criterion` までを、compact nodal fibersとその飽和近傍から離したsource-free neckに明示的に限定する。固定t≠0でもactual source-inclusive neckのμ=0には固定点があるため、その全intervalへ自由作用の自明化又は面積affine性を流用しない。
 
 `ng8:source-dh-wall` の標準C²、I_k=|z_k|²/2、weights(1,−1)、μ=I_1−I_2、I_1+I_2≤cでは、周期2πのreduced angleにより面積はπ(c−|μ|)となる。固定点μ=0で折れるため、free-bandの式をsource横断intervalに流用できない。これはactual P0全体の面積公式ではない。相対Moserではsource近傍を保持して支持を離し、以下の成分別条件と端germs・marked identificationsを検証する。
 
@@ -276,7 +306,7 @@ I_\beta(q_a)=\frac{A}{\delta_a-\rho_a}(q_a-\rho_a)
 
 ## 五次の両端period・全moment・同じπのatlas/GH
 
-曲面改訂42の `ke:k4-actual-neck-periods` を正本とする。正weightsのrow sumsを1とし、ρ_ij=2πw_ij、x_i;jk=1_{k=f_i(j)}と置く。実際の両端affine critical periodsの整合は
+現行曲面稿の `ke:k4-actual-neck-periods` を正本とする。正weightsのrow sumsを1とし、ρ_ij=2πw_ij、x_i;jk=1_{k=f_i(j)}と置く。実際の両端affine critical periodsの整合は
 \[
 n_{ij;k}=1+x_{i;jk}+x_{j;ik},\qquad
 \rho_{i,k}+x_{i;jk}\rho_{i,j}=\rho_{j,k}+x_{j;ik}\rho_{j,i}
@@ -302,7 +332,7 @@ s'=-s+(y_k+y'_k)\zeta+w_{i,j}+w_{j,i}.
 
 各tで同じ射影に二つの性質を持たせる主張であり、作用atlasのt方向の収束、極限基底のintegral affine構造、d_□の作用座標に関するHessian・Monge–Ampère性は結論しない。任意先指定の大source tailsではtarget>Lが破れ得るため別に有限cut判定を要する。t方向の連続性・速度も含まない。六次Petersenの同時実現はinternal annuliの二端cuts、actual periodsと全overlapsが未解決である。
 
-Actual period命題、全moment定理・統合定理と指定依存の以前の独立内部点検を保持する。今回のatlas担当はqone・gluing・actual-anchor・endpointから新しい平行移動付き式を逆向きに読み、主担当も式を別に確認した。Source-free限定とthin葉・解析定数の量化は曲面側の対象限定監査として同期する。この範囲で新たなgapは認めなかったが、一般成分別面積定理・P0全体・外部解析原著の全面再監査、形式証明、外部査読、網羅的新規性確認とは区別する。
+Actual period命題、全moment定理・統合定理と指定依存の独立内部点検を保持する。作用atlasの指定点検ではqone・gluing・actual-anchor・endpointから平行移動付き式を逆向きに読み、主担当も別に式を確認した。Source-free限定とthin葉・解析定数の量化は曲面側の対象限定監査として同期済みである。この範囲で新たなgapは認めなかったが、一般成分別面積定理・P0全体・外部解析原著の全面再監査、形式証明、外部査読、網羅的新規性確認とは区別する。
 
 ## 曲面の全移動基点と選択した中間尺度
 
