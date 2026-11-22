@@ -1,8 +1,12 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.18（Part I v1.9、総説v1.14）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。実行済み組版・対象限定の内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。Part I v1.9の既存の73頁の組版と指定13頁・150 dpiの実表示記録を保持する。今回はPart I–III・研究素材を再組版せず、そのTeX本文を変更していない。総説v1.14はLuaLaTeX/latexmkで22頁に組版し、主要log六分類は全て0。変更頁と隣接頁1–5、9–10、13–15、20–22の計13頁を150 dpiで実表示確認した。全頁の目視確認や全証明の再検証を意味しない。頁数・source/PDF hash・log分類・実表示範囲は `research/validation.json` に記録する。 総説はPart Iの有効な命題・系とPart IV v1.12を保持し、曲面改訂44の標準六次同時実現とPille-Schneiderの先行性を反映する。
+2026-11-23 / v1.19（Part I v1.10、総説v1.14）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。実行済み組版・対象限定の内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説はPart Iの有効な命題・系とPart IV v1.12を保持し、曲面改訂44の標準六次同時実現とPille-Schneiderの先行性を反映する。
 
-## 今回の六次同時実現とhybrid測度の照合
+## 固定対のcutoff予算の最小入力
+
+2026-11-23の対象はPart I `lem:CW`・`app:CW` から追加した `cor:CW-fixed-cutoff-budget`。全cornerでの一変数積分、有限chartの一様定数、bounded primitiveのStokes defect、cutoff levelと実距離半径・退化尺度の区別を直接確認した。[Rochon–Zhang arXiv:1106.0873v2](https://arxiv.org/html/1106.0873v2) の(5.3)–(5.9)、Lemma 5.2冒頭を原文で再確認した。必要なのは明示backgroundとuのbounded fc derivativesであり、Theorem 5.1の残余減衰はこの体積予算の入力でない。標準cusp積分の原理自体の新規性を主張せず、同原著の全証明を再検証したとはしない。
+
+## 六次同時実現とhybrid測度の既存照合
 
 曲面改訂44の `ke:petersen-actual-neck-periods`、`ke:petersen-full-moment`、`ke:sextic-simultaneous-realization` の指定証明鎖を作成担当・統合担当・独立担当が実読した。全ρ=4π/5とsource allocation (1,1,1,1;2)のfinite-t period整合、内部Euler framingの符号、十一entryの正配分、内部二端cuts、両側三sourcesのseparator、source wallの相殺、Dini、中央parameter freeze後のfull source保持を確認した。Core domains・primitivesの先固定とanchor葉の後選び、free anchor bandsでの全open germs相対の再補正、三面共通の平行移動2ρr'_vとprimitive normal covector、同じ射影へのGH・測度移送にも具体的な欠落を認めなかった。この限定点検は全P0・一般面積定理・全原著の全面再監査ではない。
 

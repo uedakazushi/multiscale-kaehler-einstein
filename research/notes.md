@@ -1,18 +1,19 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.18（Part I v1.9、総説v1.14）
+更新：2026-11-23 / v1.19（Part I v1.10、総説v1.14）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。現行接続先は[KE Part IV v1.12・Part V v1.10・研究資料v1.24](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/11910259dd1628d542df57d370123d0a40b08d61)と[曲面改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)。資料確認日は2026-11-22。今回の数学的点検は六次のfinite-t period条件・全momentの二端cuts・balanced separator・中央freeze・作用atlas/GH/測度収束の指定証明鎖と、Pille-Schneiderの一次定理への照合である。Part Iの積の複素対数germと距離分布回収の既存点検は保持し、今回再検証したとはしない。既存のPart Iの全face/tail/Abel鎖、Part IVのcapped下界と固定end、曲面のactual両端period・全moment・作用接続・確率体積極限の指定点検は有効な範囲で保持する。全原稿・P0全体・外部解析原著の全面再監査ではない。
+研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。総説v1.14の固定引用は[KE Part IV v1.12・Part V v1.10](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/11910259dd1628d542df57d370123d0a40b08d61)と[曲面改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)。今回の資料確認日は2026-11-23で、Part Iの `lem:CW`・`app:CW` の固定対での最小入力から有限cutoff予算を証明した。Rochon–Zhangの(5.3)–(5.9)とLemma 5.2冒頭の原文を再確認し、background curvatureとbounded derivativeの利用を残余減衰から分離した。曲面六次の指定証明鎖、Pille-Schneider比較、Part Iの積の複素対数germ・全face/tail/Abel鎖、Part IVのcapped下界と固定endの既存点検は、その記録範囲で保持する。これらを今回一律に再検証したとはしない。全原稿・P0全体・外部原著の全面再監査ではない。
 
-Part I v1.9の既存の73頁の組版と指定13頁・150 dpiの実表示記録を保持する。今回はPart I–III・研究素材を再組版せず、そのTeX本文を変更していない。総説v1.14はLuaLaTeX/latexmkで22頁に組版し、主要log六分類は全て0。変更頁と隣接頁1–5、9–10、13–15、20–22の計13頁を150 dpiで実表示確認した。全頁の目視確認や全証明の再検証を意味しない。頁数・source/PDF hash・log分類・実表示範囲は `research/validation.json` に記録する。 総説v1.14の科学的入力は上記の曲面改訂44とPart IV v1.12である。
+Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説v1.14の科学的入力は上記の曲面改訂44とPart IV v1.12である。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
 | Part I `thm:intro-metric`, `thm:contract`, `thm:rough`, `cor:based-ball-approximation`, `prop:RZ` | 固定ample SNC対のcomplete KE metric。Clean collar＋metric-IRFAからproperな1-Lipschitz全射と加法誤差K。対応する中心を持つ閉球のGH誤差≤3K/(2R)は中心・半径に一様。退化族のmoving領域の一様性は含まない。 |
+| Part I `lem:CW`, `cor:CW-fixed-cutoff-budget`, `thm:facemass` | 固定SNC対の有界primitiveから体積交点数公式を得る。固定reference cutoff $K_A$ の外側体積とStokes defectは $Ce^{-A}$。実距離球のsharp tail、moving compact収束又は退化族に一様な定数は入力・結論に含まない。 |
 | Part II `thm:intro-star`, `thm:intro-general-completion`, `hyp:controlled-pushoff` | Marked residual複素・双曲曲線のperiodsとTorelli。一般WP completionにはcontrolled push-off。曲面の第二作用積分との同一視はない。 |
 | Part III `hyp:Hloc`, `hyp:Hanc`, `thm:actual-global-pgh` | Ordinary/conifold whole-end比較とtracked anchors等を追加仮定とする。対象・positive square模型・空間的blow-downを曲面退化と区別する。 |
 | Part IV `coarse:thm:boundary-to-triple`, `coarse:cor:degree-d-volume-lower`, `coarse:thm:full-triple-tensor` | Fixed-face density下界と各固定parameterでradial閉包近傍まで滑らかな負KE metricから、全phase quotient上のcomplete比較により全深部tensor安定性を得る。Parameter一様な境界上界を仮定しない。Capped volume下界が全固定d≥5の族でこの入力を供給する。証明の正本は `papers/sections/full_triple_comparison.tex`。 |
@@ -233,6 +234,8 @@ Metric-IRFAの一面比較をexact quotient-in-stagesに沿って反復すると
 \int_M\omega^m=\int_Y\Theta^m=(2\pi)^m\int_Yc_1(L)^m
 \]
 を示す。有限体積と有界勾配のcompact cutoffからStokes境界項が0へ行くため、指数的shell評価は不要である。β=dᶜψの場合もψの有界性は要求しない。
+
+`cor:CW-fixed-cutoff-budget` は同じ固定対での定量版である。成分数をbとするとT=log(1+Σq_i)≥Aから、あるq_i≥(e^A−1)/bが従う。各SNC chartでq_i≥Qに関する一変数Poincaré積分はO(Q^−1)、残るnormal factorsも有限積分を持つため、全cornerを含むreference体積はCe^−Aで抑えられる。KE体積とStokes境界項もbounded tensor比較で同率となる。固定成分のcompact K_A={T≤A}を先に選んだ後でt→0を取る曲面の測度証明へ利用できるが、A=A(t)の任意速度や一様tensor収束を供給しない。これは既知のcusp積分を明示した補強であり、独立の新規性を主張しない。
 
 Rochon–Zhangのbackgroundではq_i=−log(ε‖s_i‖²)、ω₀=Θ−2Σddᶜlog q_i、ω_KE=ω₀+ddᶜuなので、β=dᶜ(u−2Σlog q_i)を取れる。u∈C∞_fcと局所式q_i=−log|z_i|²+O(1)からβの有界性を直接確認できる。主稿の `app:CW` にこの適用を展開した。
 

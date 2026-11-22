@@ -1,33 +1,65 @@
 {
+  "schema_version": 2,
+  "verified_date": "2026-11-23",
   "bundle": "Multiscale_KE_Geometry_I-V_ja_v1_source_and_pdfs.zip",
   "library_url": "https://chatgpt.com/space/file/libfile_6f1952b368608191ae2f93dda8b76f0d",
   "bundle_sha256": "506bfcc1342bebf18d29f5e8d440e499a3123347db9c09ef19453dcbced3e0b0",
+  "provenance_scope": "Bundle identifiers and source_sha256 are retained provenance. recovered_record preserves the previously recorded file snapshot, which may include earlier repository edits; it is not a current-source or original-bundle-byte assertion. Missing original source hashes are not inferred.",
+  "current_verification": "current_source was computed from the local working-tree bytes of each destination on verified_date. git_blob_sha is the content-object hash, not a commit identifier. This calculation does not re-download Library sources or verify proofs.",
   "files": [
     {
       "source": "01_spatial_infinity_ja.tex",
       "destination": "papers/multiscale-kaehler-einstein.tex",
-      "sha256": "974eaafea091afac3a6332664d4cf173950c4868ef6f69462cfc73eeefb90c87",
-      "bytes": 110479,
       "source_sha256": "136a47f707e0c07c64cec211358b5393e3a11b8c29b0a076a30d49f8f2a1ed4b",
-      "current_blob_sha": "aad6f780ca38078d824460b039ef39908a86affb"
+      "recovered_record": {
+        "sha256": "974eaafea091afac3a6332664d4cf173950c4868ef6f69462cfc73eeefb90c87",
+        "bytes": 110479,
+        "git_blob_sha": "aad6f780ca38078d824460b039ef39908a86affb"
+      },
+      "current_source": {
+        "sha256": "c86ad86a2062490f415292fd6a101a08d84315bdb470d3571b408c43f8e072f8",
+        "bytes": 231211,
+        "git_blob_sha": "c73eb570bfcac6faea5b80490546146f2a9b050c"
+      }
     },
     {
       "source": "02_secondary_periods_ja.tex",
       "destination": "papers/secondary-periods-torelli.tex",
-      "sha256": "e1b5cc2095ea9694337ed8b67251dfcf2565420b949387215bee88db8db15b87",
-      "bytes": 82693
+      "recovered_record": {
+        "sha256": "e1b5cc2095ea9694337ed8b67251dfcf2565420b949387215bee88db8db15b87",
+        "bytes": 82693
+      },
+      "current_source": {
+        "sha256": "e15ca2c1e7dde21c1cbdd5d6b48d53d58945cf162b71cc0ea3aaa786b11e68f5",
+        "bytes": 83191,
+        "git_blob_sha": "d160b6d392d72f0e8883d33e0c6f2046c3d51c65"
+      }
     },
     {
       "source": "03_conifold_gluing_ja.tex",
       "destination": "papers/conifold-localization.tex",
-      "sha256": "a24c21825e2afea01f4c47e7be54171b11c11c8276a400cab0d6724b9ac00383",
-      "bytes": 160339
+      "recovered_record": {
+        "sha256": "a24c21825e2afea01f4c47e7be54171b11c11c8276a400cab0d6724b9ac00383",
+        "bytes": 160339
+      },
+      "current_source": {
+        "sha256": "a24c21825e2afea01f4c47e7be54171b11c11c8276a400cab0d6724b9ac00383",
+        "bytes": 160339,
+        "git_blob_sha": "8aa4d106a62d311b69ce7ae39e7c4982a40260f8"
+      }
     },
     {
       "source": "SERIES_OVERVIEW_ja.tex",
       "destination": "papers/series-overview.tex",
-      "sha256": "b198dcfcdde6f03f93062dd66a449b231fafe0229894312f5cb21d066d44b00b",
-      "bytes": 23145
+      "recovered_record": {
+        "sha256": "b198dcfcdde6f03f93062dd66a449b231fafe0229894312f5cb21d066d44b00b",
+        "bytes": 23145
+      },
+      "current_source": {
+        "sha256": "3e6d4b3bc8f889cf8c274aec0236fcb8ab9482d47c962acb9e860d0ff3cf1704",
+        "bytes": 71091,
+        "git_blob_sha": "f617773755be6665a2e2ec3e4602b30f866dc955"
+      }
     }
   ],
   "additional_sources": [
@@ -37,9 +69,15 @@
       "source": "Multiscale_KE_Arrangements_post_trilogy_research_note_ja_v22.tex",
       "destination": "papers/research-directions.tex",
       "source_sha256": "d13b41f70906c27baea9cf2b21bfb38d63e8e52f173300504d2d17bbbc940454",
-      "sha256": "06ec2ebf439db03378fc8be9a029c5eaabbcf975c6d8e44fd73c48c3f5435425",
-      "changes": "Added explicit status preface; original mathematical body retained."
+      "changes": "Added explicit status preface; original mathematical body retained.",
+      "recovered_record": {
+        "sha256": "06ec2ebf439db03378fc8be9a029c5eaabbcf975c6d8e44fd73c48c3f5435425"
+      },
+      "current_source": {
+        "sha256": "06ec2ebf439db03378fc8be9a029c5eaabbcf975c6d8e44fd73c48c3f5435425",
+        "bytes": 22969,
+        "git_blob_sha": "8e48471b264271d67646151fb907295a93a646f9"
+      }
     }
-  ],
-  "audit_update_2026_11_20": "Current sha256/bytes and Git blob reflect mathematical additions or repository entrypoint fixes; source_sha256 preserves original Library-bundle provenance. This update does not imply complete independent proof verification."
+  ]
 }

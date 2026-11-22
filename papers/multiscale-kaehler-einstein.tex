@@ -31,7 +31,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I}
-\fancyhead[R]{\small 現行稿 v1.9}
+\fancyhead[R]{\small 現行稿 v1.10}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{現行稿 v1.9（2026年11月22日）}
+\date{現行稿 v1.10（2026年11月23日）}
 
 \begin{document}
 \maketitle
@@ -2312,6 +2312,53 @@ $\Theta$ は $Y$ 上で滑らかなので、通常の compact Chern--Weil formul
  \int_M\Theta^m=\int_Y\Theta^m
  =(2\pi)^m\int_Yc_1(L)^m.
 \]
+\end{proof}
+
+\begin{corollary}[固定対の有限 cutoff 体積予算]
+\label{cor:CW-fixed-cutoff-budget}
+\Cref{lem:CW} の仮定で $m\ge1$、$B\ne\varnothing$ とし、
+同証明の $q_i$、$T=\log(1+\sum_iq_i)$、$\chi_R=\chi(T-R)$ を固定する。
+この固定対と計量・norm・cutoff に依存する定数 $C,R_0$ が存在し、
+全ての $R\ge R_0$ に対して
+\begin{align}
+ \operatorname{vol}_{g_P}\{T\ge R\}&\le Ce^{-R},
+ \label{eq:CW-reference-tail}\\
+ 0\le\frac1{m!}\int_M(1-\chi_R)\omega^m&\le Ce^{-R},
+ \qquad
+ \left|\int_M\chi_R(\omega^m-\Theta^m)\right|\le Ce^{-R}
+ \label{eq:CW-cutoff-budget}
+\end{align}
+が成り立つ。特に $K_R=\{T\le R\}$ は compact exhaustion であり、
+$\operatorname{vol}_\omega(M\setminus K_R)\le Ce^{-R}$ である。
+ここで $R$ は固定 compactification の cutoff level であり、
+実距離球の半径又は退化族の尺度ではない。
+\end{corollary}
+\begin{proof}
+成分数を $b$ とする。$T\ge R$ なら、少なくとも一つの $i$ で
+$q_i\ge(e^R-1)/b$ となる。
+$Y$ の有限個の adapted SNC charts を取り、$B_i$ に近い chart で
+$q_i=-\log|z_i|^2+O(1)$ を使う。
+十分大きい $A$ について、$q_i\ge A$ の一変数 Poincar\'e 積分は
+\[
+ \int_{0<|z_i|\le C_1e^{-A/2}}
+ \frac{|\dd z_i\,\dd\bar z_i|}
+ {|z_i|^2(\log|z_i|)^2}\le\frac{C_2}{A}
+\]
+である。残る全 normal variables の Poincar\'e 積分と通常方向の積分は有限で、
+その上界は $A$ に依存しない。$B_i$ を含まない chart の寄与は
+$A$ が十分大きければ空である。有限 chart と成分について加えると
+$\operatorname{vol}_{g_P}\{q_i\ge A\}\le C/A$、従って
+\eqref{eq:CW-reference-tail} を得る。
+
+$|\omega|_{g_P}$ の有界性により $\omega^m/m!\le C\dd V_{g_P}$ であり、
+$1-\chi_R$ と $M\setminus K_R$ は $\{T\ge R\}$ に支えを持つので、
+体積の二つの主張が従う。
+Stokes defect には前証明の恒等式と
+$|\dd\chi_R|_{g_P}+|\beta|_{g_P}+|S|_{g_P}\le C$ を用いる。
+これらも同じ tail で抑えられ、\eqref{eq:CW-cutoff-budget} を得る。
+本議論は fixed reference cusp と有界 tensor だけを使う。
+退化 parameter に対する定数の一様性や、動く compact 上の収束速度を
+結論するものではない。
 \end{proof}
 
 \begin{theorem}[Face masses for log K\"ahler--Einstein metrics]

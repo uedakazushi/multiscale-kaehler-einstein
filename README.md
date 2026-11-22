@@ -1,6 +1,6 @@
 # Multiscale Kähler–Einstein geometry
 
-固定配置補空間の多重尺度KE幾何。現行研究一式：2026-11-22 / v1.18（Part I v1.9、総説v1.14）。最初に[研究方針](00_research_plan.md)を読む。主たる公表用原稿は `papers/multiscale-kaehler-einstein.tex`。
+固定配置補空間の多重尺度KE幾何。現行研究一式：2026-11-23 / v1.19（Part I v1.10、総説v1.14）。最初に[研究方針](00_research_plan.md)を読む。主たる公表用原稿は `papers/multiscale-kaehler-einstein.tex`。
 
 **公表計画：** 数学的価値の最大化を基準に、曲面P0・Part IVの最小局所解析・Part Iの距離と実球体積漸近を優先する。[研究方針](00_research_plan.md)に実行順序・達成基準・担当を記した。まず中心定理の構成、入力の範囲、先行研究との差を確定し、五次と標準等重み六次の同時atlas/GH/測度収束を中心成果へ統合し、任意先指定source tailsと独立した条件付き解析は別の完成基準で進める。
 
@@ -16,7 +16,9 @@
 
 **公表準備で具体化した成果：** `cor:tail-intrinsic-uniform` により実球裾係数Wは内在量で、KE規格化ではlog Wが1-Lipschitz、裾漸近が任意のcompact基点集合上で一様となる。許されるnorm変更での不変性とdepth定数shiftの補償を区別した。非KE回転cuspの明示例では非可積分なo(1)誤差からR^a因子が現れ、coneとleading normal massだけでは実球裾係数を決められない。五直線のK5 linkのconeが非CAT(0)であることも証明し、Leuzingerの局所対称coneと具体的に比較した。これら四項は担当と別担当が証明を読んで点検した。
 
-**積の実距離の対数分岐と距離分布の回収：** Part I v1.9は、尖点付き有限面積双曲曲線Sと任意の閉コンパクト連結Riemann因子Yの積について、実距離Laplace変換を Re s<3 の切断半平面で W/(1−s)−H(s)Log(1−s)+G(s) と表示する。Hはentire、GはRe s<3全体で正則である。`prop:compact-product-logarithmic-germ` は曲線裾A(p)e^−R+O(e^−3R)をStieltjes部分積分で扱い、積距離kernelの級数の一様絶対収束まで証明する。`cor:compact-radial-recovery` はWと対数monodromyからYの正規化された基点距離分布を復元する。コンパクト負KE因子なら総複素次元2以上のactual KE例となる。一般の通常volume-IRFAからの解析接続・基点付き等長型・安定性へは拡張しない。作成担当・統合担当・別担当が指定証明を読んで点検した。指数積分・Bessel公式とcompact moment一意性は既知の原理であり、新規性の網羅的確認は未了。 初等的なKE積のe^−R(W+C/R+O(R^−2))という実球裾の証明も保持する。Normal densityが厳密な積型でもC>0による分岐が現れるため、normal-depth Mellinの有理型性は実距離の有理型性を含意しない。研究ノートの球面変形は、一般Riemann因子では変換全体の一致からも等長型が決まらないことを示す。
+**固定成分の有限cutoff予算：** Part I v1.10の `cor:CW-fixed-cutoff-budget` は、固定SNC対の $T=\log(1+\sum q_i)$、$K_A=\{T\le A\}$ に対し、KE体積の脱落量とStokes defectを $Ce^{-A}$ で抑える。全cornerを含む一変数cusp積分を有限個足し合わせる直接証明であり、exact-tailや残余の精密展開を使わない。曲面測度極限の固定成分側の誤差を分離できる。定数の退化族一様性、任意速度のmoving cutoff、tについての有効収束率は含まない。
+
+**積の実距離の対数分岐と距離分布の回収：** 現行Part Iは、尖点付き有限面積双曲曲線Sと任意の閉コンパクト連結Riemann因子Yの積について、実距離Laplace変換を Re s<3 の切断半平面で W/(1−s)−H(s)Log(1−s)+G(s) と表示する。Hはentire、GはRe s<3全体で正則である。`prop:compact-product-logarithmic-germ` は曲線裾A(p)e^−R+O(e^−3R)をStieltjes部分積分で扱い、積距離kernelの級数の一様絶対収束まで証明する。`cor:compact-radial-recovery` はWと対数monodromyからYの正規化された基点距離分布を復元する。コンパクト負KE因子なら総複素次元2以上のactual KE例となる。一般の通常volume-IRFAからの解析接続・基点付き等長型・安定性へは拡張しない。作成担当・統合担当・別担当が指定証明を読んで点検した。指数積分・Bessel公式とcompact moment一意性は既知の原理であり、新規性の網羅的確認は未了。 初等的なKE積のe^−R(W+C/R+O(R^−2))という実球裾の証明も保持する。Normal densityが厳密な積型でもC>0による分岐が現れるため、normal-depth Mellinの有理型性は実距離の有理型性を含意しない。研究ノートの球面変形は、一般Riemann因子では変換全体の一致からも等長型が決まらないことを示す。
 
 **現行の数学的到達点：** Part Iでは、固定SNCの整合的カラー・Ξ延長比較・全残余一様tensor評価に加え、co-Gramから全射な距離収縮への証明を点検した。加法誤差をKとすると、対応する中心を持つ閉球のGH誤差は全中心・全半径に一様に3K/(2R)以下となる。指定compact集合を原点へ送る選択も可能で、この場合Kはその集合に依存する。
 
@@ -46,7 +48,7 @@ FBPのTheorem 6.14(b)は部分fibration、(c)はproperな場合の全fiberの構
 
 **測度結論の先行性：** L. Pille-Schneider, *Hybrid convergence of Kähler–Einstein measures*, Ann. Inst. Fourier **72**(2) (2022), 587–615, [DOI 10.5802/aif.3455](https://doi.org/10.5802/aif.3455), Theorems A–B は、負KE体積のhybrid極限を正準モデルの成分に対応する原子測度として与える。本族の正規化後の等重み1/dもその交点数重みと一致する。本稿の追加部分は、同じactual Lagrangian射影上での全域GH・作用atlas・測度収束の実現であり、hybrid空間とcubical基底を同一視する比較写像は構成していない。
 
-**公表用の仮定と正規化：** Part I v1.9はIntroductionの各結論を本文の入力・証明へ対応させ、測度平行移動の基点条件と残余parameterのcompact subcritical範囲を明示する。面質量は非正規化KE体積に対する交点数であり、確率正規化時の交点数比も記す。通常のvolume-IRFAでAbel係数が存在しても有理型延長が従わない抽象測度の例と、actual KE積の実距離変換の例を区別する。Kobayashi・Guenancia–Wu・Jiang–Shiの適用範囲と、Chambert-Loir–Tschinkelの既存Igusa/residue theoryとの比較を加えた。網羅的新規性の確認は未了である。
+**公表用の仮定と正規化：** Part I v1.10はIntroductionの各結論を本文の入力・証明へ対応させ、測度平行移動の基点条件と残余parameterのcompact subcritical範囲を明示する。面質量は非正規化KE体積に対する交点数であり、確率正規化時の交点数比も記す。通常のvolume-IRFAでAbel係数が存在しても有理型延長が従わない抽象測度の例と、actual KE積の実距離変換の例を区別する。Kobayashi・Guenancia–Wu・Jiang–Shiの適用範囲と、Chambert-Loir–Tschinkelの既存Igusa/residue theoryとの比較を加えた。網羅的新規性の確認は未了である。
 
 Part II v2.1では、複素periodに必要なfactor/cusp labelsとKähler orientationを明記し、Part Iの測度付き平行移動への参照を定理ラベルに揃えた。Fully markedな全curve factorsで向きだけを忘れるgeneric Torelliは、配置全体の複素共役までの結論である。今回の点検はこの接続の範囲であり、Part IIの全証明再監査ではない。
 
@@ -56,4 +58,4 @@ Part IV v1.12（確認済み保存commit `1191025`）では、capped volume下�
 
 ルートで `latexmk`。PDF/SyncTeXはbuild/。現行の[検証状態](research/validation.json)で数学的点検・組版・表示確認を分ける。正本はmain。[research-hub](https://github.com/uedakazushi/research-hub)。
 
-組版にはLuaLaTeX/latexmk、LuaTeX-ja（ltjsarticleとHaranoAjiフォント）、TikZ、AMS、mathrsfs等の標準TeXパッケージと有効なformat/font mapが必要。Part I v1.9の既存の73頁の組版と指定13頁・150 dpiの実表示記録を保持する。今回はPart I–III・研究素材を再組版せず、そのTeX本文を変更していない。総説v1.14はLuaLaTeX/latexmkで22頁に組版し、主要log六分類は全て0。変更頁と隣接頁1–5、9–10、13–15、20–22の計13頁を150 dpiで実表示確認した。全頁の目視確認や全証明の再検証を意味しない。頁数・source/PDF hash・log分類・実表示範囲は `research/validation.json` に記録する。 数学的点検・組版・視覚確認・GitHub保存は別の状態として扱う。
+組版にはLuaLaTeX/latexmk、LuaTeX-ja（ltjsarticleとHaranoAjiフォント）、TikZ、AMS、mathrsfs等の標準TeXパッケージと有効なformat/font mapが必要。Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 数学的点検・組版・視覚確認・GitHub保存は別の状態として扱う。

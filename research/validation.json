@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-22",
-  "engine": "Only overview v1.14 was rebuilt with LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian), latexmk, the existing .latexmkrc, LuaTeX-ja and the user-local texrun wrapper. Existing Part I v1.9 and other manuscript build/visual records are retained; those manuscripts were not rebuilt or edited in research-set v1.18.",
+  "date": "2026-11-23",
+  "engine": "Part I v1.10 rebuilt with LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian) and latexmk using the existing .latexmkrc. An existing extracted TeX runtime supplied the format, LuaTeX-ja and HaranoAji fonts; a repository-local writable cache was used. Overview v1.14 and the other manuscripts were not rebuilt.",
   "manuscripts": [
     {
       "source": "papers/conifold-localization.tex",
@@ -14,16 +14,16 @@
     },
     {
       "source": "papers/multiscale-kaehler-einstein.tex",
-      "source_version": "v1.9",
-      "source_sha256": "9c00b18db16043de3e868897aa900733d9e6031ad1c6ee0b1373ffc582c3450f",
-      "build_date": "2026-11-22",
+      "source_version": "v1.10",
+      "source_sha256": "c86ad86a2062490f415292fd6a101a08d84315bdb470d3571b408c43f8e072f8",
+      "build_date": "2026-11-23",
       "build_status": "success",
       "build_exit_status": 0,
       "pages": 73,
-      "pdf_bytes": 1012617,
-      "pdf_sha256": "b1a531353f5814cc71a89d565165b55dfbae1f0630d512a3d5ce22b7db3e79af",
-      "rerun_in_current_revision": false,
-      "source_unchanged_in_current_revision": true,
+      "pdf_bytes": 1017943,
+      "pdf_sha256": "8133d4167972f3ea986f08307dcc5b92f1771b593d5c4ca64095c47e3b373add",
+      "rerun_in_current_revision": true,
+      "source_unchanged_in_current_revision": false,
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -35,24 +35,16 @@
       "other_warnings": "Font-size substitutions and the legacy class rm warning remain; no missing characters. These minor notices are separate from the six checked log categories.",
       "visual_check_pages": [
         1,
-        3,
-        8,
-        9,
-        47,
-        48,
-        49,
-        50,
-        51,
-        52,
-        53,
-        72,
+        36,
+        37,
+        38,
         73
       ],
-      "visual_check_resolution": "Poppler PNGs at 150 dpi, actually displayed and viewed individually.",
-      "visual_check_result": "The coordinator actually viewed pages1,3,8,9,72,73; independent reviewer viewed47-53, all150dpi. Title/abstract, contents, scope, Golubev-Kamber comparison, original cusp/product proofs, new proposition/corollary, Stieltjes/Q_n/moment equations and bibliography are legible. No clipping, overlap, missing glyphs or equation-number collision. The proposition spans49-50 and the three-line h(s,b) resummation spans51-52; both remain readable, as does the corollary proof across52-53. No full73-page visual review.",
-      "verification_scope": "Successful current-source build and selected-page actual visual review. No full-page visual review or full-manuscript proof re-audit.",
-      "build_command": "From repository root, local user TeX wrapper: python /workspace/scratch/a203055092fd/tex-runtime/texrun.py latexmk -g papers/multiscale-kaehler-einstein.tex; subsequent source refinement rebuilt with latexmk. All runs exited 0. Normal installation command: latexmk papers/multiscale-kaehler-einstein.tex. Existing .latexmkrc and SyncTeX settings unchanged.",
-      "build_record_scope": "Retained verified Part I v1.9 build and selected-page visual record from research-set v1.17; not rerun in research-set v1.18. Source, PDF hash and all earlier checked pages are unchanged."
+      "visual_check_resolution": "150 dpi Poppler PNGs, actually displayed and viewed.",
+      "visual_check_result": "Viewed title, the Chern-Weil input and proof, new corollary6.10 with proof across37-38, face-mass normalization and final bibliography. No clipping, overlap, missing glyphs or equation-number collision found. The corollary statement ends on37 and its proof begins on38; both are fully legible. Not a full73-page review.",
+      "verification_scope": "Current-source build and five selected-page visual checks. Mathematical review covers only the new fixed-cutoff argument and its stated inputs.",
+      "build_command": "From repository root with a complete LuaLaTeX installation: latexmk -g papers/multiscale-kaehler-einstein.tex. This run used the existing extracted runtime and TEXMFCACHE under build/tex-cache; .latexmkrc, LuaLaTeX engine and SyncTeX settings unchanged.",
+      "build_record_scope": "Current Part I v1.10 build and five selected actual image views. Prior product-germ proof reviews remain mathematical records, not a claim that their earlier page numbers were redisplayed now."
     },
     {
       "source": "papers/research-directions.tex",
@@ -100,10 +92,10 @@
       "source_version": "v1.14",
       "build_date": "2026-11-22",
       "build_status": "success",
-      "rerun_in_current_revision": true,
-      "source_unchanged_in_current_revision": false,
+      "rerun_in_current_revision": false,
+      "source_unchanged_in_current_revision": true,
       "other_warnings": "Font-size substitutions (up to0.5pt), Japanese font scaling, ignored addjfontfeatures and a legacy class rm warning remain. Nine raw undefined tokens are Japanese italic font-shape informational messages, not unresolved references or missing characters.",
-      "verification_scope": "Overview v1.14 build, six main log categories, source/PDF hashes and actual image review of the stated13 pages. Selected scientific proof review is separately described in current_revision; this is not an external referee report or a full manuscript audit.",
+      "verification_scope": "Retained overview v1.14 build and13 selected-page views from2026-11-22; source unchanged and not rebuilt or viewed in research-setv1.19.",
       "build_command": "From repository root: python /workspace/scratch/a203055092fd/tex-runtime/texrun.py latexmk -g papers/series-overview.tex; subsequent wording/layout and final hyperlink-only source-pin updates rebuilt with python /workspace/scratch/a203055092fd/tex-runtime/texrun.py latexmk papers/series-overview.tex. All executed runs exited0. Normal installation command: latexmk papers/series-overview.tex. Existing .latexmkrc and SyncTeX settings unchanged.",
       "surface_input_reference": {
         "revision": 44,
@@ -163,26 +155,19 @@
         "changed_pages": [],
         "all_identical": true,
         "pdf_hyperlink_verified": "1088f86cf8f0c70c74a1e4caa3b90393ff627067"
-      }
+      },
+      "build_record_scope": "Retained source/PDF and visual record; no current rerun."
     }
   ],
-  "scope": "Overview v1.14 integrates Surface revision44 standard equal-weight sextic Petersen full-moment realization and the same actual projection for global action atlas, diameter-scale GH and probability-volume convergence, alongside the retained quintic result. It attributes hybrid atomization and intersection-number weights to Pille-Schneider AIF72(2)(2022), Theorems A-B. The fixed Part I-III mathematics and prior proof/build records remain unchanged.",
+  "scope": "Part I cor:CW-fixed-cutoff-budget: quantitative fixed-pair exhaustion and cutoff Stokes defect from standard Poincare integrals and bounded tensors. Recovered source provenance is separated from freshly computed current hashes for five manuscript files. Existing Surface revision44 standard sextic and overview v1.14 records are retained within their recorded scope.",
   "visual_check": {
-    "date": "2026-11-22",
+    "date": "2026-11-23",
     "sample": {
       "multiscale-kaehler-einstein": [
         1,
-        3,
-        8,
-        9,
-        47,
-        48,
-        49,
-        50,
-        51,
-        52,
-        53,
-        72,
+        36,
+        37,
+        38,
         73
       ],
       "series-overview": [
@@ -201,45 +186,47 @@
         22
       ]
     },
-    "result": "Overview v1.14:13 selected changed/adjacent pages actually rendered at150dpi and viewed; no clipping, missing glyphs, formula or margin defects observed. Following the final Surface hyperlink update, the same13 pages were re-rendered and all PNGs were byte-identical to the reviewed images. Prior Part I v1.9 selected-page visual record remains valid and was not rerun; no full-page review is claimed.",
+    "result": "Part I v1.10: five selected pages1,36,37,38,73 actually rendered at150dpi and displayed. No visible defects. The overview13-page sample and other manuscript samples refer to retained earlier records and were not redisplayed.",
     "full_page_review": {
       "multiscale-kaehler-einstein": false,
       "series-overview": false,
       "secondary-periods-torelli": false
     },
-    "record_scope": "Only overview v1.14 is changed. Part I and other manuscript records refer to their recorded unchanged source versions."
+    "record_scope": "Only Part I was rebuilt and visually checked in this revision. Current and retained samples are distinguished in each manuscript entry."
   },
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
   "current_revision": {
-    "date": "2026-11-22",
-    "version": "Research set v1.18; Part I v1.9; Part II v2.1; overview v1.14",
-    "status": "Overview and current documents updated; overview build and selected-page actual visual review complete. Ready for coordinating-editor save; no Git mutations performed by the editing reviewer.",
+    "date": "2026-11-23",
+    "version": "Research set v1.19; Part I v1.10; Part II v2.1; overview v1.14",
+    "status": "Current Part I proof, source manifest and documents prepared; build and five selected-page image checks complete. Git save is a separate coordinating-editor action.",
     "edited_manuscripts": [
-      "papers/series-overview.tex"
+      "papers/multiscale-kaehler-einstein.tex"
     ],
     "unchanged_manuscripts": [
-      "papers/multiscale-kaehler-einstein.tex",
       "papers/secondary-periods-torelli.tex",
       "papers/conifold-localization.tex",
-      "papers/research-directions.tex"
+      "papers/research-directions.tex",
+      "papers/series-overview.tex"
     ],
     "edited_documents": [
       "00_research_plan.md",
       "README.md",
       "research/notes.md",
       "research/source-audit.md",
+      "research/source-manifest.json",
+      "research/migration.md",
       "research/validation.json"
     ],
-    "mathematical_scope": "Surface revision44: rho=4pi/5, w=2/5 and allocation(1,1,1,1;2); actual closed-period constants and Euler/shear signs; target areas rho-nu+min(mu,0) and rho-|mu|; 5x7 incidence with11 positive cells, cumulative internal cuts, three-source/two-region separator Moser, Dini, central parameter freeze before full nodal protection, all-open anchor matching, common translation2rho and primitive normal covector, relative GH transfer and the same probability-volume pushforwards.",
-    "not_verified": "No full re-audit of Part I-III, all surface P0 proofs, general relative-area theory or external analytic proofs; no arbitrary weights/protected source neighborhoods, t-smooth fibration family, affine limit or Hessian/Monge-Ampere conclusion, quantitative rate, formal verification, external review, exhaustive priority or submission. CP/PBE/TC, H_loc/H_anc and controlled push-off remain separate assumptions.",
-    "runtime": "Overview v1.14 built with the texrun wrapper and latexmk, including the final Surface source-pin hyperlink refresh; final22pages, exit0, all six main log categories0. Thirteen selected changed/adjacent pages actually viewed at150dpi; final re-renders of all13 were byte-identical. No GitHub Actions added or run. Part I-III and research-directions were not rebuilt.",
-    "source_checks": "Confirmed byte-for-byte against HEAD: Part I, II, III, research-directions, .latexmkrc, both .vscode files and AGENTS.md are unchanged. JSON parsed successfully; edited-source scope is the overview plus the current README/plan/notes/audit/validation documents. Git diff --check passes. Part I v1.9 build hash and selected-page evidence are retained without claiming a current rebuild.",
+    "mathematical_scope": "For a fixed SNC pair and fixed norms, T=log(1+sum q_i) has reference Poincare tail volume <=C exp(-R). Finite adapted-chart cover and one normal integral O(1/A), with all remaining cusp integrals finite, include every corner. Bounded omega and primitive give KE tail mass, smooth-cutoff loss and Stokes defect with the same fixed-cutoff budget. No metric-radius sharp tail or degeneration-uniform estimate is used or concluded.",
+    "not_verified": "No full re-audit of Part I-III or Surface P0, no family-uniform constants or effective t-rate, no arbitrary moving exhaustion, no external review or formal proof, no exhaustive novelty confirmation. CP/PBE/TC, H_loc/H_anc and controlled push-off remain separate assumptions.",
+    "runtime": "Part I v1.10: latexmk exit0,73pages, all six main log categories0; five selected pages displayed at150dpi. Initial default-runtime attempt failed before TeX processing because lualatex.fmt was missing; the existing complete extracted runtime resolved this. No GitHub Actions. Other manuscripts not rebuilt.",
+    "source_checks": "All five current manuscript SHA-256 values, byte counts and Git content-object hashes were recomputed and matched source-manifest current_source. Recovered records and available original source hashes preserved separately. No Library source re-download. JSON parses and git diff --check passes. No edits to build/editor settings or AGENTS.md.",
     "selected_proof_audit": {
-      "surface_sextic": "Author, coordinating editor and independent reviewer directly read the finite-period, full-moment and global integration proof. Checked source-wall counts, all positive cells, Dini, actual marked relative class, central freeze and full nodal identity with ordinary P0, two-stage open-anchor matching, A/B cycles, common affine translation and primitive normal covector. No concrete gap found in this specified chain.",
-      "overview": "Compared the new sextic summary to the final reviewed Surface drafts and scientific revision44. Existing Part I-III mathematical content and valid earlier records retained.",
-      "limits": "Targeted internal checks, not full-manuscript certification or external peer review."
+      "author_read": "Read lem:CW, app:CW and thm:facemass and proved cor:CW-fixed-cutoff-budget. Checked finite adapted cover, uniform O(1) norm terms, normal-integral bound, all other corner factors, cutoff support and fixed-choice constants.",
+      "independent_read": "Coordinating editor read the added corollary directly and reported no gap in the finite-chart, normal-integral, bounded-primitive and Stokes-support argument.",
+      "limits": "Targeted mathematical review, not formal proof or full-source certification."
     },
-    "primary_source_scope": "Directly inspected the published Pille-Schneider AIF72(2)(2022)587-615 PDF, DOI10.5802/aif.3455: Theorems A-B pp589-590; normal/reduced/stable canonical model Theorem2.1 p604; component masses Remark2.4 p605 and Proposition3.1 p607; multiplicity/valuation conventions Definition1.2 p593 and p600; Ricci and volume conventions p588. Existing earlier primary comparisons retained. Limited2024-2026 searches found no additional paper combining all three target properties; non-detection is not a novelty proof.",
+    "primary_source_scope": "Reopened Rochon-Zhang arXiv1106.0873v2 and read(5.3)-(5.9) and the start of Lemma5.2: reference curvature, bounded fc-derivative solution and residual adjunction. Theorem5.1 residual decay is not needed for the added cutoff estimate. Prior literature checks remain in source-audit.md; no new claim of originality for elementary cusp integration.",
     "external_reference_versions": {
       "kaehler-einstein-degeneration": {
         "research_set_version": "v1.24",
@@ -323,7 +310,12 @@
       "overview": "Current theorem/corollary statements and fixed pins read against the actual sources. Same-map atomic probability volume, full cubical metric target, rescaled unnormalized volume, fixed-end signs, Hermitian-radius correction, winding/residual periods, and the separate fixed-base Moser result remain distinguished.",
       "limits": "Targeted human-readable internal proof checks; not formal verification, complete manuscript certification or external review."
     },
-    "retained_part_i_primary_source_scope": "Direct primary checks: NIST DLMF6.6.2,8.19.7-8,8.19.12,10.25.2,10.31.1; Golubev-Kamber arXiv1712.10149v1 Theorem1.1 pp1-2, with published metadata verified separately. Existing Haas cusp normalization, CLT height-sublevel and Grieser Mellin comparisons remain valid in their recorded scope. Literature reviewer additionally read Diaconis-Freedman Theorem1 p184; Hausdorff1921 itself was not read. Classical special-function resummation and compact moment uniqueness are not claimed as original."
+    "retained_part_i_primary_source_scope": "Direct primary checks: NIST DLMF6.6.2,8.19.7-8,8.19.12,10.25.2,10.31.1; Golubev-Kamber arXiv1712.10149v1 Theorem1.1 pp1-2, with published metadata verified separately. Existing Haas cusp normalization, CLT height-sublevel and Grieser Mellin comparisons remain valid in their recorded scope. Literature reviewer additionally read Diaconis-Freedman Theorem1 p184; Hausdorff1921 itself was not read. Classical special-function resummation and compact moment uniqueness are not claimed as original.",
+    "retained_surface_sextic_audit": {
+      "surface_sextic": "Author, coordinating editor and independent reviewer directly read the finite-period, full-moment and global integration proof. Checked source-wall counts, all positive cells, Dini, actual marked relative class, central freeze and full nodal identity with ordinary P0, two-stage open-anchor matching, A/B cycles, common affine translation and primitive normal covector. No concrete gap found in this specified chain.",
+      "overview": "Compared the new sextic summary to the final reviewed Surface drafts and scientific revision44. Existing Part I-III mathematical content and valid earlier records retained.",
+      "limits": "Targeted internal checks, not full-manuscript certification or external peer review."
+    }
   },
   "smooth_divisor_primary_check": {
     "mathematics_verified": "Under Rochon–Zhang's smooth-divisor normalization, Theorem 7.6 implies x log x coefficient 2(n-1)e/[3(e-n-1)] for a smooth degree-e hypersurface D_e in P^n, e>n+1. Derived a corresponding compatible fc-tensor model error O((1+t)exp(-t)) and integrable tail C(T+2)exp(-T).",
@@ -333,5 +325,5 @@
     "primary_check_date": "2026-11-20",
     "scope": "The current Part I build includes this existing derivation. The 2026-11-22 work did not re-prove its full analytic argument."
   },
-  "version": "v1.18"
+  "version": "v1.19"
 }

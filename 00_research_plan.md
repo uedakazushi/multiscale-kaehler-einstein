@@ -1,5 +1,5 @@
 # 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
-更新：2026-11-22 / v1.18（Part I v1.9、総説v1.14）
+更新：2026-11-23 / v1.19（Part I v1.10、総説v1.14）
 
 ## 公表に向けた実行計画
 
@@ -16,15 +16,17 @@
 
 ### 実行状況と次の課題
 
-Part I v1.9は、尖点付き有限面積双曲曲線Sと任意の閉コンパクト連結Riemann因子Yの積について、実距離Laplace変換を Re s<3 の切断半平面で W/(1−s)−H(s)Log(1−s)+G(s) と表示する。Hはentire、GはRe s<3全体で正則である。`prop:compact-product-logarithmic-germ` は曲線裾A(p)e^−R+O(e^−3R)をStieltjes部分積分で扱い、積距離kernelの級数の一様絶対収束まで証明する。`cor:compact-radial-recovery` はWと対数monodromyからYの正規化された基点距離分布を復元する。コンパクト負KE因子なら総複素次元2以上のactual KE例となる。一般の通常volume-IRFAからの解析接続・基点付き等長型・安定性へは拡張しない。作成担当・統合担当・別担当が指定証明を読んで点検した。指数積分・Bessel公式とcompact moment一意性は既知の原理であり、新規性の網羅的確認は未了。 既存の全face conditional moments→vertex tightness→actual-ball tail、weighted total variation→Abel–Mellin recursion、内在的裾係数・compact基点一様性・norm gauge・非KE cusp・K5比較の対象限定点検は有効な範囲で保持し、今回の新証明の点検と区別する。
+Part I v1.10の `cor:CW-fixed-cutoff-budget` は、固定SNC対の $T=\log(1+\sum_iq_i)$ によるcompact $K_A=\{T\le A\}$ の外側のKE体積とcutoff Stokes defectを $Ce^{-A}$ で抑える。有限SNC chartsの一変数cusp積分と全残余の有限体積だけを使い、exact-tail、Rochon–Zhangの残余減衰、退化族に一様なtensor評価に依存しない。曲面の同じ射影による原子測度極限に対して、固定成分のexhaustion誤差を具体的に分離する入力となる。定数は固定対・reference norms・計量に依存し、Aを先に固定してから退化parameterを小さくする。Aを任意の速度で動かす誤差評価やtについての有効収束率ではない。新たな基本原理や最適係数を主張するものではなく、既存Stokes証明の最小入力を定量化した補強である。
+
+現行Part Iは、尖点付き有限面積双曲曲線Sと任意の閉コンパクト連結Riemann因子Yの積について、実距離Laplace変換を Re s<3 の切断半平面で W/(1−s)−H(s)Log(1−s)+G(s) と表示する。Hはentire、GはRe s<3全体で正則である。`prop:compact-product-logarithmic-germ` は曲線裾A(p)e^−R+O(e^−3R)をStieltjes部分積分で扱い、積距離kernelの級数の一様絶対収束まで証明する。`cor:compact-radial-recovery` はWと対数monodromyからYの正規化された基点距離分布を復元する。コンパクト負KE因子なら総複素次元2以上のactual KE例となる。一般の通常volume-IRFAからの解析接続・基点付き等長型・安定性へは拡張しない。作成担当・統合担当・別担当が指定証明を読んで点検した。指数積分・Bessel公式とcompact moment一意性は既知の原理であり、新規性の網羅的確認は未了。 既存の全face conditional moments→vertex tightness→actual-ball tail、weighted total variation→Abel–Mellin recursion、内在的裾係数・compact基点一様性・norm gauge・非KE cusp・K5比較の対象限定点検は有効な範囲で保持し、今回の新証明の点検と区別する。
 
 現行の曲面接続先は[改訂44・確認済み保存commit 1088f86](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1088f86cf8f0c70c74a1e4caa3b90393ff627067)。`ke:global-volume-measure` は全固定d≥5について、同じf=pπによる正規化KE体積の押出しを成分頂点上の等重み原子測度へ収束させる。固定成分の体積公式と全体積の一致、固定compact上の収束、頂点逆像の一点性を直接確認した。五次と標準等重み六次の同時atlas/GHにも適用するが、atlasのt方向の収束、極限integral affine構造、Hessian・Monge–Ampère性は含まない。標準六次の同時実現は `ke:petersen-full-moment` と `ke:sextic-simultaneous-realization` により証明され、任意先指定source tailsへの相対存在は別に残る。原子化自体の先行性はPille-Schneiderのhybrid収束定理へ帰属させ、同じactual射影の実現と区別する。
 
-Part I v1.9の既存の73頁の組版と指定13頁・150 dpiの実表示記録を保持する。今回はPart I–III・研究素材を再組版せず、そのTeX本文を変更していない。総説v1.14はLuaLaTeX/latexmkで22頁に組版し、主要log六分類は全て0。変更頁と隣接頁1–5、9–10、13–15、20–22の計13頁を150 dpiで実表示確認した。全頁の目視確認や全証明の再検証を意味しない。頁数・source/PDF hash・log分類・実表示範囲は `research/validation.json` に記録する。 総説v1.14はPart Iの対数germ、Part IV v1.12の固定end最小入力とwinding、曲面改訂44の同じ射影の確率体積極限を統合する。五次の全moment構成を保持し、標準等重み六次の二端cuts・source wallに適合するseparator・全平行移動を含む作用atlas/GH/測度収束を統合する。
+Part I v1.10は73頁にLuaLaTeX組版済みで、主要log六分類は全て0。1、36–38、73頁の計5頁を150 dpiで実表示し、追加系6.10・証明と隣接する体積規格化に欠字・重なり・切断を認めない。実行状態とhashは `research/validation.json` を正本とする。総説v1.14のTeXは変更しておらず、既存の22頁、主要log六分類0、指定13頁の150 dpi表示記録を保持する。Part II・III・研究素材も再組版していない。数学的点検、組版、表示と保存を区別し、全頁の目視確認や全証明の再検証を主張しない。 総説v1.14はPart Iの対数germ、Part IV v1.12の固定end最小入力とwinding、曲面改訂44の同じ射影の確率体積極限を統合する。五次の全moment構成を保持し、標準等重み六次の二端cuts・source wallに適合するseparator・全平行移動を含む作用atlas/GH/測度収束を統合する。
 
 ### 次の具体的な着手点
 
-公表の第一優先は曲面P0の同じ射影による計量実現と五次・標準等重み六次の同時作用atlas/GHであり、その入力を供給するPart IVの局所解析と、固定補空間のPart Iを論理的に独立した公表単位として整える。Part Iでは既存のSNCカラー→tensor→大域距離錐の全鎖を公表用に再点検し、今回の積の明示式をその限界と精密化として配置する。新規性比較は、実際の距離分布を扱う先行結果とheight/Mellin・特殊関数の一般原理を分けて続ける。非積への拡張には、有限volume-IRFAだけでは足りず、実距離又は距離pushforwardの二次以降の誤差を制御する入力をまず特定する。積の厳密式だけを根拠に一般SNCへ解析接続を外挿しない。任意先指定source tailsと非標準period targetsは独立した拡張課題とし、現行中心結果の公表準備の前提にしない。
+公表の第一優先は曲面P0の同じ射影による計量実現と五次・標準等重み六次の同時作用atlas/GHであり、その入力を供給するPart IVの局所解析と、固定補空間のPart Iを論理的に独立した公表単位として整える。Part Iでは既存のSNCカラー→tensor→大域距離錐の点検済み範囲を保持し、依存表から残る最小入力と一次比較を選んで公表準備を進め、今回の積の明示式をその限界と精密化として配置する。新規性比較は、実際の距離分布を扱う先行結果とheight/Mellin・特殊関数の一般原理を分けて続ける。非積への拡張には、有限volume-IRFAだけでは足りず、実距離又は距離pushforwardの二次以降の誤差を制御する入力をまず特定する。積の厳密式だけを根拠に一般SNCへ解析接続を外挿しない。任意先指定source tailsと非標準period targetsは独立した拡張課題とし、現行中心結果の公表準備の前提にしない。
 
 ## 研究固有の目標と入口
 固定配置補空間の距離錐・測度漸近、secondary periods・Torelli・WP、conifold gluingを研究する。Part I–IIIの全文と必要な証明を現行原稿に保持し、退化族・actual Lagrangian実現との接続を定理単位で検証する。達成基準は、条件付きの解析段階を隠さず、正本の全文と本ノートだけから入力・適用範囲・残る核心を追えることである。
@@ -41,7 +43,7 @@ Part I v1.9の既存の73頁の組版と指定13頁・150 dpiの実表示記録�
 固定成分は $H_i\simeq\mathbf P^2$ から $d-1$ 本の直線を除いた補空間である。Part Iの固定空間の $R\to\infty$ を $t\to0$ の族一様性へ読み替えない。Part IIの残余複素periodは第二作用積分と異なる。曲面側の直接大域証明があっても、(CP)/(PBE)/(TC)や(H_loc)/(H_anc)自体の検証状況は変えない。五次と標準等重み六次では同じ曲面fibrationの作用atlas・GH・確率測度収束を同時実現する。
 
 ## 論文と証明の状態
-- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.9。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。KE積の実球裾の二次項、コンパクト因子との積の複素対数germと基点距離分布の復元を加え、normal-depth変換と区別した。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tail、測度付き極限・Chern–Weil・Mellin、moving-basepoint分類とmetric link復元の指定証明鎖の限定点検を保持する。今回の実施範囲と組版・表示記録は検証状態を参照する。
+- `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.10。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。KE積の実球裾の二次項、コンパクト因子との積の複素対数germと基点距離分布の復元を加え、normal-depth変換と区別した。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tail、測度付き極限・Chern–Weil・Mellin、moving-basepoint分類とmetric link復元の指定証明鎖の限定点検を保持する。今回の実施範囲と組版・表示記録は検証状態を参照する。
 - `papers/secondary-periods-torelli.tex`：Part II v2.1。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
 - `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.14。曲面改訂44のactual両端period条件、全moment構成、同じ射影の五次・標準等重み六次の作用atlas/GH/測度収束を紹介し、先指定source tailsと非標準targetsの限界を明記する。Pille-Schneiderのhybrid原子極限と等重みの先行性を比較する。全移動基点の四型分類、同半径閉球比較、source-inclusive固定shell、有限stage co-Gramも保持する。Part I v1.9の対数germとradial分布回収、曲面の確率体積極限、Part IV v1.12の固定end入力・frame windingを統合する。Part IVのcapped下界補強も保持するが、五次(CP)の引用経路に(TC)、Part Vのactual直径帰結に(CP)＋(PBE)が必要なことは変えない。曲面側の直接経路と区別する。組版後の頁数と表示範囲はREADME・検証状態を参照する。
@@ -106,7 +108,7 @@ Rochon–Zhang Theorem 5.1はSNC strataの共通指数\(\nu>0\)のfc漸近を与
 4. **Part II。** Controlled parallel push-offを証明するか適用範囲を限定する。一般matroid・Jacobi/scatteringの独立素材は `papers/research-directions.tex` に保持し、核心の監査後に進める。
 
 ## 保存・検証
-元資料とSHA-256の対応は `research/source-manifest.json`、元資料の監査範囲は `research/source-audit.md` と `research/migration.md`。現行の組版・表示確認と今回の限定的な論理点検は `research/validation.json` を参照する。過去の組版記録を変更後の再実行と混同しない。独立の全証明再検証・外部査読・網羅的新規性確認・Library全履歴との照合は未了である。
+元資料とSHA-256の対応は `research/source-manifest.json`。回収時の記録と現在の5ソースの実計算hashを別欄に置き、未記録の元hashは推測しない。元資料の監査範囲は `research/source-audit.md` と `research/migration.md`。現行の組版・表示確認と今回の限定的な論理点検は `research/validation.json` を参照する。過去の組版記録を変更後の再実行と混同しない。独立の全証明再検証・外部査読・網羅的新規性確認・Library全履歴との照合は未了である。
 
 ## 共通研究原則と保存許可（研究固有方針から独立）
 数学的重要性・新規性・理解の深化・応用可能性・正確性・実現可能性を総合して方針を更新する。証明済み・仮定付き・未完成・予想・計算観察を区別し、既知結果と新規貢献、草稿中の証明と今回の監査を分ける。重要な文献は一次資料を照合する。論文は原則日本語LuaLaTeXで、価値ある証明を軽量化のため削らない。ノートは現行知識に整理し、必要な再現コード・入力・証明書を残す。研究の区切りで承諾を求めず通常コミットにより `main` へpushし、長時間では15–30分で保存する。force push・GitHub Actions追加/起動をせず、他者の変更と公開範囲を保持する。Library旧資料を削除せずGitHub移行後の定常二重保存はしない。対象repoを先に保存してからresearch-hubを更新し、数学検証・組版・保存・hub更新は別々に確認する。
