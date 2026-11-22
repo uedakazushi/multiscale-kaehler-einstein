@@ -37,6 +37,8 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 
 曲面側の入力一覧・適用証明の正本は同repoの `research/ke-dependencies.md`。P0はPart Iのfull rough-isometry theorem全体を入力にせず、固定成分のSNC cusp評価とfixed-compact収束を用いる。本repoの総説は上の接続と条件を要約し、本文の証明を複製しない。依存定理が変わったら正本を先に保存し、利用先・総説・research-hubを追随させる。
 
+**局所Savin定数と曲面Liouville時間の追加監査。** Part IV `coarse:lem:small-volume-tensor` は背景 `λI≤H≤ΛI` の固定複素ball上で、半正定値実Hessian方向のH2増分を `λ²/(32Λ³) ||P||` と `8Λ²/λ³ ||P||` で上下から評価できる。これはSavin 2007の適用条件の有限次元検算であり、退化族の全moving領域に一様なモデルtensorを供給しない。一方、曲面 `ke:positive-normal-moment-time-ceiling` では、`q_a(0)=4π/N_j`、`M_a=q_a−ρ_a` とLiouvilleの等式から、全normal facesが正のmoment chartにとどまる共通正時間は `τ<log(ρ_+/(ρ_+−4π/N_j))=O(N_j^(-1))` を満たす。負時間のparallel linkと固定stageの同じactual fibrationの接着は維持できるが、stage一様な正時間collarの強化はできない。これらの証明正本はそれぞれPart IVと曲面にあり、本研究のPart Iの固定SNC距離・体積定理、Part II/IIIの条件付き性は変えない。今回は該当有限次元計算とmoment ODEだけの対象限定監査であり、総説の再組版・全主張の再検証は実施していない。
+
 ## 同じ曲面射影の体積測度極限
 
 正本は曲面改訂44の `papers/sections/paper/ke_global_metric_realization.tex`、`ke:global-volume-measure`。固定d≥5と既存の同じf_t=p_Tπ_tを用い、ν_t=dV_t/[2π²d(d−4)²]とすると
