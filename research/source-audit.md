@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.6。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。
+2026-11-22 / v1.8。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。
 
 ## 結論
 
@@ -85,6 +85,17 @@ A. Chambert-Loir–Y. Tschinkel, *Igusa integrals and volume asymptotics in anal
   quantitative terminal trivialization、protected rectangular inclusion、uniform local/global/actual comparison、compatible exhaustion with two-metric escape。
 - 一般次数の大域 GH 適用には coarse realization/connectors package `(CP)_d` も必要と明記。
 - Part V の抽象 pruning–transport theorem と `C_5` の有限直径証明は、上記解析仮定と独立な無条件定理として保持。
+
+## 曲面正本の大域距離と全移動基点の確認範囲
+
+確認版は [曲面第34稿・研究資料v3.18](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/2f813ff6d56af90804c3e01d66f30f77012b506f)（2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I v1.6・Part II v2.1・Part III本文へ新しい退化族の入力を追加していない。
+
+- **全域上界の独立内部点検。** `ke:anchor-trimmed-neck-domain`、`ke:same-moment-corner-reference`、`ke:collapsed-tree-common-moment`、`ke:point-to-corner-portal` から `ke:global-ambient-upper` への鎖を読んだ。旧full cornerの経路は除去capを通ってもambient上界に使え、保持集合のintrinsic上界を仮定しない。全端点の分類、anchorの等号境界、同じmoment上の全fiber合併、coreごとの拡大compact接続を確認した。有限galleryのM本に対し、junctionがM−1、両端が2なので接続費用は(M+1)Hである。
+- **下界・局所入力の共同点検。** `ke:global-clipped-cogram-lower` は固定t,m,K、0<S≤R、任意の非負誤差εに対する有限評価であり、ε→0やS/R→1は最後の対角化で用いる。Sourceを含む固定Pのshell補題 `ke:source-inclusive-fixed-shell` は、同一の非零正則体積frameと固定rでSongのfixed-compact収束を適用し、Rochon–Zhangのcusp評価からmoment主項とshell横断下界を得る。これらの指定証明と一次箇所は各担当が照合した結果を同期しており、本資料の編集担当が全外部解析を再証明したという意味ではない。異なるnormal formsのprimitive差、固定compactとmoving exhaustion、protected距離とambient距離を区別する。
+- **有限targetの独立内部点検。** `topo:cubical-local-models`、`topo:cubical-moving-blowups` の全局所閉球とmoving-basepointの証明を読んだ。Support二元の折れ点e_i+e_jもbookであり、三座標全て1の点だけが全角3π/2の錐となる。固定局所錐のfull-ambient閉球へ移し、成分錐から逃げる場合はpositive-starの退出費用でbook又は平面を得る。四型の任意の有限基点は、任意の拡大列で実現できる。
+- **実曲面への移送。** `ke:distortion-to-pointed-balls` はcompact geodesic spaces間の全射の歪みδから、全中心・同半径閉球の基点付きGH距離≤3δ/2を与える。`ke:intermediate-moving-classification` は同じf=pπを用い、a→∞、a/R→0、Rε/a→0の条件下で全型と実現を移す。Core・変更collarへの既存の一様成分錐も保持する。一般的な局所cone幾何・GH移送自体の新規性を主張せず、任意尺度・tensor収束・極限交換へ拡張しない。
+
+この指定範囲で結論を妨げるgapは認めなかった。全曲面原稿・Part IV原著の包括的再監査、外部査読、形式証明、網羅的な先行研究比較は未了である。CP/PBE/TC、H_loc/H_anc、controlled push-off、同じπでのatlas/GH同時実現の検証状況は変わらない。
 
 ## 固定次数 `d ≥ 5` の検算
 

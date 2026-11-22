@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.6（2026年11月22日）}
+\date{現行総説 v1.7（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -290,6 +290,9 @@ actual曲面fibrationとsame-map GH実現は
 上界は同一momentのsource退出・component接続・有限target galleryを用いる．
 第IV篇の全深部triple比較とclosed-corner比較等を利用するが，
 局所protected距離を全曲面ambient距離へ読み替えない．
+特に上界では旧full corner内の経路を使い，core cutで除いたcapを通っても
+ambient経路として許す．同一moment上の全fiber合併と両端を接続するため，
+target線分の厳密な持上げや保持領域のintrinsic上界は必要ない．
 次数・配置に一様な定数，任意に先指定した木系，最適収束速度は結論しない．
 \(f_t\)のfiberは\(\pi_t\)のfiberの合併であり，両者を同じLagrangian fiberと呼ばない．
 同じ\(\pi_t\)に作用適合atlasを課す条件はGH実現と区別する．さらに\(d\ge7\)では，曲面論文の系\texttt{ke:global-core-nonmatroidal}が，この同じ基底のcore頂点にmatroidal chartを置けないことを示す．これは選んだ基底の局所位相障害であり，全てのfibrationや収縮先\(\cC_d\)についての不存在主張ではない．
@@ -300,30 +303,68 @@ actual曲面fibrationとsame-map GH実現は
 特に第III篇のpositive conifold square模型と本節のunit cubical metricは
 異なる対象であり，source局所方程式の形だけを根拠に移送しない．
 
-\begin{remark}[成分の距離錐と選択した中間尺度]
-曲面論文の命題 \texttt{topo:component-cone-germ} は，
-\(\cC_d\)の成分頂点 \(e_i\) を中心とする半径 \(0<r<1/2\) の閉球が，
-Part Iの固定成分の錐 \(C_{2,d-1}\) の半径 \(r\) の閉球と，
-ambient距離で等長であることを示す．さらに同論文の系
-\texttt{ke:intermediate-component-cone} は，\(\varepsilon_t=\operatorname{dis}(f_t)\) として
+曲面論文の補題 \texttt{ke:source-inclusive-fixed-shell} は，sourceを含む固定残余compact
+と半径\(r\)を先に固定し，同一の非零正則体積frameで全ての小さい複素\(t\)を扱う．
+\(s_r=-\log r^2\)としてmomentの主項\(\pm4\pi/s_r\)と，小\(r\)に共通な
+shell横断費用を得るが，\(t\)の閾値は\(r\)に依存してよい．
+異なる正規形のprimitiveの一致や残余period消滅は追加しない．
+また補題 \texttt{ke:global-clipped-cogram-lower} は，固定\(t,m,K\)，
+\(0<S=\Rt-\log m-\log K\le\Rt\)におけるco-Gram上界
+\((1+\epsilon)\mathrm{Id}\)，\(\epsilon\ge0\)，から
+\[
+ L_\square(\Theta_t\gamma)
+ \le\frac{\Rt\sqrt{1+\epsilon}}S L_{\Rt^{-2}g_t}(\gamma)
+\]
+を任意のrectifiable curveに対して得る有限parameterの不等式である．
+誤差消失は全固定段階の選択を終えた後のslow diagonalで用いる．
+
+\begin{remark}[同半径閉球の比較と全移動基点の中間尺度]
+曲面論文の補題 \texttt{ke:distortion-to-pointed-balls} は，compact geodesic spaces間の
+全射の歪みが\(\delta\)以下なら，対応する中心・同じ半径のambient閉球の
+基点付きGH距離を\(3\delta/2\)以下とする．定数は中心と半径に一様であり，
+全域写像自体が同半径球の間の全射であることは要求しない．
+
+同論文の命題 \texttt{topo:cubical-local-models} と
+\texttt{topo:cubical-moving-blowups} は，有限targetの全局所型と全移動基点の拡大極限を
+\[
+ (C_{2,d-1},z),\qquad
+ (\RR\times\mathcal Y_{d-2},(0,z)),\qquad
+ (\mathcal K_{3\pi/2},z),\qquad(\RR^2,0)
+\]
+と記述する．\(\mathcal Y_m\)は原点で貼った\(m\)本の半直線，
+\(\mathcal K_{3\pi/2}\)は全角\(3\pi/2\)のEuclidean coneである．
+成分頂点では第一型，support二元の点（\(e_i+e_j\)を含む）では第二型，
+三座標が全て\(1\)の頂点では第三型，残る点では平面が局所模型となる．
+閉球の距離は全targetのambient距離の制限であり，移動基点の極限では表示した
+各\(z\)を任意の有限基点としてよい．
+
+正規化した全域写像の歪みを\(\varepsilon_t=\operatorname{dis}(f_t)\)とする．系
+\texttt{ke:intermediate-moving-classification} は
 \[
  a_t\longrightarrow\infty,\qquad
  \frac{a_t}{\Rt}\longrightarrow0,\qquad
  \frac{\Rt\varepsilon_t}{a_t}\longrightarrow0
 \]
-を満たす尺度では，\(x_{i,t}\in f_t^{-1}(e_i)\) を基点とする
-\((X_t,a_t^{-1}d_{g_t},x_{i,t})\) が \(C_{2,d-1}\) にpointed GH収束することを示す．
+の下で，任意の\(t_\nu\to0\)と\(x_\nu\in X_{t_\nu}\)に対する
+\((X_{t_\nu},a_{t_\nu}^{-1}d_{g_{t_\nu}},x_\nu)\)の全部分列極限を上の四型に分類する．
+任意の許容尺度・退化列で各型を実現できる．実際，\(\lambda_t=\Rt/a_t\)，
+\(\delta_t=\lambda_t\varepsilon_t\)と置けば，同じ全射\(f_t\)によりactual曲面と
+\((\cC_d,\lambda_t d_\square)\)の同半径閉球を\(3\delta_t/2\)で比較できる．
 例えば \(a_t=\Rt\sqrt{\varepsilon_t+\Rt^{-1}}\) と選べる．
-より一般に，\(A_t\subset X_t\)について
+
+成分頂点の半径\(0<r<1/2\)の厳密な錐同定
+\texttt{topo:component-cone-germ}と，既存の系
+\texttt{ke:intermediate-component-cone}も保持する．\(A_t\subset X_t\)について
 \(\eta_t=\sup_{y\in A_t}d_\square(f_t(y),e_i)\to0\)なら，
 第三条件を \(\Rt(\varepsilon_t+\eta_t)/a_t\to0\)に強めることで，
-全\(y_t\in A_t\)を基点とする収束を各固定半径で一様に得る．
+全\(y_t\in A_t\)を基点とする\(C_{2,d-1}\)への収束を各固定半径で一様に得る．
 同じfibrationのcomponent coreと変更collarの合併はこの条件に適合し，
 \(a_t=\Rt\sqrt{\varepsilon_t+q_t}\)，
 \(q_t=(1+\log(N_{j(t)}+1))/\Rt\to0\)を選べる．
 
-証明の正本は曲面repoであり，これは同じglobal GH写像と有限target幾何からの帰結である．
-任意に先指定した中間尺度での収束，full tensor比較，二つの極限の交換を意味しない．
+証明の正本は曲面repoであり，同じglobal GH写像と有限target幾何からの帰結である．
+局所錐とGH移送の一般原理を新規成果とは扱わない．全域歪みの速度は未評価なので，
+上の誤差条件を除いた任意の中間尺度，full tensor比較，二つの極限の交換は結論しない．
 \end{remark}
 
 \begin{remark}[五次の場合に Part II が直接入力でない理由]
@@ -544,7 +585,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
-\item 第IV篇のcapped volume・full-triple・closed-corner・固定成分収束と，曲面論文のscalar/portal・core fillingを定理単位で照合する．同じ写像，fixed段階からslow diagonalへ進む順序，全曲面ambient距離の上下界を確認する．
+\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．
 \item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
@@ -570,9 +611,11 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂33，2026年11月22日，
+\newblock 改訂34，2026年11月22日，確認commit \texttt{2f813ff}，
+\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/2f813ff6d56af90804c3e01d66f30f77012b506f/papers/surface-lagrangian-torus-fibration.tex}{確認版ソース}，
 \newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
-\newblock 定理 \texttt{ke:global-metric-realization}，系 \texttt{ke:intermediate-component-cone}．
+\newblock 定理 \texttt{ke:global-metric-realization}，
+\newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}．
 
 \bibitem{RZ}
 F.~Rochon and Z.~Zhang,

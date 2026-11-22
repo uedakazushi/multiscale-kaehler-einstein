@@ -1,12 +1,12 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.7（Part I v1.6）
+更新：2026-11-22 / v1.8（Part I v1.6、総説v1.7）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.13・commit 29714a9](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/29714a96102498a28d3531ad43999e6b935a2897)と[曲面改訂33・研究資料v3.16・commit 0c4457c](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/0c4457c9a9ce5785229ccd932e458e1ca6c64f6e)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合は定理と仮定・適用先の照合であり、外部の全証明の独立再検証ではない。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.14・commit e6b2a4d](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/e6b2a4dac7242260dd199894ff2e826ec04e7742)と[曲面改訂34・研究資料v3.18・commit 2f813ff](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/2f813ff6d56af90804c3e01d66f30f77012b506f)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合と下記の指定証明鎖の内部点検を、外部の全証明の独立再検証とは区別する。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -17,6 +17,9 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | Part IV `simplex:cor:actual-closed-corner-metric`, `pair:thm:fixed-end-moment` | Closed tripleの内在・protected距離、および固定source-free residual compact上のmoment入力。全曲面ambient距離や任意のmoving exhaustionへの一様性へ拡張しない。 |
 | Part IV `coarse:hyp:TC5`, `coarse:thm:main`; Part V `hyp:CPd`, `hyp:PBEd`, `thm:degree-d-limit` | Part IVの五次coarse定理は(TC)5付き。Part Vの大域適用は(CP)d＋(PBE)d付き。有限targetの直径 `thm:intro-diameter-C5` は独立。 |
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
+| 曲面 `ke:source-inclusive-fixed-shell`, `ke:global-clipped-cogram-lower` | Sourceを含む固定残余compact・固定rでの同一frameのmomentとshell横断下界。有限stageのco-Gram不等式を極限操作から分ける。異なるnormal formsのprimitive一致、任意moving exhaustionは含まない。 |
+| 曲面 `topo:cubical-local-models`, `topo:cubical-moving-blowups` | 全targetのambient局所閉球から成分錐、book、角3π/2の錐、平面を得る。全moving拡大極限と任意拡大列での各有限基点の実現。 |
+| 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
 
 曲面側の入力一覧・適用証明の正本は同repoの `research/ke-dependencies.md`。P0はPart Iのfull rough-isometry theorem全体を入力にせず、固定成分のSNC cusp評価とfixed-compact収束を用いる。本repoの総説は上の接続と条件を要約し、本文の証明を複製しない。依存定理が変わったら正本を先に保存し、利用先・総説・research-hubを追随させる。
 
@@ -181,13 +184,40 @@ Connectionの残余角係数は対応faceで消え、通常接方向の係数は
 
 **一次入力と監査範囲。** Rochon–Zhang, [arXiv:1106.0873v2](https://arxiv.org/html/1106.0873v2), Lemma 1.1・(1.10)–(1.15)、Lemma 2.4・(2.25)–(2.29)、Ξの(2.43)–(2.46)、背景形(5.3)、(5.10)、Theorem 5.1を直接照合した。Albin–Melrose, *Resolution of smooth group actions*, [arXiv:1012.5765v1](https://arxiv.org/pdf/1012.5765), Definition 1.1・Proposition 1.2・(1.3)–(1.4), pp.4–5の固定defining functionsに対するboundary product constructionを用い、SNCのtorus図式に必要な相対boundary条件を本文で証明した。全S¹の交わりへ、異なるfiber次元を要求する一般iterated-fibration theoremをそのまま引用していない。三補題と適用鎖は複数担当で独立に読み合わせた。Part Iの他の全証明や、退化族のparameter一様性、Part IIIのactual localizationはこの点検範囲に含めない。
 
-## 成分の距離錐と選択した中間尺度
+## 曲面側の固定段階入力と全域ambient接続
 
-曲面repoの `topo:component-cone-germ` では、成分頂点 e_i の半径0<r<1/2の閉球が C_{2,d−1} の同半径球とambient距離で等長であることを証明する。正規化global distortionを ε_t=dis(f_t) と置くと、同repoの `ke:intermediate-component-cone` は
+証明の正本は曲面第34稿。`ke:source-inclusive-fixed-shell` では、三重点を避けsourceを含んでよい固定残余compact P⊂int P+上で、同じ射影正規形 x′y′=t h_t(p)と非零正則体積frame Ω_t=dlog x′∧dp=−dlog y′∧dpを用いる。Ω_tはsourceにも延びる。先にPとrを固定し、s_r=−log r²と置くと、全base points・phaseについてmomentは±4π/s_r+O(s_r^(−1−δ))+o_t(1)。O定数は小rに共通だが、tの閾値はrに依存してよい。r²≤|x′|≤rのshell横断費用はc_P log2以上となる。Songのfixed-smooth-locus収束とRochon–Zhangの成分cusp評価を用い、任意の小さい複素tを扱う。別normal formのprimitiveとの差はclosed項として保持し、同一性や残余period消滅を追加しない。
+
+`ke:global-clipped-cogram-lower` は一つのt,m,Kを固定し、S=R−log m−log K∈(0,R]、ε≥0とする。Strictにactiveな共変ベクトルの全co-Gram matrixが(1+ε)Id以下なら、任意のrectifiable curve γについて
+\[
+L_\square(\Theta_t\gamma)\le \frac{R\sqrt{1+\epsilon}}S L_{R^{-2}g_t}(\gamma).
+\]
+これは有限parameterの不等式で、εの小ささやε→0を補題の仮定にしない。q=S/(R√(1+ε))には1−q≤(log m+log K)/R+ε/2が成り立ち、固定targetの直径から加法誤差へ移せる。誤差消失は全局所定数・core深度・clipping parametersを選んだ後のslow diagonalでのみ課す。
+
+全域上界は `ke:same-moment-corner-reference`、`ke:coherent-corner-portals`、`ke:point-to-corner-portal`、`ke:global-ambient-upper` のendpoint比較で得る。旧full corner内の経路は除去capを通ってもambient経路として有効で、保持領域内に閉じ込めない。同じmoment上の異なる葉とsource・saddleを含む全fiber合併を接続し、成分側は一つの成分ごとに拡大固定compact内で接続する。固定PとC_j^neckをN_j前に選び、C_j^neck≤1+log(N_j+1)で吸収する。M本のgalleryにはM−1のjunctionと両端の二接続が必要で、合計(M+1)Hとなる。Anchor等号境界、support二元の旧corner辺、同じanchorを持つ両端点まで点検した。Strictなtarget曲線の持上げやfiber内の経路は入力にしない。
+
+## 曲面の全移動基点と選択した中間尺度
+
+曲面repoの `topo:component-cone-germ` は、成分頂点e_iの半径0<r<1/2の閉球がC_{2,d−1}の同半径球とambient距離で等長であることを示す。`topo:cubical-local-models` は全target点を次の四型に分類する。
+
+| targetの中心 | 局所模型 |
+| --- | --- |
+| 成分頂点e_i | C_{2,d−1} |
+| Support二元、e_i+e_jを含む | R×Y_{d−2}。Y_mは原点で貼ったm本の半直線 |
+| e_i+e_j+e_k | 全角3π/2のEuclidean cone K_{3π/2} |
+| 残るsupport三元の点 | R² |
+
+`topo:cubical-moving-blowups` は任意のλ_ν→∞とtarget移動基点に対する全部分列極限を、これらの空間の任意の有限基点として記述し、任意のλ_νで全型を実現する。Bookのspine方向は平行移動で除ける。固定局所球のfull-ambient等長を使い、成分錐から逃げる基点はpositive-starを出る経路の2(m_ν−A)>2Aという費用でbook又は平面へ分類する。角3π/2の錐から逃げる場合は平面となる。閉star全体のambient積を仮定せず、標準的な有限cone幾何の新規性を主張しない。
+
+`ke:distortion-to-pointed-balls` は、compact geodesic spaces間の全射Fの歪みがδ以下なら、任意の中心x・同じ半径Aのambient閉球の間に、基点対を含む歪み3δ以下の対応を与える。従って基点付きGH距離は3δ/2以下である。全射の逆像が球からはみ出す分をsource最短路で戻すため、F自体が球から同半径球への全射である必要はない。
+
+正規化global distortionをε_t=dis(f_t)と置く。同じf=p_Tπについて `ke:intermediate-moving-classification` は
 \[
 a_t\to\infty,\qquad a_t/R_t\to0,\qquad R_t\varepsilon_t/a_t\to0
 \]
-の下で、x_{i,t}∈f_t^{-1}(e_i)を基点とする (X_t,a_t^{-1}d_{g_t},x_{i,t}) のpointed GH極限が同じ錐になることを示す。a_t=R_t√(ε_t+1/R_t)は一つの許容選択である。一般に $\eta_t=\sup_{y\in A_t}d_\square(f_t(y),e_i)\to0$ なら、誤差条件を $R_t(\varepsilon_t+\eta_t)/a_t\to0$ とすることで全基点 $y_t\in A_t$ に一様となる。同じfibrationのcomponent coreと変更collarの合併には $\eta_t\le Cq_t$、$q_t=(1+\log(N_{j(t)}+1))/R_t\to0$ を使い、$a_t=R_t\sqrt{\varepsilon_t+q_t}$ を選べる。二つの証明の正本は[曲面repo](https://github.com/uedakazushi/surface-lagrangian-torus-fibration)の現行主稿。これは同じglobal mapとtarget小球の幾何から得る帰結で、Part Iの固定空間の極限との任意の極限交換や、任意指定尺度での収束は述べない。
+の下で、任意のt_ν→0とx_ν∈X_{t_ν}のpointed GH部分列極限を上の四型に分類する。λ_t=R_t/a_t、δ_t=λ_tε_tとすれば、actual曲面と拡大targetの同半径閉球を全中心に一様に3δ_t/2で比較できる。任意の許容尺度と退化列でtarget基点を選び、f_tの任意の逆像を取ると各型を実現する。a_t=R_t√(ε_t+1/R_t)は一つの許容尺度である。速度を評価していないε_tの条件を除いた任意の中間尺度、tensor収束、標識の復元、二つの極限の交換は結論しない。
+
+既存の `ke:intermediate-component-cone` も保持する。一般に $\eta_t=\sup_{y\in A_t}d_\square(f_t(y),e_i)\to0$ なら、$R_t(\varepsilon_t+\eta_t)/a_t\to0$ により全基点 $y_t\in A_t$ に一様な成分錐を得る。同じfibrationのcomponent coreと変更collarの合併には $\eta_t\le Cq_t$、$q_t=(1+\log(N_{j(t)}+1))/R_t\to0$ を使い、$a_t=R_t\sqrt{\varepsilon_t+q_t}$ を選べる。これらはsurface側の同じglobal mapからの帰結であり、Part Iの固定空間の極限を族一様に読み替える証明ではない。
 
 ## Actual global pGHの障害
 Part IIIの条件付きpGH theoremでは、全central/lateral/ordinary/tie wall layersでtemplate lifts・kernel connectors・zero-cost quotient directionsが整合するtracked liftingを仮定する。actual KE metricでこの誤差を一様 \(o(R)\) に抑える部分は未証明。fixed nodeのqualitative local localizationとは別問題である。
