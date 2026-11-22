@@ -1,5 +1,18 @@
 # 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
-更新：2026-11-22 / v1.10（Part I v1.6、総説v1.9）
+更新：2026-11-22 / v1.11（Part I v1.6、総説v1.9）
+
+## 公表に向けた実行計画
+
+数学的重要性、新規性、理解の深化、応用可能性、正確性、読者による検証、実現可能性を総合し、研究全体の価値を最大化する。[三研究の公表計画](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/00_research_plan.md)と共同で進め、本repoではPart Iを第一優先とする。既存の五篇の順番を公表の条件にしない。
+
+1. 距離錐と精密な体積漸近を中心に、一般SNCへの適用とRochon–Zhangからのtensor入力、全域の加法誤差への接続を読者が追える形にする。
+2. 実球裾係数 \(W(o)=\lim_{R\to\infty}e^R\operatorname{vol}(X\setminus B(o,R))\) の内在性、基点比較、compact基点集合上の一様性を証明する。面質量とoffsetの表示について、幾何学的量と座標規格化を区別する。
+3. 非可積分な小さいcusp誤差から距離の対数補正と裾の多項式因子が現れる明示例を点検する。KE計量ではない例は解析仮定の役割を示す例として限定し、KEの反例とはしない。
+4. Leuzingerの局所対称空間の錐、Chambert-Loir–Tschinkelのheight積分・residue measuresとの対象・observable・仮定の差を一次資料で確定する。既存原理を新規成果に数えず、個別検索で未発見であることを新規性の証明としない。
+5. Part IIの無条件Torelliと条件付きWP、Part IIIの(H_loc)+(H_anc)付き局在を保持し、Part I完成の阻害要因にしない。総説は中心結果と現在の依存関係を示す入口とする。
+
+達成基準は、主張・仮定・証明・先行研究比較を整合させ、変更証明の独立内部点検、LuaLaTeX組版と変更箇所の表示確認を終えること。これは外部査読・新規性の網羅的確認・投稿の完了を意味しない。本文と研究ノートを正本として保存し、その結果に基づき曲面側の依存表とresearch-hubを更新する。共通の一般原則・保存許可は本書後半と `AGENTS.md` に記す。
+
 
 ## 研究固有の目標と入口
 固定配置補空間の距離錐・測度漸近、secondary periods・Torelli・WP、conifold gluingを研究する。Part I–IIIの全文と必要な証明を現行原稿に保持し、退化族・actual Lagrangian実現との接続を定理単位で検証する。達成基準は、条件付きの解析段階を隠さず、正本の全文と本ノートだけから入力・適用範囲・残る核心を追えることである。
