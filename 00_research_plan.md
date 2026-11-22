@@ -1,5 +1,5 @@
 # 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
-更新：2026-11-22 / v1.14（Part I v1.7、総説v1.12）
+更新：2026-11-22 / v1.15（Part I v1.7、総説v1.12）
 
 ## 公表に向けた実行計画
 
@@ -16,7 +16,9 @@
 
 ### 実行状況と次の課題
 
-Part I v1.7の裾係数の内在性・compact基点一様性、norm gauge、非KE cusp例、K5非CAT(0)比較は指定証明の独立内部点検を保持する。総説v1.12はPart IV v1.11のcapped下界補強と曲面改訂41の五次同時atlas/GHを統合する。五次ではactual両端period条件、全moment strict cuts、source固定輸送と全open overlapsを構成し、同じactual射影による作用atlasとGH実現まで本文に証明した。初期source葉を選ぶ存在主張で、任意先指定のfull source tailsへの相対存在は含まない。六次Petersenの同時実現は未解決である。次は中心結果の公表用構成・先行研究比較と残る未点検証明を詰める。総説v1.12だけを18頁に再組版し、最終1–4・7–12・17–18頁の計12頁を150dpiで実表示した。最後の記号整理の影響頁を再表示し、他の選択頁のPNG同一性も確認した。主要ログ6分類は全て0で、表示範囲に欠け・重なりはない。Part I–IIIと研究素材の本文はHEADとbyte同一で再組版せず、以前の検証記録を保持する。全頁視覚検査・全稿再監査ではない。頁数・hash・実施範囲の正本は `research/validation.json` とする。
+Part I v1.7の裾係数の内在性・compact基点一様性、norm gauge、非KE cusp例、K5非CAT(0)比較は指定証明の独立内部点検を保持する。現行の曲面接続先は[改訂42・数学確認commit 497b241](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/497b241898bc91787aacb09a97754fa2ea0fccf8)であり、全平行移動を含む三面共通の整数格子延長、source-free面積式の適用範囲、thin source葉の選択とGH定数の独立性を研究資料へ同期した。五次の同時実現は各固定tの同じ射影に作用atlasとGH実現を持たせる存在主張で、atlasのt方向の収束、極限のintegral affine構造、Hessian又はMonge–Ampère性は含まない。任意先指定のfull source tailsへの相対存在と六次Petersenの同時実現も別に残る。次は中心結果の公表用構成・先行研究比較と残る未点検証明を詰める。
+
+本資料v1.15は文書同期のみで、Part I–III、研究素材、総説TEXを変更・再組版しない。総説v1.12はPart IV v1.11と曲面改訂41を引用する既存のチェック済み版であり、改訂42の追記を総説本文へ反映済みとは扱わない。18頁の組版、最終1–4・7–12・17–18頁の150dpi実表示、主要ログ6分類0と記号整理後の再表示・PNG同一性確認は、その版についての既存記録として保持する。以前の入力確認pin、頁数、hash、実施範囲の正本は `research/validation.json`。今回の独立内部点検は指定された接続に限り、一般成分別面積定理、P0全体、外部解析原著の全面再監査ではない。
 
 ## 研究固有の目標と入口
 固定配置補空間の距離錐・測度漸近、secondary periods・Torelli・WP、conifold gluingを研究する。Part I–IIIの全文と必要な証明を現行原稿に保持し、退化族・actual Lagrangian実現との接続を定理単位で検証する。達成基準は、条件付きの解析段階を隠さず、正本の全文と本ノートだけから入力・適用範囲・残る核心を追えることである。
@@ -49,7 +51,7 @@ Part I v1.7の裾係数の内在性・compact基点一様性、norm gauge、非K
 LDPはexact-supportへの制限測度の下界を使わず、full collarの正質量compact残余集合をscaled ambient open setへ入れて証明する。残余raw座標はO(1)なのでRで割れば消え、既存のvolume-IRFAで足りる。`lem:level`→`lem:calibration`→`lem:vertex-tightness`→`thm:tail`→`thm:joint` は一面比較・全faceのconditional moment評価・距離上界から直接閉じ、co-Gram下界・LDP下界への依存を除いた。一般重みの角分布の分母は最小entropyのverticesだけの重み総和である。これらの鎖は複数担当で限定的に点検したが、全主張の外部査読・形式証明・新規性確認は未了。
 
 ## 曲面正本の全移動基点と固定段階の入力
-[現行曲面稿（改訂41）](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/main)に保持する `topo:cubical-local-models` と `topo:cubical-moving-blowups` は、成分頂点の $C_{2,d-1}$、二元supportのbook $\mathbb R\times\mathcal Y_{d-2}$、三座標が全て1の頂点の全角 $3\pi/2$ の錐、残る点の平面を、全targetのambient局所閉球から記述する。移動基点が局所錐内で逃げる場合もpositive-starの退出費用を使い、これらの任意の有限基点で全型を尽くす。
+[現行曲面稿（改訂42）](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/497b241898bc91787aacb09a97754fa2ea0fccf8)に保持する `topo:cubical-local-models` と `topo:cubical-moving-blowups` は、成分頂点の $C_{2,d-1}$、二元supportのbook $\mathbb R\times\mathcal Y_{d-2}$、三座標が全て1の頂点の全角 $3\pi/2$ の錐、残る点の平面を、全targetのambient局所閉球から記述する。移動基点が局所錐内で逃げる場合もpositive-starの退出費用を使い、これらの任意の有限基点で全型を尽くす。
 
 同じ全射の歪みが $\delta$ 以下なら、`ke:distortion-to-pointed-balls` により対応する中心・同じ半径の閉球の基点付きGH距離は $3\delta/2$ 以下である。従って `ke:intermediate-moving-classification` は、$a_t\to\infty$、$a_t/R_t\to0$、$R_t\varepsilon_t/a_t\to0$ の下で、actual曲面の任意の移動基点の全部分列極限を四型に分類し、任意の許容尺度・退化列で全型を実現する。既存のcomponent core・変更collarの一様成分錐も保持する。速度未評価の $\varepsilon_t$ に対する条件を除いた任意尺度、tensor収束、極限交換は含まない。証明は曲面repoに保持し、局所錐とGH移送の一般原理の新規性は主張しない。
 
@@ -62,7 +64,9 @@ LDPはexact-supportへの制限測度の下界を使わず、full collarの正�
 
 `ke:anchor-liouville-actions` と `ke:actual-anchor-fan-criterion` は、anchor $q_a=\delta_a$、$M_a=\delta_a-\rho_a<0$ 上の有限critical periodsから、actual Liouville fillingのK4／Petersen作用chartを得る十分条件を与える。Critical period Aの延長は $A(q_a-\rho_a)/M_a$ なので、neckの直線c+pq_aとの一致には同じprimitive/frameでA=pM_a、c=−pρ_aが必要である。残余primitiveの定数差と整数shearも保持する。`ke:anchor-stokes-budget` の総量式はactual clutching relationを入力とし、source固定集合を避ける面積輸送の可解性を自動的に与えない。
 
-五次の `ke:k4-actual-neck-periods` は、正weightsのrow sumsとactual source countsにより両端のaffine critical periodsの整合を有限等式へ帰着する。共通primitive差χとactual meridian/source framingsを保持し、独立な加法定数で切片を修正しない。`ng8:quintic-full-moment` は、解析的cutsとP_jを先に固定し、その内部で初期source葉の全tailsを小さく選んで全momentのstrict cutsを満たす。全K2 partitions・中央full nodal neighborhoods・canonical momentsを保持し、最後のfree bandで同じtargetへの相対面積補正を再実行してcoreとの全open germsを合わせる。`ke:quintic-simultaneous-realization` はwhole-fiber閉商、整数作用star transition、相対GH安定性をつなぎ、同じπでの大域atlas/GHを得る。等重みと対称六系の(3,1,1) allocationで条件は実現される。任意先指定の大source tailsへの相対存在とt連続性・速度は含まない。六次Petersenではinternal annuliの二端cuts・actual periods・全overlap整合が残る。指定証明は独立内部点検済みであり、一般的な有限輸送・Moser・Stokes・GH移送・cone extensionの新規性は主張しない。
+五次の `ke:k4-actual-neck-periods` は、正weightsのrow sumsとactual source countsにより両端のaffine critical periodsの整合を有限等式へ帰着する。共通primitive差χとactual meridian/source framingsを保持し、独立な加法定数で切片を修正しない。`ng8:quintic-full-moment` は、解析的cutsとP_jを先に固定し、その内部で初期source葉の全tailsを小さく選んで全momentのstrict cutsを満たす。Source同定S_tとend補正Dは先に固定し、thin葉は引戻し座標で選ぶ。全同一moment集合のconnectorとclipped-depth下界を使うため、葉の幅・微分に依存するGH定数又は追加t閾値を持ち込まない。Source-free bandの `ng8:central-criterion` までの面積affine性はμ=0の固定点を横切る全neckへ適用せず、後者ではwall項を含む面積式を使う。全K2 partitions・中央full nodal neighborhoods・canonical momentsを保持し、最後のfree bandで同じtargetへの相対面積補正を再実行してcoreとの全open germsを合わせる。
+
+`ke:quintic-simultaneous-realization` はwhole-fiber閉商、整数作用star transition、相対GH安定性をつなぎ、各tの同じπでの大域atlas/GHを得る。`ke:eq:quintic-affine-full-transition` は三面に共通する平行移動まで含むGL(3,Z)延長を示し、非対称正weightsも許す。等重みと対称六系の(3,1,1) allocationは存在を保証する。作用atlasのt極限、極限基底のintegral affine構造、cubical距離のHessian・Monge–Ampère性、任意先指定の大source tailsへの相対存在、t連続性・速度は含まない。六次Petersenではinternal annuliの二端cuts・actual periods・全overlap整合が残る。今回の対象限定監査と以前の一般面積輸送・解析入力の確認範囲を区別し、一般的な有限輸送・Moser・Stokes・GH移送・cone extensionの新規性は主張しない。
 
 ## 移動基点とlinkの確立範囲
 `prop:cone-limits` はcomponent incidencesを保つ正のface領域で積構造を用い、各壁までの距離が2Aを超える場合に、閉A球のambient距離を積の距離と厳密に同定する。これによりmoving-basepointの全部分列極限と各型の実現を証明する。閉star全体のambient積という誤った主張は用いず、短絡・境界同一視の例をノートに保持する。
