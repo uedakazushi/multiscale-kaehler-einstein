@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.16（Part I v1.8、総説v1.12）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。Part I v1.8は69頁の組版成功と指定10頁の150 dpi実表示を確認した。主要6分類の警告・errorは零、表示した頁に切れ・重なり・欠字を認めなかった。Part II–III・研究素材・総説TEXは変更しない。総説v1.12は曲面改訂41を引用するチェック済み版として入力pin・組版hashを保持し、今回のPart I追加・曲面改訂43を総説へ反映済みとはしない。
+2026-11-22 / v1.17（Part I v1.9、総説v1.13）。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。実行済み組版・対象限定の内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。Part I v1.9は73頁、総説v1.13は20頁にLuaLaTeXで組版し、両稿とも未定義参照・引用、重複label、欠字、LaTeX error、overfull/underfullの主要6分類は零である。Part Iの指定13頁、総説の指定14頁を150 dpiで実表示し、切れ・重なり・欠字を認めなかった。Part Iの命題・再和式の頁跨ぎは連続性を保ち判読できる。全頁の逐頁表示ではない。Part II–III・研究素材のTeXと有効な既存検証記録は変更しない。数学的点検・組版・表示範囲の正本は `research/validation.json`。 総説はPart Iの新命題・系、Part IV v1.12、曲面改訂43の現行結果を反映する。
 
 ## 結論
 
@@ -16,7 +16,7 @@
 
 | 篇 | 無条件で保持した中核 | 明示仮定下へ変更した部分 |
 |---|---|---|
-| I | 距離錐、測度付きtranslation、LDP、face mass、exact tail、一様Mellin recursion、actual KE積の距離Laplaceの対数項 | 通常の全face volume-IRFA。距離を用いる結論にはmetric-IRFA。複素normal-depth Mellin continuationには残余L1で制御したjoint polyhomogeneity。実距離LaplaceはKE積でも非有理型の例を持つ |
+| I | 距離錐、測度付きtranslation、LDP、face mass、exact tail、一様Mellin recursion、積の距離Laplaceの複素対数germと基点距離分布の復元 | 通常の全face volume-IRFA。距離を用いる結論にはmetric-IRFA。複素normal-depth Mellin continuationには残余L1で制御したjoint polyhomogeneity。実距離LaplaceはKE積でも非有理型の例を持つ |
 | II | oriented/full/generic Torelli、finite period closure、branch separation、全四点 metric、minimal-excess completion | 一般 secondary WP completion |
 | III | algebraic models、canonical cell、positive model pGH、abstract scalar gluing、residual Torelli/WP | actual localization、anchors、portal transport、actual global pGH |
 | IV | 明記した局所模型・full-triple/closed-corner比較、source packing、固定次数の代数・残差 package | 五次exterior粗比較は(TC)5、moving-window product exhaustionとsharp co-GramはPBE |
@@ -41,13 +41,21 @@ A. Chambert-Loir–Y. Tschinkel, *Igusa integrals and volume asymptotics in anal
 
 - §§2.1.12–13, pp.361–363 は metrized canonical/normal bundles と adjunction から residue measures を定義する。§3.1.3, pp.378–379 の geometric Clemens complex は divisor labels と交わりの irreducible component の対を持ち、component incidence を記録する。
 - Proposition 4.2, p.388 は smooth metrics と test functions による多変数 Igusa integral の正則化を、Propositions 4.3/4.6, pp.389/394 は主要係数の残余面積分表示を与える。Theorem 4.7 と Corollary 4.8, pp.395–396 は archimedean height balls の体積漸近と面上の測度極限を扱う。
-- §4.2式(4.1), p.393でV(B)は `{||f_L||≥1/B}` の体積と定義される。Theorem 4.7はσ≥0でB^σ P(log B)とpower-saving remainderを与え、Corollary 4.8はσ>0の正規化height-ball measuresを扱う。これらの指定箇所をPart I v1.8の比較にあたり本文で再確認した。本稿の有限体積の実距離球外側やBusemann offsetを、このheight-ball定理の形式的な代入とは扱わない。
+- §4.2式(4.1), p.393でV(B)は `{||f_L||≥1/B}` の体積と定義される。Theorem 4.7はσ≥0でB^σ P(log B)とpower-saving remainderを与え、Corollary 4.8はσ>0の正規化height-ball measuresを扱う。これらの指定箇所をPart Iの実距離比較にあたり本文で再確認した。本稿の有限体積の実距離球外側やBusemann offsetを、このheight-ball定理の形式的な代入とは扱わない。
 - 本稿の変数は `t_i=log(−log ρ_i)` であり、入力は全faceで整合する通常の `L1` volume-IRFA である。各normal parameterが独立に境界へ近付く一側Abel極限・残余parameter一様性と、residual KE mass・実距離球のBusemann phaseへの接続を主張範囲とする。元の algebraic defining norm のべきから作る height balls と実距離球は区別する。
 - 「面測度が Mellin 主要係数に現れる」という一般原理や Clemens incidence の構成そのものを独自成果として扱わない。通常の `L1` IRFA から複素 meromorphic continuation は導かず、本文の joint polyhomogeneity と residual integrability の追加条件を保つ。`prop:Mellin-incidence` は与えられた labelled mixed observables の係数から非空incidenceを検出するものであり、metric link単独からlabelsやmassを回復する主張ではない。
 
 - Grieserの[著者版セミナーノート](https://uol.de/f/5/inst/mathe/personen/daniel.grieser/Lehre/Singular_Analysis_2020/literature/Gri_phg-fcns_2019_03_25.pdf)、§2.1.2、Theorem 2.12・(29)–(31), pp.18–20を再読した。One-variableのpolyhomogeneous expansionとMellin極の次数・係数の対応、有限次数remainderが与える正則半平面を確認した。本稿の多変数化は全partial facesの残余L1 boundsを追加した反復減算として明示し、通常volume-IRFAからの有理型延長や実距離変換への適用は主張しない。
 
 上記は既存の Bridson–Haefliger、Leuzinger、Datar–Fu–Song、Engberg との距離側比較を補う。Exact finite-volume metric-ball tail の同一仮定・同一係数式について網羅的な文献比較は未完であり、検索で直接一致する定理を確定できなかったことを優先権の根拠にはしない。
+
+### 実距離germ・特殊関数・moment一意性の一次比較
+
+- K. Golubev–A. Kamber, *Cutoff on hyperbolic surfaces*, Geom. Dedicata **203** (2019), 225–255。[著者版arXiv:1712.10149v1](https://arxiv.org/pdf/1712.10149v1)、[公刊書誌](https://link.springer.com/article/10.1007/s10711-019-00433-5)。著者版Theorem 1.1、pp.1–2を実読。実際の商距離d_X(x_0,x)と有限面積測度を扱い、R_X=arcosh(volX/(2π)+1)付近への集中を曲面に一様な定数で評価する。上側評価はRamanujan条件と基点のinjectivity radius下界を課す。固定曲面のcusp裾R→∞やコンパクト因子との積のgermを述べる定理ではない。本文確認は著者版に限り、公刊版全文を取得したとはしない。
+- [NIST DLMF §6.6, (6.6.2)](https://dlmf.nist.gov/6.6.E2)、[§8.19, (8.19.7)–(8.19.8), (8.19.12)](https://dlmf.nist.gov/8.19)、[§10.25, (10.25.2)](https://dlmf.nist.gov/10.25.E2)を実読。E_1の−log zとentire剰余、整数次数の対数係数と漸化式、I_1級数を確認した。h(s,b)=sb I_1(b√(s²−1))/√(s²−1)は可除点を級数で補った古典的表示である。[§10.31, (10.31.1)](https://dlmf.nist.gov/10.31.E1)でもK_nの対数係数がI_nとなることを確認した。これらの特殊関数原理の優先権は主張しない。
+- P. Diaconis–D. Freedman, *The Markov moment problem and de Finetti’s theorem: Part I*, Math. Z. **247** (2004), 183–199、[著者版](https://www.stat.berkeley.edu/~aldous/206-Exch/Papers/diaconis_2004.pdf)、Theorem 1、p.184は文献担当が実読した。コンパクト区間の確率測度の全momentsによる一意性を述べ、Hausdorff (1921) に帰属させる。Hausdorff原著の実読は未実施。本稿は多項式稠密性から直接証明し、この標準原理を新規成果に含めない。
+
+積の新命題で個別に検証したのは、実際の積距離からのkernel導出、cusp裾誤差をRe s<3の正則項へ分離する範囲、および幾何学的momentsとの係数同定である。指定文献で同一の積・observable・係数式の既存定理を確定できなかったことは、新規性・優先権の証明ではない。
 
 ### Part Iの公表単位と比較の焦点
 
@@ -59,9 +67,11 @@ A. Chambert-Loir–Y. Tschinkel, *Igusa integrals and volume asymptotics in anal
 - `prop:depth-gauge`：smoothなHermitian norm比が与えるt'_i−t_i=O(e^(−t_i))から、非compact level setsの全残余一様なHausdorff差を評価し、b_iと各幾何学的重みの不変性を証明する。任意定数shiftによるdensity係数の変換は別の規格化恒等式として区別する。
 - `ex:nonintegrable-cusp-tail`：pole距離と面積積分を直接計算し、非KEの回転曲面で同じray/normal massと2πe^ℓ R^a e^(−R)の裾を得る。可積分性を落とすと有限な正規化裾係数が失われる例であり、KE metricやrough cone比較一般の反例ではない。
 
-- `lem:hyperbolic-curve-tail` と `ex:KE-product-distance-log`：finite-area双曲曲線のdeck orbitの最大高さはparabolic translationで割った局所有限性により達成される。垂直距離下界と一つの最大高さのliftの距離公式から、角一様O(v^−2)、曲線裾A(p)e^−R+O(e^−3R)を得る。Compact双曲曲線Yとのactual KE積では、C_o=A(p)∫d_Y²/2>0として実球裾e^−R(W+C_o/R+O(R^−2))、実距離Laplace W/ε+C_o log(1/ε)+O(1)を証明した。Normal densityは厳密な積型で、その深さMellin変換は有理型である。作成担当と統合担当が指定証明を読んだ。実軸上の一側漸近と臨界点近傍への非有理型性であり、slit domainの解析接続や優先権は結論しない。
+- `lem:hyperbolic-curve-tail` と `ex:KE-product-distance-log`：finite-area双曲曲線のdeck orbitの最大高さはparabolic translationで割った局所有限性により達成される。垂直距離下界と一つの最大高さのliftの距離公式から、角一様O(v^−2)、曲線裾A(p)e^−R+O(e^−3R)を得る。Compact双曲曲線Yとのactual KE積では、C_o=A(p)∫d_Y²/2>0として実球裾e^−R(W+C_o/R+O(R^−2))、実距離Laplace W/ε+C_o log(1/ε)+O(1)を証明した。Normal densityは厳密な積型で、その深さMellin変換は有理型である。作成担当と統合担当が指定証明を読んだ。この一側漸近の証明を保持し、次の命題が積の場合の複素解析接続を与える。例の優先権の網羅的確認は未了。
 
-全faceのconditional moments・vertex tightness・actual-ball tailと、weighted total variation・Abel recursionの証明を今回再読した。a.e. conditional measures、exact depth/quotient compatibility、全深い面の密度評価、二つの極限順序、compact subcritical範囲を確認し、この鎖で新たなgapを認めなかった。SNCカラー構成・Rochon–Zhang原著や全Part Iの再監査とは区別する。
+- `prop:compact-product-logarithmic-germ` と `cor:compact-radial-recovery`：任意の閉コンパクト連結Riemann因子Yについて Re s<3 の切断半平面への対数分岐を証明する。作成担当・統合担当・独立担当が実装された本文を読み、Stieltjes下端の正符号、裾誤差の微分を使わない正則剰余、b=0を含む一様支配、Q_nの明示上界、entireなH_o、monodromyの符号、Φの導関数の階乗、compact moment一意性と高次元KE適用を照合した。具体的なgapを認めなかった。研究ノートの球面変形の距離・面積・曲率も独立に照合した。一般KEの等長型・安定性・族一様性を含意しない。
+
+全faceのconditional moments・vertex tightness・actual-ball tailと、weighted total variation・Abel recursionの指定証明には既存の対象限定点検を保持する。a.e. conditional measures、exact depth/quotient compatibility、全深い面の密度評価、二つの極限順序、compact subcritical範囲を確認し、この鎖で新たなgapを認めなかった。SNCカラー構成・Rochon–Zhang原著や全Part Iの再監査とは区別する。
 
 一般的な球包含・有限net・residue-measure原理は独自成果として数えない。公表上の中心は、固定ample SNCのKE tensor入力から全域の距離錐を構成し、残余測度と実距離球のBusemann位相へ接続する定理の組合せである。追加本文の内部点検・組版・表示確認はそれぞれ `validation.json` の実施範囲に従い、網羅的な優先権確認・外部査読・投稿完了とは区別する。
 
@@ -122,7 +132,7 @@ Relative windows の最小深さ、shiftの定数、Savin閾値の後に深さ�
 
 ## 曲面正本の大域距離・相対変更の確認範囲
 
-現行接続先は[曲面改訂43・数学確認commit 102ae9a](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/102ae9a382406bcd14755c216d2bc0ca8bc84321)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I–III本文の新しい退化族入力にはしない。既存の距離・相対面積証明を最初に直接点検した数学版は[改訂36・commit c056ecb](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/c056ecba5d25a55f135e739faab5993582814484)、総説v1.12の確認済み入力は[改訂41・commit 84d8b8b](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/84d8b8b17d9426ede5792a301b5f45ec90eb48da)であり、各pinと現在も有効な確認範囲を保持する。旧pinを現行保存commit又は全稿再監査として扱わない。既存の対象限定監査を保持し、今回直接読んだ同じ射影の体積測度極限を加える。保存と外部組版は曲面正本の検証記録へ分ける。
+現行接続先は[曲面改訂43・保存commit 1716a17](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1716a175dddbccf23e86027c34fba239c0cf527b)（資料確認日2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I–III本文の新しい退化族入力にはしない。総説v1.13はこの確認版とPart IV v1.12（commit `11910259dd1628d542df57d370123d0a40b08d61`）を引用する。以下に保持する対象限定監査は、各指定証明の範囲で有効であり、現行曲面全稿の全面再監査ではない。保存と外部組版は曲面正本の検証記録へ分ける。
 
 - **同じ射影の体積測度極限の直接点検。** 改訂43 `ke:global-volume-measure` の証明を読み、Part Iのbounded-primitive Chern–Weilを用いる各成分質量V_*=2π²(d−4)²と全体積dV_*、固定compactのgraph像の互いの素性・体積収束・clipped-depth値、exhaustionによる残り質量の抑制を確認した。同じfの押出しは成分頂点に質量1/dを置く。p_T^−1(e_i)が一点であることとcompact性によりπの固定位相底空間にも移り、五次の作用指定射影は一様な値比較で同じ結論を持つ。Moving neckの体積評価・追加速度・対角列の変更は用いず、極限測度の全台性を要求しない。
 

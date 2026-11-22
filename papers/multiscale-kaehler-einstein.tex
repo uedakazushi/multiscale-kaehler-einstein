@@ -31,7 +31,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I}
-\fancyhead[R]{\small 現行稿 v1.8}
+\fancyhead[R]{\small 現行稿 v1.9}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{現行稿 v1.8（2026年11月22日）}
+\date{現行稿 v1.9（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -154,8 +154,10 @@ $\log W$は$1$-Lipschitz、裾漸近は固定空間のcompactな基点集合上�
 Abel--Mellin recursionの一様性を導く。
 有限面積双曲曲線とコンパクト双曲曲線のKE積では、実球裾の
 $e^{-R}/R$補正と距離Laplace変換の対数発散を計算する。
-この例は、厳密な積型密度によるnormal-depth transformの有理型性と、
-実距離変換のAbel境界係数との違いを示す。
+さらにコンパクトRiemann因子との積では、距離Laplace変換を
+simple pole、entireな係数を持つ対数項、臨界点を越えて正則な剰余へ分解し、
+その対数係数からコンパクト因子の正規化された基点距離分布を復元する。
+この積に固有の解析接続は、一般のvolume-IRFAから得るAbel境界係数と区別する。
 解析的入力は Rochon--Zhang の recursive facewise cusp asymptoticsである。
 一般位置の $m$ 超平面の $\PP^n$ における補空間では、第一錐は
 $\{u\in\RR_{\ge0}^m:\#\supp u\le n\}$、link は $\sk_{n-1}\Delta^{m-1}$ の all-right spherical realizationとなる。
@@ -460,7 +462,14 @@ Mellinのpole係数として解釈できる。延長領域はremainderの次数�
 実球裾に正の$e^{-R}/R$補正が現れることを示す。
 従って実距離Laplace変換は$W(o)/(1-s)$を引いた後に対数発散し、
 $s=1$近傍へ有理型に延長できない。
-ここで求めるのは実軸上の一側漸近であり、slit domainへの解析接続は主張しない。
+この積ではさらに\cref{prop:compact-product-logarithmic-germ}により、
+slit domain上で$W(o)/(1-s)-H_o(s)\operatorname{Log}(1-s)+G_o(s)$という
+厳密な表示を得る。$H_o$はentireで、そのTaylor係数は
+コンパクト因子の全偶数距離momentsを与える。
+\Cref{cor:compact-radial-recovery}は正規化された基点距離分布を復元するが、
+基点付き等長型や復元の安定性は結論しない。
+この解析接続には積距離と双曲曲線の精密な裾評価を用い、
+一般の通常volume-IRFAの結論を強めるものではない。
 
 \subsection{先行研究との位置関係}
 本稿の local analytic input は Rochon--Zhang による finite-volume K\"ahler metrics の polyfibred-cusp compactification と recursive boundary asymptotics である \cite{RochonZhang}。
@@ -515,6 +524,18 @@ exceptional dual complexの間に幾何学的なhomeomorphismを構成してい�
 測度側では、本稿のLDPはfinite-dimensional exponential kernelに対する
 elementary Laplace boundsをrecursive face decompositionへ適用するもので、
 一般的なlarge-deviation formalismは\cite{DemboZeitouni}に沿う。
+
+Golubev--Kamberは有限面積双曲曲面の実距離分布を扱い、
+$R_X=\operatorname{arcosh}(\vol(X)/(2\pi)+1)$付近への集中を、
+曲面に依存しない定数で評価している
+\cite[Theorem~1.1, arXiv version~1, pp.~1--2]{GolubevKamber}。
+そのupper tail評価はRamanujan条件と基点のinjectivity radiusの正の下界を仮定し、
+体積が発散する曲面族における集中を捉える。
+本稿の\cref{lem:hyperbolic-curve-tail}は固定した$S$で$R\to\infty$としたときの
+cusp裾係数と$O(e^{-3R})$誤差を求め、
+\cref{prop:compact-product-logarithmic-germ}はコンパクト因子との積の対数分岐を記述する。
+同定理の大体積の曲面族に対する集中評価は、これらの固定曲面の精密係数や積の複素分岐を与えるものではない。
+
 Chambert-Loir--TschinkelはClemens complexと層上のresidue measuresを用い、
 Igusa積分の主要係数を残余層の積分で表し、height ballsの体積漸近と
 極限測度を求めている
@@ -3093,6 +3114,231 @@ normal variable $e^{-t}$に関するpolyhomogeneityを満たす。
 このnormal-depth transformの有理型性を、実距離Laplace変換へ移すことはできない。
 \end{proof}
 
+上の一側漸近は、コンパクト因子との積では複素解析的な表示へ強められる。
+この強化に必要なのは、曲線側の\eqref{eq:hyperbolic-curve-tail}と厳密な積距離である。
+
+\begin{proposition}[コンパクト因子との積の対数分岐]
+\label{prop:compact-product-logarithmic-germ}
+\Cref{lem:hyperbolic-curve-tail}の$(S,p)$と、境界のないコンパクト連結Riemann多様体
+$(Y,g_Y,y_0)$を取り、$X=S\times Y$に積計量を入れる。
+$o=(p,y_0)$、$b(y)=d_Y(y_0,y)$とし、
+\[
+ M_k=\int_Y b(y)^k\dd V_Y(y)\quad(k=0,1,2,\ldots),\qquad
+ W=A(p)M_0
+\]
+と置く。$\operatorname{Re}s<1$で定義される距離Laplace変換$\mathcal Z_o(s)$は
+\[
+ \Omega_3=\{s\in\CC:\operatorname{Re}s<3\}\setminus[1,3)
+\]
+へ解析接続され、
+\begin{equation}
+\label{eq:compact-product-logarithmic-germ}
+ \mathcal Z_o(s)=\frac{W}{1-s}
+       -H_o(s)\operatorname{Log}(1-s)+G_o(s)
+ \qquad(s\in\Omega_3)
+\end{equation}
+と表される。ここで$\operatorname{Log}$は主値、
+$G_o$は$\{\operatorname{Re}s<3\}$上で正則であり、
+\begin{equation}
+\label{eq:compact-product-log-coefficient}
+ H_o(s)=\frac{A(p)s}{2}
+   \sum_{m=0}^{\infty}
+   \frac{M_{2m+2}(s^2-1)^m}{4^m m!(m+1)!}
+\end{equation}
+はentireである。特に$H_o(1)=A(p)M_2/2$である。
+$s=1$を正向きに一周する解析接続のmonodromyは
+$-2\pi iH_o(s)$であり、$Y$が正次元なら$H_o(1)>0$となる。
+$Y$が一点なら$H_o\equiv0$である。
+\end{proposition}
+\begin{proof}
+\paragraph{曲線の裾誤差の分離.}
+$\nu=(d_S(p,\cdot))_*\dd V_S$と置く。
+十分大きく、$\nu$のatomを避けた$r_0>0$を固定し、
+\[
+ T(r)=F_{S,p}(r)-A(p)e^{-r}=O(e^{-3r})
+ \qquad(r\ge r_0)
+\]
+と書く。$0\le b\le B:=\diam(Y)$に対し
+$f_{s,b}(r)=e^{s\sqrt{r^2+b^2}}$と置けば、
+$\operatorname{Re}s<1$でStieltjes積分の部分積分により
+\begin{align}
+ &\int_{[r_0,\infty)}f_{s,b}(r)\dd\nu(r)
+       -A(p)\int_{r_0}^{\infty}f_{s,b}(r)e^{-r}\dd r
+ \notag\\
+ &\qquad=f_{s,b}(r_0)T(r_0)
+   +\int_{r_0}^{\infty}
+      \frac{sr}{\sqrt{r^2+b^2}}f_{s,b}(r)T(r)\dd r.
+ \label{eq:product-stieltjes-remainder}
+\end{align}
+任意のcompact集合$K\subset\{\operatorname{Re}s<3\}$について、
+$\sigma_K=\max_K\operatorname{Re}s<3$とすれば、被積分関数の絶対値は
+$C_K e^{-(3-\sigma_K)r}$以下であり、$b\in[0,B]$にも一様である。
+ここでは
+$0\le\sqrt{r^2+b^2}-r\le B^2/(2r_0)$と$r/\sqrt{r^2+b^2}\le1$を用いた。
+従って右辺は$\operatorname{Re}s<3$で正則な関数を定める。
+$r<r_0$の寄与はentireなので、$Y$について積分すると
+\begin{align*}
+ \mathcal Z_o(s)&=A(p)\int_Y K(s,b(y))\dd V_Y(y)+R_o(s),\\
+ K(s,b)&=\int_{r_0}^{\infty}e^{-r+s\sqrt{r^2+b^2}}\dd r,
+\end{align*}
+となり、$R_o$は$\operatorname{Re}s<3$で正則である。
+裾誤差$T$の微分評価は必要ない。
+
+\paragraph{積距離のkernel.}
+$u=r+\sqrt{r^2+b^2}$と変数変換し、
+\[
+ a=\frac{1-s}{2},\qquad c=\frac{(1+s)b^2}{2},\qquad
+ U_b=r_0+\sqrt{r_0^2+b^2}
+\]
+と置く。$r=(u-b^2/u)/2$であるから
+\begin{equation}
+\label{eq:product-kernel-u}
+ K(s,b)=\frac12\int_{U_b}^{\infty}
+             e^{-au+c/u}\left(1+\frac{b^2}{u^2}\right)\dd u.
+\end{equation}
+$U>r_0+\sqrt{r_0^2+B^2}$を固定する。
+積分区間$[U_b,U]$の寄与は$s$のentire関数であり、compactな$s$集合上で
+$b\in[0,B]$に一様有界である。残る区間では$\operatorname{Re}a>0$に対し
+\[
+ J_n(a)=\int_U^\infty e^{-au}u^{-n}\dd u
+ \quad(n\ge0)
+\]
+を用いて
+\[
+ \frac12\int_U^\infty
+       e^{-au+c/u}\left(1+\frac{b^2}{u^2}\right)\dd u
+ =\frac12\sum_{n=0}^{\infty}
+       \frac{c^n}{n!}\bigl(J_n(a)+b^2J_{n+2}(a)\bigr)
+\]
+と展開できる。この領域での項別積分は
+$e^{|c|/U}(1+B^2/U^2)e^{-\operatorname{Re}a\,u}$による支配から従う。
+
+\paragraph{対数項と正則剰余の一様収束.}
+$J_0=e^{-aU}/a$であり、$Q_0(a)=(e^{-aU}-1)/a$はentireである。
+また$J_1(a)=E_1(aU)$について
+\[
+ J_1(a)=-\operatorname{Log}a+Q_1(a),\qquad
+ Q_1(a)=-\gamma-\log U-\sum_{j=1}^{\infty}\frac{(-aU)^j}{j\,j!}
+\]
+である。これは古典的なexponential integralの公式
+\cite[(6.6.2)]{NISTDLMF}である。
+正則剰余の存在は、
+$\partial_a(J_1+\operatorname{Log}a)=(1-e^{-aU})/a$がentireであることからも直接分かる。
+部分積分による漸化式
+$nJ_{n+1}=U^{-n}e^{-aU}-aJ_n$を反復すると
+\begin{equation}
+\label{eq:exponential-integral-log}
+ J_n(a)=-\frac{(-a)^{n-1}}{(n-1)!}\operatorname{Log}a+Q_n(a)
+ \qquad(n\ge1)
+\end{equation}
+を得る。各$Q_n$はentireであり、$n\ge2$では
+\[
+ Q_n(a)=\frac{(-a)^{n-1}}{(n-1)!}Q_1(a)
+ +\frac{e^{-aU}}{(n-1)!}
+    \sum_{k=0}^{n-2}(n-2-k)!(-a)^kU^{k+1-n}.
+\]
+これらは\cite[(8.19.7)--(8.19.8), (8.19.12)]{NISTDLMF}の表示と一致する。
+任意の$L>0$について$C_L=\max_{|a|\le L}|Q_1(a)|$と置けば、
+\begin{equation}
+\label{eq:product-kernel-holomorphic-bound}
+ \sup_{|a|\le L}|Q_n(a)|
+ \le \frac{C_L\,L^{n-1}}{(n-1)!}
+       +\frac{e^{2LU}U^{1-n}}{n-1}
+ \qquad(n\ge2).
+\end{equation}
+実際、有限和では
+$(n-2-k)!/(n-1)!\le1/((n-1)k!)$を用いればよい。
+従って
+\[
+ \sum_{n=0}^{\infty}\frac{c^n}{n!}
+             \bigl(Q_n(a)+b^2Q_{n+2}(a)\bigr)
+\]
+は$(a,c)$の各compact集合と$b\in[0,B]$で一様絶対収束する。
+特に、この和は$s$のentire関数を与え、
+$Y$についての積分後もentireである。
+
+\paragraph{係数の再和.}
+\eqref{eq:exponential-integral-log}により、$-\operatorname{Log}a$の係数は
+\begin{align*}
+ h(s,b)
+ &=\frac12\left\{
+   \sum_{n\ge1}\frac{c^n(-a)^{n-1}}{n!(n-1)!}
+   +b^2\sum_{n\ge0}\frac{c^n(-a)^{n+1}}{n!(n+1)!}
+              \right\}\\
+ &=\frac{c-ab^2}{2}
+       \sum_{m\ge0}\frac{(-ac)^m}{m!(m+1)!}\\
+ &=\frac{sb^2}{2}
+       \sum_{m\ge0}\frac{\bigl((s^2-1)b^2/4\bigr)^m}{m!(m+1)!}.
+\end{align*}
+この級数もcompactな$s$集合と$b\in[0,B]$で一様絶対収束する。
+$J_0$のpole寄与は$1/(2a)=1/(1-s)$であり、
+$\operatorname{Log}a=\operatorname{Log}(1-s)-\log2$である。
+従ってあるentireな$s$関数$P(s,b)$を用いて
+\[
+ K(s,b)=\frac1{1-s}-h(s,b)\operatorname{Log}(1-s)+P(s,b)
+\]
+と表せる。$P$はcompactな$s$集合上で$b\in[0,B]$に一様有界なので、
+$H_o=A(p)\int_Yh(s,b(y))\dd V_Y$、
+$G_o=R_o+A(p)\int_YP(s,b(y))\dd V_Y$と置けば主張を得る。
+この表示は$\operatorname{Re}s<1$の元の積分に一致し、
+$\Omega_3$への解析接続を定める。
+
+なお$h(s,b)$は、級数で可除点を補った
+$sb\,I_1(b\sqrt{s^2-1})/\sqrt{s^2-1}$という古典的Bessel表示でもある
+\cite[(10.25.2)]{NISTDLMF}。
+この表示の平方根の枝への非依存性は上の級数から分かる。
+特殊関数の再和自体を新しい原理として扱わない。
+最後に正向きの一周で$\operatorname{Log}(1-s)$が$2\pi i$増えるため、
+monodromyは$-2\pi iH_o(s)$である。
+$H_o(1)=A(p)M_2/2$とその正値性は係数式から従う。
+\end{proof}
+
+この命題はコンパクト因子のKähler性を要しない。
+特に$Y$を、正の複素次元を持ち$K_Y$がampleなsmooth projective variety上の
+$\Ric(g_Y)=-g_Y$を満たすコンパクトKE多様体とすれば、
+同じ積のRicci公式とlog-canonical classのamplenessにより、
+複素次元$\dim_{\CC}Y+1\ge2$のactual KE積にも適用できる。
+
+\begin{corollary}[対数monodromyによる基点距離分布の復元]
+\label{cor:compact-radial-recovery}
+\Cref{prop:compact-product-logarithmic-germ}の距離Laplace変換について、
+pole係数$W$と$s=1$における対数monodromyの解析germは、
+確率測度
+\[
+ \rho_{Y,y_0}
+ =(d_Y(y_0,\cdot))_*\frac{\dd V_Y}{M_0}
+\]
+を一意に定める。具体的に、$\sqrt{1+4z}$の$z=0$で値$1$を取る正則な枝を選び、
+\[
+ \Phi(z)=\frac{2H_o(\sqrt{1+4z})}{W\sqrt{1+4z}}
+\]
+と置けば
+\begin{equation}
+\label{eq:radial-moment-recovery}
+ \int_0^\infty b^{2m+2}\dd\rho_{Y,y_0}(b)
+       =(m+1)!\,\Phi^{(m)}(0)
+ \qquad(m\ge0).
+\end{equation}
+ここで復元するのは正規化された基点距離分布であり、
+基点付き多様体の等長型、Torelli型の剛性、復元の安定性は結論しない。
+\end{corollary}
+\begin{proof}
+$W=\lim_{s\uparrow1}(1-s)\mathcal Z_o(s)$であり、
+monodromyを$-2\pi i$で割れば$H_o$のgermを得る。
+従ってこれらは$r_0$や$U$などのcutoffから独立に決まる。
+\eqref{eq:compact-product-log-coefficient}から
+\[
+ \Phi(z)=\sum_{m=0}^{\infty}
+          \frac{M_{2m+2}}{M_0}\frac{z^m}{m!(m+1)!}
+\]
+となるので、\eqref{eq:radial-moment-recovery}が従う。
+総質量$1$と合わせて、$b^2$の押出し確率測度の全momentsが得られる。
+二つのコンパクト台を持つ候補測度を比較するときは、
+両方の台を含む有限閉区間を取り、その上の多項式の一様稠密性を用いれば両者は等しい。
+$b\ge0$上で$b\mapsto b^2$はhomeomorphismだから、
+$b$の分布も一意に定まる。
+\end{proof}
+
 \section{面ごとの Abel--Mellin 境界データ}
 \label{sec:Mellin}
 
@@ -4299,6 +4545,14 @@ K.~Fukaya,
 \newblock Collapsing Riemannian manifolds to ones of lower dimensions,
 \newblock \emph{J. Differential Geom.} \textbf{25} (1987), 139--156.
 
+\bibitem{GolubevKamber}
+K.~Golubev and A.~Kamber,
+\newblock Cutoff on hyperbolic surfaces,
+\newblock \emph{Geom. Dedicata} \textbf{203} (2019), 225--255.
+\newblock DOI: \href{https://doi.org/10.1007/s10711-019-00433-5}{10.1007/s10711-019-00433-5}.
+\newblock 確認版：\href{https://arxiv.org/abs/1712.10149v1}{arXiv:1712.10149v1},
+Theorem~1.1, pp.~1--2.
+
 \bibitem{GrieserPhg}
 D.~Grieser,
 \newblock \emph{Polyhomogeneous functions, regularized integrals, push-forward theorem etc.},
@@ -4366,6 +4620,15 @@ D.~Mumford,
 J.~Nicaise and C.~Xu,
 \newblock The essential skeleton of a degeneration of algebraic varieties,
 \newblock \emph{Amer. J. Math.} \textbf{138} (2016), 1645--1667.
+
+\bibitem{NISTDLMF}
+NIST Digital Library of Mathematical Functions,
+\newblock \href{https://dlmf.nist.gov/}{DLMF}, Release 1.2.8 (2026-09-15).
+\newblock \href{https://dlmf.nist.gov/6.6.E2}{(6.6.2)},
+\href{https://dlmf.nist.gov/8.19}{(8.19.7)--(8.19.8), (8.19.12)},
+\href{https://dlmf.nist.gov/10.25.E2}{(10.25.2)}:
+exponential integralsの対数展開・漸化式とmodified Bessel functionの定義級数。
+確認日：2026年11月22日。
 
 \bibitem{RochonZhang}
 F.~Rochon and Z.~Zhang,

@@ -71,20 +71,20 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 固定補空間，退化族の局所解析，曲面実現の接続と定理状態}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.12（2026年11月22日）}
+\date{現行総説 v1.13（2026年11月22日）}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-本稿は，固定配置補空間の多重尺度幾何を扱う第I--III篇と，コンパクト曲面の全平面退化を扱う第IV--V篇，および関連するactual Lagrangian実現論文の共通総説である．第一対数尺度における距離錐，translation limits と secondary periods，conifold 型特異端の抽象貼合せ，退化族の局所模型，有限立方体複体への大域 Gromov--Hausdorff 極限を，対象・尺度・仮定を明示して接続する．Controlled push-off，localization--anchor，tensor comparison，coarse package，Product-Box Exhaustion は独立の追加仮定として区別する．
+本稿は，固定配置補空間の多重尺度幾何を扱う第I--III篇と，コンパクト曲面の全平面退化を扱う第IV--V篇，および関連するactual Lagrangian実現論文の共通総説である．第一対数尺度における距離錐，translation limits と secondary periods，conifold 型特異端の抽象貼合せ，退化族の局所模型，有限立方体複体への大域 Gromov--Hausdorff 極限を，対象・尺度・仮定を明示して接続する．双曲cusp曲線とコンパクト因子の積では，実距離Laplace変換の対数分岐から因子の正規化された基点距離分布を回収する．Controlled push-off，localization--anchor，tensor comparison，coarse package，Product-Box Exhaustion は独立の追加仮定として区別する．
 
 曲面については五次に限定せず，\(\PP^3\) 内の任意の固定次数 \(d\ge5\) に対する候補複体
 \[
  \cC_d=\{w\in[0,1]^d:\max_iw_i=1,
                  |\supp w|\le3\}
 \]
-と，その局所代数・残差曲線・正規化を与える．第IV--V篇の経路では，鋭い co-Gram 極限に Product-Box Exhaustion，大域 GH 極限にさらに coarse packageを要する．一方，曲面実現論文は局所入力に直接のscalar下界と同一moment portal上界を組み合わせ，同じactual Lagrangian fibrationの射影で全曲面のGH極限を与える．この別経路の証明は，上記package自体の検証を意味しない．高次元 \(\PP^N\) ではmixed source--higher-stratum 模型が不可避であり，GH収束は予想として分離する．
+と，その局所代数・残差曲線・正規化を与える．第IV--V篇の経路では，鋭い co-Gram 極限に Product-Box Exhaustion，大域 GH 極限にさらに coarse packageを要する．一方，曲面実現論文は局所入力に直接のscalar下界と同一moment portal上界を組み合わせ，同じactual Lagrangian fibrationの射影で全曲面のGH極限を与える．確率KE体積も同じ射影で成分頂点の等重み原子測度へ収束するが，計量極限としては全cubical複体を保持する．第IV篇の固定end解析は，log-densityの固定collar上の収束と極限radial derivativeを最小入力として分離し，volume frameのnormal windingによるmomentの変化を明示する．この別経路の証明は，上記package自体の検証を意味しない．高次元 \(\PP^N\) ではmixed source--higher-stratum 模型が不可避であり，GH収束は予想として分離する．
 
 五次では，初期source葉とその保持近傍を選ぶ存在問題として，両端periodの有限整合式，
 sourceを跨ぐ全moment面積実現，全開collarの接着を閉じた．
@@ -95,7 +95,7 @@ sourceを跨ぐ全moment面積実現，全開collarの接着を閉じた．
 \begin{center}
 \begin{minipage}{0.93\textwidth}\small
 \textbf{Abstract.}
-This note connects Parts I--III on fixed arrangement complements, Parts IV--V on compact degenerating surfaces, and the related actual Lagrangian realization paper. It separates the conditional coarse-package/product-box route from the direct scalar/portal route to the global surface limit. For quintics, an initial choice of source leaves gives an action-compatible matroidal atlas and the KE metric realization for the same fibration. The analogous sextic problem remains open. These results do not verify the independent coarse-package, product-box, localization or anchor hypotheses. The repositories retain distinct proof ownership while their notation, interfaces and proof audits are coordinated.
+This overview connects fixed SNC complements, local KE degeneration analysis, and global Lagrangian realizations. For a cusped hyperbolic curve times a compact factor, the logarithmic germ of the actual distance Laplace transform determines the factor's normalized radial distribution. On degenerating surfaces, the same fibration realizes the full cubical GH limit and pushes probability KE volume to equal atoms at the component vertices. The local interface isolates fixed-end log-density convergence and normal frame winding. For quintics, an initial choice of source leaves also gives an action-compatible matroidal atlas for the same fibration; the analogous sextic problem remains open. The direct scalar/portal proof does not verify the independent coarse-package, product-box, tensor-comparison, localization or anchor hypotheses.
 \end{minipage}
 \end{center}
 
@@ -117,7 +117,7 @@ This note connects Parts I--III on fixed arrangement complements, Parts IV--V on
 \section{現在の中心成果と公表単位}
 
 中心となる成果は，固定SNC補空間の距離・測度幾何と，
-actual負KE曲面の同じLagrangian射影による全域GH実現である．
+actual負KE曲面の同じLagrangian射影による全域GH実現と確率体積極限である．
 局所解析を扱うPart IVは後者への独立した入力を与える．
 五篇という番号は証明の所在を示すものであり，投稿順や論文数を固定する条件ではない．
 無条件に得られた結果と五次の同時atlas/GH実現を公表単位とし，
@@ -135,6 +135,33 @@ $\log W$は$1$-Lipschitzであり，裾漸近は任意のcompactな基点集合�
 距離錐とleading normal massだけではこの係数を決定できないことを示す．
 これはKE族に対する反例ではない．
 
+実距離による変換の解析的性質はnormal-depth変換とも異なる．
+尖点付き有限面積双曲曲線\((S,p)\)と境界のないコンパクト連結Riemann多様体
+\((Y,y_0)\)の積に対し，\(M_k=\int_Yd_Y(y_0,y)^k\,dV_Y\)，
+\(W=A(p)M_0\)と置く．ここで\(A(p)\)は
+\(\Vol_S\{d_S(p,\cdot)\ge R\}=A(p)e^{-R}+O(e^{-3R})\)の係数である．
+Part Iの命題\texttt{prop:compact-product-logarithmic-germ}は，
+\(\mathcal Z_o(s)=\int_{S\times Y}e^{s d(o,x)}\,dV(x)\)を
+\(\{\operatorname{Re}s<3\}\setminus[1,3)\)へ解析接続し，
+\begin{align}
+ \mathcal Z_o(s)&=\frac{W}{1-s}-H_o(s)\operatorname{Log}(1-s)+G_o(s),
+ \label{eq:product-distance-log-germ}\\
+ H_o(s)&=\frac{A(p)s}{2}\sum_{m=0}^{\infty}
+ \frac{M_{2m+2}(s^2-1)^m}{4^m m!(m+1)!}
+ \label{eq:product-distance-log-coefficient}
+\end{align}
+と表す．\(H_o\)はentire，\(G_o\)は\(\operatorname{Re}s<3\)で正則であり，
+\(Y\)が正次元なら\(H_o(1)=A(p)M_2/2>0\)である．
+\(Y\)を正次元のコンパクト負KE多様体に選べばactual負KE積にこの対数分岐が現れ，
+厳密な積型normal densityのMellin変換が有理型であることと両立する．
+系\texttt{cor:compact-radial-recovery}は，pole係数\(W\)と
+monodromy \(-2\pi iH_o\)のgermから全ての正規化偶数momentsを求め，
+コンパクト台のmomentの一意性により
+\((d_Y(y_0,\cdot))_*(dV_Y/M_0)\)を復元する．
+これは厳密な積距離と上の曲線裾誤差を使う結論であり，
+一般のvolume-IRFAからの複素解析接続でも，\(Y\)の等長型の復元でもない．
+特殊関数の対数展開やコンパクト台のmoment決定性自体の新規性は主張しない．
+
 Part IVの\texttt{coarse:thm:boundary-to-triple}は，exact triple領域の
 固定faceにおける一様なvolume下界と，各固定parameterのradial閉包近傍で
 滑らかな負KE metricを入力とする．全angular phasesのcompact quotientで
@@ -142,7 +169,7 @@ Part IVの\texttt{coarse:thm:boundary-to-triple}は，exact triple領域の
 境界上界のparameter一様性は仮定しない．
 全平面退化への適用ではcapped density下界がこの境界入力を供給する．
 局所安定性と全曲面のambient距離比較は別の定理である．
-第IV篇v1.11では，固定residueによるcanonical densityの規格化，
+同稿のcapped下界では，固定residueによるcanonical densityの規格化，
 Chern微分によるcap曲率の全点表示，Hermitian frame誤差の吸収定数，
 source軸を含む六局所型と有限被覆の選択順を明記した．
 Compact fiber上の片側最小値原理から固定次数$d\ge5$の$t$一様volume下界を得るが，
@@ -352,6 +379,27 @@ target線分の厳密な持上げや保持領域のintrinsic上界は必要な�
 全moment構成によって両者を同時に満たし，六次ではこの同時実現が未解決である．
 さらに\(d\ge7\)では，曲面論文の系\texttt{ke:global-core-nonmatroidal}が，この同じ基底のcore頂点にmatroidal chartを置けないことを示す．これは選んだ基底の局所位相障害であり，全てのfibrationや収縮先\(\cC_d\)についての不存在主張ではない．
 
+同じ射影の測度側は，系\texttt{ke:global-volume-measure}で閉じる．
+\(dV_t=\omega_t^2/2\)，\(V_d=2\pi^2d(d-4)^2\)，
+\(\nu_t=V_d^{-1}dV_t\)とし，\(e_i\in\cC_d\)を成分頂点，
+\(v_i\in B_d(T)\)を対応するcore頂点とすると，
+\begin{equation}
+ (f_t)_*\nu_t\rightharpoonup\frac1d\sum_{i=1}^d\delta_{e_i},
+ \qquad
+ (\pi_t)_*\nu_t\rightharpoonup\frac1d\sum_{i=1}^d\delta_{v_i}.
+\label{eq:same-map-probability-volume}
+\end{equation}
+第二式は固定compact位相空間\(B_d(T)\)上の弱収束である．
+各固定成分の体積\(2\pi^2(d-4)^2\)を対数的Chern--Weil公式で計算し，
+固定compact上の滑らかな収束，その像の成分頂点への収束，全質量の一致を用いる．
+従って既存の対角選択のまま結論でき，moving neckの一様体積漸近を追加しない．
+五次の作用atlasと同時実現する射影にも同じ結論が成立する．
+全台性を要求しないcompact measured GHの規約では，これは同じ写像による
+計量・測度収束である．極限測度の台は成分頂点だけだが，辺とsquareの距離は残る．
+一方，\(\Rt^{-2}g_t\)の未正規化体積は\(\Rt^{-4}dV_t\)であり，全質量が零へ向かう．
+成分体積保存やexhaustionの一般原理自体を新規成果とは数えず，
+同じLagrangian射影上で質量の位置と重みを同定する帰結として扱う．
+
 この直接経路により対象曲面の大域GH証明が原稿に存在しても，
 第IV--V篇の \(\mathrm{(CP)}_d,\mathrm{(PBE)}_d,\mathrm{(TC)}_5\) 自体，
 第III篇の \((H_{\rm loc})+(H_{\rm anc})\) は検証済みにはならない．
@@ -369,11 +417,46 @@ target線分の厳密な持上げや保持領域のintrinsic上界は必要な�
 同じcohomology classの形式をMoser移送するだけでは，移送された複素構造との
 計量比較は得られない．
 
+第IV篇の命題\texttt{pair:prop:fixed-end-transfer}は，source-free marked neck
+\(uv=t\)の固定endについて必要な入力を分離する．
+\(q_+=v,q_-=u\)，残余基底の非零正則一形式を\(\tau\)とし，
+共通frameと周期\(1\)の生成元を
+\[
+ \Omega=d\log v\wedge\tau=-d\log u\wedge\tau,
+ \qquad V=2\pi\partial_{\arg v}=-2\pi\partial_{\arg u}
+\]
+で固定する．固定残余compactを含む各固定collarで，このframeに関するlog-density
+\(F_t^\pm\to F_0^\pm\)が\(C^1\)収束し，
+正則frameの\(s_\pm=-\log|q_\pm|^2\)に対して
+\[
+ |q_\pm|\partial_{|q_\pm|}F_0^\pm
+   =\frac4{s_\pm}+O_K(s_\pm^{-1-\delta}),\qquad0<\delta\le1,
+\]
+なら，Hermitian半径\(\|q_\pm\|=r\)，\(s_r=-\log r^2\)上で
+\[
+ \mu_t=\pm\frac{4\pi}{s_r}
+        +O_K(s_r^{-1-\delta})+o_{t\to0;r,K}(1)
+\]
+を得る．全base pointsと全phaseに一様であり，\(r\)を先に固定してから
+全ての十分小さい複素\(t\)を取る．Hermitian半径と正則frameの半径の差は
+\(s_\pm=s_r+O_K(1)\)で，その\(O_K(s_r^{-2})\)補正を含めている．
+同稿の定理\texttt{pair:thm:fixed-end-moment}はSongの固定compact収束と
+Rochon--ZhangのSNC cusp評価によりこの入力を検証する．
+Neck内部のmoving tensor比較，moment微分の一様下界，actual bufferはこの命題の結論ではない．
+注意\texttt{pair:rem:normal-frame-winding}では，\(V\)で向き付けたnormal orbitを\(\Gamma\)とし，非零正則unitによる
+\(\Omega'=b\Omega\)への変更に対し
+\(\mu_t'=\mu_t-2\pi\operatorname{wind}_{\Gamma}(b)\)を得る．
+非basicなunitでもnormal windingが零ならmomentを保つが，
+primitive差\(-d\arg b\)の残余periodは消えるとは限らない．
+
 曲面論文の補題 \texttt{ke:source-inclusive-fixed-shell} は，sourceを含む固定残余compact
 と半径\(r\)を先に固定し，同一の非零正則体積frameで全ての小さい複素\(t\)を扱う．
 \(s_r=-\log r^2\)としてmomentの主項\(\pm4\pi/s_r\)と，小\(r\)に共通な
 shell横断費用を得るが，\(t\)の閾値は\(r\)に依存してよい．
 異なる正規形のprimitiveの一致や残余period消滅は追加しない．
+同論文の\texttt{ke:fixed-base-neck-moser}は固定baseの各段階で
+moving stripのbufferとMoserの被覆を別に与える．
+この固定段階の結果を，任意の速度で動く残余base上の一様評価へ置き換えない．
 また補題 \texttt{ke:global-clipped-cogram-lower} は，固定\(t,m,K\)，
 \(0<S=\Rt-\log m-\log K\le\Rt\)におけるco-Gram上界
 \((1+\epsilon)\mathrm{Id}\)，\(\epsilon\ge0\)，から
@@ -847,7 +930,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
-\item 第IV篇v1.11のcapped下界について，residue規格化・Chern曲率・frame誤差予算から六局所型とcompact最小値原理までの指定鎖を担当が実読し，変更式・定数・量化を別担当も確認した．Full-triple・closed-cornerと曲面scalar/portalの既存の限定点検を保持する．五次では両端period条件，全moment strict cuts，source固定輸送，全open overlapsから同じ射影のatlas/GHまでの新証明を独立内部点検した．これを公表用の中心結果として整理し，主要先行結果との比較と残る未点検箇所を詰める．六次Petersenではinternal annuliの二端cutsと実際のperiod整合が次の課題である．任意先指定の大きいsource tailsへの相対存在は別に判定する．
+\item 第IV篇のcapped下界について，residue規格化・Chern曲率・frame誤差予算から六局所型とcompact最小値原理までの指定鎖を担当が実読し，式・定数・量化を別担当も確認した．固定endの最小入力・windingと，Full-triple・closed-corner，曲面scalar/portalの限定点検を保持する．五次では両端period条件，全moment strict cuts，source固定輸送，全open overlapsから同じ射影のatlas/GHまでの証明を独立内部点検した．同じ射影の確率体積極限とともに公表用の中心結果として整理し，主要先行結果との比較と残る未点検箇所を詰める．六次Petersenではinternal annuliの二端cutsと実際のperiod整合が次の課題である．任意先指定の大きいsource tailsへの相対存在は別に判定する．
 \item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
@@ -861,8 +944,10 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{KEIV}
 植田一石，
 \newblock \emph{Kähler--Einstein degeneration}, 第IV篇，
-\newblock 確認版 v1.11（2026年11月22日），
-\newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/main/papers/kaehler-einstein-degeneration.tex}{原稿ソース}．
+\newblock 確認版 v1.12（2026年11月22日），
+\newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/11910259dd1628d542df57d370123d0a40b08d61/papers/kaehler-einstein-degeneration.tex}{原稿ソース}．
+\newblock 命題\texttt{pair:prop:fixed-end-transfer}，
+定理\texttt{pair:thm:fixed-end-moment}，注意\texttt{pair:rem:normal-frame-winding}．
 
 \bibitem{KEV}
 植田一石，
@@ -873,9 +958,10 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂41，2026年11月22日，
-\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
+\newblock 改訂43，2026年11月22日，
+\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/1716a175dddbccf23e86027c34fba239c0cf527b/papers/surface-lagrangian-torus-fibration.tex}{原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，
+\newblock 系 \texttt{ke:global-volume-measure}，
 \newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}，
 \newblock 命題 \texttt{ke:moment-relative-replacement}，系 \texttt{ke:relative-replacement-gh}，
 定理 \texttt{ng8:componentwise-critical-area}，命題 \texttt{ke:actual-anchor-fan-criterion}，

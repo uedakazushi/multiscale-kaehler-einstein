@@ -1,14 +1,14 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.16（Part I v1.8、総説v1.12）
+更新：2026-11-22 / v1.17（Part I v1.9、総説v1.13）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。現行接続先は[KE Part IV v1.11・Part V v1.10・研究資料v1.21](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a6cf38a417a9c5707cc06cf25d8b9faf94e58725)と[曲面改訂43・数学確認commit 102ae9a](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/102ae9a382406bcd14755c216d2bc0ca8bc84321)。資料確認日は2026-11-22。今回の対象限定点検は、Part Iの全face conditional moments・actual-ball tail・Abel–Mellinの鎖とKE積の対数項、および曲面の同じ射影による体積測度極限である。Part IVのboundary-to-triple/capped下界、曲面のactual両端period・全moment・平行移動を含む整数格子接続・source-free/thin葉の指定点検は既存範囲を保持する。全原稿・P0全体・外部解析原著の全面再監査ではない。
+研究・編集・証明監査は共同で進め、各証明は次の正本に保持する。現行接続先は[KE Part IV v1.12・Part V v1.10・研究資料v1.24](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/11910259dd1628d542df57d370123d0a40b08d61)と[曲面改訂43・保存commit 1716a17](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/1716a175dddbccf23e86027c34fba239c0cf527b)。資料確認日は2026-11-22。今回の数学的点検はPart Iの積の複素対数germと距離分布回収、および総説への現在有効な三研究の結果の統合である。既存のPart Iの全face/tail/Abel鎖、Part IVのcapped下界と固定end、曲面のactual両端period・全moment・作用接続・確率体積極限の指定点検は有効な範囲で保持する。全原稿・P0全体・外部解析原著の全面再監査ではない。
 
-Part I v1.8は69頁に組版し、参照・label・欠字・box・errorの主要6分類は零、指定10頁を150 dpiで実表示して切れ・重なり・欠字を認めなかった。Part II–III・研究素材・総説TEXは変更しない。総説v1.12は[曲面改訂41・commit 84d8b8b](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/84d8b8b17d9426ede5792a301b5f45ec90eb48da)を引用する18頁のチェック済み版として、入力pinと組版・表示記録を保持する。今回のPart I追加や曲面改訂43を総説本文へ反映済みとはしない。各状態の正本は `validation.json`。
+Part I v1.9は73頁、総説v1.13は20頁にLuaLaTeXで組版し、両稿とも未定義参照・引用、重複label、欠字、LaTeX error、overfull/underfullの主要6分類は零である。Part Iの指定13頁、総説の指定14頁を150 dpiで実表示し、切れ・重なり・欠字を認めなかった。Part Iの命題・再和式の頁跨ぎは連続性を保ち判読できる。全頁の逐頁表示ではない。Part II–III・研究素材のTeXと有効な既存検証記録は変更しない。数学的点検・組版・表示範囲の正本は `research/validation.json`。 総説v1.13の科学的入力は上記の曲面改訂43とPart IV v1.12である。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -134,7 +134,7 @@ t_\pm=T_0\pm s\quad(\pm s\ge0).
 
 ## 実距離球から回復する裾係数
 
-正本は Part I v1.8 `cor:tail-intrinsic-uniform`。非空境界、metric-IRFAと全faceの通常volume-IRFAの下で、h_*は実球外体積のexponential decay rate、W(o)はその正規化極限であり、pointed metric–measure spaceの内在量である。D=d(o,o')として
+正本は Part I `cor:tail-intrinsic-uniform`。非空境界、metric-IRFAと全faceの通常volume-IRFAの下で、h_*は実球外体積のexponential decay rate、W(o)はその正規化極限であり、pointed metric–measure spaceの内在量である。D=d(o,o')として
 \[
 e^{-h_*D}W(o)\le W(o')\le e^{h_*D}W(o).
 \]
@@ -149,7 +149,7 @@ e^{-h_*D}W(o)\le W(o')\le e^{h_*D}W(o).
 
 ## KE積の実球裾と距離Laplace変換の対数項
 
-証明の正本は Part I `lem:hyperbolic-curve-tail` と `ex:KE-product-distance-log`。有限面積双曲曲線Sの固定基点pについて、各cuspを上半平面のparabolic quotientで表す。pのdeck orbitの最大高さv_c(p)は、cusp外での高さの上界とparabolic translationで割ったorbitの局所有限性から達成される。垂直方向の距離下界と一つの最大高さのliftによる上界は、角に一様なO(v^−2)誤差を与える。従ってA(p)=Σ_cℓ_c/v_c(p)>0として、F_S(R)=A(p)e^−R+O(e^−3R)。最大高さ以外とのgapや最近liftの一意性は要らない。
+証明の正本は Part I `lem:hyperbolic-curve-tail` と `ex:KE-product-distance-log`。尖点付き有限面積双曲曲線Sの固定基点pについて、各cuspを上半平面のparabolic quotientで表す。pのdeck orbitの最大高さv_c(p)は、cusp外での高さの上界とparabolic translationで割ったorbitの局所有限性から達成される。垂直方向の距離下界と一つの最大高さのliftによる上界は、角に一様なO(v^−2)誤差を与える。従ってA(p)=Σ_cℓ_c/v_c(p)>0として、F_S(R)=A(p)e^−R+O(e^−3R)。最大高さ以外とのgapや最近liftの一意性は要らない。
 
 種数2以上のcompact双曲曲線Yとの積X=S×Yは、ample SNC対のactual負KE曲面である。o=(p,y_0)、V_Y=vol(Y)として
 \[
@@ -161,9 +161,52 @@ C_o=\frac{A(p)}2\int_Y d_Y(y_0,y)^2\,dV_Y>0,\\
 \quad(\epsilon\downarrow0).
 \end{aligned}
 \]
-この二次項は厳密な積距離d_X²=d_S²+d_Y²から生じる。Cusp coordinate qでt=log(−log|q|)とすればnormal densityは厳密にe^−t dt dθ dV_Yであり、normal-depth transformは2πV_Y/(1−s)+entireである。従ってpolyhomogeneousなnormal densityから実距離Laplaceの有理型性や実球裾の指数的な誤差改善は導けない。上式は実軸上の一側漸近であり、slit domainへの解析接続を証明したものではない。
+この二次項は厳密な積距離d_X²=d_S²+d_Y²から生じる。Cusp coordinate qでt=log(−log|q|)とすればnormal densityは厳密にe^−t dt dθ dV_Yであり、normal-depth transformは2πV_Y/(1−s)+entireである。従ってpolyhomogeneousなnormal densityから実距離Laplaceの有理型性や実球裾の指数的な誤差改善は導けない。この初等的な一側漸近を、以下の積の命題は複素領域へ強める。
 
 これは既存の非KE回転cusp例（metric誤差の非可積分性）および抽象測度の `ex:Abel-not-meromorphic`（通常volume-IRFAの弱いremainder）とは別の障害を示す。標準双曲cuspと積距離による直接計算であり、先行例の網羅的調査・優先権確認は未了。作成担当と統合担当がこの指定証明を点検し、cusp表示の一次資料は `source-audit.md` に記す。
+
+### 複素対数germとradial分布
+
+正本は Part I v1.9 `prop:compact-product-logarithmic-germ` と `cor:compact-radial-recovery`。Yは任意の閉コンパクト連結Riemann多様体でよく、b=d_Y(y_0,y)、M_k=∫_Y b^k dV_Yと置くと
+\[
+\begin{aligned}
+\mathcal Z_o(s)&=\frac{W}{1-s}-H_o(s)\operatorname{Log}(1-s)+G_o(s),\qquad W=A(p)M_0,\\
+H_o(s)&=\frac{A(p)s}{2}\sum_{m\ge0}\frac{M_{2m+2}(s^2-1)^m}{4^m m!(m+1)!}.
+\end{aligned}
+\]
+解析接続域は {Re s<3}∖[1,3)、H_oはentire、G_oはRe s<3全体で正則である。曲線側のO(e^−3r)はStieltjes部分積分で処理し、その微分評価を追加しない。厳密な積距離からu=r+√(r²+b²)へ変数変換し、指数積分の対数項とentire剰余を一様絶対収束で分離する。詳細な証明をノートに重複させず、本文の `eq:product-stieltjes-remainder`、`eq:product-kernel-holomorphic-bound` を参照する。
+
+正向き一周のmonodromyは−2πiH_o。z=0で値1の平方根を使い、Φ(z)=2H_o(√(1+4z))/(W√(1+4z)) と置けば、M_(2m+2)/M_0=(m+1)!Φ^(m)(0)。総質量1と全偶数momentsからコンパクト台上の多項式稠密性により確率的な基点距離分布ρを回収する。有限個の係数からの回収や安定性は主張しない。Yが一点ならH_o=0。正次元のコンパクト負KE因子ならH_o(1)>0で、総複素次元2以上のactual負KE積に適用できる。一般volume-IRFAからの複素解析接続ではない。
+
+付随する幾何学的情報として、smooth正次元因子のρ([0,r])は小球漸近ω_n r^n/vol(Y)に従うため、全距離分布から実次元nとvol(Y)も決まる。この短い帰結は研究ノート内の観察であり、本文の系は距離分布の復元を主張単位とする。これでも以下の例の通り等長型は決まらない。
+
+### 一つの基点で全半径の球体積が一致する非等長なコンパクト因子
+
+これは一般Riemann因子における限界の明示例であり、負KE因子に限定した剛性の反例ではない。球面S²の極座標r∈[0,π]、θ∈R/2πZで、零でないχ∈C_c^∞((0,π))と0<|ε|‖χ‖_∞<1を選び、
+\[
+a_\epsilon(r,\theta)=\sin r\,(1+\epsilon\chi(r)\cos2\theta),\qquad
+ g_\epsilon=dr^2+a_\epsilon^2d\theta^2
+\]
+とする。両極の近くではround計量と一致するので滑らかな正定値計量へ延びる。北極oからは|dr|≤dsであり、radial曲線が長さrを実現するからd(o,(r,θ))=rである。面積要素a_ε dr dθのθ平均により、全0≤R≤πについて
+\[
+ \operatorname{area}_{g_\epsilon}B(o,R)=2\pi(1-\cos R),\qquad
+ \operatorname{area}_{g_\epsilon}(S^2)=4\pi.
+\]
+他方、Gauss曲率K=−∂_r²a/aは
+\[
+K_\epsilon=1-
+\frac{\epsilon(\chi''+2\cot r\,\chi')\cos2\theta}
+{1+\epsilon\chi\cos2\theta}.
+\]
+非零のcompact-supported χについてχ''+2cot rχ'が恒等的に零になることはない。実際、それが零なら(sin²r χ')'=0で、支持の外でχ'=0だからχ'=0、さらにχ=0となる。従ってε≠0では曲率は定数1でなく、round球面と等長ではない。
+
+同じSとのRiemann積では、全rでの距離分布が一致するのでRe s<1で距離Laplace変換の全体が一致する。対数germだけでなく変換全体からも一般の基点付き等長型は復元できない。上の距離・面積・曲率の直接計算は統合担当と独立担当が照合した。形式証明器による検証ではない。
+
+### 一次比較と残る拡張の核心
+
+DLMF 6.6.2、8.19.7–8、8.19.12、10.25.2に対応するexponential-integral/Besselの仕組みは古典的である。Golubev–Kamberの有限面積双曲曲面の距離集中は同じ実距離observableを扱うが、面積で定まるR_X付近の族一様評価であり、固定SのR→∞のcusp裾係数と積のgermとは漸近の領域が異なる。Grieserの通常のpolyhomogeneousクラスに対し、実距離変数x=e^−RのR^−1は−1/log xに対応する。Normal-depth側のpolyhomogeneityと実距離側の分岐を同一視しない。確認版・頁・仮定は `source-audit.md` に集約する。
+
+非積のKE空間へ進めるには、実距離又は距離pushforwardの高次誤差をどの解析入力が制御するかを先に特定する。厳密な積距離を失ったとき、通常volume-IRFAとleading tensor比較のみから今回のH_oやRe s<3の正則剰余は出ない。これは次の研究課題であり、現行の証明済み命題の適用範囲へ混ぜない。
 
 ## 全残余上の測度付き平行移動
 
