@@ -1,5 +1,5 @@
 # 現行研究方針：配置補空間の多重スケールKähler–Einstein幾何
-更新：2026-11-22 / v1.9（Part I v1.6、総説v1.8）
+更新：2026-11-22 / v1.10（Part I v1.6、総説v1.9）
 
 ## 研究固有の目標と入口
 固定配置補空間の距離錐・測度漸近、secondary periods・Torelli・WP、conifold gluingを研究する。Part I–IIIの全文と必要な証明を現行原稿に保持し、退化族・actual Lagrangian実現との接続を定理単位で検証する。達成基準は、条件付きの解析段階を隠さず、正本の全文と本ノートだけから入力・適用範囲・残る核心を追えることである。
@@ -19,7 +19,7 @@
 - `papers/multiscale-kaehler-einstein.tex`：主たる公表用原稿Part I v1.6。距離錐・face masses・tails/LDPに加え、任意のnormal深さ列に対する測度付き平行移動、直接Stokesによる体積公式、全faceのvolume-IRFAからの一様Abel–Mellin recursionを証明する。再帰的接続は同じfiberの端点を結ぶambient曲線を用いる。固定SNC入力・距離収縮・LDP・tailと、測度付き極限・Chern–Weil・Mellinに加え、moving-basepoint分類とmetric link復元の指定証明鎖を限定的に内部点検した。組版の頁数と確認範囲はREADME・検証状態を参照する。
 - `papers/secondary-periods-torelli.tex`：Part II v2.1。Torelli・finite period closure・branch separationを保持。一般secondary WP completionにはcontrolled parallel push-offを仮定する。
 - `papers/conifold-localization.tex`：Part III、57頁。algebraic models、positive model pGH、abstract gluing、residual Torelli。Actual localizationとactual global pGHは(H_loc)+(H_anc)に依存する。旧ノートの「fixed node局所化を無条件に証明済み」との記述を最新版の条件付き化より優先しない。
-- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.8。曲面第35稿のnormal-moment相対変更によるGH安定性とfixed-fiberの面積入力、全移動基点の四型分類、全射による同半径閉球比較、source-inclusive固定shellと有限stageのco-Gramを接続する。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
+- `papers/series-overview.tex`：五篇と曲面実現の関係・定理状態・共同監査順、v1.9。曲面第36稿の成分別面積輸送とactual anchorのcore条件を、normal-moment相対変更によるGH安定性へ接続する。全移動基点の四型分類、同半径閉球比較、source-inclusive固定shell、有限stage co-Gramも保持する。五次の(CP)も本稿で引用するPart IVの経路では(TC)付きであり、Part Vのactual直径帰結には(CP)＋(PBE)が必要。曲面側の直接経路と区別する。
 
 ## 固定SNC入力の確立範囲
 主稿 `lem:SNC-compatible-collars` は、元の実有向blow-up上の固定Hermitian normsを用い、全strataのcollarsと全normal line bundleのproduct connectionsを次元順に同時構成する。残余の深さの保存、circle-equivariance、quotient-in-stagesを厳密に保つ。`lem:fc-collar-transfer` はRochon–Zhangの延長Ξと選んだ射影の差、およびHessianの差を、任意Nに対し $x_i^N C^\infty_{\rm fc}$ と評価する。`lem:RZ-collar-tensor` はTheorem 5.1と背景形から $O(x_i^{\min(1,\nu)})$ の全残余一様tensor評価を得る。有限face反復によりsmooth/exponential volume-IRFAも成立する。
@@ -32,7 +32,7 @@
 LDPはexact-supportへの制限測度の下界を使わず、full collarの正質量compact残余集合をscaled ambient open setへ入れて証明する。残余raw座標はO(1)なのでRで割れば消え、既存のvolume-IRFAで足りる。`lem:level`→`lem:calibration`→`lem:vertex-tightness`→`thm:tail`→`thm:joint` は一面比較・全faceのconditional moment評価・距離上界から直接閉じ、co-Gram下界・LDP下界への依存を除いた。一般重みの角分布の分母は最小entropyのverticesだけの重み総和である。これらの鎖は複数担当で限定的に点検したが、全主張の外部査読・形式証明・新規性確認は未了。
 
 ## 曲面正本の全移動基点と固定段階の入力
-曲面第35稿（commit `e801a6511451232246cb164d1dfcbf38699625ee`）の `topo:cubical-local-models` と `topo:cubical-moving-blowups` は、成分頂点の $C_{2,d-1}$、二元supportのbook $\mathbb R\times\mathcal Y_{d-2}$、三座標が全て1の頂点の全角 $3\pi/2$ の錐、残る点の平面を、全targetのambient局所閉球から記述する。移動基点が局所錐内で逃げる場合もpositive-starの退出費用を使い、これらの任意の有限基点で全型を尽くす。
+曲面第36稿（commit `c056ecba5d25a55f135e739faab5993582814484`）の `topo:cubical-local-models` と `topo:cubical-moving-blowups` は、成分頂点の $C_{2,d-1}$、二元supportのbook $\mathbb R\times\mathcal Y_{d-2}$、三座標が全て1の頂点の全角 $3\pi/2$ の錐、残る点の平面を、全targetのambient局所閉球から記述する。移動基点が局所錐内で逃げる場合もpositive-starの退出費用を使い、これらの任意の有限基点で全型を尽くす。
 
 同じ全射の歪みが $\delta$ 以下なら、`ke:distortion-to-pointed-balls` により対応する中心・同じ半径の閉球の基点付きGH距離は $3\delta/2$ 以下である。従って `ke:intermediate-moving-classification` は、$a_t\to\infty$、$a_t/R_t\to0$、$R_t\varepsilon_t/a_t\to0$ の下で、actual曲面の任意の移動基点の全部分列極限を四型に分類し、任意の許容尺度・退化列で全型を実現する。既存のcomponent core・変更collarの一様成分錐も保持する。速度未評価の $\varepsilon_t$ に対する条件を除いた任意尺度、tensor収束、極限交換は含まない。証明は曲面repoに保持し、局所錐とGH移送の一般原理の新規性は主張しない。
 
@@ -41,9 +41,11 @@ LDPはexact-supportへの制限測度の下界を使わず、full collarの正�
 ## 同じ曲面fibrationの相対変更と残るatlas構成
 曲面正本の `ke:moment-relative-replacement` と `ke:relative-replacement-gh` は、同じcanonical normal moment・anchor cuts・保持cornerの全葉・source nodal neighborhoods・component core/変更collarを保ち、実際のmarked product/cone商と全overlapのwhole-fiber partitionが一致する候補変更を扱う。閉商を先に構成し、射影値の差を $C\eta_{j,t}$、$\eta_{j,t}=(1+\log(N_j+1))/R_t$ で抑える。Reduced葉の同定に $C^1$ 小ささは要求しない。一つの固定marked木系の候補をslow diagonalに沿って与えれば、同じ新しい射影にGH実現を移せる。この条件付き安定性と、atlas候補そのものの実構成を分ける。
 
-次の着手点は、各固定tのfree compact bandで `ng8:fixed-fiber-relative-dh` のStokes面積式を適用し、保存する全collars/capsを含む固定領域の外で正のcritical-region areas・総量・端germs・marked identificationsを実現することである。Actual KE形式のt=0へのsmooth extensionを仮定しない。`ng8:source-dh-wall` の重み(1,−1)模型の面積 $\pi(c-|\mu|)$ はsource固定点で折れるため、free-bandの式を全moment intervalへ流用できない。Raw momentのo(1)誤差もprofile値のo(1)を含意しない。これらの例はatlas不存在の反例やactual P0全体の面積公式ではなく、必要入力の区別を示す。
+`ng8:componentwise-critical-area` は、初期marked familyと固定領域Kの外のsmoothなreductionを入力とし、Kを保つ面積指定を、regionと可動成分のincidence上の正行列のrow/column sumsへ同値に帰着する。Protected mass自体のsmoothnessは不要で、targetからそのmassを引いた自由部分の要求量をsmoothとする。`ng8:strict-area-cuts` の成分別総量とstrict cut条件が有限判定を与え、非孤立rowの要求量を正、孤立rowを零とする。Source annuliで補集合が分断されると総量と個別marginだけでは足りない。各massがaffineなら端点で判定できるが、smoothnessだけでは足りない。`ng8:p0-small-area-flexibility` はactual P0のsource近傍・moment・端を固定した十分小さい総和零の面積変更を構成するが、所定の大きなtargetは含まない。
 
-新しい相対変更・面積の指定証明を読み、FBPの部分fibrationと全fiberの補助計量GH、Evans–Mauriのcone extension、Chakravarthy–GromanのK3接着の一次箇所を照合した。既存の距離・全移動基点の点検は再実行せず有効な確認範囲として保持する。Stokes・GH安定性・cone extensionなどの一般原理の新規性は主張しない。
+`ke:anchor-liouville-actions` と `ke:actual-anchor-fan-criterion` は、anchor $q_a=\delta_a$、$M_a=\delta_a-\rho_a<0$ 上の有限critical periodsから、actual Liouville fillingのK4／Petersen作用chartを得る十分条件を与える。Critical period Aの延長は $A(q_a-\rho_a)/M_a$ なので、neckの直線c+pq_aとの一致には同じprimitive/frameでA=pM_a、c=−pρ_aが必要である。残余primitiveの定数差と整数shearも保持する。`ke:anchor-stokes-budget` の総量式はactual clutching relationを入力とし、source固定集合を避ける面積輸送の可解性を自動的に与えない。
+
+次は、所定K4/Petersen targetが全momentで有限cut条件を満たすこと、actual Euler framing、両端の切片と共通整数勾配、markedなopen collarのwhole-fiber一致を同時に検証する。Source wall、raw-moment誤差、無理critical slopeの障害を保持し、微小自由度から所定targetや同じπのatlas/GH完成を推論しない。今回の輸送・core接続の指定証明を内部点検し、既存の距離監査とFBP・Evans–Mauri・Chakravarthy–Gromanの一次比較は再実行せず保持する。有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理の新規性は主張しない。
 
 ## 移動基点とlinkの確立範囲
 `prop:cone-limits` はcomponent incidencesを保つ正のface領域で積構造を用い、各壁までの距離が2Aを超える場合に、閉A球のambient距離を積の距離と厳密に同定する。これによりmoving-basepointの全部分列極限と各型の実現を証明する。閉star全体のambient積という誤った主張は用いず、短絡・境界同一視の例をノートに保持する。
@@ -70,7 +72,7 @@ Part II v2.1では、複素periodの復元にfactor/cusp labelsとKähler orient
 Rochon–Zhang Theorem 5.1はSNC strataの共通指数\(\nu>0\)のfc漸近を与え、Theorem 7.4・7.6のpolyhomogeneous展開と\(x\log x\)の係数はsmooth divisorに限る。Smooth degree-\(e\) hypersurface\(D_e\subset\mathbf P^n\)（\(e>n+1\)、\(n\ge2\)）では\(\widetilde b_e=2(n-1)e/[3(e-n-1)]\)と計算できる。さらにnormal-circle connectionを含むcompatible modelへのtensor誤差は\(C(1+t)e^{-t}\)で、tail積分は\(C(T+2)e^{-T}\)（`cor:RZ-smooth-sharp-IRFA`）。これは一次資料から得られるsmooth boundaryの可積分評価であり、一般SNCの全大域path liftingやactual conifold gluingの証明ではない。五直線のface mass係数はintersectionとGauss–Bonnetから数値検算済み。
 
 ## 次の課題
-1. **共通の最優先監査と相対構成。** 全域実現から逆向きに、残る入力と一次文献の仮定・量化を詰める。同じπのatlas/GHについては、上の相対変更定理の条件を満たすmarked局所商・critical-area調整・core fillingを具体化し、sourceを避けたfree-bandと保存する全collars/capsの面積余裕を検証する。Part IVのcapped volume・full-triple・closed-cornerと曲面側のscalar/portal、固定shell、有限stageからslow diagonalへの既存点検は保持する。局所protected距離と全曲面ambient距離を混同せず、(CP)/(PBE)/(TC)、(H_loc)/(H_anc)は独立の課題とする。
+1. **共通の最優先監査と相対構成。** 同じπのatlas/GHについて、所定の大きなK4/Petersen targetを全momentのfinite cut条件へ代入し、actual sourceを固定した輸送の可否を判定する。Anchor periods・Euler framing・両端の切片・整数shearと全open overlapsを同時に合わせる。全域実現から逆向きの残る入力・一次文献監査も続ける。Part IVのcapped volume・full-triple・closed-cornerと曲面側のscalar/portal、固定shell、有限stageからslow diagonalへの既存点検は保持する。局所protected距離と全曲面ambient距離を混同せず、(CP)/(PBE)/(TC)、(H_loc)/(H_anc)は独立の課題とする。
 2. **Part I。** 主定理の仮定対応表を起点に、未点検の証明箇所と主要結果の網羅的な先行研究比較を詰める。距離側ではLeuzinger・Bridson–Haefliger、測度側ではChambert-Loir–Tschinkelとの既知の重なりを踏まえ、recursive cusp geometryから実距離球のBusemann phase・tail係数までのどの部分が新しいかを具体化する。標準cone幾何や一般的なresidue-measure原理を独自成果として数えない。
 3. **Part III。** (H_loc)のwhole-end localization・parent/refined compatibility、(H_anc)のanchors・portal transport・radial densityをactual metricで確立する。曲面側の手法は検証課題の手掛かりであり、conifold模型・対象・尺度が一致する証明ではない。
 4. **Part II。** Controlled parallel push-offを証明するか適用範囲を限定する。一般matroid・Jacobi/scatteringの独立素材は `papers/research-directions.tex` に保持し、核心の監査後に進める。

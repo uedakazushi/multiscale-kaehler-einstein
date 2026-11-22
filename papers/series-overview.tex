@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.8（2026年11月22日）}
+\date{現行総説 v1.9（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -360,9 +360,54 @@ Actual KE形式の\(t=0\)へのsmooth extensionや\(t\)に一様な評価を仮�
 一方，周期\(2\pi\)，重み\((1,-1)\)，\(I_1+I_2\le c\)，\(\mu=I_1-I_2\)の模型では
 reduced areaは\(\pi(c-|\mu|)\)となり，source固定点を横切って折れる
 （例\texttt{ng8:source-dh-wall}）．これはactual P0全体の面積公式ではない．
-相対Moserに必要な正のtarget areas，総量一致，保存する全collars/capsへの余裕，
-端germsとmarked identificationsを満たすatlas候補の実構成が，なお残る課題である．
-これらの証明は曲面repoを正本とし，StokesやGH安定性の一般原理の新規性は主張しない．
+保存する領域を\(K\)，その補集合の連結成分を\(U_\alpha\)，critical regionsを\(D_h\)とする．
+定理\texttt{ng8:componentwise-critical-area}は，初期のmarked familyと自由部分の
+smoothなreductionが与えられた下で，\(K\)の近傍を固定した面積指定を有限配分へ帰着する．
+\(\kappa_h\)をprotected mass，\(a_h\)をtarget，\(M_\alpha\)を自由成分の面積とすると，
+必要十分条件はincidence \(E=\{(h,\alpha):D_h\cap U_\alpha\ne\varnothing\}\)上の
+\[
+ x_{h\alpha}>0\ ((h,\alpha)\in E),\qquad
+ \sum_\alpha x_{h\alpha}=a_h-\kappa_h,\qquad
+ \sum_hx_{h\alpha}=M_\alpha
+\]
+であり，\(E\)の外では\(x_{h\alpha}=0\)とする．Protected mass自体はnonsmoothでもよく，
+自由要求量\(a_h-\kappa_h\)にsmoothnessを課す．正配分のsmoothな選択，cell密度の指定，
+自由成分ごとの固定支持primitiveと相対Moserを用いる．
+非孤立regionの自由要求量は正，孤立regionでは零とする．
+命題\texttt{ng8:strict-area-cuts}により，各incidence成分の総量一致と，
+非空properなregion集合\(S\)について
+\(\sum_{h\in S}(a_h-\kappa_h)<\sum_{\alpha\in N(S)}M_\alpha\)
+が有限判定を与える．Source annuliが自由部分を分断すると総量と各regionの余裕だけでは
+足りない．全marginsがaffineなら両端で判定できるが，smoothnessだけでは足りない．
+
+系\texttt{ng8:p0-small-area-flexibility}は，actual P0の各sourceを通る閉葉の
+選んだ飽和annuliを保持し，その逆像のfull compact nodal neighborhoodsを固定したまま，
+十分小さい総和零のsmoothなcritical-area増分を構成する．
+自由部分のincidence graphの連結性と元の正配分を用い，canonical moment，normal circle，
+marked tree，保持end collarsと端germsを保つ．\(\mu=0\)でprotected massが滑らかである
+ことは要求しない．この微小自由度から，所定の大きなtargetへの到達は結論しない．
+
+Core側では，補題\texttt{ke:anchor-liouville-actions}が周期\(1\)のactual primitiveを用い，
+anchor \(q_a=\delta_a\)，\(M_a=\delta_a-\rho_a<0\)上のcritical period \(A\)に対し
+\[
+ I_\beta(q_a)=\frac{A}{\delta_a-\rho_a}(q_a-\rho_a)
+\]
+を与える．従って同じprimitive/frameのneck直線\(c+pq_a\)との一致には
+\(A=pM_a\)，\(c=-p\rho_a\)が必要十分であり，残余primitiveの閉形式差と整数shearを
+加える場合はその定数も保持する．Liouville延長による実係数affine性だけでは整数勾配を得ない．
+命題\texttt{ke:actual-anchor-fan-criterion}は，K4では有向四角形に対応するcritical periods，
+Petersenではexternal periodsの零とinternal annulusの端periods \(0,-M_a\)を入力とし，
+actual annulusのStokes単調性とunimodular face matricesからcore値の近傍の作用chartを構成する．
+同じdomain・skeleton・保持cap葉を保ち，normal actionは各branch starでambient integer affineとなる．
+補題\texttt{ke:anchor-stokes-budget}の
+\(\operatorname{Area}(P)=-\sum_b c_b-M_a\)は実際のEuler clutchingを入力とする．
+総量一致だけから上の有限配分の可解性は従わず，無理なperiod比を持つ固定fillingには
+有理作用方向の障害が残る．
+
+所定大targetの全moment配分，actual Euler framing，両端の切片・整数勾配，
+marked open collarsのwhole-fiber一致を同時に実現することが，なお残る課題である．
+証明の正本は曲面repoであり\cite{SurfaceKE}，有限輸送，Moser，Stokes，GH移送，
+cone extensionの一般原理の新規性は主張しない．
 \end{remark}
 
 \begin{remark}[同半径閉球の比較と全移動基点の中間尺度]
@@ -632,7 +677,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
-\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．同じfibrationでのatlas/GHには，相対変更命題のmarked閉商条件と，free-bandの面積・端germs・固定collars/capsを満たす局所構成を先に与える．
+\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．同じfibrationでのatlas/GHには，所定K4/Petersen targetを全momentの有限cut条件へ代入し，sourceを固定した輸送，anchor periods，Euler framing，両端の切片・整数shearとmarked閉商を同時に実現する．
 \item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
@@ -658,12 +703,13 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂35，2026年11月22日，確認commit \texttt{e801a65}，
-\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/e801a6511451232246cb164d1dfcbf38699625ee/papers/surface-lagrangian-torus-fibration.tex}{確認版ソース}，
+\newblock 改訂36，2026年11月22日，確認commit \texttt{c056ecb}，
+\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/c056ecba5d25a55f135e739faab5993582814484/papers/surface-lagrangian-torus-fibration.tex}{確認版ソース}，
 \newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，
 \newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}，
-\newblock 命題 \texttt{ke:moment-relative-replacement}，系 \texttt{ke:relative-replacement-gh}．
+\newblock 命題 \texttt{ke:moment-relative-replacement}，系 \texttt{ke:relative-replacement-gh}，
+定理 \texttt{ng8:componentwise-critical-area}，命題 \texttt{ke:actual-anchor-fan-criterion}．
 
 \bibitem{FBP}
 J.~Fernández de Bobadilla and T.~Pełka,

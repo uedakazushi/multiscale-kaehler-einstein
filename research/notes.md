@@ -1,12 +1,12 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.9（Part I v1.6、総説v1.8）
+更新：2026-11-22 / v1.10（Part I v1.6、総説v1.9）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.15・commit b9848d1](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b9848d10ec7b8876220b4093be852f3428ab14ea)と[曲面改訂35・研究資料v3.19・commit e801a65](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/e801a6511451232246cb164d1dfcbf38699625ee)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合と下記の指定証明鎖の内部点検を、外部の全証明の独立再検証とは区別する。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.16・commit a3a4945](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a3a494599d51c8d0a4fd267d40cdd3d9b1ce65b0)と[曲面改訂36・研究資料v3.20・commit c056ecb](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/c056ecba5d25a55f135e739faab5993582814484)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合と下記の指定証明鎖の内部点検を、外部の全証明の独立再検証とは区別する。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -19,6 +19,8 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
 | 曲面 `ke:moment-relative-replacement`, `ke:relative-replacement-gh` | 同じcanonical moment・anchor cuts・保持corner全葉・source nodal neighborhoods・component領域、marked product/cone商、whole-fiber接着を保つ候補の射影値差≤Cη。C1小ささは不要。固定木系の候補がslow diagonalに沿って存在すればGHを移せる。Atlas候補の存在は入力。 |
 | 曲面 `ng8:fixed-fiber-relative-dh`, `ng8:source-dh-wall` | 固定tのfree compact bandのinvariant primitiveとaffine boundary actionsからStokes面積式。Source固定点を横切る(1,−1)模型では周期2πで面積π(c−|μ|)。Actual全P0の面積公式ではない。 |
+| 曲面 `ng8:componentwise-critical-area`, `ng8:strict-area-cuts`, `ng8:p0-small-area-flexibility` | Rel-Kのmarked初期familyを入力とし、critical areasの指定は自由成分への正行列配分と同値。成分別総量＋strict cutsで判定。Actual sourceの全近傍を固定した小さい総和零の変更は構成可能だが、所定大targetは未検証。 |
+| 曲面 `ke:anchor-liouville-actions`, `ke:actual-anchor-fan-criterion`, `ke:anchor-stokes-budget` | Actual anchorの有限period条件からK4/Petersen core chartを構成する十分条件。Liouville homogeneityは実係数affine性を与え、整数勾配・neck切片一致は別条件。Clutchingを入力にStokes総量を計算し、relative輸送や両端matchingの存在を推論しない。 |
 | 曲面 `ke:source-inclusive-fixed-shell`, `ke:global-clipped-cogram-lower` | Sourceを含む固定残余compact・固定rでの同一frameのmomentとshell横断下界。有限stageのco-Gram不等式を極限操作から分ける。異なるnormal formsのprimitive一致、任意moving exhaustionは含まない。 |
 | 曲面 `topo:cubical-local-models`, `topo:cubical-moving-blowups` | 全targetのambient局所閉球から成分錐、book、角3π/2の錐、平面を得る。全moving拡大極限と任意拡大列での各有限基点の実現。 |
 | 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
@@ -188,7 +190,7 @@ Connectionの残余角係数は対応faceで消え、通常接方向の係数は
 
 ## 曲面側の固定段階入力と全域ambient接続
 
-証明の正本は曲面第35稿。`ke:source-inclusive-fixed-shell` では、三重点を避けsourceを含んでよい固定残余compact P⊂int P+上で、同じ射影正規形 x′y′=t h_t(p)と非零正則体積frame Ω_t=dlog x′∧dp=−dlog y′∧dpを用いる。Ω_tはsourceにも延びる。先にPとrを固定し、s_r=−log r²と置くと、全base points・phaseについてmomentは±4π/s_r+O(s_r^(−1−δ))+o_t(1)。O定数は小rに共通だが、tの閾値はrに依存してよい。r²≤|x′|≤rのshell横断費用はc_P log2以上となる。Songのfixed-smooth-locus収束とRochon–Zhangの成分cusp評価を用い、任意の小さい複素tを扱う。別normal formのprimitiveとの差はclosed項として保持し、同一性や残余period消滅を追加しない。
+証明の正本は曲面原稿。`ke:source-inclusive-fixed-shell` では、三重点を避けsourceを含んでよい固定残余compact P⊂int P+上で、同じ射影正規形 x′y′=t h_t(p)と非零正則体積frame Ω_t=dlog x′∧dp=−dlog y′∧dpを用いる。Ω_tはsourceにも延びる。先にPとrを固定し、s_r=−log r²と置くと、全base points・phaseについてmomentは±4π/s_r+O(s_r^(−1−δ))+o_t(1)。O定数は小rに共通だが、tの閾値はrに依存してよい。r²≤|x′|≤rのshell横断費用はc_P log2以上となる。Songのfixed-smooth-locus収束とRochon–Zhangの成分cusp評価を用い、任意の小さい複素tを扱う。別normal formのprimitiveとの差はclosed項として保持し、同一性や残余period消滅を追加しない。
 
 `ke:global-clipped-cogram-lower` は一つのt,m,Kを固定し、S=R−log m−log K∈(0,R]、ε≥0とする。Strictにactiveな共変ベクトルの全co-Gram matrixが(1+ε)Id以下なら、任意のrectifiable curve γについて
 \[
@@ -213,7 +215,34 @@ L_\square(\Theta_t\gamma)\le \frac{R\sqrt{1+\epsilon}}S L_{R^{-2}g_t}(\gamma).
 
 `ng8:fixed-fiber-relative-dh` は固定t≠0、自由な周期2πのcircle作用、E_t/S1≅J×P（Pは境界を持つcompact connected surface）、作用不変primitive λ_t(V)=μを仮定する。Boundary framingとcutsを固定し、向き付き第二作用R_ℓ,t(μ)がaffineなら、Stokesにより面積は2πΣ_ℓ(R_ℓ,t(μ)+k_ℓ,t μ)、k_ℓ,t∈Zでaffineとなる。Reference constantsのt依存を許し、t=0へのsmooth extensionや族一様性を入力にしない。
 
-`ng8:source-dh-wall` の標準C²、I_k=|z_k|²/2、weights(1,−1)、μ=I_1−I_2、I_1+I_2≤cでは、周期2πのreduced angleにより面積はπ(c−|μ|)となる。固定点μ=0で折れるため、free-bandの式をsource横断intervalに流用できない。これはactual P0全体の面積公式ではない。相対Moserではsource近傍を保持して支持を離し、正のtarget region areas・総量一致・保存する全collars/capsを含む固定領域への余裕・端germs・marked identificationsを別に検証する。証明全文と規約は曲面正本に置き、StokesとGH安定性の一般原理を新規成果とは扱わない。
+`ng8:source-dh-wall` の標準C²、I_k=|z_k|²/2、weights(1,−1)、μ=I_1−I_2、I_1+I_2≤cでは、周期2πのreduced angleにより面積はπ(c−|μ|)となる。固定点μ=0で折れるため、free-bandの式をsource横断intervalに流用できない。これはactual P0全体の面積公式ではない。相対Moserではsource近傍を保持して支持を離し、以下の成分別条件と端germs・marked identificationsを検証する。
+
+### Sourceを固定した有限面積輸送
+
+固定集合K、自由成分U_α、初期critical regions D_hとその実際のsmooth marked trivializationを与える。IncidenceはE={(h,α):D_h∩U_α≠∅}、protected massはκ_h、自由要求量はr_h=a_h−κ_h、自由成分の面積はM_αとする。`ng8:componentwise-critical-area` は、初期familyと同じDiff₀(P rel K)-orbitでの実現が
+\[
+x_{h\alpha}>0\ ((h,\alpha)\in E),\quad x_{h\alpha}=0\ ((h,\alpha)\notin E),
+\qquad\sum_\alpha x_{h\alpha}=r_h,\quad\sum_hx_{h\alpha}=M_\alpha
+\]
+と同値であることを示す。自由部分の形式とr_hがsmoothならよく、κ_h自体のsmoothnessは不要。Pointwiseな正解を固定線型right inverseとpartition of unityでsmoothに選び、密度のcell積分を指定してから、各U_αの零積分差に固定支持primitiveを作ってMoserを行う。ρ=1をcritical leavesの近傍にも課せるが、Moser写像がその葉を固定するという意味ではない。
+
+`ng8:strict-area-cuts` では、非孤立rowの要求量r_hを正、孤立rowを零、全M_αを正とする。その下で二部graphの各連結成分ごとの総量一致と、非空properなregion集合Sに対するΣ_{h∈S}r_h<Σ_{α∈N(S)}M_αが必要十分である。Graphとmarginsがcompact parameter上で連続ならstrictな余裕は一様となる。Marginsが全てaffineのintervalでは端点確認で足りるが、smoothだけでは足りない。固定annulusの内側U₀が一つのbasinだけに接すると、そのbasinには少なくともκ₁+M₀を配分する必要がある。`ng8:annular-protection-obstruction` と `ng8:interior-area-cut-obstruction` は、総量と個別margin、又は両端の正配分だけでは不十分な実面積模型を与える。Actual KE族に所定の障害が生じることを証明した例ではない。
+
+`ng8:p0-source-protected-reduction` は各sourceを通るregular closed leafの選んだ飽和annulusを保持し、その逆像にfull compact pinched torusと飽和近傍を含める。外側のreductionはμ=0を跨いでsmoothである。`ng8:p0-small-area-flexibility` ではend collarsとこれらのannuliがcritical leavesを避けるためincidence graphが連結となり、元の正配分の周りで小さい総和零のsmooth増分をspanning-tree flowで実現する。増分を両端で零とすればsource全近傍・canonical moment・normal circle・marked tree・whole-fiber overlapsを保つ。Sourceを含むprotected massがnonsmoothでもよい。これは局所的な自由度であり、所定の大targetまで反復できることや、全区間で切片を直線化できることは示さない。
+
+### Actual anchorからcore action chartへの条件
+
+周期1のnormal cycleを用い、actual invariant primitiveのperiodをM_a=q_a−ρ_a、anchorをq_a=δ_a<ρ_aとする。`ke:anchor-liouville-actions` により、anchorのcritical period AはLiouville filling上で
+\[
+I_\beta(q_a)=\frac{A}{\delta_a-\rho_a}(q_a-\rho_a)
+\]
+となる。同じprimitive/frameのneck直線c+pq_aとの一致にはA=p(δ_a−ρ_a)、c=−pρ_aが必要十分である。Neckとのclosed primitive差のperiod κ、cycleの符号εと整数shear kを用いる場合はp=k+εA/(δ_a−ρ_a)、c+ρ_a(p−k)=εκとなる。Exactなprimitive補正は固定cycleのperiodを変えない。元のcanonical circleとの厳密一致は共通collarでの主張であり、全coreへの元のcircle actionの延長を主張しない。
+
+`ke:actual-anchor-fan-criterion` は、五次では有向四角形fに対しcritical meridian periodsを−M_a·1_{b=f(a)}、六次Petersenではexternal periodsを0、internal annulusの端periodsを0と−M_aにする十分条件を与える。Actual annulusのStokes単調性とcornerの負のmeridian periodsから、既存のunimodular face matricesの係数の正値性が従う。Liouville homogeneityでcore値の近傍へchartを延ばし、各branch starのnormal actionもambient integer affineとなる。同じdomain・skeleton・等方的strata・保持cap葉を保ち、比例曲率模型への移植を新たに仮定しない。
+
+`ke:anchor-stokes-budget` は、実際のclutching Σ[β_b]=−[α]を入力とし、normal period M<0とpuncture reference periods c_bに対してArea(P)=−Σc_b−Mを示す。非閉primitiveをhomology関係へ直接積分せず、global sectionと整数windingからStokesを適用する。K4のbasin areas A_b−c_b、Petersenのexternal areas−c_bとinternal area−Mは総量と一致する。保持集合がend collarsだけで内側境界periodも負ならmarginを得るが、追加source annuliには上の有限輸送条件が要る。
+
+比A/(δ_a−ρ_a)が無理数なら、その固定Liouville fillingのbranchを有理作用方向へ変える整数座標変換はない。これもatlas候補全体の不存在ではない。次の課題は、actual Euler framing、所定大targetの全moment輸送、両端primitive・切片・整数勾配、marked open collarのwhole-fiber一致を同時に満たすことである。数学的正本は曲面repoであり、有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理を独自成果とは扱わない。
 
 ## 曲面の全移動基点と選択した中間尺度
 
