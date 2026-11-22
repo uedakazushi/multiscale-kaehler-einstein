@@ -1,19 +1,19 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.10（Part I v1.6、総説v1.9）
+更新：2026-11-22 / v1.12（Part I v1.7、総説v1.10）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.16・commit a3a4945](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/a3a494599d51c8d0a4fd267d40cdd3d9b1ce65b0)と[曲面改訂36・研究資料v3.20・commit c056ecb](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/c056ecba5d25a55f135e739faab5993582814484)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合と下記の指定証明鎖の内部点検を、外部の全証明の独立再検証とは区別する。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。現行の接続先は[KE Part IV–V v1.10・研究資料v1.19](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/main)と[曲面改訂38](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/main)。資料確認日は2026-11-22。Part IVの新しい局所安定性の証明は今回の作業版を直接読み、全深部比較への適用まで独立に点検した。曲面の新しいprotected-anchor選択条件は共同担当の本文と総説で接続を照合し、この担当が曲面全稿を再検証したとはしない。保存commitと実際の組版・表示確認の範囲は `validation.json` に分けて記す。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
 | Part I `thm:intro-metric`, `thm:contract`, `thm:rough`, `cor:based-ball-approximation`, `prop:RZ` | 固定ample SNC対のcomplete KE metric。Clean collar＋metric-IRFAからproperな1-Lipschitz全射と加法誤差K。対応する中心を持つ閉球のGH誤差≤3K/(2R)は中心・半径に一様。退化族のmoving領域の一様性は含まない。 |
 | Part II `thm:intro-star`, `thm:intro-general-completion`, `hyp:controlled-pushoff` | Marked residual複素・双曲曲線のperiodsとTorelli。一般WP completionにはcontrolled push-off。曲面の第二作用積分との同一視はない。 |
 | Part III `hyp:Hloc`, `hyp:Hanc`, `thm:actual-global-pgh` | Ordinary/conifold whole-end比較とtracked anchors等を追加仮定とする。対象・positive square模型・空間的blow-downを曲面退化と区別する。 |
-| Part IV `coarse:cor:degree-d-volume-lower`, `coarse:thm:full-triple-tensor` | 全固定d≥5のcapped volume下界と深部triple比較。後者の詳細証明は `papers/sections/full_triple_comparison.tex`。 |
+| Part IV `coarse:thm:boundary-to-triple`, `coarse:cor:degree-d-volume-lower`, `coarse:thm:full-triple-tensor` | Fixed-face density下界と各固定parameterでradial閉包近傍まで滑らかな負KE metricから、全phase quotient上のcomplete比較により全深部tensor安定性を得る。Parameter一様な境界上界を仮定しない。Capped volume下界が全固定d≥5の族でこの入力を供給する。証明の正本は `papers/sections/full_triple_comparison.tex`。 |
 | Part IV `simplex:cor:actual-closed-corner-metric`, `pair:thm:fixed-end-moment` | Closed tripleの内在・protected距離、および固定source-free residual compact上のmoment入力。全曲面ambient距離や任意のmoving exhaustionへの一様性へ拡張しない。 |
 | Part IV `coarse:hyp:TC5`, `coarse:thm:main`; Part V `hyp:CPd`, `hyp:PBEd`, `thm:degree-d-limit` | Part IVの五次coarse定理は(TC)5付き。Part Vの大域適用は(CP)d＋(PBE)d付き。有限targetの直径 `thm:intro-diameter-C5` は独立。 |
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
@@ -21,6 +21,7 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | 曲面 `ng8:fixed-fiber-relative-dh`, `ng8:source-dh-wall` | 固定tのfree compact bandのinvariant primitiveとaffine boundary actionsからStokes面積式。Source固定点を横切る(1,−1)模型では周期2πで面積π(c−|μ|)。Actual全P0の面積公式ではない。 |
 | 曲面 `ng8:componentwise-critical-area`, `ng8:strict-area-cuts`, `ng8:p0-small-area-flexibility` | Rel-Kのmarked初期familyを入力とし、critical areasの指定は自由成分への正行列配分と同値。成分別総量＋strict cutsで判定。Actual sourceの全近傍を固定した小さい総和零の変更は構成可能だが、所定大targetは未検証。 |
 | 曲面 `ke:anchor-liouville-actions`, `ke:actual-anchor-fan-criterion`, `ke:anchor-stokes-budget` | Actual anchorの有限period条件からK4/Petersen core chartを構成する十分条件。Liouville homogeneityは実係数affine性を与え、整数勾配・neck切片一致は別条件。Clutchingを入力にStokes総量を計算し、relative輸送や両端matchingの存在を推論しない。 |
+| 曲面 `ke:k4-protected-anchor-selection` | 固定した五次anchorの内側protected periodsとnormal periodから所定K4 targetへの有限配分条件を判定する条件付き結果。Actual P0の符号・framing、sourceを跨ぐ全moment区間、neck両端の切片と全open overlapsの確認は別入力。 |
 | 曲面 `ke:source-inclusive-fixed-shell`, `ke:global-clipped-cogram-lower` | Sourceを含む固定残余compact・固定rでの同一frameのmomentとshell横断下界。有限stageのco-Gram不等式を極限操作から分ける。異なるnormal formsのprimitive一致、任意moving exhaustionは含まない。 |
 | 曲面 `topo:cubical-local-models`, `topo:cubical-moving-blowups` | 全targetのambient局所閉球から成分錐、book、角3π/2の錐、平面を得る。全moving拡大極限と任意拡大列での各有限基点の実現。 |
 | 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
@@ -79,7 +80,7 @@ Metric linkでは、各連結成分のspherical path distanceを使い、異な�
 
 **Radial familiesと一般rough rays。** 第一象限のγ(t)=(t,√t)は |t−s|≤d(γ(t),γ(s))≤|t−s|+1/2 を満たすが、どのradial rayとも有界距離にない。従ってcoarse sectionで選んだradial familiesの結果を、全rough raysのbounded-distance商やgenuine geodesic-ray boundaryへ読み替えない。Sublinear同値による方向空間は別の検討課題であり、現行主定理に含めない。
 
-**一次文献との比較。** [Bridson–Haefliger原著](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/bridsonhaefligerx.pdf), Chapter I, Definition 5.6・Remarks 5.7（印刷pp.59–60）のcone metricとlength-metric recoveryを確認した。同書Theorem 7.39（p.115）・Lemma 7.56（p.120）はpolyhedral local modelsの入力で、無限遠の移動基点分類を直接述べる結果ではない。[Leuzinger 2004出版社版](https://www.heldermann-verlag.de/jlt/jlt14/leuzams.pdf), Lemma 5.1（pp.330–331）、Theorem 5.2（pp.331–332）、Corollary 6.3（p.336）は局所対称空間のnet上の有界加法誤差・asymptotic cone・radial公式を与える。これら自体を本研究の新規性とせず、ample SNCのKE metricからの構成と残余測度への接続を比較対象とする。指定箇所の照合であり、全関連文献の網羅的な優先権確認は未了である。
+**一次文献との比較。** [Bridson–Haefliger原著](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/bridsonhaefligerx.pdf), Chapter I, Definition 5.6・Remarks 5.7（印刷pp.59–60）のcone metricとlength-metric recoveryを確認した。同書Theorem 7.39（p.115）・Lemma 7.56（p.120）はpolyhedral local modelsの入力で、無限遠の移動基点分類を直接述べる結果ではない。[Leuzinger 2004出版社版](https://www.heldermann-verlag.de/jlt/jlt14/leuzams.pdf), Lemma 5.1（pp.330–331）、Theorem 5.2（pp.331–332）、Corollary 6.3（p.336）は局所対称空間のnet上の有界加法誤差・asymptotic cone・radial公式を与える。Corollary 5.5（p.332）はそのconeをCAT(0)とする。本稿の五直線のall-right K5 coneはCAT(0)でない。`rem:K5-not-CAT0` では、頂点と反対辺中点を結ぶ二つの長さ3π/4のangular最短路から、cone内の異なる最短chordを作って直接証明する。標準cone原理自体を本研究の新規性とせず、ample SNCのKE metricからの構成と残余測度への接続を比較対象とする。指定箇所の照合であり、全関連文献の網羅的な優先権確認は未了である。
 
 [Datar–Fu–Song, arXiv:2106.05486v2](https://arxiv.org/abs/2106.05486v2), Corollary 1.1（pp.3–4）は孤立log canonical表面特異点のcomplete負KE metricについて、無縮小の移動基点pGH極限を直線またはflat cylinderと記述する。[Engberg博士論文](https://data.math.au.dk/publications/phd/2022/math-phd-2022-lbe.pdf), Definition 1.2.12・Proposition 1.2.13（pp.25–27）は二次元Hilbert modular cuspのcharacteristic linkの非崩壊baseとexceptional dual complexのhomeomorphismを構成する。Isometryや一般ample SNC対の大域加法比較を述べる結果ではない。両者の指定本文を照合し、固定補空間のspatial blow-downとの対象・尺度の違いをIntroductionへ記した。DFSの定理番号は確認したarXiv v2に固定し、出版版の番号は未照合である。
 
@@ -105,6 +106,20 @@ t_\pm=T_0\pm s\quad(\pm s\ge0).
 一般重みh_i=c_i^(−1/2)ではV_*={i:h_i=h_*}だけがleading tailを担い、角分布の重みはw_i/W、W=Σ_{j∈V_*}w_jである。全verticesの総和を分母に使うと、非minimizing vertexがある場合に確率の総和が1にならない。KE規格化は全c_i=1なのでV_*が全verticesとなる。Boundary空のcompact caseでは大きいRでtailは0であり、min_i h_iを定義しない。
 
 以上の距離収縮・LDP・tailの鎖は複数担当で限定的に独立点検した。現在の原稿の全証明、外部査読、形式証明、先行研究との網羅的な新規性比較が完了したとの意味ではない。
+
+## 実距離球から回復する裾係数
+
+正本は Part I v1.7 `cor:tail-intrinsic-uniform`。非空境界、metric-IRFAと全faceの通常volume-IRFAの下で、h_*は実球外体積のexponential decay rate、W(o)はその正規化極限であり、pointed metric–measure spaceの内在量である。D=d(o,o')として
+\[
+e^{-h_*D}W(o)\le W(o')\le e^{h_*D}W(o).
+\]
+したがってlog Wはh_*-Lipschitz、KE規格化では1-Lipschitzである。有限δ-netと球の包含から、e^(h_*R) μ(X∖B(o,R))→W(o)は任意の固定compact基点集合上で一様となる。非compactな全基点や退化族のparameter一様性へ読み替えない。
+
+`prop:depth-gauge` は、許されるHermitian norm変更 ρ'_i=e^(ψ_i)ρ_i、ψ_i smooth on the compactificationに対し、t'_i−t_i=O(e^(−t_i))を全残余に一様に使う。旧normal flowに沿うlevel setsのambient Hausdorff差もO(e^(−T))となるのでb'_i=b_i。幾何学的face massは交点数として不変であり、各重みm_i exp(b_i(o))も不変である。形式的な定数shift t'_i=t_i+a_iでは新density係数はe^(a_i)m_i、Busemann offsetはb_i−√c_i a_iとなり積は保たれるが、この新係数を幾何学的交点質量と呼ばない。Circle模型の係数も変わるため、同じ正規化のmetric-IRFAへの自動適用ではない。
+
+`ex:nonintegrable-cusp-tail` は非KEの滑らかな回転曲面であり、t≥0の端に g_a=(1+a/(1+t))²dt²+e^(−2t)dθ²、a≥0を置き、compact capのpoleからの距離をr=ℓ+t+a log(1+t)とする。全aで距離錐はray、leading normal massは2πであり、通常volume-IRFAを満たす。一方、裾は2πe^ℓ R^a e^(−R)と漸近する。a>0の非可積分metric誤差では有限なexact-tail係数が失われる。a=0でもℓを変えると同じrayとnormal massのままWが変わる。これはcoreの距離offsetの必要性を示す解析例であり、KEクラスの反例でも、rough cone比較一般への反例でもない。
+
+先行研究との比較では、Chambert-Loir–Tschinkel §4.2式(4.1)のalgebraic height sublevelsと本稿の有限体積の実距離球外側を区別する。一面でlog H≈λe^tとなるheightとt+b_i(o)で較正される距離は異なるobservableである。実球のBusemann較正と全faceのconditional momentsが本稿のWへ接続する。一般的な基点比較・有限netの原理やresidue-measure原理自体の新規性を主張せず、一次資料の指定箇所と未確認点は `source-audit.md` を参照する。
 
 
 ## 全残余上の測度付き平行移動
@@ -242,7 +257,7 @@ I_\beta(q_a)=\frac{A}{\delta_a-\rho_a}(q_a-\rho_a)
 
 `ke:anchor-stokes-budget` は、実際のclutching Σ[β_b]=−[α]を入力とし、normal period M<0とpuncture reference periods c_bに対してArea(P)=−Σc_b−Mを示す。非閉primitiveをhomology関係へ直接積分せず、global sectionと整数windingからStokesを適用する。K4のbasin areas A_b−c_b、Petersenのexternal areas−c_bとinternal area−Mは総量と一致する。保持集合がend collarsだけで内側境界periodも負ならmarginを得るが、追加source annuliには上の有限輸送条件が要る。
 
-比A/(δ_a−ρ_a)が無理数なら、その固定Liouville fillingのbranchを有理作用方向へ変える整数座標変換はない。これもatlas候補全体の不存在ではない。次の課題は、actual Euler framing、所定大targetの全moment輸送、両端primitive・切片・整数勾配、marked open collarのwhole-fiber一致を同時に満たすことである。数学的正本は曲面repoであり、有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理を独自成果とは扱わない。
+比A/(δ_a−ρ_a)が無理数なら、その固定Liouville fillingのbranchを有理作用方向へ変える整数座標変換はない。これもatlas候補全体の不存在ではない。固定した五次anchorの所定K4 targetには、曲面改訂38の `ke:k4-protected-anchor-selection` の有限period判定を使える。次の課題はactual P0の値・符号・Euler framingを代入し、sourceを跨ぐ全moment輸送、両端primitive・切片・整数勾配、marked open collarのwhole-fiber一致を同時に満たすことである。数学的正本は曲面repoであり、有限輸送・Moser・Stokes・GH移送・cone extensionの一般原理を独自成果とは扱わない。
 
 ## 曲面の全移動基点と選択した中間尺度
 

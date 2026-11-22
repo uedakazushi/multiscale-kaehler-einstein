@@ -69,9 +69,9 @@
 }
 
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
-\Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
+\Large 固定補空間，退化族の局所解析，曲面実現の接続と定理状態}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.9（2026年11月22日）}
+\date{現行総説 v1.10（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -107,6 +107,44 @@ This note connects Parts I--III on fixed arrangement complements, Parts IV--V on
 \end{enumerate}
 
 この分離により，局所解析の一段階が未完成でも，代数定理や有限複体の計量定理まで条件付きに見せる必要がない．逆に，局所近似から大域 GH 収束へ進む箇所では，必要な仮定を明記せずに「局所収束だから従う」とはしない．
+
+\section{現在の中心成果と公表単位}
+
+中心となる成果は，固定SNC補空間の距離・測度幾何と，
+actual負KE曲面の同じLagrangian射影による全域GH実現である．
+局所解析を扱うPart IVは後者への独立した入力を与える．
+五篇という番号は証明の所在を示すものであり，投稿順や論文数を固定する条件ではない．
+無条件に得られた結果の公表準備を，条件付き拡張や同時atlasの完成と分けて進める．
+
+Part Iでは，実球裾係数
+\[
+ W(o)=\lim_{R\to\infty}e^R\Vol(X\setminus B(o,R))
+     =\sum_i\mathfrak m_i e^{b_i(o)}
+\]
+を固定したKE metric--measure spaceの内在量として捉える．
+$\log W$は$1$-Lipschitzであり，裾漸近は任意のcompactな基点集合上で一様である
+（Part I，\texttt{cor:tail-intrinsic-uniform}）．
+非可積分な$o(1)$のtensor誤差から裾に$R^a$因子が現れる非KE曲面の例は，
+距離錐とleading normal massだけではこの係数を決定できないことを示す．
+これはKE族に対する反例ではない．
+
+Part IVの\texttt{coarse:thm:boundary-to-triple}は，exact triple領域の
+固定faceにおける一様なvolume下界と，各固定parameterのradial閉包近傍で
+滑らかな負KE metricを入力とする．全angular phasesのcompact quotientで
+二つのtranslated complete simplexを比較し，全深部の$O(m^{-1})$ tensor安定性を得る．
+境界上界のparameter一様性は仮定しない．
+全平面退化への適用ではcapped density下界がこの境界入力を供給する．
+局所安定性と全曲面のambient距離比較は別の定理である．
+
+曲面実現論文の入口は，精密な主定理，解析入力四群，同じ射影を保つ六段階の証明，
+cut選択の量化順序の順に読む構成とする．
+五次の固定anchorについては，保護tailの内側period $Q_{ab}$ とnormal period $M_a<0$から，
+所定$K_4$ targetの可解性を
+$Q_{a,f(a)}<-M_a$，$Q_{ab}<0$ for $b\ne a,f(a)$で判定できる
+（曲面稿，\texttt{ke:k4-protected-anchor-selection}）．
+有向四角形の選択はforced arrowsの有限判定へ帰着する．
+実際のP0データでの符号・framing，sourceを跨ぐ全区間の面積条件，
+両側neckの切片と全open overlapsは引き続き別に確認する必要がある．
 
 \section{共通記号と正規化}
 
@@ -691,20 +729,19 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{KEIV}
 植田一石，
 \newblock \emph{Kähler--Einstein degeneration}, 第IV篇，
-\newblock 確認版 v1.9，commit \texttt{b2180e5}，
-\newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/b2180e553b73d3a9dfd5d1146c4146c67f2055e7/papers/kaehler-einstein-degeneration.tex}{原稿ソース}．
+\newblock 確認版 v1.10（2026年11月22日），
+\newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/main/papers/kaehler-einstein-degeneration.tex}{原稿ソース}．
 
 \bibitem{KEV}
 植田一石，
 \newblock \emph{Cubical GH limit}, 第V篇，
-\newblock 確認commit \texttt{b2180e5}，
-\newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/b2180e553b73d3a9dfd5d1146c4146c67f2055e7/papers/cubical-gh-limit.tex}{原稿ソース}．
+\newblock 確認版 v1.10（2026年11月22日），
+\newblock \href{https://github.com/uedakazushi/kaehler-einstein-degeneration/blob/main/papers/cubical-gh-limit.tex}{原稿ソース}．
 
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂36，2026年11月22日，確認commit \texttt{c056ecb}，
-\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/c056ecba5d25a55f135e739faab5993582814484/papers/surface-lagrangian-torus-fibration.tex}{確認版ソース}，
+\newblock 改訂38，2026年11月22日，
 \newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，
 \newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}，

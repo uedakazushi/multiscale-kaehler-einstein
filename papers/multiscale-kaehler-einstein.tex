@@ -31,7 +31,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Multiscale K\"ahler--Einstein Geometry I}
-\fancyhead[R]{\small 現行稿 v1.6}
+\fancyhead[R]{\small 現行稿 v1.7}
 \fancyfoot[C]{\thepage}
 
 \setlength{\parindent}{1em}
@@ -113,7 +113,7 @@
 \large Spatial Infinity, Metrized Dual Complexes,\\
 and Volume Asymptotics}
 \author{植田一石}
-\date{現行稿 v1.6（2026年11月22日）}
+\date{現行稿 v1.7（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -147,6 +147,8 @@ Centered normal coordinatesとresidual pointsが収束する基点列に対し�
 $D\ne\varnothing$の場合にはcusp Busemann functionsを構成し、
 metric-ball tailのexact leading coefficient、joint extreme-value law、
 distance Laplace transformとfacewise Abel--Mellin boundary coefficientsを求める。
+裾係数$W(o)$はpointed metric--measure spaceの内在量であり、
+$\log W$は$1$-Lipschitz、裾漸近は固定空間のcompactな基点集合上で一様となる。
 全faceで整合するvolume漸近からsubcritical residual momentsを一様に評価し、
 残余parametersの固定compact subcritical集合上で
 Abel--Mellin recursionの一様性を導く。
@@ -427,6 +429,20 @@ $\mathfrak w_i(o)/\sum_j\mathfrak w_j(o)$ に収束し、距離 excess $d(o,x)-R
 として現れる。
 \end{theorem}
 
+係数$W(o)=\sum_i\mathfrak w_i(o)$は実距離球から回復され、
+選んだdefining normsに依存しない。さらに
+\begin{gather*}
+ e^{-d(o,o')}W(o)\le W(o')\le e^{d(o,o')}W(o),\\
+ \sup_{o\in K}\left|e^R\vol(X\setminus B(o,R))-W(o)\right|\longrightarrow0
+\end{gather*}
+が任意のcompact $K\subset X$について成立する
+（\cref{cor:tail-intrinsic-uniform,prop:depth-gauge}）。
+この一様性は一つの固定空間の基点を動かすもので、退化族への一様性を含まない。
+距離錐とleading normal massだけでは裾係数は決まらず、
+可積分性を外した小さいtensor誤差は裾に多項式因子を生じ得る。
+後者の役割は、KEではない明示的な回転cuspで確認する
+（\cref{ex:nonintegrable-cusp-tail}）。
+
 本稿ではさらに logarithmic depths の multivariable transform について facewise Abel boundary residues を計算する。
 一般の recursive $L^1$ asymptotics の下では meromorphic continuation を仮定せず、一側極限として扱う。
 Normal variablesのjoint polyhomogeneous expansionを、
@@ -462,6 +478,9 @@ Corollary~6.3でgeodesic raysのradial divergence公式を与えている
 recursive cusp products、co-metric contraction、端点を保つambient liftingから得る
 divisor dual complexへの比較と、残余metric--measure dataへの接続である。
 局所対称性やarithmeticityは仮定しない。
+対象となるconeも異なり、LeuzingerのconeはCAT$(0)$である一方
+\cite[Corollary~5.5]{Leuzinger}、五直線補空間のall-right $K_5$ coneは
+CAT$(0)$でない（\cref{rem:K5-not-CAT0}）。
 
 Euclidean coneの距離公式とtruncated angular metricからのlength metricの復元は
 \cite[Chapter~I, Definition~5.6 and Remarks~5.7, pp.~59--60]{BridsonHaefliger}
@@ -495,7 +514,14 @@ Igusa積分の主要係数を残余層の積分で表し、height ballsの体積
 残余parametersのcompact subcritical集合上の一側Abel極限を扱う。
 この入力だけでは、smooth algebraic heightsのIgusa積分に対する
 有理型延長を適用できない。
-さらにmetric-ball tailは固定した実際の距離とBusemann phaseを使って求める。
+特に同論文の$V(B)$はalgebraic heightのsublevel volumeであるのに対し
+\cite[\S4.2, Theorem~4.7]{ChambertLoirTschinkel}、本稿の対象は
+有限体積測度による実距離球の\emph{外側}の体積である。
+一面で他の変数をcompactに制限すれば、通常のalgebraic heightは
+$\log H=\alpha_i e^{t_i}+O(1)$、$\alpha_i>0$である。
+これは$t_i+b_i(o)+o(1)$で較正される距離と同じobservableではない。
+本稿ではこの距離較正と全faceのconditional moment評価を合わせて
+$W(o)=\sum_i\mathfrak m_i e^{b_i(o)}$を求め、その内在性と基点依存性を示す。
 Pointed measured convergenceにはFukayaのcollapsing framework
 \cite{Fukaya}と同型のlocal weak-measure conventionを用い、
 必要な定義は本文中に明記する。Busemann functions自体は古典的である
@@ -553,6 +579,8 @@ Ambient球でのpmGH・TV & 前行とmetric-IRFA、収束するnormal offset・�
 \cref{lem:CW,thm:facemass,app:CW}\\
 Exact tail・joint law・Laplace & Metric/ordinary volume-IRFA、非空境界、固定基点。 &
 \cref{thm:tail,thm:joint,cor:Laplace}\\
+裾係数の内在性・基点一様性 & 前行の入力。固定空間の任意のcompact基点集合。 &
+\cref{cor:tail-intrinsic-uniform}\\
 一様Abel recursion & Ordinary volume-IRFA。残余parametersはcompact subcritical集合。 &
 \cref{thm:Mellin,thm:Mellin-recursion}\\
 有理型延長 & 別途、角・残余変数で$L^1$評価を持つjoint polyhomogeneity。 &
@@ -2708,6 +2736,111 @@ $\lambda_i(K_M)\uparrow\mathfrak m_i$ を用いれば
 各 $V_i$ は任意に小さく選べるので、同じ計算をtotal tailで正規化するとangular弱収束も従う。
 \end{proof}
 
+\begin{corollary}[内在的な裾係数と基点一様性]
+\label{cor:tail-intrinsic-uniform}
+\Cref{thm:tail}の仮定の下で、$h_*$と$W(o)$はpointed metric--measure space
+$(X,d_g,o,\mu)$から
+\begin{align}
+ h_*&=-\lim_{R\to\infty}\frac1R
+        \log\mu(X\setminus B(o,R)),\label{eq:intrinsic-tail-rate}\\
+ W(o)&=\lim_{R\to\infty}e^{h_*R}
+        \mu(X\setminus B(o,R))\label{eq:intrinsic-tail-weight}
+\end{align}
+として回復される。任意の$o,o'\in X$に対し
+\begin{equation}
+\label{eq:tail-basepoint-comparison}
+ e^{-h_*d(o,o')}W(o)\le W(o')\le e^{h_*d(o,o')}W(o)
+\end{equation}
+であり、$\log W$は$h_*$-Lipschitzである。さらに、任意のcompact $K\subset X$について
+\begin{equation}
+\label{eq:tail-compact-uniform}
+ \lim_{R\to\infty}\sup_{o\in K}
+ \left|e^{h_*R}\mu(X\setminus B(o,R))-W(o)\right|=0.
+\end{equation}
+KE規格化では$h_*=1$である。ここでの一様性は固定した$(X,g,\mu)$に関するもので、
+非compactな基点集合や退化parameterに対する一様性を主張しない。
+\end{corollary}
+\begin{proof}
+$F_o(R)=\mu\{x:d(o,x)\ge R\}$、$E_R(o)=e^{h_*R}F_o(R)$と置く。
+\Cref{thm:tail}と$0<W(o)<\infty$から、二つの極限表示が従う。
+従ってpointed measure-preserving isometryは$h_*,W(o)$を保つ。
+$D=d(o,o')$とし、$R>D$なら、三角不等式から
+\[
+ F_o(R+D)\le F_{o'}(R)\le F_o(R-D).
+\]
+$e^{h_*R}$を掛けて$R\to\infty$とすれば
+\eqref{eq:tail-basepoint-comparison}を得る。
+
+Compact $K$と$\delta>0$を固定し、$K$内の有限$\delta$-net
+$p_1,\ldots,p_N$を取る。$d(o,p_j)\le\delta$なら同じ包含から
+\[
+ e^{-h_*\delta}E_{R+\delta}(p_j)
+ \le E_R(o)\le e^{h_*\delta}E_{R-\delta}(p_j).
+\]
+任意の$\epsilon>0$に対し、有限個の$p_j$での収束から、十分大きい全ての$R$で
+$|E_{R\pm\delta}(p_j)-W(p_j)|\le\epsilon$となる。
+既に示した$W$の比較を用いると、全ての$o\in K$に一様に
+\[
+ e^{-2h_*\delta}W(o)-e^{-h_*\delta}\epsilon
+ \le E_R(o)\le
+ e^{2h_*\delta}W(o)+e^{h_*\delta}\epsilon.
+\]
+$W$は正かつ連続なので$K$上有界である。
+まず$R\to\infty$、次に$\epsilon\downarrow0$、$\delta\downarrow0$として
+\eqref{eq:tail-compact-uniform}を得る。
+\end{proof}
+
+\begin{example}[非可積分誤差と実球裾の多項式因子]
+\label{ex:nonintegrable-cusp-tail}
+以下は解析仮定の役割を示すRiemannian surfaceの例であり、KE metricの例ではない。
+$a\ge0$、$\ell>3$を取り、$t\ge0$、$\theta\in\RR/(2\pi\ZZ)$の端に
+\[
+ A_a(t)=1+\frac{a}{1+t},\qquad
+ g_a=A_a(t)^2\dd t^2+e^{-2t}\dd\theta^2
+\]
+を入れる。Radial distance coordinateは
+\[
+ r=\ell+t+a\log(1+t)
+\]
+である。$r\ge\ell$で$f(r)=e^{-t(r)}$とし、$f(r)=r$ near $0$、
+$f(r)>0$ for $r>0$となるようcompact区間で滑らかにつなげば、
+$\dd r^2+f(r)^2\dd\theta^2$はpole $o$を持つ滑らかな完備曲面を定める。
+つなぎ目では端の$f$を少し左へ延長してから正の関数同士をcutoffで補間すればよい。
+各曲線の長さは$r$の変化量以上であり、radial pathが等号を実現するので
+$d(o,x)=r(x)$である。
+
+この端の面積密度は$A_a(t)e^{-t}\dd t\dd\theta$であり、
+全ての$a$でleading normal massは$2\pi$、通常のvolume-IRFAは成立する。
+Product cusp metricに対する相対tensor誤差は
+\[
+ A_a(t)^2-1=\frac{2a}{1+t}+\frac{a^2}{(1+t)^2}.
+\]
+$a>0$ではこれは$0$へ収束するが可積分でない。
+$R\ge\ell$に対して$R=\ell+T+a\log(1+T)$で$T=T(R)$を定めると
+\begin{align*}
+ \vol(X\setminus B(o,R))
+ &=2\pi\int_T^\infty A_a(s)e^{-s}\dd s\\
+ &=2\pi e^{-T}\bigl(1+O((1+T)^{-1})\bigr)
+ \sim 2\pi e^\ell R^a e^{-R}.
+\end{align*}
+最後には$T/R\to1$と$e^{-T}=e^{\ell-R}(1+T)^a$を用いた。
+従って$a>0$ではexponential rateは$1$のままであるが、
+$e^R\vol(X\setminus B(o,R))$は有限値へ収束しない。
+Raw depthに対する$d(o,H(T))-T=\ell+a\log(1+T)$も発散する。
+
+一方、$f$は有界なので、$r$はunit rayへのproperな$1$-Lipschitz全射であり
+\[
+ |r(x)-r(y)|\le d(x,y)
+ \le |r(x)-r(y)|+\pi\sup f.
+\]
+右の上界は小さい方のradial levelまで移動して角方向を補正すれば得られる。
+よって全ての$a$でasymptotic coneは同じrayであり、
+この例はrough cone比較一般を否定しない。
+$a=0$では裾は正確に$2\pi e^\ell e^{-R}$である。
+$\ell$を変えると距離錐とleading normal massを保ったまま裾係数が変わる。
+これが、裾係数にcompact coreからの距離offsetが必要となる理由を示す。
+\end{example}
+
 \begin{theorem}[Joint extreme-value law]
 \label{thm:joint}
 Metric-IRFA と全faceのvolume-IRFAを仮定する。Tail $\{d(o,x)\ge R\}$ で条件づける。Cusp labelを $i$、excessを $q=d(o,x)-R$、residual projectionを $y\in X_i$ と記録すると、その joint law は
@@ -3400,10 +3533,31 @@ $\widehat{\mathfrak m}_{\{i,j\}}=1/2$となる
 この残余情報がPart IIのsecondary periodsの対象となる
 \cite[補題\texttt{lem:metric-conjugation}]{UedaII}。
 
+\begin{remark}[五直線のconeはCAT$(0)$でない]
+\label{rem:K5-not-CAT0}
+五直線補空間のlinkは各辺の長さが$\pi/2$の$K_5$である。
+頂点$v_1$と、それに接続しない辺$[v_2,v_3]$の中点$m$を取る。
+Graph内の最短路は$v_2$を通るものと$v_3$を通るものの二つで、
+いずれも長さ$3\pi/4<\pi$である。
+実際、$m$に至るpathは最後に$v_2$または$v_3$を通り、
+$v_1$からそれらへの距離は$\pi/2$である。
+この二つのangular pathに沿ってconeを開くと、同じ二つのunit-radius点を結ぶ
+Euclidean chordが二つ得られる。
+Cone距離公式により、両者の長さは
+$\sqrt{2-2\cos(3\pi/4)}$で、いずれもambient最短路である。
+内部の角方向が異なるので二つの最短路は異なり、CAT$(0)$空間のgeodesic一意性に反する。
+従ってこのconeはCAT$(0)$でない。
+これはLeuzingerのarithmetic quotientのconeがCAT$(0)$となる
+\cite[Corollary~5.5]{Leuzinger}こととの具体的な相違であり、
+bounded-additive cone原理一般の新規性を意味しない。
+\end{remark}
+
 \section{結論}
 本稿は、smooth ample SNC pairの complete negative K\"ahler--Einstein metricについて、dual complexを実際の Archimedean asymptotic coneとして実現し、その metric--measure refinementを与えた。
 距離論の中心は $(1,K)$-rough equivalence、測度論の中心は $\ell^1$ rate function、facewise measured translation limits、log-intersection massesである。
 Busemann phasesを加えると actual metric balls の leading tail coefficient と joint extreme-value law まで得られる。
+この裾係数は内在量であり、その対数はKE規格化で$1$-Lipschitz、
+裾漸近はcompactな基点集合上で一様である。
 
 一般位置 hyperplane arrangements では first-scale object は明示的かつ realization-rigidである。
 Part IIはfully marked oriented residual curvesをperiodsとして用い、
@@ -3421,15 +3575,53 @@ Part IV--V は、同じ simplicial complex が compact hyperplane degenerations 
 \label{app:choices}
 
 \subsection{Depth gauge}
-複素 defining section の Hermitian normを $\rho_i'=e^{\psi_i}\rho_i$ と変えると
-$L_i=\log(1/\rho_i)$、$x_i=L_i^{-1}$ に対して
+\begin{proposition}[許されるnorm変更と裾重み]
+\label{prop:depth-gauge}
+本稿のample SNC KE設定で、defining sectionのHermitian normsを
+$\rho_i'=e^{\psi_i}\rho_i$、$\psi_i\in C^\infty(\ov X,\RR)$と変える。
+すると各成分のBusemann function $b_i$、幾何学的face mass $\mathfrak m_i$、
+したがって$\mathfrak w_i(o)=\mathfrak m_i e^{b_i(o)}$は変わらない。
+\end{proposition}
+\begin{proof}
+$L_i=\log(1/\rho_i)$、$x_i=L_i^{-1}$に対して
 \[
+ L_i'=L_i-\psi_i,\qquad
  x_i'=x_i+O(x_i^2),
  \qquad
  t_i'=-\log x_i'=t_i+O(e^{-t_i}).
 \]
-従って asymptotic cone、metric-IRFA、face mass の leading coefficientはこの admissible geometric gaugeに依存しない。
-Abstract cusp categoryで arbitrary constant shiftを許した場合でも、bounded-additive cone theoremは変わらず、metric-tail weight $\mathfrak m_i e^{h_ib_i(o)}$ は shift-invariantである。
+$\psi_i$はcompactification上有界なので、最後の評価は全残余変数に一様である。
+旧collarのnormal radial flowに沿って$t_i$を
+$T-Ce^{-T}$から$T+Ce^{-T}$へ動かすと、十分大きい固定$C$に対して
+$t_i'$は$T$の両側の値を取る。
+中間値の定理と一面metric-IRFAによる一様なradial speed上界から、
+$H_i(T)$の各点は$H_i'(T)$から距離$O(e^{-T})$以内にある。
+逆向きも同様であるから、ambient Hausdorff distanceは
+\[
+ d_H^X(H_i(T),H_i'(T))=O(e^{-T}).
+\]
+両level setsは非compactでも、この評価は各点に一様に成立する。
+従って任意の$o\in X$で
+$|d(o,H_i(T))-d(o,H_i'(T))|=O(e^{-T})$となり、
+極限から$b_i'(o)=b_i(o)$を得る。
+幾何学的質量$\mathfrak m_i$は\cref{thm:facemass}の交点数であり、
+normの変更を含まない。
+\end{proof}
+
+定数shift $t_i'=t_i+a_i$は、このHermitian norm変更とは別の座標規格化である。
+抽象的なone-face density $e^{-t_i}\dd t_i\otimes\lambda_i$を同じ測度として書き直すと、
+新座標の係数は$\widetilde\lambda_i=e^{a_i}\lambda_i$、
+$\widetilde{\mathfrak m}_i=e^{a_i}\mathfrak m_i$となる。
+また$H_i'(T)=H_i(T-a_i)$なので
+\[
+ \widetilde b_i(o)=b_i(o)-\sqrt{c_i}a_i,\qquad
+ \widetilde{\mathfrak m}_i e^{h_i\widetilde b_i(o)}
+ =\mathfrak m_i e^{h_i b_i(o)},\qquad h_i=c_i^{-1/2}.
+\]
+ここで$\widetilde{\mathfrak m}_i$は\emph{新座標のdensity係数}であり、
+元の規格化で定義した幾何学的交点質量が変わったのではない。
+さらにnormal angular termの係数も$e^{2a_i}$倍へ書き換わるため、
+この恒等式を、同じ正規化のmetric-IRFAを変更後も自動的に満たすという主張に用いない。
 
 \subsection{Constants in the rough theorem}
 \cref{thm:rough} の $K$ は boundary depth、finite labelled face incidence、weights $\bm c$、fixed cutoff、finite collar atlas、
@@ -3991,7 +4183,7 @@ E.~Leuzinger,
 \newblock Tits geometry, arithmetic groups, and the proof of a conjecture of Siegel,
 \newblock \emph{J. Lie Theory} \textbf{14} (2004), 317--338.
 \newblock \href{https://www.heldermann-verlag.de/jlt/jlt14/leuzams.pdf}{出版社版},
-Lemma~5.1, Theorem~5.2, Corollary~6.3.
+Lemma~5.1, Theorem~5.2, Corollaries~5.5 and~6.3.
 
 \bibitem{Mumford}
 D.~Mumford,
