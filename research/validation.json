@@ -1,6 +1,6 @@
 {
   "date": "2026-11-22",
-  "engine": "LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian) via latexmk. Overview v1.7 was rebuilt successfully; Part I v1.6, Part II v2.1, Part III and research-directions sources were unchanged and not rebuilt in research-set v1.8.",
+  "engine": "LuaHBTeX 1.18.0 (TeX Live 2025/dev/Debian) via latexmk. Overview v1.8 built successfully and its seven selected pages were visually reviewed. Part I v1.6, Part II v2.1, Part III and research-directions sources are unchanged and were not rebuilt in research-set v1.9.",
   "manuscripts": [
     {
       "source": "papers/conifold-localization.tex",
@@ -95,13 +95,13 @@
     },
     {
       "source": "papers/series-overview.tex",
-      "pages": 13,
-      "pdf_sha256": "9b306d39c43a2ee648676b2a9baef3b48e51e1bdf2d5de2606fc4f061ce91b13",
+      "pages": 14,
+      "pdf_sha256": "8a3b0a9df70a8c4a9e1c105a9eed20ce2e3caa5e322d5eaab1edd7fcc33425d2",
       "unresolved_or_box_warnings": [],
       "other_warnings": "Math-font size substitutions, Japanese font scaling or unavailable italic-shape fallback, legacy class rm and ignored addjfontfeatures notices may remain; no missing glyphs.",
       "build_date": "2026-11-22",
       "rerun_in_current_revision": true,
-      "source_sha256": "30b6bf9d1649181a944a9024d879a7a810f92507ab72a9b52f8233d49b4aef66",
+      "source_sha256": "9bbf4bfcbb60234375e91236406cc8dcd072e616219c755dd5b7273abc27de64",
       "log_check_counts": {
         "undefined_references_or_citations": 0,
         "duplicate_labels": 0,
@@ -115,19 +115,22 @@
         2,
         6,
         7,
-        12,
-        13
+        8,
+        13,
+        14
       ],
-      "visual_check_result": "Final pages 1,2,6,7,12,13 were rendered with Poppler at 150 dpi and actually viewed individually. After synchronization to the final surface commit, page 13 was rendered and viewed again, while images of the other five selected pages were byte-identical. Version/title and contents, the surface connection and finite co-Gram formula, four moving types and scale conditions, priorities and revision-34 bibliography show no overlap, clipping or missing glyphs. Selected-page review only.",
-      "source_version": "v1.7",
-      "source_unchanged_in_current_revision": false
+      "visual_check_result": "All seven specified pages rendered with Poppler at 150 dpi and actually viewed individually. Title/version and contents, the FBP comparison, the relative-replacement estimate and assumptions, raw-moment example, fixed-band/source-wall statement, following-page continuity, priorities and the single bibliography heading were checked. No visible clipping, overlap or missing glyphs.",
+      "source_version": "v1.8",
+      "source_unchanged_in_current_revision": false,
+      "pdf_bytes": 464538,
+      "visual_check_dpi": 150
     }
   ],
-  "scope": "Research-set v1.8 synchronizes surface revision 34, with proof ownership retained in that repository: four local and moving cubical blowup types, surjective distortion-to-closed-balls bound 3 delta/2, the same-map all-moving intermediate-scale classification under a->infinity, a/R->0 and R epsilon/a->0, source-inclusive fixed-shell input and finite-stage co-Gram formulation. Part I v1.6, Part II v2.1 and Part III sources are unchanged.",
+  "scope": "Research-set v1.9 synchronizes surface revision 35: conditional GH stability of normal-moment-relative fibration replacements, the raw-moment error obstruction, fixed-fiber free-band Stokes area and the source model wall. FBP whole-fiber auxiliary-metric GH is distinguished from the actual negative-KE same-projection result. Part I-III and research-directions sources are unchanged.",
   "visual_check": {
     "date": "2026-11-22",
-    "sample": "Overview v1.7 pages 1,2,6,7,12,13, rendered individually at 150 dpi with Poppler. Previously verified samples for unchanged manuscripts remain in their dated records.",
-    "result": "All six selected final pages were actually viewed; no clipping, overlap or missing glyphs. Page 13 was rerendered and viewed after the final surface reference synchronization; the other five selected image hashes are unchanged. Source/PDF hashes in the overview entry refer to the final output.",
+    "sample": "Overview v1.8 pages 1,2,6,7,8,13,14 rendered with Poppler at 150 dpi and actually viewed individually. Previously verified samples for unchanged manuscripts remain in their dated records.",
+    "result": "All seven overview samples passed visual review; no visible clipping, overlap or missing glyphs. The fourteen-page PDF was not reviewed page by page in full.",
     "full_page_review": {
       "series-overview": false,
       "multiscale-kaehler-einstein": false,
@@ -137,8 +140,8 @@
   "vscode": "Settings parsed and root search limited to papers/*.tex. UI not tested.",
   "current_revision": {
     "date": "2026-11-22",
-    "version": "Part I v1.6; Part II v2.1; overview v1.7; current research set v1.8",
-    "status": "Research-set v1.8 and overview v1.7 are synchronized to saved surface revision 34. Overview-only LuaLaTeX build, important log checks and six selected rendered pages passed. Part I/II/III/research-directions sources match the starting main commit byte for byte. GitHub saving is performed and verified separately by the coordinating editor.",
+    "version": "Part I v1.6; Part II v2.1; overview v1.8; current research set v1.9",
+    "status": "Source and research documents synchronize saved surface revision 35. Overview-only LuaLaTeX build succeeded (14 pages), all six diagnostic categories are zero, and seven selected pages passed actual visual review at 150 dpi. GitHub saving and readback are performed and verified separately by the coordinating editor.",
     "edited_manuscripts": [
       "papers/series-overview.tex"
     ],
@@ -148,52 +151,54 @@
       "papers/conifold-localization.tex",
       "papers/research-directions.tex"
     ],
-    "mathematical_scope": "The surface proof gives four local models and all moving blowups with arbitrary finite basepoints: C_(2,d-1), R x Y_(d-2), the angle-3pi/2 Euclidean cone and R^2. A surjection between compact geodesic spaces with distortion <=delta gives based same-radius closed-ball GH distance <=3delta/2. Applied to the same f=p_T pi under a->infinity, a/R->0 and R epsilon/a->0, this transfers all subsequential limits and realizes every type for any admissible scale and degeneration sequence. The existing uniform component-core/collar result is retained. Fixed source-inclusive residual compacts and shell radii precede the small-complex-t threshold. The co-Gram lemma is a finite-parameter inequality; vanishing errors are imposed only in the final slow diagonal. General cone geometry and GH transfer are not claimed as new.",
+    "mathematical_scope": "Given actual local Lagrangian replacement data with unchanged full retained-corner leaves, source compact nodal neighborhoods, the same canonically normalized moment and anchor cuts, the same component core/collar regions, actual marked product/cone quotients and matching whole-fiber partitions on every overlap, the surface proposition constructs a compact Hausdorff closed quotient and bounds the two coarse projections by C eta, eta=(1+log(N_j+1))/R_t. No C1 smallness of reduced changes is required. For one fixed allowed marked tree system along the slow diagonal, the new surjective map also has vanishing distortion and uniformly collapsing full coarse fibers. Constructing atlas-compatible replacement data remains open. Raw moment o(1) need not give profile o(1). Fixed-t free-band Stokes with an invariant primitive and affine boundary actions gives affine reduced area; a weights-(1,-1) source model has area pi(c-|mu|) at period 2pi and does not give an actual P0 area formula. These are external surface results, not new Part I-III inputs or claims of novelty of the general principles.",
     "selected_external_proof_audit": {
-      "independent_read": "Actual global upper: anchor trimming, same-moment corner references, common-moment fiber unions, component logarithmic connectors, all endpoint cases, finite gallery and (M+1) connector cost. Finite target: local full-ambient closed balls, four moving blowup types, positive-star exit bounds and realization for any scaling sequence.",
-      "joint_read": "Other internal reviewers checked the global lower and slow diagonal, Part IV specified analytic inputs, the source-inclusive fixed-shell reinforcement and the surjective 3delta/2 ball comparison. This synchronization records those coordinated results rather than claiming that this editor re-proved all external analytic estimates.",
-      "result": "No gap obstructing the conclusions was found within these selected chains. The retained-domain intrinsic upper metric is not substituted for ambient distance; paths may use the old full corner. Fixed P and neck connector constants precede N_j."
+      "independent_read": "Read the full new surface statements and proofs ke:moment-relative-replacement, ke:relative-replacement-gh and ke:raw-moment-error-insufficient. Checked the closed-quotient-first order, exact agreement on retained A_J, canonical moment and anchor/cap conditions, common component caps and neck profile comparison, fixed-tree and slow-diagonal quantifiers, coarse-fiber unions and the L^(-alpha) example. Also read ng8:fixed-fiber-relative-dh, ng8:source-dh-wall and the scope remark: principal-bundle triviality on J times a bordered surface, Stokes and integer winding, period-2pi source reduction and its fixed-point wall.",
+      "preserved_without_rerun": "The earlier selected global upper/lower, source-inclusive shell, finite-stage co-Gram, finite-target moving blowups and closed-ball GH audits remain valid within the scope recorded in source-audit.md. They were not rerun in this synchronization.",
+      "result": "No additional gap was identified within the specified new statements and their proofs. The conclusions remain conditional on actual marked local replacement data and whole-fiber gluing; they do not construct an action atlas or infer source-crossing affine total area."
     },
-    "not_verified": "No comprehensive proof audit of all Part I, Part II Torelli/Weil-Petersson, Part III, surface or Part IV claims. No new CP/PBE/TC, H_loc/H_anc, controlled push-off, same-projection atlas/GH theorem, unrestricted intermediate scales, tensor convergence or exchange of limits. No formal proof, external referee review or exhaustive novelty investigation. No numerical or certificate suites rerun.",
-    "runtime": "Local TeX environment /workspace/scratch/aae2295273c8/tex-runtime/env.sh; writable TEXMFCACHE at build/tex-cache-overview-v17; TEXFONTMAPS=/tmp/multiscale-texmaps//:. Repository build/editor settings remain unchanged.",
-    "command": "Source the stated local TeX environment, set TEXMFCACHE=repo/build/tex-cache-overview-v17 and TEXFONTMAPS=/tmp/multiscale-texmaps//:, then run latexmk -g -interaction=nonstopmode -halt-on-error papers/series-overview.tex. The overview alone was incrementally rebuilt after synchronization to the final surface commit; all recorded metadata refers to that final output. No other manuscript was built in this revision.",
-    "source_checks": "git diff --check, JSON parsing and the control-character scan passed. All four unchanged manuscript sources match starting main 32566ee8dded382a4d1d0a8446b368fd81598a94 byte for byte. Overview: 20 unique labels, 7 references and 4 citation occurrences resolve; 14 relative Markdown links resolve. Eight external surface labels were checked in saved commit 2f813ff6d56af90804c3e01d66f30f77012b506f. The final overview log has zero undefined references/citations, duplicate labels, missing characters, overfull/underfull boxes or LaTeX errors.",
-    "primary_source_scope": "Previously confirmed primary-literature passages remain documented in source-audit.md. The source-inclusive fixed-shell first-source comparisons are owned and recorded by the surface/Part-IV reviewers; no new claim to have read the full external original papers is made in this synchronization.",
+    "not_verified": "No comprehensive re-audit of Part I-III, surface or Part IV proofs. No new CP/PBE/TC, H_loc/H_anc or controlled push-off verification. No construction of an actual action-atlas replacement satisfying the relative theorem, no unrestricted intermediate scales or tensor convergence. No formal proof, external referee review, exhaustive novelty investigation or numerical/certificate suites rerun.",
+    "runtime": "Local TeX environment /workspace/scratch/aae2295273c8/tex-runtime/env.sh; writable TEXMFCACHE at build/tex-cache-overview-v18; TEXFONTMAPS=/tmp/multiscale-texmaps//:. Repository build/editor settings remain unchanged.",
+    "command": "Sourced the stated TeX environment, set TEXMFCACHE=repo/build/tex-cache-overview-v18 and TEXFONTMAPS=/tmp/multiscale-texmaps//:, then ran latexmk -g -interaction=nonstopmode -halt-on-error papers/series-overview.tex. After inserting the final surface commit in the bibliography, reran latexmk -interaction=nonstopmode -halt-on-error papers/series-overview.tex successfully. Only the overview was built.",
+    "source_checks": "Changed-source checks passed: JSON parsing; six-file control-character scan; documentation/overview versions and final surface pin; 16 relative Markdown links; 20 unique overview labels, seven reference occurrences and three citation commands containing five cited keys; five new surface labels at e801a6511451232246cb164d1dfcbf38699625ee; byte equality of the four unchanged manuscripts against starting main f8a50d0caa3b71dcacb0a0bb05be210478888488; unchanged Part IV/V mathematical sources between b2180e5 and saved documentation checkpoint b9848d1; and git diff --check. No pending build markers or tracked PDF/cache artifacts. Old full audits and numerical suites were not rerun.",
+    "primary_source_scope": "Directly read FBP final arXiv 2312.13248v4 Proposition 5.6, Example 5.8, Remark 5.9, Propositions 6.3/6.13, Theorem 6.14 and Remark 7.4; verified publisher DOI/e70060/online date. Read Evans-Mauri published PDF Lemma 2.16, Remark 2.18, Lemma 2.22/Remark 2.23, Assumption 1 and Propositions 6.11-6.12/Theorem 6.14. Read Chakravarthy-Groman arXiv 2502.04304v3 Definition 1.2, Theorems 1.6/1.8, Corollary 1.9 and revised Lemma 2.13. This is verification of the cited passages and comparison scope, not all external proofs; see source-audit.md. Earlier Part I primary checks were not repeated.",
     "external_reference_versions": {
       "kaehler-einstein-degeneration": {
-        "research_set_version": "v1.14",
-        "commit": "e6b2a4dac7242260dd199894ff2e826ec04e7742",
+        "research_set_version": "v1.15",
+        "commit": "b9848d10ec7b8876220b4093be852f3428ab14ea",
         "part_iv_version": "v1.9",
         "mathematical_source_commit_cited_in_overview": "b2180e553b73d3a9dfd5d1146c4146c67f2055e7",
         "paper_tree_unchanged": true,
-        "scope": "Local saved main and empty papers diff from b2180e5 were verified. The original Part IV-V mathematical sources remain pinned; later documentation synchronization is separate."
+        "scope": "Saved documentation version v1.15 is the reference checkpoint. Part IV-V mathematical sources remain pinned at b2180e5; the new surface arguments do not change those source files."
       },
       "surface-lagrangian-torus-fibration": {
-        "revision": 34,
+        "revision": 35,
         "date": "2026-11-22",
-        "commit": "2f813ff6d56af90804c3e01d66f30f77012b506f",
-        "research_set_version": "v3.18",
-        "reference": "Saved main manuscript, with ke:source-inclusive-fixed-shell, ke:global-clipped-cogram-lower, topo:cubical-local-models, topo:cubical-moving-blowups, ke:distortion-to-pointed-balls and ke:intermediate-moving-classification.",
-        "scope": "Final saved surface main source was read and its eight cited labels checked. Its coordinating reviewer separately confirmed the revision-34 build and selected rendered pages; this repository did not rebuild the surface manuscript.",
+        "commit": "e801a6511451232246cb164d1dfcbf38699625ee",
+        "research_set_version": "v3.19",
+        "reference": "Saved surface revision 35 source: ke:moment-relative-replacement, ke:relative-replacement-gh, ke:raw-moment-error-insufficient, ng8:fixed-fiber-relative-dh and ng8:source-dh-wall, together with the retained global and moving-scale results.",
+        "scope": "Final saved surface revision 35 source and the new proofs were read directly. Its coordinating editor separately reported the completed build and 13-page visual sample; this repository did not rebuild the surface manuscript.",
         "reported_build_verification": {
           "reported_by": "Coordinating surface editor; external build, not rerun in the multiscale repository",
-          "source_revision": 34,
-          "pages": 277,
-          "pdf_sha256": "2313d8255774a05d6797538729e345b502eddce690f084e72164e9e7ff78a384",
+          "source_revision": 35,
+          "pages": 280,
+          "pdf_bytes": 2751541,
+          "pdf_sha256": "4a66c33fc24de1ca6b5255ffccba4ec4745cadcbafd51c25157046e8a8eb5e4a",
+          "main_tex_sha256": "92c8de8cf1b38f5c225fc9a8c2e0d76f9e16382a3bfad7633c1155d015a30fc1",
           "visual_check_pages": [
             1,
-            16,
+            8,
+            11,
             17,
-            53,
-            54,
-            98,
-            99,
-            100,
-            196,
-            197,
-            209,
-            210,
-            211
+            23,
+            63,
+            64,
+            190,
+            191,
+            192,
+            252,
+            253,
+            275
           ],
           "visual_check_dpi": 150,
           "log_check_counts": {
@@ -204,7 +209,8 @@
             "underfull_boxes": 0,
             "latex_errors": 0
           },
-          "result": "All thirteen selected pages were actually viewed by the coordinating/independent surface reviewers. Page 100 was rerendered after a final direct-reference clarification; the other twelve selected rendered images were unchanged."
+          "other_warnings": "Known LuaTeX-ja/microtype notice (1) and hyperref notices (2).",
+          "result": "All 13 specified pages actually viewed: nine by the coordinating editor and pages 191,192,252,253 by an independent reviewer. Static/preflight checks passed; final main commit/tree readback was reported by the coordinating editor."
         }
       }
     }
@@ -217,5 +223,5 @@
     "primary_check_date": "2026-11-20",
     "scope": "The current Part I build includes this existing derivation. The 2026-11-22 work did not re-prove its full analytic argument."
   },
-  "version": "v1.8"
+  "version": "v1.9"
 }

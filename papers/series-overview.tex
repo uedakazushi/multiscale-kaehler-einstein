@@ -71,7 +71,7 @@
 \title{\bfseries Multiscale K\"ahler--Einstein Geometry I--V\\[2mm]
 \Large 五篇連作の共通設計，定理状態，次数一般化，および高次元への展望}
 \author{植田一石\\[-1mm]\small Kazushi Ueda}
-\date{現行総説 v1.7（2026年11月22日）}
+\date{現行総説 v1.8（2026年11月22日）}
 
 \begin{document}
 \maketitle
@@ -303,6 +303,17 @@ target線分の厳密な持上げや保持領域のintrinsic上界は必要な�
 特に第III篇のpositive conifold square模型と本節のunit cubical metricは
 異なる対象であり，source局所方程式の形だけを根拠に移送しない．
 
+先行するFernández de Bobadilla--Pełka\cite[Theorem~6.14(b),(c)]{FBP}は，
+一般のKähler SNC退化で部分領域のivy-like fibrationを構成し，properな場合には
+構成したKähler計量を入れた全nearby fiberのGH収束を与える．小さな\(\epsilon>0\)を固定し，
+\((|z(h)|,q(h))\to(0,0)\)のadmissible pathに沿って直径を一定に正規化した極限は，
+選択した成分集合\(\mathcal S\)が張る部分複体\(\Delta_{\mathcal S}\)である
+（maximal又はsubmaximal faceを含む選択）．
+この全fiberの結論を部分領域のGHへ弱めて比較しない．本節で区別するのは，
+指定されたactual負KE計量，coreを埋めた全域fibration，および同じ\(p_T\pi_t\)の距離評価である．
+同じcohomology classの形式をMoser移送するだけでは，移送された複素構造との
+計量比較は得られない．
+
 曲面論文の補題 \texttt{ke:source-inclusive-fixed-shell} は，sourceを含む固定残余compact
 と半径\(r\)を先に固定し，同一の非零正則体積frameで全ての小さい複素\(t\)を扱う．
 \(s_r=-\log r^2\)としてmomentの主項\(\pm4\pi/s_r\)と，小\(r\)に共通な
@@ -317,6 +328,42 @@ shell横断費用を得るが，\(t\)の閾値は\(r\)に依存してよい．
 \]
 を任意のrectifiable curveに対して得る有限parameterの不等式である．
 誤差消失は全固定段階の選択を終えた後のslow diagonalで用いる．
+
+\begin{remark}[共通momentを保つ相対変更と作用atlas]
+曲面論文の命題\texttt{ke:moment-relative-replacement}と系
+\texttt{ke:relative-replacement-gh}は，別の局所actual Lagrangian構成が得られた場合に，
+その全域射影の値を比較する．入力は，同じcanonical normal momentとanchor cuts，
+保持cornerの全葉，sourceのcompact nodal neighborhoods，同じcomponent coreと変更collar，
+labelled endsを保つ実際のmarked product/cone商，および全交わりでのwhole-fiber partitionの一致である．
+抽象木の同型だけでは代替しない．先にcompact Hausdorffな閉商を作り，
+そのparameter化によって，元と新しい射影\(f_{j,t},\widehat f_{j,t}\)に対し
+\[
+ \sup_{x\in X_t}d_\square\bigl(f_{j,t}(x),\widehat f_{j,t}(x)\bigr)
+ \le C\eta_{j,t},\qquad
+ \eta_{j,t}=\frac{1+\log(N_j+1)}{\Rt}
+\]
+を得る．保持corner上では厳密に一致する．Reduced葉を変えるdiffeomorphismの
+\(C^1\)小ささは不要である．一つの固定marked木系\(\widehat T\)に対して
+これらの入力をslow diagonalに沿って実現すれば，
+\(\operatorname{dis}(\widehat f_t)\le\operatorname{dis}(f_t)+C\eta_{j(t),t}\to0\)となる．
+Atlasを持つ局所候補の構成はこの定理の入力であり，距離比較からの結論ではない．
+
+同じcanonical momentという条件は，単なるraw momentの\(o(1)\)誤差へ弱められない．
+同論文の注意\texttt{ke:raw-moment-error-insufficient}では，
+\(0<\alpha<\beta<1\)に対し\(-\Lt^{-\alpha}\)と\(-\Lt^{-\beta}\)の差は零へ向かうが，
+共通profile \(\sigma_t\)の値はそれぞれ\(\alpha,\beta\)へ向かう．
+近似的な変更にはprofile値そのものの一様な制御が必要である．
+
+補題\texttt{ng8:fixed-fiber-relative-dh}は，各固定\(t\ne0\)のfree compact bandで，
+作用不変primitiveとaffineな境界作用からStokesによりtotal reduced areaのaffine性を得る．
+Actual KE形式の\(t=0\)へのsmooth extensionや\(t\)に一様な評価を仮定しない．
+一方，周期\(2\pi\)，重み\((1,-1)\)，\(I_1+I_2\le c\)，\(\mu=I_1-I_2\)の模型では
+reduced areaは\(\pi(c-|\mu|)\)となり，source固定点を横切って折れる
+（例\texttt{ng8:source-dh-wall}）．これはactual P0全体の面積公式ではない．
+相対Moserに必要な正のtarget areas，総量一致，保存する全collars/capsへの余裕，
+端germsとmarked identificationsを満たすatlas候補の実構成が，なお残る課題である．
+これらの証明は曲面repoを正本とし，StokesやGH安定性の一般原理の新規性は主張しない．
+\end{remark}
 
 \begin{remark}[同半径閉球の比較と全移動基点の中間尺度]
 曲面論文の補題 \texttt{ke:distortion-to-pointed-balls} は，compact geodesic spaces間の
@@ -585,7 +632,7 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 
 共同監査は，既に主張しているactual曲面実現に必要な入力を先に照合し，その後に独立の追加仮定を検討する．
 \begin{enumerate}
-\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．
+\item 第IV篇のcapped volume・full-triple・closed-cornerと曲面論文のscalar/portal，source-inclusive固定shell，有限stageからslow diagonalへの指定証明鎖を限定的に点検した．全域実現から逆向きに，残る入力と一次文献の適用範囲・量化を監査する．同じ写像と全曲面ambient距離を保ち，局所protected距離を無条件に置換しない．同じfibrationでのatlas/GHには，相対変更命題のmarked閉商条件と，free-bandの面積・端germs・固定collars/capsを満たす局所構成を先に与える．
 \item Part Iでは，endpoint接続，SNC入力，co-Gramから全射収縮，ambient LDP下界，Busemannからexact tailへの鎖を限定的に点検した．測度付きtranslation・Chern--Weil・一様Abel--Mellin，移動基点のambient閉球とlink復元も指定箇所を点検した．Introductionの各主定理を本文の入力へ対応させ，確率正規化・収束基点・残余parameter範囲とPart IIの標識・向きを明記した．次は主要な距離・測度結果の網羅的な先行研究比較と，未点検の証明箇所を詰める．固定補空間と退化族の一様評価を区別する．
 \item Part IVの \(\mathrm{(TC)}_5,\mathrm{(CP)}_d,\mathrm{(PBE)}_d\) を，直接経路から独立した解析課題として調べる．
 \item Part II の SNC controlled push-off を，Whitney または subanalytic control data と一様 path network により証明する．
@@ -611,11 +658,20 @@ Part IV で列挙する全 terminal types について，次が同一の labelle
 \bibitem{SurfaceKE}
 植田一石，
 \newblock \emph{一般型射影曲面のLagrangian torus fibrationと負Kähler--Einstein極限：相対SNC構成、分岐底空間、作用適合matroidal atlas}，
-\newblock 改訂34，2026年11月22日，確認commit \texttt{2f813ff}，
-\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/2f813ff6d56af90804c3e01d66f30f77012b506f/papers/surface-lagrangian-torus-fibration.tex}{確認版ソース}，
+\newblock 改訂35，2026年11月22日，確認commit \texttt{e801a65}，
+\newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/e801a6511451232246cb164d1dfcbf38699625ee/papers/surface-lagrangian-torus-fibration.tex}{確認版ソース}，
 \newblock \href{https://github.com/uedakazushi/surface-lagrangian-torus-fibration/blob/main/papers/surface-lagrangian-torus-fibration.tex}{現行原稿ソース}，
 \newblock 定理 \texttt{ke:global-metric-realization}，
-\newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}．
+\newblock 系 \texttt{ke:intermediate-moving-classification}，\texttt{ke:intermediate-component-cone}，
+\newblock 命題 \texttt{ke:moment-relative-replacement}，系 \texttt{ke:relative-replacement-gh}．
+
+\bibitem{FBP}
+J.~Fernández de Bobadilla and T.~Pełka,
+\newblock Fibrations by Lagrangian tori for maximal Calabi--Yau degenerations and beyond,
+\newblock \emph{Comm. Pure Appl. Math.} (2026), e70060,
+\newblock \href{https://doi.org/10.1002/cpa.70060}{doi:10.1002/cpa.70060}.
+\newblock 確認版 \href{https://arxiv.org/abs/2312.13248v4}{arXiv:2312.13248v4}，
+Proposition~6.13，Theorem~6.14(b),(c)，Remark~7.4．
 
 \bibitem{RZ}
 F.~Rochon and Z.~Zhang,

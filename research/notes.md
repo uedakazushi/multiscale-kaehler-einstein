@@ -1,12 +1,12 @@
 # 研究ノート：多重スケールKE（配置補空間）
-更新：2026-11-22 / v1.8（Part I v1.6、総説v1.7）
+更新：2026-11-22 / v1.9（Part I v1.6、総説v1.8）
 
 ## 現行稿の仮定
 Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIのactual localization・pGHは(H_loc)+(H_anc)付き。旧草稿の強い記述より現行原稿とsource-audit.mdを優先する。
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.14・commit e6b2a4d](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/e6b2a4dac7242260dd199894ff2e826ec04e7742)と[曲面改訂34・研究資料v3.18・commit 2f813ff](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/2f813ff6d56af90804c3e01d66f30f77012b506f)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合と下記の指定証明鎖の内部点検を、外部の全証明の独立再検証とは区別する。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。外部確認版は[KE研究資料v1.15・commit b9848d1](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b9848d10ec7b8876220b4093be852f3428ab14ea)と[曲面改訂35・研究資料v3.19・commit e801a65](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/e801a6511451232246cb164d1dfcbf38699625ee)。確認日2026-11-22。KEの数学本文は総説に固定した[Part IV v1.9・Part V commit b2180e5](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/b2180e553b73d3a9dfd5d1146c4146c67f2055e7)から不変である。表の照合と下記の指定証明鎖の内部点検を、外部の全証明の独立再検証とは区別する。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
@@ -17,6 +17,8 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 | Part IV `simplex:cor:actual-closed-corner-metric`, `pair:thm:fixed-end-moment` | Closed tripleの内在・protected距離、および固定source-free residual compact上のmoment入力。全曲面ambient距離や任意のmoving exhaustionへの一様性へ拡張しない。 |
 | Part IV `coarse:hyp:TC5`, `coarse:thm:main`; Part V `hyp:CPd`, `hyp:PBEd`, `thm:degree-d-limit` | Part IVの五次coarse定理は(TC)5付き。Part Vの大域適用は(CP)d＋(PBE)d付き。有限targetの直径 `thm:intro-diameter-C5` は独立。 |
 | 曲面 `ke:global-metric-realization` | 一つの固定族・固定d≥5についてactual Lagrangian πと同じf=pπの全域ambient distortion消失を原稿に証明。局所入力＋直接scalar/portal比較を用い、外部CP/PBE/TC自体を検証しない。 |
+| 曲面 `ke:moment-relative-replacement`, `ke:relative-replacement-gh` | 同じcanonical moment・anchor cuts・保持corner全葉・source nodal neighborhoods・component領域、marked product/cone商、whole-fiber接着を保つ候補の射影値差≤Cη。C1小ささは不要。固定木系の候補がslow diagonalに沿って存在すればGHを移せる。Atlas候補の存在は入力。 |
+| 曲面 `ng8:fixed-fiber-relative-dh`, `ng8:source-dh-wall` | 固定tのfree compact bandのinvariant primitiveとaffine boundary actionsからStokes面積式。Source固定点を横切る(1,−1)模型では周期2πで面積π(c−|μ|)。Actual全P0の面積公式ではない。 |
 | 曲面 `ke:source-inclusive-fixed-shell`, `ke:global-clipped-cogram-lower` | Sourceを含む固定残余compact・固定rでの同一frameのmomentとshell横断下界。有限stageのco-Gram不等式を極限操作から分ける。異なるnormal formsのprimitive一致、任意moving exhaustionは含まない。 |
 | 曲面 `topo:cubical-local-models`, `topo:cubical-moving-blowups` | 全targetのambient局所閉球から成分錐、book、角3π/2の錐、平面を得る。全moving拡大極限と任意拡大列での各有限基点の実現。 |
 | 曲面 `ke:distortion-to-pointed-balls`, `ke:intermediate-moving-classification` | 全射の歪みδから同半径閉球の基点付きGH距離≤3δ/2。同じfによるa→∞、a/R→0、Rε/a→0の下でactual全移動基点の四型分類と実現。 |
@@ -186,7 +188,7 @@ Connectionの残余角係数は対応faceで消え、通常接方向の係数は
 
 ## 曲面側の固定段階入力と全域ambient接続
 
-証明の正本は曲面第34稿。`ke:source-inclusive-fixed-shell` では、三重点を避けsourceを含んでよい固定残余compact P⊂int P+上で、同じ射影正規形 x′y′=t h_t(p)と非零正則体積frame Ω_t=dlog x′∧dp=−dlog y′∧dpを用いる。Ω_tはsourceにも延びる。先にPとrを固定し、s_r=−log r²と置くと、全base points・phaseについてmomentは±4π/s_r+O(s_r^(−1−δ))+o_t(1)。O定数は小rに共通だが、tの閾値はrに依存してよい。r²≤|x′|≤rのshell横断費用はc_P log2以上となる。Songのfixed-smooth-locus収束とRochon–Zhangの成分cusp評価を用い、任意の小さい複素tを扱う。別normal formのprimitiveとの差はclosed項として保持し、同一性や残余period消滅を追加しない。
+証明の正本は曲面第35稿。`ke:source-inclusive-fixed-shell` では、三重点を避けsourceを含んでよい固定残余compact P⊂int P+上で、同じ射影正規形 x′y′=t h_t(p)と非零正則体積frame Ω_t=dlog x′∧dp=−dlog y′∧dpを用いる。Ω_tはsourceにも延びる。先にPとrを固定し、s_r=−log r²と置くと、全base points・phaseについてmomentは±4π/s_r+O(s_r^(−1−δ))+o_t(1)。O定数は小rに共通だが、tの閾値はrに依存してよい。r²≤|x′|≤rのshell横断費用はc_P log2以上となる。Songのfixed-smooth-locus収束とRochon–Zhangの成分cusp評価を用い、任意の小さい複素tを扱う。別normal formのprimitiveとの差はclosed項として保持し、同一性や残余period消滅を追加しない。
 
 `ke:global-clipped-cogram-lower` は一つのt,m,Kを固定し、S=R−log m−log K∈(0,R]、ε≥0とする。Strictにactiveな共変ベクトルの全co-Gram matrixが(1+ε)Id以下なら、任意のrectifiable curve γについて
 \[
@@ -195,6 +197,23 @@ L_\square(\Theta_t\gamma)\le \frac{R\sqrt{1+\epsilon}}S L_{R^{-2}g_t}(\gamma).
 これは有限parameterの不等式で、εの小ささやε→0を補題の仮定にしない。q=S/(R√(1+ε))には1−q≤(log m+log K)/R+ε/2が成り立ち、固定targetの直径から加法誤差へ移せる。誤差消失は全局所定数・core深度・clipping parametersを選んだ後のslow diagonalでのみ課す。
 
 全域上界は `ke:same-moment-corner-reference`、`ke:coherent-corner-portals`、`ke:point-to-corner-portal`、`ke:global-ambient-upper` のendpoint比較で得る。旧full corner内の経路は除去capを通ってもambient経路として有効で、保持領域内に閉じ込めない。同じmoment上の異なる葉とsource・saddleを含む全fiber合併を接続し、成分側は一つの成分ごとに拡大固定compact内で接続する。固定PとC_j^neckをN_j前に選び、C_j^neck≤1+log(N_j+1)で吸収する。M本のgalleryにはM−1のjunctionと両端の二接続が必要で、合計(M+1)Hとなる。Anchor等号境界、support二元の旧corner辺、同じanchorを持つ両端点まで点検した。Strictなtarget曲線の持上げやfiber内の経路は入力にしない。
+
+## Canonical momentを保つ相対変更と面積の障害
+
+曲面 `ke:moment-relative-replacement` の入力は、同じ保持cornerとK2交わりを含むend collarsの全葉、sourceのcompact nodal neighborhoods、同じactual normal circle・向き・加法定数を持つcanonical moment・anchor levels、同じcomponent coreと変更collarである。候補のneck商にはd−2個のlabelled endsを持つ許容三価木の実際のmarked productが必要で、core商は対応するlabelled linkのconeとする。全局所商をcompact Hausdorffとし、全交わりを双方の全fiberの合併とし、そのpartitionを一致させる。木の抽象同型、局所座標だけの一致、normal momentだけの保存では入力を満たさない。
+
+この条件で先にwhole-fiber閉商を作り、同じcorner parameter化と共通profile σ_t(μ)を用いて新しいmarked底空間へ同定すると、保持corner上では厳密に同じ射影値を持ち、全域では
+\[
+\sup_{x\in X_t}d_\square(f_{j,t}(x),\widehat f_{j,t}(x))
+\le C\eta_{j,t},\qquad \eta_{j,t}=\frac{1+\log(N_j+1)}{R_t}.
+\]
+両像が同じ小さなcomponent cap内にあることと、neckで同じμの辺像を比較するだけで足り、reduced葉のdiffeomorphismのC1小ささは不要である。`ke:relative-replacement-gh` は一つの固定木系の候補がslow diagonalに沿って存在する場合に、dis(fhat)≤dis(f)+Cη→0を得る。全coarse fiber、すなわち一つのp_T-fiber上のLagrangian fibersの合併もambientに一様収縮する。Atlasを持つ局所候補の実構成は別の未解決課題である。
+
+`ke:raw-moment-error-insufficient` は固定stageと0<α<β<1に対し、μ_t=−L_t^(−α)、ν_t=−L_t^(−β)を使う。Raw momentの差は零へ向かうが、σ_t(μ_t)→α、σ_t(ν_t)→βなのでtargetの辺距離は消えない。近似matchingにはprofile値の一様誤差を制御する必要がある。この例はatlas不存在を結論しない。
+
+`ng8:fixed-fiber-relative-dh` は固定t≠0、自由な周期2πのcircle作用、E_t/S1≅J×P（Pは境界を持つcompact connected surface）、作用不変primitive λ_t(V)=μを仮定する。Boundary framingとcutsを固定し、向き付き第二作用R_ℓ,t(μ)がaffineなら、Stokesにより面積は2πΣ_ℓ(R_ℓ,t(μ)+k_ℓ,t μ)、k_ℓ,t∈Zでaffineとなる。Reference constantsのt依存を許し、t=0へのsmooth extensionや族一様性を入力にしない。
+
+`ng8:source-dh-wall` の標準C²、I_k=|z_k|²/2、weights(1,−1)、μ=I_1−I_2、I_1+I_2≤cでは、周期2πのreduced angleにより面積はπ(c−|μ|)となる。固定点μ=0で折れるため、free-bandの式をsource横断intervalに流用できない。これはactual P0全体の面積公式ではない。相対Moserではsource近傍を保持して支持を離し、正のtarget region areas・総量一致・保存する全collars/capsを含む固定領域への余裕・端germs・marked identificationsを別に検証する。証明全文と規約は曲面正本に置き、StokesとGH安定性の一般原理を新規成果とは扱わない。
 
 ## 曲面の全移動基点と選択した中間尺度
 

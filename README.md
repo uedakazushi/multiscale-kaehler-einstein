@@ -1,6 +1,6 @@
 # Multiscale Kähler–Einstein geometry
 
-固定配置補空間の多重尺度KE幾何。現行研究一式：2026-11-22 / v1.8（Part I v1.6、総説v1.7）。最初に[研究方針](00_research_plan.md)を読む。主たる公表用原稿は `papers/multiscale-kaehler-einstein.tex`。
+固定配置補空間の多重尺度KE幾何。現行研究一式：2026-11-22 / v1.9（Part I v1.6、総説v1.8）。最初に[研究方針](00_research_plan.md)を読む。主たる公表用原稿は `papers/multiscale-kaehler-einstein.tex`。
 
 **三研究の共同編集：** 本repoは固定補空間のPart I–IIIと総説、[kaehler-einstein-degeneration](https://github.com/uedakazushi/kaehler-einstein-degeneration)は退化族の局所一様解析Part IVと条件付き大域枠組Part V、[surface-lagrangian-torus-fibration](https://github.com/uedakazushi/surface-lagrangian-torus-fibration)はactual曲面fibrationと同じ射影による全域GH実現を担当する。方針・記法・定理の依存関係・監査は一体で進め、repoと独立論文は役割別に保つ。詳細の定理ラベル・入力条件・確認版は[研究ノート](research/notes.md)に置く。
 
@@ -9,7 +9,7 @@
 | [Part I](papers/multiscale-kaehler-einstein.tex) | 64 | 距離錐・移動基点・metric link、LDP・裾漸近、測度付き平行移動、面質量、一様Mellin recursion |
 | [Part II](papers/secondary-periods-torelli.tex) | 28 | 一般WP completionはcontrolled push-off付き |
 | [Part III](papers/conifold-localization.tex) | 57 | Actual localization/pGHは(H_loc)+(H_anc)付き |
-| [総説](papers/series-overview.tex) | 13 | 五篇と曲面実現の共同方針、全移動基点の中間尺度、定理の条件・正規化 |
+| [総説](papers/series-overview.tex) | 14 | 五篇と曲面実現の共同方針、相対変更のGH安定性、全移動基点の中間尺度、条件・正規化 |
 | [研究素材](papers/research-directions.tex) | 10 | Jacobi/scattering・一般matroid等。現行仮定の注意を付記 |
 
 **現行の数学的到達点：** Part Iでは、固定SNCの整合的カラー・Ξ延長比較・全残余一様tensor評価に加え、co-Gramから全射な距離収縮への証明を点検した。加法誤差をKとすると、対応する中心を持つ閉球のGH誤差は全中心・全半径に一様に3K/(2R)以下となる。指定compact集合を原点へ送る選択も可能で、この場合Kはその集合に依存する。
@@ -22,9 +22,13 @@
 
 Smooth divisorに限るRochon–ZhangのTheorems 7.4・7.6と、滑らかな次数e超曲面のlog共鳴係数・可積分tailは既存の有効な結果として保持する。
 
-**曲面正本との接続：** [曲面第34稿](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/2f813ff6d56af90804c3e01d66f30f77012b506f)は、同じ全射 $f_t=p_T\pi_t$ の正規化歪みを $\varepsilon_t$ として、$a_t\to\infty$、$a_t/R_t\to0$、$R_t\varepsilon_t/a_t\to0$ の下で全移動基点の中間尺度極限を分類する。型は成分錐 $C_{2,d-1}$、book $\mathbb R\times\mathcal Y_{d-2}$、全角 $3\pi/2$ の錐、平面で、対応する任意の有限基点を許す。$\mathcal Y_m$ は原点で貼ったm本の半直線。全射の歪みが $\delta$ 以下なら、対応する中心・同じ半径のambient閉球の基点付きGH距離は $3\delta/2$ 以下である。これにより任意の許容尺度・退化列で全型を実現できる。誤差条件を除いた任意の中間尺度やtensor収束は結論しない。
+**曲面正本との接続：** [曲面第35稿](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/e801a6511451232246cb164d1dfcbf38699625ee)は、同じ全射 $f_t=p_T\pi_t$ の正規化歪みを $\varepsilon_t$ として、$a_t\to\infty$、$a_t/R_t\to0$、$R_t\varepsilon_t/a_t\to0$ の下で全移動基点の中間尺度極限を分類する。型は成分錐 $C_{2,d-1}$、book $\mathbb R\times\mathcal Y_{d-2}$、全角 $3\pi/2$ の錐、平面で、対応する任意の有限基点を許す。$\mathcal Y_m$ は原点で貼ったm本の半直線。全射の歪みが $\delta$ 以下なら、対応する中心・同じ半径のambient閉球の基点付きGH距離は $3\delta/2$ 以下である。これにより任意の許容尺度・退化列で全型を実現できる。誤差条件を除いた任意の中間尺度やtensor収束は結論しない。
 
 曲面側のsource-inclusive固定shellは、sourceを含む固定残余compactと半径rを先に固定し、全複素parameterの小さいtで同じ正則体積frameのmomentとshell横断費用を制御する。Co-Gram下界の補題は固定parameterの有限不等式として扱い、誤差消失は最後のslow diagonalで用いる。同じfの全域上界・下界と有限targetの指定鎖を共同点検した範囲、core・変更collarの任意基点への適用、証明の正本は[研究ノート](research/notes.md)を参照する。標準的な局所錐幾何やGH移送の一般原理を新規成果とは扱わない。
+
+**同じfibrationの相対変更：** 曲面の `ke:moment-relative-replacement` は、同じcanonical normal moment・anchor cuts・保持cornerの全葉・source nodal neighborhoods・component領域と、実際のmarked product/cone商・全交わりのwhole-fiber partitionを保つ候補変更に対し、射影値の差を $C(1+\log(N_j+1))/R_t$ 以下に抑える。Reduced diffeomorphismの $C^1$ 小ささは不要であり、固定木系の候補がslow diagonalに沿って構成できれば同じ新しい射影のGH実現を得る。作用適合atlasを持つ候補の実構成は未解決である。Raw momentの $o(1)$ だけではprofile値を制御できない例と、fixed-fiber free-bandのStokes面積式・sourceを横切る模型 $\pi(c-|\mu|)$ の折れを、曲面正本への参照とともに[ノート](research/notes.md)へ置く。
+
+FBPのTheorem 6.14(b)は部分fibration、(c)はproperな場合の全fiberの構成Kähler計量によるGH収束である。選択部分複体、admissible path、直径正規化を一次本文で照合し、actual負KE計量との比較を総説で明確化した。Evans–MauriとChakravarthy–Gromanの指定箇所も確認したが、全原著の再検証や網羅的新規性調査の完了とはしない。確認範囲は[一次資料の監査](research/source-audit.md)に集約する。
 
 **公表用の仮定と正規化：** Part I v1.6はIntroductionの各結論を本文の入力・証明へ対応させ、測度平行移動の基点条件と残余parameterのcompact subcritical範囲を明示する。面質量は非正規化KE体積に対する交点数であり、確率正規化時の交点数比も記す。通常のvolume-IRFAでAbel係数が存在しても有理型延長が従わない具体例を、証明付きで主稿へ統合した。Kobayashi・Guenancia–Wu・Jiang–Shiの適用範囲と、Chambert-Loir–Tschinkelの既存Igusa/residue theoryとの比較を加えた。網羅的新規性の確認は未了である。
 
@@ -36,4 +40,4 @@ Part II v2.1では、複素periodに必要なfactor/cusp labelsとKähler orient
 
 ルートで `latexmk`。PDF/SyncTeXはbuild/。現行の[検証状態](research/validation.json)で数学的点検・組版・表示確認を分ける。正本はmain。[research-hub](https://github.com/uedakazushi/research-hub)。
 
-組版にはLuaLaTeX/latexmk、LuaTeX-ja（ltjsarticleとHaranoAjiフォント）、TikZ、AMS、mathrsfs等の原稿で指定した標準TeXパッケージが必要。lualatex.fmtとrsfsのフォントmapが有効なTeX環境で上記コマンドを実行する。現行研究一式v1.8では総説のみを変更し、Part I–IIIの本文は保持する。総説の再組版・表示確認と、変更していない原稿の既存検証記録は分けて記録する。
+組版にはLuaLaTeX/latexmk、LuaTeX-ja（ltjsarticleとHaranoAjiフォント）、TikZ、AMS、mathrsfs等の原稿で指定した標準TeXパッケージが必要。lualatex.fmtとrsfsのフォントmapが有効なTeX環境で上記コマンドを実行する。現行研究一式v1.9では総説のみを変更し、Part I–IIIと研究素材の本文は保持する。総説の再組版・表示確認と、変更していない原稿の既存検証記録は分けて記録する。

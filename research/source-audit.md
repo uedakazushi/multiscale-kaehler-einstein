@@ -1,6 +1,6 @@
 # 現行原稿と回収元の監査範囲
 
-2026-11-22 / v1.8。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。
+2026-11-22 / v1.9。現行稿の仮定・依存入力・一次資料の確認範囲を整理する。回収元に由来する検査記録は末節に区別し、実行済み組版・限定的内部点検の正本は `validation.json` とする。原稿に証明があること、指定箇所を今回点検したこと、外部原著の全証明を検証したことを区別する。
 
 ## 結論
 
@@ -86,16 +86,30 @@ A. Chambert-Loir–Y. Tschinkel, *Igusa integrals and volume asymptotics in anal
 - 一般次数の大域 GH 適用には coarse realization/connectors package `(CP)_d` も必要と明記。
 - Part V の抽象 pruning–transport theorem と `C_5` の有限直径証明は、上記解析仮定と独立な無条件定理として保持。
 
-## 曲面正本の大域距離と全移動基点の確認範囲
+## 曲面正本の大域距離・相対変更の確認範囲
 
-確認版は [曲面第34稿・研究資料v3.18](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/2f813ff6d56af90804c3e01d66f30f77012b506f)（2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I v1.6・Part II v2.1・Part III本文へ新しい退化族の入力を追加していない。
+確認版は [曲面第35稿・研究資料v3.19](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/e801a6511451232246cb164d1dfcbf38699625ee)（2026-11-22）。定理と証明の正本は同repoであり、本repoのPart I v1.6・Part II v2.1・Part III本文へ新しい退化族の入力を追加していない。研究一式v1.9で新しく読んだのは相対変更・fixed-fiber面積の指定証明と次節の一次比較であり、既存の大域距離・全移動基点の点検は再実行せず以下に有効な範囲を保持する。
 
+- **相対変更の指定証明。** `ke:moment-relative-replacement`、`ke:relative-replacement-gh`、`ke:raw-moment-error-insufficient` を本文で読んだ。Whole-fiber閉商を底空間同定より先に作る順序、同じ保持corner全葉・source nodal neighborhoods・canonical moment・anchor/cap・component領域、実際のmarked product/cone商という条件を確認した。Cornerでの厳密一致とneckでの共通profile比較から全域Cη評価を得るため、reduced diffeomorphismのC1小ささは不要。一つの固定木系をslow diagonalに沿って構成する量化と、raw momentのL^(-α)例も確認した。Atlas候補の存在を安定性から推論しない。
+- **Fixed-fiber面積とsource wall。** `ng8:fixed-fiber-relative-dh` と `ng8:source-dh-wall` の証明を読んだ。固定tのfree compact band、作用不変primitive、affine boundary actionsと整数framingからのStokes式を確認した。周期2πのweights(1,−1)模型の面積π(c−|μ|)は固定点で折れる。Source横断全intervalへの適用、actual P0全体の面積公式、t=0へのsmooth extension、族一様な評価を結論しない。相対Moserのarea positivity・総量・保存collars/capsの余裕・端germsは別入力である。
 - **全域上界の独立内部点検。** `ke:anchor-trimmed-neck-domain`、`ke:same-moment-corner-reference`、`ke:collapsed-tree-common-moment`、`ke:point-to-corner-portal` から `ke:global-ambient-upper` への鎖を読んだ。旧full cornerの経路は除去capを通ってもambient上界に使え、保持集合のintrinsic上界を仮定しない。全端点の分類、anchorの等号境界、同じmoment上の全fiber合併、coreごとの拡大compact接続を確認した。有限galleryのM本に対し、junctionがM−1、両端が2なので接続費用は(M+1)Hである。
 - **下界・局所入力の共同点検。** `ke:global-clipped-cogram-lower` は固定t,m,K、0<S≤R、任意の非負誤差εに対する有限評価であり、ε→0やS/R→1は最後の対角化で用いる。Sourceを含む固定Pのshell補題 `ke:source-inclusive-fixed-shell` は、同一の非零正則体積frameと固定rでSongのfixed-compact収束を適用し、Rochon–Zhangのcusp評価からmoment主項とshell横断下界を得る。これらの指定証明と一次箇所は各担当が照合した結果を同期しており、本資料の編集担当が全外部解析を再証明したという意味ではない。異なるnormal formsのprimitive差、固定compactとmoving exhaustion、protected距離とambient距離を区別する。
 - **有限targetの独立内部点検。** `topo:cubical-local-models`、`topo:cubical-moving-blowups` の全局所閉球とmoving-basepointの証明を読んだ。Support二元の折れ点e_i+e_jもbookであり、三座標全て1の点だけが全角3π/2の錐となる。固定局所錐のfull-ambient閉球へ移し、成分錐から逃げる場合はpositive-starの退出費用でbook又は平面を得る。四型の任意の有限基点は、任意の拡大列で実現できる。
 - **実曲面への移送。** `ke:distortion-to-pointed-balls` はcompact geodesic spaces間の全射の歪みδから、全中心・同半径閉球の基点付きGH距離≤3δ/2を与える。`ke:intermediate-moving-classification` は同じf=pπを用い、a→∞、a/R→0、Rε/a→0の条件下で全型と実現を移す。Core・変更collarへの既存の一様成分錐も保持する。一般的な局所cone幾何・GH移送自体の新規性を主張せず、任意尺度・tensor収束・極限交換へ拡張しない。
 
-この指定範囲で結論を妨げるgapは認めなかった。全曲面原稿・Part IV原著の包括的再監査、外部査読、形式証明、網羅的な先行研究比較は未了である。CP/PBE/TC、H_loc/H_anc、controlled push-off、同じπでのatlas/GH同時実現の検証状況は変わらない。
+この指定範囲で結論を妨げるgapは認めなかった。全曲面原稿・Part IV原著の包括的再監査、外部査読、形式証明、網羅的な先行研究比較は未了である。CP/PBE/TC、H_loc/H_anc、controlled push-offは独立のままであり、同じπでのatlas/GHには上記相対条件を満たす候補の実構成が残る。
+
+## 曲面接続の一次文献比較
+
+次は検索snippetではなく、指定した一次本文を確認した範囲である。原著の全証明の独立検証ではない。
+
+| 一次資料・確認版 | 確認した箇所と射程 | 本研究との比較 |
+| --- | --- | --- |
+| Fernández de Bobadilla–Pełka, *Fibrations by Lagrangian tori for maximal Calabi–Yau degenerations and beyond*, CPAM (2026), e70060、online 8 July 2026。[出版社](https://doi.org/10.1002/cpa.70060)、[arXiv:2312.13248v4](https://arxiv.org/html/2312.13248v4)（9 July 2026） | Proposition 5.6 p.24、Example 5.8／Remark 5.9 p.25、Propositions 6.3 p.27／6.13 p.30、Theorem 6.14 p.31、Remark 7.4。一般Kähler SNC退化。(b)のfibrationは部分領域だが、(c)はproperなら全fiberの構成Kähler計量のpair GH。固定εとadmissible path (|z|,q)→(0,0)、直径正規化、選択部分複体Δ_Sを区別する | 全fiberのGHを局所結果へ弱めない。明示的GH写像とaction affine structureも既存。Actual負KE計量、coreを埋めた全域fibration、同じ射影の全endpoint距離評価が比較対象で、一般的なtransport・collapseを新規とはしない |
+| Evans–Mauri, *Constructing local models for Lagrangian torus fibrations*, AHL **4** (2021), 537–570。[掲載版PDF](https://ahl.centre-mersenne.org/item/10.5802/ahl.80.pdf)、[arXiv:1905.09229v3](https://arxiv.org/abs/1905.09229v3) | 掲載版Lemma 2.16 pp.543–544／Remark 2.18 p.544、Lemma 2.22／Remark 2.23 p.545、Assumption 1 p.561、Propositions 6.11–6.12 p.565／Theorem 6.14 p.566。Linkからcompletionへのcone extension、curvature条件付きcircle lift（曲線では自動）、log-CYな一次元strata下の近傍fibrationとdual monodromy | Genus零だけのlifting原理ではない。多数puncturesの曲線へAssumption 1を流用せず、指定finite collar・normal moment・core primitiveを保つ相対構成を別に確認する |
+| Chakravarthy–Groman, *Almost toric fibrations on K3 surfaces via degenerations*。[arXiv:2502.04304v3](https://arxiv.org/html/2502.04304v3)（28 May 2026） | Definition 1.2、Theorems 1.6／1.8、Corollary 1.9、改訂Lemma 2.13。Symplectic Kulikov modelから全nearby K3へのATFとnodal affine structure。Transportの連続性は指定cylindersを潰した商への主張 | 全域fibrationの先行結果として扱い、anticanonical cycleの入力と一般型曲面の曲線strataを区別する。FBP bibliographyの誤記2502.11224は転記せず、正しい識別子2502.04304を用いる |
+
+Moserによる同じcohomology classの形式の同定だけでは、移送された複素構造の計量比較は得られない。今回明確にした相違が最初の成果であるか、より広い既存構成からどこまで導けるかというpriorityの網羅的確認は未了である。Stokes、GH安定性、cone extension、action座標の一般原理を独自成果とは扱わない。
 
 ## 固定次数 `d ≥ 5` の検算
 
