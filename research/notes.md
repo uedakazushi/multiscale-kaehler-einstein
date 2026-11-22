@@ -6,7 +6,7 @@ Part IIの一般WP completionはcontrolled parallel push-off付き。Part IIIの
 
 ## 三研究の定理接続と正本
 
-研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。現行の接続先は[KE Part IV–V v1.10・研究資料v1.19](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/main)と[曲面改訂39](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/main)。資料確認日は2026-11-22。Part IVの新しい局所安定性の証明は今回の作業版を直接読み、全深部比較への適用まで独立に点検した。曲面の `ke:k4-actual-end-anchor` の統合本文と、そのclutching・marked相対面積・fan・有限band補間の指定依存を独立に実読した。この担当が曲面全稿を再検証したとはしない。保存commitと実際の組版・表示確認の範囲は `validation.json` に分けて記す。
+研究・編集・証明監査は共同で進め、各結果の証明は次の正本に保持する。現行の接続先は[KE Part IV–V v1.10・研究資料v1.20](https://github.com/uedakazushi/kaehler-einstein-degeneration/tree/73d6b01a0cc01d99dfe4bccf3302a9e532cb635d)と[曲面改訂39](https://github.com/uedakazushi/surface-lagrangian-torus-fibration/tree/76ffe7e6b3f166cb4a116dbfec7e70254b244487)。資料確認日は2026-11-22。Part IVの新しい局所安定性の証明は今回の作業版を直接読み、全深部比較への適用まで独立に点検した。曲面の `ke:k4-actual-end-anchor` の統合本文と、そのclutching・marked相対面積・fan・有限band補間の指定依存を独立に実読した。この担当が曲面全稿を再検証したとはしない。保存commitと実際の組版・表示確認の範囲は `validation.json` に分けて記す。
 
 | 正本・定理ラベル | 入力・出力と利用範囲 |
 | --- | --- |
